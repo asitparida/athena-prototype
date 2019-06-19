@@ -1,3 +1,5 @@
+import { BuildMenu } from "./dock";
+
 const { format } = require('url')
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
@@ -5,12 +7,16 @@ const isDev = require('electron-is-dev')
 const { resolve } = require('app-root-path')
 
 app.on('ready', async () => {
+  BuildMenu();
+  app.setName('Athena Prototype');
   const size = electron.screen.getPrimaryDisplay().size
   const mainWindow = new BrowserWindow({
     width: size.width,
     height: size.height,
     show: false,
     transparent: true,
+    resizable: false,
+    fullscreenable: false,
     titleBarStyle: 'hidden',
     vibrancy: 'ultra-dark'
   })
@@ -31,5 +37,4 @@ app.on('ready', async () => {
   mainWindow.setMenu(null)
   mainWindow.loadURL(url)
 })
-
 app.on('window-all-closed', app.quit)

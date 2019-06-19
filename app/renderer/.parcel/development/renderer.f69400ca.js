@@ -30876,7 +30876,7 @@ function (_React$Component) {
       }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
         exact: true,
         path: "/",
-        component: dumping_ground_1.default
+        component: home_1.default
       }), React.createElement(react_router_dom_1.Route, {
         exact: true,
         path: "/home",
@@ -31054,7 +31054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50352" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

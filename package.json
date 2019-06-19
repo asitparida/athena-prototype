@@ -22,8 +22,8 @@
   "author": "shamofu",
   "license": "MIT",
   "build": {
-    "productName": "ElectronReactParcel",
-    "appId": "org.shamofu.ElectronReactParcel",
+    "productName": "AthenaPrototype",
+    "appId": "org.mhci.AthenaPrototype",
     "files": [
       "app/**",
       "!app/main/main.ts",

@@ -1,4 +1,4 @@
-process.env.HMR_PORT=56083;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=50351;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -117,7 +117,42 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.ts":[function(require,module,exports) {
+})({"dock.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const electron_1 = require("electron");
+
+function BuildMenu() {
+  const dockMenu = electron_1.Menu.buildFromTemplate([{
+    label: 'All Clips'
+  }, {
+    label: 'Workspace',
+    submenu: [{
+      label: 'Workspace #1'
+    }, {
+      label: 'Workspace #2'
+    }, {
+      label: 'Workspace #3'
+    }]
+  }]);
+  electron_1.app.dock.setMenu(dockMenu);
+  electron_1.app.dock.show();
+}
+
+exports.BuildMenu = BuildMenu;
+},{}],"main.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const dock_1 = require("./dock");
+
 const {
   format
 } = require('url');
@@ -136,12 +171,16 @@ const {
 } = require('app-root-path');
 
 app.on('ready', async () => {
+  dock_1.BuildMenu();
+  app.setName('Athena Prototype');
   const size = electron.screen.getPrimaryDisplay().size;
   const mainWindow = new BrowserWindow({
     width: size.width,
     height: size.height,
     show: false,
     transparent: true,
+    resizable: false,
+    fullscreenable: false,
     titleBarStyle: 'hidden',
     vibrancy: 'ultra-dark'
   });
@@ -163,7 +202,7 @@ app.on('ready', async () => {
   mainWindow.loadURL(url);
 });
 app.on('window-all-closed', app.quit);
-},{}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./dock":"dock.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var OVERLAY_ID = '__parcel__error__overlay__';
 
 var OldModule = module.bundle.Module;
