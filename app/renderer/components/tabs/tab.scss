@@ -55,6 +55,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             .resizer-handler {
                 width: 100%;
                 background: rgba(#fff, 0.10);
@@ -71,6 +72,7 @@
                 margin-top: -10px;
                 margin-left: -10px;
                 left: 50%;
+                cursor: pointer;
             }
         }
     }
@@ -80,6 +82,8 @@
         padding: 30px;
         flex: 1;
         overflow-y: auto;
+        
+
         &[data-size="1"] {
             .tab-content-wrapper .content-wrapper {
                 width: 25%;

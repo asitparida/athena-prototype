@@ -1,4 +1,4 @@
-process.env.HMR_PORT=56135;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=59914;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"dock.ts":[function(require,module,exports) {
+})({"helpers/dock.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -146,7 +146,7 @@ function BuildMenu() {
 exports.BuildMenu = BuildMenu;
 },{}],"assets/network.png":[function(require,module,exports) {
 module.exports = "/network.91e8a37e.png";
-},{}],"tray.ts":[function(require,module,exports) {
+},{}],"helpers/tray.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -161,7 +161,7 @@ Object.defineProperty(exports, "__esModule", {
 
 const electron_1 = require("electron");
 
-const network_png_1 = __importDefault(require("./assets/network.png"));
+const network_png_1 = __importDefault(require("../assets/network.png"));
 
 let tray = null;
 
@@ -199,20 +199,59 @@ function BuildTray(win) {
 }
 
 exports.BuildTray = BuildTray;
-},{"./assets/network.png":"assets/network.png"}],"main.ts":[function(require,module,exports) {
+},{"../assets/network.png":"assets/network.png"}],"helpers/screen.ts":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const electron_1 = require("electron");
+
+const _ = __importStar(require("lodash"));
+
+function GetExternalDisplay() {
+  let displays = electron_1.screen.getAllDisplays();
+  let externalDisplays = displays.filter(display => {
+    return display.bounds.x !== 0 || display.bounds.y !== 0;
+  });
+  console.log(displays);
+}
+
+exports.GetExternalDisplay = GetExternalDisplay;
+
+const onMainWindowMoved = mainWindow => {
+  let winBounds = mainWindow.getBounds();
+  let whichScreen = electron_1.screen.getDisplayNearestPoint({
+    x: winBounds.x,
+    y: winBounds.y
+  });
+  mainWindow.setBounds(whichScreen.bounds, true);
+};
+
+exports.onMovedDebounced = _.debounce(onMainWindowMoved, 200);
+},{}],"main.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-const dock_1 = require("./dock");
+const dock_1 = require("./helpers/dock");
 
-const tray_1 = require("./tray");
+const tray_1 = require("./helpers/tray");
 
-const {
-  format
-} = require('url');
+const screen_1 = require("./helpers/screen");
+
+const url_1 = require("url");
 
 const electron = require('electron');
 
@@ -241,7 +280,8 @@ app.on('ready', async () => {
     titleBarStyle: 'hidden',
     vibrancy: 'ultra-dark',
     webPreferences: {
-      webSecurity: false
+      webSecurity: false,
+      scrollBounce: true
     }
   });
   tray_1.BuildTray(mainWindow);
@@ -252,8 +292,9 @@ app.on('ready', async () => {
       mainWindow.webContents.openDevTools();
     }
   });
+  mainWindow.on('move', screen_1.onMovedDebounced.bind(this, mainWindow));
   const devPath = 'http://localhost:1124';
-  const prodPath = format({
+  const prodPath = url_1.format({
     pathname: resolve('app/renderer/.parcel/production/index.html'),
     protocol: 'file:',
     slashes: true
@@ -263,7 +304,7 @@ app.on('ready', async () => {
   mainWindow.loadURL(url);
 });
 app.on('window-all-closed', app.quit);
-},{"./dock":"dock.ts","./tray":"tray.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./helpers/dock":"helpers/dock.ts","./helpers/tray":"helpers/tray.ts","./helpers/screen":"helpers/screen.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var OVERLAY_ID = '__parcel__error__overlay__';
 
 var OldModule = module.bundle.Module;

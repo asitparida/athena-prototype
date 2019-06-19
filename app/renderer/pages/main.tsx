@@ -22,6 +22,7 @@ class Main extends Component<{}, IMainState> {
         const sideBarCollpased = this.state.sideBarCollpased ? 'collapsed' : 'expanded';
         return (
             <div className="app-content">
+                <div className="app-dragger" />
                 <div className="app-content-top">
                     <div className="app-sidebar-toggle" onClick={this.toggleSidebar.bind(this)}>
                         <i className="material-icons">menu</i>

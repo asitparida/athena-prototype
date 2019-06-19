@@ -1,5 +1,5 @@
 import { nativeImage, Tray, Menu, app, BrowserWindow } from 'electron';
-import logo from './assets/network.png';
+import logo from '../assets/network.png';
 let tray: Tray = null;
 export function BuildTray(win: BrowserWindow) {
     const image = nativeImage.createFromPath(__dirname + logo);

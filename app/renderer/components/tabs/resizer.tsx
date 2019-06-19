@@ -39,6 +39,9 @@ export class Resizer extends React.Component<IResizerProps, {}> {
             this.props.onSizeChange(this.currentSize);
         }
     }
+    onClick(e: MouseEvent) {
+        this.processPosition(e.clientX);
+    }
     onMouseDown(e: MouseEvent) {
         this.capture = true;
         const node = this.myRef.current as HTMLElement;
@@ -58,19 +61,21 @@ export class Resizer extends React.Component<IResizerProps, {}> {
         const node = (this.myRef.current as HTMLElement);
         if (node) {
             node.addEventListener('mousedown', this.onMouseDown.bind(this));
+            node.addEventListener('click', this.onClick.bind(this));
         }
-        document.removeEventListener('mouseover', this.onDocumentMouseMove.bind(this));
+        document.removeEventListener('mouseover', this.onDocumentMouseMove);
         document.addEventListener('mouseover', this.onDocumentMouseMove.bind(this));
-        document.removeEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+        document.removeEventListener('mouseup', this.onDocumentMouseUp);
         document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
     }
     componentWillUnmount() {
         const node = (this.myRef.current as HTMLElement);
         if (node) {
-            node.removeEventListener('mousedown', this.onMouseDown.bind(this));
+            node.removeEventListener('mousedown', this.onMouseDown);
+            node.removeEventListener('click', this.onClick);
         }
-        document.removeEventListener('mousemove', this.onDocumentMouseMove.bind(this));
-        document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+        document.removeEventListener('mousemove', this.onDocumentMouseMove);
+        document.addEventListener('mouseup', this.onDocumentMouseUp);
     }
     render() {
         return <div className='resizer-wrapper' ref={this.myRef}>

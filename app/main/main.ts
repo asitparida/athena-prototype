@@ -1,7 +1,9 @@
-import { BuildMenu } from "./dock";
-import { BuildTray } from "./tray";
+import { BuildMenu } from "./helpers/dock";
+import { BuildTray } from "./helpers/tray";
+import { GetExternalDisplay, onMovedDebounced } from "./helpers/screen";
+import * as _ from 'lodash';
 
-const { format } = require('url')
+import { format } from 'url';
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
 const isDev = require('electron-is-dev')
@@ -21,7 +23,8 @@ app.on('ready', async () => {
         titleBarStyle: 'hidden',
         vibrancy: 'ultra-dark',
         webPreferences: {
-            webSecurity: false
+            webSecurity: false,
+            scrollBounce: true
         }
     })
     BuildTray(mainWindow);
@@ -29,6 +32,7 @@ app.on('ready', async () => {
         mainWindow.show()
         if (isDev && false) { mainWindow.webContents.openDevTools() }
     })
+    mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
 
     const devPath = 'http://localhost:1124'
     const prodPath = format({

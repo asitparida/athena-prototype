@@ -1,3 +1,25 @@
+
+
+
+@mixin scrollbars($size, $foreground-color, $background-color) {
+    ::-webkit-scrollbar {
+       width: $size;
+       height: $size;
+   }
+    ::-webkit-scrollbar-thumb {
+       background: $foreground-color;
+   }
+    ::-webkit-scrollbar-track {
+       background: $background-color;
+   } // For Internet Explorer
+   .scroller {
+       -ms-scrollbar-face-color: $foreground-color;
+       scrollbar-face-color: $foreground-color;
+       -ms-scrollbar-track-color: $background-color;
+       scrollbar-track-color: $background-color;
+   }
+}
+@include scrollbars(0.50em,rgba(#fff, 0.30), rgba(#000, 0.50));
 body {
     margin: 0;
     width: 100vw;
@@ -20,6 +42,20 @@ body {
             align-items: center;
             position: relative;
             flex-flow: column;
+            .app-dragger {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                z-index: 2;
+                background-color: rgba(#ffffff, 0.30);
+                -webkit-app-region: drag;
+                &:hover {
+                    background-color: rgba(#ffffff, 0.75);
+                }
+            }
             .app-content-top {
                 order: 1;
                 height: 90px;

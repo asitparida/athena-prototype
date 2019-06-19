@@ -30032,6 +30032,11 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "onClick",
+    value: function onClick(e) {
+      this.processPosition(e.clientX);
+    }
+  }, {
     key: "onMouseDown",
     value: function onMouseDown(e) {
       this.capture = true;
@@ -30061,11 +30066,12 @@ function (_React$Component) {
 
       if (node) {
         node.addEventListener('mousedown', this.onMouseDown.bind(this));
+        node.addEventListener('click', this.onClick.bind(this));
       }
 
-      document.removeEventListener('mouseover', this.onDocumentMouseMove.bind(this));
+      document.removeEventListener('mouseover', this.onDocumentMouseMove);
       document.addEventListener('mouseover', this.onDocumentMouseMove.bind(this));
-      document.removeEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+      document.removeEventListener('mouseup', this.onDocumentMouseUp);
       document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
     }
   }, {
@@ -30074,11 +30080,12 @@ function (_React$Component) {
       var node = this.myRef.current;
 
       if (node) {
-        node.removeEventListener('mousedown', this.onMouseDown.bind(this));
+        node.removeEventListener('mousedown', this.onMouseDown);
+        node.removeEventListener('click', this.onClick);
       }
 
-      document.removeEventListener('mousemove', this.onDocumentMouseMove.bind(this));
-      document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+      document.removeEventListener('mousemove', this.onDocumentMouseMove);
+      document.addEventListener('mouseup', this.onDocumentMouseUp);
     }
   }, {
     key: "render",
@@ -30972,6 +30979,8 @@ function (_react_1$Component) {
       return React.createElement("div", {
         className: "app-content"
       }, React.createElement("div", {
+        className: "app-dragger"
+      }), React.createElement("div", {
         className: "app-content-top"
       }, React.createElement("div", {
         className: "app-sidebar-toggle",
@@ -31054,7 +31063,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56136" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59915" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

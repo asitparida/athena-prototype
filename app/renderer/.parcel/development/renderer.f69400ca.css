@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.scroller {
+  -ms-scrollbar-face-color: rgba(255, 255, 255, 0.3);
+  scrollbar-face-color: rgba(255, 255, 255, 0.3);
+  -ms-scrollbar-track-color: rgba(0, 0, 0, 0.5);
+  scrollbar-track-color: rgba(0, 0, 0, 0.5);
+}
+
 body {
   margin: 0;
   width: 100vw;
@@ -21,6 +41,20 @@ body #root .app-content {
   align-items: center;
   position: relative;
   flex-flow: column;
+}
+body #root .app-content .app-dragger {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-app-region: drag;
+}
+body #root .app-content .app-dragger:hover {
+  background-color: rgba(255, 255, 255, 0.75);
 }
 body #root .app-content .app-content-top {
   order: 1;
@@ -168,6 +202,7 @@ body #root .app-content .app-content-area input {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .tabs-wrapper .resizer-container .resizer-wrapper .resizer-handler {
   width: 100%;
@@ -185,6 +220,7 @@ body #root .app-content .app-content-area input {
   margin-top: -10px;
   margin-left: -10px;
   left: 50%;
+  cursor: pointer;
 }
 .tabs-wrapper .tab-wrapper-content {
   order: 2;
