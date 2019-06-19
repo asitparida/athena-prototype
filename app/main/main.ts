@@ -1,11 +1,12 @@
-import { BuildMenu } from "./helpers/dock";
-import { BuildTray } from "./helpers/tray";
-import { GetExternalDisplay, onMovedDebounced } from "./helpers/screen";
+import { BuildMenu } from './helpers/dock';
+import { BuildTray } from './helpers/tray';
+import { GetExternalDisplay, onMovedDebounced } from './helpers/screen';
 import * as _ from 'lodash';
 
 import { format } from 'url';
-import { BuildAnnotator } from "./helpers/annotator";
-import { GetIpcFileFixUrl } from "./helpers/ipc-helper";
+import { BuildAnnotator } from './helpers/annotator';
+import { GetIpcFileFixUrl } from './helpers/ipc-helper';
+import { GetAPIServer } from '../api/server';
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
 const isDev = require('electron-is-dev')
@@ -51,5 +52,8 @@ app.on('ready', async () => {
     electron.ipcMain.on('launch-annotator', () => {
         BuildAnnotator();
     });
+    const server: any = await GetAPIServer();
+    // tslint:disable-next-line:no-string-literal
+    mainWindow['API_PORT'] = server.API_PORT;
 })
 app.on('window-all-closed', app.quit)
