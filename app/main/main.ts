@@ -18,7 +18,10 @@ app.on('ready', async () => {
     resizable: false,
     fullscreenable: false,
     titleBarStyle: 'hidden',
-    vibrancy: 'ultra-dark'
+    vibrancy: 'ultra-dark',
+    webPreferences: {
+      webSecurity: false
+    }
   })
 
   mainWindow.once('ready-to-show', () => {

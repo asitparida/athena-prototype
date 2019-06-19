@@ -1,4 +1,4 @@
-process.env.HMR_PORT=50351;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=50911;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -182,7 +182,10 @@ app.on('ready', async () => {
     resizable: false,
     fullscreenable: false,
     titleBarStyle: 'hidden',
-    vibrancy: 'ultra-dark'
+    vibrancy: 'ultra-dark',
+    webPreferences: {
+      webSecurity: false
+    }
   });
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
