@@ -1,0 +1,125 @@
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.scroller {
+  -ms-scrollbar-face-color: rgba(255, 255, 255, 0.3);
+  scrollbar-face-color: rgba(255, 255, 255, 0.3);
+  -ms-scrollbar-track-color: rgba(0, 0, 0, 0.5);
+  scrollbar-track-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+}
+body #root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+body #root .app-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-flow: column;
+}
+body #root .app-content .app-dragger {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-app-region: drag;
+}
+body #root .app-content .app-dragger:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+body #root .app-content .app-content-area {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  order: 2;
+}
+body #root .app-content .app-content-area textarea {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: small;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: left;
+  border: none;
+  font-weight: 100;
+  margin: 0;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+body #root .app-content .app-content-area textarea:hover, body #root .app-content .app-content-area textarea:active, body #root .app-content .app-content-area textarea:focus {
+  border: 1px solid rgba(255, 255, 255, 0.33);
+}
+body #root .app-content .app-content-area textarea::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-size: medium;
+}
+body #root .app-content .app-content-area textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-size: medium;
+}
+body #root .app-content .app-content-area textarea:-ms-input-placeholder {
+  /* IE 10+ */
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-size: medium;
+}
+body #root .app-content .app-content-area textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-size: medium;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=/annotator.f69400ca.css.map */

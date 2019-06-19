@@ -4,6 +4,8 @@ import { GetExternalDisplay, onMovedDebounced } from "./helpers/screen";
 import * as _ from 'lodash';
 
 import { format } from 'url';
+import { BuildAnnotator } from "./helpers/annotator";
+import { GetIpcFileFixUrl } from "./helpers/ipc-helper";
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
 const isDev = require('electron-is-dev')
@@ -12,7 +14,7 @@ const { resolve } = require('app-root-path')
 app.on('ready', async () => {
     BuildMenu();
     app.setName('Athena Prototype');
-    const size = electron.screen.getPrimaryDisplay().size
+    const size = electron.screen.getPrimaryDisplay().size;
     const mainWindow = new BrowserWindow({
         width: size.width,
         height: size.height,
@@ -24,12 +26,14 @@ app.on('ready', async () => {
         vibrancy: 'ultra-dark',
         webPreferences: {
             webSecurity: false,
-            scrollBounce: true
+            scrollBounce: true,
+            nodeIntegration: false,
+            preload: GetIpcFileFixUrl()
         }
     })
     BuildTray(mainWindow);
     mainWindow.once('ready-to-show', () => {
-        mainWindow.show()
+        mainWindow.show();
         if (isDev && false) { mainWindow.webContents.openDevTools() }
     })
     mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
@@ -44,5 +48,8 @@ app.on('ready', async () => {
 
     mainWindow.setMenu(null)
     mainWindow.loadURL(url)
+    electron.ipcMain.on('launch-annotator', () => {
+        BuildAnnotator();
+    });
 })
 app.on('window-all-closed', app.quit)

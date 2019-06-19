@@ -1,4 +1,4 @@
-process.env.HMR_PORT=59914;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=52259;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -146,7 +146,81 @@ function BuildMenu() {
 exports.BuildMenu = BuildMenu;
 },{}],"assets/network.png":[function(require,module,exports) {
 module.exports = "/network.91e8a37e.png";
-},{}],"helpers/tray.ts":[function(require,module,exports) {
+},{}],"helpers/ipc-helper.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function GetIpcFileFixUrl() {
+  const splits = __dirname.split('/');
+
+  const file = splits.splice(0, splits.length - 2).join('/') + '/electron-ipc.js';
+  return file;
+}
+
+exports.GetIpcFileFixUrl = GetIpcFileFixUrl;
+},{}],"helpers/annotator.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const electron_1 = require("electron");
+
+const url_1 = require("url");
+
+const ipc_helper_1 = require("./ipc-helper");
+
+const {
+  resolve
+} = require('app-root-path');
+
+const isDev = require('electron-is-dev');
+
+function BuildAnnotator() {
+  const window = new electron_1.BrowserWindow({
+    // parent: mainWindow,
+    width: 300,
+    height: 200,
+    show: false,
+    transparent: true,
+    // resizable: false,
+    fullscreenable: false,
+    vibrancy: 'ultra-dark',
+    alwaysOnTop: true,
+    skipTaskbar: true,
+    frame: false,
+    webPreferences: {
+      webSecurity: false,
+      scrollBounce: true,
+      nodeIntegration: false,
+      preload: ipc_helper_1.GetIpcFileFixUrl()
+    }
+  });
+  window.once('ready-to-show', () => {
+    window.show();
+    window.focus();
+
+    if (isDev && false) {
+      window.webContents.openDevTools();
+    }
+  });
+  const devPath = 'http://localhost:1125';
+  const prodPath = url_1.format({
+    pathname: resolve('app/widgets/annotator/.parcel/production/index.html'),
+    protocol: 'file:',
+    slashes: true
+  });
+  const url = isDev ? devPath : prodPath;
+  window.setMenu(null);
+  window.loadURL(url);
+}
+
+exports.BuildAnnotator = BuildAnnotator;
+},{"./ipc-helper":"helpers/ipc-helper.ts"}],"helpers/tray.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -162,6 +236,8 @@ Object.defineProperty(exports, "__esModule", {
 const electron_1 = require("electron");
 
 const network_png_1 = __importDefault(require("../assets/network.png"));
+
+const annotator_1 = require("./annotator");
 
 let tray = null;
 
@@ -183,6 +259,11 @@ function BuildTray(win) {
   };
 
   const contextMenu = electron_1.Menu.buildFromTemplate([{
+    label: 'New Note',
+    click: () => {
+      annotator_1.BuildAnnotator();
+    }
+  }, {
     label: 'All Clips',
     click: onClick
   }, {
@@ -199,7 +280,7 @@ function BuildTray(win) {
 }
 
 exports.BuildTray = BuildTray;
-},{"../assets/network.png":"assets/network.png"}],"helpers/screen.ts":[function(require,module,exports) {
+},{"../assets/network.png":"assets/network.png","./annotator":"helpers/annotator.ts"}],"helpers/screen.ts":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -253,6 +334,10 @@ const screen_1 = require("./helpers/screen");
 
 const url_1 = require("url");
 
+const annotator_1 = require("./helpers/annotator");
+
+const ipc_helper_1 = require("./helpers/ipc-helper");
+
 const electron = require('electron');
 
 const {
@@ -281,7 +366,9 @@ app.on('ready', async () => {
     vibrancy: 'ultra-dark',
     webPreferences: {
       webSecurity: false,
-      scrollBounce: true
+      scrollBounce: true,
+      nodeIntegration: false,
+      preload: ipc_helper_1.GetIpcFileFixUrl()
     }
   });
   tray_1.BuildTray(mainWindow);
@@ -302,9 +389,12 @@ app.on('ready', async () => {
   const url = isDev ? devPath : prodPath;
   mainWindow.setMenu(null);
   mainWindow.loadURL(url);
+  electron.ipcMain.on('launch-annotator', () => {
+    annotator_1.BuildAnnotator();
+  });
 });
 app.on('window-all-closed', app.quit);
-},{"./helpers/dock":"helpers/dock.ts","./helpers/tray":"helpers/tray.ts","./helpers/screen":"helpers/screen.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./helpers/dock":"helpers/dock.ts","./helpers/tray":"helpers/tray.ts","./helpers/screen":"helpers/screen.ts","./helpers/annotator":"helpers/annotator.ts","./helpers/ipc-helper":"helpers/ipc-helper.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var OVERLAY_ID = '__parcel__error__overlay__';
 
 var OldModule = module.bundle.Module;

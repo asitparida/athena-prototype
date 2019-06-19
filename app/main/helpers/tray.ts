@@ -1,5 +1,6 @@
 import { nativeImage, Tray, Menu, app, BrowserWindow } from 'electron';
 import logo from '../assets/network.png';
+import { BuildAnnotator } from './annotator';
 let tray: Tray = null;
 export function BuildTray(win: BrowserWindow) {
     const image = nativeImage.createFromPath(__dirname + logo);
@@ -13,6 +14,9 @@ export function BuildTray(win: BrowserWindow) {
         }
     };
     const contextMenu = Menu.buildFromTemplate([
+        { label: 'New Note', click: () => {
+            BuildAnnotator();
+        }  },
         { label: 'All Clips', click: onClick },
         { label: 'Workspace #1', click: onClick  },
         { label: 'Workspace #2', click: onClick  },

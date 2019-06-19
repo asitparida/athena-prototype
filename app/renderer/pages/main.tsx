@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from "react";
 import { RouterWrapper } from '../router';
+// import { ipcRenderer } from 'electron';
 import '../styles.scss';
 
 interface IMainState {
@@ -18,6 +19,10 @@ class Main extends Component<{}, IMainState> {
             sideBarCollpased: !sideBarCollpased
         });
     }
+    launchAnnotator() {
+        const ipcRenderer = (window as any).ipcRenderer;
+        ipcRenderer.send('launch-annotator');
+    }
     render() {
         const sideBarCollpased = this.state.sideBarCollpased ? 'collapsed' : 'expanded';
         return (
@@ -26,6 +31,11 @@ class Main extends Component<{}, IMainState> {
                 <div className="app-content-top">
                     <div className="app-sidebar-toggle" onClick={this.toggleSidebar.bind(this)}>
                         <i className="material-icons">menu</i>
+                    </div>
+                    <div className='app-actions-right'>
+                        <div className='action' onClick={this.launchAnnotator.bind(this)}>
+                            <i className="material-icons">notes</i>
+                        </div>
                     </div>
                 </div>
                 <div className="app-content-bottom">

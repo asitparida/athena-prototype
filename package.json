@@ -9,12 +9,14 @@
     "watch": "run-p -r parcel:watch electron:start",
     "electron:start": "nodemon --watch app/main/.parcel --exec \"electron .\"",
     "electron:build": "build --x64 --publish=never",
-    "parcel:watch": "run-p -r main:watch renderer:watch",
+    "parcel:watch": "run-p -r main:watch renderer:watch annotator:watch",
     "main:watch": "parcel watch app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
-    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
-    "parcel:build": "run-s main:build renderer:build",
+    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development ",
+    "annotator:watch": "parcel app/widgets/annotator/index.html --port 1125 --out-dir app/widgets/annotator/.parcel/development",
+    "parcel:build": "run-s main:build renderer:build annotator:build",
     "main:build": "parcel build app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
     "renderer:build": "parcel build app/renderer/index.html --public-url ./ --out-dir app/renderer/.parcel/production",
+    "annotator:build": "parcel build app/widgets/annotator/index.html --public-url ./ --out-dir app/widgets/annotator/.parcel/production",
     "test": "run-s parcel:build \"test:jest {@}\" --",
     "test:jest": "jest",
     "lint": "tslint app/**/*.ts{,x}"
@@ -101,11 +103,14 @@
     "spectron": "5.0.0",
     "tslint": "5.17.0",
     "tslint-react": "4.0.0",
-    "typescript": "3.5.2",
-    "lodash": "4.17.11"
+    "typescript": "3.5.2"
   },
   "dependencies": {
     "app-root-path": "^2.2.1",
-    "electron-is-dev": "^1.1.0"
+    "electron-is-dev": "^1.1.0",
+    "lodash": "4.17.11"
+  },
+  "alias": {
+    "ipcRenderer": "./electron-ipc.js"
   }
 }
