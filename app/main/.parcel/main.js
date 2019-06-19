@@ -1,4 +1,4 @@
-process.env.HMR_PORT=50911;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=56135;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -144,7 +144,62 @@ function BuildMenu() {
 }
 
 exports.BuildMenu = BuildMenu;
-},{}],"main.ts":[function(require,module,exports) {
+},{}],"assets/network.png":[function(require,module,exports) {
+module.exports = "/network.91e8a37e.png";
+},{}],"tray.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+const electron_1 = require("electron");
+
+const network_png_1 = __importDefault(require("./assets/network.png"));
+
+let tray = null;
+
+function BuildTray(win) {
+  const image = electron_1.nativeImage.createFromPath(__dirname + network_png_1.default);
+  image.resize({
+    width: 30,
+    height: 30
+  });
+  tray = new electron_1.Tray(image);
+  tray.setImage(image);
+
+  const onClick = () => {
+    const isVisible = win.isFocused();
+
+    if (!isVisible) {
+      win.focus();
+    }
+  };
+
+  const contextMenu = electron_1.Menu.buildFromTemplate([{
+    label: 'All Clips',
+    click: onClick
+  }, {
+    label: 'Workspace #1',
+    click: onClick
+  }, {
+    label: 'Workspace #2',
+    click: onClick
+  }, {
+    label: 'Workspace #3',
+    click: onClick
+  }]);
+  tray.setContextMenu(contextMenu);
+}
+
+exports.BuildTray = BuildTray;
+},{"./assets/network.png":"assets/network.png"}],"main.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -152,6 +207,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 const dock_1 = require("./dock");
+
+const tray_1 = require("./tray");
 
 const {
   format
@@ -187,6 +244,7 @@ app.on('ready', async () => {
       webSecurity: false
     }
   });
+  tray_1.BuildTray(mainWindow);
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
 
@@ -205,7 +263,7 @@ app.on('ready', async () => {
   mainWindow.loadURL(url);
 });
 app.on('window-all-closed', app.quit);
-},{"./dock":"dock.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./dock":"dock.ts","./tray":"tray.ts"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var OVERLAY_ID = '__parcel__error__overlay__';
 
 var OldModule = module.bundle.Module;
