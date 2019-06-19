@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Component } from "react";
-import Router from '../router';
-import SidebarComponent from "../components/sidebar/sidebar";
-import '../styles.scss'
+import { RouterWrapper } from '../router';
+import '../styles.scss';
 
 interface IMainState {
     sideBarCollpased: boolean
@@ -29,13 +28,7 @@ class Main extends Component<{}, IMainState> {
                     </div>
                 </div>
                 <div className="app-content-bottom">
-                    <div className="app-content-sidebar left" data-state={sideBarCollpased} >
-                        <SidebarComponent />
-                    </div>
-                    <div className="app-content-area">
-                        <Router />
-                    </div>
-                    {/* <div className="app-content-sidebar right" /> */}
+                    <RouterWrapper sideBarCollpased={sideBarCollpased} />
                 </div>
             </div>
         );

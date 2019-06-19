@@ -1,16 +1,26 @@
 import * as React from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 
-import DumpingGroundComponent from './components/dumping-ground/dumping-ground';
+import DumpingGround from './components/dumping-ground/dumping-ground';
+import Home from './components/home/home';
+import SidebarComponent from './components/sidebar/sidebar';
 
-export default () => {
-  return (
-    <HashRouter hashType='noslash'>
-      <Switch>
-        <Route exact path='/' component={DumpingGroundComponent} />
-        <Route exact path='/dump' component={DumpingGroundComponent} />
-        <Route component={() => <h1>204 No Content</h1>} />
-      </Switch>
-    </HashRouter>
-  )
+export class RouterWrapper extends React.Component<{ sideBarCollpased: string }, {}> {
+  render() {
+    return (
+      <HashRouter hashType='noslash' >
+        <div className="app-content-sidebar left" data-state={this.props.sideBarCollpased} >
+          <SidebarComponent />
+        </div>
+        <div className="app-content-area">
+          <Switch>
+            <Route exact path='/' component={DumpingGround} />
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/dump' component={DumpingGround} />
+            <Route component={() => <h1>204 No Content</h1>} />
+          </Switch>
+        </div>
+      </HashRouter>
+    )
+  }
 }

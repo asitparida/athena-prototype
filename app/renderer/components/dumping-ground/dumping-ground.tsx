@@ -1,6 +1,6 @@
 import * as React from 'react'
-import Tabs from '../../directives/tabs/tabs';
-import Tab from '../../directives/tabs/Tab';
+import Tabs from '../tabs/tabs';
+import Tab from '../tabs/Tab';
 import { AllContentList, ContentType } from '../../constants/constants';
 import { Content } from '../contents/content';
 import './dumping-ground.scss';
@@ -9,7 +9,7 @@ interface IDumpingGroundState {
     tabs: Array<any>;
 }
 
-class DumpingGroundComponent extends React.Component<any, IDumpingGroundState> {
+class DumpingGround extends React.Component<any, IDumpingGroundState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,4 +36,4 @@ class DumpingGroundComponent extends React.Component<any, IDumpingGroundState> {
             </Tabs>
     }
 }
-export default DumpingGroundComponent;
+export default DumpingGround;

@@ -1,0 +1,105 @@
+
+.tabs-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    ul {
+        order: 1;
+        height: 60px;
+        flex: initial;
+        padding: 0;
+        white-space: nowrap;
+        display: flex;
+        list-style: none;
+        border-bottom: 1px solid rgba(#fff, 0.05);
+        margin: 0;
+
+        &.tabs-titles {
+            padding: 0 30px;
+            li {
+                padding: 0;
+                line-height: 60px;
+                padding: 0 15px;
+                margin-right: 1px;
+                background: rgba(#fff, 0.00);
+                min-width: 100px;
+                opacity: 0.50;
+                text-align: center;
+                cursor: pointer;
+                user-select: none;
+
+                &.active {
+                    border-bottom: 1px solid rgba(#fff, 0.50);
+                    opacity: 1;
+                }
+
+                &:hover {
+                    background: rgba(#fff, 0.10);
+                }
+            }
+        }
+    }
+    .resizer-container {
+        position: absolute;
+        top: 0;
+        right: 40px;
+        width: 180px;
+        .resizer-wrapper {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .resizer-handler {
+                width: 100%;
+                background: rgba(#fff, 0.10);
+                border-radius: 4px;
+                height: 8px;
+            }
+            .resizer-box {
+                position: absolute;
+                background: rgba(#fff, 0.80);
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                top: 50%;
+                margin-top: -10px;
+                margin-left: -10px;
+                left: 50%;
+            }
+        }
+    }
+
+    .tab-wrapper-content {
+        order: 2;
+        padding: 30px;
+        flex: 1;
+        overflow-y: auto;
+        &[data-size="1"] {
+            .tab-content-wrapper .content-wrapper {
+                width: 25%;
+                min-width: 25%;
+                height: 300px;
+            }
+        }
+        &[data-size="2"] {
+            .tab-content-wrapper .content-wrapper {
+                width: 50%;
+                min-width: 50%;
+                height: 400px;
+            }
+        }
+        &[data-size="0.5"] {
+            .tab-content-wrapper .content-wrapper {
+                width: 20%;
+                min-width: 20%;
+                height: 200px;
+            }
+        }
+    }
+}

@@ -29942,12 +29942,163 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"directives/tabs/tab.scss":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"components/tabs/tab.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"directives/tabs/tabs.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/tabs/resizer.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var Resizer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Resizer, _React$Component);
+
+  function Resizer(props) {
+    var _this;
+
+    _classCallCheck(this, Resizer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Resizer).call(this, props));
+    _this.capture = false;
+    _this.rectProps = null;
+    _this.currentSize = 1;
+    _this.myRef = React.createRef();
+    return _this;
+  }
+
+  _createClass(Resizer, [{
+    key: "processPosition",
+    value: function processPosition(clientX) {
+      var left = this.rectProps.left;
+      var width = this.rectProps.width;
+      var currentPosition = (clientX - left) / width;
+      currentPosition = currentPosition < 0 ? 0 : currentPosition;
+      currentPosition = currentPosition > 1 ? 1 : currentPosition;
+      var node = this.myRef.current.querySelector('.resizer-box');
+
+      if (currentPosition > 0.66) {
+        node.style.left = '100%';
+        this.changeSize(2);
+      } else if (currentPosition > 0.33) {
+        node.style.left = '50%';
+        this.changeSize(1);
+      } else {
+        node.style.left = '0%';
+        this.changeSize(0.5);
+      }
+    }
+  }, {
+    key: "changeSize",
+    value: function changeSize(size) {
+      if (this.currentSize !== size) {
+        this.currentSize = size;
+        this.props.onSizeChange(this.currentSize);
+      }
+    }
+  }, {
+    key: "onMouseDown",
+    value: function onMouseDown(e) {
+      this.capture = true;
+      var node = this.myRef.current;
+      this.rectProps = node.getBoundingClientRect();
+    }
+  }, {
+    key: "onDocumentMouseMove",
+    value: function onDocumentMouseMove(e) {
+      var _this2 = this;
+
+      if (this.capture) {
+        window.requestAnimationFrame(function () {
+          _this2.processPosition(e.clientX);
+        });
+      }
+    }
+  }, {
+    key: "onDocumentMouseUp",
+    value: function onDocumentMouseUp(e) {
+      this.capture = false;
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var node = this.myRef.current;
+
+      if (node) {
+        node.addEventListener('mousedown', this.onMouseDown.bind(this));
+      }
+
+      document.removeEventListener('mouseover', this.onDocumentMouseMove.bind(this));
+      document.addEventListener('mouseover', this.onDocumentMouseMove.bind(this));
+      document.removeEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+      document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var node = this.myRef.current;
+
+      if (node) {
+        node.removeEventListener('mousedown', this.onMouseDown.bind(this));
+      }
+
+      document.removeEventListener('mousemove', this.onDocumentMouseMove.bind(this));
+      document.addEventListener('mouseup', this.onDocumentMouseUp.bind(this));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        className: "resizer-wrapper",
+        ref: this.myRef
+      }, React.createElement("div", {
+        className: "resizer-handler"
+      }), React.createElement("div", {
+        className: "resizer-box"
+      }));
+    }
+  }]);
+
+  return Resizer;
+}(React.Component);
+
+exports.Resizer = Resizer;
+},{"react":"../../node_modules/react/index.js"}],"components/tabs/tabs.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -29986,6 +30137,8 @@ var React = __importStar(require("react"));
 
 require("./tab.scss");
 
+var resizer_1 = require("./resizer");
+
 var Tabs =
 /*#__PURE__*/
 function (_React$Component) {
@@ -30005,12 +30158,21 @@ function (_React$Component) {
     };
 
     _this.state = {
-      activeTabIndex: 0
+      activeTabIndex: 0,
+      currentSize: 1
     };
     return _this;
   }
 
   _createClass(Tabs, [{
+    key: "onResizerChange",
+    value: function onResizerChange(data) {
+      console.log('onSizeChange', data);
+      this.setState({
+        currentSize: data
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -30028,7 +30190,12 @@ function (_React$Component) {
           key: i
         }, t.props.title);
       })), React.createElement("div", {
-        className: "tab-wrapper-content"
+        className: "resizer-container"
+      }, React.createElement(resizer_1.Resizer, {
+        onSizeChange: this.onResizerChange.bind(this)
+      })), React.createElement("div", {
+        className: "tab-wrapper-content",
+        "data-size": this.state.currentSize
       }, activeTab));
     }
   }]);
@@ -30037,7 +30204,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = Tabs;
-},{"react":"../../node_modules/react/index.js","./tab.scss":"directives/tabs/tab.scss"}],"directives/tabs/Tab.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./tab.scss":"components/tabs/tab.scss","./resizer":"components/tabs/resizer.tsx"}],"components/tabs/Tab.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -30358,9 +30525,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
-var tabs_1 = __importDefault(require("../../directives/tabs/tabs"));
+var tabs_1 = __importDefault(require("../tabs/tabs"));
 
-var Tab_1 = __importDefault(require("../../directives/tabs/Tab"));
+var Tab_1 = __importDefault(require("../tabs/Tab"));
 
 var constants_1 = require("../../constants/constants");
 
@@ -30368,17 +30535,17 @@ var content_1 = require("../contents/content");
 
 require("./dumping-ground.scss");
 
-var DumpingGroundComponent =
+var DumpingGround =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(DumpingGroundComponent, _React$Component);
+  _inherits(DumpingGround, _React$Component);
 
-  function DumpingGroundComponent(props) {
+  function DumpingGround(props) {
     var _this;
 
-    _classCallCheck(this, DumpingGroundComponent);
+    _classCallCheck(this, DumpingGround);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundComponent).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DumpingGround).call(this, props));
     _this.state = {
       tabs: [{
         id: 'all',
@@ -30418,7 +30585,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(DumpingGroundComponent, [{
+  _createClass(DumpingGround, [{
     key: "render",
     value: function render() {
       return React.createElement(tabs_1.default, null, this.state.tabs.map(function (tab, i) {
@@ -30438,12 +30605,35 @@ function (_React$Component) {
     }
   }]);
 
-  return DumpingGroundComponent;
+  return DumpingGround;
 }(React.Component);
 
-exports.default = DumpingGroundComponent;
-},{"react":"../../node_modules/react/index.js","../../directives/tabs/tabs":"directives/tabs/tabs.tsx","../../directives/tabs/Tab":"directives/tabs/Tab.tsx","../../constants/constants":"constants/constants.ts","../contents/content":"components/contents/content.tsx","./dumping-ground.scss":"components/dumping-ground/dumping-ground.scss"}],"router.tsx":[function(require,module,exports) {
+exports.default = DumpingGround;
+},{"react":"../../node_modules/react/index.js","../tabs/tabs":"components/tabs/tabs.tsx","../tabs/Tab":"components/tabs/Tab.tsx","../../constants/constants":"constants/constants.ts","../contents/content":"components/contents/content.tsx","./dumping-ground.scss":"components/dumping-ground/dumping-ground.scss"}],"components/home/home.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/home/home.tsx":[function(require,module,exports) {
 "use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
@@ -30455,40 +30645,63 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var React = __importStar(require("react"));
 
-var react_router_dom_1 = require("react-router-dom");
+var react_router_1 = require("react-router");
 
-var dumping_ground_1 = __importDefault(require("./components/dumping-ground/dumping-ground"));
+require("./home.scss");
 
-exports.default = function () {
-  return React.createElement(react_router_dom_1.HashRouter, {
-    hashType: "noslash"
-  }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
-    exact: true,
-    path: "/",
-    component: dumping_ground_1.default
-  }), React.createElement(react_router_dom_1.Route, {
-    exact: true,
-    path: "/dump",
-    component: dumping_ground_1.default
-  }), React.createElement(react_router_dom_1.Route, {
-    component: function component() {
-      return React.createElement("h1", null, "204 No Content");
+var Home =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Home, _React$Component);
+
+  function Home(props) {
+    var _this;
+
+    _classCallCheck(this, Home);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+
+    _this.handleOnClick = function () {
+      _this.setState({
+        redirect: true
+      });
+    };
+
+    _this.state = {
+      redirect: false
+    };
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      if (this.state.redirect) {
+        return React.createElement(react_router_1.Redirect, {
+          push: true,
+          to: "/dump"
+        });
+      }
+
+      return React.createElement("div", {
+        className: "app-container"
+      }, React.createElement("h1", null, "Athena"), React.createElement("button", {
+        onClick: this.handleOnClick.bind(this)
+      }, "Organize"));
     }
-  })));
-};
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx"}],"components/sidebar/sidebar.scss":[function(require,module,exports) {
+  }]);
+
+  return Home;
+}(React.Component);
+
+exports.default = Home;
+},{"react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","./home.scss":"components/home/home.scss"}],"components/sidebar/sidebar.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -30530,6 +30743,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var react_router_dom_1 = require("react-router-dom");
+
 require("./sidebar.scss");
 
 var SidebarComponent =
@@ -30556,9 +30771,29 @@ function (_React$Component) {
         className: "sidebar-wrapper"
       }, React.createElement("ul", {
         className: "workspace-list"
-      }, React.createElement("li", null, "Workspace #1"), React.createElement("li", null, "Workspace #2"), React.createElement("li", null, "Workspace #3")), React.createElement("ul", {
+      }, React.createElement("li", {
+        className: "active"
+      }, React.createElement(react_router_dom_1.NavLink, {
+        to: "/home"
+      }, "Home")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+        to: "/dump"
+      }, "All Clips")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+        to: "/w1"
+      }, "Workspace #1")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+        to: "/w2"
+      }, "Workspace #2")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+        to: "/w3"
+      }, "Workspace"))), React.createElement("div", {
         className: "user-space"
-      }));
+      }, React.createElement("div", {
+        className: "user-space-content"
+      }, React.createElement("div", {
+        className: "user-picture-wrapper"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "face")), React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in"))), React.createElement("ul", null, React.createElement("li", {
+        className: "copyright-info"
+      }, "\xA9 Knowledge Accelerator 2019")));
     }
   }]);
 
@@ -30566,7 +30801,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = SidebarComponent;
-},{"react":"../../node_modules/react/index.js","./sidebar.scss":"components/sidebar/sidebar.scss"}],"pages/main.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss"}],"router.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -30609,11 +30844,99 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var react_router_dom_1 = require("react-router-dom");
+
+var dumping_ground_1 = __importDefault(require("./components/dumping-ground/dumping-ground"));
+
+var home_1 = __importDefault(require("./components/home/home"));
+
+var sidebar_1 = __importDefault(require("./components/sidebar/sidebar"));
+
+var RouterWrapper =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RouterWrapper, _React$Component);
+
+  function RouterWrapper() {
+    _classCallCheck(this, RouterWrapper);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
+  }
+
+  _createClass(RouterWrapper, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(react_router_dom_1.HashRouter, {
+        hashType: "noslash"
+      }, React.createElement("div", {
+        className: "app-content-sidebar left",
+        "data-state": this.props.sideBarCollpased
+      }, React.createElement(sidebar_1.default, null)), React.createElement("div", {
+        className: "app-content-area"
+      }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/",
+        component: dumping_ground_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/home",
+        component: home_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/dump",
+        component: dumping_ground_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        component: function component() {
+          return React.createElement("h1", null, "204 No Content");
+        }
+      }))));
+    }
+  }]);
+
+  return RouterWrapper;
+}(React.Component);
+
+exports.RouterWrapper = RouterWrapper;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","./components/home/home":"components/home/home.tsx","./components/sidebar/sidebar":"components/sidebar/sidebar.tsx"}],"pages/main.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
 var react_1 = require("react");
 
-var router_1 = __importDefault(require("../router"));
-
-var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
+var router_1 = require("../router");
 
 require("../styles.scss");
 
@@ -30657,12 +30980,9 @@ function (_react_1$Component) {
         className: "material-icons"
       }, "menu"))), React.createElement("div", {
         className: "app-content-bottom"
-      }, React.createElement("div", {
-        className: "app-content-sidebar left",
-        "data-state": sideBarCollpased
-      }, React.createElement(sidebar_1.default, null)), React.createElement("div", {
-        className: "app-content-area"
-      }, React.createElement(router_1.default, null))));
+      }, React.createElement(router_1.RouterWrapper, {
+        sideBarCollpased: sideBarCollpased
+      })));
     }
   }]);
 
@@ -30670,7 +30990,7 @@ function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = Main;
-},{"react":"../../node_modules/react/index.js","../router":"router.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../styles.scss":"styles.scss"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../router":"router.tsx","../styles.scss":"styles.scss"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -30734,7 +31054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58250" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56084" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

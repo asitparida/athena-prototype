@@ -3,18 +3,26 @@ import * as PropTypes from 'prop-types';
 import Tab from './Tab';
 
 import './tab.scss';
+import { Resizer } from './resizer';
 
-class Tabs extends React.Component<{}, { activeTabIndex: any }> {
-
+class Tabs extends React.Component<{}, { activeTabIndex: any, currentSize: number }> {
     constructor(props) {
         super(props);
         this.state = {
-            activeTabIndex: 0
+            activeTabIndex: 0,
+            currentSize: 1
         };
     }
 
     onClickTabItem = (tabIndex) => {
         this.setState({ activeTabIndex: tabIndex });
+    }
+
+    onResizerChange(data) {
+        console.log('onSizeChange', data);
+        this.setState({
+            currentSize: data
+        });
     }
 
     render() {
@@ -27,7 +35,10 @@ class Tabs extends React.Component<{}, { activeTabIndex: any }> {
                         return <li className={i === this.state.activeTabIndex ? 'active' : ''} onClick={this.onClickTabItem.bind(this, i)} key={i}>{t.props.title}</li>
                     }))}
                 </ul>
-                <div className="tab-wrapper-content">{activeTab}</div>
+                <div className='resizer-container'>
+                    <Resizer onSizeChange={this.onResizerChange.bind(this)} />
+                </div>
+                <div className="tab-wrapper-content" data-size={this.state.currentSize}>{activeTab}</div>
             </div>
         );
     }
