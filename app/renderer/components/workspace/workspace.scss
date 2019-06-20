@@ -1,0 +1,46 @@
+// Colors
+$bg-color: rgba(#000, 0.1);
+$dot-color: rgba(#000, 0.01);
+
+// Dimensions
+$dot-size: 5px;
+$dot-space: 5px;
+
+.workspace-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    &.show-grid {
+        background:
+            linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+            linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+            $dot-color;
+        background-size: $dot-space $dot-space;
+    }
+
+    &:not(.show-grid) {
+    }
+    .working-area {
+        flex: 1;
+        order: 1;
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(#fff, 0.20) 10%, transparent 0%);
+            background-size: $dot-space $dot-space;
+        }
+    }
+    .sticky-dumping-ground {
+        width: 300px;
+        flex: initial;
+        order: 2;
+        animation: slide-in-from-right 0.5s ease-out 0s;
+    }
+}

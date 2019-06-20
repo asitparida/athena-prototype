@@ -1,40 +1,46 @@
 import * as React from 'react';
 import { Component } from "react";
 import { RouterWrapper } from '../router';
-// import { ipcRenderer } from 'electron';
 import '../styles.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as AppActions from '../access/actions/appActions';
 
-interface IMainState {
-    sideBarCollpased: boolean
+const mapStateToProps = ({ reducers }) => {
+    return {
+        sideBarShown: reducers.sideBarShown,
+        workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown
+    };
 }
 
-class Main extends Component<{}, IMainState> {
-    constructor(props) {
-        super(props);
-        this.state = { sideBarCollpased: true };
-    }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(AppActions, dispatch)
+    };
+}
+
+class Main extends Component<any, any> {
     toggleSidebar() {
-        const { sideBarCollpased } = this.state;
-        this.setState({
-            sideBarCollpased: !sideBarCollpased
-        });
+        this.props.actions.toggleSideBar();
+    }
+    toggleDumpBar() {
+        this.props.actions.toggleDumpBar();
     }
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
         ipcRenderer.send('launch-annotator');
         const remote = (window as any).remote;
         const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
-        console.log(api);
         fetch(api)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-        }, (data) => {
-            console.log(data);
-        });
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            }, (data) => {
+                console.log(data);
+            });
     }
     render() {
-        const sideBarCollpased = this.state.sideBarCollpased ? 'collapsed' : 'expanded';
+        const sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
         return (
             <div className="app-content">
                 <div className='app-dragger' />
@@ -46,6 +52,12 @@ class Main extends Component<{}, IMainState> {
                         <div className='action' onClick={this.launchAnnotator.bind(this)}>
                             <i className='material-icons'>notes</i>
                         </div>
+                        {
+                            this.props.workspaceDumpBarActionShown &&
+                            <div className='action' onClick={this.toggleDumpBar.bind(this)}>
+                                <i className='material-icons'>apps</i>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className='app-content-bottom'>
@@ -55,5 +67,7 @@ class Main extends Component<{}, IMainState> {
         );
     }
 }
-
-export default Main;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Main);

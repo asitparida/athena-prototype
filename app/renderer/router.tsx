@@ -4,6 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import DumpingGround from './components/dumping-ground/dumping-ground';
 import Home from './components/home/home';
 import SidebarComponent from './components/sidebar/sidebar';
+import Workspace from './components/workspace/workspace';
 
 export class RouterWrapper extends React.Component<{ sideBarCollpased: string }, {}> {
   render() {
@@ -14,9 +15,10 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string },
         </div>
         <div className="app-content-area">
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={Workspace} />
             <Route exact path='/home' component={Home} />
             <Route exact path='/dump' component={DumpingGround} />
+            <Route exact path='/workspace' component={Workspace} />
             <Route component={() => <h1>204 No Content</h1>} />
           </Switch>
         </div>

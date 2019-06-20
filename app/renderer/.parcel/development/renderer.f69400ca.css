@@ -25,6 +25,7 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 body #root {
   display: flex;
@@ -127,7 +128,7 @@ body #root .app-content .app-content-sidebar.left[data-state=collapsed] {
   display: none;
 }
 body #root .app-content .app-content-sidebar.left[data-state=expanded] {
-  animation: slide-in 0.5s ease-out 0s forwards;
+  animation: slide-in-from-left 0.5s ease-out 0s forwards;
 }
 body #root .app-content .app-content-sidebar.right {
   height: 100%;
@@ -135,10 +136,11 @@ body #root .app-content .app-content-sidebar.right {
   order: 2;
 }
 body #root .app-content .app-content-area {
-  padding: 30px 0 0 0;
+  padding: 0 0 0 0;
   height: 100%;
   flex: 1;
   order: 2;
+  overflow: hidden;
 }
 body #root .app-content .app-content-area input {
   background: rgba(255, 255, 255, 0.05);
@@ -160,9 +162,19 @@ body #root .app-content .app-content-area input {
   user-select: none;
 }
 
-@keyframes slide-in {
+@keyframes slide-in-from-left {
   0% {
     transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(50px);
     opacity: 0;
   }
   100% {
@@ -191,6 +203,13 @@ body #root .app-content .app-content-area input {
 }
 .tabs-wrapper ul.tabs-titles {
   padding: 0 30px;
+}
+.tabs-wrapper ul.tabs-titles.compressed {
+  padding: 0 15px;
+}
+.tabs-wrapper ul.tabs-titles.compressed li {
+  min-width: auto;
+  font-size: small;
 }
 .tabs-wrapper ul.tabs-titles li {
   padding: 0;
@@ -250,35 +269,42 @@ body #root .app-content .app-content-area input {
   flex: 1;
   overflow-y: auto;
 }
-.tabs-wrapper .tab-wrapper-content[data-size="1"] .tab-content-wrapper .content-wrapper {
-  width: 25%;
-  min-width: 25%;
-  height: 300px;
-}
-.tabs-wrapper .tab-wrapper-content[data-size="2"] .tab-content-wrapper .content-wrapper {
-  width: 50%;
-  min-width: 50%;
-  height: 400px;
-}
-.tabs-wrapper .tab-wrapper-content[data-size="0.5"] .tab-content-wrapper .content-wrapper {
+.tabs-wrapper .tab-wrapper-content[data-size="0.5"] .content-wrapper {
   width: 20%;
   min-width: 20%;
   height: 200px;
 }
-.tab-content-wrapper {
+.tabs-wrapper .tab-wrapper-content[data-size="1"] .content-wrapper {
+  width: 25%;
+  min-width: 25%;
+  height: 300px;
+}
+.tabs-wrapper .tab-wrapper-content[data-size="2"] .content-wrapper {
+  width: 50%;
+  min-width: 50%;
+  height: 400px;
+}
+.tabs-wrapper .tab-wrapper-content.compressed {
+  padding: 15px;
+}
+.tabs-holder {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
   margin: 0 -5px;
 }
-.tab-content-wrapper .content-wrapper {
-  padding: 10px;
-  min-width: 25%;
-  height: 200px;
-  width: 25%;
+.tabs-holder.is-sticky .content-wrapper {
+  width: 100%;
+  min-width: 100%;
+  height: 120px;
 }
-.tab-content-wrapper .content-wrapper .content {
+.tabs-holder .content-wrapper {
+  padding: 10px;
+  min-width: 200px;
+  height: 200px;
+}
+.tabs-holder .content-wrapper .content {
   background-color: rgba(255, 255, 255, 0.1);
   width: 100%;
   height: 100%;
@@ -290,7 +316,7 @@ body #root .app-content .app-content-area input {
   border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 }
-.tab-content-wrapper .content-wrapper .content .content-label {
+.tabs-holder .content-wrapper .content .content-label {
   margin: 0;
   background-color: rgba(255, 255, 255, 0.1);
   line-height: 16px;
@@ -303,7 +329,7 @@ body #root .app-content .app-content-area input {
   left: 0;
   opacity: 0.5;
 }
-.tab-content-wrapper .content-wrapper .content h1 {
+.tabs-holder .content-wrapper .content h1 {
   opacity: 0.5;
   margin: 0;
   padding: 0;
@@ -311,7 +337,7 @@ body #root .app-content .app-content-area input {
   font-size: medium;
   letter-spacing: 5px;
 }
-.tab-content-wrapper .content-wrapper .content h2 {
+.tabs-holder .content-wrapper .content h2 {
   opacity: 0.2;
   margin: 0;
   padding: 0;
@@ -362,7 +388,7 @@ body #root .app-content .app-content-area input {
   margin: 0;
 }
 .sidebar-wrapper ul.workspace-list {
-  margin-top: 30px;
+  margin-top: 0;
   margin-bottom: auto;
 }
 .sidebar-wrapper ul li {
@@ -430,6 +456,37 @@ body #root .app-content .app-content-area input {
   margin: 0;
   padding: 0;
   opacity: 0.5;
+}
+.workspace-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.workspace-wrapper.show-grid {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, linear-gradient(rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, rgba(0, 0, 0, 0.01);
+  background-size: 5px 5px;
+}
+.workspace-wrapper .working-area {
+  flex: 1;
+  order: 1;
+  position: relative;
+}
+.workspace-wrapper .working-area:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 10%, transparent 0%);
+  background-size: 5px 5px;
+}
+.workspace-wrapper .sticky-dumping-ground {
+  width: 300px;
+  flex: initial;
+  order: 2;
+  animation: slide-in-from-right 0.5s ease-out 0s;
 }
 
 /*# sourceMappingURL=/renderer.f69400ca.css.map */

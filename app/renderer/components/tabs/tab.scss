@@ -1,4 +1,3 @@
-
 .tabs-wrapper {
     width: 100%;
     height: 100%;
@@ -20,6 +19,16 @@
 
         &.tabs-titles {
             padding: 0 30px;
+
+            &.compressed {
+                padding: 0 15px;
+
+                li {
+                    min-width: auto;
+                    font-size: small;
+                }
+            }
+
             li {
                 padding: 0;
                 line-height: 60px;
@@ -43,11 +52,13 @@
             }
         }
     }
+
     .resizer-container {
         position: absolute;
         top: 0;
         right: 40px;
         width: 180px;
+
         .resizer-wrapper {
             width: 100%;
             height: 60px;
@@ -56,12 +67,14 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+
             .resizer-handler {
                 width: 100%;
                 background: rgba(#fff, 0.10);
                 border-radius: 4px;
                 height: 8px;
             }
+
             .resizer-box {
                 position: absolute;
                 background: rgba(#fff, 0.80);
@@ -82,28 +95,35 @@
         padding: 30px;
         flex: 1;
         overflow-y: auto;
-        
+        // &:not(.is-sticky) {
 
-        &[data-size="1"] {
-            .tab-content-wrapper .content-wrapper {
-                width: 25%;
-                min-width: 25%;
-                height: 300px;
-            }
-        }
-        &[data-size="2"] {
-            .tab-content-wrapper .content-wrapper {
-                width: 50%;
-                min-width: 50%;
-                height: 400px;
-            }
-        }
         &[data-size="0.5"] {
-            .tab-content-wrapper .content-wrapper {
+            .content-wrapper {
                 width: 20%;
                 min-width: 20%;
                 height: 200px;
             }
         }
+
+        &[data-size="1"] {
+            .content-wrapper {
+                width: 25%;
+                min-width: 25%;
+                height: 300px;
+            }
+        }
+
+        &[data-size="2"] {
+            .content-wrapper {
+                width: 50%;
+                min-width: 50%;
+                height: 400px;
+            }
+        }
+
+        &.compressed {
+            padding: 15px;
+        }
+
     }
 }

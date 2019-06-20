@@ -12,6 +12,12 @@
     "jsx-no-lambda": false,
     "member-access": false,
     "jsx-no-bind": false,
-    "no-console": false
+    "no-console": false,
+    "jsx-no-multiline-js": false,
+    "jsx-wrap-multiline": false,
+    "arrow-parens": false,
+    "max-line-length": false,
+    "label-position": false,
+    "no-unused-expression": false
   }
 }

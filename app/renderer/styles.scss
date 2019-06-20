@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    // background-color: rgba(#000, 0.80);
+    background-color: rgba(#000, 0.80);
 
     #root {
         display: flex;
@@ -140,7 +140,6 @@ body {
                     width: 300px;
                     order: 1;
                     height: 100%;
-                    ;
                     border-right: 1px solid rgba(#ffffff, 0.05);
 
                     &[data-state="collapsed"] {
@@ -148,7 +147,7 @@ body {
                     }
 
                     &[data-state="expanded"] {
-                        animation: slide-in 0.5s ease-out 0s forwards;
+                        animation: slide-in-from-left 0.5s ease-out 0s forwards;
                     }
                 }
 
@@ -160,10 +159,11 @@ body {
             }
 
             .app-content-area {
-                padding: 30px 0 0 0;
+                padding: 0 0 0 0;
                 height: 100%;
                 flex: 1;
                 order: 2;
+                overflow: hidden;
 
                 input {
                     background: rgba(#fff, 0.05);
@@ -189,9 +189,20 @@ body {
     user-select: none;
 }
 
-@keyframes slide-in {
+@keyframes slide-in-from-left {
     0% {
         transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes slide-in-from-right {
+    0% {
+        transform: translateX(50px);
         opacity: 0;
     }
 

@@ -14,5 +14,4 @@ class Tab extends React.Component<{ title: any, active?: boolean}, any> {
     }
 }
 
-
 export default Tab;
