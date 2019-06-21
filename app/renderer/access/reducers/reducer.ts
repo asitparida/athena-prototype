@@ -1,5 +1,5 @@
 import InitialState from './initialState';
-import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE } from '../actions/actionTypes';
+import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE } from '../actions/actionTypes';
 import { IAction, IState } from '../types';
 
 export default (state: IState = InitialState, action: IAction) => {
@@ -31,6 +31,18 @@ export default (state: IState = InitialState, action: IAction) => {
             });
             return newState;
         }
+        case SHOW_WORKSPACE_DUMP_BAR: {
+            newState = Object.assign({}, state, {
+                workspaceDumpBarShown: true
+            });
+            return newState;
+        }
+        case HIDE_WORKSPACE_DUMP_BAR: {
+            newState = Object.assign({}, state, {
+                workspaceDumpBarShown: false
+            });
+            return newState;
+        }
         case SHOW_WORKSPACE_RTE_ACTION: {
             newState = Object.assign({}, state, {
                 workspaceRTEActionShown: true
@@ -40,6 +52,18 @@ export default (state: IState = InitialState, action: IAction) => {
         case HIDE_WORKSPACE_RTE_ACTION: {
             newState = Object.assign({}, state, {
                 workspaceRTEActionShown: false
+            });
+            return newState;
+        }
+        case SHOW_WORKSPACE_RTE: {
+            newState = Object.assign({}, state, {
+                workspaceRTEShown: true
+            });
+            return newState;
+        }
+        case HIDE_WORKSPACE_RTE: {
+            newState = Object.assign({}, state, {
+                workspaceRTEShown: false
             });
             return newState;
         }

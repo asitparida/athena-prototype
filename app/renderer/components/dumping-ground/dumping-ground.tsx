@@ -4,6 +4,7 @@ import Tab from '../tabs/Tab';
 import { AllContentList, ContentType } from '../../constants/constants';
 import { Content } from '../contents/content';
 import './dumping-ground.scss';
+import { ContentCollection } from '../contents/content-collection';
 
 interface IDumpingGroundState {
     tabs: any[];
@@ -45,9 +46,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
                 {this.state.tabs.map((tab, i) => {
                     return <Tab title={tab.title} key={i}>
                         <div className={classListName}>
-                            {tab.items.map((item, j) => {
-                                return <Content key={j} data={item} type={item.type} />
-                            })}
+                            <ContentCollection />
                         </div>
                     </Tab>
                 })}

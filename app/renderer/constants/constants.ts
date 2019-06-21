@@ -24,3 +24,8 @@ export const AllContentList: ContentList[] = [
     { items: PhotosList.map( p => Object.assign({}, p, { type: ContentType.Photo })), type: ContentType.Photo },
     { items: PhotosList.map( p => Object.assign({}, p, { thumbnail: p.download_url, type: ContentType.Video })), type: ContentType.Video }
 ];
+
+export interface IContentItemsList {
+    list: ContentList;
+    title: string;
+}

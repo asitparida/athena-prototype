@@ -10,7 +10,6 @@ export default class RTEEditor extends React.Component<any, any> {
         };
     }
     onChange = (value) => {
-        console.log(value);
         this.setState({value});
         // if (this.props.onChange) {
         //   this.props.onChange(

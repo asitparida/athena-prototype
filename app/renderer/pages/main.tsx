@@ -5,6 +5,7 @@ import '../styles.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../access/actions/appActions';
+import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observables/observables';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -23,10 +24,17 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Main extends Component<any, any> {
+    componentWillMount() {
+        InitializeSubscriptions();
+    }
+    componentWillUnmount() {
+        RemoveSubscriptions();
+    }
     toggleSidebar() {
         this.props.actions.toggleSideBar();
     }
     toggleDumpBar() {
+        this.props.actions.hideRTE();
         this.props.actions.toggleDumpBar();
     }
     launchAnnotator() {
@@ -42,7 +50,8 @@ class Main extends Component<any, any> {
                 console.log(data);
             });
     }
-    launchRTE() {
+    toggleRTE() {
+        this.props.actions.hideDumpBar();
         this.props.actions.toggleRTE();
     }
     render() {
@@ -60,7 +69,7 @@ class Main extends Component<any, any> {
                         </div>
                         {
                             this.props.workspaceRTEActionShown &&
-                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`}  onClick={this.launchRTE.bind(this)}>
+                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`}  onClick={this.toggleRTE.bind(this)}>
                                 <i className="material-icons">text_fields</i>
                             </div>
                         }

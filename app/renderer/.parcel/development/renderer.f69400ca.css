@@ -25,6 +25,7 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 body #root {
   display: flex;
@@ -234,13 +235,13 @@ body #root .app-content .app-content-area input {
 .tabs-wrapper ul.tabs-titles li:hover {
   background: rgba(255, 255, 255, 0.1);
 }
-.tabs-wrapper .resizer-container {
+.tabs-wrapper .tabs-resizer-container {
   position: absolute;
   top: 0;
   right: 40px;
   width: 180px;
 }
-.tabs-wrapper .resizer-container .resizer-wrapper {
+.tabs-wrapper .tabs-resizer-container .tabs-resizer-wrapper {
   width: 100%;
   height: 60px;
   position: relative;
@@ -249,13 +250,13 @@ body #root .app-content .app-content-area input {
   align-items: center;
   cursor: pointer;
 }
-.tabs-wrapper .resizer-container .resizer-wrapper .resizer-handler {
+.tabs-wrapper .tabs-resizer-container .tabs-resizer-wrapper .tabs-resizer-handler {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   height: 8px;
 }
-.tabs-wrapper .resizer-container .resizer-wrapper .resizer-box {
+.tabs-wrapper .tabs-resizer-container .tabs-resizer-wrapper .tabs-resizer-box {
   position: absolute;
   background: rgba(255, 255, 255, 0.8);
   height: 20px;
@@ -292,6 +293,28 @@ body #root .app-content .app-content-area input {
   padding: 15px;
 }
 .tabs-holder {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+}
+.tabs-holder .content-list-wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 -5px 60px -5px;
+}
+.tabs-holder .content-list-wrapper h1 {
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.33);
+  margin: 0 0 20px 0;
+  padding: 0 0 0 5px;
+}
+.tabs-holder .content-list-wrapper .content-items-wrapper {
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -521,6 +544,7 @@ body #root .app-content .app-content-area input {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 15px 10px 10px 10px;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
   margin: 0;
@@ -545,6 +569,32 @@ body #root .app-content .app-content-area input {
   flex: initial;
   order: 3;
   animation: slide-in-from-right 0.5s ease-out 0s;
+}
+.resizer-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.resizer-wrapper .resizer-handler {
+  background: rgba(0, 0, 0, 0.33);
+  height: 36px;
+  width: 24px;
+  cursor: grab;
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  z-index: 2;
+  margin-top: -18px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.resizer-wrapper .resizer-handler i {
+  line-height: 36px;
+  opacity: 0.5;
+  transition: opacity 0.3s linear 0s;
+}
+.resizer-wrapper .resizer-handler:hover i, .resizer-wrapper .resizer-handler:focus i, .resizer-wrapper .resizer-handler:active i {
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=/renderer.f69400ca.css.map */

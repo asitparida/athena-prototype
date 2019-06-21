@@ -10,6 +10,14 @@ export const toggleDumpBar = () => ({
     type: types.TOGGLE_WORKSPACE_DUMP_BAR, payload: {}
 })
 
+export const showDumpBar = () => ({
+    type: types.SHOW_WORKSPACE_DUMP_BAR, payload: {}
+})
+
+export const hideDumpBar = () => ({
+    type: types.HIDE_WORKSPACE_DUMP_BAR, payload: {}
+})
+
 export const showDumpBarAction = () => ({
     type: types.SHOW_WORKSPACE_DUMP_BAR_ACTION, payload: {}
 })
@@ -28,6 +36,14 @@ export const hideRTEAction = () => ({
 
 export const showRTEAction = () => ({
     type: types.SHOW_WORKSPACE_RTE_ACTION, payload: {}
+})
+
+export const hideRTE = () => ({
+    type: types.HIDE_WORKSPACE_RTE, payload: {}
+})
+
+export const showRTE = () => ({
+    type: types.SHOW_WORKSPACE_RTE, payload: {}
 })
 
 export const toggleSideBar = () => ({

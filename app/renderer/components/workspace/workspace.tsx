@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$ } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
+import { Resizer } from '../resizer/resizer';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -21,6 +22,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Workspace extends React.Component<any, any> {
+    constructor(props) {
+        super(props);
+        this.state = { rteWidth: 500, dumpGroundWidth : 300 };
+    }
     componentDidMount() {
         ShowDumpBarAction$.next(true);
         ShowRTEAction$.next(true);
@@ -29,7 +34,26 @@ class Workspace extends React.Component<any, any> {
         ShowDumpBarAction$.next(false);
         ShowRTEAction$.next(false);
     }
+    handleTap() {
+        console.log('handleTap');
+    }
+    onRTESizeChange(width) {
+        this.setState({
+            rteWidth: width
+        });
+    }
+    onDUMPBarSizeChange(width) {
+        this.setState({
+            dumpGroundWidth: width
+        });
+    }
     render() {
+        const rteWidth = {
+            width: `${this.state.rteWidth}px`
+        }
+        const dumpGroundWidth = {
+            width: `${this.state.dumpGroundWidth}px`
+        }
         return (
             <div className="workspace-wrapper">
                 <div className="working-area">
@@ -37,14 +61,18 @@ class Workspace extends React.Component<any, any> {
                 </div>
                 {
                     this.props.workspaceRTEShown &&
-                    <div className="rte-area">
-                        <RTEEditor />
+                    <div className="rte-area" style={rteWidth}>
+                        <Resizer onSizeChange={this.onRTESizeChange.bind(this)}>
+                            <RTEEditor />
+                        </Resizer>
                     </div>
                 }
                 {
                     this.props.workspaceDumpBarShown &&
-                    <div className="sticky-dumping-ground">
-                        <DumpingGround sticky={true} workspace={true} />
+                    <div className="sticky-dumping-ground" style={dumpGroundWidth}>
+                          <Resizer onSizeChange={this.onDUMPBarSizeChange.bind(this)}>
+                            <DumpingGround sticky={true} workspace={true} />
+                          </Resizer>
                     </div>
                 }
             </div>

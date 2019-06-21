@@ -18,6 +18,7 @@
     "arrow-parens": false,
     "max-line-length": false,
     "label-position": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "max-classes-per-file": false
   }
 }

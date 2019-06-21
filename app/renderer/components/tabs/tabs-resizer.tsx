@@ -2,10 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 interface IResizerProps {
-    onSizeChange: Function;
+    onSizeChange: any;
+    size: any;
 }
 
-export class Resizer extends React.Component<IResizerProps, {}> {
+export class TabsResizer extends React.Component<IResizerProps, {}> {
     myRef;
     domRef;
     capture = false;
@@ -21,7 +22,7 @@ export class Resizer extends React.Component<IResizerProps, {}> {
         let currentPosition = (clientX - left) / width;
         currentPosition = currentPosition < 0  ? 0 : currentPosition;
         currentPosition = currentPosition > 1 ? 1 : currentPosition;
-        const node = (this.myRef.current as HTMLElement).querySelector('.resizer-box');
+        const node = (this.myRef.current as HTMLElement).querySelector('.tabs-resizer-box');
         if (currentPosition > 0.66) {
             (node as HTMLElement).style.left = '100%';
             this.changeSize(2);
@@ -62,6 +63,14 @@ export class Resizer extends React.Component<IResizerProps, {}> {
         if (node) {
             node.addEventListener('mousedown', this.onMouseDown.bind(this));
             node.addEventListener('click', this.onClick.bind(this));
+            const current = (this.myRef.current as HTMLElement).querySelector('.tabs-resizer-box');
+            if (this.props.size === 2) {
+                (current as HTMLElement).style.left = '100%';
+            } else if (this.props.size === 1) {
+                (current as HTMLElement).style.left = '50%';
+            } else {
+                (current as HTMLElement).style.left = '0%';
+            }
         }
         document.removeEventListener('mouseover', this.onDocumentMouseMove);
         document.addEventListener('mouseover', this.onDocumentMouseMove.bind(this));
@@ -78,9 +87,9 @@ export class Resizer extends React.Component<IResizerProps, {}> {
         document.addEventListener('mouseup', this.onDocumentMouseUp);
     }
     render() {
-        return <div className='resizer-wrapper' ref={this.myRef}>
-            <div className='resizer-handler' />
-            <div className='resizer-box' />
+        return <div className='tabs-resizer-wrapper' ref={this.myRef}>
+            <div className='tabs-resizer-handler' />
+            <div className='tabs-resizer-box' />
         </div>
     }
 }

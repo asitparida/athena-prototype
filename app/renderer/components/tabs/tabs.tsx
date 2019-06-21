@@ -1,9 +1,8 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import Tab from './Tab';
 
 import './tab.scss';
-import { Resizer } from './resizer';
+import { TabsResizer } from './tabs-resizer';
 
 class Tabs extends React.Component<{
     showResizer?: boolean,
@@ -13,7 +12,7 @@ class Tabs extends React.Component<{
         super(props);
         this.state = {
             activeTabIndex: 0,
-            currentSize: 1
+            currentSize: 0.5
         };
     }
 
@@ -22,7 +21,6 @@ class Tabs extends React.Component<{
     }
 
     onResizerChange(data) {
-        console.log('onSizeChange', data);
         this.setState({
             currentSize: data
         });
@@ -40,8 +38,8 @@ class Tabs extends React.Component<{
                 </ul>
                 {
                     this.props.showResizer &&
-                    <div className='resizer-container'>
-                        <Resizer onSizeChange={this.onResizerChange.bind(this)} />
+                    <div className='tabs-resizer-container'>
+                        <TabsResizer size={this.state.currentSize} onSizeChange={this.onResizerChange.bind(this)} />
                     </div>
                 }
                 <div className={`tab-wrapper-content ${this.props.sticky ? 'compressed' : ''}`} data-size={this.props.sticky ? null : this.state.currentSize}>{activeTab}</div>
