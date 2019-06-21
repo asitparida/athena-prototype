@@ -18,7 +18,7 @@ app.on('ready', async () => {
     const size = electron.screen.getPrimaryDisplay().size;
     const mainWindow = new BrowserWindow({
         width: size.width,
-        height: size.height,
+        height: size.height - 22,
         show: false,
         transparent: true,
         resizable: false,

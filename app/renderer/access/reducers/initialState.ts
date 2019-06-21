@@ -1,9 +1,11 @@
 import { IState } from "../types";
 
 const IntialState: IState = {
-    workspaceDumpBarShown: false,
     sideBarShown: false,
-    workspaceDumpBarActionShown: false
+    workspaceDumpBarShown: false,
+    workspaceDumpBarActionShown: false,
+    workspaceRTEShown: false,
+    workspaceRTEActionShown: false
 };
 
 export default IntialState;

@@ -9,7 +9,10 @@ import * as AppActions from '../access/actions/appActions';
 const mapStateToProps = ({ reducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
-        workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown
+        workspaceDumpBarShown: reducers.workspaceDumpBarShown,
+        workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
+        workspaceRTEShown: reducers.workspaceRTEShown,
+        workspaceRTEActionShown: reducers.workspaceRTEActionShown
     };
 }
 
@@ -39,6 +42,9 @@ class Main extends Component<any, any> {
                 console.log(data);
             });
     }
+    launchRTE() {
+        this.props.actions.toggleRTE();
+    }
     render() {
         const sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
         return (
@@ -53,8 +59,14 @@ class Main extends Component<any, any> {
                             <i className='material-icons'>notes</i>
                         </div>
                         {
+                            this.props.workspaceRTEActionShown &&
+                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`}  onClick={this.launchRTE.bind(this)}>
+                                <i className="material-icons">text_fields</i>
+                            </div>
+                        }
+                        {
                             this.props.workspaceDumpBarActionShown &&
-                            <div className='action' onClick={this.toggleDumpBar.bind(this)}>
+                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`}  onClick={this.toggleDumpBar.bind(this)}>
                                 <i className='material-icons'>apps</i>
                             </div>
                         }

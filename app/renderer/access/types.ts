@@ -1,7 +1,9 @@
 export interface IState {
-    workspaceDumpBarShown: boolean;
     sideBarShown: boolean;
+    workspaceDumpBarShown: boolean;
     workspaceDumpBarActionShown: boolean;
+    workspaceRTEShown: boolean;
+    workspaceRTEActionShown: boolean;
 }
 export interface IAction {
     type: string;

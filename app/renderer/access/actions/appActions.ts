@@ -6,25 +6,30 @@ function SampleFetchUrl() {
     return api;
 }
 
-const toggleDumpBar = () => ({
+export const toggleDumpBar = () => ({
     type: types.TOGGLE_WORKSPACE_DUMP_BAR, payload: {}
 })
 
-const showDumpBarAction = () => ({
+export const showDumpBarAction = () => ({
     type: types.SHOW_WORKSPACE_DUMP_BAR_ACTION, payload: {}
 })
 
-const hideDumpBarAction = () => ({
+export const hideDumpBarAction = () => ({
     type: types.HIDE_WORKSPACE_DUMP_BAR_ACTION, payload: {}
 })
 
-const toggleSideBar = () => ({
-    type: types.TOGGLE_SIDEBAR, payload: {}
+export const toggleRTE = () => ({
+    type: types.TOGGLE_WORKSPACE_RTE, payload: {}
 })
 
-export {
-    toggleDumpBar,
-    toggleSideBar,
-    showDumpBarAction,
-    hideDumpBarAction
-};
+export const hideRTEAction = () => ({
+    type: types.HIDE_WORKSPACE_RTE_ACTION, payload: {}
+})
+
+export const showRTEAction = () => ({
+    type: types.SHOW_WORKSPACE_RTE_ACTION, payload: {}
+})
+
+export const toggleSideBar = () => ({
+    type: types.TOGGLE_SIDEBAR, payload: {}
+})

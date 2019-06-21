@@ -37,10 +37,71 @@ $dot-space: 5px;
             background-size: $dot-space $dot-space;
         }
     }
+    .rte-area {
+        width: 500px;
+        flex: initial;
+        order: 2;
+        animation: slide-in-from-right 0.5s ease-out 0s;
+        max-height: 100%;
+        .rte-wrapper {
+            height: 100%;
+        }
+        [class^="RichTextEditor__root"] {
+            background: none;
+            border : none;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+        }
+        [class^="RichTextEditor__editor"] {
+            flex: 1;
+            order: 2;
+            padding: 0px 0 10px 5px;
+            color: rgba(#fff, 0.50);
+            .DraftEditor-root {
+                height: calc(100vh - 166px);
+                .DraftEditor-editorContainer {
+                    .public-DraftEditor-content {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+        [class^="EditorToolbar__root"] {
+            flex: initial;
+            order: 1;
+            border-bottom: 1px solid rgba(#fff, 0.20);
+            padding: 15px 10px 10px 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            [class^="ButtonWrap__root"] {
+                button {
+                    background: rgba(#fff, 0.33);
+                    border: 1px solid rgba(#000, 0.01);
+                    margin-right: 1px;
+                    color: rgba(#fff, 0.50);
+                    &[class*="IconButton__isActive"] {
+                        background: rgba(#fff, 0.75);
+                    }
+                    &:hover {}
+                }
+            }
+            [class^="Dropdown__root"] {
+                select {
+                    color: rgba(#fff, 0.50);
+                }
+                [class^="Dropdown__value"] {
+                    border: 1px solid rgba(#fff, 0.1);
+                }
+            }
+        }
+    }
     .sticky-dumping-ground {
         width: 300px;
         flex: initial;
-        order: 2;
+        order: 3;
         animation: slide-in-from-right 0.5s ease-out 0s;
     }
 }

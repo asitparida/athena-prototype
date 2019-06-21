@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    background-color: rgba(#000, 0.80);
+    // background-color: rgba(#000, 0.80);
 
     #root {
         display: flex;
@@ -80,10 +80,15 @@ body {
                     margin-right: 12px;
 
                     .action {
+                        margin-left: 10px;
                         height: 48px;
                         text-align: center;
                         width: 48px;
                         margin-bottom: 12px;
+                        border: 1px solid rgba(#000, 0);
+                        &.active {
+                            border-color: rgba(#fff, 0.30);
+                        }
 
                         i {
                             line-height: 48px;

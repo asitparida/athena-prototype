@@ -25,7 +25,6 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(0, 0, 0, 0.8);
 }
 body #root {
   display: flex;
@@ -73,11 +72,16 @@ body #root .app-content .app-content-top .app-actions-right {
   margin-right: 12px;
 }
 body #root .app-content .app-content-top .app-actions-right .action {
+  margin-left: 10px;
   height: 48px;
   text-align: center;
   width: 48px;
   margin-bottom: 12px;
+  border: 1px solid rgba(0, 0, 0, 0);
   cursor: pointer;
+}
+body #root .app-content .app-content-top .app-actions-right .action.active {
+  border-color: rgba(255, 255, 255, 0.3);
 }
 body #root .app-content .app-content-top .app-actions-right .action i {
   line-height: 48px;
@@ -482,10 +486,64 @@ body #root .app-content .app-content-area input {
   background-image: radial-gradient(rgba(255, 255, 255, 0.2) 10%, transparent 0%);
   background-size: 5px 5px;
 }
+.workspace-wrapper .rte-area {
+  width: 500px;
+  flex: initial;
+  order: 2;
+  animation: slide-in-from-right 0.5s ease-out 0s;
+  max-height: 100%;
+}
+.workspace-wrapper .rte-area .rte-wrapper {
+  height: 100%;
+}
+.workspace-wrapper .rte-area [class^=RichTextEditor__root] {
+  background: none;
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.workspace-wrapper .rte-area [class^=RichTextEditor__editor] {
+  flex: 1;
+  order: 2;
+  padding: 0px 0 10px 5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root {
+  height: calc(100vh - 166px);
+}
+.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
+  padding-top: 15px;
+}
+.workspace-wrapper .rte-area [class^=EditorToolbar__root] {
+  flex: initial;
+  order: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+}
+.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button {
+  background: rgba(255, 255, 255, 0.33);
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  margin-right: 1px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button[class*=IconButton__isActive] {
+  background: rgba(255, 255, 255, 0.75);
+}
+.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] select {
+  color: rgba(255, 255, 255, 0.5);
+}
+.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] [class^=Dropdown__value] {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 .workspace-wrapper .sticky-dumping-ground {
   width: 300px;
   flex: initial;
-  order: 2;
+  order: 3;
   animation: slide-in-from-right 0.5s ease-out 0s;
 }
 
