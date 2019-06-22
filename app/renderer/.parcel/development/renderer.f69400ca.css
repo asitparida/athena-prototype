@@ -187,6 +187,16 @@ body #root .app-content .app-content-area input {
     opacity: 1;
   }
 }
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 .tabs-wrapper {
   width: 100%;
   height: 100%;
@@ -195,7 +205,7 @@ body #root .app-content .app-content-area input {
   flex-flow: column;
   position: relative;
 }
-.tabs-wrapper ul {
+.tabs-wrapper ul.tabs-titles {
   order: 1;
   height: 60px;
   flex: initial;
@@ -205,8 +215,6 @@ body #root .app-content .app-content-area input {
   list-style: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   margin: 0;
-}
-.tabs-wrapper ul.tabs-titles {
   padding: 0 30px;
 }
 .tabs-wrapper ul.tabs-titles.compressed {
@@ -368,6 +376,39 @@ body #root .app-content .app-content-area input {
   opacity: 0.2;
   margin: 0;
   padding: 0;
+}
+.context-menu-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.app-context-menu-wrapper {
+  position: fixed;
+  z-index: 999;
+  background: #565656;
+  animation: slide-in-from-top 0.5s ease-out 0s;
+}
+.app-context-menu-wrapper ul.app-context-menu {
+  margin: 0;
+  min-width: 200px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.25);
+}
+.app-context-menu-wrapper ul.app-context-menu li {
+  padding: 0 15px;
+  line-height: 48px;
+  transition: all 0.1s linear 0s;
+}
+.app-context-menu-wrapper ul.app-context-menu li:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.app-context-menu-wrapper ul.app-context-menu li:hover, .app-context-menu-wrapper ul.app-context-menu li:focus {
+  background-color: #fff;
+  color: #000;
 }
 .app-container {
   display: flex;
@@ -577,12 +618,13 @@ body #root .app-content .app-content-area input {
 }
 .resizer-wrapper .resizer-handler {
   background: rgba(0, 0, 0, 0.33);
+  text-align: center;
   height: 36px;
-  width: 24px;
+  width: 18px;
   cursor: grab;
   position: absolute;
   top: 50%;
-  left: -24px;
+  left: -18px;
   z-index: 2;
   margin-top: -18px;
   border-top-left-radius: 5px;
@@ -592,6 +634,8 @@ body #root .app-content .app-content-area input {
   line-height: 36px;
   opacity: 0.5;
   transition: opacity 0.3s linear 0s;
+  position: relative;
+  left: -3px;
 }
 .resizer-wrapper .resizer-handler:hover i, .resizer-wrapper .resizer-handler:focus i, .resizer-wrapper .resizer-handler:active i {
   opacity: 0.8;

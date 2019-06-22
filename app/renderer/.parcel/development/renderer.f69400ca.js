@@ -32648,7 +32648,20 @@ var ContentType;
   ContentType[ContentType["Video"] = 1] = "Video";
   ContentType[ContentType["Link"] = 2] = "Link";
   ContentType[ContentType["Article"] = 3] = "Article";
+  ContentType[ContentType["SocialMedia"] = 4] = "SocialMedia";
 })(ContentType = exports.ContentType || (exports.ContentType = {}));
+
+var MediaSourceType;
+
+(function (MediaSourceType) {
+  MediaSourceType[MediaSourceType["Browser"] = 0] = "Browser";
+  MediaSourceType[MediaSourceType["Instagram"] = 1] = "Instagram";
+  MediaSourceType[MediaSourceType["Twitter"] = 2] = "Twitter";
+  MediaSourceType[MediaSourceType["Facebook"] = 3] = "Facebook";
+  MediaSourceType[MediaSourceType["Medium"] = 4] = "Medium";
+  MediaSourceType[MediaSourceType["Quora"] = 5] = "Quora";
+  MediaSourceType[MediaSourceType["Youtube"] = 6] = "Youtube";
+})(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
 
 var ContentList = function ContentList() {
   _classCallCheck(this, ContentList);
@@ -32675,7 +32688,162 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/contents/content.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./context-menu.scss");
+
+var ContextMenu =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ContextMenu, _React$Component);
+
+  function ContextMenu(props) {
+    var _this;
+
+    _classCallCheck(this, ContextMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContextMenu).call(this, props)); // tslint:disable:variable-name
+
+    _this.onDOMClick_bound = _this.onDOMClick.bind(_assertThisInitialized(_this));
+    _this.onKeyUp_bound = _this.onKeyUp.bind(_assertThisInitialized(_this));
+    _this.state = {
+      menuOpen: false,
+      x: 0,
+      y: 0
+    };
+    _this.elRef = React.createRef();
+    return _this;
+  }
+
+  _createClass(ContextMenu, [{
+    key: "openMenu",
+    value: function openMenu(e) {
+      console.log(e.clientX, e.clientY);
+      this.setState({
+        menuOpen: true,
+        x: e.screenX,
+        y: e.screenY
+      });
+    }
+  }, {
+    key: "onDOMClick",
+    value: function onDOMClick(e) {
+      var notfound = true;
+      var target = e.target;
+
+      while (target && target !== document.documentElement) {
+        if (target === this.elRef) {
+          notfound = false;
+          break;
+        }
+
+        target = target.parentNode;
+      }
+
+      if (notfound) {
+        this.closeMenu();
+      }
+    }
+  }, {
+    key: "onKeyUp",
+    value: function onKeyUp(e) {
+      if (e.code === "Escape") {
+        this.closeMenu();
+      }
+    }
+  }, {
+    key: "addCloseMenuListener",
+    value: function addCloseMenuListener(node) {
+      if (node) {
+        this.elRef = node;
+        document.removeEventListener('click', this.onDOMClick_bound);
+        document.addEventListener('click', this.onDOMClick_bound);
+        document.removeEventListener('contextmenu', this.onDOMClick_bound);
+        document.addEventListener('contextmenu', this.onDOMClick_bound);
+        document.removeEventListener('keyup', this.onKeyUp_bound);
+        document.addEventListener('keyup', this.onKeyUp_bound);
+      }
+    }
+  }, {
+    key: "closeMenu",
+    value: function closeMenu() {
+      document.removeEventListener('click', this.onDOMClick_bound);
+      document.removeEventListener('contextmenu', this.onDOMClick_bound);
+      document.removeEventListener('keyup', this.onKeyUp_bound);
+      this.setState({
+        menuOpen: false
+      });
+    }
+  }, {
+    key: "onContextMenuInvoked",
+    value: function onContextMenuInvoked(e) {
+      this.openMenu(e);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var styles = {
+        left: "".concat(this.state.x + 10, "px"),
+        top: "".concat(this.state.y - 20, "px")
+      };
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "context-menu-wrapper",
+        onContextMenu: this.onContextMenuInvoked.bind(this)
+      }, this.props.children), this.state.menuOpen && React.createElement("div", {
+        className: "app-context-menu-wrapper",
+        style: styles,
+        ref: this.addCloseMenuListener.bind(this)
+      }, React.createElement("ul", {
+        className: "app-context-menu"
+      }, React.createElement("li", null, "Action 1"), React.createElement("li", null, "Action 2"), React.createElement("li", null, "Action 3"), React.createElement("li", null, "Action 4"))));
+    }
+  }]);
+
+  return ContextMenu;
+}(React.Component);
+
+exports.ContextMenu = ContextMenu;
+},{"react":"../../node_modules/react/index.js","./context-menu.scss":"components/context-menu/context-menu.scss"}],"components/contents/content.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32713,6 +32881,8 @@ Object.defineProperty(exports, "__esModule", {
 var React = __importStar(require("react"));
 
 var constants_1 = require("../../constants/constants");
+
+var context_menu_1 = require("../context-menu/context-menu");
 
 var Content =
 /*#__PURE__*/
@@ -32754,15 +32924,21 @@ function (_React$Component) {
             label = 'Video';
             break;
           }
+
+        case constants_1.ContentType.SocialMedia:
+          {
+            label = 'Social Media';
+            break;
+          }
       }
 
       return React.createElement("div", {
         className: "content-wrapper"
-      }, React.createElement("div", {
+      }, React.createElement(context_menu_1.ContextMenu, null, React.createElement("div", {
         className: "content"
       }, React.createElement("h1", null, "Content"), React.createElement("h2", null, "..."), React.createElement("label", {
         className: "content-label"
-      }, label)));
+      }, label))));
     }
   }]);
 
@@ -32770,7 +32946,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.Content = Content;
-},{"react":"../../node_modules/react/index.js","../../constants/constants":"constants/constants.ts"}],"components/contents/content-list.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/constants":"constants/constants.ts","../context-menu/context-menu":"components/context-menu/context-menu.tsx"}],"components/contents/content-list.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32807,8 +32983,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
-var constants_1 = require("../../constants/constants");
-
 var content_1 = require("./content");
 
 var ContentList =
@@ -32817,34 +32991,31 @@ function (_React$Component) {
   _inherits(ContentList, _React$Component);
 
   function ContentList(props) {
-    var _this;
-
     _classCallCheck(this, ContentList);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentList).call(this, props));
-    _this.state = {
-      items: constants_1.PhotosList.map(function (p) {
-        return Object.assign({}, p, {
-          type: constants_1.ContentType.Photo
-        });
-      })
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ContentList).call(this, props));
   }
 
   _createClass(ContentList, [{
+    key: "onContextMenu",
+    value: function onContextMenu(e) {
+      console.log(e, 'onContextMenu');
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var label = this.props.title;
       return React.createElement("div", {
         className: "content-list-wrapper"
       }, React.createElement("h1", null, label), React.createElement("div", {
         className: "content-items-wrapper"
-      }, this.state.items.map(function (item, j) {
+      }, this.props.items.map(function (item, j) {
         return React.createElement(content_1.Content, {
           key: j,
           data: item,
-          type: item.type
+          type: _this.props.type
         });
       })));
     }
@@ -32854,7 +33025,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentList = ContentList;
-},{"react":"../../node_modules/react/index.js","../../constants/constants":"constants/constants.ts","./content":"components/contents/content.tsx"}],"components/contents/content-collection.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./content":"components/contents/content.tsx"}],"components/contents/content-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32893,6 +33064,8 @@ var React = __importStar(require("react"));
 
 var content_list_1 = require("./content-list");
 
+var constants_1 = require("../../constants/constants");
+
 var ContentCollection =
 /*#__PURE__*/
 function (_React$Component) {
@@ -32906,11 +33079,33 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentCollection).call(this, props));
     _this.state = {
       listItems: [{
-        title: 'Recent'
+        title: 'Recent',
+        items: constants_1.PhotosList.map(function (p) {
+          return Object.assign({}, p, {
+            type: _this.props.type
+          });
+        })
       }, {
-        title: 'June 12, 2019'
+        title: 'Yesterday',
+        items: constants_1.PhotosList.map(function (p) {
+          return Object.assign({}, p, {
+            type: _this.props.type
+          });
+        })
       }, {
-        title: 'June 11, 2019'
+        title: 'June 12, 2019',
+        items: constants_1.PhotosList.map(function (p) {
+          return Object.assign({}, p, {
+            type: _this.props.type
+          });
+        })
+      }, {
+        title: 'June 11, 2019',
+        items: constants_1.PhotosList.map(function (p) {
+          return Object.assign({}, p, {
+            type: _this.props.type
+          });
+        })
       }]
     };
     return _this;
@@ -32919,11 +33114,14 @@ function (_React$Component) {
   _createClass(ContentCollection, [{
     key: "render",
     value: function render() {
-      var label = this.props.title;
+      var _this2 = this;
+
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(content_list_1.ContentList, {
           title: item.title,
-          key: i
+          key: i,
+          type: _this2.props.type,
+          items: item.items
         });
       }));
     }
@@ -32933,7 +33131,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentCollection = ContentCollection;
-},{"react":"../../node_modules/react/index.js","./content-list":"components/contents/content-list.tsx"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./content-list":"components/contents/content-list.tsx","../../constants/constants":"constants/constants.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -33001,37 +33199,27 @@ function (_React$Component) {
       tabs: [// tslint:disable:max-line-length
       {
         id: 'all',
-        title: 'All',
-        content: 'See ya later, All',
-        items: constants_1.AllContentList.reduce(function (prev, curr) {
-          return prev.concat(curr.items);
-        }, [])
+        name: 'All'
       }, {
         id: 'photos',
-        title: 'Photos',
-        content: 'See ya later, Photos',
-        items: constants_1.AllContentList.find(function (p) {
-          return p.type === constants_1.ContentType.Photo;
-        }).items,
+        name: 'Photos',
         type: constants_1.ContentType.Photo
       }, {
         id: 'videos',
-        title: 'Videos',
-        content: 'See ya later, Videos',
-        items: constants_1.AllContentList.find(function (p) {
-          return p.type === constants_1.ContentType.Video;
-        }).items,
+        name: 'Videos',
         type: constants_1.ContentType.Video
       }, {
         id: 'articles',
-        title: 'Acticles',
-        content: 'See ya later, Acticles',
-        items: []
+        name: 'Acticles',
+        type: constants_1.ContentType.Article
       }, {
         id: 'links',
-        title: 'Links',
-        content: 'See ya later, Links',
-        items: []
+        name: 'Links',
+        type: constants_1.ContentType.Link
+      }, {
+        id: 'social-media',
+        name: 'Social Media',
+        type: constants_1.ContentType.SocialMedia
       }]
     };
     return _this;
@@ -33043,7 +33231,7 @@ function (_React$Component) {
       if (this.props.workspace) {
         var tabs = this.state.tabs;
         var tab = tabs[1];
-        tab.title = 'Current Worskpace';
+        tab.name = 'Current Worskpace';
         this.setState({
           tabs: [tabs[0], tab]
         });
@@ -33058,11 +33246,13 @@ function (_React$Component) {
         sticky: this.props.sticky
       }, this.state.tabs.map(function (tab, i) {
         return React.createElement(Tab_1.default, {
-          title: tab.title,
+          title: tab.name,
           key: i
         }, React.createElement("div", {
           className: classListName
-        }, React.createElement(content_collection_1.ContentCollection, null)));
+        }, React.createElement(content_collection_1.ContentCollection, {
+          type: tab.type
+        })));
       }));
     }
   }]);
@@ -44270,7 +44460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65416" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54796" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    background-color: rgba(#000, 0.80);
+    // background-color: rgba(#000, 0.80);
 
     #root {
         display: flex;
@@ -213,6 +213,18 @@ body {
 
     100% {
         transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-from-top {
+    0% {
+        transform: translateY(25px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
         opacity: 1;
     }
 }

@@ -5,9 +5,10 @@ import { AllContentList, ContentType } from '../../constants/constants';
 import { Content } from '../contents/content';
 import './dumping-ground.scss';
 import { ContentCollection } from '../contents/content-collection';
+import { IDumpingGroundTab } from '../types';
 
 interface IDumpingGroundState {
-    tabs: any[];
+    tabs: IDumpingGroundTab[];
 }
 interface IDumpingGroundProps {
     sticky?: boolean,
@@ -22,11 +23,12 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         this.state = {
             tabs: [
                 // tslint:disable:max-line-length
-                { id: 'all', title: 'All', content: 'See ya later, All', items: AllContentList.reduce((prev, curr) => prev.concat(curr.items), []) },
-                { id: 'photos', title: 'Photos', content: 'See ya later, Photos', items: AllContentList.find(p => p.type === ContentType.Photo).items, type: ContentType.Photo },
-                { id: 'videos', title: 'Videos', content: 'See ya later, Videos', items: AllContentList.find(p => p.type === ContentType.Video).items, type: ContentType.Video },
-                { id: 'articles', title: 'Acticles', content: 'See ya later, Acticles', items: [] },
-                { id: 'links', title: 'Links', content: 'See ya later, Links', items: [] },
+                { id: 'all', name: 'All'},
+                { id: 'photos', name: 'Photos', type: ContentType.Photo },
+                { id: 'videos', name: 'Videos', type: ContentType.Video },
+                { id: 'articles', name: 'Acticles', type: ContentType.Article  },
+                { id: 'links', name: 'Links', type: ContentType.Link  },
+                { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia  },
             ]
         };
     }
@@ -34,7 +36,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         if (this.props.workspace) {
             const tabs = this.state.tabs;
             const tab = tabs[1];
-            tab.title = 'Current Worskpace';
+            tab.name = 'Current Worskpace';
             this.setState({
                 tabs: [tabs[0], tab]
             })
@@ -44,9 +46,9 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         const classListName = `tabs-holder ${this.props.sticky ? 'is-sticky' : ''}`;
         return <Tabs showResizer={!this.props.sticky} sticky={this.props.sticky}>
                 {this.state.tabs.map((tab, i) => {
-                    return <Tab title={tab.title} key={i}>
+                    return <Tab title={tab.name} key={i}>
                         <div className={classListName}>
-                            <ContentCollection />
+                            <ContentCollection type={tab.type} />
                         </div>
                     </Tab>
                 })}

@@ -1,23 +1,33 @@
 import * as React from 'react';
 import { ContentList } from './content-list';
+import { ContentType, PhotosList } from '../../constants/constants';
+import { IContentListItem } from '../types';
 
-export class ContentCollection extends React.Component<{ title?: string, items?: any[] }, {listItems?: any[]}> {
+interface IProps {
+    type: ContentType
+}
+
+interface IContentCollectionState {
+    listItems: IContentListItem[];
+}
+
+export class ContentCollection extends React.Component<IProps, IContentCollectionState> {
     constructor(props) {
         super(props);
         this.state = {
             listItems: [
-                { title: 'Recent' },
-                { title: 'June 12, 2019' },
-                { title: 'June 11, 2019' }
+                { title: 'Recent',  items: PhotosList.map(p => Object.assign({}, p, { type: this.props.type })) },
+                { title: 'Yesterday',  items: PhotosList.map(p => Object.assign({}, p, { type: this.props.type })) },
+                { title: 'June 12, 2019',  items: PhotosList.map(p => Object.assign({}, p, { type: this.props.type })) },
+                { title: 'June 11, 2019',  items: PhotosList.map(p => Object.assign({}, p, { type: this.props.type })) }
             ]
         };
     }
     render() {
-        const label = this.props.title;
         return <React.Fragment>
             {
                 this.state.listItems.map((item, i) => {
-                    return <ContentList title={item.title} key={i} />
+                    return <ContentList title={item.title} key={i} type={this.props.type} items={item.items} />
                 })
             }
         </React.Fragment>

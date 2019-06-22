@@ -114,6 +114,7 @@
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
     "react-hammerjs":"1.0.1",
+    "react-contextmenu":"2.11.0",
     "sass": "^1.21.0",
     "spectron": "5.0.0",
     "tslint": "5.17.0",
