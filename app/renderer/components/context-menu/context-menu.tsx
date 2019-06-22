@@ -15,11 +15,10 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
         this.elRef = React.createRef();
     }
     openMenu(e: MouseEvent) {
-        console.log(e.clientX, e.clientY);
         this.setState({
             menuOpen: true,
-            x: e.screenX,
-            y: e.screenY
+            x: e.clientX,
+            y: e.clientY
         });
     }
     onDOMClick(e: MouseEvent) {
@@ -53,6 +52,7 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
         }
     }
     closeMenu() {
+        console.log('closeMenu');
         document.removeEventListener('click', this.onDOMClick_bound);
         document.removeEventListener('contextmenu', this.onDOMClick_bound);
         document.removeEventListener('keyup', this.onKeyUp_bound);

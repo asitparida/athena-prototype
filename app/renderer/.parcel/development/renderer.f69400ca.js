@@ -32758,11 +32758,10 @@ function (_React$Component) {
   _createClass(ContextMenu, [{
     key: "openMenu",
     value: function openMenu(e) {
-      console.log(e.clientX, e.clientY);
       this.setState({
         menuOpen: true,
-        x: e.screenX,
-        y: e.screenY
+        x: e.clientX,
+        y: e.clientY
       });
     }
   }, {
@@ -32807,6 +32806,7 @@ function (_React$Component) {
   }, {
     key: "closeMenu",
     value: function closeMenu() {
+      console.log('closeMenu');
       document.removeEventListener('click', this.onDOMClick_bound);
       document.removeEventListener('contextmenu', this.onDOMClick_bound);
       document.removeEventListener('keyup', this.onKeyUp_bound);
@@ -44460,7 +44460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54796" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57884" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
