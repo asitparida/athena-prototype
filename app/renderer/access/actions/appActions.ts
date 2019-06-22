@@ -49,3 +49,27 @@ export const showRTE = () => ({
 export const toggleSideBar = () => ({
     type: types.TOGGLE_SIDEBAR, payload: {}
 })
+
+export const toggleWorkpsaceInHeader = () => ({
+    type: types.TOGGLE_WORKSHOP_IN_HEADER, payload: {}
+})
+
+export const showWorkpsaceInHeader = () => ({
+    type: types.SHOW_WORKSHOP_IN_HEADER, payload: {}
+})
+
+export const hideWorkpsaceInHeader = () => ({
+    type: types.HIDE_WORKSHOP_IN_HEADER, payload: {}
+})
+
+export const toggleWorkpsaceActionInHeader = () => ({
+    type: types.TOGGLE_WORKSHOP_ACTION_IN_HEADER, payload: {}
+})
+
+export const showWorkpsaceActionInHeader = () => ({
+    type: types.SHOW_WORKSHOP_ACTION_IN_HEADER, payload: {}
+})
+
+export const hideWorkpsaceActionInHeader = () => ({
+    type: types.HIDE_WORKSHOP_ACTION_IN_HEADER, payload: {}
+})

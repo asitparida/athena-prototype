@@ -1,5 +1,7 @@
 export interface IState {
     sideBarShown: boolean;
+    workspaceInHeader: boolean;
+    workspaceActionInHeader: boolean;
     workspaceDumpBarShown: boolean;
     workspaceDumpBarActionShown: boolean;
     workspaceRTEShown: boolean;

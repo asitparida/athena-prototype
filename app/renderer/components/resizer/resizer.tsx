@@ -16,9 +16,6 @@ export class Resizer extends React.Component<IProp, any> {
         super(props);
         this.domRef = React.createRef();
     }
-    onSizeChange() {
-        console.log('onSizeChange');
-    }
     onPanStart(e) {
         this.panStartX = e.center.x;
         this.domProps = (this.domRef.current as HTMLElement).getBoundingClientRect();

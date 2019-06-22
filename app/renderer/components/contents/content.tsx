@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ContentType } from '../../constants/constants';
 import { ContextMenu } from '../context-menu/context-menu';
+import { ContentType } from '../../constants/types';
 
 export class Content extends React.Component<{ type?: ContentType, data: any }, {}> {
     render() {

@@ -34,9 +34,6 @@ class Workspace extends React.Component<any, any> {
         ShowDumpBarAction$.next(false);
         ShowRTEAction$.next(false);
     }
-    handleTap() {
-        console.log('handleTap');
-    }
     onRTESizeChange(width) {
         this.setState({
             rteWidth: width

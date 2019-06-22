@@ -1,3 +1,8 @@
+import { ContentList, ContentType, Workspace, IWorkspace } from "./types";
+import img1 from '../assets/carnegie_museum_art.jpg';
+import img2 from '../assets/church_brew.jpg';
+import img3 from '../assets/duquesne_incline.jpg';
+
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },
     { id: "1008", author: "Benjamin Combs", width: 5616, height: 3744, url: "https://unsplash.com/photos/5L4XAgMSno0", download_url: "https://picsum.photos/id/1008/5616/3744" },
@@ -10,32 +15,14 @@ export const PhotosList: any[] = [
     { id: "1014", author: "Oscar Keys", width: 6016, height: 4000, url: "https://unsplash.com/photos/AmPRUnRb6N0", download_url: "https://picsum.photos/id/1014/6016/4000" },
     { id: "1015", author: "Alexey Topolyanskiy", width: 6000, height: 4000, url: "https://unsplash.com/photos/-oWyJoSqBRM", download_url: "https://picsum.photos/id/1015/6000/4000" }];
 
-export enum ContentType {
-    Photo,
-    Video,
-    Link,
-    Article,
-    SocialMedia
-}
-export enum MediaSourceType {
-    Browser,
-    Instagram,
-    Twitter,
-    Facebook,
-    Medium,
-    Quora,
-    Youtube
-}
-class ContentList {
-    items: any[];
-    type: ContentType
-}
 export const AllContentList: ContentList[] = [
     { items: PhotosList.map( p => Object.assign({}, p, { type: ContentType.Photo })), type: ContentType.Photo },
     { items: PhotosList.map( p => Object.assign({}, p, { thumbnail: p.download_url, type: ContentType.Video })), type: ContentType.Video }
 ];
 
-export interface IContentItemsList {
-    list: ContentList;
-    title: string;
-}
+export const WorkspaceList: IWorkspace[] = [
+    new Workspace('Workspace #1', img1),
+    new Workspace('Workspace #2', img2),
+    new Workspace('Workspace #3', img3),
+    new Workspace('Workspace #4', img1)
+];

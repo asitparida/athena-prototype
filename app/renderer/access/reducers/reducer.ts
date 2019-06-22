@@ -1,6 +1,6 @@
-import InitialState from './initialState';
-import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE } from '../actions/actionTypes';
-import { IAction, IState } from '../types';
+import InitialState from '../store/initialState';
+import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE, HIDE_WORKSHOP_IN_HEADER, SHOW_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_ACTION_IN_HEADER, SHOW_WORKSHOP_ACTION_IN_HEADER, HIDE_WORKSHOP_ACTION_IN_HEADER } from '../actions/actionTypes';
+import { IAction, IState } from '../store/types';
 
 export default (state: IState = InitialState, action: IAction) => {
     let newState: IState;
@@ -71,6 +71,44 @@ export default (state: IState = InitialState, action: IAction) => {
             const current = state.workspaceRTEShown;
             newState = Object.assign({}, state, {
                 workspaceRTEShown: !current
+            });
+            return newState;
+        }
+        case TOGGLE_WORKSHOP_IN_HEADER: {
+            const current = state.workspaceInHeader;
+            newState = Object.assign({}, state, {
+                workspaceInHeader: !current
+            });
+            return newState;
+        }
+        case SHOW_WORKSHOP_IN_HEADER: {
+            newState = Object.assign({}, state, {
+                workspaceInHeader: true
+            });
+            return newState;
+        }
+        case HIDE_WORKSHOP_IN_HEADER: {
+            newState = Object.assign({}, state, {
+                workspaceInHeader: false
+            });
+            return newState;
+        }
+        case TOGGLE_WORKSHOP_ACTION_IN_HEADER: {
+            const current = state.workspaceActionInHeader;
+            newState = Object.assign({}, state, {
+                workspaceActionInHeader: !current
+            });
+            return newState;
+        }
+        case SHOW_WORKSHOP_ACTION_IN_HEADER: {
+            newState = Object.assign({}, state, {
+                workspaceActionInHeader: true
+            });
+            return newState;
+        }
+        case HIDE_WORKSHOP_ACTION_IN_HEADER: {
+            newState = Object.assign({}, state, {
+                workspaceActionInHeader: false
             });
             return newState;
         }

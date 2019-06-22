@@ -1,7 +1,9 @@
-import { IState } from "../types";
+import { IState } from "./types";
 
 const IntialState: IState = {
     sideBarShown: false,
+    workspaceActionInHeader: false,
+    workspaceInHeader: false,
     workspaceDumpBarShown: false,
     workspaceDumpBarActionShown: false,
     workspaceRTEShown: false,

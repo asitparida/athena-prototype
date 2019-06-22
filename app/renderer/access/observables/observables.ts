@@ -5,6 +5,7 @@ import * as actions from '../actions/appActions';
 const subscriptions: Subscription[] = [];
 export const ShowDumpBarAction$ = new Subject<boolean>();
 export const ShowRTEAction$ = new Subject<boolean>();
+export const ShowWorkspaceAction$ = new Subject<boolean>();
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {
@@ -22,6 +23,15 @@ export function InitializeSubscriptions() {
         }
     });
     subscriptions.push(rteSubscription);
+    const worskpaceInHeaderSubscription = ShowWorkspaceAction$.subscribe((data) => {
+        console.log('worskpaceInHeaderSubscription', data);
+        if (data) {
+            store.dispatch(actions.showWorkpsaceActionInHeader())
+        } else {
+            store.dispatch(actions.hideWorkpsaceActionInHeader())
+        }
+    });
+    subscriptions.push(worskpaceInHeaderSubscription);
 }
 export function RemoveSubscriptions() {
     subscriptions.forEach(s => s.unsubscribe());

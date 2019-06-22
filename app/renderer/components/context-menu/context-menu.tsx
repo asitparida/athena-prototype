@@ -52,7 +52,6 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
         }
     }
     closeMenu() {
-        console.log('closeMenu');
         document.removeEventListener('click', this.onDOMClick_bound);
         document.removeEventListener('contextmenu', this.onDOMClick_bound);
         document.removeEventListener('keyup', this.onKeyUp_bound);

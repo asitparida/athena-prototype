@@ -6,10 +6,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../access/actions/appActions';
 import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observables/observables';
+import Header from '../components/header/header';
 
 const mapStateToProps = ({ reducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
+        workspaceInHeader: reducers.workspaceInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
         workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
@@ -59,27 +61,8 @@ class Main extends Component<any, any> {
         return (
             <div className="app-content">
                 <div className='app-dragger' />
-                <div className='app-content-top'>
-                    <div className='app-sidebar-toggle' onClick={this.toggleSidebar.bind(this)}>
-                        <i className='material-icons'>menu</i>
-                    </div>
-                    <div className='app-actions-right'>
-                        <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                            <i className='material-icons'>notes</i>
-                        </div>
-                        {
-                            this.props.workspaceRTEActionShown &&
-                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`}  onClick={this.toggleRTE.bind(this)}>
-                                <i className="material-icons">text_fields</i>
-                            </div>
-                        }
-                        {
-                            this.props.workspaceDumpBarActionShown &&
-                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`}  onClick={this.toggleDumpBar.bind(this)}>
-                                <i className='material-icons'>apps</i>
-                            </div>
-                        }
-                    </div>
+                <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
+                    <Header />
                 </div>
                 <div className='app-content-bottom'>
                     <RouterWrapper sideBarCollpased={sideBarCollpased} />

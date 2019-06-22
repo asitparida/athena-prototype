@@ -6,87 +6,95 @@
     flex-flow: column;
     position: relative;
 
-    ul {
+    .tabs-header {
+        order: 1;
+        height: 60px;
+        display: flex;
+        padding: 0 30px;
+        border-bottom: 1px solid rgba(#fff, 0.05);
 
-        &.tabs-titles {
-            order: 1;
-            height: 60px;
-            flex: initial;
-            padding: 0;
-            white-space: nowrap;
-            display: flex;
-            list-style: none;
-            border-bottom: 1px solid rgba(#fff, 0.05);
-            margin: 0;
-            padding: 0 30px;
+        ul {
+            &.tabs-titles {
+                order: 1;
+                height: 60px;
+                flex: initial;
+                padding: 0;
+                white-space: nowrap;
+                display: flex;
+                list-style: none;
+                margin: 0;
 
-            &.compressed {
-                padding: 0 15px;
+                &.compressed {
+                    padding: 0 15px;
+
+                    li {
+                        min-width: auto;
+                        font-size: small;
+                    }
+                }
 
                 li {
-                    min-width: auto;
-                    font-size: small;
-                }
-            }
+                    padding: 0;
+                    line-height: 60px;
+                    padding: 0 15px;
+                    margin-right: 1px;
+                    background: rgba(#fff, 0.00);
+                    min-width: 100px;
+                    opacity: 0.50;
+                    text-align: center;
+                    cursor: pointer;
+                    user-select: none;
 
-            li {
-                padding: 0;
-                line-height: 60px;
-                padding: 0 15px;
-                margin-right: 1px;
-                background: rgba(#fff, 0.00);
-                min-width: 100px;
-                opacity: 0.50;
-                text-align: center;
-                cursor: pointer;
-                user-select: none;
+                    &.active {
+                        border-bottom: 1px solid rgba(#fff, 0.50);
+                        opacity: 1;
+                    }
 
-                &.active {
-                    border-bottom: 1px solid rgba(#fff, 0.50);
-                    opacity: 1;
-                }
-
-                &:hover {
-                    background: rgba(#fff, 0.10);
+                    &:hover {
+                        background: rgba(#fff, 0.10);
+                    }
                 }
             }
         }
-    }
 
-    .tabs-resizer-container {
-        position: absolute;
-        top: 0;
-        right: 40px;
-        width: 180px;
+        .tabs-resizer-container {
+            order: 2;
+            width: 180px;
+            margin-left: auto;
 
-        .tabs-resizer-wrapper {
-            width: 100%;
-            height: 60px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            .tabs-resizer-handler {
+            .tabs-resizer-wrapper {
                 width: 100%;
-                background: rgba(#fff, 0.10);
-                border-radius: 4px;
-                height: 8px;
-            }
-
-            .tabs-resizer-box {
-                position: absolute;
-                background: rgba(#fff, 0.80);
-                height: 20px;
-                width: 20px;
-                border-radius: 50%;
-                top: 50%;
-                margin-top: -10px;
-                margin-left: -10px;
-                left: 50%;
+                height: 60px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 cursor: pointer;
+
+                .tabs-resizer-handler {
+                    width: 100%;
+                    background: rgba(#fff, 0.10);
+                    border-radius: 4px;
+                    height: 8px;
+                }
+
+                .tabs-resizer-box {
+                    position: absolute;
+                    background: rgba(#fff, 0.80);
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 50%;
+                    top: 50%;
+                    margin-top: -10px;
+                    margin-left: -10px;
+                    left: 50%;
+                    cursor: pointer;
+                }
             }
+        }
+
+        .items-filter-container {
+            order: 3;
         }
     }
 
