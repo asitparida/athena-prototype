@@ -12,6 +12,9 @@
         display: flex;
         padding: 0 30px;
         border-bottom: 1px solid rgba(#fff, 0.05);
+        &.compressed {
+            padding: 0 15px;
+        }
 
         ul {
             &.tabs-titles {
@@ -25,7 +28,7 @@
                 margin: 0;
 
                 &.compressed {
-                    padding: 0 15px;
+                    padding: 0;
 
                     li {
                         min-width: auto;

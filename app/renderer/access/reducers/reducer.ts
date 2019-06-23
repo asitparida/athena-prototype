@@ -70,14 +70,15 @@ export default (state: IState = InitialState, action: IAction) => {
         case TOGGLE_WORKSPACE_RTE: {
             const current = state.workspaceRTEShown;
             newState = Object.assign({}, state, {
-                workspaceRTEShown: !current
+                workspaceRTEShown: !current,
             });
             return newState;
         }
         case TOGGLE_WORKSHOP_IN_HEADER: {
             const current = state.workspaceInHeader;
             newState = Object.assign({}, state, {
-                workspaceInHeader: !current
+                workspaceInHeader: !current,
+                sideBarShown: false
             });
             return newState;
         }

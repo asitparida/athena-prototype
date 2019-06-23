@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 import * as AppActions from '../access/actions/appActions';
 import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observables/observables';
 import Header from '../components/header/header';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -71,7 +73,7 @@ class Main extends Component<any, any> {
         );
     }
 }
-export default connect(
+export default DragDropContext(HTML5Backend)(connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main);
+)(Main));

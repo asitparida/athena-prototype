@@ -18,7 +18,7 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string },
             <Route exact path='/' component={Workspace} />
             <Route exact path='/home' component={Home} />
             <Route exact path='/dump' component={DumpingGround} />
-            <Route exact path='/workspace' component={Workspace} />
+            <Route exact path='/workspace/:id' component={Workspace} />
             <Route component={() => <h1>204 No Content</h1>} />
           </Switch>
         </div>

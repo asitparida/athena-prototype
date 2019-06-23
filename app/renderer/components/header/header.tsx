@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
 import { WorkspaceList } from '../../constants/constants';
-import { Workspace } from '../../constants/types';
+import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -28,7 +28,7 @@ class Header extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            workspaces: WorkspaceList
+            workspaceList: WorkspaceList
         };
     }
     toggleSidebar() {
@@ -68,18 +68,7 @@ class Header extends React.Component<any, any> {
                 </div>
                 {
                     this.props.workspaceInHeader &&
-                    <div className='app-workspace-preview'>
-                        {
-                            this.state.workspaces.map((w: Workspace, i) => {
-                                const styles = {
-                                    backgroundImage: w.getImgUrl()
-                                };
-                                return <div key={i} className='workspace' style={styles}>
-                                    <label>{w.name}</label>
-                                </div>;
-                            })
-                        }
-                    </div>
+                    <WorkspacePreviewer workspaces={this.state.workspaceList}  />
                 }
                 <div className='app-actions right'>
                     {

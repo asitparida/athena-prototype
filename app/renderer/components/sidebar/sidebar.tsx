@@ -1,20 +1,25 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
+import { WorkspaceList } from '../../constants/constants';
+import { Workspace } from '../../constants/types';
 
-export default class SidebarComponent extends React.Component<{}, {}> {
+export default class SidebarComponent extends React.Component<{}, any> {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = {
+            workspaceList: WorkspaceList
+        };
     }
     render() {
+        const { workspaceList } = this.state;
         return <div className='sidebar-wrapper'>
             <ul className="workspace-list">
                 <li><NavLink to="/home">Home</NavLink></li>
                 <li><NavLink to="/dump">All Clips</NavLink></li>
-                <li><NavLink to='/workspace'>Workspace #1</NavLink></li>
-                <li><NavLink to='/w2'>Workspace #2</NavLink></li>
-                <li><NavLink to='/w3'>Workspace</NavLink></li>
+                {
+                    (workspaceList as Workspace[]).map(((space, i) => <li key={i}><NavLink to={space.link}>{space.name}</NavLink></li>)
+                }
             </ul>
             <div className="user-space">
                 <div className='user-space-content'>

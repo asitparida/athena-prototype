@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ContextMenu } from '../context-menu/context-menu';
 import { ContentType } from '../../constants/types';
+import ContentWrapper from './content-wrapper';
 
-export class Content extends React.Component<{ type?: ContentType, data: any }, {}> {
+export class Content extends React.Component<any, {}> {
+    id = Math.floor(Math.random() * 10e8);
     render() {
         let label = '';
         switch (this.props.type) {
@@ -14,12 +16,9 @@ export class Content extends React.Component<{ type?: ContentType, data: any }, 
         }
         return <div className='content-wrapper'>
             <ContextMenu>
-                <div className='content'>
-                    <h1>Content</h1>
-                    <h2>...</h2>
-                    <label className='content-label'>{label}</label>
-                </div>
+                <ContentWrapper id={this.id} label={label} />
             </ContextMenu>
         </div>
     }
 }
+export default Content;

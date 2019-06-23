@@ -1152,6 +1152,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@types/asap@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/asap/-/asap-2.0.0.tgz#d529e9608c83499a62ae08c871c5e62271aa2963"
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -1237,12 +1241,16 @@
   dependencies:
     "@types/express" "*"
 
-"@types/hoist-non-react-statics@^3.3.0":
+"@types/hoist-non-react-statics@^3.3.0", "@types/hoist-non-react-statics@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   dependencies:
     "@types/react" "*"
     hoist-non-react-statics "^3.3.0"
+
+"@types/invariant@^2.2.29":
+  version "2.2.29"
+  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.29.tgz#aa845204cd0a289f65d47e0de63a6a815e30cc66"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
@@ -1371,6 +1379,10 @@
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
+
+"@types/shallowequal@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/shallowequal/-/shallowequal-1.1.1.tgz#aad262bb3f2b1257d94c71d545268d592575c9b1"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -1608,7 +1620,7 @@ arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-asap@~2.0.3:
+asap@^2.0.6, asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
@@ -3008,6 +3020,16 @@ dmg-builder@6.6.4:
     js-yaml "^3.13.1"
     parse-color "^1.0.0"
     sanitize-filename "^1.6.1"
+
+dnd-core@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-8.0.3.tgz#96fdaae0f53ca86996ed50075000ebd758169682"
+  dependencies:
+    "@types/asap" "^2.0.0"
+    "@types/invariant" "^2.2.29"
+    asap "^2.0.6"
+    invariant "^2.2.4"
+    redux "^4.0.1"
 
 dns-prefetch-control@0.1.0:
   version "0.1.0"
@@ -6692,6 +6714,22 @@ react-contextmenu@2.11.0:
     classnames "^2.2.5"
     object-assign "^4.1.0"
 
+react-dnd-html5-backend@8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-8.0.3.tgz#8f030444c7b79fd022f4ebd23ab5d20ed6ad248e"
+  dependencies:
+    dnd-core "^8.0.3"
+
+react-dnd@8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-8.0.3.tgz#6226e1a6476bc7f9593b98def86fdab7d45100f8"
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.1"
+    "@types/shallowequal" "^1.1.1"
+    dnd-core "^8.0.3"
+    hoist-non-react-statics "^3.3.0"
+    shallowequal "^1.1.0"
+
 react-dom@16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
@@ -6884,7 +6922,7 @@ redux-thunk@*, redux-thunk@2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
-redux@*, redux@4.0.1, redux@^4.0.0:
+redux@*, redux@4.0.1, redux@^4.0.0, redux@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
   dependencies:
@@ -7384,6 +7422,10 @@ sha.js@^2.4.0, sha.js@^2.4.8:
 shallow-copy@~0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
+
+shallowequal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
 
 shebang-command@^1.2.0:
   version "1.2.0"

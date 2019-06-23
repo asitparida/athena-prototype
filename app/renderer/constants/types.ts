@@ -12,9 +12,11 @@ export class Workspace implements IWorkspace {
     id?: string;
     name: string;
     image: any;
+    link: string;
     constructor(name, image) {
         this.name = name;
         this.image = image;
+        this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
     }
     getImgUrl() {
         return `url(${this.image})`;

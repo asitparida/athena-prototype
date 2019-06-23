@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ContentList } from './content-list';
-import { ContentType, PhotosList } from '../../constants/constants';
-import { IContentListItem } from '../types';
+import { PhotosList } from '../../constants/constants';
+import { ContentType, IContentListItem } from '../../constants/types';
 
 interface IProps {
     type: ContentType
