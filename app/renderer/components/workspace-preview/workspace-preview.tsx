@@ -1,24 +1,41 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { Workspace } from '../../constants/types';
 import { DropTarget } from 'react-dnd';
+import * as AppActions from '../../access/actions/appActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import store from '../../access/store/configureStore';
+import { IToastItem, ToastType } from '../../constants/types';
+
+const mapStateToProps = ({ reducers }) => {
+    return {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(AppActions, dispatch)
+    };
+}
 const Types = {
     ITEM: 'toy'
 }
 
 const itemSource = {
     drop: (props) => {
-        console.log('drop');
-        console.log(props);
+        const toast: IToastItem = {
+            id: `${Math.floor(Math.random() * 10e8)}`,
+            message: `The clip has been pushed to the ${props.data.name}`,
+            type: ToastType.Success
+        };
+        store.dispatch(AppActions.showToastNotification(toast))
     },
     hover: (props) => {
         // console.log(props);
     }
 }
 
-function collect(connect, monitor) {
+function collect(connector, monitor) {
     return {
-        connectDropTarget: connect.dropTarget(),
+        connectDropTarget: connector.dropTarget(),
         isOver: monitor.isOver()
     }
 }
@@ -38,4 +55,4 @@ class WorkspacePreview extends React.Component<any, any> {
     }
 }
 
-export default DropTarget(Types.ITEM, itemSource, collect)(WorkspacePreview);
+export default DropTarget(Types.ITEM, itemSource, collect)(connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));

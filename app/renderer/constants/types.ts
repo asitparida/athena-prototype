@@ -14,6 +14,7 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     constructor(name, image) {
+        console.log(image);
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
@@ -53,4 +54,16 @@ export interface IDumpingGroundTab {
 export interface IContentListItem {
     title: string;
     items: any[];
+}
+
+export enum ToastType {
+    Success,
+    Failure,
+    Warning
+}
+
+export interface IToastItem {
+    id?: string;
+    message: string;
+    type: ToastType;
 }

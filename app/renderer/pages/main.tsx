@@ -9,6 +9,7 @@ import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observab
 import Header from '../components/header/header';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import Toasts from '../components/toasts/toast';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -69,6 +70,7 @@ class Main extends Component<any, any> {
                 <div className='app-content-bottom'>
                     <RouterWrapper sideBarCollpased={sideBarCollpased} />
                 </div>
+                <Toasts />
             </div>
         );
     }

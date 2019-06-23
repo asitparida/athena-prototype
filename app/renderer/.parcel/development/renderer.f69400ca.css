@@ -25,7 +25,6 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(0, 0, 0, 0.8);
 }
 body #root {
   display: flex;
@@ -802,6 +801,72 @@ body #root .app-content .app-content-area input {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+}
+.toasts-wrapper {
+  position: fixed;
+  bottom: 48px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+}
+.toasts-wrapper .toast-item-wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: toast-appear 0.3s ease-out 0s forwards;
+  min-height: 60px;
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Success] {
+  background-color: rgba(221, 247, 232, 0.8);
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Success] label {
+  color: #19703e;
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Failure] {
+  background-color: rgba(253, 243, 242, 0.8);
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Failure] label {
+  color: #bf2718;
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Warning] {
+  background-color: rgba(248, 226, 135, 0.8);
+}
+.toasts-wrapper .toast-item-wrapper[data-type=Warning] label {
+  color: black;
+}
+.toasts-wrapper .toast-item-wrapper label {
+  display: block;
+  padding: 0px 60px;
+  color: #000;
+}
+.toasts-wrapper .toast-item-wrapper .toast-item-close {
+  width: 60px;
+  opacity: 0.3;
+  color: #000;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+.toasts-wrapper .toast-item-wrapper .toast-item-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+.toasts-wrapper .toast-item-wrapper .toast-item-close i {
+  line-height: 60px;
+}
+
+@keyframes toast-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9, 0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1, 1);
+  }
 }
 
 /*# sourceMappingURL=/renderer.f69400ca.css.map */

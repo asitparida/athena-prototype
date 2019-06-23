@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import { IToastItem } from '../../constants/types';
 
 function SampleFetchUrl() {
     const remote = (window as any).remote;
@@ -72,4 +73,12 @@ export const showWorkpsaceActionInHeader = () => ({
 
 export const hideWorkpsaceActionInHeader = () => ({
     type: types.HIDE_WORKSHOP_ACTION_IN_HEADER, payload: {}
+})
+
+export const showToastNotification = (message: IToastItem) => ({
+    type: types.SHOW_TOAST_NOTIFICATION, payload: message
+})
+
+export const removeToastNotification = (toastId: string) => ({
+    type: types.REMOVE_TOAST_NOTIFICATION, payload: toastId
 })

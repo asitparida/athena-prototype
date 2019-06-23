@@ -1,3 +1,5 @@
+import { IToastItem } from "../../constants/types";
+
 export interface IState {
     sideBarShown: boolean;
     workspaceInHeader: boolean;
@@ -6,6 +8,7 @@ export interface IState {
     workspaceDumpBarActionShown: boolean;
     workspaceRTEShown: boolean;
     workspaceRTEActionShown: boolean;
+    toasts: IToastItem[];
 }
 export interface IAction {
     type: string;
