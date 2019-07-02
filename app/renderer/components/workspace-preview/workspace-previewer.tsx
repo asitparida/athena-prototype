@@ -10,7 +10,6 @@ class WorkspacePreviewer extends React.Component<any, any> {
             <div className='app-workspace-preview'>
                 {
                     this.props.workspaces.map((w: Workspace, i) => {
-                        console.log('here', w);
                         return <WorkspacePreview key={i} data={w} />
                     })
                 }

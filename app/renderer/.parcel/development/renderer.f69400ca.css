@@ -81,13 +81,13 @@ body #root .app-content .app-content-bottom {
   background: rgba(0, 0, 0, 0.1);
   display: flex;
   height: calc(100% - 60vh);
+  position: relative;
 }
 body #root .app-content .app-content-sidebar {
-  z-index: 1;
+  z-index: 2;
   flex: initial;
   height: 100%;
   display: flex;
-  position: relative;
 }
 body #root .app-content .app-content-sidebar.left {
   width: 300px;
@@ -112,6 +112,8 @@ body #root .app-content .app-content-area {
   flex: 1;
   order: 2;
   overflow: hidden;
+  z-index: 1;
+  position: relative;
 }
 body #root .app-content .app-content-area input {
   background: rgba(255, 255, 255, 0.05);
@@ -208,9 +210,11 @@ body #root .app-content .app-content-area input {
   margin: 0;
 }
 .tabs-wrapper .tabs-header ul.tabs-titles.compressed {
+  width: 100%;
   padding: 0;
 }
 .tabs-wrapper .tabs-header ul.tabs-titles.compressed li {
+  flex: 1;
   min-width: auto;
   font-size: small;
 }
@@ -290,7 +294,7 @@ body #root .app-content .app-content-area input {
   height: 400px;
 }
 .tabs-wrapper .tab-wrapper-content.compressed {
-  padding: 15px;
+  padding: 15px 30px;
 }
 .dropdown-wrapper {
   position: relative;
@@ -361,7 +365,7 @@ body #root .app-content .app-content-area input {
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 0 -5px 60px -5px;
+  margin: 0 0 60px 0px;
 }
 .tabs-holder .content-list-wrapper h1 {
   font-weight: 100;
@@ -375,17 +379,19 @@ body #root .app-content .app-content-area input {
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 0 -5px;
+  margin: 0;
 }
 .tabs-holder.is-sticky .content-wrapper {
   width: 100%;
   min-width: 100%;
   height: 120px;
+  padding: 0;
 }
 .tabs-holder .content-wrapper {
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   min-width: 200px;
   height: 200px;
+  margin-bottom: 10px;
 }
 .tabs-holder .content-wrapper .content {
   background-color: rgba(255, 255, 255, 0.1);
@@ -595,6 +601,9 @@ body #root .app-content .app-content-area input {
   flex: 1;
   order: 1;
   position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
 .workspace-wrapper .working-area:before {
   content: "";
@@ -607,6 +616,8 @@ body #root .app-content .app-content-area input {
   background-size: 5px 5px;
 }
 .workspace-wrapper .rte-area {
+  z-index: 2;
+  height: 100%;
   width: 500px;
   flex: initial;
   order: 2;
@@ -666,6 +677,8 @@ body #root .app-content .app-content-area input {
   flex: initial;
   order: 3;
   animation: slide-in-from-right 0.5s ease-out 0s;
+  z-index: 2;
+  height: 100%;
 }
 .resizer-wrapper {
   width: 100%;
@@ -673,18 +686,18 @@ body #root .app-content .app-content-area input {
   position: relative;
 }
 .resizer-wrapper .resizer-handler {
-  background: rgba(0, 0, 0, 0.33);
+  background: rgba(86, 86, 86, 0.33);
   text-align: center;
   height: 36px;
   width: 18px;
   cursor: grab;
   position: absolute;
   top: 50%;
-  left: -18px;
+  left: -1px;
   z-index: 2;
   margin-top: -18px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .resizer-wrapper .resizer-handler i {
   line-height: 36px;
@@ -695,6 +708,109 @@ body #root .app-content .app-content-area input {
 }
 .resizer-wrapper .resizer-handler:hover i, .resizer-wrapper .resizer-handler:focus i, .resizer-wrapper .resizer-handler:active i {
   opacity: 0.8;
+}
+.board-group-outer {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  z-index: 2;
+  overflow: auto;
+  position: relative;
+}
+.board-group-outer .board-group-holder {
+  width: 3000px;
+  height: 3000px;
+  position: relative;
+}
+
+.workspace-actions {
+  position: absolute;
+  bottom: 48px;
+  right: 48px;
+  z-index: 3;
+}
+.workspace-actions .workspace-action {
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 1px 0;
+  cursor: pointer;
+}
+.workspace-actions .workspace-action i {
+  line-height: 48px;
+  opacity: 0.33;
+}
+.workspace-actions .workspace-action:hover i {
+  opacity: 1;
+}
+.group-wrapper {
+  display: inline-block;
+  position: absolute;
+}
+.group-content {
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+.group-content.entity-over label {
+  color: #000;
+}
+.group-content.entity-over:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
+}
+.board-content-wrapper {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.board-content-wrapper:last-child {
+  margin: 0;
+}
+.board-content-wrapper .board-content {
+  position: relative;
+  z-index: 1;
+}
+.board-content-wrapper:hover .board-content-resizer {
+  opacity: 1;
+}
+.board-content-wrapper .board-content-resizer {
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  opacity: 0;
+  color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.3s ease-out 0s;
+  cursor: pointer;
+}
+.board-content-wrapper .board-content-resizer i {
+  transform-origin: center;
+  transform: rotate(45deg);
+}
+.board-content {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.board-content h1 {
+  font-size: small;
 }
 .app-actions {
   height: 100%;
@@ -730,6 +846,56 @@ body #root .app-content .app-content-area input {
 }
 .app-actions .action:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+.app-actions ul.topic-headers {
+  list-style: none;
+  white-space: nowrap;
+  display: flex;
+  flex-flow: row;
+  margin: 0px 0 6px 0;
+  padding: 0 0 0 20px;
+}
+.app-actions ul.topic-headers li {
+  padding: 0 20px;
+  margin-right: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: small;
+  border-right: 1px solid rgba(255, 255, 255, 0);
+}
+.app-actions ul.topic-headers li.active label {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+.app-actions ul.topic-headers li:hover label {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}
+.app-actions ul.topic-headers li label {
+  display: block;
+  min-width: 100px;
+  line-height: 36px;
+  margin: 0;
+  padding: 0 20px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.2s ease 0s;
+}
+.app-actions ul.topic-headers li:not(:first-child) {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.app-actions ul.topic-headers li:last-child {
+  width: 48px;
+  text-align: center;
+}
+.app-actions ul.topic-headers li:last-child:hover i {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+.app-actions ul.topic-headers li:last-child i {
+  width: 36px;
+  font-size: medium;
+  line-height: 36px;
+  cursor: pointer;
 }
 
 .app-sidebar-toggle {
@@ -808,8 +974,10 @@ body #root .app-content .app-content-area input {
   display: flex;
   justify-content: flex-end;
   z-index: 999;
+  flex-direction: column;
 }
 .toasts-wrapper .toast-item-wrapper {
+  margin: 10px 0;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
   display: flex;

@@ -3,18 +3,18 @@
     height: 100%;
     position: relative;
     .resizer-handler {
-        background: rgba(#000, 0.33);
+        background: rgba(#565656, 0.33);
         text-align: center;
         height: 36px;
         width: 18px;
         cursor: grab;
         position: absolute;
         top: 50%;
-        left: -18px;
+        left:-1px;
         z-index: 2;
         margin-top: -18px;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
         i {
             line-height: 36px;
             opacity: 0.50;

@@ -7,6 +7,7 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$ } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
+import Board from './board/board';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -24,11 +25,15 @@ const mapDispatchToProps = (dispatch) => {
 class Workspace extends React.Component<any, any> {
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 500, dumpGroundWidth : 300 };
+        this.state = { rteWidth: 500, dumpGroundWidth : 300, workspaceId: null };
     }
     componentDidMount() {
         ShowDumpBarAction$.next(true);
         ShowRTEAction$.next(true);
+        const { id } = this.props.match.params
+        this.setState({
+            workspaceId: id
+        });
     }
     componentWillUnmount() {
         ShowDumpBarAction$.next(false);
@@ -54,7 +59,10 @@ class Workspace extends React.Component<any, any> {
         return (
             <div className="workspace-wrapper">
                 <div className="working-area">
-                    {this.props.children}
+                    {
+                        this.state.workspaceId &&
+                        <Board id={this.state.workspaceId} />
+                    }
                 </div>
                 {
                     this.props.workspaceRTEShown &&

@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    // background-color: rgba(#000, 0.80);
+    // background-color: rgba(#000, 1);
 
     #root {
         display: flex;
@@ -91,14 +91,18 @@ body {
                 background: rgba(#000, 0.10);
                 display: flex;
                 height: calc(100% - 60vh);
+                position: relative;
             }
 
             .app-content-sidebar {
-                z-index: 1;
+                z-index: 2;
                 flex: initial;
                 height: 100%;
                 display: flex;
-                position: relative;
+                // position: absolute;
+                // left: 0;
+                // top: 0;
+                // background: rgba(#fff, 0);
 
                 &.left {
                     width: 300px;
@@ -128,6 +132,8 @@ body {
                 flex: 1;
                 order: 2;
                 overflow: hidden;
+                z-index: 1;
+                position: relative;
 
                 input {
                     background: rgba(#fff, 0.05);

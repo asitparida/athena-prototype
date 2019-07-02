@@ -7,6 +7,7 @@ import { ShowWorkspaceAction$ } from '../../access/observables/observables';
 import { ContentType, IDumpingGroundTab } from '../../constants/types';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
+import { DumpingGrounCollectionTabs, WorkspaceCollectionTabs } from '../../constants/constants';
 
 interface IDumpingGroundState {
     tabs: IDumpingGroundTab[];
@@ -25,15 +26,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
     constructor(props) {
         super(props);
         this.state = {
-            tabs: [
-                // tslint:disable:max-line-length
-                { id: 'all', name: 'All'},
-                { id: 'photos', name: 'Photos', type: ContentType.Photo },
-                { id: 'videos', name: 'Videos', type: ContentType.Video },
-                { id: 'articles', name: 'Acticles', type: ContentType.Article  },
-                { id: 'links', name: 'Links', type: ContentType.Link  },
-                { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia  },
-            ],
+            tabs: [],
             categories: [
                 { id: 'unclassified', name: 'Unclassified' },
                 { id: 'classified', name: 'Classified' },
@@ -45,13 +38,13 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
     }
     componentDidMount() {
         if (this.props.workspace) {
-            const tabs = this.state.tabs;
-            const tab = tabs[1];
-            tab.name = 'Current Worskpace';
             this.setState({
-                tabs: [tabs[0], tab]
+                tabs: WorkspaceCollectionTabs
             })
         } else {
+            this.setState({
+                tabs: DumpingGrounCollectionTabs
+            });
             ShowWorkspaceAction$.next(true);
         }
     }

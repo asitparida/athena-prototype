@@ -39,6 +39,62 @@
             background-color: rgba(#000, 0.05);
         }
     }
+    ul.topic-headers {
+        list-style: none;
+        white-space: nowrap;
+        display: flex;
+        flex-flow: row;
+        margin: 0px 0 6px 0;
+        padding: 0 0 0 20px;
+        li {
+            padding: 0 20px;
+            margin-right: 0;
+            color: rgba(#fff, 0.50);
+            font-size: small;
+            border-right: 1px solid rgba(#fff, 0.00);
+            &.active {
+                label {
+                    background-color: rgba(#fff, 0.1);
+                    border-radius: 20px;
+                }
+            }
+            &:hover {
+                 label {
+                    background-color: rgba(#fff, 0.05);
+                    border-radius: 20px;
+                 }
+            }
+            label {
+                display: block;
+                min-width: 100px;
+                line-height: 36px;
+                margin: 0;
+                padding: 0 20px;
+                cursor: pointer;
+                background-color: rgba(#fff, 0.0);
+                transition: background-color 0.2s ease 0s;
+            }
+            &:not(:first-child){
+                border-left: 1px solid rgba(#fff, 0.10);
+            }
+            &:last-child {
+                width: 48px;
+                text-align: center;
+                &:hover {
+                    i {
+                        background-color: rgba(#fff, 0.05);
+                        border-radius: 50%;
+                    }
+                }
+                i {
+                    width: 36px;
+                    font-size: medium;
+                    line-height: 36px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
 
 .app-sidebar-toggle {

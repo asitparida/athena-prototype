@@ -28,9 +28,11 @@
                 margin: 0;
 
                 &.compressed {
+                    width: 100%;
                     padding: 0;
 
                     li {
+                        flex: 1;
                         min-width: auto;
                         font-size: small;
                     }
@@ -133,7 +135,7 @@
         }
 
         &.compressed {
-            padding: 15px;
+            padding: 15px 30px;
         }
 
     }

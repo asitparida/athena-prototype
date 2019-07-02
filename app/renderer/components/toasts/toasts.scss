@@ -4,7 +4,9 @@
     display: flex;
     justify-content: flex-end;
     z-index: 999;
+    flex-direction: column;
     .toast-item-wrapper {
+        margin: 10px 0;
         background-color: rgba($color: #fff, $alpha: 0.80);
         border-radius: 4px;
         display: flex;

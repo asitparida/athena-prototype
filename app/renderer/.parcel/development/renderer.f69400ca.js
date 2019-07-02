@@ -32580,7 +32580,7 @@ function (_React$Component) {
       var _this2 = this;
 
       var tabs = this.props.children;
-      var activeTab = tabs[this.state.activeTabIndex].props.children;
+      var activeTab = tabs[this.state.activeTabIndex] ? tabs[this.state.activeTabIndex].props.children : null;
       return React.createElement("div", {
         className: "tabs-wrapper"
       }, React.createElement("div", {
@@ -32860,7 +32860,6 @@ function () {
   function Workspace(name, image) {
     _classCallCheck(this, Workspace);
 
-    console.log(image);
     this.name = name;
     this.image = image;
     this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
@@ -32877,6 +32876,10 @@ function () {
 }();
 
 exports.Workspace = Workspace;
+exports.DragAndDropTypes = {
+  DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
+  BOARD_ITEM: 'BOARD_ITEM'
+};
 var ContentType;
 
 (function (ContentType) {
@@ -37132,9 +37135,8 @@ var React = __importStar(require("react"));
 
 var react_dnd_1 = require("react-dnd");
 
-var Types = {
-  ITEM: 'toy'
-};
+var types_1 = require("../../constants/types");
+
 var itemSource = {
   beginDrag: function beginDrag(props) {
     /* code here */
@@ -37186,8 +37188,8 @@ function (_React$Component) {
   return ContentWrapper;
 }(React.Component);
 
-exports.default = react_dnd_1.DragSource(Types.ITEM, itemSource, collect)(ContentWrapper);
-},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js"}],"components/contents/content.tsx":[function(require,module,exports) {
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(ContentWrapper);
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts"}],"components/contents/content.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -37408,6 +37410,9 @@ var church_brew_jpg_1 = __importDefault(require("../assets/church_brew.jpg"));
 
 var duquesne_incline_jpg_1 = __importDefault(require("../assets/duquesne_incline.jpg"));
 
+exports.ItemWidth = 200;
+exports.ItemHeight = 150;
+exports.GroupBufffer = 120;
 exports.PhotosList = [{
   id: "1006",
   author: "Vladimir Kudinov",
@@ -37496,6 +37501,112 @@ exports.AllContentList = [{
   type: types_1.ContentType.Video
 }];
 exports.WorkspaceList = [new types_1.Workspace('Workspace #1', carnegie_museum_art_jpg_1.default), new types_1.Workspace('Workspace #2', church_brew_jpg_1.default), new types_1.Workspace('Workspace #3', duquesne_incline_jpg_1.default), new types_1.Workspace('Workspace #4', carnegie_museum_art_jpg_1.default)];
+exports.WorkspaceCollectionTabs = [{
+  id: 'all',
+  name: 'All'
+}, {
+  id: 'photos',
+  name: 'Worskpace',
+  type: types_1.ContentType.Photo
+}, {
+  id: 'videos',
+  name: 'Board',
+  type: types_1.ContentType.Video
+}];
+exports.DumpingGrounCollectionTabs = [{
+  id: 'all',
+  name: 'All'
+}, {
+  id: 'photos',
+  name: 'Photos',
+  type: types_1.ContentType.Photo
+}, {
+  id: 'videos',
+  name: 'Videos',
+  type: types_1.ContentType.Video
+}, {
+  id: 'articles',
+  name: 'Acticles',
+  type: types_1.ContentType.Article
+}, {
+  id: 'links',
+  name: 'Links',
+  type: types_1.ContentType.Link
+}, {
+  id: 'social-media',
+  name: 'Social Media',
+  type: types_1.ContentType.SocialMedia
+}];
+exports.Topiclist = [{
+  id: 1,
+  name: 'Topic #1',
+  active: true
+}, {
+  id: 2,
+  name: 'Topic #2',
+  active: false
+}, {
+  id: 3,
+  name: 'Topic #3',
+  active: false
+}, {
+  id: 4,
+  name: 'Topic #4',
+  active: false
+}];
+exports.BoardGroups = [{
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}, {
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  props: {
+    top: 0,
+    left: 0
+  },
+  annotationData: []
+}];
+exports.BoardGroups = exports.BoardGroups.filter(function (bg, i) {
+  return i < 3;
+});
 },{"./types":"constants/types.ts","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg"}],"components/contents/content-collection.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -45189,7 +45300,7 @@ var content_collection_1 = require("../contents/content-collection");
 
 var observables_1 = require("../../access/observables/observables");
 
-var types_1 = require("../../constants/types");
+var constants_1 = require("../../constants/constants");
 
 var DumpingGround =
 /*#__PURE__*/
@@ -45204,31 +45315,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DumpingGround).call(this, props));
     _this.isInWorkspace = false;
     _this.state = {
-      tabs: [// tslint:disable:max-line-length
-      {
-        id: 'all',
-        name: 'All'
-      }, {
-        id: 'photos',
-        name: 'Photos',
-        type: types_1.ContentType.Photo
-      }, {
-        id: 'videos',
-        name: 'Videos',
-        type: types_1.ContentType.Video
-      }, {
-        id: 'articles',
-        name: 'Acticles',
-        type: types_1.ContentType.Article
-      }, {
-        id: 'links',
-        name: 'Links',
-        type: types_1.ContentType.Link
-      }, {
-        id: 'social-media',
-        name: 'Social Media',
-        type: types_1.ContentType.SocialMedia
-      }],
+      tabs: [],
       categories: [{
         id: 'unclassified',
         name: 'Unclassified'
@@ -45253,13 +45340,13 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.workspace) {
-        var tabs = this.state.tabs;
-        var tab = tabs[1];
-        tab.name = 'Current Worskpace';
         this.setState({
-          tabs: [tabs[0], tab]
+          tabs: constants_1.WorkspaceCollectionTabs
         });
       } else {
+        this.setState({
+          tabs: constants_1.DumpingGrounCollectionTabs
+        });
         observables_1.ShowWorkspaceAction$.next(true);
       }
     }
@@ -45294,7 +45381,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = DumpingGround;
-},{"react":"../../node_modules/react/index.js","../tabs/tabs":"components/tabs/tabs.tsx","../tabs/Tab":"components/tabs/Tab.tsx","./dumping-ground.scss":"components/dumping-ground/dumping-ground.scss","../contents/content-collection":"components/contents/content-collection.tsx","../../access/observables/observables":"access/observables/observables.ts","../../constants/types":"constants/types.ts"}],"components/home/home.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../tabs/tabs":"components/tabs/tabs.tsx","../tabs/Tab":"components/tabs/Tab.tsx","./dumping-ground.scss":"components/dumping-ground/dumping-ground.scss","../contents/content-collection":"components/contents/content-collection.tsx","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts"}],"components/home/home.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -48637,7 +48724,801 @@ function (_React$Component) {
 }(React.Component);
 
 exports.Resizer = Resizer;
-},{"react":"../../node_modules/react/index.js","./resizer.scss":"components/resizer/resizer.scss","react-hammerjs":"../../node_modules/react-hammerjs/dist/react-hammerjs.es.js"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./resizer.scss":"components/resizer/resizer.scss","react-hammerjs":"../../node_modules/react-hammerjs/dist/react-hammerjs.es.js"}],"components/workspace/board/board.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/group-wrapper/group-wrapper.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/group-content/group-content.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/board-content-wrapper/board-content-wrapper.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/board-content/board-content.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/board-content/board-content.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./board-content.scss");
+
+var react_dnd_1 = require("react-dnd");
+
+var types_1 = require("../../../constants/types");
+
+var itemSource = {
+  beginDrag: function beginDrag(props) {
+    /* code here */
+    // console.log('beginDrag', props);
+    return {
+      itemLabel: props.id
+    };
+  },
+  endDrag: function endDrag(props) {
+    /* code here */
+    // console.log(this.props);
+    // console.log('endDrag');
+  },
+  canDrag: function canDrag(props, monitor) {
+    return !props.isBeingResized;
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
+
+var BoardContent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BoardContent, _React$Component);
+
+  function BoardContent(props) {
+    var _this;
+
+    _classCallCheck(this, BoardContent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BoardContent).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(BoardContent, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          isDragging = _this$props.isDragging,
+          connectDragSource = _this$props.connectDragSource,
+          src = _this$props.src;
+      return connectDragSource(React.createElement("div", {
+        className: "board-content"
+      }, React.createElement("h1", null, "Board Content")));
+    }
+  }]);
+
+  return BoardContent;
+}(React.Component);
+
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(BoardContent);
+},{"react":"../../node_modules/react/index.js","./board-content.scss":"components/workspace/board-content/board-content.scss","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../../constants/types":"constants/types.ts"}],"components/workspace/board-content-wrapper/board-content-wrapper.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./board-content-wrapper.scss");
+
+var board_content_1 = __importDefault(require("../board-content/board-content"));
+
+var BoardContentWrapper =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BoardContentWrapper, _React$Component);
+
+  function BoardContentWrapper(props) {
+    var _this;
+
+    _classCallCheck(this, BoardContentWrapper);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BoardContentWrapper).call(this, props)); // tslint:disable:member-ordering
+
+    _this.onPointerDownBind = _this.onPointerDown.bind(_assertThisInitialized(_this));
+    _this.onPointerMoveBind = _this.onPointerMove.bind(_assertThisInitialized(_this));
+    _this.onPointerUpBind = _this.onPointerUp.bind(_assertThisInitialized(_this));
+    _this.ref = React.createRef();
+    _this.state = {
+      isBeingResized: false
+    };
+    return _this;
+  }
+
+  _createClass(BoardContentWrapper, [{
+    key: "onPointerMove",
+    value: function onPointerMove(e) {
+      var _this2 = this;
+
+      window.requestAnimationFrame(function () {
+        _this2.onChangeSize(e);
+      });
+    }
+  }, {
+    key: "onChangeSize",
+    value: function onChangeSize(e) {
+      var clientX = e.clientX,
+          clientY = e.clientY;
+      var changeX = clientX - this.pointerPositionStart.x;
+      var changeY = clientY - this.pointerPositionStart.y;
+      var newWidth = this.originalPointerProps.width + changeX;
+      var newHeight = this.originalPointerProps.height + changeY;
+      newWidth = newWidth < 100 ? 100 : newWidth;
+      newHeight = newHeight < 100 ? 100 : newHeight;
+      this.props.onPropsChange({
+        width: newWidth,
+        height: newHeight
+      });
+      this.lastPositionProps = {
+        width: newWidth,
+        height: newHeight
+      };
+    }
+  }, {
+    key: "onPointerDown",
+    value: function onPointerDown(e) {
+      this.pointerPositionStart = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      document.removeEventListener('pointerup', this.onPointerUpBind);
+      document.removeEventListener('pointermove', this.onPointerMoveBind);
+      document.addEventListener('pointerup', this.onPointerUpBind);
+      document.addEventListener('pointermove', this.onPointerMoveBind);
+      this.setState({
+        isBeingResized: true
+      });
+    }
+  }, {
+    key: "onPointerUp",
+    value: function onPointerUp() {
+      this.originalPointerProps = Object.assign({}, this.lastPositionProps);
+      document.removeEventListener('pointermove', this.onPointerMoveBind);
+      document.removeEventListener('pointerup', this.onPointerUpBind);
+      this.setState({
+        isBeingResized: false
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('pointermove', this.onPointerMoveBind);
+      document.removeEventListener('pointerup', this.onPointerUpBind);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.originalPointerProps = Object.assign({}, this.props.data.props);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = this.props.data.props;
+      var styles = {
+        width: "".concat(props.width, "px"),
+        height: "".concat(props.height, "px")
+      };
+      return React.createElement("div", {
+        className: "board-content-wrapper",
+        style: styles,
+        ref: this.ref
+      }, React.createElement(board_content_1.default, {
+        isBeingResized: this.state.isBeingResized
+      }), React.createElement("div", {
+        className: "board-content-resizer",
+        onPointerDown: this.onPointerDown.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "navigate_next")));
+    }
+  }]);
+
+  return BoardContentWrapper;
+}(React.Component);
+
+exports.BoardContentWrapper = BoardContentWrapper;
+},{"react":"../../node_modules/react/index.js","./board-content-wrapper.scss":"components/workspace/board-content-wrapper/board-content-wrapper.scss","../board-content/board-content":"components/workspace/board-content/board-content.tsx"}],"components/workspace/group-content/group-content.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./group-content.scss");
+
+var board_content_wrapper_1 = require("../board-content-wrapper/board-content-wrapper");
+
+var types_1 = require("../../../constants/types");
+
+var constants_1 = require("../../../constants/constants");
+
+var redux_1 = require("redux");
+
+var configureStore_1 = __importDefault(require("../../../access/store/configureStore"));
+
+var AppActions = __importStar(require("../../../access/actions/appActions"));
+
+var react_dnd_1 = require("react-dnd");
+
+var react_redux_1 = require("react-redux");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var itemSource = {
+  drop: function drop(props) {
+    var toast = {
+      id: "".concat(Math.floor(Math.random() * 10e8)),
+      message: "The clip has been pushed to the Group",
+      type: types_1.ToastType.Success
+    };
+    configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
+  },
+  hover: function hover(props) {// console.log(props);
+  }
+};
+
+function collect(connector, monitor) {
+  return {
+    connectDropTarget: connector.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+;
+
+var GroupContent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GroupContent, _React$Component);
+
+  function GroupContent(props) {
+    var _this;
+
+    _classCallCheck(this, GroupContent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(GroupContent).call(this, props));
+    _this.state = {
+      items: []
+    };
+    return _this;
+  }
+
+  _createClass(GroupContent, [{
+    key: "boardPropsChanged",
+    value: function boardPropsChanged(i, data) {
+      var rowItems = [].concat(this.state.items);
+      rowItems[i].props.width = data.width + 20;
+      rowItems[i].props.height = data.height;
+      this.setState({
+        items: rowItems
+      });
+      this.calculateGroupWidth(rowItems);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var rowItems = [{
+        id: "".concat(Math.floor(Math.random() * 10e8)),
+        type: types_1.ContentType.Article,
+        props: {
+          height: constants_1.ItemHeight,
+          width: constants_1.ItemWidth
+        }
+      }, {
+        id: "".concat(Math.floor(Math.random() * 10e8)),
+        type: types_1.ContentType.Link,
+        props: {
+          height: constants_1.ItemHeight,
+          width: constants_1.ItemWidth
+        }
+      }, {
+        id: "".concat(Math.floor(Math.random() * 10e8)),
+        type: types_1.ContentType.Photo,
+        props: {
+          height: constants_1.ItemHeight,
+          width: constants_1.ItemWidth
+        }
+      }, {
+        id: "".concat(Math.floor(Math.random() * 10e8)),
+        type: types_1.ContentType.SocialMedia,
+        props: {
+          height: constants_1.ItemHeight,
+          width: constants_1.ItemWidth
+        }
+      }, {
+        id: "".concat(Math.floor(Math.random() * 10e8)),
+        type: types_1.ContentType.Video,
+        props: {
+          height: constants_1.ItemHeight,
+          width: constants_1.ItemWidth
+        }
+      }];
+      this.setState({
+        items: rowItems.filter(function (item, i) {
+          return i < 3;
+        })
+      });
+      this.calculateGroupWidth(rowItems);
+    }
+  }, {
+    key: "calculateGroupWidth",
+    value: function calculateGroupWidth(items) {
+      var data = {
+        width: Math.max.apply(null, items.map(function (item) {
+          return item.props.width;
+        })),
+        height: items.reduce(function (curr, prev) {
+          return curr + prev.props.height;
+        }, 0)
+      };
+      this.props.onPropsChange(data);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          connectDropTarget = _this$props.connectDropTarget,
+          isOver = _this$props.isOver,
+          data = _this$props.data;
+      var items = this.state.items;
+      return connectDropTarget(React.createElement("div", {
+        className: "group-content ".concat(isOver ? 'entity-over' : '')
+      }, items.length > 0 && items.map(function (item, i) {
+        return React.createElement(board_content_wrapper_1.BoardContentWrapper, {
+          onPropsChange: _this2.boardPropsChanged.bind(_this2, i),
+          data: item,
+          key: i
+        });
+      })));
+    }
+  }]);
+
+  return GroupContent;
+}(React.Component);
+
+exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(GroupContent));
+},{"react":"../../node_modules/react/index.js","./group-content.scss":"components/workspace/group-content/group-content.scss","../board-content-wrapper/board-content-wrapper":"components/workspace/board-content-wrapper/board-content-wrapper.tsx","../../../constants/types":"constants/types.ts","../../../constants/constants":"constants/constants.ts","redux":"../../node_modules/redux/es/redux.js","../../../access/store/configureStore":"access/store/configureStore.ts","../../../access/actions/appActions":"access/actions/appActions.ts","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/workspace/group-wrapper/group-wrapper.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./group-wrapper.scss");
+
+var group_content_1 = __importDefault(require("../group-content/group-content"));
+
+var GroupWrapper =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GroupWrapper, _React$Component);
+
+  function GroupWrapper(props) {
+    _classCallCheck(this, GroupWrapper);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GroupWrapper).call(this, props));
+  }
+
+  _createClass(GroupWrapper, [{
+    key: "groupPropsChanged",
+    value: function groupPropsChanged(data) {
+      data.width = data.width + 30;
+      this.props.onPropsChange(data);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = this.props.data.props;
+      var _this$props = this.props,
+          _this$props$parentX = _this$props.parentX,
+          parentX = _this$props$parentX === void 0 ? 0 : _this$props$parentX,
+          _this$props$parentY = _this$props.parentY,
+          parentY = _this$props$parentY === void 0 ? 0 : _this$props$parentY;
+      var styles = {
+        top: "".concat(parentY + props.top, "px"),
+        left: "".concat(parentX + props.left, "px")
+      };
+      return React.createElement("div", {
+        className: "group-wrapper",
+        style: styles
+      }, React.createElement(group_content_1.default, {
+        onPropsChange: this.groupPropsChanged.bind(this)
+      }));
+    }
+  }]);
+
+  return GroupWrapper;
+}(React.Component);
+
+exports.default = GroupWrapper;
+},{"react":"../../node_modules/react/index.js","./group-wrapper.scss":"components/workspace/group-wrapper/group-wrapper.scss","../group-content/group-content":"components/workspace/group-content/group-content.tsx"}],"components/workspace/board/board.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./board.scss");
+
+var group_wrapper_1 = __importDefault(require("../group-wrapper/group-wrapper"));
+
+var constants_1 = require("../../../constants/constants");
+
+var Board =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Board, _React$Component);
+
+  function Board(props) {
+    var _this;
+
+    _classCallCheck(this, Board);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Board).call(this, props));
+    _this.currentZoom = 1;
+    _this.state = {
+      boardGroups: [],
+      positionX: 0,
+      positionY: 0
+    };
+    return _this;
+  }
+
+  _createClass(Board, [{
+    key: "adjustPosition",
+    value: function adjustPosition() {
+      var zoom = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var smooth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var groupHolders = document.querySelectorAll('.group-wrapper');
+      var top = Number.MAX_VALUE;
+      var left = Number.MAX_VALUE;
+      var right = Number.MIN_VALUE;
+      var bottom = Number.MIN_VALUE;
+      var width = 0;
+      var height = 0;
+      Array.from(groupHolders).forEach(function (bg) {
+        var props = bg.getBoundingClientRect();
+        top = Math.min(top, props.top);
+        left = Math.min(left, props.left);
+        right = Math.max(right, props.right);
+        bottom = Math.max(bottom, props.bottom);
+      });
+      width = (right - left) * zoom;
+      height = (bottom - top) * zoom;
+      var currentPositioner = document.querySelector('.board-group-outer');
+      var currentPositionerProps = currentPositioner.getBoundingClientRect();
+      var currentHolder = document.querySelector('.board-group-holder');
+
+      if (currentHolder) {
+        var currentHolderProps = currentHolder.getBoundingClientRect();
+
+        if (currentHolderProps) {
+          var differenceWidth = currentHolderProps.width - width;
+          var differenceHeight = currentHolderProps.height - height;
+          this.setState({
+            positionX: differenceWidth / 2,
+            positionY: differenceHeight / 2
+          });
+        }
+
+        var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2;
+        var leftOffset = currentHolderProps.width * zoom / 2 - currentPositionerProps.width / 2;
+        currentPositioner.scroll({
+          top: topOffset,
+          left: leftOffset,
+          behavior: smooth ? "smooth" : 'auto'
+        });
+      }
+    }
+  }, {
+    key: "changeZoom",
+    value: function changeZoom(dir) {
+      var _this2 = this;
+
+      this.currentZoom = this.currentZoom + 0.1 * dir;
+      this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
+      this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
+      var currentHolder = document.querySelector('.board-group-holder');
+      currentHolder.style.zoom = "".concat(this.currentZoom);
+      window.requestAnimationFrame(function () {
+        _this2.adjustPosition(_this2.currentZoom);
+      });
+    }
+  }, {
+    key: "processGroupProps",
+    value: function processGroupProps() {
+      var _this3 = this;
+
+      this.setState({
+        boardGroups: constants_1.BoardGroups
+      });
+      window.requestAnimationFrame(function () {
+        _this3.adjustPosition(1, true);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.processGroupProps();
+    }
+  }, {
+    key: "onGroupPropsChange",
+    value: function onGroupPropsChange(colIndex, data) {
+      var groups = [].concat(constants_1.BoardGroups);
+      var group = groups.find(function (g, i) {
+        return i === colIndex;
+      });
+
+      if (group) {
+        group.props.width = data.width;
+        group.props.height = data.height;
+      }
+
+      var left = 0;
+      groups.forEach(function (bg) {
+        bg.props.left = left;
+        left = left + (bg.props.width || 0) + constants_1.GroupBufffer;
+      });
+      this.setState({
+        boardGroups: groups
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var _this$state$boardGrou = this.state.boardGroups,
+          boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou;
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "board-group-outer"
+      }, boardGroups.length > 0 && React.createElement("div", {
+        className: "board-group-holder"
+      }, React.createElement("div", {
+        className: "board-group-inner"
+      }, boardGroups.map(function (bg, i) {
+        return React.createElement(group_wrapper_1.default, {
+          onPropsChange: _this4.onGroupPropsChange.bind(_this4, i),
+          parentX: _this4.state.positionX,
+          parentY: _this4.state.positionY,
+          key: i,
+          data: bg
+        });
+      })))), React.createElement("div", {
+        className: "workspace-actions"
+      }, React.createElement("div", {
+        className: "workspace-action",
+        role: "button",
+        onClick: this.changeZoom.bind(this, 1)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "zoom_in")), React.createElement("div", {
+        className: "workspace-action",
+        role: "button",
+        onClick: this.changeZoom.bind(this, -1)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "zoom_out"))));
+    }
+  }]);
+
+  return Board;
+}(React.Component);
+
+exports.default = Board;
+},{"react":"../../node_modules/react/index.js","./board.scss":"components/workspace/board/board.scss","../group-wrapper/group-wrapper":"components/workspace/group-wrapper/group-wrapper.tsx","../../../constants/constants":"constants/constants.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -48696,6 +49577,8 @@ var rte_editor_1 = __importDefault(require("../rte-editor/rte-editor"));
 
 var resizer_1 = require("../resizer/resizer");
 
+var board_1 = __importDefault(require("./board/board"));
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
   return {
@@ -48723,7 +49606,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Workspace).call(this, props));
     _this.state = {
       rteWidth: 500,
-      dumpGroundWidth: 300
+      dumpGroundWidth: 300,
+      workspaceId: null
     };
     return _this;
   }
@@ -48733,6 +49617,10 @@ function (_React$Component) {
     value: function componentDidMount() {
       observables_1.ShowDumpBarAction$.next(true);
       observables_1.ShowRTEAction$.next(true);
+      var id = this.props.match.params.id;
+      this.setState({
+        workspaceId: id
+      });
     }
   }, {
     key: "componentWillUnmount",
@@ -48767,7 +49655,9 @@ function (_React$Component) {
         className: "workspace-wrapper"
       }, React.createElement("div", {
         className: "working-area"
-      }, this.props.children), this.props.workspaceRTEShown && React.createElement("div", {
+      }, this.state.workspaceId && React.createElement(board_1.default, {
+        id: this.state.workspaceId
+      })), this.props.workspaceRTEShown && React.createElement("div", {
         className: "rte-area",
         style: rteWidth
       }, React.createElement(resizer_1.Resizer, {
@@ -48788,7 +49678,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx"}],"router.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","./board/board":"components/workspace/board/board.tsx"}],"router.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -48865,7 +49755,7 @@ function (_React$Component) {
       }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
         exact: true,
         path: "/",
-        component: workspace_1.default
+        component: home_1.default
       }), React.createElement(react_router_dom_1.Route, {
         exact: true,
         path: "/home",
@@ -48961,9 +49851,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var Types = {
-  ITEM: 'toy'
-};
 var itemSource = {
   drop: function drop(props) {
     var toast = {
@@ -49015,7 +49902,7 @@ function (_React$Component) {
   return WorkspacePreview;
 }(React.Component);
 
-exports.default = react_dnd_1.DropTarget(Types.ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));
+exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));
 },{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/store/configureStore":"access/store/configureStore.ts","../../constants/types":"constants/types.ts"}],"components/workspace-preview/workspace-previewer.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -49085,7 +49972,6 @@ function (_React$Component) {
       return React.createElement("div", {
         className: "app-workspace-preview"
       }, this.props.workspaces.map(function (w, i) {
-        console.log('here', w);
         return React.createElement(workspace_preview_1.default, {
           key: i,
           data: w
@@ -49184,7 +50070,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
     _this.state = {
-      workspaceList: constants_1.WorkspaceList
+      workspaceList: constants_1.WorkspaceList,
+      topicList: constants_1.Topiclist
     };
     return _this;
   }
@@ -49236,7 +50123,18 @@ function (_React$Component) {
         onClick: this.toggleSidebar.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "menu"))), this.props.workspaceInHeader && React.createElement(workspace_previewer_1.default, {
+      }, "menu")), this.props.workspaceRTEActionShown && this.state.topicList.length > 0 && React.createElement("ul", {
+        className: "topic-headers"
+      }, this.state.topicList.map(function (topic, i) {
+        return React.createElement("li", {
+          key: i,
+          className: "topic ".concat(topic.active ? 'active' : '')
+        }, " ", React.createElement("label", null, topic.name));
+      }), React.createElement("li", {
+        className: "topic"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "add")))), this.props.workspaceInHeader && React.createElement(workspace_previewer_1.default, {
         workspaces: this.state.workspaceList
       }), React.createElement("div", {
         className: "app-actions right"
@@ -50749,7 +51647,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62844" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

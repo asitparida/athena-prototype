@@ -1,7 +1,11 @@
-import { ContentList, ContentType, Workspace, IWorkspace } from "./types";
+import { ContentList, ContentType, Workspace, IWorkspace, IBoardGroupWrapper } from "./types";
 import img1 from '../assets/carnegie_museum_art.jpg';
 import img2 from '../assets/church_brew.jpg';
 import img3 from '../assets/duquesne_incline.jpg';
+
+export const ItemWidth = 200;
+export const ItemHeight = 150;
+export const GroupBufffer = 120;
 
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },
@@ -16,8 +20,8 @@ export const PhotosList: any[] = [
     { id: "1015", author: "Alexey Topolyanskiy", width: 6000, height: 4000, url: "https://unsplash.com/photos/-oWyJoSqBRM", download_url: "https://picsum.photos/id/1015/6000/4000" }];
 
 export const AllContentList: ContentList[] = [
-    { items: PhotosList.map( p => Object.assign({}, p, { type: ContentType.Photo })), type: ContentType.Photo },
-    { items: PhotosList.map( p => Object.assign({}, p, { thumbnail: p.download_url, type: ContentType.Video })), type: ContentType.Video }
+    { items: PhotosList.map(p => Object.assign({}, p, { type: ContentType.Photo })), type: ContentType.Photo },
+    { items: PhotosList.map(p => Object.assign({}, p, { thumbnail: p.download_url, type: ContentType.Video })), type: ContentType.Video }
 ];
 
 export const WorkspaceList: IWorkspace[] = [
@@ -26,3 +30,63 @@ export const WorkspaceList: IWorkspace[] = [
     new Workspace('Workspace #3', img3),
     new Workspace('Workspace #4', img1)
 ];
+
+export const WorkspaceCollectionTabs = [
+    { id: 'all', name: 'All' },
+    { id: 'photos', name: 'Worskpace', type: ContentType.Photo },
+    { id: 'videos', name: 'Board', type: ContentType.Video },
+];
+export const DumpingGrounCollectionTabs = [
+    { id: 'all', name: 'All' },
+    { id: 'photos', name: 'Photos', type: ContentType.Photo },
+    { id: 'videos', name: 'Videos', type: ContentType.Video },
+    { id: 'articles', name: 'Acticles', type: ContentType.Article },
+    { id: 'links', name: 'Links', type: ContentType.Link },
+    { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
+];
+export const Topiclist = [
+    { id: 1, name: 'Topic #1', active: true },
+    { id: 2, name: 'Topic #2', active: false },
+    { id: 3, name: 'Topic #3', active: false },
+    { id: 4, name: 'Topic #4', active: false }
+]
+
+export let BoardGroups: IBoardGroupWrapper[] = [
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    },
+    {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        props: { top: 0, left: 0 },
+        annotationData: []
+    }
+];
+
+BoardGroups = BoardGroups.filter((bg, i) => i < 3);

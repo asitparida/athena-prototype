@@ -4,7 +4,7 @@ import * as AppActions from '../../access/actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import store from '../../access/store/configureStore';
-import { IToastItem, ToastType } from '../../constants/types';
+import { IToastItem, ToastType, DragAndDropTypes } from '../../constants/types';
 
 const mapStateToProps = ({ reducers }) => {
     return {};
@@ -14,9 +14,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(AppActions, dispatch)
     };
-}
-const Types = {
-    ITEM: 'toy'
 }
 
 const itemSource = {
@@ -55,4 +52,4 @@ class WorkspacePreview extends React.Component<any, any> {
     }
 }
 
-export default DropTarget(Types.ITEM, itemSource, collect)(connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));
+export default DropTarget(DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));

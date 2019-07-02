@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { DragSource } from 'react-dnd';
+import { DragAndDropTypes } from '../../constants/types';
 
-const Types = {
-    ITEM: 'toy'
-}
 const itemSource = {
     beginDrag(props) {
         /* code here */
@@ -38,4 +36,4 @@ class ContentWrapper extends React.Component<any, any> {
         );
     }
 }
-export default DragSource(Types.ITEM, itemSource, collect)(ContentWrapper);
+export default DragSource(DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(ContentWrapper);

@@ -31,7 +31,7 @@ class Tabs extends React.Component<{
 
     render() {
         const tabs = this.props.children as Tab[];
-        const activeTab = tabs[this.state.activeTabIndex].props.children;
+        const activeTab = tabs[this.state.activeTabIndex] ? tabs[this.state.activeTabIndex].props.children : null;
         return (
             <div className='tabs-wrapper'>
                 <div className={`tabs-header ${this.props.sticky ? 'compressed' : ''}`}>

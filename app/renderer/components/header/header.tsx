@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
-import { WorkspaceList } from '../../constants/constants';
+import { WorkspaceList, Topiclist } from '../../constants/constants';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
 
 const mapStateToProps = ({ reducers }) => {
@@ -28,7 +28,8 @@ class Header extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            workspaceList: WorkspaceList
+            workspaceList: WorkspaceList,
+            topicList: Topiclist
         };
     }
     toggleSidebar() {
@@ -65,10 +66,23 @@ class Header extends React.Component<any, any> {
                     <div className='app-sidebar-toggle' onClick={this.toggleSidebar.bind(this)}>
                         <i className='material-icons'>menu</i>
                     </div>
+                    {
+                        this.props.workspaceRTEActionShown && this.state.topicList.length > 0 &&
+                        <ul className='topic-headers'>
+                            {
+                                this.state.topicList.map((topic, i) => {
+                                    return (<li key={i} className={`topic ${topic.active ? 'active' : ''}`}> <label>{topic.name}</label></li>)
+                                })
+                            }
+                            <li className='topic'>
+                                <i className='material-icons'>add</i>
+                            </li>
+                        </ul>
+                    }
                 </div>
                 {
                     this.props.workspaceInHeader &&
-                    <WorkspacePreviewer workspaces={this.state.workspaceList}  />
+                    <WorkspacePreviewer workspaces={this.state.workspaceList} />
                 }
                 <div className='app-actions right'>
                     {

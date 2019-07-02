@@ -14,7 +14,6 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     constructor(name, image) {
-        console.log(image);
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
@@ -22,6 +21,11 @@ export class Workspace implements IWorkspace {
     getImgUrl() {
         return `url(${this.image})`;
     }
+}
+
+export const DragAndDropTypes = {
+    DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
+    BOARD_ITEM: 'BOARD_ITEM'
 }
 
 export enum ContentType {
@@ -66,4 +70,33 @@ export interface IToastItem {
     id?: string;
     message: string;
     type: ToastType;
+}
+
+export interface IRectProps {
+    top?: number;
+    left?: number;
+    width?: number;
+    height?: number;
+}
+
+export interface IAnnotation {
+    id?: string;
+    message?: string;
+}
+
+export interface IBoardContent {
+    type?: ContentType;
+    label?: string;
+    id?: string;
+    data?: any;
+    annotationData?: IAnnotation[];
+    props?: IRectProps;
+}
+export interface IBoardGroupContent {
+    annotationData?: IAnnotation[];
+}
+export interface IBoardGroupWrapper {
+    id?: string;
+    props?: IRectProps;
+    annotationData?: IAnnotation[];
 }
