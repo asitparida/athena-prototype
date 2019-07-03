@@ -1,6 +1,6 @@
 ::-webkit-scrollbar {
-  width: 0.5em;
-  height: 0.5em;
+  width: 0.75em;
+  height: 0.75em;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -157,7 +157,7 @@ body #root .app-content .app-content-area input {
 }
 @keyframes slide-in-from-top {
   0% {
-    transform: translateY(25px);
+    transform: translateY(-20px);
     opacity: 0;
   }
   100% {
@@ -388,13 +388,13 @@ body #root .app-content .app-content-area input {
   padding: 0;
 }
 .tabs-holder .content-wrapper {
-  padding: 10px 10px 0 10px;
+  padding: 10px 12.5px 0 12.5px;
   min-width: 200px;
   height: 200px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 .tabs-holder .content-wrapper .content {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0);
   width: 100%;
   height: 100%;
   display: flex;
@@ -402,29 +402,8 @@ body #root .app-content .app-content-area input {
   align-items: center;
   flex-direction: column;
   position: relative;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   z-index: 1;
-  transition: transform 0.3s ease-out 0s;
-}
-.tabs-holder .content-wrapper .content:hover {
-  z-index: 1;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
-  transform: scale(1.02, 1.02);
-}
-.tabs-holder .content-wrapper .content .content-label {
-  margin: 0;
-  background-color: rgba(255, 255, 255, 0.1);
-  line-height: 16px;
-  font-size: xx-small;
-  padding: 2px 4px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.5;
 }
 .tabs-holder .content-wrapper .content h1 {
   opacity: 0.5;
@@ -447,12 +426,12 @@ body #root .app-content .app-content-area input {
 .app-context-menu-wrapper {
   position: fixed;
   z-index: 999;
-  background: #565656;
+  background: #fff;
   animation: slide-in-from-top 0.5s ease-out 0s;
 }
 .app-context-menu-wrapper ul.app-context-menu {
   margin: 0;
-  min-width: 200px;
+  min-width: 100px;
   list-style: none;
   padding: 0;
   display: flex;
@@ -461,48 +440,186 @@ body #root .app-content .app-content-area input {
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.25);
 }
 .app-context-menu-wrapper ul.app-context-menu li {
-  padding: 0 15px;
-  line-height: 48px;
+  font-size: small;
+  padding: 0 15px 0 0;
+  line-height: 42px;
+  display: flex;
+  min-width: 120px;
+  color: #000;
   transition: all 0.1s linear 0s;
 }
+.app-context-menu-wrapper ul.app-context-menu li i {
+  line-height: 42px;
+  width: 42px;
+  text-align: center;
+  font-size: medium;
+}
 .app-context-menu-wrapper ul.app-context-menu li:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .app-context-menu-wrapper ul.app-context-menu li:hover, .app-context-menu-wrapper ul.app-context-menu li:focus {
-  background-color: #fff;
+  background-color: #f0f0f0;
   color: #000;
+}
+.content {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+}
+.content:hover .content-item-actions, .content:focus .content-item-actions {
+  opacity: 1;
+}
+.content .inner-content-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  flex: 1;
+  order: 1;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  height: calc(100% - 24px);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.content .content-item-actions {
+  width: 100%;
+  height: 24px;
+  order: 2;
+  flex: initial;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+}
+.content .content-item-actions i {
+  width: 24px;
+  line-height: 24px;
+  opacity: 0.5;
+}
+.content .content-item-actions i.smaller {
+  font-size: 16px;
+}
+.content .content-label {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 0;
+  line-height: 16px;
+  font-size: xx-small;
+  padding: 2px 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.content .photo-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-out 0s;
+}
+.content .photo-content:hover {
+  transform: scale(1.05, 1.05);
+}
+.content .photo-content .photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
+.content .photo-content .photo.shown {
+  opacity: 1;
+  animation: show-image 1s ease-out forwards;
+}
+
+@keyframes show-image {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .app-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-bottom: 60px;
   flex-direction: column;
-}
-.app-container h1 {
-  font-size: 100px;
-  font-weight: 100;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  color: rgba(255, 255, 255, 0.05);
-  margin-top: -60px;
 }
 .app-container button {
   cursor: pointer;
   background: transparent;
-  line-height: 60px;
+  line-height: 48px;
   border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   min-width: 100px;
-  padding: 0 45px;
+  padding: 0 30px;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: bold;
   outline: none;
-  font-size: medium;
+  font-size: small;
+  margin-top: 75px;
+  margin-bottom: 30px;
+  transition: all 0.2s linear 0s;
+}
+.app-container button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.75);
+}
+.app-container .app-introduction {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.app-container .app-introduction .step {
+  height: 350px;
+  max-width: 30%;
+  padding: 0 60px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.app-container .app-introduction .step:not(:last-child) {
+  border-right: 1px dotted rgba(255, 255, 255, 0.2);
+}
+.app-container .app-introduction .step label.step-header {
+  text-transform: uppercase;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 75px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  position: relative;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.app-container .app-introduction .step img {
+  width: 80%;
+}
+.app-container .app-introduction .step h1 {
+  margin-top: 30px;
+  font-size: large;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.app-container .app-introduction .step label:not(.step-header) {
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
 }
 .sidebar-wrapper {
   width: 100%;
@@ -520,32 +637,78 @@ body #root .app-content .app-content-area input {
 .sidebar-wrapper ul.workspace-list {
   margin-top: 0;
   margin-bottom: auto;
+  order: 1;
+  flex: 1;
+  overflow: auto;
+}
+.sidebar-wrapper ul.copyright-info {
+  order: 3;
+  flex: initial;
 }
 .sidebar-wrapper ul li {
   margin-bottom: 1px;
   padding: 0;
-  height: 60px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  opacity: 0.5;
   text-align: center;
   background: transparent;
+}
+.sidebar-wrapper ul li:last-child {
+  border-bottom: none;
+}
+.sidebar-wrapper ul li label {
+  color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  line-height: 48px;
+  text-align: left;
+  padding: 0 30px;
+  margin: 0;
+  cursor: pointer;
+}
+.sidebar-wrapper ul li label.second-level {
+  padding-left: 60px;
+}
+.sidebar-wrapper ul li label:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.sidebar-wrapper ul li.first-level {
+  position: relative;
+}
+.sidebar-wrapper ul li.first-level .list-toggler {
+  position: absolute;
+  right: 12px;
+  top: 6px;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.3);
+}
+.sidebar-wrapper ul li.first-level .list-toggler i {
+  cursor: pointer;
+  line-height: 36px;
+}
+.sidebar-wrapper ul li.first-level .list-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.sidebar-wrapper ul li.first-level ul.sub-list {
+  animation: sub-list-open 0.33s linear forwards 0s;
 }
 .sidebar-wrapper ul li a {
   display: flex;
   width: 100%;
-  line-height: 60px;
-  padding: 0 30px;
+  padding: 0;
   text-decoration: none;
   color: #fff;
-  background: rgba(255, 255, 255, 0);
+  border-left: 5px solid rgba(255, 255, 255, 0);
 }
 .sidebar-wrapper ul li a.active {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
+  border-left: 5px solid rgba(255, 255, 255, 0.75);
 }
-.sidebar-wrapper ul li:hover {
-  background: rgba(255, 255, 255, 0.1);
+.sidebar-wrapper ul li a.active label {
+  color: white;
 }
 .sidebar-wrapper ul li.copyright-info {
   font-size: small;
@@ -553,14 +716,16 @@ body #root .app-content .app-content-area input {
   padding: 0 30px;
 }
 .sidebar-wrapper .user-space {
-  padding: 30px 30px 0 30px;
+  order: 2;
+  flex: initial;
+  padding: 15px 30px 0 30px;
 }
 .sidebar-wrapper .user-space .user-space-content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  padding: 60px 30px;
+  padding: 30px 30px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.025);
   border-radius: 4px;
@@ -586,6 +751,17 @@ body #root .app-content .app-content-area input {
   margin: 0;
   padding: 0;
   opacity: 0.5;
+}
+
+@keyframes sub-list-open {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 .workspace-wrapper {
   width: 100%;
@@ -642,6 +818,9 @@ body #root .app-content .app-content-area input {
 }
 .workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root {
   height: calc(100vh - 166px);
+}
+.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer {
+  z-index: 2;
 }
 .workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
   padding-top: 15px;

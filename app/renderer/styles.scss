@@ -21,7 +21,7 @@
     }
 }
 
-@include scrollbars(0.50em, rgba(#fff, 0.30), rgba(#000, 0.50));
+@include scrollbars(0.75em, rgba(#fff, 0.30), rgba(#000, 0.50));
 
 body {
     margin: 0;
@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    // background-color: rgba(#000, 1);
+    // background-color: rgba(#000, 0.75);
 
     #root {
         display: flex;
@@ -99,10 +99,6 @@ body {
                 flex: initial;
                 height: 100%;
                 display: flex;
-                // position: absolute;
-                // left: 0;
-                // top: 0;
-                // background: rgba(#fff, 0);
 
                 &.left {
                     width: 300px;
@@ -184,7 +180,7 @@ body {
 
 @keyframes slide-in-from-top {
     0% {
-        transform: translateY(25px);
+        transform: translateY(-20px);
         opacity: 0;
     }
 
@@ -193,6 +189,7 @@ body {
         opacity: 1;
     }
 }
+
 @keyframes expand-height {
     0% {
         height: 90px;

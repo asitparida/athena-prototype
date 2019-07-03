@@ -2,24 +2,64 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
 import { WorkspaceList } from '../../constants/constants';
-import { Workspace } from '../../constants/types';
+import { Workspace, ISideBarNavItem } from '../../constants/types';
+import { GetWorkspaceListForSidebar } from '../../transforms';
 
 export default class SidebarComponent extends React.Component<{}, any> {
     constructor(props) {
         super(props);
         this.state = {
-            workspaceList: WorkspaceList
+            sideBarItems: GetWorkspaceListForSidebar()
         };
     }
+    openList(index) {
+        const sideBarItems: ISideBarNavItem[] = [].concat(this.state.sideBarItems);
+        sideBarItems.forEach((item, i) => {
+            item.subListOpen = i === index ? !item.subListOpen : false;
+        });
+        this.setState({
+            sideBarItems
+        })
+    }
     render() {
-        const { workspaceList } = this.state;
+        const { sideBarItems } = this.state;
         return <div className='sidebar-wrapper'>
             <ul className="workspace-list">
-                <li><NavLink to="/home">Home</NavLink></li>
-                <li><NavLink to="/dump">All Clips</NavLink></li>
+                <li><NavLink to="/home"><label>Home</label></NavLink></li>
+                <li><NavLink to="/dump"><label>All Clips</label></NavLink></li>
+                <React.Fragment>
                 {
-                    (workspaceList as Workspace[]).map(((space, i) => <li key={i}><NavLink to={space.link}>{space.name}</NavLink></li>)
+                    sideBarItems.length > 0 &&
+                    (sideBarItems as ISideBarNavItem[]).map(((item, i) => {
+                        return <li key={i} className="first-level">
+                            <NavLink to={item.link}><label>{item.name}</label></NavLink>
+                            {
+                                item.items.length > 0 &&
+                                <span className='list-toggler' onClick={this.openList.bind(this, i)}>
+                                    {
+                                        item.subListOpen &&
+                                        <i className='material-icons up'>arrow_drop_up</i>
+                                    }
+                                    {
+                                        !item.subListOpen &&
+                                        <i className='material-icons down'>arrow_drop_down</i>
+                                    }
+                                </span>
+                            }
+                            {
+                                item.subListOpen && item.items.length > 0 &&
+                                <ul className='sub-list'>
+                                    {
+                                        item.items.map((subItem, j) => {
+                                            return <li key={`${i}-${j}`}><NavLink to={subItem.link}><label className='second-level'>{subItem.name}</label></NavLink></li>
+                                        })
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }))
                 }
+                </React.Fragment>
             </ul>
             <div className="user-space">
                 <div className='user-space-content'>
@@ -30,7 +70,7 @@ export default class SidebarComponent extends React.Component<{}, any> {
                     <p>asitparida@live.in</p>
                 </div>
             </div>
-            <ul>
+            <ul className='copyright-info'>
                 <li className='copyright-info'>© Knowledge Accelerator 2019</li>
             </ul>
         </div>

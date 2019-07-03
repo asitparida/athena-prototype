@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ContentType } from '../../constants/constants';
 import { Content } from './content';
+import { IContentItem, ContentType } from '../../constants/types';
 
 interface IContentListProps {
     title?: string;
-    items?: Content[];
+    items?: Array<IContentItem<any>>;
     type: ContentType;
 }
 
@@ -21,7 +21,7 @@ export class ContentList extends React.Component<IContentListProps, {}> {
             <h1>{label}</h1>
             <div className='content-items-wrapper'>
                 {this.props.items.map((item, j) => {
-                    return <Content key={j} data={item} type={this.props.type} />
+                    return <Content key={j} data={item} />
                 })}
             </div>
         </div>

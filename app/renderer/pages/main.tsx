@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from "react";
-import { RouterWrapper } from '../router';
+import { RouterWrapper } from './router-wrap';
 import '../styles.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -59,6 +59,11 @@ class Main extends Component<any, any> {
         this.props.actions.hideDumpBar();
         this.props.actions.toggleRTE();
     }
+    onLocationChanged() {
+        if (this.props.sideBarShown) {
+            this.props.actions.toggleSideBar();
+        }
+    }
     render() {
         const sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
         return (
@@ -68,7 +73,7 @@ class Main extends Component<any, any> {
                     <Header />
                 </div>
                 <div className='app-content-bottom'>
-                    <RouterWrapper sideBarCollpased={sideBarCollpased} />
+                    <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
                 </div>
                 <Toasts />
             </div>

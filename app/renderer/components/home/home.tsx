@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Redirect } from 'react-router';
 import './home.scss';
 
+import collect from '../../assets/collect.png';
+import organize from '../../assets/organize.png';
+import create from '../../assets/create.png';
+
 class Home extends React.Component<any, any> {
     constructor(props) {
         super(props);
@@ -16,8 +20,27 @@ class Home extends React.Component<any, any> {
             return <Redirect push to="/dump" />;
         }
         return <div className='app-container'>
-            <h1>Athena</h1>
-            <button onClick={this.handleOnClick.bind(this)}>Organize</button>
+            <div className='app-introduction'>
+                <div className="step">
+                    <img src={collect} />
+                    <label className='step-header'>Step 01</label>
+                    <h1>Collect</h1>
+                    <label>Capture PDFs, text excerpts, and figures into your sidebar</label>
+                </div>
+                <div className="step">
+                    <img src={organize} />
+                    <label className='step-header'>Step 02</label>
+                    <h1>Organize</h1>
+                    <label>Add structure and refine your content as you collect</label>
+                </div>
+                <div className="step">
+                    <img src={create} />
+                    <label className='step-header'>Step 03</label>
+                    <h1>Synthesize</h1>
+                    <label>Drag content into your documents while Fuse manages your sources.</label>
+                </div>
+            </div>
+            <button onClick={this.handleOnClick.bind(this)}>View Collections</button>
         </div>
     }
 }

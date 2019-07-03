@@ -14,6 +14,7 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     constructor(name, image) {
+        this.id = `${Math.floor(Math.random() * 10e8)}`;
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
@@ -57,7 +58,27 @@ export interface IDumpingGroundTab {
 
 export interface IContentListItem {
     title: string;
-    items: any[];
+    listItems: Array<IContentItem<any>>;
+}
+
+export interface IPhotoContent {
+    imgUrl?: string;
+}
+
+export interface IContextMenuAction {
+    icon: string;
+    name: string;
+}
+
+export interface IContentItem<T> {
+    id?: string;
+    title?: string;
+    contentType?: ContentType;
+    sourceType?: MediaSourceType;
+    contentData?: T;
+    sourcePreviewAvailable?: boolean;
+    tags?: any[];
+    annotations?: IAnnotation[];
 }
 
 export enum ToastType {
@@ -99,4 +120,13 @@ export interface IBoardGroupWrapper {
     id?: string;
     props?: IRectProps;
     annotationData?: IAnnotation[];
+}
+
+export interface ISideBarNavItem {
+    id?: any;
+    name?: string;
+    link?: string;
+    items?: ISideBarNavItem[];
+    active?: boolean;
+    subListOpen?: boolean;
 }

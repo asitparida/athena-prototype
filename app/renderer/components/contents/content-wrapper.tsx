@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DragSource } from 'react-dnd';
 import { DragAndDropTypes } from '../../constants/types';
+import { ContentItemWrapper } from '../content-item/content-item';
 
 const itemSource = {
     beginDrag(props) {
@@ -25,13 +26,14 @@ function collect(connect, monitor) {
 }
 
 class ContentWrapper extends React.Component<any, any> {
+    menuInvoked() {
+        this.props.menuInvoked();
+    }
     render() {
         const { isDragging, connectDragSource, src } = this.props;
         return connectDragSource(
-            <div className='content'>
-                <h1>Content</h1>
-                <h2>...</h2>
-                <label className='content-label'>{this.props.label}</label>
+            <div className='content-item-wrapper'>
+                <ContentItemWrapper data={this.props.data} menuInvoked={this.menuInvoked.bind(this)}  />
             </div>
         );
     }

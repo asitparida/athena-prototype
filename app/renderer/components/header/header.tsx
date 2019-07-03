@@ -104,7 +104,7 @@ class Header extends React.Component<any, any> {
                         </div>
                     }
                     <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                        <i className='material-icons'>notes</i>
+                        <i className='material-icons'>text_format</i>
                     </div>
                 </div>
             </React.Fragment>

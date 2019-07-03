@@ -1,7 +1,9 @@
 import * as React from 'react';
 import './context-menu.scss';
+import { IContextMenuAction } from '../../constants/types';
 
-export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: number, y: number }> {
+export class ContextMenu extends React.Component<{ actions: IContextMenuAction[], open?: boolean, menuClosed: () => {}}, { menuOpen: boolean, x: number, y: number }> {
+    domElRef;
     elRef;
     // tslint:disable:variable-name
     onDOMClick_bound = this.onDOMClick.bind(this);
@@ -12,13 +14,27 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
             menuOpen: false,
             x: 0, y: 0
         }
+        this.domElRef = React.createRef();
         this.elRef = React.createRef();
     }
-    openMenu(e: MouseEvent) {
+    openMenu(e?: MouseEvent) {
+        let posX = 0;
+        let posY = 0;
+        if (e) {
+            posX = e.clientX;
+            posY = e.clientY;
+        } else {
+            const elem = this.domElRef.current;
+            if (elem) {
+                const props = (elem as HTMLElement).getBoundingClientRect();
+                posX = props.left;
+                posY = props.bottom
+            }
+        }
         this.setState({
             menuOpen: true,
-            x: e.clientX,
-            y: e.clientY
+            x: posX,
+            y: posY
         });
     }
     onDOMClick(e: MouseEvent) {
@@ -57,10 +73,18 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
         document.removeEventListener('keyup', this.onKeyUp_bound);
         this.setState({
             menuOpen: false
-        })
+        });
+        this.props.menuClosed();
     }
     onContextMenuInvoked(e) {
         this.openMenu(e);
+    }
+    componentDidUpdate(props) {
+        if (this.props.open !== props.open) {
+            if (this.props.open && !this.state.menuOpen) {
+                this.openMenu();
+            }
+        }
     }
     render() {
         const styles = {
@@ -68,17 +92,19 @@ export class ContextMenu extends React.Component<{}, { menuOpen: boolean, x: num
             top: `${this.state.y - 20}px`
         };
         return <React.Fragment>
-            <div className="context-menu-wrapper" onContextMenu={this.onContextMenuInvoked.bind(this)} >
+            <div className="context-menu-wrapper" onContextMenu={this.onContextMenuInvoked.bind(this)} ref={this.domElRef}>
                 {this.props.children}
             </div>
             {
                 this.state.menuOpen &&
                 <div className="app-context-menu-wrapper" style={styles} ref={this.addCloseMenuListener.bind(this)}>
                     <ul className="app-context-menu">
-                        <li>Action 1</li>
-                        <li>Action 2</li>
-                        <li>Action 3</li>
-                        <li>Action 4</li>
+                        {
+                            this.props.actions.length > 0 &&
+                            this.props.actions.map((action, i) => {
+                                return <li key={i}><i className='material-icons'>{action.icon}</i>{action.name}</li>
+                            })
+                        }
                     </ul>
                 </div>
             }
