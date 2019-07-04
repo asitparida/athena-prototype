@@ -20,7 +20,7 @@ class GroupWrapper extends React.Component<{data?: IBoardGroupWrapper, parentX: 
         }
         return (
             <div className="group-wrapper" style={styles}>
-                <GroupContent onPropsChange={this.groupPropsChanged.bind(this)} />
+                <GroupContent data={this.props.data} onPropsChange={this.groupPropsChanged.bind(this)} />
             </div>
         );
     }

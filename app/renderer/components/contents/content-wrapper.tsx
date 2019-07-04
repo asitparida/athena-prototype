@@ -5,16 +5,9 @@ import { ContentItemWrapper } from '../content-item/content-item';
 
 const itemSource = {
     beginDrag(props) {
-        /* code here */
-        console.log('beginDrag', props);
         return {
             itemLabel: props.id
         };
-    },
-    endDrag(props) {
-        /* code here */
-        console.log(this.props);
-        console.log('endDrag');
     }
 }
 

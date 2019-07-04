@@ -1,13 +1,14 @@
 import { Subject, Subscription } from 'rxjs';
 import store from '../store/configureStore';
 import * as actions from '../actions/appActions';
-import { IContentItem } from '../../constants/types';
+import { IContentItem, IWorkspaceContentTransfer } from '../../constants/types';
 
 const subscriptions: Subscription[] = [];
 export const ShowDumpBarAction$ = new Subject<boolean>();
 export const ShowRTEAction$ = new Subject<boolean>();
 export const ShowWorkspaceAction$ = new Subject<boolean>();
 export const ContentViewerData = new Subject<IContentItem<any>>();
+export const WorkspaceContentTransfer = new Subject<IWorkspaceContentTransfer>();
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {
@@ -26,7 +27,6 @@ export function InitializeSubscriptions() {
     });
     subscriptions.push(rteSubscription);
     const worskpaceInHeaderSubscription = ShowWorkspaceAction$.subscribe((data) => {
-        console.log('worskpaceInHeaderSubscription', data);
         if (data) {
             store.dispatch(actions.showWorkpsaceActionInHeader())
         } else {

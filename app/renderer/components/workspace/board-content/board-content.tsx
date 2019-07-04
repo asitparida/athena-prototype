@@ -7,18 +7,12 @@ import { ContentItemWrapper } from '../../content-item/content-item';
 
 const itemSource = {
     beginDrag(props) {
-        /* code here */
-        // console.log('beginDrag', props);
         return {
-            itemLabel: props.id
+            from: props.group,
+            dragObject: props.data
         };
     },
-    endDrag(props) {
-        /* code here */
-        // console.log(this.props);
-        // console.log('endDrag');
-    },
-    canDrag(props, monitor) {
+    canDrag(props) {
         return !props.isBeingResized;
     }
 }
@@ -41,19 +35,13 @@ class BoardContent extends React.Component<IPropType | any, { contentData: ICont
             contentData: null
         };
     }
-    componentDidMount() {
-        const data = GetSampleItem((this.props.data as IBoardContent).type);
-        this.setState({
-            contentData: data
-        })
-    }
     render() {
         const { isDragging, connectDragSource, src } = this.props;
         return connectDragSource(
             <div className="board-content">
                 {
-                    this.state.contentData &&
-                    <ContentItemWrapper data={this.state.contentData} inheritDimensions={true} />
+                    this.props.data &&
+                    <ContentItemWrapper data={this.props.data} inheritDimensions={true} />
                 }
             </div>
         );

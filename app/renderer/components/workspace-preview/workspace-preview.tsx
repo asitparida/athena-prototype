@@ -24,9 +24,6 @@ const itemSource = {
             type: ToastType.Success
         };
         store.dispatch(AppActions.showToastNotification(toast))
-    },
-    hover: (props) => {
-        // console.log(props);
     }
 }
 

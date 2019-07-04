@@ -107,6 +107,12 @@ export interface IContentItem<T> {
     annotations?: IAnnotation[];
 }
 
+export interface IWorkspaceContentTransfer {
+    from: string;
+    to: string;
+    data: IContentItem<any>;
+}
+
 export enum ToastType {
     Success,
     Failure,

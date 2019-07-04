@@ -7,6 +7,7 @@ import { format } from 'url';
 import { BuildAnnotator } from './helpers/annotator';
 import { GetIpcFileFixUrl } from './helpers/ipc-helper';
 import { GetAPIServer } from '../api/server';
+import { GetSplashWindow } from './helpers/splash';
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
 const isDev = require('electron-is-dev')
@@ -14,9 +15,11 @@ const { resolve } = require('app-root-path')
 
 app.on('ready', async () => {
     BuildMenu();
-    app.setName('Athena Prototype');
+    app.setName('Project Athena');
+    const splashWindow = GetSplashWindow();
     const size = electron.screen.getPrimaryDisplay().size;
     const mainWindow = new BrowserWindow({
+        title: 'Project Athena',
         width: size.width,
         height: size.height - 22,
         show: false,
@@ -34,9 +37,14 @@ app.on('ready', async () => {
     })
     BuildTray(mainWindow);
     mainWindow.once('ready-to-show', () => {
-        mainWindow.show();
+        setTimeout(() => {
+            splashWindow.destroy();
+            setTimeout(() => {
+                mainWindow.show();
+            }, 30);
+        }, 2000);
         if (isDev && false) { mainWindow.webContents.openDevTools() }
-    })
+    });
     mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
 
     const devPath = 'http://localhost:1124'

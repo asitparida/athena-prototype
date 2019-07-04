@@ -2,9 +2,11 @@ import * as React from 'react';
 import './board-content-wrapper.scss'
 import BoardContent from '../board-content/board-content';
 import { IBoardContent } from '../../../constants/types';
+import { GetSampleItem } from '../../../constants/dummy-data';
 
 interface IPropType {
     data: IBoardContent,
+    group: string;
     onPropsChange: (props: any) => {}
 }
 
@@ -17,7 +19,8 @@ export class BoardContentWrapper extends React.Component<IPropType | any, any> {
         super(props);
         this.ref = React.createRef();
         this.state = {
-            isBeingResized: false
+            isBeingResized: false,
+            contentData: null
         };
     }
     // tslint:disable:member-ordering
@@ -71,6 +74,11 @@ export class BoardContentWrapper extends React.Component<IPropType | any, any> {
     }
     componentDidMount() {
         this.originalPointerProps = Object.assign({}, this.props.data.props);
+        const data = GetSampleItem((this.props.data as IBoardContent).type);
+        data.id = (this.props.data as IBoardContent).id;
+        this.setState({
+            contentData: data
+        })
     }
     render() {
         const { props } = this.props.data;
@@ -80,7 +88,7 @@ export class BoardContentWrapper extends React.Component<IPropType | any, any> {
         }
         return (
             <div className="board-content-wrapper" style={styles} ref={this.ref}>
-                <BoardContent isBeingResized={this.state.isBeingResized} data={this.props.data} />
+                <BoardContent isBeingResized={this.state.isBeingResized} data={this.state.contentData} group={this.props.group} />
                 <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
                     <i className='material-icons'>navigate_next</i>
                 </div>

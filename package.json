@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-parcel-boilerplate",
+  "name": "project-athena",
   "version": "0.1.0",
   "description": "A boilerplate for Electron + React + Parcel.",
   "main": "app/main/.parcel/main.js",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "build": {
     "productName": "Athena",
-    "appId": "org.mhci.AthenaPrototype",
+    "appId": "org.mhci.athena",
     "copyright":"Copyright © 2019 KA",
     "files": [
       "build/icon.*",
@@ -40,7 +40,8 @@
       "target": [
         "zip"
       ],
-      "artifactName": "${productName}-mac.${ext}"
+      "artifactName": "${productName}-mac.${ext}",
+      "icon": "build/icon.icns"
     },
     "win": {
       "target": [

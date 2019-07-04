@@ -90,4 +90,4 @@ export let BoardGroups: IBoardGroupWrapper[] = [
     }
 ];
 
-BoardGroups = BoardGroups.filter((bg, i) => i < 4);
+BoardGroups = BoardGroups.filter((bg, i) => i < 2);

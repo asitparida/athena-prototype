@@ -1,13 +1,15 @@
 import * as React from 'react';
 import './group-content.scss';
 import { BoardContentWrapper } from '../board-content-wrapper/board-content-wrapper';
-import { IBoardGroupContent, ContentType, IToastItem, ToastType, DragAndDropTypes } from '../../../constants/types';
+import { IBoardGroupContent, ContentType, IToastItem, ToastType, DragAndDropTypes, IBoardGroupWrapper, IWorkspaceContentTransfer } from '../../../constants/types';
 import { ItemHeight, ItemWidth } from '../../../constants/constants';
 import { bindActionCreators } from 'redux';
 import store from '../../../access/store/configureStore';
 import * as AppActions from '../../../access/actions/appActions';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
+import { Subscription } from 'rxjs';
+import { WorkspaceContentTransfer } from '../../../access/observables/observables';
 
 const mapStateToProps = ({ reducers }) => {
     return {};
@@ -20,16 +22,22 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const itemSource = {
-    drop: (props) => {
-        const toast: IToastItem = {
-            id: `${Math.floor(Math.random() * 10e8)}`,
-            message: `The clip has been pushed to the Group`,
-            type: ToastType.Success
+    drop: (props: IPropType | any, monitor) => {
+        // const toast: IToastItem = {
+        //     id: `${Math.floor(Math.random() * 10e8)}`,
+        //     message: `The clip has been pushed to the Group`,
+        //     type: ToastType.Success
+        // };
+        // store.dispatch(AppActions.showToastNotification(toast))
+        const dropItemResult = monitor.getItem();
+        const data = {
+            from: dropItemResult.from,
+            to: props.data.id,
+            data: dropItemResult.dragObject
         };
-        store.dispatch(AppActions.showToastNotification(toast))
-    },
-    hover: (props) => {
-        // console.log(props);
+        if (data.from !== data.to) {
+            WorkspaceContentTransfer.next(data);
+        }
     }
 }
 
@@ -40,9 +48,10 @@ function collect(connector, monitor) {
     }
 }
 
-interface IPropType { data?: IBoardGroupContent, onPropsChange: (data: any) => {}};
+interface IPropType { data?: IBoardGroupWrapper, onPropsChange: (data: any) => {}};
 
 class GroupContent extends React.Component<IPropType | any, any> {
+    transferSubscription: Subscription;
     constructor(props) {
         super(props);
         this.state = {
@@ -68,6 +77,24 @@ class GroupContent extends React.Component<IPropType | any, any> {
             items: rowItems
         });
         this.calculateGroupWidth(rowItems);
+        const groupId = this.props.data.id;
+        this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
+            if (data.from === groupId) {
+                let currentItems = [].concat(this.state.items);
+                currentItems = currentItems.filter(temp => temp.id !== data.data.id);
+                this.setState({
+                    items: currentItems
+                });
+            } else if (data.to === groupId) {
+                const currentItems = [].concat(this.state.items);
+                currentItems.push({
+                    id: data.data.id, type: data.data.contentType, props: { height: ItemHeight, width: ItemWidth }
+                });
+                this.setState({
+                    items: currentItems
+                })
+            }
+        });
     }
     calculateGroupWidth(items) {
         const data = {
@@ -83,7 +110,7 @@ class GroupContent extends React.Component<IPropType | any, any> {
             <div className={`group-content ${isOver ? 'entity-over' : ''}`} >
                 {
                     items.length > 0 &&
-                    items.map((item, i) => <BoardContentWrapper onPropsChange={this.boardPropsChanged.bind(this, i)} data={item} key={i} />)
+                    items.map((item, i) => <BoardContentWrapper group={data.id} onPropsChange={this.boardPropsChanged.bind(this, i)} data={item} key={item.id} />)
                 }
             </div>
         );
