@@ -1,0 +1,62 @@
+.app-workspace-preview {
+    height: 100%;
+    order: 2;
+    flex: 1;
+    display: flex;
+    padding-top: 30px;
+    margin-left: 12px;
+    justify-content: center;
+
+    .workspace {
+        width: 200px;
+        height: 100%;
+        margin: 0 10px 0 0;
+        border-radius: 4px;
+        background-color: rgba(#000, 0.60);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+
+        &.entity-over {
+            label {
+                color: #000;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to bottom, rgba(#fff, 0), rgba(#fff, 1))
+            }
+        }
+
+        label {
+            text-transform: uppercase;
+            font-size: small;
+            line-height: 42px;
+            height: 42px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        &:not(.entity-over) {
+            label {
+                color: #fff;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(to bottom, rgba(#000, 0), rgba(#000, 1))
+            }
+        }
+    }
+}

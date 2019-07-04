@@ -1,6 +1,6 @@
 {
   "name": "electron-react-parcel-boilerplate",
-  "version": "0.7.4",
+  "version": "0.1.0",
   "description": "A boilerplate for Electron + React + Parcel.",
   "main": "app/main/.parcel/main.js",
   "scripts": {
@@ -9,12 +9,14 @@
     "watch": "run-p -r parcel:watch electron:start",
     "electron:start": "nodemon --watch app/main/.parcel --exec \"electron .\"",
     "electron:build": "build --x64 --publish=never",
-    "parcel:watch": "run-p -r main:watch renderer:watch",
+    "parcel:watch": "run-p -r main:watch renderer:watch annotator:watch",
     "main:watch": "parcel watch app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
-    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development",
-    "parcel:build": "run-s main:build renderer:build",
+    "renderer:watch": "parcel app/renderer/index.html --port 1124 --out-dir app/renderer/.parcel/development ",
+    "annotator:watch": "parcel app/widgets/annotator/index.html --port 1125 --out-dir app/widgets/annotator/.parcel/development",
+    "parcel:build": "run-s main:build renderer:build annotator:build",
     "main:build": "parcel build app/main/main.ts --out-dir app/main/.parcel --out-file main --target electron",
     "renderer:build": "parcel build app/renderer/index.html --public-url ./ --out-dir app/renderer/.parcel/production",
+    "annotator:build": "parcel build app/widgets/annotator/index.html --public-url ./ --out-dir app/widgets/annotator/.parcel/production",
     "test": "run-s parcel:build \"test:jest {@}\" --",
     "test:jest": "jest",
     "lint": "tslint app/**/*.ts{,x}"
@@ -22,9 +24,11 @@
   "author": "shamofu",
   "license": "MIT",
   "build": {
-    "productName": "ElectronReactParcel",
-    "appId": "org.shamofu.ElectronReactParcel",
+    "productName": "Athena",
+    "appId": "org.mhci.AthenaPrototype",
+    "copyright":"Copyright © 2019 KA",
     "files": [
+      "build/icon.*",
       "app/**",
       "!app/main/main.ts",
       "!app/main/tests/**",
@@ -84,6 +88,17 @@
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "7.1.0",
+    "@types/redux-thunk": "2.1.0",
+    "@types/redux": "3.6.0",
+    "@types/lodash": "4.14.108",
+    "@types/express": "4.17.0",
+    "@types/body-parser": "1.17.0",
+    "@types/compression": "^0.0.36",
+    "@types/cors": "2.8.5",
+    "@types/helmet": "^0.0.38",
+    "@types/mongodb": "3.1.26",
+    "@types/lowdb": "1.0.9",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "electron": "5.0.4",
@@ -96,14 +111,35 @@
     "react-dom": "16.8.6",
     "react-router-dom": "5.0.1",
     "react-test-renderer": "16.8.6",
+    "react-redux": "7.1.0",
+    "react-rte": "0.16.1",
+    "redux": "4.0.1",
+    "redux-thunk": "2.3.0",
+    "react-hammerjs":"1.0.1",
+    "react-contextmenu":"2.11.0",
+    "react-dnd": "8.0.3",
+    "react-dnd-html5-backend": "8.0.3",
     "sass": "^1.21.0",
     "spectron": "5.0.0",
     "tslint": "5.17.0",
     "tslint-react": "4.0.0",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "rxjs": "6.5.2",
+    "plyr": "3.5.6"
   },
   "dependencies": {
     "app-root-path": "^2.2.1",
-    "electron-is-dev": "^1.1.0"
+    "electron-is-dev": "^1.1.0",
+    "lodash": "4.17.11",
+    "express":"4.17.1",
+    "body-parser": "1.19.0",
+    "cors":"2.8.5",
+    "compression": "^1.7.2",
+    "helmet": "^3.12.1",
+    "mongodb": "3.2.3",
+    "lowdb": "1.0.0"
+  },
+  "alias": {
+    "ipcRenderer": "./electron-ipc.js"
   }
 }

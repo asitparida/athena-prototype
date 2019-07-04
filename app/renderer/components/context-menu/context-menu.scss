@@ -1,0 +1,42 @@
+.context-menu-wrapper {
+    width: 100%;
+}
+.app-context-menu-wrapper {
+    position: fixed;
+    z-index: 999;
+    background: #fff;
+    animation: slide-in-from-top 0.5s ease-out 0s;
+    ul.app-context-menu {
+        margin: 0;
+        min-width: 100px;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        box-shadow: 0px 5px 20px rgba($color: #000000, $alpha: 0.25);
+        li {
+            font-size: small;
+            padding: 0 15px 0 0;
+            line-height: 42px;
+            display: flex;
+            min-width: 120px;
+            color: #000;
+            i {
+                line-height: 42px;
+                width: 42px;
+                text-align: center;
+                font-size: medium;
+            }
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(#000, 0.10);
+            }
+            transition:  all 0.1s linear 0s;
+            &:hover ,
+            &:focus {
+                background-color: #f0f0f0;
+                color: #000;
+            }
+        }
+    }
+}

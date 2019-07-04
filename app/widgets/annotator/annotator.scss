@@ -1,0 +1,141 @@
+@mixin scrollbars($size, $foreground-color, $background-color) {
+    ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    .scroller {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+@include scrollbars(0.50em, rgba(#fff, 0.30), rgba(#000, 0.50));
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(#fff, 0.80);
+    #root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+
+        .app-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-flow: column;
+
+            .app-dragger {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                z-index: 2;
+                background-color: rgba(#ffffff, 0.30);
+                -webkit-app-region: drag;
+
+                &:hover {
+                    background-color: rgba(#ffffff, 0.75);
+                }
+            }
+
+            .app-content-area {
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                flex: 1;
+                order: 2;
+
+                textarea {
+                    height: 100%;
+                    width: 100%;
+                    background: transparent;
+                    color: rgba(#ffffff, 0.75);
+                    font-size: small;
+                    padding: 20px;
+                    border-radius: 4px;
+                    text-align: left;
+                    border: none;
+                    font-weight: 100;
+                    margin: 0;
+                    outline: none;
+                    border: 1px solid rgba(#ffffff, 0.0);
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        border: 1px solid rgba(#ffffff, 0.33);
+                    }
+
+                    &::-webkit-input-placeholder {
+                        /* Chrome/Opera/Safari */
+                        color: rgba(#ffffff, 0.50);
+                        font-weight: 300;
+                        font-size: medium;
+                    }
+
+                    &::-moz-placeholder {
+                        /* Firefox 19+ */
+                        color: rgba(#ffffff, 0.50);
+                        font-weight: 300;
+                        font-size: medium;
+                    }
+
+                    &:-ms-input-placeholder {
+                        /* IE 10+ */
+                        color: rgba(#ffffff, 0.50);
+                        font-weight: 300;
+                        font-size: medium;
+                    }
+
+                    &:-moz-placeholder {
+                        /* Firefox 18- */
+                        color: rgba(#ffffff, 0.50);
+                        font-weight: 300;
+                        font-size: medium;
+                    }
+                }
+            }
+        }
+    }
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}

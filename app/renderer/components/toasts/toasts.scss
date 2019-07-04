@@ -1,0 +1,67 @@
+.toasts-wrapper {
+    position: fixed;
+    bottom: 48px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 999;
+    flex-direction: column;
+    .toast-item-wrapper {
+        margin: 10px 0;
+        background-color: rgba($color: #fff, $alpha: 0.80);
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: toast-appear 0.3s ease-out 0s forwards ;
+        min-height: 60px;
+        &[data-type="Success"] {
+            background-color: rgba($color: lighten(#27ae60, 50), $alpha: 0.80);
+            label {
+                color: darken(#27ae60, 15);
+            }
+        }
+        &[data-type="Failure"] {
+            background-color: rgba($color: lighten(#e74c3c, 40), $alpha: 0.80);
+            label {
+                color: darken(#e74c3c, 15);
+            }
+        }
+        &[data-type="Warning"] {
+            background-color: rgba($color: lighten(#f1c40f, 25), $alpha: 0.80);
+            label {
+                color: darken(#000, 15);
+            }
+        }
+        label {
+            display: block;
+            padding: 0px 60px;
+            color: #000;
+        }
+        .toast-item-close {
+            width: 60px;
+            opacity: 0.30;
+            color: #000;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba($color: #000000, $alpha: 0.10);
+                opacity: 1;
+            }
+            i {
+                line-height: 60px;
+            }
+        }
+    }
+}
+@keyframes toast-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.90, 0.90);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1, 1);;
+    }
+}
