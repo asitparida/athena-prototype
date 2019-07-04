@@ -65414,6 +65414,10 @@ module.exports = "/create.935e6ad8.png";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -65490,26 +65494,53 @@ function (_React$Component) {
         });
       }
 
+      var combinedStyles = {
+        maskSize: '250px',
+        WebkitMaskSize: '250px',
+        maskPosition: 'center',
+        WebkitMaskPosition: 'center',
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat'
+      };
+
+      var collectStyles = _objectSpread({
+        mask: "url('".concat(collect, "')"),
+        WebkitMask: "url('".concat(collect, "')")
+      }, combinedStyles);
+
+      var organizeStyles = _objectSpread({
+        mask: "url('".concat(organize, "')"),
+        WebkitMask: "url('".concat(organize, "')")
+      }, combinedStyles);
+
+      var createStyles = _objectSpread({
+        mask: "url('".concat(create, "')"),
+        WebkitMask: "url('".concat(create, "')")
+      }, combinedStyles);
+
       return React.createElement("div", {
         className: "app-container"
       }, React.createElement("div", {
         className: "app-introduction"
       }, React.createElement("div", {
         className: "step"
-      }, React.createElement("img", {
-        src: collect
+      }, React.createElement("div", {
+        className: "step-pic",
+        style: collectStyles
       }), React.createElement("label", {
         className: "step-header"
       }, "Step 01"), React.createElement("h1", null, "Collect"), React.createElement("label", null, "Capture PDFs, text excerpts, and figures into your sidebar")), React.createElement("div", {
         className: "step"
-      }, React.createElement("img", {
-        src: organize
+      }, React.createElement("div", {
+        className: "step-pic",
+        style: organizeStyles
       }), React.createElement("label", {
         className: "step-header"
       }, "Step 02"), React.createElement("h1", null, "Organize"), React.createElement("label", null, "Add structure and refine your content as you collect")), React.createElement("div", {
         className: "step"
-      }, React.createElement("img", {
-        src: create
+      }, React.createElement("div", {
+        className: "step-pic",
+        style: createStyles
       }), React.createElement("label", {
         className: "step-header"
       }, "Step 03"), React.createElement("h1", null, "Synthesize"), React.createElement("label", null, "Drag content into your documents while Fuse manages your sources."))), React.createElement("button", {
@@ -76372,7 +76403,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59183" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
