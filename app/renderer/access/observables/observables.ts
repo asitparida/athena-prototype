@@ -1,11 +1,13 @@
 import { Subject, Subscription } from 'rxjs';
 import store from '../store/configureStore';
 import * as actions from '../actions/appActions';
+import { IContentItem } from '../../constants/types';
 
 const subscriptions: Subscription[] = [];
 export const ShowDumpBarAction$ = new Subject<boolean>();
 export const ShowRTEAction$ = new Subject<boolean>();
 export const ShowWorkspaceAction$ = new Subject<boolean>();
+export const ContentViewerData = new Subject<IContentItem<any>>();
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {

@@ -55,13 +55,13 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
                     'https://picsum.photos/id/1004/5616/3744',
                     'https://picsum.photos/id/1005/5760/3840'
                 ]),
-                videoUrl: `https://www.youtube.com/watch?v=${_.sample([
-                    '6wsFjjhZPJI',
+                videoId: _.sample([
+                    'bTqVqk7FSmY',
                     '7T2RonyJ_Ts',
                     'tq9mgTRQM8k',
                     'rKa1YLIoeN4',
                     'PxVgQrw0RVQ'
-                ])}`,
+                ]),
                 videoEndTick: 0,
                 videoStartTick: 0,
                 videoLength: _.sample(_.range(45, 200))
@@ -76,6 +76,7 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
                 }
             ]
         };
+        item.contentData.videoUrl = `https://www.youtube.com/watch?v=${item.contentData.videoId}`
         result.push(item);
     })
     return result;

@@ -69,6 +69,7 @@ export interface IPhotoContent {
 }
 
 export interface IVideoContent {
+    videoId?: string;
     videoThumbnailUrl?: string;
     videoUrl?: string;
     videoStartTick?: number;

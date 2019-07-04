@@ -52,7 +52,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         ShowWorkspaceAction$.next(false);
     }
     render() {
-        const index = 4;
+        const index = 0;
         const classListName = `tabs-holder ${this.props.sticky ? 'is-sticky' : ''}`;
         return <Tabs activeTabIndex={index} showResizer={!this.props.sticky} showCategorySelector={!this.props.sticky} sticky={this.props.sticky} categories={this.state.categories}>
                 {this.state.tabs.map((tab, i) => {

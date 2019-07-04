@@ -6,7 +6,6 @@ export class LinkContentItem extends React.Component<{ data: IContentItem<ILinkC
         super(props);
     }
     render() {
-        console.log(this.props.data);
         return (
             <div className='link-content'>
                 <label className='link-title'>{this.props.data.contentData.ogTitle}</label>

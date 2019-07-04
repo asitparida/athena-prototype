@@ -10,6 +10,7 @@ import Header from '../components/header/header';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
+import { ContentViewer } from '../components/content-viewer/content-viewer';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -76,6 +77,7 @@ class Main extends Component<any, any> {
                     <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
                 </div>
                 <Toasts />
+                <ContentViewer />
             </div>
         );
     }
