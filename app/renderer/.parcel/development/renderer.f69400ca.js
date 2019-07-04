@@ -45239,7 +45239,7 @@ function (_React$Component) {
       }
 
       return React.createElement(React.Fragment, null, React.createElement("div", {
-        className: "inner-content-holder"
+        className: "inner-content-holder ".concat(this.props.inheritDimensions ? 'inherit-dimensions' : '')
       }, React.createElement("div", {
         className: "inner-content"
       }, React.createElement("div", {
@@ -64760,6 +64760,24 @@ exports.VideoContentList = GetSampleVideoItems();
 exports.ArticleContentList = GetSampleArticleItems();
 exports.LinkContentList = GetSampleLinkItems();
 
+function GetSampleItem(type) {
+  switch (type) {
+    case types_1.ContentType.Photo:
+      return _.sample(GetSamplePhotoItems());
+
+    case types_1.ContentType.Video:
+      return _.sample(GetSampleVideoItems());
+
+    case types_1.ContentType.Article:
+      return _.sample(GetSampleArticleItems());
+
+    case types_1.ContentType.Link:
+      return _.sample(GetSampleLinkItems());
+  }
+}
+
+exports.GetSampleItem = GetSampleItem;
+
 function GetSamplePhotoItems() {
   var result = [];
 
@@ -65066,8 +65084,8 @@ var img2 = require('../assets/church_brew.jpg');
 var img3 = require('../assets/duquesne_incline.jpg');
 
 exports.ItemWidth = 200;
-exports.ItemHeight = 150;
-exports.GroupBufffer = 120;
+exports.ItemHeight = 200;
+exports.GroupBufffer = 60;
 exports.PhotosList = [{
   id: "1006",
   author: "Vladimir Kudinov",
@@ -65260,7 +65278,7 @@ exports.BoardGroups = [{
   annotationData: []
 }];
 exports.BoardGroups = exports.BoardGroups.filter(function (bg, i) {
-  return i < 3;
+  return i < 5;
 });
 },{"./types":"constants/types.ts","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
@@ -68953,6 +68971,10 @@ var react_dnd_1 = require("react-dnd");
 
 var types_1 = require("../../../constants/types");
 
+var dummy_data_1 = require("../../../constants/dummy-data");
+
+var content_item_1 = require("../../content-item/content-item");
+
 var itemSource = {
   beginDrag: function beginDrag(props) {
     /* code here */
@@ -68989,11 +69011,21 @@ function (_React$Component) {
     _classCallCheck(this, BoardContent);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BoardContent).call(this, props));
-    _this.state = {};
+    _this.state = {
+      contentData: null
+    };
     return _this;
   }
 
   _createClass(BoardContent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var data = dummy_data_1.GetSampleItem(this.props.data.type);
+      this.setState({
+        contentData: data
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -69002,7 +69034,10 @@ function (_React$Component) {
           src = _this$props.src;
       return connectDragSource(React.createElement("div", {
         className: "board-content"
-      }, React.createElement("h1", null, "Board Content")));
+      }, this.state.contentData && React.createElement(content_item_1.ContentItemWrapper, {
+        data: this.state.contentData,
+        inheritDimensions: true
+      })));
     }
   }]);
 
@@ -69010,7 +69045,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(BoardContent);
-},{"react":"../../node_modules/react/index.js","./board-content.scss":"components/workspace/board-content/board-content.scss","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../../constants/types":"constants/types.ts"}],"components/workspace/board-content-wrapper/board-content-wrapper.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./board-content.scss":"components/workspace/board-content/board-content.scss","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../../constants/types":"constants/types.ts","../../../constants/dummy-data":"constants/dummy-data.ts","../../content-item/content-item":"components/content-item/content-item.tsx"}],"components/workspace/board-content-wrapper/board-content-wrapper.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -69157,7 +69192,8 @@ function (_React$Component) {
         style: styles,
         ref: this.ref
       }, React.createElement(board_content_1.default, {
-        isBeingResized: this.state.isBeingResized
+        isBeingResized: this.state.isBeingResized,
+        data: this.props.data
       }), React.createElement("div", {
         className: "board-content-resizer",
         onPointerDown: this.onPointerDown.bind(this)
@@ -69298,14 +69334,14 @@ function (_React$Component) {
     value: function componentDidMount() {
       var rowItems = [{
         id: "".concat(Math.floor(Math.random() * 10e8)),
-        type: types_1.ContentType.Article,
+        type: types_1.ContentType.Video,
         props: {
           height: constants_1.ItemHeight,
           width: constants_1.ItemWidth
         }
       }, {
         id: "".concat(Math.floor(Math.random() * 10e8)),
-        type: types_1.ContentType.Link,
+        type: types_1.ContentType.Article,
         props: {
           height: constants_1.ItemHeight,
           width: constants_1.ItemWidth
@@ -69317,25 +69353,9 @@ function (_React$Component) {
           height: constants_1.ItemHeight,
           width: constants_1.ItemWidth
         }
-      }, {
-        id: "".concat(Math.floor(Math.random() * 10e8)),
-        type: types_1.ContentType.SocialMedia,
-        props: {
-          height: constants_1.ItemHeight,
-          width: constants_1.ItemWidth
-        }
-      }, {
-        id: "".concat(Math.floor(Math.random() * 10e8)),
-        type: types_1.ContentType.Video,
-        props: {
-          height: constants_1.ItemHeight,
-          width: constants_1.ItemWidth
-        }
       }];
       this.setState({
-        items: rowItems.filter(function (item, i) {
-          return i < 3;
-        })
+        items: rowItems
       });
       this.calculateGroupWidth(rowItems);
     }
@@ -69439,7 +69459,7 @@ function (_React$Component) {
   _createClass(GroupWrapper, [{
     key: "groupPropsChanged",
     value: function groupPropsChanged(data) {
-      data.width = data.width + 30;
+      data.width = data.width + 20;
       this.props.onPropsChange(data);
     }
   }, {
@@ -76403,7 +76423,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62915" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

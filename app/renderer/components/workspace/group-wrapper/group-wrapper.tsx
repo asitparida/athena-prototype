@@ -8,7 +8,7 @@ class GroupWrapper extends React.Component<{data?: IBoardGroupWrapper, parentX: 
         super(props);
     }
     groupPropsChanged(data) {
-        data.width = data.width + 30;
+        data.width = data.width + 20;
         this.props.onPropsChange(data);
     }
     render() {

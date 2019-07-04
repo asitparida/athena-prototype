@@ -1,9 +1,8 @@
 .board-content-wrapper {
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 0;
+    padding: 0px;
     border-radius: 5px;
-    background-color: rgba($color: #fff, $alpha: 0.10);
     position: relative;
     &:last-child {
         margin: 0;

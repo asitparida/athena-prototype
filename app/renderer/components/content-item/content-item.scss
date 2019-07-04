@@ -2,6 +2,17 @@
     position: relative;
     display: flex;
     flex-flow: column;
+    &.inherit-dimensions {
+        width:100%;
+        height: 100%;
+        .inner-content {
+            width:100%;
+            height: 100%;
+        }
+        .inner-content-item-actions {
+            padding-right: 24px;
+        }
+    }
 
     &:hover,
     &:focus {

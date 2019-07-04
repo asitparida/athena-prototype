@@ -4,8 +4,8 @@ const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
 export const ItemWidth = 200;
-export const ItemHeight = 150;
-export const GroupBufffer = 120;
+export const ItemHeight = 200;
+export const GroupBufffer = 60;
 
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },
@@ -90,4 +90,4 @@ export let BoardGroups: IBoardGroupWrapper[] = [
     }
 ];
 
-BoardGroups = BoardGroups.filter((bg, i) => i < 3);
+BoardGroups = BoardGroups.filter((bg, i) => i < 4);

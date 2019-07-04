@@ -1,7 +1,9 @@
 import * as React from 'react';
 import './board-content.scss'
 import { DragSource } from 'react-dnd';
-import { DragAndDropTypes } from '../../../constants/types';
+import { DragAndDropTypes, IContentItem, IBoardContent } from '../../../constants/types';
+import { GetSampleItem } from '../../../constants/dummy-data';
+import { ContentItemWrapper } from '../../content-item/content-item';
 
 const itemSource = {
     beginDrag(props) {
@@ -28,17 +30,31 @@ function collect(connect, monitor) {
     }
 }
 
-class BoardContent extends React.Component<any, any> {
+interface IPropType {
+    data: IBoardContent;
+}
+
+class BoardContent extends React.Component<IPropType | any, { contentData: IContentItem<any>}> {
     constructor(props) {
         super(props);
         this.state = {
+            contentData: null
         };
+    }
+    componentDidMount() {
+        const data = GetSampleItem((this.props.data as IBoardContent).type);
+        this.setState({
+            contentData: data
+        })
     }
     render() {
         const { isDragging, connectDragSource, src } = this.props;
         return connectDragSource(
             <div className="board-content">
-                <h1>Board Content</h1>
+                {
+                    this.state.contentData &&
+                    <ContentItemWrapper data={this.state.contentData} inheritDimensions={true} />
+                }
             </div>
         );
     }

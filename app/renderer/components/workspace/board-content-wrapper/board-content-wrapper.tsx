@@ -80,7 +80,7 @@ export class BoardContentWrapper extends React.Component<IPropType | any, any> {
         }
         return (
             <div className="board-content-wrapper" style={styles} ref={this.ref}>
-                <BoardContent isBeingResized={this.state.isBeingResized} />
+                <BoardContent isBeingResized={this.state.isBeingResized} data={this.props.data} />
                 <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
                     <i className='material-icons'>navigate_next</i>
                 </div>

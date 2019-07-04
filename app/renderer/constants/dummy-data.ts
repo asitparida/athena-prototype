@@ -9,6 +9,15 @@ export const VideoContentList: Array<IContentItem<IVideoContent>> = GetSampleVid
 export const ArticleContentList: Array<IContentItem<IArticleContent>> = GetSampleArticleItems();
 export const LinkContentList: Array<IContentItem<ILinkContent>> = GetSampleLinkItems();
 
+export function GetSampleItem(type: ContentType): IContentItem<any> {
+    switch (type) {
+        case ContentType.Photo: return _.sample(GetSamplePhotoItems())
+        case ContentType.Video: return _.sample(GetSampleVideoItems())
+        case ContentType.Article: return _.sample(GetSampleArticleItems())
+        case ContentType.Link: return _.sample(GetSampleLinkItems())
+    }
+}
+
 export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
     const result = [];
     _.range(ItemSize).forEach(() => {

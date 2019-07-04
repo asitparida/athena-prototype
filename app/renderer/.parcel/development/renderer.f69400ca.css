@@ -25,7 +25,6 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
-  background: #000;
 }
 body #root {
   display: flex;
@@ -473,6 +472,17 @@ body #root .app-content .app-content-area input {
   position: relative;
   display: flex;
   flex-flow: column;
+}
+.inner-content-holder.inherit-dimensions {
+  width: 100%;
+  height: 100%;
+}
+.inner-content-holder.inherit-dimensions .inner-content {
+  width: 100%;
+  height: 100%;
+}
+.inner-content-holder.inherit-dimensions .inner-content-item-actions {
+  padding-right: 24px;
 }
 .inner-content-holder:hover .inner-content-item-actions, .inner-content-holder:focus .inner-content-item-actions {
   opacity: 1;
@@ -1141,7 +1151,7 @@ body #root .app-content .app-content-area input {
 }
 .group-content {
   border: 1px dashed rgba(255, 255, 255, 0.25);
-  padding: 45px;
+  padding: 20px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.3);
@@ -1162,10 +1172,9 @@ body #root .app-content .app-content-area input {
 }
 .board-content-wrapper {
   display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px;
+  margin-bottom: 0;
+  padding: 0px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
   position: relative;
 }
 .board-content-wrapper:last-child {
@@ -1198,7 +1207,7 @@ body #root .app-content .app-content-area input {
 .board-content {
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 0px;
 }
 .board-content h1 {
   font-size: small;

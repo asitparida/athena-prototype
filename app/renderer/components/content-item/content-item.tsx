@@ -7,7 +7,7 @@ import { ArticleContentItem } from './article-content';
 import { LinkContentItem } from './link-content';
 import { ContentViewerData } from '../../access/observables/observables';
 
-export class ContentItemWrapper extends React.Component<{ data: IContentItem<any>, menuInvoked: ($event: MouseEvent) => {} }, { annotationAndNotesShown: boolean }> {
+export class ContentItemWrapper extends React.Component<{ data: IContentItem<any>, menuInvoked?: ($event: MouseEvent) => {}, inheritDimensions?: boolean }, { annotationAndNotesShown: boolean }> {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,7 +70,7 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
         }
         return (
             <React.Fragment>
-                <div className='inner-content-holder'>
+                <div className={`inner-content-holder ${this.props.inheritDimensions ? 'inherit-dimensions' : ''}`}>
                     <div className='inner-content'>
                         <div className={`inner-content-wrapper ${this.state.annotationAndNotesShown ? 'notes-open' : ''}`} onClick={this.openContent.bind(this)}>
                             {
