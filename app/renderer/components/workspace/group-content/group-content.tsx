@@ -48,7 +48,7 @@ function collect(connector, monitor) {
     }
 }
 
-interface IPropType { data?: IBoardGroupWrapper, onPropsChange: (data: any) => {}};
+interface IPropType { data?: IBoardGroupWrapper, onPropsChange: (data: any) => {} };
 
 class GroupContent extends React.Component<IPropType | any, any> {
     transferSubscription: Subscription;

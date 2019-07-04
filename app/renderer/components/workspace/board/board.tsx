@@ -47,10 +47,12 @@ class Board extends React.Component<{ id: any }, { boardGroups: IBoardGroupWrapp
             }
             const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2));
             const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
-            currentPositioner.scroll({
-                top: topOffset,
-                left: leftOffset,
-                behavior: smooth ? "smooth" : 'auto'
+            window.requestAnimationFrame(() => {
+                currentPositioner.scroll({
+                    top: topOffset,
+                    left: leftOffset,
+                    behavior: smooth ? "smooth" : 'auto'
+                });
             });
         }
     }
