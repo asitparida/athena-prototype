@@ -25,14 +25,24 @@ export default class SidebarComponent extends React.Component<{}, any> {
         const { sideBarItems } = this.state;
         return <div className='sidebar-wrapper'>
             <ul className="workspace-list">
-                <li><NavLink to="/home"><label>Home</label></NavLink></li>
-                <li><NavLink to="/dump"><label>All Clips</label></NavLink></li>
+                <li><NavLink to="/home"><label className='first-level-label'><i className='material-icons'>home</i>Home</label></NavLink></li>
+                <li><NavLink to="/dump"><label className='first-level-label'><i className='material-icons'>apps</i>Collections</label></NavLink></li>
                 <React.Fragment>
                 {
                     sideBarItems.length > 0 &&
                     (sideBarItems as ISideBarNavItem[]).map(((item, i) => {
                         return <li key={i} className="first-level">
-                            <NavLink to={item.link}><label>{item.name}</label></NavLink>
+                            <NavLink to={item.link}>
+                                <label className='first-level-label'>
+                                {
+                                    item.subListOpen && <i className='material-icons folder-icon'>folder_open</i>
+                                }
+                                {
+                                    !item.subListOpen && <i className='material-icons folder-icon'>folder</i>
+                                }
+                                {item.name}
+                                </label>
+                            </NavLink>
                             {
                                 item.items.length > 0 &&
                                 <span className='list-toggler' onClick={this.openList.bind(this, i)}>

@@ -9,12 +9,13 @@ class Tabs extends React.Component<{
     showResizer?: boolean,
     sticky?: boolean,
     showCategorySelector?: boolean,
-    categories: any[]
+    categories: any[],
+    activeTabIndex?: number;
 }, { activeTabIndex: any, currentSize: number }> {
     constructor(props) {
         super(props);
         this.state = {
-            activeTabIndex: 0,
+            activeTabIndex: this.props.activeTabIndex || 0,
             currentSize: 0.5
         };
     }

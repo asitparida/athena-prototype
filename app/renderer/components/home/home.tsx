@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Redirect } from 'react-router';
 import './home.scss';
 
-import collect from '../../assets/collect.png';
-import organize from '../../assets/organize.png';
-import create from '../../assets/create.png';
+const collect = require('../../assets/collect.png');
+const organize = require('../../assets/organize.png');
+const create = require('../../assets/create.png');
 
 class Home extends React.Component<any, any> {
     constructor(props) {

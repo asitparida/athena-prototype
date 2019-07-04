@@ -24,9 +24,11 @@
   "author": "shamofu",
   "license": "MIT",
   "build": {
-    "productName": "AthenaPrototype",
+    "productName": "Athena",
     "appId": "org.mhci.AthenaPrototype",
+    "copyright":"Copyright © 2019 KA",
     "files": [
+      "build/icon.*",
       "app/**",
       "!app/main/main.ts",
       "!app/main/tests/**",

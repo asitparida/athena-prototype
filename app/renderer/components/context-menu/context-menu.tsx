@@ -27,7 +27,7 @@ export class ContextMenu extends React.Component<{ actions: IContextMenuAction[]
             const elem = this.domElRef.current;
             if (elem) {
                 const props = (elem as HTMLElement).getBoundingClientRect();
-                posX = props.left;
+                posX = props.right;
                 posY = props.bottom
             }
         }

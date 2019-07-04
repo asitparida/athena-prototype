@@ -281,17 +281,23 @@ body #root .app-content .app-content-area input {
 .tabs-wrapper .tab-wrapper-content[data-size="0.5"] .content-wrapper {
   width: 20%;
   min-width: 20%;
-  height: 200px;
+}
+.tabs-wrapper .tab-wrapper-content[data-size="0.5"] .content-wrapper .inner-content {
+  height: 170px;
 }
 .tabs-wrapper .tab-wrapper-content[data-size="1"] .content-wrapper {
   width: 25%;
   min-width: 25%;
-  height: 300px;
+}
+.tabs-wrapper .tab-wrapper-content[data-size="1"] .content-wrapper .inner-content {
+  height: 270px;
 }
 .tabs-wrapper .tab-wrapper-content[data-size="2"] .content-wrapper {
   width: 50%;
   min-width: 50%;
-  height: 400px;
+}
+.tabs-wrapper .tab-wrapper-content[data-size="2"] .content-wrapper .inner-content {
+  height: 370px;
 }
 .tabs-wrapper .tab-wrapper-content.compressed {
   padding: 15px 30px;
@@ -384,14 +390,16 @@ body #root .app-content .app-content-area input {
 .tabs-holder.is-sticky .content-wrapper {
   width: 100%;
   min-width: 100%;
-  height: 120px;
   padding: 0;
+  max-width: 200px;
+}
+.tabs-holder.is-sticky .content-wrapper .inner-content {
+  height: 120px;
 }
 .tabs-holder .content-wrapper {
-  padding: 10px 12.5px 0 12.5px;
+  padding: 10px 17.5px 0 17.5px;
   min-width: 200px;
-  height: 200px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 .tabs-holder .content-wrapper .content {
   background-color: rgba(255, 255, 255, 0);
@@ -420,7 +428,6 @@ body #root .app-content .app-content-area input {
 }
 .context-menu-wrapper {
   width: 100%;
-  height: 100%;
 }
 
 .app-context-menu-wrapper {
@@ -461,18 +468,24 @@ body #root .app-content .app-content-area input {
   background-color: #f0f0f0;
   color: #000;
 }
-.content {
+.inner-content-holder {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+}
+.inner-content-holder:hover .inner-content-item-actions, .inner-content-holder:focus .inner-content-item-actions {
+  opacity: 1;
+}
+
+.inner-content {
   position: relative;
   display: flex;
   flex-flow: column;
   overflow: hidden;
 }
-.content:hover .content-item-actions, .content:focus .content-item-actions {
-  opacity: 1;
-}
-.content .inner-content-wrapper {
+.inner-content .inner-content-wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   flex: 1;
   order: 1;
@@ -480,26 +493,39 @@ body #root .app-content .app-content-area input {
   height: calc(100% - 24px);
   border-radius: 4px;
   overflow: hidden;
+  cursor: pointer;
 }
-.content .content-item-actions {
-  width: 100%;
-  height: 24px;
-  order: 2;
-  flex: initial;
-  display: flex;
-  justify-content: space-between;
+.inner-content .inner-content-wrapper.notes-open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.inner-content .inner-content-wrapper:hover .inner-overlay-content-wrapper {
+  animation: fade-in-overlay 0.2s linear 0s forwards;
+}
+.inner-content .inner-content-wrapper:hover .inner-overlay-content-wrapper .inner-content-title {
+  animation: slide-in-overlay 0.2s linear 0.05s forwards;
+}
+.inner-content .inner-content-wrapper .inner-overlay-content-wrapper {
+  will-change: auto;
   opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8));
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding: 20px 10px;
+  z-index: 4;
 }
-.content .content-item-actions i {
-  width: 24px;
-  line-height: 24px;
-  opacity: 0.5;
+.inner-content .inner-content-wrapper .inner-overlay-content-wrapper .inner-content-title {
+  text-align: center;
+  font-size: small;
 }
-.content .content-item-actions i.smaller {
-  font-size: 16px;
-}
-.content .content-label {
-  z-index: 2;
+.inner-content .inner-content-type-label {
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.3);
   margin: 0;
   line-height: 16px;
@@ -512,17 +538,13 @@ body #root .app-content .app-content-area input {
   left: 0;
   opacity: 0.5;
 }
-.content .photo-content {
+.inner-content .photo-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease-out 0s;
 }
-.content .photo-content:hover {
-  transform: scale(1.05, 1.05);
-}
-.content .photo-content .photo {
+.inner-content .photo-content .photo {
   display: block;
   width: 100%;
   height: 100%;
@@ -530,9 +552,164 @@ body #root .app-content .app-content-area input {
   background-position: center;
   opacity: 0;
 }
-.content .photo-content .photo.shown {
+.inner-content .photo-content .photo.shown {
   opacity: 1;
   animation: show-image 1s ease-out forwards;
+}
+.inner-content .video-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.inner-content .video-content .video-duration {
+  z-index: 3;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  line-height: 16px;
+  font-size: x-small;
+  padding: 2px 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  opacity: 0.8;
+  top: 0;
+  right: 0;
+}
+.inner-content .video-content .video-photo {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+}
+.inner-content .video-content .video-photo.shown {
+  opacity: 1;
+  animation: show-image 1s ease-out forwards;
+}
+.inner-content .video-content .video-overlay {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner-content .video-content .video-overlay i.play-icon {
+  font-size: 48px;
+}
+.inner-content .article-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding: 30px 15px 10px 15px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.inner-content .article-content .article-title {
+  font-size: small;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: lowercase;
+}
+.inner-content .article-content .article-author {
+  font-size: x-small;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+}
+.inner-content .link-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding: 30px 15px 10px 15px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.inner-content .link-content .link-title {
+  font-size: small;
+  color: rgba(255, 255, 255, 0.8);
+}
+.inner-content .link-content .link-author {
+  font-size: x-small;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.inner-content-item-actions {
+  width: 100%;
+  height: 24px;
+  order: 2;
+  flex: initial;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+}
+.inner-content-item-actions i {
+  width: 24px;
+  line-height: 24px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.inner-content-item-actions i.smaller {
+  font-size: 16px;
+}
+
+.inner-content-meta {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  font-size: small;
+  color: rgba(255, 255, 255, 0.5);
+}
+.inner-content-meta .inner-content-meta-tags ul {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style: none;
+  flex-flow: row wrap;
+}
+.inner-content-meta .inner-content-meta-tags ul li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 5px 15px;
+  margin: 5px 5px 0 0;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner-content-meta .inner-content-meta-tags ul li.new-tag {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding-left: 7px;
+  padding-right: 10px;
+}
+.inner-content-meta .inner-content-meta-tags ul li.new-tag i {
+  font-size: small;
+  margin-right: 5px;
+}
+.inner-content-meta .inner-content-meta-notes p {
+  margin: 10px 0 5px 0;
 }
 
 @keyframes show-image {
@@ -541,6 +718,22 @@ body #root .app-content .app-content-area input {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes fade-in-overlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-in-overlay {
+  0% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 .app-container {
@@ -565,8 +758,8 @@ body #root .app-content .app-content-area input {
   font-weight: bold;
   outline: none;
   font-size: small;
-  margin-top: 75px;
-  margin-bottom: 30px;
+  margin-top: 100px;
+  margin-bottom: -30px;
   transition: all 0.2s linear 0s;
 }
 .app-container button:hover {
@@ -659,17 +852,25 @@ body #root .app-content .app-content-area input {
 .sidebar-wrapper ul li label {
   color: rgba(255, 255, 255, 0.5);
   width: 100%;
-  line-height: 48px;
+  line-height: 54px;
   text-align: left;
   padding: 0 30px;
   margin: 0;
   cursor: pointer;
 }
 .sidebar-wrapper ul li label.second-level {
-  padding-left: 60px;
+  padding-left: 54px;
 }
 .sidebar-wrapper ul li label:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+.sidebar-wrapper ul li label.first-level-label {
+  display: flex;
+  align-items: center;
+}
+.sidebar-wrapper ul li label.first-level-label i {
+  width: 36px;
+  font-size: 18px;
 }
 .sidebar-wrapper ul li.first-level {
   position: relative;
@@ -677,7 +878,7 @@ body #root .app-content .app-content-area input {
 .sidebar-wrapper ul li.first-level .list-toggler {
   position: absolute;
   right: 12px;
-  top: 6px;
+  top: 9px;
   height: 36px;
   width: 36px;
   border-radius: 50%;
@@ -694,6 +895,10 @@ body #root .app-content .app-content-area input {
 }
 .sidebar-wrapper ul li.first-level ul.sub-list {
   animation: sub-list-open 0.33s linear forwards 0s;
+  padding-left: 18px;
+}
+.sidebar-wrapper ul li.first-level ul.sub-list li label {
+  line-height: 48px;
 }
 .sidebar-wrapper ul li a {
   display: flex;
@@ -907,13 +1112,14 @@ body #root .app-content .app-content-area input {
   bottom: 48px;
   right: 48px;
   z-index: 3;
+  display: flex;
 }
 .workspace-actions .workspace-action {
   width: 48px;
   height: 48px;
   text-align: center;
   background: rgba(0, 0, 0, 0.5);
-  margin: 1px 0;
+  margin: 0 1px;
   cursor: pointer;
 }
 .workspace-actions .workspace-action i {

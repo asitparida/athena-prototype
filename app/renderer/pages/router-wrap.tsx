@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import DumpingGround from '../components/dumping-ground/dumping-ground';
 import Home from '../components/home/home';
@@ -25,6 +25,7 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string } 
                             <Route exact path='/dump' component={DumpingGround} />
                             <Route exact path='/workspace/:id' component={Workspace} />
                             <Route component={() => <h1>204 No Content</h1>} />
+                            <Redirect from='' exact to='/home' />
                         </Switch>
                     </RouterRoot>
                 </div>

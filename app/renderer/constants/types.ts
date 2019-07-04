@@ -43,7 +43,10 @@ export enum MediaSourceType {
     Facebook,
     Medium,
     Quora,
-    Youtube
+    Youtube,
+    Vimeo,
+    ACM,
+    Scholar
 }
 export class ContentList {
     items: any[];
@@ -63,6 +66,28 @@ export interface IContentListItem {
 
 export interface IPhotoContent {
     imgUrl?: string;
+}
+
+export interface IVideoContent {
+    videoThumbnailUrl?: string;
+    videoUrl?: string;
+    videoStartTick?: number;
+    videoEndTick?: number;
+    videoLength?: number;
+}
+
+export interface IArticleContent {
+    articleTitle?: string;
+    articleLink?: string;
+    authorName?: string;
+}
+
+export interface ILinkContent {
+    ogLink?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogSiteName?: string;
+    ogImage?: string;
 }
 
 export interface IContextMenuAction {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ContextMenu } from '../context-menu/context-menu';
-import { ContentType, IContextMenuAction } from '../../constants/types';
+import { IContextMenuAction } from '../../constants/types';
 import ContentWrapper from './content-wrapper';
 
-export class Content extends React.Component<any, {menuOpen: boolean}> {
+export class ContentWithMenuWrapper extends React.Component<any, {menuOpen: boolean}> {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,4 +36,3 @@ export class Content extends React.Component<any, {menuOpen: boolean}> {
         </div>
     }
 }
-export default Content;

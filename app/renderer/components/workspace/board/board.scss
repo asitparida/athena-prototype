@@ -17,12 +17,13 @@
     bottom: 48px;
     right: 48px;
     z-index: 3;
+    display: flex;
     .workspace-action {
         width: 48px;
         height: 48px;
         text-align: center;
         background: rgba(#000, 0.50);
-        margin: 1px 0;
+        margin: 0 1px;
         cursor: pointer;
         i {
             line-height: 48px;

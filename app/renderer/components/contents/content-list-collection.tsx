@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ContentList } from './content-list';
-import { PhotosList } from '../../constants/constants';
 import { ContentType, IContentListItem } from '../../constants/types';
-import { PhotoContentList } from '../../constants/dummy-data';
+import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList } from '../../constants/dummy-data';
 
 interface IProps {
     type: ContentType
@@ -12,7 +11,7 @@ interface IContentCollectionState {
     listItems: IContentListItem[];
 }
 
-export class ContentCollection extends React.Component<IProps, IContentCollectionState> {
+export class ContentListCollection extends React.Component<IProps, IContentCollectionState> {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,16 +19,15 @@ export class ContentCollection extends React.Component<IProps, IContentCollectio
         };
     }
     updateCollection() {
-        console.log('please update collection');
-    }
-    componentDidMount() {
-        this.updateCollection();
         let items = [];
         const type = this.props.type;
         switch (type) {
             case ContentType.Photo: { items = PhotoContentList; break; };
+            case ContentType.Video: { items = VideoContentList; break; };
+            case ContentType.Article: { items = ArticleContentList; break; };
+            case ContentType.Link: { items = LinkContentList; break; };
             default: {
-                items = PhotoContentList; break;
+                items = [].concat(PhotoContentList, VideoContentList, ArticleContentList, LinkContentList); break;
             }
         }
         const collection = [
@@ -42,13 +40,15 @@ export class ContentCollection extends React.Component<IProps, IContentCollectio
             listItems: collection
         });
     }
+    componentDidMount() {
+        this.updateCollection();
+    }
     componentDidUpdate(props) {
         if (this.props.type !== props.type) {
             this.updateCollection();
         }
     }
     render() {
-        console.log(this.state.listItems);
         return <React.Fragment>
             {
                 this.state.listItems.map((item, i) => {

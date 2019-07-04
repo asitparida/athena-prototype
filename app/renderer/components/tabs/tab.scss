@@ -108,13 +108,14 @@
         padding: 30px;
         flex: 1;
         overflow-y: auto;
-        // &:not(.is-sticky) {
 
         &[data-size="0.5"] {
             .content-wrapper {
                 width: 20%;
                 min-width: 20%;
-                height: 200px;
+                .inner-content {
+                    height: 170px;
+                }
             }
         }
 
@@ -122,7 +123,9 @@
             .content-wrapper {
                 width: 25%;
                 min-width: 25%;
-                height: 300px;
+                .inner-content {
+                    height: 270px;
+                }
             }
         }
 
@@ -130,7 +133,9 @@
             .content-wrapper {
                 width: 50%;
                 min-width: 50%;
-                height: 400px;
+                .inner-content {
+                    height: 370px;
+                }
             }
         }
 

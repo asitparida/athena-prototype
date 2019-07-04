@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Content } from './content';
+import { ContentWithMenuWrapper } from './content-with-menu-wrapper';
 import { IContentItem, ContentType } from '../../constants/types';
 
 interface IContentListProps {
@@ -21,7 +21,7 @@ export class ContentList extends React.Component<IContentListProps, {}> {
             <h1>{label}</h1>
             <div className='content-items-wrapper'>
                 {this.props.items.map((item, j) => {
-                    return <Content key={j} data={item} />
+                    return <ContentWithMenuWrapper key={j} data={item} />
                 })}
             </div>
         </div>

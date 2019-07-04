@@ -1,7 +1,7 @@
 import { ContentList, ContentType, Workspace, IWorkspace, IBoardGroupWrapper } from "./types";
-import img1 from '../assets/carnegie_museum_art.jpg';
-import img2 from '../assets/church_brew.jpg';
-import img3 from '../assets/duquesne_incline.jpg';
+const img1 = require('../assets/carnegie_museum_art.jpg');
+const img2 = require('../assets/church_brew.jpg');
+const img3 = require('../assets/duquesne_incline.jpg');
 
 export const ItemWidth = 200;
 export const ItemHeight = 150;
@@ -41,7 +41,7 @@ export const DumpingGrounCollectionTabs = [
     { id: 'all', name: 'All' },
     { id: 'photos', name: 'Photos', type: ContentType.Photo },
     { id: 'videos', name: 'Videos', type: ContentType.Video },
-    { id: 'articles', name: 'Acticles', type: ContentType.Article },
+    { id: 'articles', name: 'Articles', type: ContentType.Article },
     { id: 'links', name: 'Links', type: ContentType.Link },
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];

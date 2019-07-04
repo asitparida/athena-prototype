@@ -26,8 +26,8 @@ function collect(connect, monitor) {
 }
 
 class ContentWrapper extends React.Component<any, any> {
-    menuInvoked() {
-        this.props.menuInvoked();
+    menuInvoked($event) {
+        this.props.menuInvoked($event);
     }
     render() {
         const { isDragging, connectDragSource, src } = this.props;

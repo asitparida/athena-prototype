@@ -2,7 +2,7 @@ import * as React from 'react'
 import Tabs from '../tabs/tabs';
 import Tab from '../tabs/Tab';
 import './dumping-ground.scss';
-import { ContentCollection } from '../contents/content-collection';
+import { ContentListCollection } from '../contents/content-list-collection';
 import { ShowWorkspaceAction$ } from '../../access/observables/observables';
 import { ContentType, IDumpingGroundTab } from '../../constants/types';
 import HTML5Backend from 'react-dnd-html5-backend'
@@ -52,12 +52,13 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         ShowWorkspaceAction$.next(false);
     }
     render() {
+        const index = 4;
         const classListName = `tabs-holder ${this.props.sticky ? 'is-sticky' : ''}`;
-        return <Tabs showResizer={!this.props.sticky} showCategorySelector={!this.props.sticky} sticky={this.props.sticky} categories={this.state.categories}>
+        return <Tabs activeTabIndex={index} showResizer={!this.props.sticky} showCategorySelector={!this.props.sticky} sticky={this.props.sticky} categories={this.state.categories}>
                 {this.state.tabs.map((tab, i) => {
                     return <Tab title={tab.name} key={i}>
                         <div className={classListName}>
-                            <ContentCollection type={tab.type} />
+                            <ContentListCollection type={tab.type} />
                         </div>
                     </Tab>
                 })}
