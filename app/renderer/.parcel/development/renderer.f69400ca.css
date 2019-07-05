@@ -25,7 +25,6 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
-  background: #565656;
 }
 body #root {
   display: flex;
@@ -876,7 +875,7 @@ body #root .app-content .app-content-area input {
   cursor: pointer;
 }
 .sidebar-wrapper ul li label.second-level {
-  padding-left: 54px;
+  padding-left: 84px;
 }
 .sidebar-wrapper ul li label:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -912,7 +911,7 @@ body #root .app-content .app-content-area input {
 }
 .sidebar-wrapper ul li.first-level ul.sub-list {
   animation: sub-list-open 0.33s linear forwards 0s;
-  padding-left: 18px;
+  padding-left: 0;
 }
 .sidebar-wrapper ul li.first-level ul.sub-list li label {
   line-height: 48px;
@@ -1152,7 +1151,7 @@ body #root .app-content .app-content-area input {
 }
 .group-content {
   border: 1px dashed rgba(255, 255, 255, 0.25);
-  padding: 20px 20px 0px 20px;
+  padding: 10px 10px 0px 10px;
   display: flex;
   flex-direction: column;
   background: rgba(0, 0, 0, 0.3);
@@ -1229,6 +1228,40 @@ body #root .app-content .app-content-area input {
   flex: initial;
   margin-right: auto;
   margin-left: 12px;
+}
+.app-actions .separator {
+  height: 36px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 0 6px 6px 15px;
+}
+.app-actions .toggler {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  margin-bottom: 6px;
+  margin-right: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.app-actions .toggler label {
+  margin: 0;
+  line-height: 32px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: x-small;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  min-width: 80px;
+  text-align: center;
+  transition: background-color 0.2s linear 0s;
+}
+.app-actions .toggler label.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.app-actions .toggler label:not(.active):hover, .app-actions .toggler label:not(.active):focus {
+  background-color: rgba(255, 255, 255, 0.025);
 }
 .app-actions .action {
   margin-left: 10px;

@@ -6,15 +6,15 @@ import './header.scss';
 import { WorkspaceList, Topiclist } from '../../constants/constants';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
 
-const mapStateToProps = ({ reducers }) => {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
         workspaceInHeader: reducers.workspaceInHeader,
         workspaceActionInHeader: reducers.workspaceActionInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
-        workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
-        workspaceRTEActionShown: reducers.workspaceRTEActionShown
+        workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas,
+        workspaceActionsAreShown: workspaceReducers.workspaceActionsAreShown
     };
 }
 
@@ -59,6 +59,9 @@ class Header extends React.Component<any, any> {
                 console.log(data);
             });
     }
+    toggleWorkspaceView() {
+        this.props.actions.toggleWorkspaceViewAsCanvas();
+    }
     render() {
         return (
             <React.Fragment>
@@ -67,7 +70,7 @@ class Header extends React.Component<any, any> {
                         <i className='material-icons'>menu</i>
                     </div>
                     {
-                        this.props.workspaceRTEActionShown && this.state.topicList.length > 0 &&
+                        this.props.workspaceActionsAreShown && this.state.topicList.length > 0 &&
                         <ul className='topic-headers'>
                             {
                                 this.state.topicList.map((topic, i) => {
@@ -86,23 +89,34 @@ class Header extends React.Component<any, any> {
                 }
                 <div className='app-actions right'>
                     {
+                        this.props.workspaceActionsAreShown &&
+                        <React.Fragment>
+                            <div className='toggler' onClick={this.toggleWorkspaceView.bind(this)}>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? 'active' : ''}`}>Canvas</label>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>Grid</label>
+                            </div>
+                            <div className='separator' />
+                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
+                                <i className="material-icons">text_fields</i>
+                            </div>
+                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
+                                <i className='material-icons'>apps</i>
+                            </div>
+                        </React.Fragment>
+                    }
+                    {/* {
                         this.props.workspaceRTEActionShown &&
-                        <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
-                            <i className="material-icons">text_fields</i>
-                        </div>
                     }
                     {
                         this.props.workspaceDumpBarActionShown &&
-                        <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
-                            <i className='material-icons'>apps</i>
-                        </div>
-                    }
+                    } */}
                     {
                         this.props.workspaceActionInHeader &&
                         <div className={`action ${this.props.workspaceInHeader ? 'active' : ''}`} onClick={this.toggleWorkspaceInBar.bind(this)}>
                             <i className='material-icons'>storage</i>
                         </div>
                     }
+                    <div className='separator' />
                     <div className='action' onClick={this.launchAnnotator.bind(this)}>
                         <i className='material-icons'>text_format</i>
                     </div>

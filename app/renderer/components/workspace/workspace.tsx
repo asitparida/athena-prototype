@@ -7,12 +7,14 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$ } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import Board from './board/board';
+import CanvasView from './canvas-view/canvas-view';
+import ListView from './list-view/list-view';
 
-const mapStateToProps = ({ reducers }) => {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
-        workspaceRTEShown: reducers.workspaceRTEShown
+        workspaceRTEShown: reducers.workspaceRTEShown,
+        workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas
     };
 }
 
@@ -25,19 +27,23 @@ const mapDispatchToProps = (dispatch) => {
 class Workspace extends React.Component<any, any> {
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 500, dumpGroundWidth : 300, workspaceId: null };
+        this.state = { rteWidth: 500, dumpGroundWidth: 300, workspaceId: null };
     }
     componentDidMount() {
         ShowDumpBarAction$.next(true);
         ShowRTEAction$.next(true);
-        const { id } = this.props.match.params
+        const { workspaceId, topicId } = this.props.match.params;
+        console.log(workspaceId, topicId);
         this.setState({
-            workspaceId: id
+            workspaceId,
+            topicId
         });
+        this.props.actions.showWorkspaceActions();
     }
     componentWillUnmount() {
         ShowDumpBarAction$.next(false);
         ShowRTEAction$.next(false);
+        this.props.actions.hideWorkspaceActions();
     }
     onRTESizeChange(width) {
         this.setState({
@@ -58,12 +64,16 @@ class Workspace extends React.Component<any, any> {
         }
         return (
             <div className="workspace-wrapper">
-                <div className="working-area">
-                    {
-                        this.state.workspaceId &&
-                        <Board id={this.state.workspaceId} />
-                    }
-                </div>
+                {
+                    this.props.workspaceViewIsCanvas && this.state.workspaceId &&
+                    <div className="working-area">
+                        <CanvasView id={this.state.workspaceId} />
+                    </div>
+                }
+                {
+                    !this.props.workspaceViewIsCanvas && this.state.workspaceId &&
+                    <ListView />
+                }
                 {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>
@@ -75,9 +85,9 @@ class Workspace extends React.Component<any, any> {
                 {
                     this.props.workspaceDumpBarShown &&
                     <div className="sticky-dumping-ground" style={dumpGroundWidth}>
-                          <Resizer onSizeChange={this.onDUMPBarSizeChange.bind(this)}>
+                        <Resizer onSizeChange={this.onDUMPBarSizeChange.bind(this)}>
                             <DumpingGround sticky={true} workspace={true} />
-                          </Resizer>
+                        </Resizer>
                     </div>
                 }
             </div>

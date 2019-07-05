@@ -13,7 +13,7 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
     }
     componentDidMount() {
         if (this.props.data.contentData.videoThumbnailUrl) {
-            window.requestAnimationFrame(() => {
+            (window as any).requestIdleCallback(() => {
                 const elem = document.createElement('IMG') as HTMLImageElement;
                 elem.onload = () => {
                     window.requestAnimationFrame(() => {

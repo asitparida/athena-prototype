@@ -17,6 +17,43 @@
     display: flex;
     align-items: flex-end;
 
+    .separator {
+        height: 36px;
+        width: 1px;
+        background-color: rgba(#fff, 0.15);
+        margin: 0 6px 6px 15px;
+    }
+
+    .toggler {
+        border: 2px solid rgba(#fff, 0.1);
+        display: flex;
+        margin-bottom: 6px;
+        margin-right: 12px;
+        border-radius: 20px;
+        overflow: hidden;
+        label {
+            margin: 0;
+            line-height: 32px;
+            height: 32px;
+            padding: 0 10px;
+            font-size: x-small;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            min-width: 80px;
+            text-align: center;
+            transition: background-color 0.2s linear 0s;
+            &.active {
+                background-color: rgba(#fff, 0.1);
+            }
+            &:not(.active):hover,
+            &:not(.active):focus{
+                background-color: rgba(#fff, 0.025);
+            }
+        }
+    }
+
     .action {
         margin-left: 10px;
         height: 48px;

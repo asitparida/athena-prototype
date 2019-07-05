@@ -9,6 +9,8 @@ export interface IState {
     workspaceRTEShown: boolean;
     workspaceRTEActionShown: boolean;
     toasts: IToastItem[];
+    workspaceViewIsCanvas: boolean;
+    workspaceActionsAreShown: boolean;
 }
 export interface IAction {
     type: string;

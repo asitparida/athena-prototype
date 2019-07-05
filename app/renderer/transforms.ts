@@ -6,7 +6,7 @@ export function GetWorkspaceListForSidebar(): ISideBarNavItem[] {
         const sideBarItem: ISideBarNavItem = {
             id: Math.floor(Math.random() * 10e8),
             name: item.name,
-            link: `/workspace/${item.id}`,
+            link: `/workspace/${item.id}/topic/123`,
             active: false,
             subListOpen: false,
             items: Topiclist.map(topic => {

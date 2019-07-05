@@ -11,7 +11,7 @@ import { GetSplashWindow } from './helpers/splash';
 const electron = require('electron');
 const { BrowserWindow, app } = electron;
 const isDev = require('electron-is-dev')
-const { resolve } = require('app-root-path')
+const { resolve } = require('app-root-path');
 
 app.on('ready', async () => {
     BuildMenu();

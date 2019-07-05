@@ -82,3 +82,19 @@ export const showToastNotification = (message: IToastItem) => ({
 export const removeToastNotification = (toastId: string) => ({
     type: types.REMOVE_TOAST_NOTIFICATION, payload: toastId
 })
+
+export const toggleWorkspaceViewAsCanvas = () => ({
+    type: types.TOGGLE_WORKSPACE_VIEW_AS_CANVAS, payload: {}
+})
+
+export const showWorkspaceActions = () => ({
+    type: types.SHOW_WORKSPACE_ACTIONS, payload: {}
+})
+
+export const hideWorkspaceActions = () => ({
+    type: types.HIDE_WORKSPACE_ACTIONS, payload: {}
+})
+
+export const toggleWorkspaceActions = () => ({
+    type: types.TOGGLE_WORKSPACE_ACTIONS, payload: {}
+})

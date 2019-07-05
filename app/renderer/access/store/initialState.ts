@@ -8,7 +8,9 @@ const IntialState: IState = {
     workspaceDumpBarActionShown: false,
     workspaceRTEShown: false,
     workspaceRTEActionShown: false,
-    toasts: []
+    toasts: [],
+    workspaceViewIsCanvas: true,
+    workspaceActionsAreShown: false
 };
 
 export default IntialState;

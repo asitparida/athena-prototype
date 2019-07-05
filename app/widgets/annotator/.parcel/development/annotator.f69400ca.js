@@ -323,7 +323,7 @@ checkPropTypes.resetWarningCache = function () {
 };
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
  * react.development.js
  *
@@ -2253,7 +2253,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":"../../../node_modules/react/cjs/react.development.js"}],"../../../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
+},{"./cjs/react.development.js":"../../node_modules/react/cjs/react.development.js"}],"../../../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 var global = arguments[3];
 /** @license React v0.13.6
  * scheduler.development.js
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -25927,7 +25927,7 @@ var render = function render(Component) {
 };
 
 render(annotator_1.default);
-},{"react":"../../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","./annotator.scss":"annotator.scss","./annotator":"annotator.tsx"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","react-dom":"../../../node_modules/react-dom/index.js","./annotator.scss":"annotator.scss","./annotator":"annotator.tsx"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -25955,7 +25955,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54373" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64054" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

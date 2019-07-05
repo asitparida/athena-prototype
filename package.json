@@ -28,7 +28,8 @@
     "appId": "org.mhci.athena",
     "copyright":"Copyright © 2019 KA",
     "files": [
-      "build/icon.*",
+      "build/**",
+      "build/**.*",
       "app/**",
       "!app/main/main.ts",
       "!app/main/tests/**",

@@ -2118,3 +2118,260 @@ build/icon.icns, it is a binary file.
 build/icon.png, it is a binary file.
 icon.icns, it is a binary file.
 ===============================================================================
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-07-04 20:46:13
+count workspace : /Users/asitparida/Codes/athena-prototype
+total files : 114
+total code lines : 4995
+total comment lines : 60
+total blank lines : 371
+
+.gitignore, code is 5, comment is 0, blank is 0.
+app/api/app.ts, code is 22, comment is 1, blank is 3.
+app/api/server.ts, code is 30, comment is 1, blank is 4.
+app/electron-ipc.js, code is 2, comment is 0, blank is 0.
+app/main/assets/icon.png, it is a binary file.
+app/main/assets/network.png, it is a binary file.
+app/main/assets/owl.png, it is a binary file.
+app/main/helpers/annotator.ts, code is 38, comment is 2, blank is 3.
+app/main/helpers/dock.ts, code is 16, comment is 0, blank is 0.
+app/main/helpers/ipc-helper.ts, code is 5, comment is 0, blank is 0.
+app/main/helpers/screen.ts, code is 14, comment is 0, blank is 1.
+app/main/helpers/splash.ts, code is 29, comment is 0, blank is 2.
+app/main/helpers/tray.ts, code is 26, comment is 0, blank is 0.
+app/main/main.ts, code is 62, comment is 1, blank is 4.
+app/renderer/_shared.scss, code is 35, comment is 0, blank is 3.
+app/renderer/access/actions/actionTypes.ts, code is 19, comment is 0, blank is 0.
+app/renderer/access/actions/appActions.ts, code is 64, comment is 1, blank is 20.
+app/renderer/access/observables/observables.ts, code is 39, comment is 0, blank is 1.
+app/renderer/access/reducers/reducer.ts, code is 140, comment is 0, blank is 1.
+app/renderer/access/reducers/rootReducer.ts, code is 3, comment is 0, blank is 1.
+app/renderer/access/store/configureStore.ts, code is 8, comment is 0, blank is 1.
+app/renderer/access/store/initialState.ts, code is 12, comment is 0, blank is 2.
+app/renderer/access/store/types.ts, code is 18, comment is 0, blank is 2.
+app/renderer/assets/14862848018_d05d01dcd9_k.jpg, it is a binary file.
+app/renderer/assets/any_warhol.jpg, it is a binary file.
+app/renderer/assets/carnegie_museum_art.jpg, it is a binary file.
+app/renderer/assets/church_brew.jpg, it is a binary file.
+app/renderer/assets/collect.png, it is a binary file.
+app/renderer/assets/create.png, it is a binary file.
+app/renderer/assets/duquesne_incline.jpg, it is a binary file.
+app/renderer/assets/mattress_factory.jpg, it is a binary file.
+app/renderer/assets/organize.png, it is a binary file.
+app/renderer/components/content-item/article-content.tsx, code is 15, comment is 0, blank is 1.
+app/renderer/components/content-item/content-item.scss, code is 284, comment is 0, blank is 34.
+app/renderer/components/content-item/content-item.tsx, code is 117, comment is 0, blank is 1.
+app/renderer/components/content-item/link-content.tsx, code is 14, comment is 0, blank is 1.
+app/renderer/components/content-item/photo-content.tsx, code is 47, comment is 0, blank is 1.
+app/renderer/components/content-item/video-content.tsx, code is 53, comment is 0, blank is 1.
+app/renderer/components/content-viewer/content-viewer.scss, code is 159, comment is 0, blank is 19.
+app/renderer/components/content-viewer/content-viewer.tsx, code is 78, comment is 0, blank is 4.
+app/renderer/components/content-viewer/photo-content-viewer.tsx, code is 19, comment is 0, blank is 3.
+app/renderer/components/content-viewer/video-content-viewer.tsx, code is 39, comment is 0, blank is 2.
+app/renderer/components/contents/content-list-collection.tsx, code is 57, comment is 0, blank is 3.
+app/renderer/components/contents/content-list.tsx, code is 27, comment is 0, blank is 2.
+app/renderer/components/contents/content-with-menu-wrapper.tsx, code is 37, comment is 0, blank is 1.
+app/renderer/components/contents/content-wrapper.tsx, code is 31, comment is 0, blank is 3.
+app/renderer/components/context-menu/context-menu.scss, code is 42, comment is 0, blank is 0.
+app/renderer/components/context-menu/context-menu.tsx, code is 111, comment is 1, blank is 1.
+app/renderer/components/dropdown/dropdown.scss, code is 61, comment is 0, blank is 7.
+app/renderer/components/dropdown/dropdown.tsx, code is 47, comment is 0, blank is 4.
+app/renderer/components/dumping-ground/dumping-ground.scss, code is 70, comment is 0, blank is 8.
+app/renderer/components/dumping-ground/dumping-ground.tsx, code is 64, comment is 0, blank is 4.
+app/renderer/components/header/header.scss, code is 107, comment is 0, blank is 11.
+app/renderer/components/header/header.tsx, code is 111, comment is 1, blank is 4.
+app/renderer/components/home/home.scss, code is 83, comment is 0, blank is 10.
+app/renderer/components/home/home.tsx, code is 67, comment is 0, blank is 3.
+app/renderer/components/resizer/resizer.scss, code is 33, comment is 0, blank is 0.
+app/renderer/components/resizer/resizer.tsx, code is 48, comment is 0, blank is 2.
+app/renderer/components/rte-editor/rte-editor.scss, code is 0, comment is 0, blank is 0.
+app/renderer/components/rte-editor/rte-editor.tsx, code is 45, comment is 6, blank is 2.
+app/renderer/components/sidebar/sidebar.scss, code is 157, comment is 0, blank is 0.
+app/renderer/components/sidebar/sidebar.tsx, code is 87, comment is 0, blank is 1.
+app/renderer/components/tabs/tab.scss, code is 129, comment is 0, blank is 18.
+app/renderer/components/tabs/tab.tsx, code is 13, comment is 0, blank is 4.
+app/renderer/components/tabs/tabs-resizer.tsx, code is 93, comment is 0, blank is 2.
+app/renderer/components/tabs/tabs.tsx, code is 57, comment is 0, blank is 6.
+app/renderer/components/toasts/toast.tsx, code is 58, comment is 0, blank is 3.
+app/renderer/components/toasts/toasts.scss, code is 67, comment is 0, blank is 0.
+app/renderer/components/workspace-preview/workspace-preview.tsx, code is 45, comment is 0, blank is 7.
+app/renderer/components/workspace-preview/workspace-previewer.scss, code is 58, comment is 0, blank is 4.
+app/renderer/components/workspace-preview/workspace-previewer.tsx, code is 18, comment is 0, blank is 3.
+app/renderer/components/workspace/board-content-wrapper/board-content-wrapper.scss, code is 36, comment is 0, blank is 0.
+app/renderer/components/workspace/board-content-wrapper/board-content-wrapper.tsx, code is 95, comment is 1, blank is 2.
+app/renderer/components/workspace/board-content/board-content.scss, code is 8, comment is 0, blank is 0.
+app/renderer/components/workspace/board-content/board-content.tsx, code is 46, comment is 0, blank is 5.
+app/renderer/components/workspace/board/board.scss, code is 37, comment is 0, blank is 1.
+app/renderer/components/workspace/board/board.tsx, code is 119, comment is 0, blank is 2.
+app/renderer/components/workspace/group-content/group-content.scss, code is 23, comment is 0, blank is 1.
+app/renderer/components/workspace/group-content/group-content.tsx, code is 108, comment is 6, blank is 6.
+app/renderer/components/workspace/group-wrapper/group-wrapper.scss, code is 4, comment is 0, blank is 0.
+app/renderer/components/workspace/group-wrapper/group-wrapper.tsx, code is 27, comment is 0, blank is 2.
+app/renderer/components/workspace/workspace.scss, code is 109, comment is 27, blank is 20.
+app/renderer/components/workspace/workspace.tsx, code is 84, comment is 0, blank is 4.
+app/renderer/constants/constants.ts, code is 86, comment is 0, blank is 7.
+app/renderer/constants/dummy-data.ts, code is 163, comment is 5, blank is 13.
+app/renderer/constants/types.ts, code is 146, comment is 0, blank is 18.
+app/renderer/helper.ts, code is 23, comment is 0, blank is 0.
+app/renderer/index.html, code is 14, comment is 0, blank is 0.
+app/renderer/index.tsx, code is 17, comment is 0, blank is 3.
+app/renderer/pages/main.tsx, code is 85, comment is 1, blank is 3.
+app/renderer/pages/router-root.tsx, code is 19, comment is 0, blank is 2.
+app/renderer/pages/router-wrap.tsx, code is 33, comment is 0, blank is 2.
+app/renderer/styles.scss, code is 181, comment is 1, blank is 26.
+app/renderer/transforms.ts, code is 25, comment is 0, blank is 1.
+app/widgets/annotator/annotator.scss, code is 118, comment is 5, blank is 18.
+app/widgets/annotator/annotator.tsx, code is 19, comment is 0, blank is 3.
+app/widgets/annotator/index.html, code is 13, comment is 0, blank is 0.
+app/widgets/annotator/index.tsx, code is 11, comment is 0, blank is 2.
+azure-pipelines.yml, code is 59, comment is 0, blank is 2.
+build/icon.icns, it is a binary file.
+build/icon.png, it is a binary file.
+build/icon/icon.iconset/Icon
+, code is 0, comment is 0, blank is 0.
+build/icon/icon.iconset/icon_128x128.png, it is a binary file.
+build/icon/icon.iconset/icon_128x128@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_16x16.png, it is a binary file.
+build/icon/icon.iconset/icon_16x16@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_256x256.png, it is a binary file.
+build/icon/icon.iconset/icon_256x256@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_32x32.png, it is a binary file.
+build/icon/icon.iconset/icon_32x32@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_512x512.png, it is a binary file.
+build/icon/icon.iconset/icon_512x512@2x.png, it is a binary file.
+build/splash.html, code is 52, comment is 0, blank is 0.
+icon.icns, it is a binary file.
+===============================================================================
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-07-04 23:16:18
+count workspace : /Users/asitparida/Codes/athena-prototype
+total files : 117
+total code lines : 5113
+total comment lines : 66
+total blank lines : 382
+
+.gitignore, code is 5, comment is 0, blank is 0.
+app/api/app.ts, code is 22, comment is 1, blank is 3.
+app/api/server.ts, code is 30, comment is 1, blank is 4.
+app/electron-ipc.js, code is 2, comment is 0, blank is 0.
+app/main/assets/icon.png, it is a binary file.
+app/main/assets/network.png, it is a binary file.
+app/main/assets/owl.png, it is a binary file.
+app/main/helpers/annotator.ts, code is 38, comment is 2, blank is 3.
+app/main/helpers/dock.ts, code is 16, comment is 0, blank is 0.
+app/main/helpers/ipc-helper.ts, code is 5, comment is 0, blank is 0.
+app/main/helpers/screen.ts, code is 14, comment is 0, blank is 1.
+app/main/helpers/splash.ts, code is 29, comment is 0, blank is 2.
+app/main/helpers/tray.ts, code is 26, comment is 0, blank is 0.
+app/main/main.ts, code is 62, comment is 1, blank is 4.
+app/renderer/_shared.scss, code is 35, comment is 0, blank is 3.
+app/renderer/access/actions/actionTypes.ts, code is 23, comment is 0, blank is 0.
+app/renderer/access/actions/appActions.ts, code is 76, comment is 1, blank is 24.
+app/renderer/access/observables/observables.ts, code is 39, comment is 0, blank is 1.
+app/renderer/access/reducers/reducer.ts, code is 140, comment is 0, blank is 1.
+app/renderer/access/reducers/rootReducer.ts, code is 7, comment is 0, blank is 1.
+app/renderer/access/reducers/workspace-reducer.ts, code is 35, comment is 0, blank is 1.
+app/renderer/access/store/configureStore.ts, code is 8, comment is 0, blank is 1.
+app/renderer/access/store/initialState.ts, code is 14, comment is 0, blank is 2.
+app/renderer/access/store/types.ts, code is 20, comment is 0, blank is 2.
+app/renderer/assets/14862848018_d05d01dcd9_k.jpg, it is a binary file.
+app/renderer/assets/any_warhol.jpg, it is a binary file.
+app/renderer/assets/carnegie_museum_art.jpg, it is a binary file.
+app/renderer/assets/church_brew.jpg, it is a binary file.
+app/renderer/assets/collect.png, it is a binary file.
+app/renderer/assets/create.png, it is a binary file.
+app/renderer/assets/duquesne_incline.jpg, it is a binary file.
+app/renderer/assets/mattress_factory.jpg, it is a binary file.
+app/renderer/assets/organize.png, it is a binary file.
+app/renderer/components/content-item/article-content.tsx, code is 15, comment is 0, blank is 1.
+app/renderer/components/content-item/content-item.scss, code is 284, comment is 0, blank is 34.
+app/renderer/components/content-item/content-item.tsx, code is 117, comment is 0, blank is 1.
+app/renderer/components/content-item/link-content.tsx, code is 14, comment is 0, blank is 1.
+app/renderer/components/content-item/photo-content.tsx, code is 47, comment is 0, blank is 1.
+app/renderer/components/content-item/video-content.tsx, code is 53, comment is 0, blank is 1.
+app/renderer/components/content-viewer/content-viewer.scss, code is 159, comment is 0, blank is 19.
+app/renderer/components/content-viewer/content-viewer.tsx, code is 78, comment is 0, blank is 4.
+app/renderer/components/content-viewer/photo-content-viewer.tsx, code is 19, comment is 0, blank is 3.
+app/renderer/components/content-viewer/video-content-viewer.tsx, code is 39, comment is 0, blank is 2.
+app/renderer/components/contents/content-list-collection.tsx, code is 57, comment is 0, blank is 3.
+app/renderer/components/contents/content-list.tsx, code is 27, comment is 0, blank is 2.
+app/renderer/components/contents/content-with-menu-wrapper.tsx, code is 37, comment is 0, blank is 1.
+app/renderer/components/contents/content-wrapper.tsx, code is 31, comment is 0, blank is 3.
+app/renderer/components/context-menu/context-menu.scss, code is 42, comment is 0, blank is 0.
+app/renderer/components/context-menu/context-menu.tsx, code is 111, comment is 1, blank is 1.
+app/renderer/components/dropdown/dropdown.scss, code is 61, comment is 0, blank is 7.
+app/renderer/components/dropdown/dropdown.tsx, code is 47, comment is 0, blank is 4.
+app/renderer/components/dumping-ground/dumping-ground.scss, code is 70, comment is 0, blank is 8.
+app/renderer/components/dumping-ground/dumping-ground.tsx, code is 64, comment is 0, blank is 4.
+app/renderer/components/header/header.scss, code is 140, comment is 0, blank is 13.
+app/renderer/components/header/header.tsx, code is 120, comment is 6, blank is 5.
+app/renderer/components/home/home.scss, code is 83, comment is 0, blank is 10.
+app/renderer/components/home/home.tsx, code is 67, comment is 0, blank is 3.
+app/renderer/components/resizer/resizer.scss, code is 33, comment is 0, blank is 0.
+app/renderer/components/resizer/resizer.tsx, code is 48, comment is 0, blank is 2.
+app/renderer/components/rte-editor/rte-editor.scss, code is 0, comment is 0, blank is 0.
+app/renderer/components/rte-editor/rte-editor.tsx, code is 45, comment is 6, blank is 2.
+app/renderer/components/sidebar/sidebar.scss, code is 157, comment is 0, blank is 0.
+app/renderer/components/sidebar/sidebar.tsx, code is 87, comment is 0, blank is 1.
+app/renderer/components/tabs/tab.scss, code is 129, comment is 0, blank is 18.
+app/renderer/components/tabs/tab.tsx, code is 13, comment is 0, blank is 4.
+app/renderer/components/tabs/tabs-resizer.tsx, code is 93, comment is 0, blank is 2.
+app/renderer/components/tabs/tabs.tsx, code is 57, comment is 0, blank is 6.
+app/renderer/components/toasts/toast.tsx, code is 58, comment is 0, blank is 3.
+app/renderer/components/toasts/toasts.scss, code is 67, comment is 0, blank is 0.
+app/renderer/components/workspace-preview/workspace-preview.tsx, code is 45, comment is 0, blank is 7.
+app/renderer/components/workspace-preview/workspace-previewer.scss, code is 58, comment is 0, blank is 4.
+app/renderer/components/workspace-preview/workspace-previewer.tsx, code is 18, comment is 0, blank is 3.
+app/renderer/components/workspace/canvas-view/board-content-wrapper/board-content-wrapper.scss, code is 36, comment is 0, blank is 0.
+app/renderer/components/workspace/canvas-view/board-content-wrapper/board-content-wrapper.tsx, code is 95, comment is 1, blank is 2.
+app/renderer/components/workspace/canvas-view/board-content/board-content.scss, code is 8, comment is 0, blank is 0.
+app/renderer/components/workspace/canvas-view/board-content/board-content.tsx, code is 46, comment is 0, blank is 5.
+app/renderer/components/workspace/canvas-view/canvas-view.scss, code is 37, comment is 0, blank is 1.
+app/renderer/components/workspace/canvas-view/canvas-view.tsx, code is 118, comment is 0, blank is 2.
+app/renderer/components/workspace/canvas-view/group-content/group-content.scss, code is 23, comment is 0, blank is 1.
+app/renderer/components/workspace/canvas-view/group-content/group-content.tsx, code is 108, comment is 6, blank is 6.
+app/renderer/components/workspace/canvas-view/group-wrapper/group-wrapper.scss, code is 4, comment is 0, blank is 0.
+app/renderer/components/workspace/canvas-view/group-wrapper/group-wrapper.tsx, code is 27, comment is 0, blank is 2.
+app/renderer/components/workspace/list-view/list-view.scss, code is 0, comment is 0, blank is 0.
+app/renderer/components/workspace/list-view/list-view.tsx, code is 9, comment is 0, blank is 3.
+app/renderer/components/workspace/workspace.scss, code is 109, comment is 27, blank is 20.
+app/renderer/components/workspace/workspace.tsx, code is 94, comment is 0, blank is 4.
+app/renderer/constants/constants.ts, code is 86, comment is 0, blank is 7.
+app/renderer/constants/dummy-data.ts, code is 163, comment is 5, blank is 13.
+app/renderer/constants/types.ts, code is 146, comment is 0, blank is 18.
+app/renderer/helper.ts, code is 23, comment is 0, blank is 0.
+app/renderer/index.html, code is 14, comment is 0, blank is 0.
+app/renderer/index.tsx, code is 17, comment is 0, blank is 3.
+app/renderer/pages/main.tsx, code is 85, comment is 1, blank is 3.
+app/renderer/pages/router-root.tsx, code is 19, comment is 0, blank is 2.
+app/renderer/pages/router-wrap.tsx, code is 33, comment is 0, blank is 2.
+app/renderer/styles.scss, code is 180, comment is 2, blank is 26.
+app/renderer/transforms.ts, code is 25, comment is 0, blank is 1.
+app/widgets/annotator/annotator.scss, code is 118, comment is 5, blank is 18.
+app/widgets/annotator/annotator.tsx, code is 19, comment is 0, blank is 3.
+app/widgets/annotator/index.html, code is 13, comment is 0, blank is 0.
+app/widgets/annotator/index.tsx, code is 11, comment is 0, blank is 2.
+azure-pipelines.yml, code is 59, comment is 0, blank is 2.
+build/icon.icns, it is a binary file.
+build/icon.png, it is a binary file.
+build/icon/icon.iconset/Icon
+, code is 0, comment is 0, blank is 0.
+build/icon/icon.iconset/icon_128x128.png, it is a binary file.
+build/icon/icon.iconset/icon_128x128@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_16x16.png, it is a binary file.
+build/icon/icon.iconset/icon_16x16@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_256x256.png, it is a binary file.
+build/icon/icon.iconset/icon_256x256@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_32x32.png, it is a binary file.
+build/icon/icon.iconset/icon_32x32@2x.png, it is a binary file.
+build/icon/icon.iconset/icon_512x512.png, it is a binary file.
+build/icon/icon.iconset/icon_512x512@2x.png, it is a binary file.
+build/splash.html, code is 52, comment is 0, blank is 0.
+icon.icns, it is a binary file.
+===============================================================================

@@ -12,7 +12,7 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
     }
     componentDidMount() {
         if (this.props.data.contentData.imgUrl) {
-            window.requestAnimationFrame(() => {
+            (window as any).requestIdleCallback(() => {
                 const elem = document.createElement('IMG') as HTMLImageElement;
                 elem.onload = () => {
                     window.requestAnimationFrame(() => {
