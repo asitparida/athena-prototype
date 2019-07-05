@@ -1,0 +1,19 @@
+.workspace-list-group {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    padding: 30px 0;
+    &:not(:first-child) {
+        border-top: 1px dotted rgba(#fff, 0.25);
+    }
+    h1 {
+        font-weight: 100;
+    }
+    .workspace-list-group-items {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-flow: row wrap;
+        margin: 0 -10px;
+    }
+}

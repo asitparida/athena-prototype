@@ -104,21 +104,15 @@ class Header extends React.Component<any, any> {
                             </div>
                         </React.Fragment>
                     }
-                    {/* {
-                        this.props.workspaceRTEActionShown &&
-                    }
-                    {
-                        this.props.workspaceDumpBarActionShown &&
-                    } */}
                     {
                         this.props.workspaceActionInHeader &&
                         <div className={`action ${this.props.workspaceInHeader ? 'active' : ''}`} onClick={this.toggleWorkspaceInBar.bind(this)}>
-                            <i className='material-icons'>storage</i>
+                            <i className='material-icons'>view_week</i>
                         </div>
                     }
                     <div className='separator' />
                     <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                        <i className='material-icons'>text_format</i>
+                        <i className='material-icons'>format_shapes</i>
                     </div>
                 </div>
             </React.Fragment>

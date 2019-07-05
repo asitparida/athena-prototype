@@ -24,3 +24,44 @@ export function GetWorkspaceListForSidebar(): ISideBarNavItem[] {
     });
     return result;
 }
+
+export function isEqual(a, b) {
+    if (typeof a === 'string' && typeof b === 'string') {
+        return a.localeCompare(b) === 0;
+    }
+    if (typeof a === 'number' && typeof b === 'number') {
+        return a === b;
+    }
+    if (a instanceof Date && b instanceof Date) {
+        return a.getTime() === b.getTime();
+    }
+    if (Array.isArray(a) && Array.isArray(b)) {
+        if (a.length === b.length) {
+            for (let i = 0; i < a.length; i++) {
+                const equal = isEqual(a[i], b[i]);
+                if (!equal) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    if (a instanceof Object && b instanceof Object) {
+        const aProps = Object.getOwnPropertyNames(a);
+        const bProps = Object.getOwnPropertyNames(b);
+        if (aProps.length !== bProps.length) {
+            return false;
+        } else {
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < aProps.length; i++) {
+                const prop = aProps[i];
+                const equal = isEqual(a[prop], b[prop]);
+                if (!equal) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    return false;
+}

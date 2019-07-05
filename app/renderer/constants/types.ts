@@ -152,6 +152,7 @@ export interface IBoardGroupWrapper {
     id?: string;
     props?: IRectProps;
     annotationData?: IAnnotation[];
+    items?: IBoardContent[];
 }
 
 export interface ISideBarNavItem {

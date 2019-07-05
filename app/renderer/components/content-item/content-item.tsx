@@ -24,7 +24,9 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
         });
     }
     openContent() {
-        ContentViewerData.next(this.props.data);
+        if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {
+            ContentViewerData.next(this.props.data);
+        }
     }
     render() {
         const type = this.props.data.contentType;

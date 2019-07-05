@@ -1,4 +1,5 @@
 import { ContentList, ContentType, Workspace, IWorkspace, IBoardGroupWrapper } from "./types";
+import * as _ from 'lodash';
 const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
@@ -52,42 +53,74 @@ export const Topiclist = [
     { id: 4, name: 'Topic #4', active: false }
 ]
 
+export function GetSampleBoardItems() {
+    const items = [
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
+    ];
+    return _.shuffle(items);
+}
+
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
         props: { top: 0, left: 0 },
+        items: GetSampleBoardItems(),
         annotationData: []
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
         props: { top: 0, left: 0 },
+        items: GetSampleBoardItems(),
         annotationData: []
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
         props: { top: 0, left: 0 },
+        items: GetSampleBoardItems(),
         annotationData: []
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
         props: { top: 0, left: 0 },
+        items: GetSampleBoardItems(),
         annotationData: []
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
         props: { top: 0, left: 0 },
-        annotationData: []
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        props: { top: 0, left: 0 },
-        annotationData: []
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        props: { top: 0, left: 0 },
+        items: GetSampleBoardItems(),
         annotationData: []
     }
 ];
 
-BoardGroups = BoardGroups.filter((bg, i) => i < 5);
+export enum Cancellable {
+    IdleCallback,
+    AnimationFrame,
+    Timeout,
+    Interval
+}
+
+export class CancellabelRequests {
+    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean}> = [];
+    push(requestId, type: Cancellable) {
+        this.cancellableList.push( { type, requestId, cleaned: false })
+    }
+    clean(id?) {
+        if (typeof id !== 'undefined') {
+            this.cancellableList = this.cancellableList.filter( t => t.requestId !== id);
+        } else if (this.cancellableList.length > 0) {
+            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean}) => {
+                switch (item.type) {
+                    case Cancellable.AnimationFrame : { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Timeout : { clearTimeout(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Interval : { clearInterval(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.IdleCallback : { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
+                }
+            });
+            this.cancellableList = this.cancellableList.filter( t => !t.cleaned);
+        }
+    }
+}

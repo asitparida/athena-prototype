@@ -4,11 +4,15 @@ import DumpingGround from '../dumping-ground/dumping-ground';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../../access/actions/appActions';
-import { ShowDumpBarAction$, ShowRTEAction$ } from '../../access/observables/observables';
+import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
 import CanvasView from './canvas-view/canvas-view';
 import ListView from './list-view/list-view';
+import { IWorkspaceContentTransfer } from '../../constants/types';
+import { ItemHeight, ItemWidth, BoardGroups } from '../../constants/constants';
+import { Subscription } from 'rxjs';
+import { WorkspaceViewSwitch } from './workspace-view-switch';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -25,20 +29,45 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Workspace extends React.Component<any, any> {
+    transferSubscription: Subscription;
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 500, dumpGroundWidth: 300, workspaceId: null };
+        this.state = { rteWidth: 500, dumpGroundWidth: 300, workspaceId: null, groups: [] };
     }
     componentDidMount() {
         ShowDumpBarAction$.next(true);
         ShowRTEAction$.next(true);
         const { workspaceId, topicId } = this.props.match.params;
-        console.log(workspaceId, topicId);
         this.setState({
             workspaceId,
-            topicId
+            topicId,
+            groups: BoardGroups
         });
         this.props.actions.showWorkspaceActions();
+        this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
+            const groups = [];
+            const originalGroups = this.state.groups;
+            let change = false;
+            originalGroups.forEach(group => {
+                const groupId = group.id;
+                let currentItems = [].concat(group.items);
+                if (data.from === groupId) {
+                    currentItems = currentItems.filter(temp => temp.id !== data.data.id);
+                    change = true;
+                } else if (data.to === groupId) {
+                    currentItems.push({
+                        id: data.data.id, type: data.data.contentType, props: { height: ItemHeight, width: ItemWidth }
+                    });
+                    change = true;
+                }
+                groups.push(Object.assign({}, group, {
+                    items: currentItems
+                }));
+            })
+            if (change) {
+                this.setState({ groups });
+            }
+        });
     }
     componentWillUnmount() {
         ShowDumpBarAction$.next(false);
@@ -64,16 +93,7 @@ class Workspace extends React.Component<any, any> {
         }
         return (
             <div className="workspace-wrapper">
-                {
-                    this.props.workspaceViewIsCanvas && this.state.workspaceId &&
-                    <div className="working-area">
-                        <CanvasView id={this.state.workspaceId} />
-                    </div>
-                }
-                {
-                    !this.props.workspaceViewIsCanvas && this.state.workspaceId &&
-                    <ListView />
-                }
+                <WorkspaceViewSwitch canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} />
                 {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>

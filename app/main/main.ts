@@ -42,7 +42,7 @@ app.on('ready', async () => {
             setTimeout(() => {
                 mainWindow.show();
             }, 30);
-        }, 2000);
+        }, 5000);
         if (isDev && false) { mainWindow.webContents.openDevTools() }
     });
     mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
