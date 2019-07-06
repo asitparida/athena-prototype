@@ -54,6 +54,7 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
             this.imageElement.remove();
             this.imageElement = null;
         }
+        this.cancellable.clean();
     }
     render() {
         const duration = GetDuration(this.props.data.contentData.videoLength);

@@ -1,13 +1,17 @@
 import * as React from 'react';
 import './context-menu.scss';
 import { IContextMenuAction } from '../../constants/types';
+import { ContextMenuList } from './context-menu-list';
 
-export class ContextMenu extends React.Component<{ actions: IContextMenuAction[], open?: boolean, menuClosed: () => {}}, { menuOpen: boolean, x: number, y: number }> {
+export class ContextMenu extends React.Component<{
+    actions: IContextMenuAction[],
+    open?: boolean,
+    menuClosed: () => {},
+    resizerOptions?: IContextMenuAction[],
+    onAction?: (name: string) => {}
+}, { menuOpen: boolean, x: number, y: number }> {
     domElRef;
-    elRef;
     // tslint:disable:variable-name
-    onDOMClick_bound = this.onDOMClick.bind(this);
-    onKeyUp_bound = this.onKeyUp.bind(this);
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +19,6 @@ export class ContextMenu extends React.Component<{ actions: IContextMenuAction[]
             x: 0, y: 0
         }
         this.domElRef = React.createRef();
-        this.elRef = React.createRef();
     }
     openMenu(e?: MouseEvent) {
         let posX = 0;
@@ -37,40 +40,12 @@ export class ContextMenu extends React.Component<{ actions: IContextMenuAction[]
             y: posY
         });
     }
-    onDOMClick(e: MouseEvent) {
-        let notfound = true;
-        let target = e.target as any;
-        while (target && target !== document.documentElement) {
-            if (target === this.elRef) {
-                notfound = false;
-                break;
-            }
-            target = target.parentNode;
-        }
-        if (notfound) {
-           this.closeMenu();
-        }
-    }
     onKeyUp(e: KeyboardEvent) {
         if (e.code === "Escape") {
             this.closeMenu();
         }
     }
-    addCloseMenuListener(node: any) {
-        if (node) {
-            this.elRef = node;
-            document.removeEventListener('click', this.onDOMClick_bound);
-            document.addEventListener('click', this.onDOMClick_bound);
-            document.removeEventListener('contextmenu', this.onDOMClick_bound);
-            document.addEventListener('contextmenu', this.onDOMClick_bound);
-            document.removeEventListener('keyup', this.onKeyUp_bound);
-            document.addEventListener('keyup', this.onKeyUp_bound);
-        }
-    }
     closeMenu() {
-        document.removeEventListener('click', this.onDOMClick_bound);
-        document.removeEventListener('contextmenu', this.onDOMClick_bound);
-        document.removeEventListener('keyup', this.onKeyUp_bound);
         this.setState({
             menuOpen: false
         });
@@ -86,27 +61,23 @@ export class ContextMenu extends React.Component<{ actions: IContextMenuAction[]
             }
         }
     }
+    onMenuClosed() {
+        this.closeMenu();
+    }
+    onAction(name) {
+        if (this.props.onAction) {
+            this.props.onAction(name);
+        }
+        this.closeMenu();
+    }
     render() {
-        const styles = {
-            left: `${this.state.x + 10}px`,
-            top: `${this.state.y - 20}px`
-        };
         return <React.Fragment>
             <div className="context-menu-wrapper" onContextMenu={this.onContextMenuInvoked.bind(this)} ref={this.domElRef}>
                 {this.props.children}
             </div>
             {
                 this.state.menuOpen &&
-                <div className="app-context-menu-wrapper" style={styles} ref={this.addCloseMenuListener.bind(this)}>
-                    <ul className="app-context-menu">
-                        {
-                            this.props.actions.length > 0 &&
-                            this.props.actions.map((action, i) => {
-                                return <li key={i}><i className='material-icons'>{action.icon}</i>{action.name}</li>
-                            })
-                        }
-                    </ul>
-                </div>
+                <ContextMenuList onAction={this.onAction.bind(this)} resizerOptions={this.props.resizerOptions} x={this.state.x} y={this.state.y} actions={this.props.actions} menuClosed={this.onMenuClosed.bind(this)} />
             }
         </React.Fragment>
     }

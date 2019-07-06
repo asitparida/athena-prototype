@@ -4,6 +4,7 @@ import { DragSource } from 'react-dnd';
 import { DragAndDropTypes, IContentItem, IBoardContent } from '../../../../constants/types';
 import { GetSampleItem } from '../../../../constants/dummy-data';
 import { ContentItemWrapper } from '../../../content-item/content-item';
+import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 
 const itemSource = {
     beginDrag(props) {
@@ -38,7 +39,7 @@ class CanvasGroupItem extends React.Component<IPropType | any, {}> {
             <div className="board-content">
                 {
                     this.props.data &&
-                    <ContentItemWrapper data={this.props.data} inheritDimensions={true} />
+                    <ContentItemWithMenu data={this.props.data} inheritDimensions={true} />
                 }
             </div>
         );
