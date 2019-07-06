@@ -14852,6 +14852,773 @@
                     "comment": 0
                 }
             ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-07-05 15:48:38",
+            "filesum": 122,
+            "codesum": 5366,
+            "commentsum": 58,
+            "blanksum": 389,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 3,
+                    "code": 22,
+                    "comment": 1,
+                    "filename": "app/api/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 30,
+                    "comment": 1,
+                    "filename": "app/api/server.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "app/electron-ipc.js"
+                },
+                {
+                    "filename": "app/main/assets/icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/network.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/owl.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 38,
+                    "comment": 2,
+                    "filename": "app/main/helpers/annotator.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "app/main/helpers/dock.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "app/main/helpers/ipc-helper.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/main/helpers/screen.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "app/main/helpers/splash.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "app/main/helpers/tray.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 62,
+                    "comment": 1,
+                    "filename": "app/main/main.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "app/renderer/_shared.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "app/renderer/access/actions/actionTypes.ts"
+                },
+                {
+                    "blank": 24,
+                    "code": 76,
+                    "comment": 1,
+                    "filename": "app/renderer/access/actions/appActions.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "app/renderer/access/observables/observables.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 140,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/reducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/rootReducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/workspace-reducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "app/renderer/access/store/configureStore.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/renderer/access/store/initialState.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "app/renderer/access/store/types.ts"
+                },
+                {
+                    "filename": "app/renderer/assets/14862848018_d05d01dcd9_k.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/any_warhol.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/carnegie_museum_art.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/church_brew.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/collect.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/create.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/duquesne_incline.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/mattress_factory.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/organize.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/article-content.tsx"
+                },
+                {
+                    "blank": 34,
+                    "code": 284,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/content-item.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 119,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/content-item.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/link-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 68,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/photo-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 73,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/video-content.tsx"
+                },
+                {
+                    "blank": 19,
+                    "code": 159,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/content-viewer.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 78,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/content-viewer.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/photo-content-viewer.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/video-content-viewer.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/contents/content-list-collection.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "app/renderer/components/contents/content-list.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "app/renderer/components/contents/content-with-menu-wrapper.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "app/renderer/components/contents/content-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 42,
+                    "comment": 0,
+                    "filename": "app/renderer/components/context-menu/context-menu.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 111,
+                    "comment": 1,
+                    "filename": "app/renderer/components/context-menu/context-menu.tsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dropdown/dropdown.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dropdown/dropdown.tsx"
+                },
+                {
+                    "blank": 8,
+                    "code": 70,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 64,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground.tsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 142,
+                    "comment": 0,
+                    "filename": "app/renderer/components/header/header.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 119,
+                    "comment": 1,
+                    "filename": "app/renderer/components/header/header.tsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 83,
+                    "comment": 0,
+                    "filename": "app/renderer/components/home/home.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 67,
+                    "comment": 0,
+                    "filename": "app/renderer/components/home/home.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "app/renderer/components/resizer/resizer.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "app/renderer/components/resizer/resizer.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "app/renderer/components/rte-editor/rte-editor.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 45,
+                    "comment": 6,
+                    "filename": "app/renderer/components/rte-editor/rte-editor.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 157,
+                    "comment": 0,
+                    "filename": "app/renderer/components/sidebar/sidebar.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 87,
+                    "comment": 0,
+                    "filename": "app/renderer/components/sidebar/sidebar.tsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 129,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tab.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tab.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 93,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tabs-resizer.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tabs.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "app/renderer/components/toasts/toast.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 67,
+                    "comment": 0,
+                    "filename": "app/renderer/components/toasts/toasts.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 45,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace-preview/workspace-preview.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace-preview/workspace-previewer.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace-preview/workspace-previewer.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 95,
+                    "comment": 1,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 43,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group/canvas-group.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 81,
+                    "comment": 6,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group/canvas-group.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-view.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 124,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-view.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-item/list-group-item.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-item/list-group-item.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-wrapper/list-group-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-view.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-view.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/workspace-view-switch.tsx"
+                },
+                {
+                    "blank": 18,
+                    "code": 107,
+                    "comment": 23,
+                    "filename": "app/renderer/components/workspace/workspace.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 114,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/workspace.tsx"
+                },
+                {
+                    "blank": 9,
+                    "code": 117,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/constants.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 163,
+                    "comment": 5,
+                    "filename": "app/renderer/constants/dummy-data.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 147,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/types.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "app/renderer/helper.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/renderer/index.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "app/renderer/index.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 85,
+                    "comment": 1,
+                    "filename": "app/renderer/pages/main.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/pages/router-root.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "app/renderer/pages/router-wrap.tsx"
+                },
+                {
+                    "blank": 26,
+                    "code": 180,
+                    "comment": 2,
+                    "filename": "app/renderer/styles.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 64,
+                    "comment": 1,
+                    "filename": "app/renderer/transforms.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 118,
+                    "comment": 5,
+                    "filename": "app/widgets/annotator/annotator.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/widgets/annotator/annotator.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "app/widgets/annotator/index.html"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "app/widgets/annotator/index.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "azure-pipelines.yml"
+                },
+                {
+                    "filename": "build/icon.icns",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "build/icon/icon.iconset/Icon\r"
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_128x128@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_16x16.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_16x16@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_256x256.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_256x256@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_32x32.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_32x32@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_512x512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_512x512@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "build/splash.html"
+                },
+                {
+                    "filename": "icon.icns",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                }
+            ]
         }
     ]
 }

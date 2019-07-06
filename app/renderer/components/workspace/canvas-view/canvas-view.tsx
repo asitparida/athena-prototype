@@ -71,7 +71,7 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
             boardGroups: this.props.groups
         })
         window.requestAnimationFrame(() => {
-            this.adjustPosition(1, true);
+            this.adjustPosition(1, false);
         });
     }
     componentDidMount() {

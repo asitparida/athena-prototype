@@ -4,9 +4,7 @@ import Tab from '../tabs/Tab';
 import './dumping-ground.scss';
 import { ContentListCollection } from '../contents/content-list-collection';
 import { ShowWorkspaceAction$ } from '../../access/observables/observables';
-import { ContentType, IDumpingGroundTab } from '../../constants/types';
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
+import { IDumpingGroundTab } from '../../constants/types';
 import { DumpingGrounCollectionTabs, WorkspaceCollectionTabs } from '../../constants/constants';
 
 interface IDumpingGroundState {
@@ -52,7 +50,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
         ShowWorkspaceAction$.next(false);
     }
     render() {
-        const index = 0;
+        const index = 5;
         const classListName = `tabs-holder ${this.props.sticky ? 'is-sticky' : ''}`;
         return <Tabs activeTabIndex={index} showResizer={!this.props.sticky} showCategorySelector={!this.props.sticky} sticky={this.props.sticky} categories={this.state.categories}>
                 {this.state.tabs.map((tab, i) => {

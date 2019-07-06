@@ -91,6 +91,14 @@ export interface ILinkContent {
     ogImage?: string;
 }
 
+export interface ISocialMediaContent {
+    tweetText?: string;
+    instragramImageUrl?: string;
+    handle?: string;
+    profileLink?: string;
+    profileImgUrl?: string;
+}
+
 export interface IContextMenuAction {
     icon: string;
     name: string;

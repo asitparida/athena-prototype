@@ -1,7 +1,8 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 import { ContentList } from './content-list';
 import { ContentType, IContentListItem } from '../../constants/types';
-import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList } from '../../constants/dummy-data';
+import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection } from '../../constants/dummy-data';
 
 interface IProps {
     type: ContentType
@@ -26,16 +27,18 @@ export class ContentListCollection extends React.Component<IProps, IContentColle
             case ContentType.Video: { items = VideoContentList; break; };
             case ContentType.Article: { items = ArticleContentList; break; };
             case ContentType.Link: { items = LinkContentList; break; };
+            case ContentType.SocialMedia: { items = SocialMediaContentList; break; };
             default: {
-                items = [].concat(PhotoContentList, VideoContentList, ArticleContentList, LinkContentList); break;
+                items = _.shuffle([].concat(
+                    PhotoContentList,
+                    VideoContentList,
+                    ArticleContentList,
+                    LinkContentList,
+                    SocialMediaContentList));
+                break;
             }
         }
-        const collection = [
-            { title: 'Recent',  listItems: items },
-            { title: 'Yesterday',  listItems: items},
-            { title: 'June 12, 2019',  listItems: items},
-            { title: 'June 11, 2019',  listItems: items }
-        ];
+        const collection = GetDummifiedCollection(items);
         this.setState({
             listItems: collection
         });

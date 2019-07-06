@@ -1,6 +1,5 @@
-import { IContentItem, IPhotoContent, ContentType, MediaSourceType, IVideoContent, IArticleContent, ILinkContent } from "./types";
+import { IContentItem, IPhotoContent, ContentType, MediaSourceType, IVideoContent, IArticleContent, ILinkContent, ISocialMediaContent } from "./types";
 import * as _ from 'lodash';
-import { func } from "prop-types";
 
 const ItemSize = 5;
 
@@ -8,13 +7,24 @@ export const PhotoContentList: Array<IContentItem<IPhotoContent>> = GetSamplePho
 export const VideoContentList: Array<IContentItem<IVideoContent>> = GetSampleVideoItems();
 export const ArticleContentList: Array<IContentItem<IArticleContent>> = GetSampleArticleItems();
 export const LinkContentList: Array<IContentItem<ILinkContent>> = GetSampleLinkItems();
+export const SocialMediaContentList: Array<IContentItem<ISocialMediaContent>> = GetSampleSocialMediaItems();
+
+export function GetDummifiedCollection(items) {
+    return [
+        { title: 'Recent',  listItems: _.shuffle(items) },
+        { title: 'Yesterday',  listItems: _.shuffle(items) },
+        { title: 'June 12, 2019', listItems: _.shuffle(items) },
+        { title: 'June 11, 2019', listItems: _.shuffle(items) }
+    ];
+}
 
 export function GetSampleItem(type: ContentType): IContentItem<any> {
     switch (type) {
-        case ContentType.Photo: return _.sample(GetSamplePhotoItems())
-        case ContentType.Video: return _.sample(GetSampleVideoItems())
-        case ContentType.Article: return _.sample(GetSampleArticleItems())
-        case ContentType.Link: return _.sample(GetSampleLinkItems())
+        case ContentType.Photo: return _.sample(GetSamplePhotoItems());
+        case ContentType.Video: return _.sample(GetSampleVideoItems());
+        case ContentType.Article: return _.sample(GetSampleArticleItems());
+        case ContentType.Link: return _.sample(GetSampleLinkItems());
+        case ContentType.SocialMedia: return _.sample(GetSampleSocialMediaItems());
     }
 }
 
@@ -76,7 +86,7 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
                 videoLength: _.sample(_.range(45, 200))
             },
             sourcePreviewAvailable: false,
-            sourceType: _.sample([ MediaSourceType.Youtube, MediaSourceType.Vimeo]),
+            sourceType: _.sample([MediaSourceType.Youtube, MediaSourceType.Vimeo]),
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
@@ -91,7 +101,7 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
     return result;
 }
 
-export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>>  {
+export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
     const result = [];
     _.range(ItemSize).forEach(() => {
         const item: IContentItem<IArticleContent> = {
@@ -121,7 +131,7 @@ export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>>  {
                 ]),
             },
             sourcePreviewAvailable: false,
-            sourceType: _.sample([ MediaSourceType.Quora, MediaSourceType.ACM, MediaSourceType.Scholar ]),
+            sourceType: _.sample([MediaSourceType.Quora, MediaSourceType.ACM, MediaSourceType.Scholar]),
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
@@ -170,6 +180,58 @@ export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
                 }
             ]
         };
+        result.push(item);
+    });
+    return result;
+}
+
+export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaContent>> {
+    const result = [];
+    _.range(ItemSize).forEach((data) => {
+        const item: IContentItem<ISocialMediaContent> = {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            title: null,
+            contentType: ContentType.SocialMedia,
+            contentData: {
+                profileImgUrl: _.sample([
+                    'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+                    'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'
+                ])
+            },
+            sourcePreviewAvailable: false,
+            sourceType: _.sample([
+                MediaSourceType.Instagram,
+                MediaSourceType.Twitter
+            ]),
+            tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+            annotations: [
+                {
+                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+                }
+            ]
+        };
+        if (item.sourceType === MediaSourceType.Twitter) {
+            item.contentData.tweetText = _.sample([
+                `These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.`,
+                `And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home 🤷🏻‍♂️🤣`
+            ]);
+            item.contentData.handle = _.sample([
+                '@anomaly123',
+                '@anonymous42',
+            ]);
+        } else if (item.sourceType === MediaSourceType.Instagram) {
+            item.contentData.instragramImageUrl = _.sample([
+                'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+                'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+                'https://picsum.photos/id/1003/1181/1772',
+                'https://picsum.photos/id/1004/5616/3744',
+            ]);
+            item.contentData.handle = _.sample([
+                'anomaly_123',
+                'anonymous_42',
+            ]);
+        }
         result.push(item);
     })
     return result;

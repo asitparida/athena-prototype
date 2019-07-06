@@ -4,7 +4,7 @@ const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
-export const ItemWidth = 200;
+export const ItemWidth = 230;
 export const ItemHeight = 180;
 export const GroupBufffer = 20;
 
@@ -59,8 +59,9 @@ export function GetSampleBoardItems() {
         { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
         { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
         { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
     ];
-    return _.shuffle(items);
+    return _.take(_.shuffle(items), 4);
 }
 
 export let BoardGroups: IBoardGroupWrapper[] = [

@@ -5,6 +5,7 @@ import './content-item.scss'
 import { VideoContentItem } from './video-content';
 import { ArticleContentItem } from './article-content';
 import { LinkContentItem } from './link-content';
+import { SocialMediaContentItem } from './socialmedia-item';
 import { ContentViewerData } from '../../access/observables/observables';
 
 export class ContentItemWrapper extends React.Component<{ data: IContentItem<any>, menuInvoked?: ($event: MouseEvent) => {}, inheritDimensions?: boolean }, { annotationAndNotesShown: boolean }> {
@@ -45,7 +46,14 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
             case ContentType.Link: { label = 'Link'; break; }
             case ContentType.Photo: { label = 'Photo'; break; }
             case ContentType.Video: { label =  this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube'; break; }
-            case ContentType.SocialMedia: { label = 'Social Media'; break; }
+            case ContentType.SocialMedia: {
+                if (this.props.data.sourceType === MediaSourceType.Twitter) {
+                    label = 'Twitter'
+                } else if (this.props.data.sourceType === MediaSourceType.Instagram) {
+                    label = 'Instagram'
+                }
+                break;
+            }
         }
         let currentContent = <React.Fragment><h1>Content</h1><h2>...</h2></React.Fragment>;
         switch (type) {
@@ -63,6 +71,10 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
             }
             case ContentType.Link: {
                 currentContent = <LinkContentItem data={this.props.data} />
+                break;
+            }
+            case ContentType.SocialMedia: {
+                currentContent = <SocialMediaContentItem data={this.props.data} />
                 break;
             }
             default: {

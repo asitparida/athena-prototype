@@ -7,8 +7,6 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import CanvasView from './canvas-view/canvas-view';
-import ListView from './list-view/list-view';
 import { IWorkspaceContentTransfer } from '../../constants/types';
 import { ItemHeight, ItemWidth, BoardGroups } from '../../constants/constants';
 import { Subscription } from 'rxjs';

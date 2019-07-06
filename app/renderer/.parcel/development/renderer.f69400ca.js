@@ -32687,4454 +32687,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu.tsx":[function(require,module,exports) {
-"use strict";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var React = __importStar(require("react"));
-
-require("./context-menu.scss");
-
-var ContextMenu =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ContextMenu, _React$Component);
-
-  function ContextMenu(props) {
-    var _this;
-
-    _classCallCheck(this, ContextMenu);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContextMenu).call(this, props)); // tslint:disable:variable-name
-
-    _this.onDOMClick_bound = _this.onDOMClick.bind(_assertThisInitialized(_this));
-    _this.onKeyUp_bound = _this.onKeyUp.bind(_assertThisInitialized(_this));
-    _this.state = {
-      menuOpen: false,
-      x: 0,
-      y: 0
-    };
-    _this.domElRef = React.createRef();
-    _this.elRef = React.createRef();
-    return _this;
-  }
-
-  _createClass(ContextMenu, [{
-    key: "openMenu",
-    value: function openMenu(e) {
-      var posX = 0;
-      var posY = 0;
-
-      if (e) {
-        posX = e.clientX;
-        posY = e.clientY;
-      } else {
-        var elem = this.domElRef.current;
-
-        if (elem) {
-          var props = elem.getBoundingClientRect();
-          posX = props.right;
-          posY = props.bottom;
-        }
-      }
-
-      this.setState({
-        menuOpen: true,
-        x: posX,
-        y: posY
-      });
-    }
-  }, {
-    key: "onDOMClick",
-    value: function onDOMClick(e) {
-      var notfound = true;
-      var target = e.target;
-
-      while (target && target !== document.documentElement) {
-        if (target === this.elRef) {
-          notfound = false;
-          break;
-        }
-
-        target = target.parentNode;
-      }
-
-      if (notfound) {
-        this.closeMenu();
-      }
-    }
-  }, {
-    key: "onKeyUp",
-    value: function onKeyUp(e) {
-      if (e.code === "Escape") {
-        this.closeMenu();
-      }
-    }
-  }, {
-    key: "addCloseMenuListener",
-    value: function addCloseMenuListener(node) {
-      if (node) {
-        this.elRef = node;
-        document.removeEventListener('click', this.onDOMClick_bound);
-        document.addEventListener('click', this.onDOMClick_bound);
-        document.removeEventListener('contextmenu', this.onDOMClick_bound);
-        document.addEventListener('contextmenu', this.onDOMClick_bound);
-        document.removeEventListener('keyup', this.onKeyUp_bound);
-        document.addEventListener('keyup', this.onKeyUp_bound);
-      }
-    }
-  }, {
-    key: "closeMenu",
-    value: function closeMenu() {
-      document.removeEventListener('click', this.onDOMClick_bound);
-      document.removeEventListener('contextmenu', this.onDOMClick_bound);
-      document.removeEventListener('keyup', this.onKeyUp_bound);
-      this.setState({
-        menuOpen: false
-      });
-      this.props.menuClosed();
-    }
-  }, {
-    key: "onContextMenuInvoked",
-    value: function onContextMenuInvoked(e) {
-      this.openMenu(e);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(props) {
-      if (this.props.open !== props.open) {
-        if (this.props.open && !this.state.menuOpen) {
-          this.openMenu();
-        }
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var styles = {
-        left: "".concat(this.state.x + 10, "px"),
-        top: "".concat(this.state.y - 20, "px")
-      };
-      return React.createElement(React.Fragment, null, React.createElement("div", {
-        className: "context-menu-wrapper",
-        onContextMenu: this.onContextMenuInvoked.bind(this),
-        ref: this.domElRef
-      }, this.props.children), this.state.menuOpen && React.createElement("div", {
-        className: "app-context-menu-wrapper",
-        style: styles,
-        ref: this.addCloseMenuListener.bind(this)
-      }, React.createElement("ul", {
-        className: "app-context-menu"
-      }, this.props.actions.length > 0 && this.props.actions.map(function (action, i) {
-        return React.createElement("li", {
-          key: i
-        }, React.createElement("i", {
-          className: "material-icons"
-        }, action.icon), action.name);
-      }))));
-    }
-  }]);
-
-  return ContextMenu;
-}(React.Component);
-
-exports.ContextMenu = ContextMenu;
-},{"react":"../../../node_modules/react/index.js","./context-menu.scss":"components/context-menu/context-menu.scss"}],"../../node_modules/dnd-core/lib/interfaces.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.HandlerRole = void 0;
-var HandlerRole;
-exports.HandlerRole = HandlerRole;
-
-(function (HandlerRole) {
-  HandlerRole["SOURCE"] = "SOURCE";
-  HandlerRole["TARGET"] = "TARGET";
-})(HandlerRole || (exports.HandlerRole = HandlerRole = {}));
-},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/types.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.END_DRAG = exports.DROP = exports.HOVER = exports.PUBLISH_DRAG_SOURCE = exports.BEGIN_DRAG = exports.INIT_COORDS = void 0;
-const INIT_COORDS = 'dnd-core/INIT_COORDS';
-exports.INIT_COORDS = INIT_COORDS;
-const BEGIN_DRAG = 'dnd-core/BEGIN_DRAG';
-exports.BEGIN_DRAG = BEGIN_DRAG;
-const PUBLISH_DRAG_SOURCE = 'dnd-core/PUBLISH_DRAG_SOURCE';
-exports.PUBLISH_DRAG_SOURCE = PUBLISH_DRAG_SOURCE;
-const HOVER = 'dnd-core/HOVER';
-exports.HOVER = HOVER;
-const DROP = 'dnd-core/DROP';
-exports.DROP = DROP;
-const END_DRAG = 'dnd-core/END_DRAG';
-exports.END_DRAG = END_DRAG;
-},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/local/setClientOffset.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.setClientOffset = setClientOffset;
-
-var _types = require("../types");
-
-function setClientOffset(clientOffset, sourceClientOffset) {
-  return {
-    type: _types.INIT_COORDS,
-    payload: {
-      sourceClientOffset: sourceClientOffset || null,
-      clientOffset: clientOffset || null
-    }
-  };
-}
-},{"../types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/js_utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.get = get;
-exports.without = without;
-exports.isString = isString;
-exports.isObject = isObject;
-exports.xor = xor;
-exports.intersection = intersection;
-
-// cheap lodash replacements
-
-/**
- * drop-in replacement for _.get
- * @param obj
- * @param path
- * @param defaultValue
- */
-function get(obj, path, defaultValue) {
-  return path.split('.').reduce((a, c) => a && a[c] ? a[c] : defaultValue || null, obj);
-}
-/**
- * drop-in replacement for _.without
- */
-
-
-function without(items, item) {
-  return items.filter(i => i !== item);
-}
-/**
- * drop-in replacement for _.isString
- * @param input
- */
-
-
-function isString(input) {
-  return typeof input === 'string';
-}
-/**
- * drop-in replacement for _.isString
- * @param input
- */
-
-
-function isObject(input) {
-  return typeof input === 'object';
-}
-/**
- * repalcement for _.xor
- * @param itemsA
- * @param itemsB
- */
-
-
-function xor(itemsA, itemsB) {
-  const map = new Map();
-
-  const insertItem = item => map.set(item, map.has(item) ? map.get(item) + 1 : 1);
-
-  itemsA.forEach(insertItem);
-  itemsB.forEach(insertItem);
-  const result = [];
-  map.forEach((count, key) => {
-    if (count === 1) {
-      result.push(key);
-    }
-  });
-  return result;
-}
-/**
- * replacement for _.intersection
- * @param itemsA
- * @param itemsB
- */
-
-
-function intersection(itemsA, itemsB) {
-  return itemsA.filter(t => itemsB.indexOf(t) > -1);
-}
-},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/beginDrag.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createBeginDrag;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _setClientOffset = require("./local/setClientOffset");
-
-var _js_utils = require("../../utils/js_utils");
-
-var _types = require("./types");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const ResetCoordinatesAction = {
-  type: _types.INIT_COORDS,
-  payload: {
-    clientOffset: null,
-    sourceClientOffset: null
-  }
-};
-
-function createBeginDrag(manager) {
-  return function beginDrag(sourceIds = [], options = {
-    publishSource: true
-  }) {
-    const {
-      publishSource = true,
-      clientOffset,
-      getSourceClientOffset
-    } = options;
-    const monitor = manager.getMonitor();
-    const registry = manager.getRegistry(); // Initialize the coordinates using the client offset
-
-    manager.dispatch((0, _setClientOffset.setClientOffset)(clientOffset));
-    verifyInvariants(sourceIds, monitor, registry); // Get the draggable source
-
-    const sourceId = getDraggableSource(sourceIds, monitor);
-
-    if (sourceId === null) {
-      manager.dispatch(ResetCoordinatesAction);
-      return;
-    } // Get the source client offset
-
-
-    let sourceClientOffset = null;
-
-    if (clientOffset) {
-      verifyGetSourceClientOffsetIsFunction(getSourceClientOffset);
-      sourceClientOffset = getSourceClientOffset(sourceId);
-    } // Initialize the full coordinates
-
-
-    manager.dispatch((0, _setClientOffset.setClientOffset)(clientOffset, sourceClientOffset));
-    const source = registry.getSource(sourceId);
-    const item = source.beginDrag(monitor, sourceId);
-    verifyItemIsObject(item);
-    registry.pinSource(sourceId);
-    const itemType = registry.getSourceType(sourceId);
-    return {
-      type: _types.BEGIN_DRAG,
-      payload: {
-        itemType,
-        item,
-        sourceId,
-        clientOffset: clientOffset || null,
-        sourceClientOffset: sourceClientOffset || null,
-        isSourcePublic: !!publishSource
-      }
-    };
-  };
-}
-
-function verifyInvariants(sourceIds, monitor, registry) {
-  (0, _invariant.default)(!monitor.isDragging(), 'Cannot call beginDrag while dragging.');
-
-  for (const s of sourceIds) {
-    (0, _invariant.default)(registry.getSource(s), 'Expected sourceIds to be registered.');
-  }
-}
-
-function verifyGetSourceClientOffsetIsFunction(getSourceClientOffset) {
-  (0, _invariant.default)(typeof getSourceClientOffset === 'function', 'When clientOffset is provided, getSourceClientOffset must be a function.');
-}
-
-function verifyItemIsObject(item) {
-  (0, _invariant.default)((0, _js_utils.isObject)(item), 'Item must be an object.');
-}
-
-function getDraggableSource(sourceIds, monitor) {
-  let sourceId = null;
-
-  for (let i = sourceIds.length - 1; i >= 0; i--) {
-    if (monitor.canDragSource(sourceIds[i])) {
-      sourceId = sourceIds[i];
-      break;
-    }
-  }
-
-  return sourceId;
-}
-},{"invariant":"../../node_modules/invariant/browser.js","./local/setClientOffset":"../../node_modules/dnd-core/lib/actions/dragDrop/local/setClientOffset.js","../../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/publishDragSource.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createPublishDragSource;
-
-var _types = require("./types");
-
-function createPublishDragSource(manager) {
-  return function publishDragSource() {
-    const monitor = manager.getMonitor();
-
-    if (monitor.isDragging()) {
-      return {
-        type: _types.PUBLISH_DRAG_SOURCE
-      };
-    }
-  };
-}
-},{"./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/matchesType.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = matchesType;
-
-function matchesType(targetType, draggedItemType) {
-  if (draggedItemType === null) {
-    return targetType === null;
-  }
-
-  return Array.isArray(targetType) ? targetType.some(t => t === draggedItemType) : targetType === draggedItemType;
-}
-},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/hover.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createHover;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _matchesType = _interopRequireDefault(require("../../utils/matchesType"));
-
-var _types = require("./types");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createHover(manager) {
-  return function hover(targetIdsArg, {
-    clientOffset
-  } = {}) {
-    verifyTargetIdsIsArray(targetIdsArg);
-    const targetIds = targetIdsArg.slice(0);
-    const monitor = manager.getMonitor();
-    const registry = manager.getRegistry();
-    checkInvariants(targetIds, monitor, registry);
-    const draggedItemType = monitor.getItemType();
-    removeNonMatchingTargetIds(targetIds, registry, draggedItemType);
-    hoverAllTargets(targetIds, monitor, registry);
-    return {
-      type: _types.HOVER,
-      payload: {
-        targetIds,
-        clientOffset: clientOffset || null
-      }
-    };
-  };
-}
-
-function verifyTargetIdsIsArray(targetIdsArg) {
-  (0, _invariant.default)(Array.isArray(targetIdsArg), 'Expected targetIds to be an array.');
-}
-
-function checkInvariants(targetIds, monitor, registry) {
-  (0, _invariant.default)(monitor.isDragging(), 'Cannot call hover while not dragging.');
-  (0, _invariant.default)(!monitor.didDrop(), 'Cannot call hover after drop.');
-
-  for (let i = 0; i < targetIds.length; i++) {
-    const targetId = targetIds[i];
-    (0, _invariant.default)(targetIds.lastIndexOf(targetId) === i, 'Expected targetIds to be unique in the passed array.');
-    const target = registry.getTarget(targetId);
-    (0, _invariant.default)(target, 'Expected targetIds to be registered.');
-  }
-}
-
-function removeNonMatchingTargetIds(targetIds, registry, draggedItemType) {
-  // Remove those targetIds that don't match the targetType.  This
-  // fixes shallow isOver which would only be non-shallow because of
-  // non-matching targets.
-  for (let i = targetIds.length - 1; i >= 0; i--) {
-    const targetId = targetIds[i];
-    const targetType = registry.getTargetType(targetId);
-
-    if (!(0, _matchesType.default)(targetType, draggedItemType)) {
-      targetIds.splice(i, 1);
-    }
-  }
-}
-
-function hoverAllTargets(targetIds, monitor, registry) {
-  // Finally call hover on all matching targets.
-  for (const targetId of targetIds) {
-    const target = registry.getTarget(targetId);
-    target.hover(monitor, targetId);
-  }
-}
-},{"invariant":"../../node_modules/invariant/browser.js","../../utils/matchesType":"../../node_modules/dnd-core/lib/utils/matchesType.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/drop.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createDrop;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _types = require("./types");
-
-var _js_utils = require("../../utils/js_utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createDrop(manager) {
-  return function drop(options = {}) {
-    const monitor = manager.getMonitor();
-    const registry = manager.getRegistry();
-    verifyInvariants(monitor);
-    const targetIds = getDroppableTargets(monitor); // Multiple actions are dispatched here, which is why this doesn't return an action
-
-    targetIds.forEach((targetId, index) => {
-      const dropResult = determineDropResult(targetId, index, registry, monitor);
-      const action = {
-        type: _types.DROP,
-        payload: {
-          dropResult: { ...options,
-            ...dropResult
-          }
-        }
-      };
-      manager.dispatch(action);
-    });
-  };
-}
-
-function verifyInvariants(monitor) {
-  (0, _invariant.default)(monitor.isDragging(), 'Cannot call drop while not dragging.');
-  (0, _invariant.default)(!monitor.didDrop(), 'Cannot call drop twice during one drag operation.');
-}
-
-function determineDropResult(targetId, index, registry, monitor) {
-  const target = registry.getTarget(targetId);
-  let dropResult = target ? target.drop(monitor, targetId) : undefined;
-  verifyDropResultType(dropResult);
-
-  if (typeof dropResult === 'undefined') {
-    dropResult = index === 0 ? {} : monitor.getDropResult();
-  }
-
-  return dropResult;
-}
-
-function verifyDropResultType(dropResult) {
-  (0, _invariant.default)(typeof dropResult === 'undefined' || (0, _js_utils.isObject)(dropResult), 'Drop result must either be an object or undefined.');
-}
-
-function getDroppableTargets(monitor) {
-  const targetIds = monitor.getTargetIds().filter(monitor.canDropOnTarget, monitor);
-  targetIds.reverse();
-  return targetIds;
-}
-},{"invariant":"../../node_modules/invariant/browser.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js","../../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/endDrag.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createEndDrag;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _types = require("./types");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createEndDrag(manager) {
-  return function endDrag() {
-    const monitor = manager.getMonitor();
-    const registry = manager.getRegistry();
-    verifyIsDragging(monitor);
-    const sourceId = monitor.getSourceId();
-    const source = registry.getSource(sourceId, true);
-    source.endDrag(monitor, sourceId);
-    registry.unpinSource();
-    return {
-      type: _types.END_DRAG
-    };
-  };
-}
-
-function verifyIsDragging(monitor) {
-  (0, _invariant.default)(monitor.isDragging(), 'Cannot call endDrag while not dragging.');
-}
-},{"invariant":"../../node_modules/invariant/browser.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var _exportNames = {};
-exports.default = createDragDropActions;
-
-var _beginDrag = _interopRequireDefault(require("./beginDrag"));
-
-var _publishDragSource = _interopRequireDefault(require("./publishDragSource"));
-
-var _hover = _interopRequireDefault(require("./hover"));
-
-var _drop = _interopRequireDefault(require("./drop"));
-
-var _endDrag = _interopRequireDefault(require("./endDrag"));
-
-var _types = require("./types");
-
-Object.keys(_types).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _types[key];
-    }
-  });
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createDragDropActions(manager) {
-  return {
-    beginDrag: (0, _beginDrag.default)(manager),
-    publishDragSource: (0, _publishDragSource.default)(manager),
-    hover: (0, _hover.default)(manager),
-    drop: (0, _drop.default)(manager),
-    endDrag: (0, _endDrag.default)(manager)
-  };
-}
-},{"./beginDrag":"../../node_modules/dnd-core/lib/actions/dragDrop/beginDrag.js","./publishDragSource":"../../node_modules/dnd-core/lib/actions/dragDrop/publishDragSource.js","./hover":"../../node_modules/dnd-core/lib/actions/dragDrop/hover.js","./drop":"../../node_modules/dnd-core/lib/actions/dragDrop/drop.js","./endDrag":"../../node_modules/dnd-core/lib/actions/dragDrop/endDrag.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/equality.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.areCoordsEqual = areCoordsEqual;
-exports.areArraysEqual = areArraysEqual;
-exports.strictEquality = void 0;
-
-const strictEquality = (a, b) => a === b;
-/**
- * Determine if two cartesian coordinate offsets are equal
- * @param offsetA
- * @param offsetB
- */
-
-
-exports.strictEquality = strictEquality;
-
-function areCoordsEqual(offsetA, offsetB) {
-  if (!offsetA && !offsetB) {
-    return true;
-  } else if (!offsetA || !offsetB) {
-    return false;
-  } else {
-    return offsetA.x === offsetB.x && offsetA.y === offsetB.y;
-  }
-}
-/**
- * Determines if two arrays of items are equal
- * @param a The first array of items
- * @param b The second array of items
- */
-
-
-function areArraysEqual(a, b, isEqual = strictEquality) {
-  if (a.length !== b.length) {
-    return false;
-  }
-
-  for (let i = 0; i < a.length; ++i) {
-    if (!isEqual(a[i], b[i])) {
-      return false;
-    }
-  }
-
-  return true;
-}
-},{}],"../../node_modules/dnd-core/lib/reducers/dragOffset.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = dragOffset;
-
-var _dragDrop = require("../actions/dragDrop");
-
-var _equality = require("../utils/equality");
-
-const initialState = {
-  initialSourceClientOffset: null,
-  initialClientOffset: null,
-  clientOffset: null
-};
-
-function dragOffset(state = initialState, action) {
-  const {
-    payload
-  } = action;
-
-  switch (action.type) {
-    case _dragDrop.INIT_COORDS:
-    case _dragDrop.BEGIN_DRAG:
-      return {
-        initialSourceClientOffset: payload.sourceClientOffset,
-        initialClientOffset: payload.clientOffset,
-        clientOffset: payload.clientOffset
-      };
-
-    case _dragDrop.HOVER:
-      if ((0, _equality.areCoordsEqual)(state.clientOffset, payload.clientOffset)) {
-        return state;
-      }
-
-      return { ...state,
-        clientOffset: payload.clientOffset
-      };
-
-    case _dragDrop.END_DRAG:
-    case _dragDrop.DROP:
-      return initialState;
-
-    default:
-      return state;
-  }
-}
-},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../utils/equality":"../../node_modules/dnd-core/lib/utils/equality.js"}],"../../node_modules/dnd-core/lib/actions/registry.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addSource = addSource;
-exports.addTarget = addTarget;
-exports.removeSource = removeSource;
-exports.removeTarget = removeTarget;
-exports.REMOVE_TARGET = exports.REMOVE_SOURCE = exports.ADD_TARGET = exports.ADD_SOURCE = void 0;
-const ADD_SOURCE = 'dnd-core/ADD_SOURCE';
-exports.ADD_SOURCE = ADD_SOURCE;
-const ADD_TARGET = 'dnd-core/ADD_TARGET';
-exports.ADD_TARGET = ADD_TARGET;
-const REMOVE_SOURCE = 'dnd-core/REMOVE_SOURCE';
-exports.REMOVE_SOURCE = REMOVE_SOURCE;
-const REMOVE_TARGET = 'dnd-core/REMOVE_TARGET';
-exports.REMOVE_TARGET = REMOVE_TARGET;
-
-function addSource(sourceId) {
-  return {
-    type: ADD_SOURCE,
-    payload: {
-      sourceId
-    }
-  };
-}
-
-function addTarget(targetId) {
-  return {
-    type: ADD_TARGET,
-    payload: {
-      targetId
-    }
-  };
-}
-
-function removeSource(sourceId) {
-  return {
-    type: REMOVE_SOURCE,
-    payload: {
-      sourceId
-    }
-  };
-}
-
-function removeTarget(targetId) {
-  return {
-    type: REMOVE_TARGET,
-    payload: {
-      targetId
-    }
-  };
-}
-},{}],"../../node_modules/dnd-core/lib/reducers/dragOperation.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = dragOperation;
-
-var _dragDrop = require("../actions/dragDrop");
-
-var _registry = require("../actions/registry");
-
-var _js_utils = require("../utils/js_utils");
-
-const initialState = {
-  itemType: null,
-  item: null,
-  sourceId: null,
-  targetIds: [],
-  dropResult: null,
-  didDrop: false,
-  isSourcePublic: null
-};
-
-function dragOperation(state = initialState, action) {
-  const {
-    payload
-  } = action;
-
-  switch (action.type) {
-    case _dragDrop.BEGIN_DRAG:
-      return { ...state,
-        itemType: payload.itemType,
-        item: payload.item,
-        sourceId: payload.sourceId,
-        isSourcePublic: payload.isSourcePublic,
-        dropResult: null,
-        didDrop: false
-      };
-
-    case _dragDrop.PUBLISH_DRAG_SOURCE:
-      return { ...state,
-        isSourcePublic: true
-      };
-
-    case _dragDrop.HOVER:
-      return { ...state,
-        targetIds: payload.targetIds
-      };
-
-    case _registry.REMOVE_TARGET:
-      if (state.targetIds.indexOf(payload.targetId) === -1) {
-        return state;
-      }
-
-      return { ...state,
-        targetIds: (0, _js_utils.without)(state.targetIds, payload.targetId)
-      };
-
-    case _dragDrop.DROP:
-      return { ...state,
-        dropResult: payload.dropResult,
-        didDrop: true,
-        targetIds: []
-      };
-
-    case _dragDrop.END_DRAG:
-      return { ...state,
-        itemType: null,
-        item: null,
-        sourceId: null,
-        dropResult: null,
-        didDrop: false,
-        isSourcePublic: null,
-        targetIds: []
-      };
-
-    default:
-      return state;
-  }
-}
-},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/refCount.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = refCount;
-
-var _registry = require("../actions/registry");
-
-function refCount(state = 0, action) {
-  switch (action.type) {
-    case _registry.ADD_SOURCE:
-    case _registry.ADD_TARGET:
-      return state + 1;
-
-    case _registry.REMOVE_SOURCE:
-    case _registry.REMOVE_TARGET:
-      return state - 1;
-
-    default:
-      return state;
-  }
-}
-},{"../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js"}],"../../node_modules/dnd-core/lib/utils/dirtiness.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.areDirty = areDirty;
-exports.ALL = exports.NONE = void 0;
-
-var _js_utils = require("./js_utils");
-
-const NONE = [];
-exports.NONE = NONE;
-const ALL = [];
-exports.ALL = ALL;
-NONE.__IS_NONE__ = true;
-ALL.__IS_ALL__ = true;
-/**
- * Determines if the given handler IDs are dirty or not.
- *
- * @param dirtyIds The set of dirty handler ids
- * @param handlerIds The set of handler ids to check
- */
-
-function areDirty(dirtyIds, handlerIds) {
-  if (dirtyIds === NONE) {
-    return false;
-  }
-
-  if (dirtyIds === ALL || typeof handlerIds === 'undefined') {
-    return true;
-  }
-
-  const commonIds = (0, _js_utils.intersection)(handlerIds, dirtyIds);
-  return commonIds.length > 0;
-}
-},{"./js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/dirtyHandlerIds.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = dirtyHandlerIds;
-
-var _dragDrop = require("../actions/dragDrop");
-
-var _registry = require("../actions/registry");
-
-var _equality = require("../utils/equality");
-
-var _dirtiness = require("../utils/dirtiness");
-
-var _js_utils = require("../utils/js_utils");
-
-function dirtyHandlerIds(state = _dirtiness.NONE, action) {
-  switch (action.type) {
-    case _dragDrop.HOVER:
-      break;
-
-    case _registry.ADD_SOURCE:
-    case _registry.ADD_TARGET:
-    case _registry.REMOVE_TARGET:
-    case _registry.REMOVE_SOURCE:
-      return _dirtiness.NONE;
-
-    case _dragDrop.BEGIN_DRAG:
-    case _dragDrop.PUBLISH_DRAG_SOURCE:
-    case _dragDrop.END_DRAG:
-    case _dragDrop.DROP:
-    default:
-      return _dirtiness.ALL;
-  }
-
-  const {
-    targetIds = [],
-    prevTargetIds = []
-  } = action.payload;
-  const result = (0, _js_utils.xor)(targetIds, prevTargetIds);
-  const didChange = result.length > 0 || !(0, _equality.areArraysEqual)(targetIds, prevTargetIds);
-
-  if (!didChange) {
-    return _dirtiness.NONE;
-  } // Check the target ids at the innermost position. If they are valid, add them
-  // to the result
-
-
-  const prevInnermostTargetId = prevTargetIds[prevTargetIds.length - 1];
-  const innermostTargetId = targetIds[targetIds.length - 1];
-
-  if (prevInnermostTargetId !== innermostTargetId) {
-    if (prevInnermostTargetId) {
-      result.push(prevInnermostTargetId);
-    }
-
-    if (innermostTargetId) {
-      result.push(innermostTargetId);
-    }
-  }
-
-  return result;
-}
-},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","../utils/equality":"../../node_modules/dnd-core/lib/utils/equality.js","../utils/dirtiness":"../../node_modules/dnd-core/lib/utils/dirtiness.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/stateId.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = stateId;
-
-function stateId(state = 0) {
-  return state + 1;
-}
-},{}],"../../node_modules/dnd-core/lib/reducers/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = reduce;
-
-var _dragOffset = _interopRequireDefault(require("./dragOffset"));
-
-var _dragOperation = _interopRequireDefault(require("./dragOperation"));
-
-var _refCount = _interopRequireDefault(require("./refCount"));
-
-var _dirtyHandlerIds = _interopRequireDefault(require("./dirtyHandlerIds"));
-
-var _stateId = _interopRequireDefault(require("./stateId"));
-
-var _js_utils = require("../utils/js_utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function reduce(state = {}, action) {
-  return {
-    dirtyHandlerIds: (0, _dirtyHandlerIds.default)(state.dirtyHandlerIds, {
-      type: action.type,
-      payload: { ...action.payload,
-        prevTargetIds: (0, _js_utils.get)(state, 'dragOperation.targetIds', [])
-      }
-    }),
-    dragOffset: (0, _dragOffset.default)(state.dragOffset, action),
-    refCount: (0, _refCount.default)(state.refCount, action),
-    dragOperation: (0, _dragOperation.default)(state.dragOperation, action),
-    stateId: (0, _stateId.default)(state.stateId)
-  };
-}
-},{"./dragOffset":"../../node_modules/dnd-core/lib/reducers/dragOffset.js","./dragOperation":"../../node_modules/dnd-core/lib/reducers/dragOperation.js","./refCount":"../../node_modules/dnd-core/lib/reducers/refCount.js","./dirtyHandlerIds":"../../node_modules/dnd-core/lib/reducers/dirtyHandlerIds.js","./stateId":"../../node_modules/dnd-core/lib/reducers/stateId.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/utils/coords.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.add = add;
-exports.subtract = subtract;
-exports.getSourceClientOffset = getSourceClientOffset;
-exports.getDifferenceFromInitialOffset = getDifferenceFromInitialOffset;
-
-/**
- * Coordinate addition
- * @param a The first coordinate
- * @param b The second coordinate
- */
-function add(a, b) {
-  return {
-    x: a.x + b.x,
-    y: a.y + b.y
-  };
-}
-/**
- * Coordinate subtraction
- * @param a The first coordinate
- * @param b The second coordinate
- */
-
-
-function subtract(a, b) {
-  return {
-    x: a.x - b.x,
-    y: a.y - b.y
-  };
-}
-/**
- * Returns the cartesian distance of the drag source component's position, based on its position
- * at the time when the current drag operation has started, and the movement difference.
- *
- * Returns null if no item is being dragged.
- *
- * @param state The offset state to compute from
- */
-
-
-function getSourceClientOffset(state) {
-  const {
-    clientOffset,
-    initialClientOffset,
-    initialSourceClientOffset
-  } = state;
-
-  if (!clientOffset || !initialClientOffset || !initialSourceClientOffset) {
-    return null;
-  }
-
-  return subtract(add(clientOffset, initialSourceClientOffset), initialClientOffset);
-}
-/**
- * Determines the x,y offset between the client offset and the initial client offset
- *
- * @param state The offset state to compute from
- */
-
-
-function getDifferenceFromInitialOffset(state) {
-  const {
-    clientOffset,
-    initialClientOffset
-  } = state;
-
-  if (!clientOffset || !initialClientOffset) {
-    return null;
-  }
-
-  return subtract(clientOffset, initialClientOffset);
-}
-},{}],"../../node_modules/dnd-core/lib/DragDropMonitorImpl.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _matchesType = _interopRequireDefault(require("./utils/matchesType"));
-
-var _coords = require("./utils/coords");
-
-var _dirtiness = require("./utils/dirtiness");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class DragDropMonitorImpl {
-  constructor(store, registry) {
-    this.store = store;
-    this.registry = registry;
-  }
-
-  subscribeToStateChange(listener, options = {
-    handlerIds: undefined
-  }) {
-    const {
-      handlerIds
-    } = options;
-    (0, _invariant.default)(typeof listener === 'function', 'listener must be a function.');
-    (0, _invariant.default)(typeof handlerIds === 'undefined' || Array.isArray(handlerIds), 'handlerIds, when specified, must be an array of strings.');
-    let prevStateId = this.store.getState().stateId;
-
-    const handleChange = () => {
-      const state = this.store.getState();
-      const currentStateId = state.stateId;
-
-      try {
-        const canSkipListener = currentStateId === prevStateId || currentStateId === prevStateId + 1 && !(0, _dirtiness.areDirty)(state.dirtyHandlerIds, handlerIds);
-
-        if (!canSkipListener) {
-          listener();
-        }
-      } finally {
-        prevStateId = currentStateId;
-      }
-    };
-
-    return this.store.subscribe(handleChange);
-  }
-
-  subscribeToOffsetChange(listener) {
-    (0, _invariant.default)(typeof listener === 'function', 'listener must be a function.');
-    let previousState = this.store.getState().dragOffset;
-
-    const handleChange = () => {
-      const nextState = this.store.getState().dragOffset;
-
-      if (nextState === previousState) {
-        return;
-      }
-
-      previousState = nextState;
-      listener();
-    };
-
-    return this.store.subscribe(handleChange);
-  }
-
-  canDragSource(sourceId) {
-    if (!sourceId) {
-      return false;
-    }
-
-    const source = this.registry.getSource(sourceId);
-    (0, _invariant.default)(source, 'Expected to find a valid source.');
-
-    if (this.isDragging()) {
-      return false;
-    }
-
-    return source.canDrag(this, sourceId);
-  }
-
-  canDropOnTarget(targetId) {
-    // undefined on initial render
-    if (!targetId) {
-      return false;
-    }
-
-    const target = this.registry.getTarget(targetId);
-    (0, _invariant.default)(target, 'Expected to find a valid target.');
-
-    if (!this.isDragging() || this.didDrop()) {
-      return false;
-    }
-
-    const targetType = this.registry.getTargetType(targetId);
-    const draggedItemType = this.getItemType();
-    return (0, _matchesType.default)(targetType, draggedItemType) && target.canDrop(this, targetId);
-  }
-
-  isDragging() {
-    return Boolean(this.getItemType());
-  }
-
-  isDraggingSource(sourceId) {
-    // undefined on initial render
-    if (!sourceId) {
-      return false;
-    }
-
-    const source = this.registry.getSource(sourceId, true);
-    (0, _invariant.default)(source, 'Expected to find a valid source.');
-
-    if (!this.isDragging() || !this.isSourcePublic()) {
-      return false;
-    }
-
-    const sourceType = this.registry.getSourceType(sourceId);
-    const draggedItemType = this.getItemType();
-
-    if (sourceType !== draggedItemType) {
-      return false;
-    }
-
-    return source.isDragging(this, sourceId);
-  }
-
-  isOverTarget(targetId, options = {
-    shallow: false
-  }) {
-    // undefined on initial render
-    if (!targetId) {
-      return false;
-    }
-
-    const {
-      shallow
-    } = options;
-
-    if (!this.isDragging()) {
-      return false;
-    }
-
-    const targetType = this.registry.getTargetType(targetId);
-    const draggedItemType = this.getItemType();
-
-    if (draggedItemType && !(0, _matchesType.default)(targetType, draggedItemType)) {
-      return false;
-    }
-
-    const targetIds = this.getTargetIds();
-
-    if (!targetIds.length) {
-      return false;
-    }
-
-    const index = targetIds.indexOf(targetId);
-
-    if (shallow) {
-      return index === targetIds.length - 1;
-    } else {
-      return index > -1;
-    }
-  }
-
-  getItemType() {
-    return this.store.getState().dragOperation.itemType;
-  }
-
-  getItem() {
-    return this.store.getState().dragOperation.item;
-  }
-
-  getSourceId() {
-    return this.store.getState().dragOperation.sourceId;
-  }
-
-  getTargetIds() {
-    return this.store.getState().dragOperation.targetIds;
-  }
-
-  getDropResult() {
-    return this.store.getState().dragOperation.dropResult;
-  }
-
-  didDrop() {
-    return this.store.getState().dragOperation.didDrop;
-  }
-
-  isSourcePublic() {
-    return this.store.getState().dragOperation.isSourcePublic;
-  }
-
-  getInitialClientOffset() {
-    return this.store.getState().dragOffset.initialClientOffset;
-  }
-
-  getInitialSourceClientOffset() {
-    return this.store.getState().dragOffset.initialSourceClientOffset;
-  }
-
-  getClientOffset() {
-    return this.store.getState().dragOffset.clientOffset;
-  }
-
-  getSourceClientOffset() {
-    return (0, _coords.getSourceClientOffset)(this.store.getState().dragOffset);
-  }
-
-  getDifferenceFromInitialOffset() {
-    return (0, _coords.getDifferenceFromInitialOffset)(this.store.getState().dragOffset);
-  }
-
-}
-
-exports.default = DragDropMonitorImpl;
-},{"invariant":"../../node_modules/invariant/browser.js","./utils/matchesType":"../../node_modules/dnd-core/lib/utils/matchesType.js","./utils/coords":"../../node_modules/dnd-core/lib/utils/coords.js","./utils/dirtiness":"../../node_modules/dnd-core/lib/utils/dirtiness.js"}],"../../node_modules/asap/browser-raw.js":[function(require,module,exports) {
-var global = arguments[3];
-"use strict";
-
-// Use the fastest means possible to execute a task in its own turn, with
-// priority over other events including IO, animation, reflow, and redraw
-// events in browsers.
-//
-// An exception thrown by a task will permanently interrupt the processing of
-// subsequent tasks. The higher level `asap` function ensures that if an
-// exception is thrown by a task, that the task queue will continue flushing as
-// soon as possible, but if you use `rawAsap` directly, you are responsible to
-// either ensure that no exceptions are thrown from your task, or to manually
-// call `rawAsap.requestFlush` if an exception is thrown.
-module.exports = rawAsap;
-function rawAsap(task) {
-    if (!queue.length) {
-        requestFlush();
-        flushing = true;
-    }
-    // Equivalent to push, but avoids a function call.
-    queue[queue.length] = task;
-}
-
-var queue = [];
-// Once a flush has been requested, no further calls to `requestFlush` are
-// necessary until the next `flush` completes.
-var flushing = false;
-// `requestFlush` is an implementation-specific method that attempts to kick
-// off a `flush` event as quickly as possible. `flush` will attempt to exhaust
-// the event queue before yielding to the browser's own event loop.
-var requestFlush;
-// The position of the next task to execute in the task queue. This is
-// preserved between calls to `flush` so that it can be resumed if
-// a task throws an exception.
-var index = 0;
-// If a task schedules additional tasks recursively, the task queue can grow
-// unbounded. To prevent memory exhaustion, the task queue will periodically
-// truncate already-completed tasks.
-var capacity = 1024;
-
-// The flush function processes all tasks that have been scheduled with
-// `rawAsap` unless and until one of those tasks throws an exception.
-// If a task throws an exception, `flush` ensures that its state will remain
-// consistent and will resume where it left off when called again.
-// However, `flush` does not make any arrangements to be called again if an
-// exception is thrown.
-function flush() {
-    while (index < queue.length) {
-        var currentIndex = index;
-        // Advance the index before calling the task. This ensures that we will
-        // begin flushing on the next task the task throws an error.
-        index = index + 1;
-        queue[currentIndex].call();
-        // Prevent leaking memory for long chains of recursive calls to `asap`.
-        // If we call `asap` within tasks scheduled by `asap`, the queue will
-        // grow, but to avoid an O(n) walk for every task we execute, we don't
-        // shift tasks off the queue after they have been executed.
-        // Instead, we periodically shift 1024 tasks off the queue.
-        if (index > capacity) {
-            // Manually shift all values starting at the index back to the
-            // beginning of the queue.
-            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
-                queue[scan] = queue[scan + index];
-            }
-            queue.length -= index;
-            index = 0;
-        }
-    }
-    queue.length = 0;
-    index = 0;
-    flushing = false;
-}
-
-// `requestFlush` is implemented using a strategy based on data collected from
-// every available SauceLabs Selenium web driver worker at time of writing.
-// https://docs.google.com/spreadsheets/d/1mG-5UYGup5qxGdEMWkhP6BWCz053NUb2E1QoUTU16uA/edit#gid=783724593
-
-// Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
-// have WebKitMutationObserver but not un-prefixed MutationObserver.
-// Must use `global` or `self` instead of `window` to work in both frames and web
-// workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
-
-/* globals self */
-var scope = typeof global !== "undefined" ? global : self;
-var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
-
-// MutationObservers are desirable because they have high priority and work
-// reliably everywhere they are implemented.
-// They are implemented in all modern browsers.
-//
-// - Android 4-4.3
-// - Chrome 26-34
-// - Firefox 14-29
-// - Internet Explorer 11
-// - iPad Safari 6-7.1
-// - iPhone Safari 7-7.1
-// - Safari 6-7
-if (typeof BrowserMutationObserver === "function") {
-    requestFlush = makeRequestCallFromMutationObserver(flush);
-
-// MessageChannels are desirable because they give direct access to the HTML
-// task queue, are implemented in Internet Explorer 10, Safari 5.0-1, and Opera
-// 11-12, and in web workers in many engines.
-// Although message channels yield to any queued rendering and IO tasks, they
-// would be better than imposing the 4ms delay of timers.
-// However, they do not work reliably in Internet Explorer or Safari.
-
-// Internet Explorer 10 is the only browser that has setImmediate but does
-// not have MutationObservers.
-// Although setImmediate yields to the browser's renderer, it would be
-// preferrable to falling back to setTimeout since it does not have
-// the minimum 4ms penalty.
-// Unfortunately there appears to be a bug in Internet Explorer 10 Mobile (and
-// Desktop to a lesser extent) that renders both setImmediate and
-// MessageChannel useless for the purposes of ASAP.
-// https://github.com/kriskowal/q/issues/396
-
-// Timers are implemented universally.
-// We fall back to timers in workers in most engines, and in foreground
-// contexts in the following browsers.
-// However, note that even this simple case requires nuances to operate in a
-// broad spectrum of browsers.
-//
-// - Firefox 3-13
-// - Internet Explorer 6-9
-// - iPad Safari 4.3
-// - Lynx 2.8.7
-} else {
-    requestFlush = makeRequestCallFromTimer(flush);
-}
-
-// `requestFlush` requests that the high priority event queue be flushed as
-// soon as possible.
-// This is useful to prevent an error thrown in a task from stalling the event
-// queue if the exception handled by Node.js’s
-// `process.on("uncaughtException")` or by a domain.
-rawAsap.requestFlush = requestFlush;
-
-// To request a high priority event, we induce a mutation observer by toggling
-// the text of a text node between "1" and "-1".
-function makeRequestCallFromMutationObserver(callback) {
-    var toggle = 1;
-    var observer = new BrowserMutationObserver(callback);
-    var node = document.createTextNode("");
-    observer.observe(node, {characterData: true});
-    return function requestCall() {
-        toggle = -toggle;
-        node.data = toggle;
-    };
-}
-
-// The message channel technique was discovered by Malte Ubl and was the
-// original foundation for this library.
-// http://www.nonblocking.io/2011/06/windownexttick.html
-
-// Safari 6.0.5 (at least) intermittently fails to create message ports on a
-// page's first load. Thankfully, this version of Safari supports
-// MutationObservers, so we don't need to fall back in that case.
-
-// function makeRequestCallFromMessageChannel(callback) {
-//     var channel = new MessageChannel();
-//     channel.port1.onmessage = callback;
-//     return function requestCall() {
-//         channel.port2.postMessage(0);
-//     };
-// }
-
-// For reasons explained above, we are also unable to use `setImmediate`
-// under any circumstances.
-// Even if we were, there is another bug in Internet Explorer 10.
-// It is not sufficient to assign `setImmediate` to `requestFlush` because
-// `setImmediate` must be called *by name* and therefore must be wrapped in a
-// closure.
-// Never forget.
-
-// function makeRequestCallFromSetImmediate(callback) {
-//     return function requestCall() {
-//         setImmediate(callback);
-//     };
-// }
-
-// Safari 6.0 has a problem where timers will get lost while the user is
-// scrolling. This problem does not impact ASAP because Safari 6.0 supports
-// mutation observers, so that implementation is used instead.
-// However, if we ever elect to use timers in Safari, the prevalent work-around
-// is to add a scroll event listener that calls for a flush.
-
-// `setTimeout` does not call the passed callback if the delay is less than
-// approximately 7 in web workers in Firefox 8 through 18, and sometimes not
-// even then.
-
-function makeRequestCallFromTimer(callback) {
-    return function requestCall() {
-        // We dispatch a timeout with a specified delay of 0 for engines that
-        // can reliably accommodate that request. This will usually be snapped
-        // to a 4 milisecond delay, but once we're flushing, there's no delay
-        // between events.
-        var timeoutHandle = setTimeout(handleTimer, 0);
-        // However, since this timer gets frequently dropped in Firefox
-        // workers, we enlist an interval handle that will try to fire
-        // an event 20 times per second until it succeeds.
-        var intervalHandle = setInterval(handleTimer, 50);
-
-        function handleTimer() {
-            // Whichever timer succeeds will cancel both timers and
-            // execute the callback.
-            clearTimeout(timeoutHandle);
-            clearInterval(intervalHandle);
-            callback();
-        }
-    };
-}
-
-// This is for `asap.js` only.
-// Its name will be periodically randomized to break any code that depends on
-// its existence.
-rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
-
-// ASAP was originally a nextTick shim included in Q. This was factored out
-// into this ASAP package. It was later adapted to RSVP which made further
-// amendments. These decisions, particularly to marginalize MessageChannel and
-// to capture the MutationObserver implementation in a closure, were integrated
-// back into ASAP proper.
-// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
-
-},{}],"../../node_modules/asap/browser-asap.js":[function(require,module,exports) {
-"use strict";
-
-// rawAsap provides everything we need except exception management.
-var rawAsap = require("./raw");
-// RawTasks are recycled to reduce GC churn.
-var freeTasks = [];
-// We queue errors to ensure they are thrown in right order (FIFO).
-// Array-as-queue is good enough here, since we are just dealing with exceptions.
-var pendingErrors = [];
-var requestErrorThrow = rawAsap.makeRequestCallFromTimer(throwFirstError);
-
-function throwFirstError() {
-    if (pendingErrors.length) {
-        throw pendingErrors.shift();
-    }
-}
-
-/**
- * Calls a task as soon as possible after returning, in its own event, with priority
- * over other events like animation, reflow, and repaint. An error thrown from an
- * event will not interrupt, nor even substantially slow down the processing of
- * other events, but will be rather postponed to a lower priority event.
- * @param {{call}} task A callable object, typically a function that takes no
- * arguments.
- */
-module.exports = asap;
-function asap(task) {
-    var rawTask;
-    if (freeTasks.length) {
-        rawTask = freeTasks.pop();
-    } else {
-        rawTask = new RawTask();
-    }
-    rawTask.task = task;
-    rawAsap(rawTask);
-}
-
-// We wrap tasks with recyclable task objects.  A task object implements
-// `call`, just like a function.
-function RawTask() {
-    this.task = null;
-}
-
-// The sole purpose of wrapping the task is to catch the exception and recycle
-// the task object after its single use.
-RawTask.prototype.call = function () {
-    try {
-        this.task.call();
-    } catch (error) {
-        if (asap.onerror) {
-            // This hook exists purely for testing purposes.
-            // Its name will be periodically randomized to break any code that
-            // depends on its existence.
-            asap.onerror(error);
-        } else {
-            // In a web browser, exceptions are not fatal. However, to avoid
-            // slowing down the queue of pending tasks, we rethrow the error in a
-            // lower priority turn.
-            pendingErrors.push(error);
-            requestErrorThrow();
-        }
-    } finally {
-        this.task = null;
-        freeTasks[freeTasks.length] = this;
-    }
-};
-
-},{"./raw":"../../node_modules/asap/browser-raw.js"}],"../../node_modules/dnd-core/lib/utils/getNextUniqueId.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = getNextUniqueId;
-let nextUniqueId = 0;
-
-function getNextUniqueId() {
-  return nextUniqueId++;
-}
-},{}],"../../node_modules/dnd-core/lib/contracts.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.validateSourceContract = validateSourceContract;
-exports.validateTargetContract = validateTargetContract;
-exports.validateType = validateType;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function validateSourceContract(source) {
-  (0, _invariant.default)(typeof source.canDrag === 'function', 'Expected canDrag to be a function.');
-  (0, _invariant.default)(typeof source.beginDrag === 'function', 'Expected beginDrag to be a function.');
-  (0, _invariant.default)(typeof source.endDrag === 'function', 'Expected endDrag to be a function.');
-}
-
-function validateTargetContract(target) {
-  (0, _invariant.default)(typeof target.canDrop === 'function', 'Expected canDrop to be a function.');
-  (0, _invariant.default)(typeof target.hover === 'function', 'Expected hover to be a function.');
-  (0, _invariant.default)(typeof target.drop === 'function', 'Expected beginDrag to be a function.');
-}
-
-function validateType(type, allowArray) {
-  if (allowArray && Array.isArray(type)) {
-    type.forEach(t => validateType(t, false));
-    return;
-  }
-
-  (0, _invariant.default)(typeof type === 'string' || typeof type === 'symbol', allowArray ? 'Type can only be a string, a symbol, or an array of either.' : 'Type can only be a string or a symbol.');
-}
-},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/dnd-core/lib/HandlerRegistryImpl.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _asap = _interopRequireDefault(require("asap"));
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _registry = require("./actions/registry");
-
-var _getNextUniqueId = _interopRequireDefault(require("./utils/getNextUniqueId"));
-
-var _interfaces = require("./interfaces");
-
-var _contracts = require("./contracts");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getNextHandlerId(role) {
-  const id = (0, _getNextUniqueId.default)().toString();
-
-  switch (role) {
-    case _interfaces.HandlerRole.SOURCE:
-      return `S${id}`;
-
-    case _interfaces.HandlerRole.TARGET:
-      return `T${id}`;
-
-    default:
-      throw new Error(`Unknown Handler Role: ${role}`);
-  }
-}
-
-function parseRoleFromHandlerId(handlerId) {
-  switch (handlerId[0]) {
-    case 'S':
-      return _interfaces.HandlerRole.SOURCE;
-
-    case 'T':
-      return _interfaces.HandlerRole.TARGET;
-
-    default:
-      (0, _invariant.default)(false, `Cannot parse handler ID: ${handlerId}`);
-  }
-}
-
-function mapContainsValue(map, searchValue) {
-  const entries = map.entries();
-  let isDone = false;
-
-  do {
-    const {
-      done,
-      value: [, value]
-    } = entries.next();
-
-    if (value === searchValue) {
-      return true;
-    }
-
-    isDone = done;
-  } while (!isDone);
-
-  return false;
-}
-
-class HandlerRegistryImpl {
-  constructor(store) {
-    this.store = store;
-    this.types = new Map();
-    this.dragSources = new Map();
-    this.dropTargets = new Map();
-    this.pinnedSourceId = null;
-    this.pinnedSource = null;
-  }
-
-  addSource(type, source) {
-    (0, _contracts.validateType)(type);
-    (0, _contracts.validateSourceContract)(source);
-    const sourceId = this.addHandler(_interfaces.HandlerRole.SOURCE, type, source);
-    this.store.dispatch((0, _registry.addSource)(sourceId));
-    return sourceId;
-  }
-
-  addTarget(type, target) {
-    (0, _contracts.validateType)(type, true);
-    (0, _contracts.validateTargetContract)(target);
-    const targetId = this.addHandler(_interfaces.HandlerRole.TARGET, type, target);
-    this.store.dispatch((0, _registry.addTarget)(targetId));
-    return targetId;
-  }
-
-  containsHandler(handler) {
-    return mapContainsValue(this.dragSources, handler) || mapContainsValue(this.dropTargets, handler);
-  }
-
-  getSource(sourceId, includePinned = false) {
-    (0, _invariant.default)(this.isSourceId(sourceId), 'Expected a valid source ID.');
-    const isPinned = includePinned && sourceId === this.pinnedSourceId;
-    const source = isPinned ? this.pinnedSource : this.dragSources.get(sourceId);
-    return source;
-  }
-
-  getTarget(targetId) {
-    (0, _invariant.default)(this.isTargetId(targetId), 'Expected a valid target ID.');
-    return this.dropTargets.get(targetId);
-  }
-
-  getSourceType(sourceId) {
-    (0, _invariant.default)(this.isSourceId(sourceId), 'Expected a valid source ID.');
-    return this.types.get(sourceId);
-  }
-
-  getTargetType(targetId) {
-    (0, _invariant.default)(this.isTargetId(targetId), 'Expected a valid target ID.');
-    return this.types.get(targetId);
-  }
-
-  isSourceId(handlerId) {
-    const role = parseRoleFromHandlerId(handlerId);
-    return role === _interfaces.HandlerRole.SOURCE;
-  }
-
-  isTargetId(handlerId) {
-    const role = parseRoleFromHandlerId(handlerId);
-    return role === _interfaces.HandlerRole.TARGET;
-  }
-
-  removeSource(sourceId) {
-    (0, _invariant.default)(this.getSource(sourceId), 'Expected an existing source.');
-    this.store.dispatch((0, _registry.removeSource)(sourceId));
-    (0, _asap.default)(() => {
-      this.dragSources.delete(sourceId);
-      this.types.delete(sourceId);
-    });
-  }
-
-  removeTarget(targetId) {
-    (0, _invariant.default)(this.getTarget(targetId), 'Expected an existing target.');
-    this.store.dispatch((0, _registry.removeTarget)(targetId));
-    this.dropTargets.delete(targetId);
-    this.types.delete(targetId);
-  }
-
-  pinSource(sourceId) {
-    const source = this.getSource(sourceId);
-    (0, _invariant.default)(source, 'Expected an existing source.');
-    this.pinnedSourceId = sourceId;
-    this.pinnedSource = source;
-  }
-
-  unpinSource() {
-    (0, _invariant.default)(this.pinnedSource, 'No source is pinned at the time.');
-    this.pinnedSourceId = null;
-    this.pinnedSource = null;
-  }
-
-  addHandler(role, type, handler) {
-    const id = getNextHandlerId(role);
-    this.types.set(id, type);
-
-    if (role === _interfaces.HandlerRole.SOURCE) {
-      this.dragSources.set(id, handler);
-    } else if (role === _interfaces.HandlerRole.TARGET) {
-      this.dropTargets.set(id, handler);
-    }
-
-    return id;
-  }
-
-}
-
-exports.default = HandlerRegistryImpl;
-},{"asap":"../../node_modules/asap/browser-asap.js","invariant":"../../node_modules/invariant/browser.js","./actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","./utils/getNextUniqueId":"../../node_modules/dnd-core/lib/utils/getNextUniqueId.js","./interfaces":"../../node_modules/dnd-core/lib/interfaces.js","./contracts":"../../node_modules/dnd-core/lib/contracts.js"}],"../../node_modules/dnd-core/lib/DragDropManagerImpl.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _redux = require("redux");
-
-var _reducers = _interopRequireDefault(require("./reducers"));
-
-var _dragDrop = _interopRequireDefault(require("./actions/dragDrop"));
-
-var _DragDropMonitorImpl = _interopRequireDefault(require("./DragDropMonitorImpl"));
-
-var _HandlerRegistryImpl = _interopRequireDefault(require("./HandlerRegistryImpl"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function makeStoreInstance(debugMode) {
-  // TODO: if we ever make a react-native version of this,
-  // we'll need to consider how to pull off dev-tooling
-  const reduxDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__;
-  return (0, _redux.createStore)(_reducers.default, debugMode && reduxDevTools && reduxDevTools({
-    name: 'dnd-core',
-    instanceId: 'dnd-core'
-  }));
-}
-
-class DragDropManagerImpl {
-  constructor(createBackend, context = {}, debugMode = false) {
-    this.context = context;
-    this.isSetUp = false;
-
-    this.handleRefCountChange = () => {
-      const shouldSetUp = this.store.getState().refCount > 0;
-
-      if (shouldSetUp && !this.isSetUp) {
-        this.backend.setup();
-        this.isSetUp = true;
-      } else if (!shouldSetUp && this.isSetUp) {
-        this.backend.teardown();
-        this.isSetUp = false;
-      }
-    };
-
-    const store = makeStoreInstance(debugMode);
-    this.store = store;
-    this.monitor = new _DragDropMonitorImpl.default(store, new _HandlerRegistryImpl.default(store));
-    this.backend = createBackend(this);
-    store.subscribe(this.handleRefCountChange);
-  }
-
-  getContext() {
-    return this.context;
-  }
-
-  getMonitor() {
-    return this.monitor;
-  }
-
-  getBackend() {
-    return this.backend;
-  }
-
-  getRegistry() {
-    return this.monitor.registry;
-  }
-
-  getActions() {
-    const manager = this;
-    const {
-      dispatch
-    } = this.store;
-
-    function bindActionCreator(actionCreator) {
-      return (...args) => {
-        const action = actionCreator.apply(manager, args);
-
-        if (typeof action !== 'undefined') {
-          dispatch(action);
-        }
-      };
-    }
-
-    const actions = (0, _dragDrop.default)(this);
-    return Object.keys(actions).reduce((boundActions, key) => {
-      const action = actions[key];
-      boundActions[key] = bindActionCreator(action);
-      return boundActions;
-    }, {});
-  }
-
-  dispatch(action) {
-    this.store.dispatch(action);
-  }
-
-}
-
-exports.default = DragDropManagerImpl;
-},{"redux":"../../node_modules/redux/es/redux.js","./reducers":"../../node_modules/dnd-core/lib/reducers/index.js","./actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","./DragDropMonitorImpl":"../../node_modules/dnd-core/lib/DragDropMonitorImpl.js","./HandlerRegistryImpl":"../../node_modules/dnd-core/lib/HandlerRegistryImpl.js"}],"../../node_modules/dnd-core/lib/factories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createDragDropManager = createDragDropManager;
-
-var _DragDropManagerImpl = _interopRequireDefault(require("./DragDropManagerImpl"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createDragDropManager(backend, context, debugMode) {
-  return new _DragDropManagerImpl.default(backend, context, debugMode);
-}
-},{"./DragDropManagerImpl":"../../node_modules/dnd-core/lib/DragDropManagerImpl.js"}],"../../node_modules/dnd-core/lib/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _interfaces = require("./interfaces");
-
-Object.keys(_interfaces).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _interfaces[key];
-    }
-  });
-});
-
-var _factories = require("./factories");
-
-Object.keys(_factories).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _factories[key];
-    }
-  });
-});
-},{"./interfaces":"../../node_modules/dnd-core/lib/interfaces.js","./factories":"../../node_modules/dnd-core/lib/factories.js"}],"../../node_modules/react-dnd/lib/common/DndContext.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createDndContext = createDndContext;
-exports.DndContext = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _dndCore = require("dnd-core");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-/**
- * Create the React Context
- */
-const DndContext = React.createContext({
-  dragDropManager: undefined
-});
-/**
- * Creates the context object we're providing
- * @param backend
- * @param context
- */
-
-exports.DndContext = DndContext;
-
-function createDndContext(backend, context, debugMode) {
-  return {
-    dragDropManager: (0, _dndCore.createDragDropManager)(backend, context, debugMode)
-  };
-}
-},{"react":"../../../node_modules/react/index.js","dnd-core":"../../node_modules/dnd-core/lib/index.js"}],"../../node_modules/react-dnd/lib/common/DndProvider.js":[function(require,module,exports) {
-var global = arguments[3];
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DndProvider = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _DndContext = require("./DndContext");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-/**
- * A React component that provides the React-DnD context
- */
-const DndProvider = (0, React.memo)(({
-  children,
-  ...props
-}) => {
-  const context = 'manager' in props ? {
-    dragDropManager: props.manager
-  } : createSingletonDndContext(props.backend, props.context, props.debugMode);
-  return React.createElement(_DndContext.DndContext.Provider, {
-    value: context
-  }, children);
-});
-exports.DndProvider = DndProvider;
-const instanceSymbol = Symbol.for('__REACT_DND_CONTEXT_INSTANCE__');
-
-function createSingletonDndContext(backend, context = getGlobalContext(), debugMode) {
-  const ctx = context;
-
-  if (!ctx[instanceSymbol]) {
-    ctx[instanceSymbol] = (0, _DndContext.createDndContext)(backend, context, debugMode);
-  }
-
-  return ctx[instanceSymbol];
-}
-
-function getGlobalContext() {
-  return typeof global !== 'undefined' ? global : window;
-}
-},{"react":"../../../node_modules/react/index.js","./DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js"}],"../../node_modules/react-dnd/lib/common/DragPreviewImage.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragPreviewImage = void 0;
-
-var React = _interopRequireWildcard(require("react"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-/*
- * A utility for rendering a drag preview image
- */
-const DragPreviewImage = React.memo(({
-  connect,
-  src
-}) => {
-  if (typeof Image !== 'undefined') {
-    const img = new Image();
-    img.src = src;
-
-    img.onload = () => connect(img);
-  }
-
-  return null;
-});
-exports.DragPreviewImage = DragPreviewImage;
-DragPreviewImage.displayName = 'DragPreviewImage';
-},{"react":"../../../node_modules/react/index.js"}],"../../node_modules/react-dnd/lib/common/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "DndContext", {
-  enumerable: true,
-  get: function () {
-    return _DndContext.DndContext;
-  }
-});
-Object.defineProperty(exports, "createDndContext", {
-  enumerable: true,
-  get: function () {
-    return _DndContext.createDndContext;
-  }
-});
-Object.defineProperty(exports, "DndProvider", {
-  enumerable: true,
-  get: function () {
-    return _DndProvider.DndProvider;
-  }
-});
-Object.defineProperty(exports, "DragPreviewImage", {
-  enumerable: true,
-  get: function () {
-    return _DragPreviewImage.DragPreviewImage;
-  }
-});
-
-var _DndContext = require("./DndContext");
-
-var _DndProvider = require("./DndProvider");
-
-var _DragPreviewImage = require("./DragPreviewImage");
-},{"./DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js","./DndProvider":"../../node_modules/react-dnd/lib/common/DndProvider.js","./DragPreviewImage":"../../node_modules/react-dnd/lib/common/DragPreviewImage.js"}],"../../node_modules/shallowequal/index.js":[function(require,module,exports) {
-//
-
-module.exports = function shallowEqual(objA, objB, compare, compareContext) {
-  var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
-
-  if (ret !== void 0) {
-    return !!ret;
-  }
-
-  if (objA === objB) {
-    return true;
-  }
-
-  if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
-    return false;
-  }
-
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
-  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
-
-  // Test for A's keys different from B.
-  for (var idx = 0; idx < keysA.length; idx++) {
-    var key = keysA[idx];
-
-    if (!bHasOwnProperty(key)) {
-      return false;
-    }
-
-    var valueA = objA[key];
-    var valueB = objB[key];
-
-    ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
-
-    if (ret === false || (ret === void 0 && valueA !== valueB)) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-},{}],"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useCollector = useCollector;
-
-var _shallowequal = _interopRequireDefault(require("shallowequal"));
-
-var _react = require("react");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- *
- * @param monitor The monitor to colelct state from
- * @param collect The collecting function
- * @param onUpdate A method to invoke when updates occur
- */
-function useCollector(monitor, collect, onUpdate) {
-  const [collected, setCollected] = (0, _react.useState)(() => collect(monitor));
-  const updateCollected = (0, _react.useCallback)(() => {
-    const nextValue = collect(monitor);
-
-    if (!(0, _shallowequal.default)(collected, nextValue)) {
-      setCollected(nextValue);
-
-      if (onUpdate) {
-        onUpdate();
-      }
-    }
-  }, [collected, monitor, onUpdate]);
-  return [collected, updateCollected];
-}
-},{"shallowequal":"../../node_modules/shallowequal/index.js","react":"../../../node_modules/react/index.js"}],"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useMonitorOutput = useMonitorOutput;
-
-var _react = require("react");
-
-var _useCollector = require("./useCollector");
-
-function useMonitorOutput(monitor, collect, onCollect) {
-  const [collected, updateCollected] = (0, _useCollector.useCollector)(monitor, collect, onCollect);
-  (0, _react.useEffect)(function subscribeToMonitorStateChange() {
-    const handlerId = monitor.getHandlerId();
-
-    if (handlerId == null) {
-      return undefined;
-    }
-
-    return monitor.subscribeToStateChange(updateCollected, {
-      handlerIds: [handlerId]
-    });
-  }, [monitor, updateCollected]);
-  return collected;
-}
-},{"react":"../../../node_modules/react/index.js","./useCollector":"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js"}],"../../node_modules/react-dnd/lib/common/registration.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.registerTarget = registerTarget;
-exports.registerSource = registerSource;
-
-function registerTarget(type, target, manager) {
-  const registry = manager.getRegistry();
-  const targetId = registry.addTarget(type, target);
-  return [targetId, () => registry.removeTarget(targetId)];
-}
-
-function registerSource(type, source, manager) {
-  const registry = manager.getRegistry();
-  const sourceId = registry.addSource(type, source);
-  return [sourceId, () => registry.removeSource(sourceId)];
-}
-},{}],"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDragDropManager = useDragDropManager;
-
-var _react = require("react");
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _DndContext = require("../../common/DndContext");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * A hook to retrieve the DragDropManager from Context
- */
-function useDragDropManager() {
-  const {
-    dragDropManager
-  } = (0, _react.useContext)(_DndContext.DndContext);
-  (0, _invariant.default)(dragDropManager != null, 'Expected drag drop context');
-  return dragDropManager;
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","../../common/DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js"}],"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragSourceMonitorImpl = void 0;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-let isCallingCanDrag = false;
-let isCallingIsDragging = false;
-
-class DragSourceMonitorImpl {
-  constructor(manager) {
-    this.sourceId = null;
-    this.internalMonitor = manager.getMonitor();
-  }
-
-  receiveHandlerId(sourceId) {
-    this.sourceId = sourceId;
-  }
-
-  getHandlerId() {
-    return this.sourceId;
-  }
-
-  canDrag() {
-    (0, _invariant.default)(!isCallingCanDrag, 'You may not call monitor.canDrag() inside your canDrag() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source-monitor');
-
-    try {
-      isCallingCanDrag = true;
-      return this.internalMonitor.canDragSource(this.sourceId);
-    } finally {
-      isCallingCanDrag = false;
-    }
-  }
-
-  isDragging() {
-    if (!this.sourceId) {
-      return false;
-    }
-
-    (0, _invariant.default)(!isCallingIsDragging, 'You may not call monitor.isDragging() inside your isDragging() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source-monitor');
-
-    try {
-      isCallingIsDragging = true;
-      return this.internalMonitor.isDraggingSource(this.sourceId);
-    } finally {
-      isCallingIsDragging = false;
-    }
-  }
-
-  subscribeToStateChange(listener, options) {
-    return this.internalMonitor.subscribeToStateChange(listener, options);
-  }
-
-  isDraggingSource(sourceId) {
-    return this.internalMonitor.isDraggingSource(sourceId);
-  }
-
-  isOverTarget(targetId, options) {
-    return this.internalMonitor.isOverTarget(targetId, options);
-  }
-
-  getTargetIds() {
-    return this.internalMonitor.getTargetIds();
-  }
-
-  isSourcePublic() {
-    return this.internalMonitor.isSourcePublic();
-  }
-
-  getSourceId() {
-    return this.internalMonitor.getSourceId();
-  }
-
-  subscribeToOffsetChange(listener) {
-    return this.internalMonitor.subscribeToOffsetChange(listener);
-  }
-
-  canDragSource(sourceId) {
-    return this.internalMonitor.canDragSource(sourceId);
-  }
-
-  canDropOnTarget(targetId) {
-    return this.internalMonitor.canDropOnTarget(targetId);
-  }
-
-  getItemType() {
-    return this.internalMonitor.getItemType();
-  }
-
-  getItem() {
-    return this.internalMonitor.getItem();
-  }
-
-  getDropResult() {
-    return this.internalMonitor.getDropResult();
-  }
-
-  didDrop() {
-    return this.internalMonitor.didDrop();
-  }
-
-  getInitialClientOffset() {
-    return this.internalMonitor.getInitialClientOffset();
-  }
-
-  getInitialSourceClientOffset() {
-    return this.internalMonitor.getInitialSourceClientOffset();
-  }
-
-  getSourceClientOffset() {
-    return this.internalMonitor.getSourceClientOffset();
-  }
-
-  getClientOffset() {
-    return this.internalMonitor.getClientOffset();
-  }
-
-  getDifferenceFromInitialOffset() {
-    return this.internalMonitor.getDifferenceFromInitialOffset();
-  }
-
-}
-
-exports.DragSourceMonitorImpl = DragSourceMonitorImpl;
-},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/utils/cloneWithRef.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.cloneWithRef = cloneWithRef;
-
-var _react = require("react");
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function setRef(ref, node) {
-  if (typeof ref === 'function') {
-    ref(node);
-  } else {
-    ref.current = node;
-  }
-}
-
-function cloneWithRef(element, newRef) {
-  const previousRef = element.ref;
-  (0, _invariant.default)(typeof previousRef !== 'string', 'Cannot connect React DnD to an element with an existing string ref. ' + 'Please convert it to use a callback ref instead, or wrap it into a <span> or <div>. ' + 'Read more: https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute');
-
-  if (!previousRef) {
-    // When there is no ref on the element, use the new ref directly
-    return (0, _react.cloneElement)(element, {
-      ref: newRef
-    });
-  }
-
-  return (0, _react.cloneElement)(element, {
-    ref: node => {
-      setRef(newRef, node);
-
-      if (previousRef) {
-        setRef(previousRef, node);
-      }
-    }
-  });
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = wrapConnectorHooks;
-
-var _react = require("react");
-
-var _cloneWithRef = require("../utils/cloneWithRef");
-
-function throwIfCompositeComponentElement(element) {
-  // Custom components can no longer be wrapped directly in React DnD 2.0
-  // so that we don't need to depend on findDOMNode() from react-dom.
-  if (typeof element.type === 'string') {
-    return;
-  }
-
-  const displayName = element.type.displayName || element.type.name || 'the component';
-  throw new Error('Only native element nodes can now be passed to React DnD connectors.' + `You can either wrap ${displayName} into a <div>, or turn it into a ` + 'drag source or a drop target itself.');
-}
-
-function wrapHookToRecognizeElement(hook) {
-  return (elementOrNode = null, options = null) => {
-    // When passed a node, call the hook straight away.
-    if (!(0, _react.isValidElement)(elementOrNode)) {
-      const node = elementOrNode;
-      hook(node, options); // return the node so it can be chained (e.g. when within callback refs
-      // <div ref={node => connectDragSource(connectDropTarget(node))}/>
-
-      return node;
-    } // If passed a ReactElement, clone it and attach this function as a ref.
-    // This helps us achieve a neat API where user doesn't even know that refs
-    // are being used under the hood.
-
-
-    const element = elementOrNode;
-    throwIfCompositeComponentElement(element); // When no options are passed, use the hook directly
-
-    const ref = options ? node => hook(node, options) : hook;
-    return (0, _cloneWithRef.cloneWithRef)(element, ref);
-  };
-}
-
-function wrapConnectorHooks(hooks) {
-  const wrappedHooks = {};
-  Object.keys(hooks).forEach(key => {
-    const hook = hooks[key]; // ref objects should be passed straight through without wrapping
-
-    if (key.endsWith('Ref')) {
-      wrappedHooks[key] = hooks[key];
-    } else {
-      const wrappedHook = wrapHookToRecognizeElement(hook);
-
-      wrappedHooks[key] = () => wrappedHook;
-    }
-  });
-  return wrappedHooks;
-}
-},{"react":"../../../node_modules/react/index.js","../utils/cloneWithRef":"../../node_modules/react-dnd/lib/utils/cloneWithRef.js"}],"../../node_modules/react-dnd/lib/utils/isRef.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isRef = isRef;
-
-function isRef(obj) {
-  return obj !== null && typeof obj === 'object' && obj.hasOwnProperty('current');
-}
-},{}],"../../node_modules/react-dnd/lib/common/SourceConnector.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SourceConnector = void 0;
-
-var _wrapConnectorHooks = _interopRequireDefault(require("./wrapConnectorHooks"));
-
-var _isRef = require("../utils/isRef");
-
-var _shallowequal = _interopRequireDefault(require("shallowequal"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class SourceConnector {
-  constructor(backend) {
-    this.backend = backend;
-    this.hooks = (0, _wrapConnectorHooks.default)({
-      dragSource: (node, options) => {
-        this.dragSourceOptions = options || null;
-
-        if ((0, _isRef.isRef)(node)) {
-          this.dragSourceRef = node;
-        } else {
-          this.dragSourceNode = node;
-        }
-
-        this.reconnectDragSource();
-      },
-      dragPreview: (node, options) => {
-        this.dragPreviewOptions = options || null;
-
-        if ((0, _isRef.isRef)(node)) {
-          this.dragPreviewRef = node;
-        } else {
-          this.dragPreviewNode = node;
-        }
-
-        this.reconnectDragPreview();
-      }
-    });
-    this.handlerId = null; // The drop target may either be attached via ref or connect function
-
-    this.dragSourceRef = null;
-    this.dragSourceOptionsInternal = null; // The drag preview may either be attached via ref or connect function
-
-    this.dragPreviewRef = null;
-    this.dragPreviewOptionsInternal = null;
-    this.lastConnectedHandlerId = null;
-    this.lastConnectedDragSource = null;
-    this.lastConnectedDragSourceOptions = null;
-    this.lastConnectedDragPreview = null;
-    this.lastConnectedDragPreviewOptions = null;
-  }
-
-  receiveHandlerId(newHandlerId) {
-    if (this.handlerId === newHandlerId) {
-      return;
-    }
-
-    this.handlerId = newHandlerId;
-    this.reconnect();
-  }
-
-  get connectTarget() {
-    return this.dragSource;
-  }
-
-  get dragSourceOptions() {
-    return this.dragSourceOptionsInternal;
-  }
-
-  set dragSourceOptions(options) {
-    this.dragSourceOptionsInternal = options;
-  }
-
-  get dragPreviewOptions() {
-    return this.dragPreviewOptionsInternal;
-  }
-
-  set dragPreviewOptions(options) {
-    this.dragPreviewOptionsInternal = options;
-  }
-
-  reconnect() {
-    this.reconnectDragSource();
-    this.reconnectDragPreview();
-  }
-
-  reconnectDragSource() {
-    // if nothing has changed then don't resubscribe
-    const didChange = this.didHandlerIdChange() || this.didConnectedDragSourceChange() || this.didDragSourceOptionsChange();
-
-    if (didChange) {
-      this.disconnectDragSource();
-    }
-
-    const dragSource = this.dragSource;
-
-    if (!this.handlerId) {
-      return;
-    }
-
-    if (!dragSource) {
-      this.lastConnectedDragSource = dragSource;
-      return;
-    }
-
-    if (didChange) {
-      this.lastConnectedHandlerId = this.handlerId;
-      this.lastConnectedDragSource = dragSource;
-      this.lastConnectedDragSourceOptions = this.dragSourceOptions;
-      this.dragSourceUnsubscribe = this.backend.connectDragSource(this.handlerId, dragSource, this.dragSourceOptions);
-    }
-  }
-
-  reconnectDragPreview() {
-    // if nothing has changed then don't resubscribe
-    const didChange = this.didHandlerIdChange() || this.didConnectedDragPreviewChange() || this.didDragPreviewOptionsChange();
-
-    if (didChange) {
-      this.disconnectDragPreview();
-    }
-
-    const dragPreview = this.dragPreview;
-
-    if (!this.handlerId || !dragPreview) {
-      return;
-    }
-
-    if (didChange) {
-      this.lastConnectedHandlerId = this.handlerId;
-      this.lastConnectedDragPreview = dragPreview;
-      this.lastConnectedDragPreviewOptions = this.dragPreviewOptions;
-      this.dragPreviewUnsubscribe = this.backend.connectDragPreview(this.handlerId, dragPreview, this.dragPreviewOptions);
-    }
-  }
-
-  didHandlerIdChange() {
-    return this.lastConnectedHandlerId !== this.handlerId;
-  }
-
-  didConnectedDragSourceChange() {
-    return this.lastConnectedDragSource !== this.dragSource;
-  }
-
-  didConnectedDragPreviewChange() {
-    return this.lastConnectedDragPreview !== this.dragPreview;
-  }
-
-  didDragSourceOptionsChange() {
-    return !(0, _shallowequal.default)(this.lastConnectedDragSourceOptions, this.dragSourceOptions);
-  }
-
-  didDragPreviewOptionsChange() {
-    return !(0, _shallowequal.default)(this.lastConnectedDragPreviewOptions, this.dragPreviewOptions);
-  }
-
-  disconnectDragSource() {
-    if (this.dragSourceUnsubscribe) {
-      this.dragSourceUnsubscribe();
-      this.dragSourceUnsubscribe = undefined;
-      this.dragPreviewNode = null;
-      this.dragPreviewRef = null;
-    }
-  }
-
-  disconnectDragPreview() {
-    if (this.dragPreviewUnsubscribe) {
-      this.dragPreviewUnsubscribe();
-      this.dragPreviewUnsubscribe = undefined;
-      this.dragPreviewNode = null;
-      this.dragPreviewRef = null;
-    }
-  }
-
-  get dragSource() {
-    return this.dragSourceNode || this.dragSourceRef && this.dragSourceRef.current;
-  }
-
-  get dragPreview() {
-    return this.dragPreviewNode || this.dragPreviewRef && this.dragPreviewRef.current;
-  }
-
-}
-
-exports.SourceConnector = SourceConnector;
-},{"./wrapConnectorHooks":"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js","../utils/isRef":"../../node_modules/react-dnd/lib/utils/isRef.js","shallowequal":"../../node_modules/shallowequal/index.js"}],"../../node_modules/react-dnd/lib/hooks/internal/drag.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDragSourceMonitor = useDragSourceMonitor;
-exports.useDragHandler = useDragHandler;
-
-var _react = require("react");
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _registration = require("../../common/registration");
-
-var _useDragDropManager = require("./useDragDropManager");
-
-var _DragSourceMonitorImpl = require("../../common/DragSourceMonitorImpl");
-
-var _SourceConnector = require("../../common/SourceConnector");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function useDragSourceMonitor() {
-  const manager = (0, _useDragDropManager.useDragDropManager)();
-  const monitor = (0, _react.useMemo)(() => new _DragSourceMonitorImpl.DragSourceMonitorImpl(manager), [manager]);
-  const connector = (0, _react.useMemo)(() => new _SourceConnector.SourceConnector(manager.getBackend()), [manager]);
-  return [monitor, connector];
-}
-
-function useDragHandler(spec, monitor, connector) {
-  const manager = (0, _useDragDropManager.useDragDropManager)();
-  const handler = (0, _react.useMemo)(() => {
-    return {
-      beginDrag() {
-        const {
-          begin,
-          item
-        } = spec.current;
-
-        if (begin) {
-          const beginResult = begin(monitor);
-          (0, _invariant.default)(beginResult == null || typeof beginResult === 'object', 'dragSpec.begin() must either return an object, undefined, or null');
-          return beginResult || item || {};
-        }
-
-        return item || {};
-      },
-
-      canDrag() {
-        if (typeof spec.current.canDrag === 'boolean') {
-          return spec.current.canDrag;
-        } else if (typeof spec.current.canDrag === 'function') {
-          return spec.current.canDrag(monitor);
-        } else {
-          return true;
-        }
-      },
-
-      isDragging(globalMonitor, target) {
-        const {
-          isDragging
-        } = spec.current;
-        return isDragging ? isDragging(monitor) : target === globalMonitor.getSourceId();
-      },
-
-      endDrag() {
-        const {
-          end
-        } = spec.current;
-
-        if (end) {
-          end(monitor.getItem(), monitor);
-        }
-
-        connector.reconnect();
-      }
-
-    };
-  }, []);
-  (0, _react.useEffect)(function registerHandler() {
-    const [handlerId, unregister] = (0, _registration.registerSource)(spec.current.item.type, handler, manager);
-    monitor.receiveHandlerId(handlerId);
-    connector.receiveHandlerId(handlerId);
-    return unregister;
-  }, []);
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","../../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","./useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","../../common/DragSourceMonitorImpl":"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js","../../common/SourceConnector":"../../node_modules/react-dnd/lib/common/SourceConnector.js"}],"../../node_modules/react-dnd/lib/hooks/useDrag.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDrag = useDrag;
-
-var _react = require("react");
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _useMonitorOutput = require("./internal/useMonitorOutput");
-
-var _drag = require("./internal/drag");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * useDragSource hook
- * @param sourceSpec The drag source specification *
- */
-function useDrag(spec) {
-  const specRef = (0, _react.useRef)(spec);
-  specRef.current = spec; // TODO: wire options into createSourceConnector
-
-  (0, _invariant.default)(spec.item != null, 'item must be defined');
-  (0, _invariant.default)(spec.item.type != null, 'item type must be defined');
-  const [monitor, connector] = (0, _drag.useDragSourceMonitor)();
-  (0, _drag.useDragHandler)(specRef, monitor, connector);
-  const result = (0, _useMonitorOutput.useMonitorOutput)(monitor, specRef.current.collect || (() => ({})), () => connector.reconnect());
-  const connectDragSource = (0, _react.useMemo)(() => connector.hooks.dragSource(), [connector]);
-  const connectDragPreview = (0, _react.useMemo)(() => connector.hooks.dragPreview(), [connector]);
-  (0, _react.useEffect)(() => {
-    connector.dragSourceOptions = specRef.current.options || null;
-    connector.reconnect();
-  }, [connector]);
-  (0, _react.useEffect)(() => {
-    connector.dragPreviewOptions = specRef.current.previewOptions || null;
-    connector.reconnect();
-  }, [connector]);
-  return [result, connectDragSource, connectDragPreview];
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","./internal/useMonitorOutput":"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js","./internal/drag":"../../node_modules/react-dnd/lib/hooks/internal/drag.js"}],"../../node_modules/react-dnd/lib/common/TargetConnector.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TargetConnector = void 0;
-
-var _shallowequal = _interopRequireDefault(require("shallowequal"));
-
-var _wrapConnectorHooks = _interopRequireDefault(require("./wrapConnectorHooks"));
-
-var _isRef = require("../utils/isRef");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class TargetConnector {
-  constructor(backend) {
-    this.backend = backend;
-    this.hooks = (0, _wrapConnectorHooks.default)({
-      dropTarget: (node, options) => {
-        this.dropTargetOptions = options;
-
-        if ((0, _isRef.isRef)(node)) {
-          this.dropTargetRef = node;
-        } else {
-          this.dropTargetNode = node;
-        }
-
-        this.reconnect();
-      }
-    });
-    this.handlerId = null; // The drop target may either be attached via ref or connect function
-
-    this.dropTargetRef = null;
-    this.dropTargetOptionsInternal = null;
-    this.lastConnectedHandlerId = null;
-    this.lastConnectedDropTarget = null;
-    this.lastConnectedDropTargetOptions = null;
-  }
-
-  get connectTarget() {
-    return this.dropTarget;
-  }
-
-  reconnect() {
-    // if nothing has changed then don't resubscribe
-    const didChange = this.didHandlerIdChange() || this.didDropTargetChange() || this.didOptionsChange();
-
-    if (didChange) {
-      this.disconnectDropTarget();
-    }
-
-    const dropTarget = this.dropTarget;
-
-    if (!this.handlerId) {
-      return;
-    }
-
-    if (!dropTarget) {
-      this.lastConnectedDropTarget = dropTarget;
-      return;
-    }
-
-    if (didChange) {
-      this.lastConnectedHandlerId = this.handlerId;
-      this.lastConnectedDropTarget = dropTarget;
-      this.lastConnectedDropTargetOptions = this.dropTargetOptions;
-      this.unsubscribeDropTarget = this.backend.connectDropTarget(this.handlerId, dropTarget, this.dropTargetOptions);
-    }
-  }
-
-  receiveHandlerId(newHandlerId) {
-    if (newHandlerId === this.handlerId) {
-      return;
-    }
-
-    this.handlerId = newHandlerId;
-    this.reconnect();
-  }
-
-  get dropTargetOptions() {
-    return this.dropTargetOptionsInternal;
-  }
-
-  set dropTargetOptions(options) {
-    this.dropTargetOptionsInternal = options;
-  }
-
-  didHandlerIdChange() {
-    return this.lastConnectedHandlerId !== this.handlerId;
-  }
-
-  didDropTargetChange() {
-    return this.lastConnectedDropTarget !== this.dropTarget;
-  }
-
-  didOptionsChange() {
-    return !(0, _shallowequal.default)(this.lastConnectedDropTargetOptions, this.dropTargetOptions);
-  }
-
-  disconnectDropTarget() {
-    if (this.unsubscribeDropTarget) {
-      this.unsubscribeDropTarget();
-      this.unsubscribeDropTarget = undefined;
-    }
-  }
-
-  get dropTarget() {
-    return this.dropTargetNode || this.dropTargetRef && this.dropTargetRef.current;
-  }
-
-}
-
-exports.TargetConnector = TargetConnector;
-},{"shallowequal":"../../node_modules/shallowequal/index.js","./wrapConnectorHooks":"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js","../utils/isRef":"../../node_modules/react-dnd/lib/utils/isRef.js"}],"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DropTargetMonitorImpl = void 0;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-let isCallingCanDrop = false;
-
-class DropTargetMonitorImpl {
-  constructor(manager) {
-    this.targetId = null;
-    this.internalMonitor = manager.getMonitor();
-  }
-
-  receiveHandlerId(targetId) {
-    this.targetId = targetId;
-  }
-
-  getHandlerId() {
-    return this.targetId;
-  }
-
-  subscribeToStateChange(listener, options) {
-    return this.internalMonitor.subscribeToStateChange(listener, options);
-  }
-
-  canDrop() {
-    // Cut out early if the target id has not been set. This should prevent errors
-    // where the user has an older version of dnd-core like in
-    // https://github.com/react-dnd/react-dnd/issues/1310
-    if (!this.targetId) {
-      return false;
-    }
-
-    (0, _invariant.default)(!isCallingCanDrop, 'You may not call monitor.canDrop() inside your canDrop() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target-monitor');
-
-    try {
-      isCallingCanDrop = true;
-      return this.internalMonitor.canDropOnTarget(this.targetId);
-    } finally {
-      isCallingCanDrop = false;
-    }
-  }
-
-  isOver(options) {
-    if (!this.targetId) {
-      return false;
-    }
-
-    return this.internalMonitor.isOverTarget(this.targetId, options);
-  }
-
-  getItemType() {
-    return this.internalMonitor.getItemType();
-  }
-
-  getItem() {
-    return this.internalMonitor.getItem();
-  }
-
-  getDropResult() {
-    return this.internalMonitor.getDropResult();
-  }
-
-  didDrop() {
-    return this.internalMonitor.didDrop();
-  }
-
-  getInitialClientOffset() {
-    return this.internalMonitor.getInitialClientOffset();
-  }
-
-  getInitialSourceClientOffset() {
-    return this.internalMonitor.getInitialSourceClientOffset();
-  }
-
-  getSourceClientOffset() {
-    return this.internalMonitor.getSourceClientOffset();
-  }
-
-  getClientOffset() {
-    return this.internalMonitor.getClientOffset();
-  }
-
-  getDifferenceFromInitialOffset() {
-    return this.internalMonitor.getDifferenceFromInitialOffset();
-  }
-
-}
-
-exports.DropTargetMonitorImpl = DropTargetMonitorImpl;
-},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/hooks/internal/drop.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDropTargetMonitor = useDropTargetMonitor;
-exports.useDropHandler = useDropHandler;
-
-var _react = require("react");
-
-var _registration = require("../../common/registration");
-
-var _useDragDropManager = require("./useDragDropManager");
-
-var _TargetConnector = require("../../common/TargetConnector");
-
-var _DropTargetMonitorImpl = require("../../common/DropTargetMonitorImpl");
-
-function useDropTargetMonitor() {
-  const manager = (0, _useDragDropManager.useDragDropManager)();
-  const monitor = (0, _react.useMemo)(() => new _DropTargetMonitorImpl.DropTargetMonitorImpl(manager), [manager]);
-  const connector = (0, _react.useMemo)(() => new _TargetConnector.TargetConnector(manager.getBackend()), [manager]);
-  return [monitor, connector];
-}
-
-function useDropHandler(spec, monitor, connector) {
-  const manager = (0, _useDragDropManager.useDragDropManager)();
-  const handler = (0, _react.useMemo)(() => {
-    return {
-      canDrop() {
-        const {
-          canDrop
-        } = spec.current;
-        return canDrop ? canDrop(monitor.getItem(), monitor) : true;
-      },
-
-      hover() {
-        const {
-          hover
-        } = spec.current;
-
-        if (hover) {
-          hover(monitor.getItem(), monitor);
-        }
-      },
-
-      drop() {
-        const {
-          drop
-        } = spec.current;
-
-        if (drop) {
-          return drop(monitor.getItem(), monitor);
-        }
-      }
-
-    };
-  }, [monitor]);
-  (0, _react.useEffect)(function registerHandler() {
-    const [handlerId, unregister] = (0, _registration.registerTarget)(spec.current.accept, handler, manager);
-    monitor.receiveHandlerId(handlerId);
-    connector.receiveHandlerId(handlerId);
-    return unregister;
-  }, [monitor, connector]);
-}
-},{"react":"../../../node_modules/react/index.js","../../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","./useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","../../common/TargetConnector":"../../node_modules/react-dnd/lib/common/TargetConnector.js","../../common/DropTargetMonitorImpl":"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js"}],"../../node_modules/react-dnd/lib/hooks/useDrop.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDrop = useDrop;
-
-var _react = require("react");
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _useMonitorOutput = require("./internal/useMonitorOutput");
-
-var _drop = require("./internal/drop");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * useDropTarget Hook
- * @param spec The drop target specification
- */
-function useDrop(spec) {
-  const specRef = (0, _react.useRef)(spec);
-  specRef.current = spec;
-  (0, _invariant.default)(spec.accept != null, 'accept must be defined');
-  const [monitor, connector] = (0, _drop.useDropTargetMonitor)();
-  (0, _drop.useDropHandler)(specRef, monitor, connector);
-  const result = (0, _useMonitorOutput.useMonitorOutput)(monitor, specRef.current.collect || (() => ({})), () => connector.reconnect());
-  const connectDropTarget = (0, _react.useMemo)(() => connector.hooks.dropTarget(), [connector]);
-  (0, _react.useEffect)(() => {
-    connector.dropTargetOptions = spec.options || null;
-    connector.reconnect();
-  }, [spec.options]);
-  return [result, connectDropTarget];
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","./internal/useMonitorOutput":"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js","./internal/drop":"../../node_modules/react-dnd/lib/hooks/internal/drop.js"}],"../../node_modules/react-dnd/lib/hooks/useDragLayer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.useDragLayer = useDragLayer;
-
-var _react = require("react");
-
-var _useDragDropManager = require("./internal/useDragDropManager");
-
-var _useCollector = require("./internal/useCollector");
-
-/**
- * useDragLayer Hook
- * @param collector The property collector
- */
-function useDragLayer(collect) {
-  const dragDropManager = (0, _useDragDropManager.useDragDropManager)();
-  const monitor = dragDropManager.getMonitor();
-  const [collected, updateCollected] = (0, _useCollector.useCollector)(monitor, collect);
-  (0, _react.useEffect)(() => monitor.subscribeToOffsetChange(updateCollected));
-  (0, _react.useEffect)(() => monitor.subscribeToStateChange(updateCollected));
-  return collected;
-}
-},{"react":"../../../node_modules/react/index.js","./internal/useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","./internal/useCollector":"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js"}],"../../node_modules/react-dnd/lib/hooks/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _useDrag = require("./useDrag");
-
-Object.keys(_useDrag).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _useDrag[key];
-    }
-  });
-});
-
-var _useDrop = require("./useDrop");
-
-Object.keys(_useDrop).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _useDrop[key];
-    }
-  });
-});
-
-var _useDragLayer = require("./useDragLayer");
-
-Object.keys(_useDragLayer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _useDragLayer[key];
-    }
-  });
-});
-},{"./useDrag":"../../node_modules/react-dnd/lib/hooks/useDrag.js","./useDrop":"../../node_modules/react-dnd/lib/hooks/useDrop.js","./useDragLayer":"../../node_modules/react-dnd/lib/hooks/useDragLayer.js"}],"../../node_modules/react-dnd/lib/utils/js_utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isFunction = isFunction;
-exports.noop = noop;
-exports.isPlainObject = isPlainObject;
-
-// cheap lodash replacements
-function isFunction(input) {
-  return typeof input === 'function';
-}
-
-function noop() {// noop
-}
-
-function isObjectLike(input) {
-  return typeof input === 'object' && input !== null;
-}
-
-function isPlainObject(input) {
-  if (!isObjectLike(input)) {
-    return false;
-  }
-
-  if (Object.getPrototypeOf(input) === null) {
-    return true;
-  }
-
-  let proto = input;
-
-  while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto);
-  }
-
-  return Object.getPrototypeOf(input) === proto;
-}
-},{}],"../../node_modules/react-dnd/lib/decorators/utils.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getDecoratedComponent = getDecoratedComponent;
-exports.isClassComponent = isClassComponent;
-exports.isRefForwardingComponent = isRefForwardingComponent;
-exports.isRefable = isRefable;
-exports.checkDecoratorArguments = checkDecoratorArguments;
-
-function getDecoratedComponent(instanceRef) {
-  const currentRef = instanceRef.current;
-
-  if (currentRef == null) {
-    return null;
-  } else if (currentRef.decoratedRef) {
-    // go through the private field in decorateHandler to avoid the invariant hit
-    return currentRef.decoratedRef.current;
-  } else {
-    return currentRef;
-  }
-}
-
-function isClassComponent(Component) {
-  return Component && Component.prototype && typeof Component.prototype.render === 'function';
-}
-
-function isRefForwardingComponent(C) {
-  return C && C.$$typeof && C.$$typeof.toString() === 'Symbol(react.forward_ref)';
-}
-
-function isRefable(C) {
-  return isClassComponent(C) || isRefForwardingComponent(C);
-}
-
-function checkDecoratorArguments(functionName, signature, ...args) {
-  if ("development" !== 'production') {
-    for (const arg of args) {
-      if (arg && arg.prototype && arg.prototype.render) {
-        // eslint-disable-next-line no-console
-        console.error('You seem to be applying the arguments in the wrong order. ' + `It should be ${functionName}(${signature})(Component), not the other way around. ` + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#you-seem-to-be-applying-the-arguments-in-the-wrong-order');
-        return;
-      }
-    }
-  }
-}
-},{}],"../../node_modules/react-dnd/lib/decorators/disposables.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SerialDisposable = exports.CompositeDisposable = exports.Disposable = void 0;
-
-var _js_utils = require("../utils/js_utils");
-
-/**
- * Provides a set of static methods for creating Disposables.
- * @param {Function} action Action to run during the first call to dispose.
- * The action is guaranteed to be run at most once.
- */
-class Disposable {
-  constructor(action) {
-    this.isDisposed = false;
-    this.action = (0, _js_utils.isFunction)(action) ? action : _js_utils.noop;
-  }
-  /**
-   * Validates whether the given object is a disposable
-   * @param {Object} Object to test whether it has a dispose method
-   * @returns {Boolean} true if a disposable object, else false.
-   */
-
-
-  static isDisposable(d) {
-    return d && (0, _js_utils.isFunction)(d.dispose);
-  }
-
-  static _fixup(result) {
-    return Disposable.isDisposable(result) ? result : Disposable.empty;
-  }
-  /**
-   * Creates a disposable object that invokes the specified action when disposed.
-   * @param {Function} dispose Action to run during the first call to dispose.
-   * The action is guaranteed to be run at most once.
-   * @return {Disposable} The disposable object that runs the given action upon disposal.
-   */
-
-
-  static create(action) {
-    return new Disposable(action);
-  }
-  /** Performs the task of cleaning up resources. */
-
-
-  dispose() {
-    if (!this.isDisposed) {
-      this.action();
-      this.isDisposed = true;
-    }
-  }
-
-}
-/**
- * Gets the disposable that does nothing when disposed.
- */
-
-
-exports.Disposable = Disposable;
-Disposable.empty = {
-  dispose: _js_utils.noop
-};
-/**
- * Represents a group of disposable resources that are disposed together.
- * @constructor
- */
-
-class CompositeDisposable {
-  constructor(...disposables) {
-    this.isDisposed = false;
-    this.disposables = disposables;
-  }
-  /**
-   * Adds a disposable to the CompositeDisposable or disposes the disposable if the CompositeDisposable is disposed.
-   * @param {Any} item Disposable to add.
-   */
-
-
-  add(item) {
-    if (this.isDisposed) {
-      item.dispose();
-    } else {
-      this.disposables.push(item);
-    }
-  }
-  /**
-   * Removes and disposes the first occurrence of a disposable from the CompositeDisposable.
-   * @param {Any} item Disposable to remove.
-   * @returns {Boolean} true if found; false otherwise.
-   */
-
-
-  remove(item) {
-    let shouldDispose = false;
-
-    if (!this.isDisposed) {
-      const idx = this.disposables.indexOf(item);
-
-      if (idx !== -1) {
-        shouldDispose = true;
-        this.disposables.splice(idx, 1);
-        item.dispose();
-      }
-    }
-
-    return shouldDispose;
-  }
-  /**
-   *  Disposes all disposables in the group and removes them from the group but
-   *  does not dispose the CompositeDisposable.
-   */
-
-
-  clear() {
-    if (!this.isDisposed) {
-      const len = this.disposables.length;
-      const currentDisposables = new Array(len);
-
-      for (let i = 0; i < len; i++) {
-        currentDisposables[i] = this.disposables[i];
-      }
-
-      this.disposables = [];
-
-      for (let i = 0; i < len; i++) {
-        currentDisposables[i].dispose();
-      }
-    }
-  }
-  /**
-   *  Disposes all disposables in the group and removes them from the group.
-   */
-
-
-  dispose() {
-    if (!this.isDisposed) {
-      this.isDisposed = true;
-      const len = this.disposables.length;
-      const currentDisposables = new Array(len);
-
-      for (let i = 0; i < len; i++) {
-        currentDisposables[i] = this.disposables[i];
-      }
-
-      this.disposables = [];
-
-      for (let i = 0; i < len; i++) {
-        currentDisposables[i].dispose();
-      }
-    }
-  }
-
-}
-/**
- * Represents a disposable resource whose underlying disposable resource can
- * be replaced by another disposable resource, causing automatic disposal of
- * the previous underlying disposable resource.
- */
-
-
-exports.CompositeDisposable = CompositeDisposable;
-
-class SerialDisposable {
-  constructor() {
-    this.isDisposed = false;
-  }
-  /**
-   * Gets the underlying disposable.
-   * @returns {Any} the underlying disposable.
-   */
-
-
-  getDisposable() {
-    return this.current;
-  }
-
-  setDisposable(value) {
-    const shouldDispose = this.isDisposed;
-
-    if (!shouldDispose) {
-      const old = this.current;
-      this.current = value;
-
-      if (old) {
-        old.dispose();
-      }
-    }
-
-    if (shouldDispose && value) {
-      value.dispose();
-    }
-  }
-  /** Performs the task of cleaning up resources. */
-
-
-  dispose() {
-    if (!this.isDisposed) {
-      this.isDisposed = true;
-      const old = this.current;
-      this.current = undefined;
-
-      if (old) {
-        old.dispose();
-      }
-    }
-  }
-
-}
-
-exports.SerialDisposable = SerialDisposable;
-},{"../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js"}],"../../node_modules/react-dnd/lib/decorators/decorateHandler.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = decorateHandler;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _shallowequal = _interopRequireDefault(require("shallowequal"));
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
-
-var _index = require("../index");
-
-var _js_utils = require("../utils/js_utils");
-
-var _disposables = require("./disposables");
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function decorateHandler({
-  DecoratedComponent,
-  createHandler,
-  createMonitor,
-  createConnector,
-  registerHandler,
-  containerDisplayName,
-  getType,
-  collect,
-  options
-}) {
-  const {
-    arePropsEqual = _shallowequal.default
-  } = options;
-  const Decorated = DecoratedComponent;
-  const displayName = DecoratedComponent.displayName || DecoratedComponent.name || 'Component';
-
-  class DragDropContainer extends React.Component {
-    constructor(props) {
-      super(props);
-      this.decoratedRef = React.createRef();
-
-      this.handleChange = () => {
-        const nextState = this.getCurrentState();
-
-        if (!(0, _shallowequal.default)(nextState, this.state)) {
-          this.setState(nextState);
-        }
-      };
-
-      this.disposable = new _disposables.SerialDisposable();
-      this.receiveProps(props);
-      this.dispose();
-    }
-
-    getHandlerId() {
-      return this.handlerId;
-    }
-
-    getDecoratedComponentInstance() {
-      (0, _invariant.default)(this.decoratedRef.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
-      return this.decoratedRef.current;
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-      return !arePropsEqual(nextProps, this.props) || !(0, _shallowequal.default)(nextState, this.state);
-    }
-
-    componentDidMount() {
-      this.disposable = new _disposables.SerialDisposable();
-      this.currentType = undefined;
-      this.receiveProps(this.props);
-      this.handleChange();
-    }
-
-    componentDidUpdate(prevProps) {
-      if (!arePropsEqual(this.props, prevProps)) {
-        this.receiveProps(this.props);
-        this.handleChange();
-      }
-    }
-
-    componentWillUnmount() {
-      this.dispose();
-    }
-
-    receiveProps(props) {
-      if (!this.handler) {
-        return;
-      }
-
-      this.handler.receiveProps(props);
-      this.receiveType(getType(props));
-    }
-
-    receiveType(type) {
-      if (!this.handlerMonitor || !this.manager || !this.handlerConnector) {
-        return;
-      }
-
-      if (type === this.currentType) {
-        return;
-      }
-
-      this.currentType = type;
-      const [handlerId, unregister] = registerHandler(type, this.handler, this.manager);
-      this.handlerId = handlerId;
-      this.handlerMonitor.receiveHandlerId(handlerId);
-      this.handlerConnector.receiveHandlerId(handlerId);
-      const globalMonitor = this.manager.getMonitor();
-      const unsubscribe = globalMonitor.subscribeToStateChange(this.handleChange, {
-        handlerIds: [handlerId]
-      });
-      this.disposable.setDisposable(new _disposables.CompositeDisposable(new _disposables.Disposable(unsubscribe), new _disposables.Disposable(unregister)));
-    }
-
-    dispose() {
-      this.disposable.dispose();
-
-      if (this.handlerConnector) {
-        this.handlerConnector.receiveHandlerId(null);
-      }
-    }
-
-    getCurrentState() {
-      if (!this.handlerConnector) {
-        return {};
-      }
-
-      const nextState = collect(this.handlerConnector.hooks, this.handlerMonitor, this.props);
-
-      if ("development" !== 'production') {
-        (0, _invariant.default)((0, _js_utils.isPlainObject)(nextState), 'Expected `collect` specified as the second argument to ' + '%s for %s to return a plain object of props to inject. ' + 'Instead, received %s.', containerDisplayName, displayName, nextState);
-      }
-
-      return nextState;
-    }
-
-    render() {
-      return React.createElement(_index.DndContext.Consumer, null, ({
-        dragDropManager
-      }) => {
-        this.receiveDragDropManager(dragDropManager);
-
-        if (typeof requestAnimationFrame !== 'undefined') {
-          requestAnimationFrame(() => this.handlerConnector.reconnect());
-        }
-
-        return React.createElement(Decorated, Object.assign({}, this.props, this.getCurrentState(), {
-          // NOTE: if Decorated is a Function Component, decoratedRef will not be populated unless it's a refforwarding component.
-          ref: (0, _utils.isRefable)(Decorated) ? this.decoratedRef : null
-        }));
-      });
-    }
-
-    receiveDragDropManager(dragDropManager) {
-      if (this.manager !== undefined) {
-        return;
-      }
-
-      (0, _invariant.default)(dragDropManager !== undefined, 'Could not find the drag and drop manager in the context of %s. ' + 'Make sure to wrap the top-level component of your app with DragDropContext. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context', displayName, displayName);
-
-      if (dragDropManager === undefined) {
-        return;
-      }
-
-      this.manager = dragDropManager;
-      this.handlerMonitor = createMonitor(dragDropManager);
-      this.handlerConnector = createConnector(dragDropManager.getBackend());
-      this.handler = createHandler(this.handlerMonitor, this.decoratedRef);
-    }
-
-  }
-
-  DragDropContainer.DecoratedComponent = DecoratedComponent;
-  DragDropContainer.displayName = `${containerDisplayName}(${displayName})`;
-  return (0, _hoistNonReactStatics.default)(DragDropContainer, DecoratedComponent);
-}
-},{"react":"../../../node_modules/react/index.js","shallowequal":"../../node_modules/shallowequal/index.js","invariant":"../../node_modules/invariant/browser.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","../index":"../../node_modules/react-dnd/lib/index.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./disposables":"../../node_modules/react-dnd/lib/decorators/disposables.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/utils/isValidType.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isValidType = isValidType;
-
-function isValidType(type, allowArray) {
-  return typeof type === 'string' || typeof type === 'symbol' || !!allowArray && Array.isArray(type) && type.every(t => isValidType(t, false));
-}
-},{}],"../../node_modules/react-dnd/lib/decorators/createSourceFactory.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createSourceFactory;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _js_utils = require("../utils/js_utils");
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const ALLOWED_SPEC_METHODS = ['canDrag', 'beginDrag', 'isDragging', 'endDrag'];
-const REQUIRED_SPEC_METHODS = ['beginDrag'];
-
-class SourceImpl {
-  constructor(spec, monitor, ref) {
-    this.spec = spec;
-    this.monitor = monitor;
-    this.ref = ref;
-    this.props = null;
-
-    this.beginDrag = () => {
-      if (!this.props) {
-        return;
-      }
-
-      const item = this.spec.beginDrag(this.props, this.monitor, this.ref.current);
-
-      if ("development" !== 'production') {
-        (0, _invariant.default)((0, _js_utils.isPlainObject)(item), 'beginDrag() must return a plain object that represents the dragged item. ' + 'Instead received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', item);
-      }
-
-      return item;
-    };
-  }
-
-  receiveProps(props) {
-    this.props = props;
-  }
-
-  canDrag() {
-    if (!this.props) {
-      return false;
-    }
-
-    if (!this.spec.canDrag) {
-      return true;
-    }
-
-    return this.spec.canDrag(this.props, this.monitor);
-  }
-
-  isDragging(globalMonitor, sourceId) {
-    if (!this.props) {
-      return false;
-    }
-
-    if (!this.spec.isDragging) {
-      return sourceId === globalMonitor.getSourceId();
-    }
-
-    return this.spec.isDragging(this.props, this.monitor);
-  }
-
-  endDrag() {
-    if (!this.props) {
-      return;
-    }
-
-    if (!this.spec.endDrag) {
-      return;
-    }
-
-    this.spec.endDrag(this.props, this.monitor, (0, _utils.getDecoratedComponent)(this.ref));
-  }
-
-}
-
-function createSourceFactory(spec) {
-  Object.keys(spec).forEach(key => {
-    (0, _invariant.default)(ALLOWED_SPEC_METHODS.indexOf(key) > -1, 'Expected the drag source specification to only have ' + 'some of the following keys: %s. ' + 'Instead received a specification with an unexpected "%s" key. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', ALLOWED_SPEC_METHODS.join(', '), key);
-    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drag source specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', key, key, spec[key]);
-  });
-  REQUIRED_SPEC_METHODS.forEach(key => {
-    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drag source specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', key, key, spec[key]);
-  });
-  return function createSource(monitor, ref) {
-    return new SourceImpl(spec, monitor, ref);
-  };
-}
-},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DragSource.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragSource = DragSource;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _js_utils = require("../utils/js_utils");
-
-var _utils = require("./utils");
-
-var _decorateHandler = _interopRequireDefault(require("./decorateHandler"));
-
-var _registration = require("../common/registration");
-
-var _DragSourceMonitorImpl = require("../common/DragSourceMonitorImpl");
-
-var _SourceConnector = require("../common/SourceConnector");
-
-var _isValidType = require("../utils/isValidType");
-
-var _createSourceFactory = _interopRequireDefault(require("./createSourceFactory"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Decorates a component as a dragsource
- * @param type The dragsource type
- * @param spec The drag source specification
- * @param collect The props collector function
- * @param options DnD options
- */
-function DragSource(type, spec, collect, options = {}) {
-  (0, _utils.checkDecoratorArguments)('DragSource', 'type, spec, collect[, options]', type, spec, collect, options);
-  let getType = type;
-
-  if (typeof type !== 'function') {
-    (0, _invariant.default)((0, _isValidType.isValidType)(type), 'Expected "type" provided as the first argument to DragSource to be ' + 'a string, or a function that returns a string given the current props. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', type);
-
-    getType = () => type;
-  }
-
-  (0, _invariant.default)((0, _js_utils.isPlainObject)(spec), 'Expected "spec" provided as the second argument to DragSource to be ' + 'a plain object. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', spec);
-  const createSource = (0, _createSourceFactory.default)(spec);
-  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the third argument to DragSource to be ' + 'a function that returns a plain object of props to inject. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', collect);
-  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the fourth argument to DragSource to be ' + 'a plain object when specified. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', collect);
-  return function decorateSource(DecoratedComponent) {
-    return (0, _decorateHandler.default)({
-      containerDisplayName: 'DragSource',
-      createHandler: createSource,
-      registerHandler: _registration.registerSource,
-      createConnector: backend => new _SourceConnector.SourceConnector(backend),
-      createMonitor: manager => new _DragSourceMonitorImpl.DragSourceMonitorImpl(manager),
-      DecoratedComponent,
-      getType,
-      collect,
-      options
-    });
-  };
-}
-},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js","./decorateHandler":"../../node_modules/react-dnd/lib/decorators/decorateHandler.js","../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","../common/DragSourceMonitorImpl":"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js","../common/SourceConnector":"../../node_modules/react-dnd/lib/common/SourceConnector.js","../utils/isValidType":"../../node_modules/react-dnd/lib/utils/isValidType.js","./createSourceFactory":"../../node_modules/react-dnd/lib/decorators/createSourceFactory.js"}],"../../node_modules/react-dnd/lib/decorators/createTargetFactory.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createTargetFactory;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _js_utils = require("../utils/js_utils");
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const ALLOWED_SPEC_METHODS = ['canDrop', 'hover', 'drop'];
-
-class TargetImpl {
-  constructor(spec, monitor, ref) {
-    this.spec = spec;
-    this.monitor = monitor;
-    this.ref = ref;
-    this.props = null;
-  }
-
-  receiveProps(props) {
-    this.props = props;
-  }
-
-  receiveMonitor(monitor) {
-    this.monitor = monitor;
-  }
-
-  canDrop() {
-    if (!this.spec.canDrop) {
-      return true;
-    }
-
-    return this.spec.canDrop(this.props, this.monitor);
-  }
-
-  hover() {
-    if (!this.spec.hover) {
-      return;
-    }
-
-    this.spec.hover(this.props, this.monitor, (0, _utils.getDecoratedComponent)(this.ref));
-  }
-
-  drop() {
-    if (!this.spec.drop) {
-      return undefined;
-    }
-
-    const dropResult = this.spec.drop(this.props, this.monitor, this.ref.current);
-
-    if ("development" !== 'production') {
-      (0, _invariant.default)(typeof dropResult === 'undefined' || (0, _js_utils.isPlainObject)(dropResult), 'drop() must either return undefined, or an object that represents the drop result. ' + 'Instead received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', dropResult);
-    }
-
-    return dropResult;
-  }
-
-}
-
-function createTargetFactory(spec) {
-  Object.keys(spec).forEach(key => {
-    (0, _invariant.default)(ALLOWED_SPEC_METHODS.indexOf(key) > -1, 'Expected the drop target specification to only have ' + 'some of the following keys: %s. ' + 'Instead received a specification with an unexpected "%s" key. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', ALLOWED_SPEC_METHODS.join(', '), key);
-    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drop target specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', key, key, spec[key]);
-  });
-  return function createTarget(monitor, ref) {
-    return new TargetImpl(spec, monitor, ref);
-  };
-}
-},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DropTarget.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DropTarget = DropTarget;
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _js_utils = require("../utils/js_utils");
-
-var _registration = require("../common/registration");
-
-var _isValidType = require("../utils/isValidType");
-
-var _TargetConnector = require("../common/TargetConnector");
-
-var _DropTargetMonitorImpl = require("../common/DropTargetMonitorImpl");
-
-var _utils = require("./utils");
-
-var _decorateHandler = _interopRequireDefault(require("./decorateHandler"));
-
-var _createTargetFactory = _interopRequireDefault(require("./createTargetFactory"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function DropTarget(type, spec, collect, options = {}) {
-  (0, _utils.checkDecoratorArguments)('DropTarget', 'type, spec, collect[, options]', type, spec, collect, options);
-  let getType = type;
-
-  if (typeof type !== 'function') {
-    (0, _invariant.default)((0, _isValidType.isValidType)(type, true), 'Expected "type" provided as the first argument to DropTarget to be ' + 'a string, an array of strings, or a function that returns either given ' + 'the current props. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', type);
-
-    getType = () => type;
-  }
-
-  (0, _invariant.default)((0, _js_utils.isPlainObject)(spec), 'Expected "spec" provided as the second argument to DropTarget to be ' + 'a plain object. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', spec);
-  const createTarget = (0, _createTargetFactory.default)(spec);
-  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the third argument to DropTarget to be ' + 'a function that returns a plain object of props to inject. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', collect);
-  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the fourth argument to DropTarget to be ' + 'a plain object when specified. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', collect);
-  return function decorateTarget(DecoratedComponent) {
-    return (0, _decorateHandler.default)({
-      containerDisplayName: 'DropTarget',
-      createHandler: createTarget,
-      registerHandler: _registration.registerTarget,
-      createMonitor: manager => new _DropTargetMonitorImpl.DropTargetMonitorImpl(manager),
-      createConnector: backend => new _TargetConnector.TargetConnector(backend),
-      DecoratedComponent,
-      getType,
-      collect,
-      options
-    });
-  };
-}
-},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","../utils/isValidType":"../../node_modules/react-dnd/lib/utils/isValidType.js","../common/TargetConnector":"../../node_modules/react-dnd/lib/common/TargetConnector.js","../common/DropTargetMonitorImpl":"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js","./decorateHandler":"../../node_modules/react-dnd/lib/decorators/decorateHandler.js","./createTargetFactory":"../../node_modules/react-dnd/lib/decorators/createTargetFactory.js"}],"../../node_modules/react-dnd/lib/decorators/DragLayer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragLayer = DragLayer;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _shallowequal = _interopRequireDefault(require("shallowequal"));
-
-var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _index = require("../index");
-
-var _js_utils = require("../utils/js_utils");
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function DragLayer(collect, options = {}) {
-  (0, _utils.checkDecoratorArguments)('DragLayer', 'collect[, options]', collect, options);
-  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the first argument to DragLayer to be a function that collects props to inject into the component. ', 'Instead, received %s. Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-layer', collect);
-  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the second argument to DragLayer to be a plain object when specified. ' + 'Instead, received %s. Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-layer', options);
-  return function decorateLayer(DecoratedComponent) {
-    const Decorated = DecoratedComponent;
-    const {
-      arePropsEqual = _shallowequal.default
-    } = options;
-    const displayName = Decorated.displayName || Decorated.name || 'Component';
-
-    class DragLayerContainer extends React.Component {
-      constructor() {
-        super(...arguments);
-        this.isCurrentlyMounted = false;
-        this.ref = React.createRef();
-
-        this.handleChange = () => {
-          if (!this.isCurrentlyMounted) {
-            return;
-          }
-
-          const nextState = this.getCurrentState();
-
-          if (!(0, _shallowequal.default)(nextState, this.state)) {
-            this.setState(nextState);
-          }
-        };
-      }
-
-      getDecoratedComponentInstance() {
-        (0, _invariant.default)(this.ref.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
-        return this.ref.current;
-      }
-
-      shouldComponentUpdate(nextProps, nextState) {
-        return !arePropsEqual(nextProps, this.props) || !(0, _shallowequal.default)(nextState, this.state);
-      }
-
-      componentDidMount() {
-        this.isCurrentlyMounted = true;
-        this.handleChange();
-      }
-
-      componentWillUnmount() {
-        this.isCurrentlyMounted = false;
-
-        if (this.unsubscribeFromOffsetChange) {
-          this.unsubscribeFromOffsetChange();
-          this.unsubscribeFromOffsetChange = undefined;
-        }
-
-        if (this.unsubscribeFromStateChange) {
-          this.unsubscribeFromStateChange();
-          this.unsubscribeFromStateChange = undefined;
-        }
-      }
-
-      render() {
-        return React.createElement(_index.DndContext.Consumer, null, ({
-          dragDropManager
-        }) => {
-          if (dragDropManager === undefined) {
-            return null;
-          }
-
-          this.receiveDragDropManager(dragDropManager); // Let componentDidMount fire to initialize the collected state
-
-          if (!this.isCurrentlyMounted) {
-            return null;
-          }
-
-          return React.createElement(Decorated, Object.assign({}, this.props, this.state, {
-            ref: (0, _utils.isRefable)(Decorated) ? this.ref : null
-          }));
-        });
-      }
-
-      receiveDragDropManager(dragDropManager) {
-        if (this.manager !== undefined) {
-          return;
-        }
-
-        this.manager = dragDropManager;
-        (0, _invariant.default)(typeof dragDropManager === 'object', 'Could not find the drag and drop manager in the context of %s. ' + 'Make sure to wrap the top-level component of your app with DragDropContext. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context', displayName, displayName);
-        const monitor = this.manager.getMonitor();
-        this.unsubscribeFromOffsetChange = monitor.subscribeToOffsetChange(this.handleChange);
-        this.unsubscribeFromStateChange = monitor.subscribeToStateChange(this.handleChange);
-      }
-
-      getCurrentState() {
-        if (!this.manager) {
-          return {};
-        }
-
-        const monitor = this.manager.getMonitor();
-        return collect(monitor, this.props);
-      }
-
-    }
-
-    DragLayerContainer.displayName = `DragLayer(${displayName})`;
-    DragLayerContainer.DecoratedComponent = DecoratedComponent;
-    return (0, _hoistNonReactStatics.default)(DragLayerContainer, DecoratedComponent);
-  };
-}
-},{"react":"../../../node_modules/react/index.js","shallowequal":"../../node_modules/shallowequal/index.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","invariant":"../../node_modules/invariant/browser.js","../index":"../../node_modules/react-dnd/lib/index.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DragDropContext.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragDropContext = DragDropContext;
-
-var React = _interopRequireWildcard(require("react"));
-
-var _invariant = _interopRequireDefault(require("invariant"));
-
-var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
-
-var _DndContext = require("../common/DndContext");
-
-var _utils = require("./utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-/**
- * @deprecated Use DnDProvider in your JSX tree instead. This will be removed in a future major version.
- *
- * Wrap the root component of your application with DragDropContext decorator to set up React DnD.
- * This lets you specify the backend, and sets up the shared DnD state behind the scenes.
- * @param backendFactory The DnD backend factory
- * @param backendContext The backend context
- */
-function DragDropContext(backendFactory, backendContext, debugMode) {
-  (0, _utils.checkDecoratorArguments)('DragDropContext', 'backend', backendFactory);
-  const childContext = (0, _DndContext.createDndContext)(backendFactory, backendContext, debugMode);
-  return function decorateContext(DecoratedComponent) {
-    const Decorated = DecoratedComponent;
-    const displayName = Decorated.displayName || Decorated.name || 'Component';
-
-    class DragDropContextContainer extends React.Component {
-      constructor(props, context) {
-        super(props, context);
-        this.ref = React.createRef();
-
-        this.getManager = () => childContext.dragDropManager; // eslint-disable-next-line no-console
-
-
-        console.warn(`DragDropContext has been deprecated and will be removed in a future version. Please use DndProvider instead.`);
-      }
-
-      getDecoratedComponentInstance() {
-        (0, _invariant.default)(this.ref.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
-        return this.ref.current;
-      }
-
-      render() {
-        return React.createElement(_DndContext.DndContext.Provider, {
-          value: childContext
-        }, React.createElement(Decorated, Object.assign({}, this.props, {
-          ref: (0, _utils.isRefable)(Decorated) ? this.ref : null
-        })));
-      }
-
-    }
-
-    DragDropContextContainer.DecoratedComponent = DecoratedComponent;
-    DragDropContextContainer.displayName = `DragDropContext(${displayName})`;
-    return (0, _hoistNonReactStatics.default)(DragDropContextContainer, DecoratedComponent);
-  };
-}
-},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","../common/DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DragSource = require("./DragSource");
-
-Object.keys(_DragSource).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DragSource[key];
-    }
-  });
-});
-
-var _DropTarget = require("./DropTarget");
-
-Object.keys(_DropTarget).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DropTarget[key];
-    }
-  });
-});
-
-var _DragLayer = require("./DragLayer");
-
-Object.keys(_DragLayer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DragLayer[key];
-    }
-  });
-});
-
-var _DragDropContext = require("./DragDropContext");
-
-Object.keys(_DragDropContext).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DragDropContext[key];
-    }
-  });
-});
-},{"./DragSource":"../../node_modules/react-dnd/lib/decorators/DragSource.js","./DropTarget":"../../node_modules/react-dnd/lib/decorators/DropTarget.js","./DragLayer":"../../node_modules/react-dnd/lib/decorators/DragLayer.js","./DragDropContext":"../../node_modules/react-dnd/lib/decorators/DragDropContext.js"}],"../../node_modules/react-dnd/lib/index.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _common = require("./common");
-
-Object.keys(_common).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _common[key];
-    }
-  });
-});
-
-var _hooks = require("./hooks");
-
-Object.keys(_hooks).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _hooks[key];
-    }
-  });
-});
-
-var _decorators = require("./decorators");
-
-Object.keys(_decorators).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _decorators[key];
-    }
-  });
-});
-},{"./common":"../../node_modules/react-dnd/lib/common/index.js","./hooks":"../../node_modules/react-dnd/lib/hooks/index.js","./decorators":"../../node_modules/react-dnd/lib/decorators/index.js"}],"constants/types.ts":[function(require,module,exports) {
-"use strict";
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var Workspace =
-/*#__PURE__*/
-function () {
-  function Workspace(name, image) {
-    _classCallCheck(this, Workspace);
-
-    this.id = "".concat(Math.floor(Math.random() * 10e8));
-    this.name = name;
-    this.image = image;
-    this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
-  }
-
-  _createClass(Workspace, [{
-    key: "getImgUrl",
-    value: function getImgUrl() {
-      return "url(".concat(this.image, ")");
-    }
-  }]);
-
-  return Workspace;
-}();
-
-exports.Workspace = Workspace;
-exports.DragAndDropTypes = {
-  DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
-  BOARD_ITEM: 'BOARD_ITEM'
-};
-var ContentType;
-
-(function (ContentType) {
-  ContentType[ContentType["Photo"] = 0] = "Photo";
-  ContentType[ContentType["Video"] = 1] = "Video";
-  ContentType[ContentType["Link"] = 2] = "Link";
-  ContentType[ContentType["Article"] = 3] = "Article";
-  ContentType[ContentType["SocialMedia"] = 4] = "SocialMedia";
-})(ContentType = exports.ContentType || (exports.ContentType = {}));
-
-var MediaSourceType;
-
-(function (MediaSourceType) {
-  MediaSourceType[MediaSourceType["Browser"] = 0] = "Browser";
-  MediaSourceType[MediaSourceType["Instagram"] = 1] = "Instagram";
-  MediaSourceType[MediaSourceType["Twitter"] = 2] = "Twitter";
-  MediaSourceType[MediaSourceType["Facebook"] = 3] = "Facebook";
-  MediaSourceType[MediaSourceType["Medium"] = 4] = "Medium";
-  MediaSourceType[MediaSourceType["Quora"] = 5] = "Quora";
-  MediaSourceType[MediaSourceType["Youtube"] = 6] = "Youtube";
-  MediaSourceType[MediaSourceType["Vimeo"] = 7] = "Vimeo";
-  MediaSourceType[MediaSourceType["ACM"] = 8] = "ACM";
-  MediaSourceType[MediaSourceType["Scholar"] = 9] = "Scholar";
-})(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
-
-var ContentList = function ContentList() {
-  _classCallCheck(this, ContentList);
-};
-
-exports.ContentList = ContentList;
-var ToastType;
-
-(function (ToastType) {
-  ToastType[ToastType["Success"] = 0] = "Success";
-  ToastType[ToastType["Failure"] = 1] = "Failure";
-  ToastType[ToastType["Warning"] = 2] = "Warning";
-})(ToastType = exports.ToastType || (exports.ToastType = {}));
-},{}],"../../node_modules/base64-js/index.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/base64-js/index.js":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -56285,7 +51838,4454 @@ var define;
   }
 }.call(this));
 
-},{"buffer":"../../node_modules/buffer/index.js"}],"assets/carnegie_museum_art.jpg":[function(require,module,exports) {
+},{"buffer":"../../node_modules/buffer/index.js"}],"components/context-menu/context-menu.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./context-menu.scss");
+
+var ContextMenu =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ContextMenu, _React$Component);
+
+  function ContextMenu(props) {
+    var _this;
+
+    _classCallCheck(this, ContextMenu);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ContextMenu).call(this, props)); // tslint:disable:variable-name
+
+    _this.onDOMClick_bound = _this.onDOMClick.bind(_assertThisInitialized(_this));
+    _this.onKeyUp_bound = _this.onKeyUp.bind(_assertThisInitialized(_this));
+    _this.state = {
+      menuOpen: false,
+      x: 0,
+      y: 0
+    };
+    _this.domElRef = React.createRef();
+    _this.elRef = React.createRef();
+    return _this;
+  }
+
+  _createClass(ContextMenu, [{
+    key: "openMenu",
+    value: function openMenu(e) {
+      var posX = 0;
+      var posY = 0;
+
+      if (e) {
+        posX = e.clientX;
+        posY = e.clientY;
+      } else {
+        var elem = this.domElRef.current;
+
+        if (elem) {
+          var props = elem.getBoundingClientRect();
+          posX = props.right;
+          posY = props.bottom;
+        }
+      }
+
+      this.setState({
+        menuOpen: true,
+        x: posX,
+        y: posY
+      });
+    }
+  }, {
+    key: "onDOMClick",
+    value: function onDOMClick(e) {
+      var notfound = true;
+      var target = e.target;
+
+      while (target && target !== document.documentElement) {
+        if (target === this.elRef) {
+          notfound = false;
+          break;
+        }
+
+        target = target.parentNode;
+      }
+
+      if (notfound) {
+        this.closeMenu();
+      }
+    }
+  }, {
+    key: "onKeyUp",
+    value: function onKeyUp(e) {
+      if (e.code === "Escape") {
+        this.closeMenu();
+      }
+    }
+  }, {
+    key: "addCloseMenuListener",
+    value: function addCloseMenuListener(node) {
+      if (node) {
+        this.elRef = node;
+        document.removeEventListener('click', this.onDOMClick_bound);
+        document.addEventListener('click', this.onDOMClick_bound);
+        document.removeEventListener('contextmenu', this.onDOMClick_bound);
+        document.addEventListener('contextmenu', this.onDOMClick_bound);
+        document.removeEventListener('keyup', this.onKeyUp_bound);
+        document.addEventListener('keyup', this.onKeyUp_bound);
+      }
+    }
+  }, {
+    key: "closeMenu",
+    value: function closeMenu() {
+      document.removeEventListener('click', this.onDOMClick_bound);
+      document.removeEventListener('contextmenu', this.onDOMClick_bound);
+      document.removeEventListener('keyup', this.onKeyUp_bound);
+      this.setState({
+        menuOpen: false
+      });
+      this.props.menuClosed();
+    }
+  }, {
+    key: "onContextMenuInvoked",
+    value: function onContextMenuInvoked(e) {
+      this.openMenu(e);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(props) {
+      if (this.props.open !== props.open) {
+        if (this.props.open && !this.state.menuOpen) {
+          this.openMenu();
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var styles = {
+        left: "".concat(this.state.x + 10, "px"),
+        top: "".concat(this.state.y - 20, "px")
+      };
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "context-menu-wrapper",
+        onContextMenu: this.onContextMenuInvoked.bind(this),
+        ref: this.domElRef
+      }, this.props.children), this.state.menuOpen && React.createElement("div", {
+        className: "app-context-menu-wrapper",
+        style: styles,
+        ref: this.addCloseMenuListener.bind(this)
+      }, React.createElement("ul", {
+        className: "app-context-menu"
+      }, this.props.actions.length > 0 && this.props.actions.map(function (action, i) {
+        return React.createElement("li", {
+          key: i
+        }, React.createElement("i", {
+          className: "material-icons"
+        }, action.icon), action.name);
+      }))));
+    }
+  }]);
+
+  return ContextMenu;
+}(React.Component);
+
+exports.ContextMenu = ContextMenu;
+},{"react":"../../../node_modules/react/index.js","./context-menu.scss":"components/context-menu/context-menu.scss"}],"../../node_modules/dnd-core/lib/interfaces.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.HandlerRole = void 0;
+var HandlerRole;
+exports.HandlerRole = HandlerRole;
+
+(function (HandlerRole) {
+  HandlerRole["SOURCE"] = "SOURCE";
+  HandlerRole["TARGET"] = "TARGET";
+})(HandlerRole || (exports.HandlerRole = HandlerRole = {}));
+},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/types.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.END_DRAG = exports.DROP = exports.HOVER = exports.PUBLISH_DRAG_SOURCE = exports.BEGIN_DRAG = exports.INIT_COORDS = void 0;
+const INIT_COORDS = 'dnd-core/INIT_COORDS';
+exports.INIT_COORDS = INIT_COORDS;
+const BEGIN_DRAG = 'dnd-core/BEGIN_DRAG';
+exports.BEGIN_DRAG = BEGIN_DRAG;
+const PUBLISH_DRAG_SOURCE = 'dnd-core/PUBLISH_DRAG_SOURCE';
+exports.PUBLISH_DRAG_SOURCE = PUBLISH_DRAG_SOURCE;
+const HOVER = 'dnd-core/HOVER';
+exports.HOVER = HOVER;
+const DROP = 'dnd-core/DROP';
+exports.DROP = DROP;
+const END_DRAG = 'dnd-core/END_DRAG';
+exports.END_DRAG = END_DRAG;
+},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/local/setClientOffset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setClientOffset = setClientOffset;
+
+var _types = require("../types");
+
+function setClientOffset(clientOffset, sourceClientOffset) {
+  return {
+    type: _types.INIT_COORDS,
+    payload: {
+      sourceClientOffset: sourceClientOffset || null,
+      clientOffset: clientOffset || null
+    }
+  };
+}
+},{"../types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/js_utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.get = get;
+exports.without = without;
+exports.isString = isString;
+exports.isObject = isObject;
+exports.xor = xor;
+exports.intersection = intersection;
+
+// cheap lodash replacements
+
+/**
+ * drop-in replacement for _.get
+ * @param obj
+ * @param path
+ * @param defaultValue
+ */
+function get(obj, path, defaultValue) {
+  return path.split('.').reduce((a, c) => a && a[c] ? a[c] : defaultValue || null, obj);
+}
+/**
+ * drop-in replacement for _.without
+ */
+
+
+function without(items, item) {
+  return items.filter(i => i !== item);
+}
+/**
+ * drop-in replacement for _.isString
+ * @param input
+ */
+
+
+function isString(input) {
+  return typeof input === 'string';
+}
+/**
+ * drop-in replacement for _.isString
+ * @param input
+ */
+
+
+function isObject(input) {
+  return typeof input === 'object';
+}
+/**
+ * repalcement for _.xor
+ * @param itemsA
+ * @param itemsB
+ */
+
+
+function xor(itemsA, itemsB) {
+  const map = new Map();
+
+  const insertItem = item => map.set(item, map.has(item) ? map.get(item) + 1 : 1);
+
+  itemsA.forEach(insertItem);
+  itemsB.forEach(insertItem);
+  const result = [];
+  map.forEach((count, key) => {
+    if (count === 1) {
+      result.push(key);
+    }
+  });
+  return result;
+}
+/**
+ * replacement for _.intersection
+ * @param itemsA
+ * @param itemsB
+ */
+
+
+function intersection(itemsA, itemsB) {
+  return itemsA.filter(t => itemsB.indexOf(t) > -1);
+}
+},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/beginDrag.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createBeginDrag;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _setClientOffset = require("./local/setClientOffset");
+
+var _js_utils = require("../../utils/js_utils");
+
+var _types = require("./types");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const ResetCoordinatesAction = {
+  type: _types.INIT_COORDS,
+  payload: {
+    clientOffset: null,
+    sourceClientOffset: null
+  }
+};
+
+function createBeginDrag(manager) {
+  return function beginDrag(sourceIds = [], options = {
+    publishSource: true
+  }) {
+    const {
+      publishSource = true,
+      clientOffset,
+      getSourceClientOffset
+    } = options;
+    const monitor = manager.getMonitor();
+    const registry = manager.getRegistry(); // Initialize the coordinates using the client offset
+
+    manager.dispatch((0, _setClientOffset.setClientOffset)(clientOffset));
+    verifyInvariants(sourceIds, monitor, registry); // Get the draggable source
+
+    const sourceId = getDraggableSource(sourceIds, monitor);
+
+    if (sourceId === null) {
+      manager.dispatch(ResetCoordinatesAction);
+      return;
+    } // Get the source client offset
+
+
+    let sourceClientOffset = null;
+
+    if (clientOffset) {
+      verifyGetSourceClientOffsetIsFunction(getSourceClientOffset);
+      sourceClientOffset = getSourceClientOffset(sourceId);
+    } // Initialize the full coordinates
+
+
+    manager.dispatch((0, _setClientOffset.setClientOffset)(clientOffset, sourceClientOffset));
+    const source = registry.getSource(sourceId);
+    const item = source.beginDrag(monitor, sourceId);
+    verifyItemIsObject(item);
+    registry.pinSource(sourceId);
+    const itemType = registry.getSourceType(sourceId);
+    return {
+      type: _types.BEGIN_DRAG,
+      payload: {
+        itemType,
+        item,
+        sourceId,
+        clientOffset: clientOffset || null,
+        sourceClientOffset: sourceClientOffset || null,
+        isSourcePublic: !!publishSource
+      }
+    };
+  };
+}
+
+function verifyInvariants(sourceIds, monitor, registry) {
+  (0, _invariant.default)(!monitor.isDragging(), 'Cannot call beginDrag while dragging.');
+
+  for (const s of sourceIds) {
+    (0, _invariant.default)(registry.getSource(s), 'Expected sourceIds to be registered.');
+  }
+}
+
+function verifyGetSourceClientOffsetIsFunction(getSourceClientOffset) {
+  (0, _invariant.default)(typeof getSourceClientOffset === 'function', 'When clientOffset is provided, getSourceClientOffset must be a function.');
+}
+
+function verifyItemIsObject(item) {
+  (0, _invariant.default)((0, _js_utils.isObject)(item), 'Item must be an object.');
+}
+
+function getDraggableSource(sourceIds, monitor) {
+  let sourceId = null;
+
+  for (let i = sourceIds.length - 1; i >= 0; i--) {
+    if (monitor.canDragSource(sourceIds[i])) {
+      sourceId = sourceIds[i];
+      break;
+    }
+  }
+
+  return sourceId;
+}
+},{"invariant":"../../node_modules/invariant/browser.js","./local/setClientOffset":"../../node_modules/dnd-core/lib/actions/dragDrop/local/setClientOffset.js","../../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/publishDragSource.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createPublishDragSource;
+
+var _types = require("./types");
+
+function createPublishDragSource(manager) {
+  return function publishDragSource() {
+    const monitor = manager.getMonitor();
+
+    if (monitor.isDragging()) {
+      return {
+        type: _types.PUBLISH_DRAG_SOURCE
+      };
+    }
+  };
+}
+},{"./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/matchesType.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = matchesType;
+
+function matchesType(targetType, draggedItemType) {
+  if (draggedItemType === null) {
+    return targetType === null;
+  }
+
+  return Array.isArray(targetType) ? targetType.some(t => t === draggedItemType) : targetType === draggedItemType;
+}
+},{}],"../../node_modules/dnd-core/lib/actions/dragDrop/hover.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createHover;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _matchesType = _interopRequireDefault(require("../../utils/matchesType"));
+
+var _types = require("./types");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createHover(manager) {
+  return function hover(targetIdsArg, {
+    clientOffset
+  } = {}) {
+    verifyTargetIdsIsArray(targetIdsArg);
+    const targetIds = targetIdsArg.slice(0);
+    const monitor = manager.getMonitor();
+    const registry = manager.getRegistry();
+    checkInvariants(targetIds, monitor, registry);
+    const draggedItemType = monitor.getItemType();
+    removeNonMatchingTargetIds(targetIds, registry, draggedItemType);
+    hoverAllTargets(targetIds, monitor, registry);
+    return {
+      type: _types.HOVER,
+      payload: {
+        targetIds,
+        clientOffset: clientOffset || null
+      }
+    };
+  };
+}
+
+function verifyTargetIdsIsArray(targetIdsArg) {
+  (0, _invariant.default)(Array.isArray(targetIdsArg), 'Expected targetIds to be an array.');
+}
+
+function checkInvariants(targetIds, monitor, registry) {
+  (0, _invariant.default)(monitor.isDragging(), 'Cannot call hover while not dragging.');
+  (0, _invariant.default)(!monitor.didDrop(), 'Cannot call hover after drop.');
+
+  for (let i = 0; i < targetIds.length; i++) {
+    const targetId = targetIds[i];
+    (0, _invariant.default)(targetIds.lastIndexOf(targetId) === i, 'Expected targetIds to be unique in the passed array.');
+    const target = registry.getTarget(targetId);
+    (0, _invariant.default)(target, 'Expected targetIds to be registered.');
+  }
+}
+
+function removeNonMatchingTargetIds(targetIds, registry, draggedItemType) {
+  // Remove those targetIds that don't match the targetType.  This
+  // fixes shallow isOver which would only be non-shallow because of
+  // non-matching targets.
+  for (let i = targetIds.length - 1; i >= 0; i--) {
+    const targetId = targetIds[i];
+    const targetType = registry.getTargetType(targetId);
+
+    if (!(0, _matchesType.default)(targetType, draggedItemType)) {
+      targetIds.splice(i, 1);
+    }
+  }
+}
+
+function hoverAllTargets(targetIds, monitor, registry) {
+  // Finally call hover on all matching targets.
+  for (const targetId of targetIds) {
+    const target = registry.getTarget(targetId);
+    target.hover(monitor, targetId);
+  }
+}
+},{"invariant":"../../node_modules/invariant/browser.js","../../utils/matchesType":"../../node_modules/dnd-core/lib/utils/matchesType.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/drop.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createDrop;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _types = require("./types");
+
+var _js_utils = require("../../utils/js_utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createDrop(manager) {
+  return function drop(options = {}) {
+    const monitor = manager.getMonitor();
+    const registry = manager.getRegistry();
+    verifyInvariants(monitor);
+    const targetIds = getDroppableTargets(monitor); // Multiple actions are dispatched here, which is why this doesn't return an action
+
+    targetIds.forEach((targetId, index) => {
+      const dropResult = determineDropResult(targetId, index, registry, monitor);
+      const action = {
+        type: _types.DROP,
+        payload: {
+          dropResult: { ...options,
+            ...dropResult
+          }
+        }
+      };
+      manager.dispatch(action);
+    });
+  };
+}
+
+function verifyInvariants(monitor) {
+  (0, _invariant.default)(monitor.isDragging(), 'Cannot call drop while not dragging.');
+  (0, _invariant.default)(!monitor.didDrop(), 'Cannot call drop twice during one drag operation.');
+}
+
+function determineDropResult(targetId, index, registry, monitor) {
+  const target = registry.getTarget(targetId);
+  let dropResult = target ? target.drop(monitor, targetId) : undefined;
+  verifyDropResultType(dropResult);
+
+  if (typeof dropResult === 'undefined') {
+    dropResult = index === 0 ? {} : monitor.getDropResult();
+  }
+
+  return dropResult;
+}
+
+function verifyDropResultType(dropResult) {
+  (0, _invariant.default)(typeof dropResult === 'undefined' || (0, _js_utils.isObject)(dropResult), 'Drop result must either be an object or undefined.');
+}
+
+function getDroppableTargets(monitor) {
+  const targetIds = monitor.getTargetIds().filter(monitor.canDropOnTarget, monitor);
+  targetIds.reverse();
+  return targetIds;
+}
+},{"invariant":"../../node_modules/invariant/browser.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js","../../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/endDrag.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createEndDrag;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _types = require("./types");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createEndDrag(manager) {
+  return function endDrag() {
+    const monitor = manager.getMonitor();
+    const registry = manager.getRegistry();
+    verifyIsDragging(monitor);
+    const sourceId = monitor.getSourceId();
+    const source = registry.getSource(sourceId, true);
+    source.endDrag(monitor, sourceId);
+    registry.unpinSource();
+    return {
+      type: _types.END_DRAG
+    };
+  };
+}
+
+function verifyIsDragging(monitor) {
+  (0, _invariant.default)(monitor.isDragging(), 'Cannot call endDrag while not dragging.');
+}
+},{"invariant":"../../node_modules/invariant/browser.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/actions/dragDrop/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _exportNames = {};
+exports.default = createDragDropActions;
+
+var _beginDrag = _interopRequireDefault(require("./beginDrag"));
+
+var _publishDragSource = _interopRequireDefault(require("./publishDragSource"));
+
+var _hover = _interopRequireDefault(require("./hover"));
+
+var _drop = _interopRequireDefault(require("./drop"));
+
+var _endDrag = _interopRequireDefault(require("./endDrag"));
+
+var _types = require("./types");
+
+Object.keys(_types).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _types[key];
+    }
+  });
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createDragDropActions(manager) {
+  return {
+    beginDrag: (0, _beginDrag.default)(manager),
+    publishDragSource: (0, _publishDragSource.default)(manager),
+    hover: (0, _hover.default)(manager),
+    drop: (0, _drop.default)(manager),
+    endDrag: (0, _endDrag.default)(manager)
+  };
+}
+},{"./beginDrag":"../../node_modules/dnd-core/lib/actions/dragDrop/beginDrag.js","./publishDragSource":"../../node_modules/dnd-core/lib/actions/dragDrop/publishDragSource.js","./hover":"../../node_modules/dnd-core/lib/actions/dragDrop/hover.js","./drop":"../../node_modules/dnd-core/lib/actions/dragDrop/drop.js","./endDrag":"../../node_modules/dnd-core/lib/actions/dragDrop/endDrag.js","./types":"../../node_modules/dnd-core/lib/actions/dragDrop/types.js"}],"../../node_modules/dnd-core/lib/utils/equality.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.areCoordsEqual = areCoordsEqual;
+exports.areArraysEqual = areArraysEqual;
+exports.strictEquality = void 0;
+
+const strictEquality = (a, b) => a === b;
+/**
+ * Determine if two cartesian coordinate offsets are equal
+ * @param offsetA
+ * @param offsetB
+ */
+
+
+exports.strictEquality = strictEquality;
+
+function areCoordsEqual(offsetA, offsetB) {
+  if (!offsetA && !offsetB) {
+    return true;
+  } else if (!offsetA || !offsetB) {
+    return false;
+  } else {
+    return offsetA.x === offsetB.x && offsetA.y === offsetB.y;
+  }
+}
+/**
+ * Determines if two arrays of items are equal
+ * @param a The first array of items
+ * @param b The second array of items
+ */
+
+
+function areArraysEqual(a, b, isEqual = strictEquality) {
+  if (a.length !== b.length) {
+    return false;
+  }
+
+  for (let i = 0; i < a.length; ++i) {
+    if (!isEqual(a[i], b[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+},{}],"../../node_modules/dnd-core/lib/reducers/dragOffset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = dragOffset;
+
+var _dragDrop = require("../actions/dragDrop");
+
+var _equality = require("../utils/equality");
+
+const initialState = {
+  initialSourceClientOffset: null,
+  initialClientOffset: null,
+  clientOffset: null
+};
+
+function dragOffset(state = initialState, action) {
+  const {
+    payload
+  } = action;
+
+  switch (action.type) {
+    case _dragDrop.INIT_COORDS:
+    case _dragDrop.BEGIN_DRAG:
+      return {
+        initialSourceClientOffset: payload.sourceClientOffset,
+        initialClientOffset: payload.clientOffset,
+        clientOffset: payload.clientOffset
+      };
+
+    case _dragDrop.HOVER:
+      if ((0, _equality.areCoordsEqual)(state.clientOffset, payload.clientOffset)) {
+        return state;
+      }
+
+      return { ...state,
+        clientOffset: payload.clientOffset
+      };
+
+    case _dragDrop.END_DRAG:
+    case _dragDrop.DROP:
+      return initialState;
+
+    default:
+      return state;
+  }
+}
+},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../utils/equality":"../../node_modules/dnd-core/lib/utils/equality.js"}],"../../node_modules/dnd-core/lib/actions/registry.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addSource = addSource;
+exports.addTarget = addTarget;
+exports.removeSource = removeSource;
+exports.removeTarget = removeTarget;
+exports.REMOVE_TARGET = exports.REMOVE_SOURCE = exports.ADD_TARGET = exports.ADD_SOURCE = void 0;
+const ADD_SOURCE = 'dnd-core/ADD_SOURCE';
+exports.ADD_SOURCE = ADD_SOURCE;
+const ADD_TARGET = 'dnd-core/ADD_TARGET';
+exports.ADD_TARGET = ADD_TARGET;
+const REMOVE_SOURCE = 'dnd-core/REMOVE_SOURCE';
+exports.REMOVE_SOURCE = REMOVE_SOURCE;
+const REMOVE_TARGET = 'dnd-core/REMOVE_TARGET';
+exports.REMOVE_TARGET = REMOVE_TARGET;
+
+function addSource(sourceId) {
+  return {
+    type: ADD_SOURCE,
+    payload: {
+      sourceId
+    }
+  };
+}
+
+function addTarget(targetId) {
+  return {
+    type: ADD_TARGET,
+    payload: {
+      targetId
+    }
+  };
+}
+
+function removeSource(sourceId) {
+  return {
+    type: REMOVE_SOURCE,
+    payload: {
+      sourceId
+    }
+  };
+}
+
+function removeTarget(targetId) {
+  return {
+    type: REMOVE_TARGET,
+    payload: {
+      targetId
+    }
+  };
+}
+},{}],"../../node_modules/dnd-core/lib/reducers/dragOperation.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = dragOperation;
+
+var _dragDrop = require("../actions/dragDrop");
+
+var _registry = require("../actions/registry");
+
+var _js_utils = require("../utils/js_utils");
+
+const initialState = {
+  itemType: null,
+  item: null,
+  sourceId: null,
+  targetIds: [],
+  dropResult: null,
+  didDrop: false,
+  isSourcePublic: null
+};
+
+function dragOperation(state = initialState, action) {
+  const {
+    payload
+  } = action;
+
+  switch (action.type) {
+    case _dragDrop.BEGIN_DRAG:
+      return { ...state,
+        itemType: payload.itemType,
+        item: payload.item,
+        sourceId: payload.sourceId,
+        isSourcePublic: payload.isSourcePublic,
+        dropResult: null,
+        didDrop: false
+      };
+
+    case _dragDrop.PUBLISH_DRAG_SOURCE:
+      return { ...state,
+        isSourcePublic: true
+      };
+
+    case _dragDrop.HOVER:
+      return { ...state,
+        targetIds: payload.targetIds
+      };
+
+    case _registry.REMOVE_TARGET:
+      if (state.targetIds.indexOf(payload.targetId) === -1) {
+        return state;
+      }
+
+      return { ...state,
+        targetIds: (0, _js_utils.without)(state.targetIds, payload.targetId)
+      };
+
+    case _dragDrop.DROP:
+      return { ...state,
+        dropResult: payload.dropResult,
+        didDrop: true,
+        targetIds: []
+      };
+
+    case _dragDrop.END_DRAG:
+      return { ...state,
+        itemType: null,
+        item: null,
+        sourceId: null,
+        dropResult: null,
+        didDrop: false,
+        isSourcePublic: null,
+        targetIds: []
+      };
+
+    default:
+      return state;
+  }
+}
+},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/refCount.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = refCount;
+
+var _registry = require("../actions/registry");
+
+function refCount(state = 0, action) {
+  switch (action.type) {
+    case _registry.ADD_SOURCE:
+    case _registry.ADD_TARGET:
+      return state + 1;
+
+    case _registry.REMOVE_SOURCE:
+    case _registry.REMOVE_TARGET:
+      return state - 1;
+
+    default:
+      return state;
+  }
+}
+},{"../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js"}],"../../node_modules/dnd-core/lib/utils/dirtiness.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.areDirty = areDirty;
+exports.ALL = exports.NONE = void 0;
+
+var _js_utils = require("./js_utils");
+
+const NONE = [];
+exports.NONE = NONE;
+const ALL = [];
+exports.ALL = ALL;
+NONE.__IS_NONE__ = true;
+ALL.__IS_ALL__ = true;
+/**
+ * Determines if the given handler IDs are dirty or not.
+ *
+ * @param dirtyIds The set of dirty handler ids
+ * @param handlerIds The set of handler ids to check
+ */
+
+function areDirty(dirtyIds, handlerIds) {
+  if (dirtyIds === NONE) {
+    return false;
+  }
+
+  if (dirtyIds === ALL || typeof handlerIds === 'undefined') {
+    return true;
+  }
+
+  const commonIds = (0, _js_utils.intersection)(handlerIds, dirtyIds);
+  return commonIds.length > 0;
+}
+},{"./js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/dirtyHandlerIds.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = dirtyHandlerIds;
+
+var _dragDrop = require("../actions/dragDrop");
+
+var _registry = require("../actions/registry");
+
+var _equality = require("../utils/equality");
+
+var _dirtiness = require("../utils/dirtiness");
+
+var _js_utils = require("../utils/js_utils");
+
+function dirtyHandlerIds(state = _dirtiness.NONE, action) {
+  switch (action.type) {
+    case _dragDrop.HOVER:
+      break;
+
+    case _registry.ADD_SOURCE:
+    case _registry.ADD_TARGET:
+    case _registry.REMOVE_TARGET:
+    case _registry.REMOVE_SOURCE:
+      return _dirtiness.NONE;
+
+    case _dragDrop.BEGIN_DRAG:
+    case _dragDrop.PUBLISH_DRAG_SOURCE:
+    case _dragDrop.END_DRAG:
+    case _dragDrop.DROP:
+    default:
+      return _dirtiness.ALL;
+  }
+
+  const {
+    targetIds = [],
+    prevTargetIds = []
+  } = action.payload;
+  const result = (0, _js_utils.xor)(targetIds, prevTargetIds);
+  const didChange = result.length > 0 || !(0, _equality.areArraysEqual)(targetIds, prevTargetIds);
+
+  if (!didChange) {
+    return _dirtiness.NONE;
+  } // Check the target ids at the innermost position. If they are valid, add them
+  // to the result
+
+
+  const prevInnermostTargetId = prevTargetIds[prevTargetIds.length - 1];
+  const innermostTargetId = targetIds[targetIds.length - 1];
+
+  if (prevInnermostTargetId !== innermostTargetId) {
+    if (prevInnermostTargetId) {
+      result.push(prevInnermostTargetId);
+    }
+
+    if (innermostTargetId) {
+      result.push(innermostTargetId);
+    }
+  }
+
+  return result;
+}
+},{"../actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","../actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","../utils/equality":"../../node_modules/dnd-core/lib/utils/equality.js","../utils/dirtiness":"../../node_modules/dnd-core/lib/utils/dirtiness.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/reducers/stateId.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = stateId;
+
+function stateId(state = 0) {
+  return state + 1;
+}
+},{}],"../../node_modules/dnd-core/lib/reducers/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = reduce;
+
+var _dragOffset = _interopRequireDefault(require("./dragOffset"));
+
+var _dragOperation = _interopRequireDefault(require("./dragOperation"));
+
+var _refCount = _interopRequireDefault(require("./refCount"));
+
+var _dirtyHandlerIds = _interopRequireDefault(require("./dirtyHandlerIds"));
+
+var _stateId = _interopRequireDefault(require("./stateId"));
+
+var _js_utils = require("../utils/js_utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function reduce(state = {}, action) {
+  return {
+    dirtyHandlerIds: (0, _dirtyHandlerIds.default)(state.dirtyHandlerIds, {
+      type: action.type,
+      payload: { ...action.payload,
+        prevTargetIds: (0, _js_utils.get)(state, 'dragOperation.targetIds', [])
+      }
+    }),
+    dragOffset: (0, _dragOffset.default)(state.dragOffset, action),
+    refCount: (0, _refCount.default)(state.refCount, action),
+    dragOperation: (0, _dragOperation.default)(state.dragOperation, action),
+    stateId: (0, _stateId.default)(state.stateId)
+  };
+}
+},{"./dragOffset":"../../node_modules/dnd-core/lib/reducers/dragOffset.js","./dragOperation":"../../node_modules/dnd-core/lib/reducers/dragOperation.js","./refCount":"../../node_modules/dnd-core/lib/reducers/refCount.js","./dirtyHandlerIds":"../../node_modules/dnd-core/lib/reducers/dirtyHandlerIds.js","./stateId":"../../node_modules/dnd-core/lib/reducers/stateId.js","../utils/js_utils":"../../node_modules/dnd-core/lib/utils/js_utils.js"}],"../../node_modules/dnd-core/lib/utils/coords.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.add = add;
+exports.subtract = subtract;
+exports.getSourceClientOffset = getSourceClientOffset;
+exports.getDifferenceFromInitialOffset = getDifferenceFromInitialOffset;
+
+/**
+ * Coordinate addition
+ * @param a The first coordinate
+ * @param b The second coordinate
+ */
+function add(a, b) {
+  return {
+    x: a.x + b.x,
+    y: a.y + b.y
+  };
+}
+/**
+ * Coordinate subtraction
+ * @param a The first coordinate
+ * @param b The second coordinate
+ */
+
+
+function subtract(a, b) {
+  return {
+    x: a.x - b.x,
+    y: a.y - b.y
+  };
+}
+/**
+ * Returns the cartesian distance of the drag source component's position, based on its position
+ * at the time when the current drag operation has started, and the movement difference.
+ *
+ * Returns null if no item is being dragged.
+ *
+ * @param state The offset state to compute from
+ */
+
+
+function getSourceClientOffset(state) {
+  const {
+    clientOffset,
+    initialClientOffset,
+    initialSourceClientOffset
+  } = state;
+
+  if (!clientOffset || !initialClientOffset || !initialSourceClientOffset) {
+    return null;
+  }
+
+  return subtract(add(clientOffset, initialSourceClientOffset), initialClientOffset);
+}
+/**
+ * Determines the x,y offset between the client offset and the initial client offset
+ *
+ * @param state The offset state to compute from
+ */
+
+
+function getDifferenceFromInitialOffset(state) {
+  const {
+    clientOffset,
+    initialClientOffset
+  } = state;
+
+  if (!clientOffset || !initialClientOffset) {
+    return null;
+  }
+
+  return subtract(clientOffset, initialClientOffset);
+}
+},{}],"../../node_modules/dnd-core/lib/DragDropMonitorImpl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _matchesType = _interopRequireDefault(require("./utils/matchesType"));
+
+var _coords = require("./utils/coords");
+
+var _dirtiness = require("./utils/dirtiness");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class DragDropMonitorImpl {
+  constructor(store, registry) {
+    this.store = store;
+    this.registry = registry;
+  }
+
+  subscribeToStateChange(listener, options = {
+    handlerIds: undefined
+  }) {
+    const {
+      handlerIds
+    } = options;
+    (0, _invariant.default)(typeof listener === 'function', 'listener must be a function.');
+    (0, _invariant.default)(typeof handlerIds === 'undefined' || Array.isArray(handlerIds), 'handlerIds, when specified, must be an array of strings.');
+    let prevStateId = this.store.getState().stateId;
+
+    const handleChange = () => {
+      const state = this.store.getState();
+      const currentStateId = state.stateId;
+
+      try {
+        const canSkipListener = currentStateId === prevStateId || currentStateId === prevStateId + 1 && !(0, _dirtiness.areDirty)(state.dirtyHandlerIds, handlerIds);
+
+        if (!canSkipListener) {
+          listener();
+        }
+      } finally {
+        prevStateId = currentStateId;
+      }
+    };
+
+    return this.store.subscribe(handleChange);
+  }
+
+  subscribeToOffsetChange(listener) {
+    (0, _invariant.default)(typeof listener === 'function', 'listener must be a function.');
+    let previousState = this.store.getState().dragOffset;
+
+    const handleChange = () => {
+      const nextState = this.store.getState().dragOffset;
+
+      if (nextState === previousState) {
+        return;
+      }
+
+      previousState = nextState;
+      listener();
+    };
+
+    return this.store.subscribe(handleChange);
+  }
+
+  canDragSource(sourceId) {
+    if (!sourceId) {
+      return false;
+    }
+
+    const source = this.registry.getSource(sourceId);
+    (0, _invariant.default)(source, 'Expected to find a valid source.');
+
+    if (this.isDragging()) {
+      return false;
+    }
+
+    return source.canDrag(this, sourceId);
+  }
+
+  canDropOnTarget(targetId) {
+    // undefined on initial render
+    if (!targetId) {
+      return false;
+    }
+
+    const target = this.registry.getTarget(targetId);
+    (0, _invariant.default)(target, 'Expected to find a valid target.');
+
+    if (!this.isDragging() || this.didDrop()) {
+      return false;
+    }
+
+    const targetType = this.registry.getTargetType(targetId);
+    const draggedItemType = this.getItemType();
+    return (0, _matchesType.default)(targetType, draggedItemType) && target.canDrop(this, targetId);
+  }
+
+  isDragging() {
+    return Boolean(this.getItemType());
+  }
+
+  isDraggingSource(sourceId) {
+    // undefined on initial render
+    if (!sourceId) {
+      return false;
+    }
+
+    const source = this.registry.getSource(sourceId, true);
+    (0, _invariant.default)(source, 'Expected to find a valid source.');
+
+    if (!this.isDragging() || !this.isSourcePublic()) {
+      return false;
+    }
+
+    const sourceType = this.registry.getSourceType(sourceId);
+    const draggedItemType = this.getItemType();
+
+    if (sourceType !== draggedItemType) {
+      return false;
+    }
+
+    return source.isDragging(this, sourceId);
+  }
+
+  isOverTarget(targetId, options = {
+    shallow: false
+  }) {
+    // undefined on initial render
+    if (!targetId) {
+      return false;
+    }
+
+    const {
+      shallow
+    } = options;
+
+    if (!this.isDragging()) {
+      return false;
+    }
+
+    const targetType = this.registry.getTargetType(targetId);
+    const draggedItemType = this.getItemType();
+
+    if (draggedItemType && !(0, _matchesType.default)(targetType, draggedItemType)) {
+      return false;
+    }
+
+    const targetIds = this.getTargetIds();
+
+    if (!targetIds.length) {
+      return false;
+    }
+
+    const index = targetIds.indexOf(targetId);
+
+    if (shallow) {
+      return index === targetIds.length - 1;
+    } else {
+      return index > -1;
+    }
+  }
+
+  getItemType() {
+    return this.store.getState().dragOperation.itemType;
+  }
+
+  getItem() {
+    return this.store.getState().dragOperation.item;
+  }
+
+  getSourceId() {
+    return this.store.getState().dragOperation.sourceId;
+  }
+
+  getTargetIds() {
+    return this.store.getState().dragOperation.targetIds;
+  }
+
+  getDropResult() {
+    return this.store.getState().dragOperation.dropResult;
+  }
+
+  didDrop() {
+    return this.store.getState().dragOperation.didDrop;
+  }
+
+  isSourcePublic() {
+    return this.store.getState().dragOperation.isSourcePublic;
+  }
+
+  getInitialClientOffset() {
+    return this.store.getState().dragOffset.initialClientOffset;
+  }
+
+  getInitialSourceClientOffset() {
+    return this.store.getState().dragOffset.initialSourceClientOffset;
+  }
+
+  getClientOffset() {
+    return this.store.getState().dragOffset.clientOffset;
+  }
+
+  getSourceClientOffset() {
+    return (0, _coords.getSourceClientOffset)(this.store.getState().dragOffset);
+  }
+
+  getDifferenceFromInitialOffset() {
+    return (0, _coords.getDifferenceFromInitialOffset)(this.store.getState().dragOffset);
+  }
+
+}
+
+exports.default = DragDropMonitorImpl;
+},{"invariant":"../../node_modules/invariant/browser.js","./utils/matchesType":"../../node_modules/dnd-core/lib/utils/matchesType.js","./utils/coords":"../../node_modules/dnd-core/lib/utils/coords.js","./utils/dirtiness":"../../node_modules/dnd-core/lib/utils/dirtiness.js"}],"../../node_modules/asap/browser-raw.js":[function(require,module,exports) {
+var global = arguments[3];
+"use strict";
+
+// Use the fastest means possible to execute a task in its own turn, with
+// priority over other events including IO, animation, reflow, and redraw
+// events in browsers.
+//
+// An exception thrown by a task will permanently interrupt the processing of
+// subsequent tasks. The higher level `asap` function ensures that if an
+// exception is thrown by a task, that the task queue will continue flushing as
+// soon as possible, but if you use `rawAsap` directly, you are responsible to
+// either ensure that no exceptions are thrown from your task, or to manually
+// call `rawAsap.requestFlush` if an exception is thrown.
+module.exports = rawAsap;
+function rawAsap(task) {
+    if (!queue.length) {
+        requestFlush();
+        flushing = true;
+    }
+    // Equivalent to push, but avoids a function call.
+    queue[queue.length] = task;
+}
+
+var queue = [];
+// Once a flush has been requested, no further calls to `requestFlush` are
+// necessary until the next `flush` completes.
+var flushing = false;
+// `requestFlush` is an implementation-specific method that attempts to kick
+// off a `flush` event as quickly as possible. `flush` will attempt to exhaust
+// the event queue before yielding to the browser's own event loop.
+var requestFlush;
+// The position of the next task to execute in the task queue. This is
+// preserved between calls to `flush` so that it can be resumed if
+// a task throws an exception.
+var index = 0;
+// If a task schedules additional tasks recursively, the task queue can grow
+// unbounded. To prevent memory exhaustion, the task queue will periodically
+// truncate already-completed tasks.
+var capacity = 1024;
+
+// The flush function processes all tasks that have been scheduled with
+// `rawAsap` unless and until one of those tasks throws an exception.
+// If a task throws an exception, `flush` ensures that its state will remain
+// consistent and will resume where it left off when called again.
+// However, `flush` does not make any arrangements to be called again if an
+// exception is thrown.
+function flush() {
+    while (index < queue.length) {
+        var currentIndex = index;
+        // Advance the index before calling the task. This ensures that we will
+        // begin flushing on the next task the task throws an error.
+        index = index + 1;
+        queue[currentIndex].call();
+        // Prevent leaking memory for long chains of recursive calls to `asap`.
+        // If we call `asap` within tasks scheduled by `asap`, the queue will
+        // grow, but to avoid an O(n) walk for every task we execute, we don't
+        // shift tasks off the queue after they have been executed.
+        // Instead, we periodically shift 1024 tasks off the queue.
+        if (index > capacity) {
+            // Manually shift all values starting at the index back to the
+            // beginning of the queue.
+            for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
+                queue[scan] = queue[scan + index];
+            }
+            queue.length -= index;
+            index = 0;
+        }
+    }
+    queue.length = 0;
+    index = 0;
+    flushing = false;
+}
+
+// `requestFlush` is implemented using a strategy based on data collected from
+// every available SauceLabs Selenium web driver worker at time of writing.
+// https://docs.google.com/spreadsheets/d/1mG-5UYGup5qxGdEMWkhP6BWCz053NUb2E1QoUTU16uA/edit#gid=783724593
+
+// Safari 6 and 6.1 for desktop, iPad, and iPhone are the only browsers that
+// have WebKitMutationObserver but not un-prefixed MutationObserver.
+// Must use `global` or `self` instead of `window` to work in both frames and web
+// workers. `global` is a provision of Browserify, Mr, Mrs, or Mop.
+
+/* globals self */
+var scope = typeof global !== "undefined" ? global : self;
+var BrowserMutationObserver = scope.MutationObserver || scope.WebKitMutationObserver;
+
+// MutationObservers are desirable because they have high priority and work
+// reliably everywhere they are implemented.
+// They are implemented in all modern browsers.
+//
+// - Android 4-4.3
+// - Chrome 26-34
+// - Firefox 14-29
+// - Internet Explorer 11
+// - iPad Safari 6-7.1
+// - iPhone Safari 7-7.1
+// - Safari 6-7
+if (typeof BrowserMutationObserver === "function") {
+    requestFlush = makeRequestCallFromMutationObserver(flush);
+
+// MessageChannels are desirable because they give direct access to the HTML
+// task queue, are implemented in Internet Explorer 10, Safari 5.0-1, and Opera
+// 11-12, and in web workers in many engines.
+// Although message channels yield to any queued rendering and IO tasks, they
+// would be better than imposing the 4ms delay of timers.
+// However, they do not work reliably in Internet Explorer or Safari.
+
+// Internet Explorer 10 is the only browser that has setImmediate but does
+// not have MutationObservers.
+// Although setImmediate yields to the browser's renderer, it would be
+// preferrable to falling back to setTimeout since it does not have
+// the minimum 4ms penalty.
+// Unfortunately there appears to be a bug in Internet Explorer 10 Mobile (and
+// Desktop to a lesser extent) that renders both setImmediate and
+// MessageChannel useless for the purposes of ASAP.
+// https://github.com/kriskowal/q/issues/396
+
+// Timers are implemented universally.
+// We fall back to timers in workers in most engines, and in foreground
+// contexts in the following browsers.
+// However, note that even this simple case requires nuances to operate in a
+// broad spectrum of browsers.
+//
+// - Firefox 3-13
+// - Internet Explorer 6-9
+// - iPad Safari 4.3
+// - Lynx 2.8.7
+} else {
+    requestFlush = makeRequestCallFromTimer(flush);
+}
+
+// `requestFlush` requests that the high priority event queue be flushed as
+// soon as possible.
+// This is useful to prevent an error thrown in a task from stalling the event
+// queue if the exception handled by Node.js’s
+// `process.on("uncaughtException")` or by a domain.
+rawAsap.requestFlush = requestFlush;
+
+// To request a high priority event, we induce a mutation observer by toggling
+// the text of a text node between "1" and "-1".
+function makeRequestCallFromMutationObserver(callback) {
+    var toggle = 1;
+    var observer = new BrowserMutationObserver(callback);
+    var node = document.createTextNode("");
+    observer.observe(node, {characterData: true});
+    return function requestCall() {
+        toggle = -toggle;
+        node.data = toggle;
+    };
+}
+
+// The message channel technique was discovered by Malte Ubl and was the
+// original foundation for this library.
+// http://www.nonblocking.io/2011/06/windownexttick.html
+
+// Safari 6.0.5 (at least) intermittently fails to create message ports on a
+// page's first load. Thankfully, this version of Safari supports
+// MutationObservers, so we don't need to fall back in that case.
+
+// function makeRequestCallFromMessageChannel(callback) {
+//     var channel = new MessageChannel();
+//     channel.port1.onmessage = callback;
+//     return function requestCall() {
+//         channel.port2.postMessage(0);
+//     };
+// }
+
+// For reasons explained above, we are also unable to use `setImmediate`
+// under any circumstances.
+// Even if we were, there is another bug in Internet Explorer 10.
+// It is not sufficient to assign `setImmediate` to `requestFlush` because
+// `setImmediate` must be called *by name* and therefore must be wrapped in a
+// closure.
+// Never forget.
+
+// function makeRequestCallFromSetImmediate(callback) {
+//     return function requestCall() {
+//         setImmediate(callback);
+//     };
+// }
+
+// Safari 6.0 has a problem where timers will get lost while the user is
+// scrolling. This problem does not impact ASAP because Safari 6.0 supports
+// mutation observers, so that implementation is used instead.
+// However, if we ever elect to use timers in Safari, the prevalent work-around
+// is to add a scroll event listener that calls for a flush.
+
+// `setTimeout` does not call the passed callback if the delay is less than
+// approximately 7 in web workers in Firefox 8 through 18, and sometimes not
+// even then.
+
+function makeRequestCallFromTimer(callback) {
+    return function requestCall() {
+        // We dispatch a timeout with a specified delay of 0 for engines that
+        // can reliably accommodate that request. This will usually be snapped
+        // to a 4 milisecond delay, but once we're flushing, there's no delay
+        // between events.
+        var timeoutHandle = setTimeout(handleTimer, 0);
+        // However, since this timer gets frequently dropped in Firefox
+        // workers, we enlist an interval handle that will try to fire
+        // an event 20 times per second until it succeeds.
+        var intervalHandle = setInterval(handleTimer, 50);
+
+        function handleTimer() {
+            // Whichever timer succeeds will cancel both timers and
+            // execute the callback.
+            clearTimeout(timeoutHandle);
+            clearInterval(intervalHandle);
+            callback();
+        }
+    };
+}
+
+// This is for `asap.js` only.
+// Its name will be periodically randomized to break any code that depends on
+// its existence.
+rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
+
+// ASAP was originally a nextTick shim included in Q. This was factored out
+// into this ASAP package. It was later adapted to RSVP which made further
+// amendments. These decisions, particularly to marginalize MessageChannel and
+// to capture the MutationObserver implementation in a closure, were integrated
+// back into ASAP proper.
+// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
+
+},{}],"../../node_modules/asap/browser-asap.js":[function(require,module,exports) {
+"use strict";
+
+// rawAsap provides everything we need except exception management.
+var rawAsap = require("./raw");
+// RawTasks are recycled to reduce GC churn.
+var freeTasks = [];
+// We queue errors to ensure they are thrown in right order (FIFO).
+// Array-as-queue is good enough here, since we are just dealing with exceptions.
+var pendingErrors = [];
+var requestErrorThrow = rawAsap.makeRequestCallFromTimer(throwFirstError);
+
+function throwFirstError() {
+    if (pendingErrors.length) {
+        throw pendingErrors.shift();
+    }
+}
+
+/**
+ * Calls a task as soon as possible after returning, in its own event, with priority
+ * over other events like animation, reflow, and repaint. An error thrown from an
+ * event will not interrupt, nor even substantially slow down the processing of
+ * other events, but will be rather postponed to a lower priority event.
+ * @param {{call}} task A callable object, typically a function that takes no
+ * arguments.
+ */
+module.exports = asap;
+function asap(task) {
+    var rawTask;
+    if (freeTasks.length) {
+        rawTask = freeTasks.pop();
+    } else {
+        rawTask = new RawTask();
+    }
+    rawTask.task = task;
+    rawAsap(rawTask);
+}
+
+// We wrap tasks with recyclable task objects.  A task object implements
+// `call`, just like a function.
+function RawTask() {
+    this.task = null;
+}
+
+// The sole purpose of wrapping the task is to catch the exception and recycle
+// the task object after its single use.
+RawTask.prototype.call = function () {
+    try {
+        this.task.call();
+    } catch (error) {
+        if (asap.onerror) {
+            // This hook exists purely for testing purposes.
+            // Its name will be periodically randomized to break any code that
+            // depends on its existence.
+            asap.onerror(error);
+        } else {
+            // In a web browser, exceptions are not fatal. However, to avoid
+            // slowing down the queue of pending tasks, we rethrow the error in a
+            // lower priority turn.
+            pendingErrors.push(error);
+            requestErrorThrow();
+        }
+    } finally {
+        this.task = null;
+        freeTasks[freeTasks.length] = this;
+    }
+};
+
+},{"./raw":"../../node_modules/asap/browser-raw.js"}],"../../node_modules/dnd-core/lib/utils/getNextUniqueId.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = getNextUniqueId;
+let nextUniqueId = 0;
+
+function getNextUniqueId() {
+  return nextUniqueId++;
+}
+},{}],"../../node_modules/dnd-core/lib/contracts.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.validateSourceContract = validateSourceContract;
+exports.validateTargetContract = validateTargetContract;
+exports.validateType = validateType;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validateSourceContract(source) {
+  (0, _invariant.default)(typeof source.canDrag === 'function', 'Expected canDrag to be a function.');
+  (0, _invariant.default)(typeof source.beginDrag === 'function', 'Expected beginDrag to be a function.');
+  (0, _invariant.default)(typeof source.endDrag === 'function', 'Expected endDrag to be a function.');
+}
+
+function validateTargetContract(target) {
+  (0, _invariant.default)(typeof target.canDrop === 'function', 'Expected canDrop to be a function.');
+  (0, _invariant.default)(typeof target.hover === 'function', 'Expected hover to be a function.');
+  (0, _invariant.default)(typeof target.drop === 'function', 'Expected beginDrag to be a function.');
+}
+
+function validateType(type, allowArray) {
+  if (allowArray && Array.isArray(type)) {
+    type.forEach(t => validateType(t, false));
+    return;
+  }
+
+  (0, _invariant.default)(typeof type === 'string' || typeof type === 'symbol', allowArray ? 'Type can only be a string, a symbol, or an array of either.' : 'Type can only be a string or a symbol.');
+}
+},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/dnd-core/lib/HandlerRegistryImpl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _asap = _interopRequireDefault(require("asap"));
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _registry = require("./actions/registry");
+
+var _getNextUniqueId = _interopRequireDefault(require("./utils/getNextUniqueId"));
+
+var _interfaces = require("./interfaces");
+
+var _contracts = require("./contracts");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getNextHandlerId(role) {
+  const id = (0, _getNextUniqueId.default)().toString();
+
+  switch (role) {
+    case _interfaces.HandlerRole.SOURCE:
+      return `S${id}`;
+
+    case _interfaces.HandlerRole.TARGET:
+      return `T${id}`;
+
+    default:
+      throw new Error(`Unknown Handler Role: ${role}`);
+  }
+}
+
+function parseRoleFromHandlerId(handlerId) {
+  switch (handlerId[0]) {
+    case 'S':
+      return _interfaces.HandlerRole.SOURCE;
+
+    case 'T':
+      return _interfaces.HandlerRole.TARGET;
+
+    default:
+      (0, _invariant.default)(false, `Cannot parse handler ID: ${handlerId}`);
+  }
+}
+
+function mapContainsValue(map, searchValue) {
+  const entries = map.entries();
+  let isDone = false;
+
+  do {
+    const {
+      done,
+      value: [, value]
+    } = entries.next();
+
+    if (value === searchValue) {
+      return true;
+    }
+
+    isDone = done;
+  } while (!isDone);
+
+  return false;
+}
+
+class HandlerRegistryImpl {
+  constructor(store) {
+    this.store = store;
+    this.types = new Map();
+    this.dragSources = new Map();
+    this.dropTargets = new Map();
+    this.pinnedSourceId = null;
+    this.pinnedSource = null;
+  }
+
+  addSource(type, source) {
+    (0, _contracts.validateType)(type);
+    (0, _contracts.validateSourceContract)(source);
+    const sourceId = this.addHandler(_interfaces.HandlerRole.SOURCE, type, source);
+    this.store.dispatch((0, _registry.addSource)(sourceId));
+    return sourceId;
+  }
+
+  addTarget(type, target) {
+    (0, _contracts.validateType)(type, true);
+    (0, _contracts.validateTargetContract)(target);
+    const targetId = this.addHandler(_interfaces.HandlerRole.TARGET, type, target);
+    this.store.dispatch((0, _registry.addTarget)(targetId));
+    return targetId;
+  }
+
+  containsHandler(handler) {
+    return mapContainsValue(this.dragSources, handler) || mapContainsValue(this.dropTargets, handler);
+  }
+
+  getSource(sourceId, includePinned = false) {
+    (0, _invariant.default)(this.isSourceId(sourceId), 'Expected a valid source ID.');
+    const isPinned = includePinned && sourceId === this.pinnedSourceId;
+    const source = isPinned ? this.pinnedSource : this.dragSources.get(sourceId);
+    return source;
+  }
+
+  getTarget(targetId) {
+    (0, _invariant.default)(this.isTargetId(targetId), 'Expected a valid target ID.');
+    return this.dropTargets.get(targetId);
+  }
+
+  getSourceType(sourceId) {
+    (0, _invariant.default)(this.isSourceId(sourceId), 'Expected a valid source ID.');
+    return this.types.get(sourceId);
+  }
+
+  getTargetType(targetId) {
+    (0, _invariant.default)(this.isTargetId(targetId), 'Expected a valid target ID.');
+    return this.types.get(targetId);
+  }
+
+  isSourceId(handlerId) {
+    const role = parseRoleFromHandlerId(handlerId);
+    return role === _interfaces.HandlerRole.SOURCE;
+  }
+
+  isTargetId(handlerId) {
+    const role = parseRoleFromHandlerId(handlerId);
+    return role === _interfaces.HandlerRole.TARGET;
+  }
+
+  removeSource(sourceId) {
+    (0, _invariant.default)(this.getSource(sourceId), 'Expected an existing source.');
+    this.store.dispatch((0, _registry.removeSource)(sourceId));
+    (0, _asap.default)(() => {
+      this.dragSources.delete(sourceId);
+      this.types.delete(sourceId);
+    });
+  }
+
+  removeTarget(targetId) {
+    (0, _invariant.default)(this.getTarget(targetId), 'Expected an existing target.');
+    this.store.dispatch((0, _registry.removeTarget)(targetId));
+    this.dropTargets.delete(targetId);
+    this.types.delete(targetId);
+  }
+
+  pinSource(sourceId) {
+    const source = this.getSource(sourceId);
+    (0, _invariant.default)(source, 'Expected an existing source.');
+    this.pinnedSourceId = sourceId;
+    this.pinnedSource = source;
+  }
+
+  unpinSource() {
+    (0, _invariant.default)(this.pinnedSource, 'No source is pinned at the time.');
+    this.pinnedSourceId = null;
+    this.pinnedSource = null;
+  }
+
+  addHandler(role, type, handler) {
+    const id = getNextHandlerId(role);
+    this.types.set(id, type);
+
+    if (role === _interfaces.HandlerRole.SOURCE) {
+      this.dragSources.set(id, handler);
+    } else if (role === _interfaces.HandlerRole.TARGET) {
+      this.dropTargets.set(id, handler);
+    }
+
+    return id;
+  }
+
+}
+
+exports.default = HandlerRegistryImpl;
+},{"asap":"../../node_modules/asap/browser-asap.js","invariant":"../../node_modules/invariant/browser.js","./actions/registry":"../../node_modules/dnd-core/lib/actions/registry.js","./utils/getNextUniqueId":"../../node_modules/dnd-core/lib/utils/getNextUniqueId.js","./interfaces":"../../node_modules/dnd-core/lib/interfaces.js","./contracts":"../../node_modules/dnd-core/lib/contracts.js"}],"../../node_modules/dnd-core/lib/DragDropManagerImpl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _redux = require("redux");
+
+var _reducers = _interopRequireDefault(require("./reducers"));
+
+var _dragDrop = _interopRequireDefault(require("./actions/dragDrop"));
+
+var _DragDropMonitorImpl = _interopRequireDefault(require("./DragDropMonitorImpl"));
+
+var _HandlerRegistryImpl = _interopRequireDefault(require("./HandlerRegistryImpl"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function makeStoreInstance(debugMode) {
+  // TODO: if we ever make a react-native version of this,
+  // we'll need to consider how to pull off dev-tooling
+  const reduxDevTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__;
+  return (0, _redux.createStore)(_reducers.default, debugMode && reduxDevTools && reduxDevTools({
+    name: 'dnd-core',
+    instanceId: 'dnd-core'
+  }));
+}
+
+class DragDropManagerImpl {
+  constructor(createBackend, context = {}, debugMode = false) {
+    this.context = context;
+    this.isSetUp = false;
+
+    this.handleRefCountChange = () => {
+      const shouldSetUp = this.store.getState().refCount > 0;
+
+      if (shouldSetUp && !this.isSetUp) {
+        this.backend.setup();
+        this.isSetUp = true;
+      } else if (!shouldSetUp && this.isSetUp) {
+        this.backend.teardown();
+        this.isSetUp = false;
+      }
+    };
+
+    const store = makeStoreInstance(debugMode);
+    this.store = store;
+    this.monitor = new _DragDropMonitorImpl.default(store, new _HandlerRegistryImpl.default(store));
+    this.backend = createBackend(this);
+    store.subscribe(this.handleRefCountChange);
+  }
+
+  getContext() {
+    return this.context;
+  }
+
+  getMonitor() {
+    return this.monitor;
+  }
+
+  getBackend() {
+    return this.backend;
+  }
+
+  getRegistry() {
+    return this.monitor.registry;
+  }
+
+  getActions() {
+    const manager = this;
+    const {
+      dispatch
+    } = this.store;
+
+    function bindActionCreator(actionCreator) {
+      return (...args) => {
+        const action = actionCreator.apply(manager, args);
+
+        if (typeof action !== 'undefined') {
+          dispatch(action);
+        }
+      };
+    }
+
+    const actions = (0, _dragDrop.default)(this);
+    return Object.keys(actions).reduce((boundActions, key) => {
+      const action = actions[key];
+      boundActions[key] = bindActionCreator(action);
+      return boundActions;
+    }, {});
+  }
+
+  dispatch(action) {
+    this.store.dispatch(action);
+  }
+
+}
+
+exports.default = DragDropManagerImpl;
+},{"redux":"../../node_modules/redux/es/redux.js","./reducers":"../../node_modules/dnd-core/lib/reducers/index.js","./actions/dragDrop":"../../node_modules/dnd-core/lib/actions/dragDrop/index.js","./DragDropMonitorImpl":"../../node_modules/dnd-core/lib/DragDropMonitorImpl.js","./HandlerRegistryImpl":"../../node_modules/dnd-core/lib/HandlerRegistryImpl.js"}],"../../node_modules/dnd-core/lib/factories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createDragDropManager = createDragDropManager;
+
+var _DragDropManagerImpl = _interopRequireDefault(require("./DragDropManagerImpl"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function createDragDropManager(backend, context, debugMode) {
+  return new _DragDropManagerImpl.default(backend, context, debugMode);
+}
+},{"./DragDropManagerImpl":"../../node_modules/dnd-core/lib/DragDropManagerImpl.js"}],"../../node_modules/dnd-core/lib/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interfaces = require("./interfaces");
+
+Object.keys(_interfaces).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _interfaces[key];
+    }
+  });
+});
+
+var _factories = require("./factories");
+
+Object.keys(_factories).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _factories[key];
+    }
+  });
+});
+},{"./interfaces":"../../node_modules/dnd-core/lib/interfaces.js","./factories":"../../node_modules/dnd-core/lib/factories.js"}],"../../node_modules/react-dnd/lib/common/DndContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createDndContext = createDndContext;
+exports.DndContext = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _dndCore = require("dnd-core");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+/**
+ * Create the React Context
+ */
+const DndContext = React.createContext({
+  dragDropManager: undefined
+});
+/**
+ * Creates the context object we're providing
+ * @param backend
+ * @param context
+ */
+
+exports.DndContext = DndContext;
+
+function createDndContext(backend, context, debugMode) {
+  return {
+    dragDropManager: (0, _dndCore.createDragDropManager)(backend, context, debugMode)
+  };
+}
+},{"react":"../../../node_modules/react/index.js","dnd-core":"../../node_modules/dnd-core/lib/index.js"}],"../../node_modules/react-dnd/lib/common/DndProvider.js":[function(require,module,exports) {
+var global = arguments[3];
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DndProvider = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _DndContext = require("./DndContext");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+/**
+ * A React component that provides the React-DnD context
+ */
+const DndProvider = (0, React.memo)(({
+  children,
+  ...props
+}) => {
+  const context = 'manager' in props ? {
+    dragDropManager: props.manager
+  } : createSingletonDndContext(props.backend, props.context, props.debugMode);
+  return React.createElement(_DndContext.DndContext.Provider, {
+    value: context
+  }, children);
+});
+exports.DndProvider = DndProvider;
+const instanceSymbol = Symbol.for('__REACT_DND_CONTEXT_INSTANCE__');
+
+function createSingletonDndContext(backend, context = getGlobalContext(), debugMode) {
+  const ctx = context;
+
+  if (!ctx[instanceSymbol]) {
+    ctx[instanceSymbol] = (0, _DndContext.createDndContext)(backend, context, debugMode);
+  }
+
+  return ctx[instanceSymbol];
+}
+
+function getGlobalContext() {
+  return typeof global !== 'undefined' ? global : window;
+}
+},{"react":"../../../node_modules/react/index.js","./DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js"}],"../../node_modules/react-dnd/lib/common/DragPreviewImage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DragPreviewImage = void 0;
+
+var React = _interopRequireWildcard(require("react"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+/*
+ * A utility for rendering a drag preview image
+ */
+const DragPreviewImage = React.memo(({
+  connect,
+  src
+}) => {
+  if (typeof Image !== 'undefined') {
+    const img = new Image();
+    img.src = src;
+
+    img.onload = () => connect(img);
+  }
+
+  return null;
+});
+exports.DragPreviewImage = DragPreviewImage;
+DragPreviewImage.displayName = 'DragPreviewImage';
+},{"react":"../../../node_modules/react/index.js"}],"../../node_modules/react-dnd/lib/common/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "DndContext", {
+  enumerable: true,
+  get: function () {
+    return _DndContext.DndContext;
+  }
+});
+Object.defineProperty(exports, "createDndContext", {
+  enumerable: true,
+  get: function () {
+    return _DndContext.createDndContext;
+  }
+});
+Object.defineProperty(exports, "DndProvider", {
+  enumerable: true,
+  get: function () {
+    return _DndProvider.DndProvider;
+  }
+});
+Object.defineProperty(exports, "DragPreviewImage", {
+  enumerable: true,
+  get: function () {
+    return _DragPreviewImage.DragPreviewImage;
+  }
+});
+
+var _DndContext = require("./DndContext");
+
+var _DndProvider = require("./DndProvider");
+
+var _DragPreviewImage = require("./DragPreviewImage");
+},{"./DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js","./DndProvider":"../../node_modules/react-dnd/lib/common/DndProvider.js","./DragPreviewImage":"../../node_modules/react-dnd/lib/common/DragPreviewImage.js"}],"../../node_modules/shallowequal/index.js":[function(require,module,exports) {
+//
+
+module.exports = function shallowEqual(objA, objB, compare, compareContext) {
+  var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
+
+  if (ret !== void 0) {
+    return !!ret;
+  }
+
+  if (objA === objB) {
+    return true;
+  }
+
+  if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+
+  // Test for A's keys different from B.
+  for (var idx = 0; idx < keysA.length; idx++) {
+    var key = keysA[idx];
+
+    if (!bHasOwnProperty(key)) {
+      return false;
+    }
+
+    var valueA = objA[key];
+    var valueB = objB[key];
+
+    ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
+
+    if (ret === false || (ret === void 0 && valueA !== valueB)) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+},{}],"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useCollector = useCollector;
+
+var _shallowequal = _interopRequireDefault(require("shallowequal"));
+
+var _react = require("react");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ *
+ * @param monitor The monitor to colelct state from
+ * @param collect The collecting function
+ * @param onUpdate A method to invoke when updates occur
+ */
+function useCollector(monitor, collect, onUpdate) {
+  const [collected, setCollected] = (0, _react.useState)(() => collect(monitor));
+  const updateCollected = (0, _react.useCallback)(() => {
+    const nextValue = collect(monitor);
+
+    if (!(0, _shallowequal.default)(collected, nextValue)) {
+      setCollected(nextValue);
+
+      if (onUpdate) {
+        onUpdate();
+      }
+    }
+  }, [collected, monitor, onUpdate]);
+  return [collected, updateCollected];
+}
+},{"shallowequal":"../../node_modules/shallowequal/index.js","react":"../../../node_modules/react/index.js"}],"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useMonitorOutput = useMonitorOutput;
+
+var _react = require("react");
+
+var _useCollector = require("./useCollector");
+
+function useMonitorOutput(monitor, collect, onCollect) {
+  const [collected, updateCollected] = (0, _useCollector.useCollector)(monitor, collect, onCollect);
+  (0, _react.useEffect)(function subscribeToMonitorStateChange() {
+    const handlerId = monitor.getHandlerId();
+
+    if (handlerId == null) {
+      return undefined;
+    }
+
+    return monitor.subscribeToStateChange(updateCollected, {
+      handlerIds: [handlerId]
+    });
+  }, [monitor, updateCollected]);
+  return collected;
+}
+},{"react":"../../../node_modules/react/index.js","./useCollector":"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js"}],"../../node_modules/react-dnd/lib/common/registration.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.registerTarget = registerTarget;
+exports.registerSource = registerSource;
+
+function registerTarget(type, target, manager) {
+  const registry = manager.getRegistry();
+  const targetId = registry.addTarget(type, target);
+  return [targetId, () => registry.removeTarget(targetId)];
+}
+
+function registerSource(type, source, manager) {
+  const registry = manager.getRegistry();
+  const sourceId = registry.addSource(type, source);
+  return [sourceId, () => registry.removeSource(sourceId)];
+}
+},{}],"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDragDropManager = useDragDropManager;
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _DndContext = require("../../common/DndContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * A hook to retrieve the DragDropManager from Context
+ */
+function useDragDropManager() {
+  const {
+    dragDropManager
+  } = (0, _react.useContext)(_DndContext.DndContext);
+  (0, _invariant.default)(dragDropManager != null, 'Expected drag drop context');
+  return dragDropManager;
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","../../common/DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js"}],"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DragSourceMonitorImpl = void 0;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+let isCallingCanDrag = false;
+let isCallingIsDragging = false;
+
+class DragSourceMonitorImpl {
+  constructor(manager) {
+    this.sourceId = null;
+    this.internalMonitor = manager.getMonitor();
+  }
+
+  receiveHandlerId(sourceId) {
+    this.sourceId = sourceId;
+  }
+
+  getHandlerId() {
+    return this.sourceId;
+  }
+
+  canDrag() {
+    (0, _invariant.default)(!isCallingCanDrag, 'You may not call monitor.canDrag() inside your canDrag() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source-monitor');
+
+    try {
+      isCallingCanDrag = true;
+      return this.internalMonitor.canDragSource(this.sourceId);
+    } finally {
+      isCallingCanDrag = false;
+    }
+  }
+
+  isDragging() {
+    if (!this.sourceId) {
+      return false;
+    }
+
+    (0, _invariant.default)(!isCallingIsDragging, 'You may not call monitor.isDragging() inside your isDragging() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source-monitor');
+
+    try {
+      isCallingIsDragging = true;
+      return this.internalMonitor.isDraggingSource(this.sourceId);
+    } finally {
+      isCallingIsDragging = false;
+    }
+  }
+
+  subscribeToStateChange(listener, options) {
+    return this.internalMonitor.subscribeToStateChange(listener, options);
+  }
+
+  isDraggingSource(sourceId) {
+    return this.internalMonitor.isDraggingSource(sourceId);
+  }
+
+  isOverTarget(targetId, options) {
+    return this.internalMonitor.isOverTarget(targetId, options);
+  }
+
+  getTargetIds() {
+    return this.internalMonitor.getTargetIds();
+  }
+
+  isSourcePublic() {
+    return this.internalMonitor.isSourcePublic();
+  }
+
+  getSourceId() {
+    return this.internalMonitor.getSourceId();
+  }
+
+  subscribeToOffsetChange(listener) {
+    return this.internalMonitor.subscribeToOffsetChange(listener);
+  }
+
+  canDragSource(sourceId) {
+    return this.internalMonitor.canDragSource(sourceId);
+  }
+
+  canDropOnTarget(targetId) {
+    return this.internalMonitor.canDropOnTarget(targetId);
+  }
+
+  getItemType() {
+    return this.internalMonitor.getItemType();
+  }
+
+  getItem() {
+    return this.internalMonitor.getItem();
+  }
+
+  getDropResult() {
+    return this.internalMonitor.getDropResult();
+  }
+
+  didDrop() {
+    return this.internalMonitor.didDrop();
+  }
+
+  getInitialClientOffset() {
+    return this.internalMonitor.getInitialClientOffset();
+  }
+
+  getInitialSourceClientOffset() {
+    return this.internalMonitor.getInitialSourceClientOffset();
+  }
+
+  getSourceClientOffset() {
+    return this.internalMonitor.getSourceClientOffset();
+  }
+
+  getClientOffset() {
+    return this.internalMonitor.getClientOffset();
+  }
+
+  getDifferenceFromInitialOffset() {
+    return this.internalMonitor.getDifferenceFromInitialOffset();
+  }
+
+}
+
+exports.DragSourceMonitorImpl = DragSourceMonitorImpl;
+},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/utils/cloneWithRef.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.cloneWithRef = cloneWithRef;
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function setRef(ref, node) {
+  if (typeof ref === 'function') {
+    ref(node);
+  } else {
+    ref.current = node;
+  }
+}
+
+function cloneWithRef(element, newRef) {
+  const previousRef = element.ref;
+  (0, _invariant.default)(typeof previousRef !== 'string', 'Cannot connect React DnD to an element with an existing string ref. ' + 'Please convert it to use a callback ref instead, or wrap it into a <span> or <div>. ' + 'Read more: https://facebook.github.io/react/docs/more-about-refs.html#the-ref-callback-attribute');
+
+  if (!previousRef) {
+    // When there is no ref on the element, use the new ref directly
+    return (0, _react.cloneElement)(element, {
+      ref: newRef
+    });
+  }
+
+  return (0, _react.cloneElement)(element, {
+    ref: node => {
+      setRef(newRef, node);
+
+      if (previousRef) {
+        setRef(previousRef, node);
+      }
+    }
+  });
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = wrapConnectorHooks;
+
+var _react = require("react");
+
+var _cloneWithRef = require("../utils/cloneWithRef");
+
+function throwIfCompositeComponentElement(element) {
+  // Custom components can no longer be wrapped directly in React DnD 2.0
+  // so that we don't need to depend on findDOMNode() from react-dom.
+  if (typeof element.type === 'string') {
+    return;
+  }
+
+  const displayName = element.type.displayName || element.type.name || 'the component';
+  throw new Error('Only native element nodes can now be passed to React DnD connectors.' + `You can either wrap ${displayName} into a <div>, or turn it into a ` + 'drag source or a drop target itself.');
+}
+
+function wrapHookToRecognizeElement(hook) {
+  return (elementOrNode = null, options = null) => {
+    // When passed a node, call the hook straight away.
+    if (!(0, _react.isValidElement)(elementOrNode)) {
+      const node = elementOrNode;
+      hook(node, options); // return the node so it can be chained (e.g. when within callback refs
+      // <div ref={node => connectDragSource(connectDropTarget(node))}/>
+
+      return node;
+    } // If passed a ReactElement, clone it and attach this function as a ref.
+    // This helps us achieve a neat API where user doesn't even know that refs
+    // are being used under the hood.
+
+
+    const element = elementOrNode;
+    throwIfCompositeComponentElement(element); // When no options are passed, use the hook directly
+
+    const ref = options ? node => hook(node, options) : hook;
+    return (0, _cloneWithRef.cloneWithRef)(element, ref);
+  };
+}
+
+function wrapConnectorHooks(hooks) {
+  const wrappedHooks = {};
+  Object.keys(hooks).forEach(key => {
+    const hook = hooks[key]; // ref objects should be passed straight through without wrapping
+
+    if (key.endsWith('Ref')) {
+      wrappedHooks[key] = hooks[key];
+    } else {
+      const wrappedHook = wrapHookToRecognizeElement(hook);
+
+      wrappedHooks[key] = () => wrappedHook;
+    }
+  });
+  return wrappedHooks;
+}
+},{"react":"../../../node_modules/react/index.js","../utils/cloneWithRef":"../../node_modules/react-dnd/lib/utils/cloneWithRef.js"}],"../../node_modules/react-dnd/lib/utils/isRef.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isRef = isRef;
+
+function isRef(obj) {
+  return obj !== null && typeof obj === 'object' && obj.hasOwnProperty('current');
+}
+},{}],"../../node_modules/react-dnd/lib/common/SourceConnector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SourceConnector = void 0;
+
+var _wrapConnectorHooks = _interopRequireDefault(require("./wrapConnectorHooks"));
+
+var _isRef = require("../utils/isRef");
+
+var _shallowequal = _interopRequireDefault(require("shallowequal"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class SourceConnector {
+  constructor(backend) {
+    this.backend = backend;
+    this.hooks = (0, _wrapConnectorHooks.default)({
+      dragSource: (node, options) => {
+        this.dragSourceOptions = options || null;
+
+        if ((0, _isRef.isRef)(node)) {
+          this.dragSourceRef = node;
+        } else {
+          this.dragSourceNode = node;
+        }
+
+        this.reconnectDragSource();
+      },
+      dragPreview: (node, options) => {
+        this.dragPreviewOptions = options || null;
+
+        if ((0, _isRef.isRef)(node)) {
+          this.dragPreviewRef = node;
+        } else {
+          this.dragPreviewNode = node;
+        }
+
+        this.reconnectDragPreview();
+      }
+    });
+    this.handlerId = null; // The drop target may either be attached via ref or connect function
+
+    this.dragSourceRef = null;
+    this.dragSourceOptionsInternal = null; // The drag preview may either be attached via ref or connect function
+
+    this.dragPreviewRef = null;
+    this.dragPreviewOptionsInternal = null;
+    this.lastConnectedHandlerId = null;
+    this.lastConnectedDragSource = null;
+    this.lastConnectedDragSourceOptions = null;
+    this.lastConnectedDragPreview = null;
+    this.lastConnectedDragPreviewOptions = null;
+  }
+
+  receiveHandlerId(newHandlerId) {
+    if (this.handlerId === newHandlerId) {
+      return;
+    }
+
+    this.handlerId = newHandlerId;
+    this.reconnect();
+  }
+
+  get connectTarget() {
+    return this.dragSource;
+  }
+
+  get dragSourceOptions() {
+    return this.dragSourceOptionsInternal;
+  }
+
+  set dragSourceOptions(options) {
+    this.dragSourceOptionsInternal = options;
+  }
+
+  get dragPreviewOptions() {
+    return this.dragPreviewOptionsInternal;
+  }
+
+  set dragPreviewOptions(options) {
+    this.dragPreviewOptionsInternal = options;
+  }
+
+  reconnect() {
+    this.reconnectDragSource();
+    this.reconnectDragPreview();
+  }
+
+  reconnectDragSource() {
+    // if nothing has changed then don't resubscribe
+    const didChange = this.didHandlerIdChange() || this.didConnectedDragSourceChange() || this.didDragSourceOptionsChange();
+
+    if (didChange) {
+      this.disconnectDragSource();
+    }
+
+    const dragSource = this.dragSource;
+
+    if (!this.handlerId) {
+      return;
+    }
+
+    if (!dragSource) {
+      this.lastConnectedDragSource = dragSource;
+      return;
+    }
+
+    if (didChange) {
+      this.lastConnectedHandlerId = this.handlerId;
+      this.lastConnectedDragSource = dragSource;
+      this.lastConnectedDragSourceOptions = this.dragSourceOptions;
+      this.dragSourceUnsubscribe = this.backend.connectDragSource(this.handlerId, dragSource, this.dragSourceOptions);
+    }
+  }
+
+  reconnectDragPreview() {
+    // if nothing has changed then don't resubscribe
+    const didChange = this.didHandlerIdChange() || this.didConnectedDragPreviewChange() || this.didDragPreviewOptionsChange();
+
+    if (didChange) {
+      this.disconnectDragPreview();
+    }
+
+    const dragPreview = this.dragPreview;
+
+    if (!this.handlerId || !dragPreview) {
+      return;
+    }
+
+    if (didChange) {
+      this.lastConnectedHandlerId = this.handlerId;
+      this.lastConnectedDragPreview = dragPreview;
+      this.lastConnectedDragPreviewOptions = this.dragPreviewOptions;
+      this.dragPreviewUnsubscribe = this.backend.connectDragPreview(this.handlerId, dragPreview, this.dragPreviewOptions);
+    }
+  }
+
+  didHandlerIdChange() {
+    return this.lastConnectedHandlerId !== this.handlerId;
+  }
+
+  didConnectedDragSourceChange() {
+    return this.lastConnectedDragSource !== this.dragSource;
+  }
+
+  didConnectedDragPreviewChange() {
+    return this.lastConnectedDragPreview !== this.dragPreview;
+  }
+
+  didDragSourceOptionsChange() {
+    return !(0, _shallowequal.default)(this.lastConnectedDragSourceOptions, this.dragSourceOptions);
+  }
+
+  didDragPreviewOptionsChange() {
+    return !(0, _shallowequal.default)(this.lastConnectedDragPreviewOptions, this.dragPreviewOptions);
+  }
+
+  disconnectDragSource() {
+    if (this.dragSourceUnsubscribe) {
+      this.dragSourceUnsubscribe();
+      this.dragSourceUnsubscribe = undefined;
+      this.dragPreviewNode = null;
+      this.dragPreviewRef = null;
+    }
+  }
+
+  disconnectDragPreview() {
+    if (this.dragPreviewUnsubscribe) {
+      this.dragPreviewUnsubscribe();
+      this.dragPreviewUnsubscribe = undefined;
+      this.dragPreviewNode = null;
+      this.dragPreviewRef = null;
+    }
+  }
+
+  get dragSource() {
+    return this.dragSourceNode || this.dragSourceRef && this.dragSourceRef.current;
+  }
+
+  get dragPreview() {
+    return this.dragPreviewNode || this.dragPreviewRef && this.dragPreviewRef.current;
+  }
+
+}
+
+exports.SourceConnector = SourceConnector;
+},{"./wrapConnectorHooks":"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js","../utils/isRef":"../../node_modules/react-dnd/lib/utils/isRef.js","shallowequal":"../../node_modules/shallowequal/index.js"}],"../../node_modules/react-dnd/lib/hooks/internal/drag.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDragSourceMonitor = useDragSourceMonitor;
+exports.useDragHandler = useDragHandler;
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _registration = require("../../common/registration");
+
+var _useDragDropManager = require("./useDragDropManager");
+
+var _DragSourceMonitorImpl = require("../../common/DragSourceMonitorImpl");
+
+var _SourceConnector = require("../../common/SourceConnector");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function useDragSourceMonitor() {
+  const manager = (0, _useDragDropManager.useDragDropManager)();
+  const monitor = (0, _react.useMemo)(() => new _DragSourceMonitorImpl.DragSourceMonitorImpl(manager), [manager]);
+  const connector = (0, _react.useMemo)(() => new _SourceConnector.SourceConnector(manager.getBackend()), [manager]);
+  return [monitor, connector];
+}
+
+function useDragHandler(spec, monitor, connector) {
+  const manager = (0, _useDragDropManager.useDragDropManager)();
+  const handler = (0, _react.useMemo)(() => {
+    return {
+      beginDrag() {
+        const {
+          begin,
+          item
+        } = spec.current;
+
+        if (begin) {
+          const beginResult = begin(monitor);
+          (0, _invariant.default)(beginResult == null || typeof beginResult === 'object', 'dragSpec.begin() must either return an object, undefined, or null');
+          return beginResult || item || {};
+        }
+
+        return item || {};
+      },
+
+      canDrag() {
+        if (typeof spec.current.canDrag === 'boolean') {
+          return spec.current.canDrag;
+        } else if (typeof spec.current.canDrag === 'function') {
+          return spec.current.canDrag(monitor);
+        } else {
+          return true;
+        }
+      },
+
+      isDragging(globalMonitor, target) {
+        const {
+          isDragging
+        } = spec.current;
+        return isDragging ? isDragging(monitor) : target === globalMonitor.getSourceId();
+      },
+
+      endDrag() {
+        const {
+          end
+        } = spec.current;
+
+        if (end) {
+          end(monitor.getItem(), monitor);
+        }
+
+        connector.reconnect();
+      }
+
+    };
+  }, []);
+  (0, _react.useEffect)(function registerHandler() {
+    const [handlerId, unregister] = (0, _registration.registerSource)(spec.current.item.type, handler, manager);
+    monitor.receiveHandlerId(handlerId);
+    connector.receiveHandlerId(handlerId);
+    return unregister;
+  }, []);
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","../../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","./useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","../../common/DragSourceMonitorImpl":"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js","../../common/SourceConnector":"../../node_modules/react-dnd/lib/common/SourceConnector.js"}],"../../node_modules/react-dnd/lib/hooks/useDrag.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDrag = useDrag;
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _useMonitorOutput = require("./internal/useMonitorOutput");
+
+var _drag = require("./internal/drag");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * useDragSource hook
+ * @param sourceSpec The drag source specification *
+ */
+function useDrag(spec) {
+  const specRef = (0, _react.useRef)(spec);
+  specRef.current = spec; // TODO: wire options into createSourceConnector
+
+  (0, _invariant.default)(spec.item != null, 'item must be defined');
+  (0, _invariant.default)(spec.item.type != null, 'item type must be defined');
+  const [monitor, connector] = (0, _drag.useDragSourceMonitor)();
+  (0, _drag.useDragHandler)(specRef, monitor, connector);
+  const result = (0, _useMonitorOutput.useMonitorOutput)(monitor, specRef.current.collect || (() => ({})), () => connector.reconnect());
+  const connectDragSource = (0, _react.useMemo)(() => connector.hooks.dragSource(), [connector]);
+  const connectDragPreview = (0, _react.useMemo)(() => connector.hooks.dragPreview(), [connector]);
+  (0, _react.useEffect)(() => {
+    connector.dragSourceOptions = specRef.current.options || null;
+    connector.reconnect();
+  }, [connector]);
+  (0, _react.useEffect)(() => {
+    connector.dragPreviewOptions = specRef.current.previewOptions || null;
+    connector.reconnect();
+  }, [connector]);
+  return [result, connectDragSource, connectDragPreview];
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","./internal/useMonitorOutput":"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js","./internal/drag":"../../node_modules/react-dnd/lib/hooks/internal/drag.js"}],"../../node_modules/react-dnd/lib/common/TargetConnector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TargetConnector = void 0;
+
+var _shallowequal = _interopRequireDefault(require("shallowequal"));
+
+var _wrapConnectorHooks = _interopRequireDefault(require("./wrapConnectorHooks"));
+
+var _isRef = require("../utils/isRef");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class TargetConnector {
+  constructor(backend) {
+    this.backend = backend;
+    this.hooks = (0, _wrapConnectorHooks.default)({
+      dropTarget: (node, options) => {
+        this.dropTargetOptions = options;
+
+        if ((0, _isRef.isRef)(node)) {
+          this.dropTargetRef = node;
+        } else {
+          this.dropTargetNode = node;
+        }
+
+        this.reconnect();
+      }
+    });
+    this.handlerId = null; // The drop target may either be attached via ref or connect function
+
+    this.dropTargetRef = null;
+    this.dropTargetOptionsInternal = null;
+    this.lastConnectedHandlerId = null;
+    this.lastConnectedDropTarget = null;
+    this.lastConnectedDropTargetOptions = null;
+  }
+
+  get connectTarget() {
+    return this.dropTarget;
+  }
+
+  reconnect() {
+    // if nothing has changed then don't resubscribe
+    const didChange = this.didHandlerIdChange() || this.didDropTargetChange() || this.didOptionsChange();
+
+    if (didChange) {
+      this.disconnectDropTarget();
+    }
+
+    const dropTarget = this.dropTarget;
+
+    if (!this.handlerId) {
+      return;
+    }
+
+    if (!dropTarget) {
+      this.lastConnectedDropTarget = dropTarget;
+      return;
+    }
+
+    if (didChange) {
+      this.lastConnectedHandlerId = this.handlerId;
+      this.lastConnectedDropTarget = dropTarget;
+      this.lastConnectedDropTargetOptions = this.dropTargetOptions;
+      this.unsubscribeDropTarget = this.backend.connectDropTarget(this.handlerId, dropTarget, this.dropTargetOptions);
+    }
+  }
+
+  receiveHandlerId(newHandlerId) {
+    if (newHandlerId === this.handlerId) {
+      return;
+    }
+
+    this.handlerId = newHandlerId;
+    this.reconnect();
+  }
+
+  get dropTargetOptions() {
+    return this.dropTargetOptionsInternal;
+  }
+
+  set dropTargetOptions(options) {
+    this.dropTargetOptionsInternal = options;
+  }
+
+  didHandlerIdChange() {
+    return this.lastConnectedHandlerId !== this.handlerId;
+  }
+
+  didDropTargetChange() {
+    return this.lastConnectedDropTarget !== this.dropTarget;
+  }
+
+  didOptionsChange() {
+    return !(0, _shallowequal.default)(this.lastConnectedDropTargetOptions, this.dropTargetOptions);
+  }
+
+  disconnectDropTarget() {
+    if (this.unsubscribeDropTarget) {
+      this.unsubscribeDropTarget();
+      this.unsubscribeDropTarget = undefined;
+    }
+  }
+
+  get dropTarget() {
+    return this.dropTargetNode || this.dropTargetRef && this.dropTargetRef.current;
+  }
+
+}
+
+exports.TargetConnector = TargetConnector;
+},{"shallowequal":"../../node_modules/shallowequal/index.js","./wrapConnectorHooks":"../../node_modules/react-dnd/lib/common/wrapConnectorHooks.js","../utils/isRef":"../../node_modules/react-dnd/lib/utils/isRef.js"}],"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DropTargetMonitorImpl = void 0;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+let isCallingCanDrop = false;
+
+class DropTargetMonitorImpl {
+  constructor(manager) {
+    this.targetId = null;
+    this.internalMonitor = manager.getMonitor();
+  }
+
+  receiveHandlerId(targetId) {
+    this.targetId = targetId;
+  }
+
+  getHandlerId() {
+    return this.targetId;
+  }
+
+  subscribeToStateChange(listener, options) {
+    return this.internalMonitor.subscribeToStateChange(listener, options);
+  }
+
+  canDrop() {
+    // Cut out early if the target id has not been set. This should prevent errors
+    // where the user has an older version of dnd-core like in
+    // https://github.com/react-dnd/react-dnd/issues/1310
+    if (!this.targetId) {
+      return false;
+    }
+
+    (0, _invariant.default)(!isCallingCanDrop, 'You may not call monitor.canDrop() inside your canDrop() implementation. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target-monitor');
+
+    try {
+      isCallingCanDrop = true;
+      return this.internalMonitor.canDropOnTarget(this.targetId);
+    } finally {
+      isCallingCanDrop = false;
+    }
+  }
+
+  isOver(options) {
+    if (!this.targetId) {
+      return false;
+    }
+
+    return this.internalMonitor.isOverTarget(this.targetId, options);
+  }
+
+  getItemType() {
+    return this.internalMonitor.getItemType();
+  }
+
+  getItem() {
+    return this.internalMonitor.getItem();
+  }
+
+  getDropResult() {
+    return this.internalMonitor.getDropResult();
+  }
+
+  didDrop() {
+    return this.internalMonitor.didDrop();
+  }
+
+  getInitialClientOffset() {
+    return this.internalMonitor.getInitialClientOffset();
+  }
+
+  getInitialSourceClientOffset() {
+    return this.internalMonitor.getInitialSourceClientOffset();
+  }
+
+  getSourceClientOffset() {
+    return this.internalMonitor.getSourceClientOffset();
+  }
+
+  getClientOffset() {
+    return this.internalMonitor.getClientOffset();
+  }
+
+  getDifferenceFromInitialOffset() {
+    return this.internalMonitor.getDifferenceFromInitialOffset();
+  }
+
+}
+
+exports.DropTargetMonitorImpl = DropTargetMonitorImpl;
+},{"invariant":"../../node_modules/invariant/browser.js"}],"../../node_modules/react-dnd/lib/hooks/internal/drop.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDropTargetMonitor = useDropTargetMonitor;
+exports.useDropHandler = useDropHandler;
+
+var _react = require("react");
+
+var _registration = require("../../common/registration");
+
+var _useDragDropManager = require("./useDragDropManager");
+
+var _TargetConnector = require("../../common/TargetConnector");
+
+var _DropTargetMonitorImpl = require("../../common/DropTargetMonitorImpl");
+
+function useDropTargetMonitor() {
+  const manager = (0, _useDragDropManager.useDragDropManager)();
+  const monitor = (0, _react.useMemo)(() => new _DropTargetMonitorImpl.DropTargetMonitorImpl(manager), [manager]);
+  const connector = (0, _react.useMemo)(() => new _TargetConnector.TargetConnector(manager.getBackend()), [manager]);
+  return [monitor, connector];
+}
+
+function useDropHandler(spec, monitor, connector) {
+  const manager = (0, _useDragDropManager.useDragDropManager)();
+  const handler = (0, _react.useMemo)(() => {
+    return {
+      canDrop() {
+        const {
+          canDrop
+        } = spec.current;
+        return canDrop ? canDrop(monitor.getItem(), monitor) : true;
+      },
+
+      hover() {
+        const {
+          hover
+        } = spec.current;
+
+        if (hover) {
+          hover(monitor.getItem(), monitor);
+        }
+      },
+
+      drop() {
+        const {
+          drop
+        } = spec.current;
+
+        if (drop) {
+          return drop(monitor.getItem(), monitor);
+        }
+      }
+
+    };
+  }, [monitor]);
+  (0, _react.useEffect)(function registerHandler() {
+    const [handlerId, unregister] = (0, _registration.registerTarget)(spec.current.accept, handler, manager);
+    monitor.receiveHandlerId(handlerId);
+    connector.receiveHandlerId(handlerId);
+    return unregister;
+  }, [monitor, connector]);
+}
+},{"react":"../../../node_modules/react/index.js","../../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","./useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","../../common/TargetConnector":"../../node_modules/react-dnd/lib/common/TargetConnector.js","../../common/DropTargetMonitorImpl":"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js"}],"../../node_modules/react-dnd/lib/hooks/useDrop.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDrop = useDrop;
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _useMonitorOutput = require("./internal/useMonitorOutput");
+
+var _drop = require("./internal/drop");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * useDropTarget Hook
+ * @param spec The drop target specification
+ */
+function useDrop(spec) {
+  const specRef = (0, _react.useRef)(spec);
+  specRef.current = spec;
+  (0, _invariant.default)(spec.accept != null, 'accept must be defined');
+  const [monitor, connector] = (0, _drop.useDropTargetMonitor)();
+  (0, _drop.useDropHandler)(specRef, monitor, connector);
+  const result = (0, _useMonitorOutput.useMonitorOutput)(monitor, specRef.current.collect || (() => ({})), () => connector.reconnect());
+  const connectDropTarget = (0, _react.useMemo)(() => connector.hooks.dropTarget(), [connector]);
+  (0, _react.useEffect)(() => {
+    connector.dropTargetOptions = spec.options || null;
+    connector.reconnect();
+  }, [spec.options]);
+  return [result, connectDropTarget];
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","./internal/useMonitorOutput":"../../node_modules/react-dnd/lib/hooks/internal/useMonitorOutput.js","./internal/drop":"../../node_modules/react-dnd/lib/hooks/internal/drop.js"}],"../../node_modules/react-dnd/lib/hooks/useDragLayer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useDragLayer = useDragLayer;
+
+var _react = require("react");
+
+var _useDragDropManager = require("./internal/useDragDropManager");
+
+var _useCollector = require("./internal/useCollector");
+
+/**
+ * useDragLayer Hook
+ * @param collector The property collector
+ */
+function useDragLayer(collect) {
+  const dragDropManager = (0, _useDragDropManager.useDragDropManager)();
+  const monitor = dragDropManager.getMonitor();
+  const [collected, updateCollected] = (0, _useCollector.useCollector)(monitor, collect);
+  (0, _react.useEffect)(() => monitor.subscribeToOffsetChange(updateCollected));
+  (0, _react.useEffect)(() => monitor.subscribeToStateChange(updateCollected));
+  return collected;
+}
+},{"react":"../../../node_modules/react/index.js","./internal/useDragDropManager":"../../node_modules/react-dnd/lib/hooks/internal/useDragDropManager.js","./internal/useCollector":"../../node_modules/react-dnd/lib/hooks/internal/useCollector.js"}],"../../node_modules/react-dnd/lib/hooks/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _useDrag = require("./useDrag");
+
+Object.keys(_useDrag).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _useDrag[key];
+    }
+  });
+});
+
+var _useDrop = require("./useDrop");
+
+Object.keys(_useDrop).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _useDrop[key];
+    }
+  });
+});
+
+var _useDragLayer = require("./useDragLayer");
+
+Object.keys(_useDragLayer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _useDragLayer[key];
+    }
+  });
+});
+},{"./useDrag":"../../node_modules/react-dnd/lib/hooks/useDrag.js","./useDrop":"../../node_modules/react-dnd/lib/hooks/useDrop.js","./useDragLayer":"../../node_modules/react-dnd/lib/hooks/useDragLayer.js"}],"../../node_modules/react-dnd/lib/utils/js_utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isFunction = isFunction;
+exports.noop = noop;
+exports.isPlainObject = isPlainObject;
+
+// cheap lodash replacements
+function isFunction(input) {
+  return typeof input === 'function';
+}
+
+function noop() {// noop
+}
+
+function isObjectLike(input) {
+  return typeof input === 'object' && input !== null;
+}
+
+function isPlainObject(input) {
+  if (!isObjectLike(input)) {
+    return false;
+  }
+
+  if (Object.getPrototypeOf(input) === null) {
+    return true;
+  }
+
+  let proto = input;
+
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return Object.getPrototypeOf(input) === proto;
+}
+},{}],"../../node_modules/react-dnd/lib/decorators/utils.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getDecoratedComponent = getDecoratedComponent;
+exports.isClassComponent = isClassComponent;
+exports.isRefForwardingComponent = isRefForwardingComponent;
+exports.isRefable = isRefable;
+exports.checkDecoratorArguments = checkDecoratorArguments;
+
+function getDecoratedComponent(instanceRef) {
+  const currentRef = instanceRef.current;
+
+  if (currentRef == null) {
+    return null;
+  } else if (currentRef.decoratedRef) {
+    // go through the private field in decorateHandler to avoid the invariant hit
+    return currentRef.decoratedRef.current;
+  } else {
+    return currentRef;
+  }
+}
+
+function isClassComponent(Component) {
+  return Component && Component.prototype && typeof Component.prototype.render === 'function';
+}
+
+function isRefForwardingComponent(C) {
+  return C && C.$$typeof && C.$$typeof.toString() === 'Symbol(react.forward_ref)';
+}
+
+function isRefable(C) {
+  return isClassComponent(C) || isRefForwardingComponent(C);
+}
+
+function checkDecoratorArguments(functionName, signature, ...args) {
+  if ("development" !== 'production') {
+    for (const arg of args) {
+      if (arg && arg.prototype && arg.prototype.render) {
+        // eslint-disable-next-line no-console
+        console.error('You seem to be applying the arguments in the wrong order. ' + `It should be ${functionName}(${signature})(Component), not the other way around. ` + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#you-seem-to-be-applying-the-arguments-in-the-wrong-order');
+        return;
+      }
+    }
+  }
+}
+},{}],"../../node_modules/react-dnd/lib/decorators/disposables.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SerialDisposable = exports.CompositeDisposable = exports.Disposable = void 0;
+
+var _js_utils = require("../utils/js_utils");
+
+/**
+ * Provides a set of static methods for creating Disposables.
+ * @param {Function} action Action to run during the first call to dispose.
+ * The action is guaranteed to be run at most once.
+ */
+class Disposable {
+  constructor(action) {
+    this.isDisposed = false;
+    this.action = (0, _js_utils.isFunction)(action) ? action : _js_utils.noop;
+  }
+  /**
+   * Validates whether the given object is a disposable
+   * @param {Object} Object to test whether it has a dispose method
+   * @returns {Boolean} true if a disposable object, else false.
+   */
+
+
+  static isDisposable(d) {
+    return d && (0, _js_utils.isFunction)(d.dispose);
+  }
+
+  static _fixup(result) {
+    return Disposable.isDisposable(result) ? result : Disposable.empty;
+  }
+  /**
+   * Creates a disposable object that invokes the specified action when disposed.
+   * @param {Function} dispose Action to run during the first call to dispose.
+   * The action is guaranteed to be run at most once.
+   * @return {Disposable} The disposable object that runs the given action upon disposal.
+   */
+
+
+  static create(action) {
+    return new Disposable(action);
+  }
+  /** Performs the task of cleaning up resources. */
+
+
+  dispose() {
+    if (!this.isDisposed) {
+      this.action();
+      this.isDisposed = true;
+    }
+  }
+
+}
+/**
+ * Gets the disposable that does nothing when disposed.
+ */
+
+
+exports.Disposable = Disposable;
+Disposable.empty = {
+  dispose: _js_utils.noop
+};
+/**
+ * Represents a group of disposable resources that are disposed together.
+ * @constructor
+ */
+
+class CompositeDisposable {
+  constructor(...disposables) {
+    this.isDisposed = false;
+    this.disposables = disposables;
+  }
+  /**
+   * Adds a disposable to the CompositeDisposable or disposes the disposable if the CompositeDisposable is disposed.
+   * @param {Any} item Disposable to add.
+   */
+
+
+  add(item) {
+    if (this.isDisposed) {
+      item.dispose();
+    } else {
+      this.disposables.push(item);
+    }
+  }
+  /**
+   * Removes and disposes the first occurrence of a disposable from the CompositeDisposable.
+   * @param {Any} item Disposable to remove.
+   * @returns {Boolean} true if found; false otherwise.
+   */
+
+
+  remove(item) {
+    let shouldDispose = false;
+
+    if (!this.isDisposed) {
+      const idx = this.disposables.indexOf(item);
+
+      if (idx !== -1) {
+        shouldDispose = true;
+        this.disposables.splice(idx, 1);
+        item.dispose();
+      }
+    }
+
+    return shouldDispose;
+  }
+  /**
+   *  Disposes all disposables in the group and removes them from the group but
+   *  does not dispose the CompositeDisposable.
+   */
+
+
+  clear() {
+    if (!this.isDisposed) {
+      const len = this.disposables.length;
+      const currentDisposables = new Array(len);
+
+      for (let i = 0; i < len; i++) {
+        currentDisposables[i] = this.disposables[i];
+      }
+
+      this.disposables = [];
+
+      for (let i = 0; i < len; i++) {
+        currentDisposables[i].dispose();
+      }
+    }
+  }
+  /**
+   *  Disposes all disposables in the group and removes them from the group.
+   */
+
+
+  dispose() {
+    if (!this.isDisposed) {
+      this.isDisposed = true;
+      const len = this.disposables.length;
+      const currentDisposables = new Array(len);
+
+      for (let i = 0; i < len; i++) {
+        currentDisposables[i] = this.disposables[i];
+      }
+
+      this.disposables = [];
+
+      for (let i = 0; i < len; i++) {
+        currentDisposables[i].dispose();
+      }
+    }
+  }
+
+}
+/**
+ * Represents a disposable resource whose underlying disposable resource can
+ * be replaced by another disposable resource, causing automatic disposal of
+ * the previous underlying disposable resource.
+ */
+
+
+exports.CompositeDisposable = CompositeDisposable;
+
+class SerialDisposable {
+  constructor() {
+    this.isDisposed = false;
+  }
+  /**
+   * Gets the underlying disposable.
+   * @returns {Any} the underlying disposable.
+   */
+
+
+  getDisposable() {
+    return this.current;
+  }
+
+  setDisposable(value) {
+    const shouldDispose = this.isDisposed;
+
+    if (!shouldDispose) {
+      const old = this.current;
+      this.current = value;
+
+      if (old) {
+        old.dispose();
+      }
+    }
+
+    if (shouldDispose && value) {
+      value.dispose();
+    }
+  }
+  /** Performs the task of cleaning up resources. */
+
+
+  dispose() {
+    if (!this.isDisposed) {
+      this.isDisposed = true;
+      const old = this.current;
+      this.current = undefined;
+
+      if (old) {
+        old.dispose();
+      }
+    }
+  }
+
+}
+
+exports.SerialDisposable = SerialDisposable;
+},{"../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js"}],"../../node_modules/react-dnd/lib/decorators/decorateHandler.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = decorateHandler;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _shallowequal = _interopRequireDefault(require("shallowequal"));
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
+
+var _index = require("../index");
+
+var _js_utils = require("../utils/js_utils");
+
+var _disposables = require("./disposables");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function decorateHandler({
+  DecoratedComponent,
+  createHandler,
+  createMonitor,
+  createConnector,
+  registerHandler,
+  containerDisplayName,
+  getType,
+  collect,
+  options
+}) {
+  const {
+    arePropsEqual = _shallowequal.default
+  } = options;
+  const Decorated = DecoratedComponent;
+  const displayName = DecoratedComponent.displayName || DecoratedComponent.name || 'Component';
+
+  class DragDropContainer extends React.Component {
+    constructor(props) {
+      super(props);
+      this.decoratedRef = React.createRef();
+
+      this.handleChange = () => {
+        const nextState = this.getCurrentState();
+
+        if (!(0, _shallowequal.default)(nextState, this.state)) {
+          this.setState(nextState);
+        }
+      };
+
+      this.disposable = new _disposables.SerialDisposable();
+      this.receiveProps(props);
+      this.dispose();
+    }
+
+    getHandlerId() {
+      return this.handlerId;
+    }
+
+    getDecoratedComponentInstance() {
+      (0, _invariant.default)(this.decoratedRef.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
+      return this.decoratedRef.current;
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+      return !arePropsEqual(nextProps, this.props) || !(0, _shallowequal.default)(nextState, this.state);
+    }
+
+    componentDidMount() {
+      this.disposable = new _disposables.SerialDisposable();
+      this.currentType = undefined;
+      this.receiveProps(this.props);
+      this.handleChange();
+    }
+
+    componentDidUpdate(prevProps) {
+      if (!arePropsEqual(this.props, prevProps)) {
+        this.receiveProps(this.props);
+        this.handleChange();
+      }
+    }
+
+    componentWillUnmount() {
+      this.dispose();
+    }
+
+    receiveProps(props) {
+      if (!this.handler) {
+        return;
+      }
+
+      this.handler.receiveProps(props);
+      this.receiveType(getType(props));
+    }
+
+    receiveType(type) {
+      if (!this.handlerMonitor || !this.manager || !this.handlerConnector) {
+        return;
+      }
+
+      if (type === this.currentType) {
+        return;
+      }
+
+      this.currentType = type;
+      const [handlerId, unregister] = registerHandler(type, this.handler, this.manager);
+      this.handlerId = handlerId;
+      this.handlerMonitor.receiveHandlerId(handlerId);
+      this.handlerConnector.receiveHandlerId(handlerId);
+      const globalMonitor = this.manager.getMonitor();
+      const unsubscribe = globalMonitor.subscribeToStateChange(this.handleChange, {
+        handlerIds: [handlerId]
+      });
+      this.disposable.setDisposable(new _disposables.CompositeDisposable(new _disposables.Disposable(unsubscribe), new _disposables.Disposable(unregister)));
+    }
+
+    dispose() {
+      this.disposable.dispose();
+
+      if (this.handlerConnector) {
+        this.handlerConnector.receiveHandlerId(null);
+      }
+    }
+
+    getCurrentState() {
+      if (!this.handlerConnector) {
+        return {};
+      }
+
+      const nextState = collect(this.handlerConnector.hooks, this.handlerMonitor, this.props);
+
+      if ("development" !== 'production') {
+        (0, _invariant.default)((0, _js_utils.isPlainObject)(nextState), 'Expected `collect` specified as the second argument to ' + '%s for %s to return a plain object of props to inject. ' + 'Instead, received %s.', containerDisplayName, displayName, nextState);
+      }
+
+      return nextState;
+    }
+
+    render() {
+      return React.createElement(_index.DndContext.Consumer, null, ({
+        dragDropManager
+      }) => {
+        this.receiveDragDropManager(dragDropManager);
+
+        if (typeof requestAnimationFrame !== 'undefined') {
+          requestAnimationFrame(() => this.handlerConnector.reconnect());
+        }
+
+        return React.createElement(Decorated, Object.assign({}, this.props, this.getCurrentState(), {
+          // NOTE: if Decorated is a Function Component, decoratedRef will not be populated unless it's a refforwarding component.
+          ref: (0, _utils.isRefable)(Decorated) ? this.decoratedRef : null
+        }));
+      });
+    }
+
+    receiveDragDropManager(dragDropManager) {
+      if (this.manager !== undefined) {
+        return;
+      }
+
+      (0, _invariant.default)(dragDropManager !== undefined, 'Could not find the drag and drop manager in the context of %s. ' + 'Make sure to wrap the top-level component of your app with DragDropContext. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context', displayName, displayName);
+
+      if (dragDropManager === undefined) {
+        return;
+      }
+
+      this.manager = dragDropManager;
+      this.handlerMonitor = createMonitor(dragDropManager);
+      this.handlerConnector = createConnector(dragDropManager.getBackend());
+      this.handler = createHandler(this.handlerMonitor, this.decoratedRef);
+    }
+
+  }
+
+  DragDropContainer.DecoratedComponent = DecoratedComponent;
+  DragDropContainer.displayName = `${containerDisplayName}(${displayName})`;
+  return (0, _hoistNonReactStatics.default)(DragDropContainer, DecoratedComponent);
+}
+},{"react":"../../../node_modules/react/index.js","shallowequal":"../../node_modules/shallowequal/index.js","invariant":"../../node_modules/invariant/browser.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","../index":"../../node_modules/react-dnd/lib/index.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./disposables":"../../node_modules/react-dnd/lib/decorators/disposables.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/utils/isValidType.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isValidType = isValidType;
+
+function isValidType(type, allowArray) {
+  return typeof type === 'string' || typeof type === 'symbol' || !!allowArray && Array.isArray(type) && type.every(t => isValidType(t, false));
+}
+},{}],"../../node_modules/react-dnd/lib/decorators/createSourceFactory.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createSourceFactory;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _js_utils = require("../utils/js_utils");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const ALLOWED_SPEC_METHODS = ['canDrag', 'beginDrag', 'isDragging', 'endDrag'];
+const REQUIRED_SPEC_METHODS = ['beginDrag'];
+
+class SourceImpl {
+  constructor(spec, monitor, ref) {
+    this.spec = spec;
+    this.monitor = monitor;
+    this.ref = ref;
+    this.props = null;
+
+    this.beginDrag = () => {
+      if (!this.props) {
+        return;
+      }
+
+      const item = this.spec.beginDrag(this.props, this.monitor, this.ref.current);
+
+      if ("development" !== 'production') {
+        (0, _invariant.default)((0, _js_utils.isPlainObject)(item), 'beginDrag() must return a plain object that represents the dragged item. ' + 'Instead received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', item);
+      }
+
+      return item;
+    };
+  }
+
+  receiveProps(props) {
+    this.props = props;
+  }
+
+  canDrag() {
+    if (!this.props) {
+      return false;
+    }
+
+    if (!this.spec.canDrag) {
+      return true;
+    }
+
+    return this.spec.canDrag(this.props, this.monitor);
+  }
+
+  isDragging(globalMonitor, sourceId) {
+    if (!this.props) {
+      return false;
+    }
+
+    if (!this.spec.isDragging) {
+      return sourceId === globalMonitor.getSourceId();
+    }
+
+    return this.spec.isDragging(this.props, this.monitor);
+  }
+
+  endDrag() {
+    if (!this.props) {
+      return;
+    }
+
+    if (!this.spec.endDrag) {
+      return;
+    }
+
+    this.spec.endDrag(this.props, this.monitor, (0, _utils.getDecoratedComponent)(this.ref));
+  }
+
+}
+
+function createSourceFactory(spec) {
+  Object.keys(spec).forEach(key => {
+    (0, _invariant.default)(ALLOWED_SPEC_METHODS.indexOf(key) > -1, 'Expected the drag source specification to only have ' + 'some of the following keys: %s. ' + 'Instead received a specification with an unexpected "%s" key. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', ALLOWED_SPEC_METHODS.join(', '), key);
+    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drag source specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', key, key, spec[key]);
+  });
+  REQUIRED_SPEC_METHODS.forEach(key => {
+    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drag source specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', key, key, spec[key]);
+  });
+  return function createSource(monitor, ref) {
+    return new SourceImpl(spec, monitor, ref);
+  };
+}
+},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DragSource.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DragSource = DragSource;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _js_utils = require("../utils/js_utils");
+
+var _utils = require("./utils");
+
+var _decorateHandler = _interopRequireDefault(require("./decorateHandler"));
+
+var _registration = require("../common/registration");
+
+var _DragSourceMonitorImpl = require("../common/DragSourceMonitorImpl");
+
+var _SourceConnector = require("../common/SourceConnector");
+
+var _isValidType = require("../utils/isValidType");
+
+var _createSourceFactory = _interopRequireDefault(require("./createSourceFactory"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Decorates a component as a dragsource
+ * @param type The dragsource type
+ * @param spec The drag source specification
+ * @param collect The props collector function
+ * @param options DnD options
+ */
+function DragSource(type, spec, collect, options = {}) {
+  (0, _utils.checkDecoratorArguments)('DragSource', 'type, spec, collect[, options]', type, spec, collect, options);
+  let getType = type;
+
+  if (typeof type !== 'function') {
+    (0, _invariant.default)((0, _isValidType.isValidType)(type), 'Expected "type" provided as the first argument to DragSource to be ' + 'a string, or a function that returns a string given the current props. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', type);
+
+    getType = () => type;
+  }
+
+  (0, _invariant.default)((0, _js_utils.isPlainObject)(spec), 'Expected "spec" provided as the second argument to DragSource to be ' + 'a plain object. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', spec);
+  const createSource = (0, _createSourceFactory.default)(spec);
+  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the third argument to DragSource to be ' + 'a function that returns a plain object of props to inject. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', collect);
+  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the fourth argument to DragSource to be ' + 'a plain object when specified. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-source', collect);
+  return function decorateSource(DecoratedComponent) {
+    return (0, _decorateHandler.default)({
+      containerDisplayName: 'DragSource',
+      createHandler: createSource,
+      registerHandler: _registration.registerSource,
+      createConnector: backend => new _SourceConnector.SourceConnector(backend),
+      createMonitor: manager => new _DragSourceMonitorImpl.DragSourceMonitorImpl(manager),
+      DecoratedComponent,
+      getType,
+      collect,
+      options
+    });
+  };
+}
+},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js","./decorateHandler":"../../node_modules/react-dnd/lib/decorators/decorateHandler.js","../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","../common/DragSourceMonitorImpl":"../../node_modules/react-dnd/lib/common/DragSourceMonitorImpl.js","../common/SourceConnector":"../../node_modules/react-dnd/lib/common/SourceConnector.js","../utils/isValidType":"../../node_modules/react-dnd/lib/utils/isValidType.js","./createSourceFactory":"../../node_modules/react-dnd/lib/decorators/createSourceFactory.js"}],"../../node_modules/react-dnd/lib/decorators/createTargetFactory.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createTargetFactory;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _js_utils = require("../utils/js_utils");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const ALLOWED_SPEC_METHODS = ['canDrop', 'hover', 'drop'];
+
+class TargetImpl {
+  constructor(spec, monitor, ref) {
+    this.spec = spec;
+    this.monitor = monitor;
+    this.ref = ref;
+    this.props = null;
+  }
+
+  receiveProps(props) {
+    this.props = props;
+  }
+
+  receiveMonitor(monitor) {
+    this.monitor = monitor;
+  }
+
+  canDrop() {
+    if (!this.spec.canDrop) {
+      return true;
+    }
+
+    return this.spec.canDrop(this.props, this.monitor);
+  }
+
+  hover() {
+    if (!this.spec.hover) {
+      return;
+    }
+
+    this.spec.hover(this.props, this.monitor, (0, _utils.getDecoratedComponent)(this.ref));
+  }
+
+  drop() {
+    if (!this.spec.drop) {
+      return undefined;
+    }
+
+    const dropResult = this.spec.drop(this.props, this.monitor, this.ref.current);
+
+    if ("development" !== 'production') {
+      (0, _invariant.default)(typeof dropResult === 'undefined' || (0, _js_utils.isPlainObject)(dropResult), 'drop() must either return undefined, or an object that represents the drop result. ' + 'Instead received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', dropResult);
+    }
+
+    return dropResult;
+  }
+
+}
+
+function createTargetFactory(spec) {
+  Object.keys(spec).forEach(key => {
+    (0, _invariant.default)(ALLOWED_SPEC_METHODS.indexOf(key) > -1, 'Expected the drop target specification to only have ' + 'some of the following keys: %s. ' + 'Instead received a specification with an unexpected "%s" key. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', ALLOWED_SPEC_METHODS.join(', '), key);
+    (0, _invariant.default)(typeof spec[key] === 'function', 'Expected %s in the drop target specification to be a function. ' + 'Instead received a specification with %s: %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', key, key, spec[key]);
+  });
+  return function createTarget(monitor, ref) {
+    return new TargetImpl(spec, monitor, ref);
+  };
+}
+},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DropTarget.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DropTarget = DropTarget;
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _js_utils = require("../utils/js_utils");
+
+var _registration = require("../common/registration");
+
+var _isValidType = require("../utils/isValidType");
+
+var _TargetConnector = require("../common/TargetConnector");
+
+var _DropTargetMonitorImpl = require("../common/DropTargetMonitorImpl");
+
+var _utils = require("./utils");
+
+var _decorateHandler = _interopRequireDefault(require("./decorateHandler"));
+
+var _createTargetFactory = _interopRequireDefault(require("./createTargetFactory"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DropTarget(type, spec, collect, options = {}) {
+  (0, _utils.checkDecoratorArguments)('DropTarget', 'type, spec, collect[, options]', type, spec, collect, options);
+  let getType = type;
+
+  if (typeof type !== 'function') {
+    (0, _invariant.default)((0, _isValidType.isValidType)(type, true), 'Expected "type" provided as the first argument to DropTarget to be ' + 'a string, an array of strings, or a function that returns either given ' + 'the current props. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', type);
+
+    getType = () => type;
+  }
+
+  (0, _invariant.default)((0, _js_utils.isPlainObject)(spec), 'Expected "spec" provided as the second argument to DropTarget to be ' + 'a plain object. Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', spec);
+  const createTarget = (0, _createTargetFactory.default)(spec);
+  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the third argument to DropTarget to be ' + 'a function that returns a plain object of props to inject. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', collect);
+  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the fourth argument to DropTarget to be ' + 'a plain object when specified. ' + 'Instead, received %s. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/api/drop-target', collect);
+  return function decorateTarget(DecoratedComponent) {
+    return (0, _decorateHandler.default)({
+      containerDisplayName: 'DropTarget',
+      createHandler: createTarget,
+      registerHandler: _registration.registerTarget,
+      createMonitor: manager => new _DropTargetMonitorImpl.DropTargetMonitorImpl(manager),
+      createConnector: backend => new _TargetConnector.TargetConnector(backend),
+      DecoratedComponent,
+      getType,
+      collect,
+      options
+    });
+  };
+}
+},{"invariant":"../../node_modules/invariant/browser.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","../common/registration":"../../node_modules/react-dnd/lib/common/registration.js","../utils/isValidType":"../../node_modules/react-dnd/lib/utils/isValidType.js","../common/TargetConnector":"../../node_modules/react-dnd/lib/common/TargetConnector.js","../common/DropTargetMonitorImpl":"../../node_modules/react-dnd/lib/common/DropTargetMonitorImpl.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js","./decorateHandler":"../../node_modules/react-dnd/lib/decorators/decorateHandler.js","./createTargetFactory":"../../node_modules/react-dnd/lib/decorators/createTargetFactory.js"}],"../../node_modules/react-dnd/lib/decorators/DragLayer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DragLayer = DragLayer;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _shallowequal = _interopRequireDefault(require("shallowequal"));
+
+var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _index = require("../index");
+
+var _js_utils = require("../utils/js_utils");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function DragLayer(collect, options = {}) {
+  (0, _utils.checkDecoratorArguments)('DragLayer', 'collect[, options]', collect, options);
+  (0, _invariant.default)(typeof collect === 'function', 'Expected "collect" provided as the first argument to DragLayer to be a function that collects props to inject into the component. ', 'Instead, received %s. Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-layer', collect);
+  (0, _invariant.default)((0, _js_utils.isPlainObject)(options), 'Expected "options" provided as the second argument to DragLayer to be a plain object when specified. ' + 'Instead, received %s. Read more: http://react-dnd.github.io/react-dnd/docs/api/drag-layer', options);
+  return function decorateLayer(DecoratedComponent) {
+    const Decorated = DecoratedComponent;
+    const {
+      arePropsEqual = _shallowequal.default
+    } = options;
+    const displayName = Decorated.displayName || Decorated.name || 'Component';
+
+    class DragLayerContainer extends React.Component {
+      constructor() {
+        super(...arguments);
+        this.isCurrentlyMounted = false;
+        this.ref = React.createRef();
+
+        this.handleChange = () => {
+          if (!this.isCurrentlyMounted) {
+            return;
+          }
+
+          const nextState = this.getCurrentState();
+
+          if (!(0, _shallowequal.default)(nextState, this.state)) {
+            this.setState(nextState);
+          }
+        };
+      }
+
+      getDecoratedComponentInstance() {
+        (0, _invariant.default)(this.ref.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
+        return this.ref.current;
+      }
+
+      shouldComponentUpdate(nextProps, nextState) {
+        return !arePropsEqual(nextProps, this.props) || !(0, _shallowequal.default)(nextState, this.state);
+      }
+
+      componentDidMount() {
+        this.isCurrentlyMounted = true;
+        this.handleChange();
+      }
+
+      componentWillUnmount() {
+        this.isCurrentlyMounted = false;
+
+        if (this.unsubscribeFromOffsetChange) {
+          this.unsubscribeFromOffsetChange();
+          this.unsubscribeFromOffsetChange = undefined;
+        }
+
+        if (this.unsubscribeFromStateChange) {
+          this.unsubscribeFromStateChange();
+          this.unsubscribeFromStateChange = undefined;
+        }
+      }
+
+      render() {
+        return React.createElement(_index.DndContext.Consumer, null, ({
+          dragDropManager
+        }) => {
+          if (dragDropManager === undefined) {
+            return null;
+          }
+
+          this.receiveDragDropManager(dragDropManager); // Let componentDidMount fire to initialize the collected state
+
+          if (!this.isCurrentlyMounted) {
+            return null;
+          }
+
+          return React.createElement(Decorated, Object.assign({}, this.props, this.state, {
+            ref: (0, _utils.isRefable)(Decorated) ? this.ref : null
+          }));
+        });
+      }
+
+      receiveDragDropManager(dragDropManager) {
+        if (this.manager !== undefined) {
+          return;
+        }
+
+        this.manager = dragDropManager;
+        (0, _invariant.default)(typeof dragDropManager === 'object', 'Could not find the drag and drop manager in the context of %s. ' + 'Make sure to wrap the top-level component of your app with DragDropContext. ' + 'Read more: http://react-dnd.github.io/react-dnd/docs/troubleshooting#could-not-find-the-drag-and-drop-manager-in-the-context', displayName, displayName);
+        const monitor = this.manager.getMonitor();
+        this.unsubscribeFromOffsetChange = monitor.subscribeToOffsetChange(this.handleChange);
+        this.unsubscribeFromStateChange = monitor.subscribeToStateChange(this.handleChange);
+      }
+
+      getCurrentState() {
+        if (!this.manager) {
+          return {};
+        }
+
+        const monitor = this.manager.getMonitor();
+        return collect(monitor, this.props);
+      }
+
+    }
+
+    DragLayerContainer.displayName = `DragLayer(${displayName})`;
+    DragLayerContainer.DecoratedComponent = DecoratedComponent;
+    return (0, _hoistNonReactStatics.default)(DragLayerContainer, DecoratedComponent);
+  };
+}
+},{"react":"../../../node_modules/react/index.js","shallowequal":"../../node_modules/shallowequal/index.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","invariant":"../../node_modules/invariant/browser.js","../index":"../../node_modules/react-dnd/lib/index.js","../utils/js_utils":"../../node_modules/react-dnd/lib/utils/js_utils.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/DragDropContext.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DragDropContext = DragDropContext;
+
+var React = _interopRequireWildcard(require("react"));
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
+
+var _DndContext = require("../common/DndContext");
+
+var _utils = require("./utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+/**
+ * @deprecated Use DnDProvider in your JSX tree instead. This will be removed in a future major version.
+ *
+ * Wrap the root component of your application with DragDropContext decorator to set up React DnD.
+ * This lets you specify the backend, and sets up the shared DnD state behind the scenes.
+ * @param backendFactory The DnD backend factory
+ * @param backendContext The backend context
+ */
+function DragDropContext(backendFactory, backendContext, debugMode) {
+  (0, _utils.checkDecoratorArguments)('DragDropContext', 'backend', backendFactory);
+  const childContext = (0, _DndContext.createDndContext)(backendFactory, backendContext, debugMode);
+  return function decorateContext(DecoratedComponent) {
+    const Decorated = DecoratedComponent;
+    const displayName = Decorated.displayName || Decorated.name || 'Component';
+
+    class DragDropContextContainer extends React.Component {
+      constructor(props, context) {
+        super(props, context);
+        this.ref = React.createRef();
+
+        this.getManager = () => childContext.dragDropManager; // eslint-disable-next-line no-console
+
+
+        console.warn(`DragDropContext has been deprecated and will be removed in a future version. Please use DndProvider instead.`);
+      }
+
+      getDecoratedComponentInstance() {
+        (0, _invariant.default)(this.ref.current, 'In order to access an instance of the decorated component, it must either be a class component or use React.forwardRef()');
+        return this.ref.current;
+      }
+
+      render() {
+        return React.createElement(_DndContext.DndContext.Provider, {
+          value: childContext
+        }, React.createElement(Decorated, Object.assign({}, this.props, {
+          ref: (0, _utils.isRefable)(Decorated) ? this.ref : null
+        })));
+      }
+
+    }
+
+    DragDropContextContainer.DecoratedComponent = DecoratedComponent;
+    DragDropContextContainer.displayName = `DragDropContext(${displayName})`;
+    return (0, _hoistNonReactStatics.default)(DragDropContextContainer, DecoratedComponent);
+  };
+}
+},{"react":"../../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js","hoist-non-react-statics":"../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","../common/DndContext":"../../node_modules/react-dnd/lib/common/DndContext.js","./utils":"../../node_modules/react-dnd/lib/decorators/utils.js"}],"../../node_modules/react-dnd/lib/decorators/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _DragSource = require("./DragSource");
+
+Object.keys(_DragSource).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _DragSource[key];
+    }
+  });
+});
+
+var _DropTarget = require("./DropTarget");
+
+Object.keys(_DropTarget).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _DropTarget[key];
+    }
+  });
+});
+
+var _DragLayer = require("./DragLayer");
+
+Object.keys(_DragLayer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _DragLayer[key];
+    }
+  });
+});
+
+var _DragDropContext = require("./DragDropContext");
+
+Object.keys(_DragDropContext).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _DragDropContext[key];
+    }
+  });
+});
+},{"./DragSource":"../../node_modules/react-dnd/lib/decorators/DragSource.js","./DropTarget":"../../node_modules/react-dnd/lib/decorators/DropTarget.js","./DragLayer":"../../node_modules/react-dnd/lib/decorators/DragLayer.js","./DragDropContext":"../../node_modules/react-dnd/lib/decorators/DragDropContext.js"}],"../../node_modules/react-dnd/lib/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _common = require("./common");
+
+Object.keys(_common).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _common[key];
+    }
+  });
+});
+
+var _hooks = require("./hooks");
+
+Object.keys(_hooks).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _hooks[key];
+    }
+  });
+});
+
+var _decorators = require("./decorators");
+
+Object.keys(_decorators).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _decorators[key];
+    }
+  });
+});
+},{"./common":"../../node_modules/react-dnd/lib/common/index.js","./hooks":"../../node_modules/react-dnd/lib/hooks/index.js","./decorators":"../../node_modules/react-dnd/lib/decorators/index.js"}],"constants/types.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Workspace =
+/*#__PURE__*/
+function () {
+  function Workspace(name, image) {
+    _classCallCheck(this, Workspace);
+
+    this.id = "".concat(Math.floor(Math.random() * 10e8));
+    this.name = name;
+    this.image = image;
+    this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
+  }
+
+  _createClass(Workspace, [{
+    key: "getImgUrl",
+    value: function getImgUrl() {
+      return "url(".concat(this.image, ")");
+    }
+  }]);
+
+  return Workspace;
+}();
+
+exports.Workspace = Workspace;
+exports.DragAndDropTypes = {
+  DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
+  BOARD_ITEM: 'BOARD_ITEM'
+};
+var ContentType;
+
+(function (ContentType) {
+  ContentType[ContentType["Photo"] = 0] = "Photo";
+  ContentType[ContentType["Video"] = 1] = "Video";
+  ContentType[ContentType["Link"] = 2] = "Link";
+  ContentType[ContentType["Article"] = 3] = "Article";
+  ContentType[ContentType["SocialMedia"] = 4] = "SocialMedia";
+})(ContentType = exports.ContentType || (exports.ContentType = {}));
+
+var MediaSourceType;
+
+(function (MediaSourceType) {
+  MediaSourceType[MediaSourceType["Browser"] = 0] = "Browser";
+  MediaSourceType[MediaSourceType["Instagram"] = 1] = "Instagram";
+  MediaSourceType[MediaSourceType["Twitter"] = 2] = "Twitter";
+  MediaSourceType[MediaSourceType["Facebook"] = 3] = "Facebook";
+  MediaSourceType[MediaSourceType["Medium"] = 4] = "Medium";
+  MediaSourceType[MediaSourceType["Quora"] = 5] = "Quora";
+  MediaSourceType[MediaSourceType["Youtube"] = 6] = "Youtube";
+  MediaSourceType[MediaSourceType["Vimeo"] = 7] = "Vimeo";
+  MediaSourceType[MediaSourceType["ACM"] = 8] = "ACM";
+  MediaSourceType[MediaSourceType["Scholar"] = 9] = "Scholar";
+})(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
+
+var ContentList = function ContentList() {
+  _classCallCheck(this, ContentList);
+};
+
+exports.ContentList = ContentList;
+var ToastType;
+
+(function (ToastType) {
+  ToastType[ToastType["Success"] = 0] = "Success";
+  ToastType[ToastType["Failure"] = 1] = "Failure";
+  ToastType[ToastType["Warning"] = 2] = "Warning";
+})(ToastType = exports.ToastType || (exports.ToastType = {}));
+},{}],"assets/carnegie_museum_art.jpg":[function(require,module,exports) {
 module.exports = "/carnegie_museum_art.66ef529f.jpg";
 },{}],"assets/church_brew.jpg":[function(require,module,exports) {
 module.exports = "/church_brew.2a31e89e.jpg";
@@ -56324,7 +56324,7 @@ var img2 = require('../assets/church_brew.jpg');
 
 var img3 = require('../assets/duquesne_incline.jpg');
 
-exports.ItemWidth = 200;
+exports.ItemWidth = 230;
 exports.ItemHeight = 180;
 exports.GroupBufffer = 20;
 exports.PhotosList = [{
@@ -56498,8 +56498,15 @@ function GetSampleBoardItems() {
       height: exports.ItemHeight,
       width: exports.ItemWidth
     }
+  }, {
+    id: "".concat(Math.floor(Math.random() * 10e8)),
+    type: types_1.ContentType.SocialMedia,
+    props: {
+      height: exports.ItemHeight,
+      width: exports.ItemWidth
+    }
   }];
-  return _.shuffle(items);
+  return _.take(_.shuffle(items), 4);
 }
 
 exports.GetSampleBoardItems = GetSampleBoardItems;
@@ -57077,7 +57084,88 @@ function (_React$Component) {
 }(React.Component);
 
 exports.LinkContentItem = LinkContentItem;
-},{"react":"../../../node_modules/react/index.js"}],"../../node_modules/rxjs/node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js"}],"components/content-item/socialmedia-item.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var types_1 = require("../../constants/types");
+
+var SocialMediaContentItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SocialMediaContentItem, _React$Component);
+
+  function SocialMediaContentItem(props) {
+    _classCallCheck(this, SocialMediaContentItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SocialMediaContentItem).call(this, props));
+  }
+
+  _createClass(SocialMediaContentItem, [{
+    key: "render",
+    value: function render() {
+      var styles = {
+        backgroundImage: "url(".concat(this.props.data.contentData.profileImgUrl, ")")
+      };
+      var instaStyles = {
+        backgroundImage: "url(".concat(this.props.data.contentData.instragramImageUrl, ")")
+      };
+      return React.createElement("div", {
+        className: "social-media-content"
+      }, React.createElement("div", {
+        className: "social-media-handle"
+      }, React.createElement("div", {
+        className: "social-media-text"
+      }, this.props.data.contentData.handle), React.createElement("div", {
+        className: "social-media-pic ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram'),
+        style: styles
+      })), this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
+        className: "tweet-text"
+      }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
+        className: "insta-photo",
+        style: instaStyles
+      }));
+    }
+  }]);
+
+  return SocialMediaContentItem;
+}(React.Component);
+
+exports.SocialMediaContentItem = SocialMediaContentItem;
+},{"react":"../../../node_modules/react/index.js","../../constants/types":"constants/types.ts"}],"../../node_modules/rxjs/node_modules/tslib/tslib.es6.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64758,6 +64846,8 @@ var article_content_1 = require("./article-content");
 
 var link_content_1 = require("./link-content");
 
+var socialmedia_item_1 = require("./socialmedia-item");
+
 var observables_1 = require("../../access/observables/observables");
 
 var ContentItemWrapper =
@@ -64837,7 +64927,12 @@ function (_React$Component) {
 
         case types_1.ContentType.SocialMedia:
           {
-            label = 'Social Media';
+            if (this.props.data.sourceType === types_1.MediaSourceType.Twitter) {
+              label = 'Twitter';
+            } else if (this.props.data.sourceType === types_1.MediaSourceType.Instagram) {
+              label = 'Instagram';
+            }
+
             break;
           }
       }
@@ -64872,6 +64967,14 @@ function (_React$Component) {
         case types_1.ContentType.Link:
           {
             currentContent = React.createElement(link_content_1.LinkContentItem, {
+              data: this.props.data
+            });
+            break;
+          }
+
+        case types_1.ContentType.SocialMedia:
+          {
+            currentContent = React.createElement(socialmedia_item_1.SocialMediaContentItem, {
               data: this.props.data
             });
             break;
@@ -64934,7 +65037,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWrapper = ContentItemWrapper;
-},{"react":"../../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/contents/content-wrapper.tsx":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/contents/content-wrapper.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65247,6 +65350,25 @@ exports.PhotoContentList = GetSamplePhotoItems();
 exports.VideoContentList = GetSampleVideoItems();
 exports.ArticleContentList = GetSampleArticleItems();
 exports.LinkContentList = GetSampleLinkItems();
+exports.SocialMediaContentList = GetSampleSocialMediaItems();
+
+function GetDummifiedCollection(items) {
+  return [{
+    title: 'Recent',
+    listItems: _.shuffle(items)
+  }, {
+    title: 'Yesterday',
+    listItems: _.shuffle(items)
+  }, {
+    title: 'June 12, 2019',
+    listItems: _.shuffle(items)
+  }, {
+    title: 'June 11, 2019',
+    listItems: _.shuffle(items)
+  }];
+}
+
+exports.GetDummifiedCollection = GetDummifiedCollection;
 
 function GetSampleItem(type) {
   switch (type) {
@@ -65261,6 +65383,9 @@ function GetSampleItem(type) {
 
     case types_1.ContentType.Link:
       return _.sample(GetSampleLinkItems());
+
+    case types_1.ContentType.SocialMedia:
+      return _.sample(GetSampleSocialMediaItems());
   }
 }
 
@@ -65399,6 +65524,44 @@ function GetSampleLinkItems() {
 }
 
 exports.GetSampleLinkItems = GetSampleLinkItems;
+
+function GetSampleSocialMediaItems() {
+  var result = [];
+
+  _.range(ItemSize).forEach(function (data) {
+    var item = {
+      id: "".concat(Math.floor(Math.random() * 10e10)),
+      title: null,
+      contentType: types_1.ContentType.SocialMedia,
+      contentData: {
+        profileImgUrl: _.sample(['https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg', 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'])
+      },
+      sourcePreviewAvailable: false,
+      sourceType: _.sample([types_1.MediaSourceType.Instagram, types_1.MediaSourceType.Twitter]),
+      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
+        return "tag-".concat(t);
+      }),
+      annotations: [{
+        id: "".concat(Math.floor(Math.random() * 10e10)),
+        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+      }]
+    };
+
+    if (item.sourceType === types_1.MediaSourceType.Twitter) {
+      item.contentData.tweetText = _.sample(["These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.", "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23"]);
+      item.contentData.handle = _.sample(['@anomaly123', '@anonymous42']);
+    } else if (item.sourceType === types_1.MediaSourceType.Instagram) {
+      item.contentData.instragramImageUrl = _.sample(['https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744']);
+      item.contentData.handle = _.sample(['anomaly_123', 'anonymous_42']);
+    }
+
+    result.push(item);
+  });
+
+  return result;
+}
+
+exports.GetSampleSocialMediaItems = GetSampleSocialMediaItems;
 },{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"components/contents/content-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -65435,6 +65598,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var React = __importStar(require("react"));
+
+var _ = __importStar(require("lodash"));
 
 var content_list_1 = require("./content-list");
 
@@ -65494,26 +65659,21 @@ function (_React$Component) {
           }
           ;
 
+        case types_1.ContentType.SocialMedia:
+          {
+            items = dummy_data_1.SocialMediaContentList;
+            break;
+          }
+          ;
+
         default:
           {
-            items = [].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList);
+            items = _.shuffle([].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList, dummy_data_1.SocialMediaContentList));
             break;
           }
       }
 
-      var collection = [{
-        title: 'Recent',
-        listItems: items
-      }, {
-        title: 'Yesterday',
-        listItems: items
-      }, {
-        title: 'June 12, 2019',
-        listItems: items
-      }, {
-        title: 'June 11, 2019',
-        listItems: items
-      }];
+      var collection = dummy_data_1.GetDummifiedCollection(items);
       this.setState({
         listItems: collection
       });
@@ -65550,7 +65710,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentListCollection = ContentListCollection;
-},{"react":"../../../node_modules/react/index.js","./content-list":"components/contents/content-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./content-list":"components/contents/content-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65661,7 +65821,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var index = 0;
+      var index = 5;
       var classListName = "tabs-holder ".concat(this.props.sticky ? 'is-sticky' : '');
       return React.createElement(tabs_1.default, {
         activeTabIndex: index,
@@ -69917,7 +70077,7 @@ function (_React$Component) {
         boardGroups: this.props.groups
       });
       window.requestAnimationFrame(function () {
-        _this3.adjustPosition(1, true);
+        _this3.adjustPosition(1, false);
       });
     }
   }, {
@@ -77116,7 +77276,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57911" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53788" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
