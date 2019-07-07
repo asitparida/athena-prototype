@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import { DumpingGroundList } from './dumping-ground-list';
-import { ContentType, IContentListItem } from '../../constants/types';
+import { ContentType, IContentListItem, IContentItem } from '../../constants/types';
 import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection } from '../../constants/dummy-data';
+import { Subscription } from 'rxjs';
+import { DumpingGroundTransfer } from '../../access/observables/observables';
 
 interface IProps {
     type: ContentType
@@ -13,6 +15,7 @@ interface IContentCollectionState {
 }
 
 export class DumpingGroundListCollection extends React.Component<IProps, IContentCollectionState> {
+    dumpingGroundTransferSubscription: Subscription;
     constructor(props) {
         super(props);
         this.state = {
@@ -45,6 +48,21 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     }
     componentDidMount() {
         this.updateCollection();
+        this.dumpingGroundTransferSubscription = DumpingGroundTransfer.subscribe((data: IContentItem<any>) => {
+            const collection = this.state.listItems;
+            const newCollection = [];
+            collection.forEach(collect => {
+                newCollection.push(Object.assign({}, collect, {
+                    listItems: [].concat(collect.listItems.filter(t => t.id !== data.id))
+                }));
+            })
+            this.setState({
+                listItems: newCollection
+            })
+        });
+    }
+    componentWillUnmount() {
+        this.dumpingGroundTransferSubscription.unsubscribe();
     }
     componentDidUpdate(props) {
         if (this.props.type !== props.type) {

@@ -7,7 +7,7 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import { IWorkspaceContentTransfer } from '../../constants/types';
+import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
 import { ItemHeight, ItemWidth, BoardGroups } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
@@ -30,7 +30,7 @@ class Workspace extends React.Component<any, any> {
     transferSubscription: Subscription;
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 500, dumpGroundWidth: 300, workspaceId: null, groups: [] };
+        this.state = { rteWidth: 500, dumpGroundWidth: 350, workspaceId: null, groups: [] };
     }
     componentDidMount() {
         ShowDumpBarAction$.next(true);
@@ -46,6 +46,7 @@ class Workspace extends React.Component<any, any> {
             const groups = [];
             const originalGroups = this.state.groups;
             let change = false;
+            const contentData = data.data as IContentItem<any>;
             originalGroups.forEach(group => {
                 const groupId = group.id;
                 let currentItems = [].concat(group.items);
@@ -54,7 +55,7 @@ class Workspace extends React.Component<any, any> {
                     change = true;
                 } else if (data.to === groupId) {
                     currentItems.push({
-                        id: data.data.id, type: data.data.contentType, props: { height: ItemHeight, width: ItemWidth }
+                        id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
                     });
                     change = true;
                 }

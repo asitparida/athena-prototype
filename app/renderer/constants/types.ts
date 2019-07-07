@@ -154,12 +154,13 @@ export interface IBoardContent {
     props?: IRectProps;
 }
 export interface IBoardGroupContent {
-    annotationData?: IAnnotation[];
+    annotation?: IAnnotation;
 }
 export interface IBoardGroupWrapper {
     id?: string;
+    title?: string;
     props?: IRectProps;
-    annotationData?: IAnnotation[];
+    annotation?: IAnnotation;
     items?: IBoardContent[];
 }
 

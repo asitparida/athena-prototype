@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { DragSource } from 'react-dnd';
 import { DragAndDropTypes } from '../../constants/types';
-import { ContentItemWrapper } from '../content-item/content-item';
 import { ContentItemWithMenu } from '../content-item/content-item-with-menu';
 
 const itemSource = {
     beginDrag(props) {
         return {
-            itemLabel: props.id
+            dragObject: props.data
         };
     }
 }

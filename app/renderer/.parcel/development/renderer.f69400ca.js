@@ -56449,7 +56449,7 @@ var img2 = require('../assets/church_brew.jpg');
 
 var img3 = require('../assets/duquesne_incline.jpg');
 
-exports.ItemWidth = 230;
+exports.ItemWidth = 240;
 exports.ItemHeight = 180;
 exports.GroupBufffer = 20;
 exports.PhotosList = [{
@@ -56631,50 +56631,70 @@ function GetSampleBoardItems() {
       width: exports.ItemWidth
     }
   }];
-  return _.take(_.shuffle(items), 4);
+  return _.take(_.shuffle(items), 3);
 }
 
 exports.GetSampleBoardItems = GetSampleBoardItems;
 exports.BoardGroups = [{
   id: "".concat(Math.floor(Math.random() * 10e8)),
+  title: 'Group #1',
   props: {
     top: 0,
     left: 0
   },
   items: GetSampleBoardItems(),
-  annotationData: []
+  annotation: {
+    id: "".concat(Math.floor(Math.random() * 10e10)),
+    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  }
 }, {
   id: "".concat(Math.floor(Math.random() * 10e8)),
+  title: 'Group #2',
   props: {
     top: 0,
     left: 0
   },
   items: GetSampleBoardItems(),
-  annotationData: []
+  annotation: {
+    id: "".concat(Math.floor(Math.random() * 10e10)),
+    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  }
 }, {
   id: "".concat(Math.floor(Math.random() * 10e8)),
+  title: 'Group #3',
   props: {
     top: 0,
     left: 0
   },
   items: GetSampleBoardItems(),
-  annotationData: []
+  annotation: {
+    id: "".concat(Math.floor(Math.random() * 10e10)),
+    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  }
 }, {
   id: "".concat(Math.floor(Math.random() * 10e8)),
+  title: 'Group #4',
   props: {
     top: 0,
     left: 0
   },
   items: GetSampleBoardItems(),
-  annotationData: []
+  annotation: {
+    id: "".concat(Math.floor(Math.random() * 10e10)),
+    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  }
 }, {
   id: "".concat(Math.floor(Math.random() * 10e8)),
+  title: 'Group #5',
   props: {
     top: 0,
     left: 0
   },
   items: GetSampleBoardItems(),
-  annotationData: []
+  annotation: {
+    id: "".concat(Math.floor(Math.random() * 10e10)),
+    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  }
 }];
 var Cancellable;
 
@@ -64887,6 +64907,7 @@ exports.ShowRTEAction$ = new rxjs_1.Subject();
 exports.ShowWorkspaceAction$ = new rxjs_1.Subject();
 exports.ContentViewerData = new rxjs_1.Subject();
 exports.WorkspaceContentTransfer = new rxjs_1.Subject();
+exports.DumpingGroundTransfer = new rxjs_1.Subject();
 
 function InitializeSubscriptions() {
   var dumpBarSubscription = exports.ShowDumpBarAction$.subscribe(function (data) {
@@ -65329,7 +65350,7 @@ var content_item_with_menu_1 = require("../content-item/content-item-with-menu")
 var itemSource = {
   beginDrag: function beginDrag(props) {
     return {
-      itemLabel: props.id
+      dragObject: props.data
     };
   }
 };
@@ -65744,6 +65765,8 @@ var types_1 = require("../../constants/types");
 
 var dummy_data_1 = require("../../constants/dummy-data");
 
+var observables_1 = require("../../access/observables/observables");
+
 var DumpingGroundListCollection =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65818,7 +65841,29 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.updateCollection();
+      this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
+        var collection = _this2.state.listItems;
+        var newCollection = [];
+        collection.forEach(function (collect) {
+          newCollection.push(Object.assign({}, collect, {
+            listItems: [].concat(collect.listItems.filter(function (t) {
+              return t.id !== data.id;
+            }))
+          }));
+        });
+
+        _this2.setState({
+          listItems: newCollection
+        });
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.dumpingGroundTransferSubscription.unsubscribe();
     }
   }, {
     key: "componentDidUpdate",
@@ -65830,13 +65875,13 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(dumping_ground_list_1.DumpingGroundList, {
           title: item.title,
           key: i,
-          type: _this2.props.type,
+          type: _this3.props.type,
           items: item.listItems
         });
       }));
@@ -65847,7 +65892,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.DumpingGroundListCollection = DumpingGroundListCollection;
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -69880,12 +69925,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 var itemSource = {
   drop: function drop(props, monitor) {
-    // const toast: IToastItem = {
-    //     id: `${Math.floor(Math.random() * 10e8)}`,
-    //     message: `The clip has been pushed to the Group`,
-    //     type: ToastType.Success
-    // };
-    // store.dispatch(AppActions.showToastNotification(toast))
     var dropItemResult = monitor.getItem();
     var data = {
       from: dropItemResult.from,
@@ -69895,6 +69934,10 @@ var itemSource = {
 
     if (data.from !== data.to) {
       observables_1.WorkspaceContentTransfer.next(data);
+    }
+
+    if (!data.from) {
+      observables_1.DumpingGroundTransfer.next(dropItemResult.dragObject);
     }
   }
 };
@@ -70034,9 +70077,15 @@ function (_React$Component) {
   _inherits(CanvasGroupWrapper, _React$Component);
 
   function CanvasGroupWrapper(props) {
+    var _this;
+
     _classCallCheck(this, CanvasGroupWrapper);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CanvasGroupWrapper).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CanvasGroupWrapper).call(this, props));
+    _this.state = {
+      groupTitle: _this.props.data.title
+    };
+    return _this;
   }
 
   _createClass(CanvasGroupWrapper, [{
@@ -70044,6 +70093,13 @@ function (_React$Component) {
     value: function groupPropsChanged(data) {
       data.width = data.width + 20;
       this.props.onPropsChange(data);
+    }
+  }, {
+    key: "titleChange",
+    value: function titleChange(e) {
+      this.setState({
+        groupTitle: e.target.value
+      });
     }
   }, {
     key: "render",
@@ -70061,7 +70117,11 @@ function (_React$Component) {
       return React.createElement("div", {
         className: "group-wrapper",
         style: styles
-      }, React.createElement(canvas_group_1.default, {
+      }, React.createElement("input", {
+        className: "group-title",
+        value: this.state.groupTitle,
+        onChange: this.titleChange.bind(this)
+      }), React.createElement(canvas_group_1.default, {
         data: this.props.data,
         onPropsChange: this.groupPropsChanged.bind(this)
       }));
@@ -70492,7 +70552,7 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("div", {
         className: "workspace-list-group"
-      }, React.createElement("h1", null, "Group"), React.createElement("div", {
+      }, React.createElement("h1", null, this.props.group.title), React.createElement("div", {
         className: "workspace-list-group-items"
       }, React.createElement("div", {
         className: "workspace-list-group-items-inner"
@@ -70759,7 +70819,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Workspace).call(this, props));
     _this.state = {
       rteWidth: 500,
-      dumpGroundWidth: 300,
+      dumpGroundWidth: 350,
       workspaceId: null,
       groups: []
     };
@@ -70786,6 +70846,7 @@ function (_React$Component) {
         var groups = [];
         var originalGroups = _this2.state.groups;
         var change = false;
+        var contentData = data.data;
         originalGroups.forEach(function (group) {
           var groupId = group.id;
           var currentItems = [].concat(group.items);
@@ -70797,8 +70858,8 @@ function (_React$Component) {
             change = true;
           } else if (data.to === groupId) {
             currentItems.push({
-              id: data.data.id,
-              type: data.data.contentType,
+              id: contentData.id,
+              type: contentData.contentType,
               props: {
                 height: constants_1.ItemHeight,
                 width: constants_1.ItemWidth
@@ -71128,6 +71189,8 @@ var configureStore_1 = __importDefault(require("../../access/store/configureStor
 
 var types_1 = require("../../constants/types");
 
+var observables_1 = require("../../access/observables/observables");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
   return {};
@@ -71140,13 +71203,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 var itemSource = {
-  drop: function drop(props) {
+  drop: function drop(props, monitor) {
+    var dropItemResult = monitor.getItem();
     var toast = {
       id: "".concat(Math.floor(Math.random() * 10e8)),
       message: "The clip has been pushed to the ".concat(props.data.name),
       type: types_1.ToastType.Success
     };
     configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
+    observables_1.DumpingGroundTransfer.next(dropItemResult.dragObject);
   }
 };
 
@@ -71189,7 +71254,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(WorkspacePreview));
-},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/store/configureStore":"access/store/configureStore.ts","../../constants/types":"constants/types.ts"}],"components/workspace-preview/workspace-previewer.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/store/configureStore":"access/store/configureStore.ts","../../constants/types":"constants/types.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/workspace-preview/workspace-previewer.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -77457,7 +77522,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63697" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52065" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

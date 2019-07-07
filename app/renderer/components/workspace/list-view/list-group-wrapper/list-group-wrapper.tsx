@@ -7,7 +7,7 @@ class ListGroupWrapper extends React.Component<{ group: IBoardGroupWrapper }, an
     render() {
         return (
             <div className='workspace-list-group'>
-                <h1>Group</h1>
+                <h1>{this.props.group.title}</h1>
                 <div className='workspace-list-group-items'>
                     <div className='workspace-list-group-items-inner'>
                         {

@@ -30,7 +30,6 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    // background: #565656;
 
     #root {
         display: flex;
@@ -131,20 +130,20 @@ body {
                 z-index: 1;
                 position: relative;
 
-                input {
-                    background: rgba(#fff, 0.05);
-                    color: rgba(#ffffff, 0.75);
-                    font-size: x-large;
-                    padding: 0 10px;
-                    line-height: 60px;
-                    border-radius: 4px;
-                    min-width: 100px;
-                    text-align: center;
-                    border: 1px solid rgba(#ffffff, 0.50);
-                    font-weight: 100;
-                    margin: 0;
-                    outline: none;
-                }
+                // input {
+                //     background: rgba(#fff, 0.05);
+                //     color: rgba(#ffffff, 0.75);
+                //     font-size: x-large;
+                //     padding: 0 10px;
+                //     line-height: 60px;
+                //     border-radius: 4px;
+                //     min-width: 100px;
+                //     text-align: center;
+                //     border: 1px solid rgba(#ffffff, 0.50);
+                //     font-weight: 100;
+                //     margin: 0;
+                //     outline: none;
+                // }
             }
         }
     }

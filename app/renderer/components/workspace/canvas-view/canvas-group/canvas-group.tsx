@@ -9,7 +9,7 @@ import * as AppActions from '../../../../access/actions/appActions';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 import { Subscription } from 'rxjs';
-import { WorkspaceContentTransfer } from '../../../../access/observables/observables';
+import { WorkspaceContentTransfer, DumpingGroundTransfer } from '../../../../access/observables/observables';
 
 const mapStateToProps = () => {
     return {};
@@ -23,12 +23,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const itemSource = {
     drop: (props: IPropType | any, monitor) => {
-        // const toast: IToastItem = {
-        //     id: `${Math.floor(Math.random() * 10e8)}`,
-        //     message: `The clip has been pushed to the Group`,
-        //     type: ToastType.Success
-        // };
-        // store.dispatch(AppActions.showToastNotification(toast))
         const dropItemResult = monitor.getItem();
         const data = {
             from: dropItemResult.from,
@@ -37,6 +31,9 @@ const itemSource = {
         };
         if (data.from !== data.to) {
             WorkspaceContentTransfer.next(data);
+        }
+        if (!data.from) {
+            DumpingGroundTransfer.next(dropItemResult.dragObject);
         }
     }
 }

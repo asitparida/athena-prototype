@@ -4,7 +4,7 @@ const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
-export const ItemWidth = 230;
+export const ItemWidth = 240;
 export const ItemHeight = 180;
 export const GroupBufffer = 20;
 
@@ -61,39 +61,59 @@ export function GetSampleBoardItems() {
         { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
         { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
     ];
-    return _.take(_.shuffle(items), 4);
+    return _.take(_.shuffle(items), 3);
 }
 
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #1',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
-        annotationData: []
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #2',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
-        annotationData: []
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #3',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
-        annotationData: []
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #4',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
-        annotationData: []
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #5',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
-        annotationData: []
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     }
 ];
 
