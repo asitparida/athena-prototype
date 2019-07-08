@@ -876,6 +876,12 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
+"@babel/runtime@^7.0.0":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.1.tgz#51b56e216e87103ab3f7d6040b464c538e242888"
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/runtime@^7.0.0 <7.4.0":
   version "7.3.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
@@ -6803,6 +6809,13 @@ react-hammerjs@1.0.1:
   resolved "https://registry.yarnpkg.com/react-hammerjs/-/react-hammerjs-1.0.1.tgz#bc1ed9e9ef7da057163fb169ce12917b6d6ca7d8"
   dependencies:
     hammerjs "^2.0.8"
+
+react-intersection-observer@^8.23.0:
+  version "8.23.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.23.0.tgz#1533aaf39cc70300ff8ca37e6551d2d68a589cd0"
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    invariant "^2.2.4"
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.4, react-is@^16.8.6:
   version "16.8.6"

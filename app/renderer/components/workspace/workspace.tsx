@@ -8,7 +8,7 @@ import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '..
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
 import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
-import { ItemHeight, ItemWidth, BoardGroups } from '../../constants/constants';
+import { ItemHeight, ItemWidth, BoardGroups, GetEmptyGroup } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
 
@@ -43,26 +43,39 @@ class Workspace extends React.Component<any, any> {
         });
         this.props.actions.showWorkspaceActions();
         this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
-            const groups = [];
-            const originalGroups = this.state.groups;
-            let change = false;
             const contentData = data.data as IContentItem<any>;
+            let change = false;
+            let groups = [];
+            const originalGroups = this.state.groups;
+            const fromGroup = originalGroups.find(group => group.id === data.from);
+            const toGroup = originalGroups.find(group => group.id === data.to);
             originalGroups.forEach(group => {
-                const groupId = group.id;
-                let currentItems = [].concat(group.items);
-                if (data.from === groupId) {
-                    currentItems = currentItems.filter(temp => temp.id !== data.data.id);
-                    change = true;
-                } else if (data.to === groupId) {
-                    currentItems.push({
-                        id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
-                    });
-                    change = true;
-                }
                 groups.push(Object.assign({}, group, {
-                    items: currentItems
+                    items: [].concat(group.items)
                 }));
             })
+            if (fromGroup || toGroup) {
+                groups.forEach(group => {
+                    const groupId = group.id;
+                    if (data.from === groupId) {
+                        group.items = group.items.filter(temp => temp.id !== data.data.id);
+                        change = true;
+                    } else if (data.to === groupId) {
+                        group.items.push({
+                            id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
+                        });
+                        change = true;
+                    }
+                })
+            }
+            if (!toGroup) {
+                const group = GetEmptyGroup();
+                group.items.push({
+                    id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
+                });
+                groups = [].concat(...groups, group);
+                change = true;
+            }
             if (change) {
                 this.setState({ groups });
             }

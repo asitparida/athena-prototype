@@ -31,14 +31,17 @@ export default class SidebarComponent extends React.Component<{}, any> {
                 {
                     sideBarItems.length > 0 &&
                     (sideBarItems as ISideBarNavItem[]).map(((item, i) => {
+                        const styles = {
+                            backgroundImage: item.gradient
+                        };
                         return <li key={i} className="first-level">
                             <NavLink to={item.link}>
                                 <label className='first-level-label'>
                                 {
-                                    item.subListOpen && <i className='material-icons folder-icon'>folder_open</i>
+                                    item.subListOpen && <i className={`material-icons folder-icon ${item.gradient ? 'apply-gradient' : ''}`} style={styles}>folder_open</i>
                                 }
                                 {
-                                    !item.subListOpen && <i className='material-icons folder-icon'>folder</i>
+                                    !item.subListOpen && <i className={`material-icons folder-icon ${item.gradient ? 'apply-gradient' : ''}`} style={styles}>folder</i>
                                 }
                                 {item.name}
                                 </label>

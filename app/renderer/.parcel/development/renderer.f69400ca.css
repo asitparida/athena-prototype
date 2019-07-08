@@ -468,6 +468,11 @@ body #root .app-content .app-content-area {
   background-color: #e0e0e0;
   color: #000;
 }
+.inview-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .inner-content-holder {
   position: relative;
   display: flex;
@@ -501,7 +506,7 @@ body #root .app-content .app-content-area {
   flex: 1;
   order: 1;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  height: calc(100% - 24px);
+  height: 100%;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
@@ -962,6 +967,11 @@ body #root .app-content .app-content-area {
   width: 36px;
   font-size: 18px;
 }
+.sidebar-wrapper ul li label.first-level-label i.folder-icon.apply-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .sidebar-wrapper ul li.first-level {
   position: relative;
 }
@@ -1156,8 +1166,8 @@ body #root .app-content .app-content-area {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: black;
-  border-left: 10px solid black;
+  background-color: #333333;
+  border-left: 10px solid #444444;
   box-shadow: -20px 0px 25px rgba(0, 0, 0, 0.5);
 }
 .resizer-wrapper {
@@ -1166,7 +1176,7 @@ body #root .app-content .app-content-area {
   position: relative;
 }
 .resizer-wrapper .resizer-handler {
-  background: black;
+  background: #444444;
   text-align: center;
   height: 36px;
   width: 24px;
@@ -1283,7 +1293,7 @@ body #root .app-content .app-content-area {
 .board-content-wrapper {
   display: inline-block;
   margin-bottom: 0;
-  padding: 0px;
+  padding: 0 0 0 0;
   border-radius: 5px;
   position: relative;
   will-change: auto;
@@ -1565,7 +1575,7 @@ body #root .app-content .app-content-area {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
 }
 .toasts-wrapper {
   position: fixed;

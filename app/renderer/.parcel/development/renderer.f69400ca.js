@@ -213,7 +213,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
   return to;
 };
-},{}],"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js":[function(require,module,exports) {
+},{}],"../../node_modules/prop-types/lib/ReactPropTypesSecret.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -227,7 +227,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],"../../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
+},{}],"../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -323,7 +323,7 @@ checkPropTypes.resetWarningCache = function () {
 };
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":"../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
  * react.development.js
  *
@@ -2245,7 +2245,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -26669,7 +26669,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   ReactPropTypes.PropTypes = ReactPropTypes;
   return ReactPropTypes;
 };
-},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
+},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -56037,12 +56037,15 @@ var Workspace =
 /*#__PURE__*/
 function () {
   function Workspace(name, image) {
+    var gradient = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
     _classCallCheck(this, Workspace);
 
     this.id = "".concat(Math.floor(Math.random() * 10e8));
     this.name = name;
     this.image = image;
     this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
+    this.gradient = gradient;
   }
 
   _createClass(Workspace, [{
@@ -56539,7 +56542,7 @@ exports.AllContentList = [{
   }),
   type: types_1.ContentType.Video
 }];
-exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1), new types_1.Workspace('Workspace #2', img2), new types_1.Workspace('Workspace #3', img3), new types_1.Workspace('Workspace #4', img1)];
+exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1, "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Workspace #2', img2, "linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))"), new types_1.Workspace('Workspace #3', img3, "linear-gradient(to right, rgb(34, 193, 195), rgb(253, 187, 45))"), new types_1.Workspace('Workspace #4', img1, "linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))")];
 exports.WorkspaceCollectionTabs = [{
   id: 'all',
   name: 'All'
@@ -56696,6 +56699,24 @@ exports.BoardGroups = [{
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }];
+
+function GetEmptyGroup() {
+  return {
+    id: "".concat(Math.floor(Math.random() * 10e8)),
+    title: 'New Group *',
+    props: {
+      top: 0,
+      left: 0
+    },
+    items: [],
+    annotation: {
+      id: "".concat(Math.floor(Math.random() * 10e10)),
+      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+    }
+  };
+}
+
+exports.GetEmptyGroup = GetEmptyGroup;
 var Cancellable;
 
 (function (Cancellable) {
@@ -64945,7 +64966,452 @@ function RemoveSubscriptions() {
 }
 
 exports.RemoveSubscriptions = RemoveSubscriptions;
-},{"rxjs":"../../node_modules/rxjs/_esm5/index.js","../store/configureStore":"access/store/configureStore.ts","../actions/appActions":"access/actions/appActions.ts"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
+},{"rxjs":"../../node_modules/rxjs/_esm5/index.js","../store/configureStore":"access/store/configureStore.ts","../actions/appActions":"access/actions/appActions.ts"}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _extends;
+
+function _extends() {
+  exports.default = _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+},{}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _objectWithoutPropertiesLoose;
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+},{}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _assertThisInitialized;
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+},{}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _inheritsLoose;
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+},{}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/defineProperty.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _defineProperty;
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+},{}],"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useInView = useInView;
+exports.InView = exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/assertThisInitialized"));
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/defineProperty"));
+
+var _react = require("react");
+
+var _invariant = _interopRequireDefault(require("invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var INSTANCE_MAP = new Map();
+var OBSERVER_MAP = new Map();
+var ROOT_IDS = new Map();
+var consecutiveRootId = 0;
+/**
+ * Generate a unique ID for the root element
+ * @param root
+ */
+
+function getRootId(root) {
+  if (!root) return '';
+  if (ROOT_IDS.has(root)) return ROOT_IDS.get(root);
+  consecutiveRootId += 1;
+  ROOT_IDS.set(root, consecutiveRootId.toString());
+  return ROOT_IDS.get(root) + '_';
+}
+/**
+ * Monitor element, and trigger callback when element becomes inView
+ * @param element {HTMLElement}
+ * @param callback {Function} Called with inView
+ * @param options {Object} InterSection observer options
+ * @param options.threshold {Number} Number between 0 and 1, indicating how much of the element should be inView before triggering
+ * @param options.root {HTMLElement}
+ * @param options.rootMargin {String} The CSS margin to apply to the root element.
+ */
+
+
+function observe(element, callback, options) {
+  if (options === void 0) {
+    options = {};
+  } // IntersectionObserver needs a threshold to trigger, so set it to 0 if it's not defined.
+  // Modify the options object, since it's used in the onChange handler.
+
+
+  if (!options.threshold) options.threshold = 0;
+  var _options = options,
+      root = _options.root,
+      rootMargin = _options.rootMargin,
+      threshold = _options.threshold; // Validate that the element is not being used in another <Observer />
+
+  (0, _invariant.default)(!INSTANCE_MAP.has(element), "react-intersection-observer: Trying to observe %s, but it's already being observed by another instance.\nMake sure the `ref` is only used by a single <Observer /> instance.\n\n%s", element);
+  /* istanbul ignore if */
+
+  if (!element) return; // Create a unique ID for this observer instance, based on the root, root margin and threshold.
+  // An observer with the same options can be reused, so lets use this fact
+
+  var observerId = getRootId(root) + (rootMargin ? threshold.toString() + "_" + rootMargin : threshold.toString());
+  var observerInstance = OBSERVER_MAP.get(observerId);
+
+  if (!observerInstance) {
+    observerInstance = new IntersectionObserver(onChange, options);
+    /* istanbul ignore else  */
+
+    if (observerId) OBSERVER_MAP.set(observerId, observerInstance);
+  }
+
+  var instance = {
+    callback: callback,
+    element: element,
+    inView: false,
+    observerId: observerId,
+    observer: observerInstance,
+    // Make sure we have the thresholds value. It's undefined on a browser like Chrome 51.
+    thresholds: observerInstance.thresholds || (Array.isArray(threshold) ? threshold : [threshold])
+  };
+  INSTANCE_MAP.set(element, instance);
+  observerInstance.observe(element);
+  return instance;
+}
+/**
+ * Stop observing an element. If an element is removed from the DOM or otherwise destroyed,
+ * make sure to call this method.
+ * @param element {Element}
+ */
+
+
+function unobserve(element) {
+  if (!element) return;
+  var instance = INSTANCE_MAP.get(element);
+
+  if (instance) {
+    var observerId = instance.observerId,
+        observer = instance.observer;
+    var root = observer.root;
+    observer.unobserve(element); // Check if we are still observing any elements with the same threshold.
+
+    var itemsLeft = false; // Check if we still have observers configured with the same root.
+
+    var rootObserved = false;
+    /* istanbul ignore else  */
+
+    if (observerId) {
+      INSTANCE_MAP.forEach(function (item, key) {
+        if (key !== element) {
+          if (item.observerId === observerId) {
+            itemsLeft = true;
+            rootObserved = true;
+          }
+
+          if (item.observer.root === root) {
+            rootObserved = true;
+          }
+        }
+      });
+    }
+
+    if (!rootObserved && root) ROOT_IDS["delete"](root);
+
+    if (observer && !itemsLeft) {
+      // No more elements to observe for threshold, disconnect observer
+      observer.disconnect();
+    } // Remove reference to element
+
+
+    INSTANCE_MAP["delete"](element);
+  }
+}
+
+function onChange(changes) {
+  changes.forEach(function (intersection) {
+    var isIntersecting = intersection.isIntersecting,
+        intersectionRatio = intersection.intersectionRatio,
+        target = intersection.target;
+    var instance = INSTANCE_MAP.get(target); // Firefox can report a negative intersectionRatio when scrolling.
+
+    /* istanbul ignore else */
+
+    if (instance && intersectionRatio >= 0) {
+      // If threshold is an array, check if any of them intersects. This just triggers the onChange event multiple times.
+      var inView = instance.thresholds.some(function (threshold) {
+        return instance.inView ? intersectionRatio > threshold : intersectionRatio >= threshold;
+      });
+
+      if (isIntersecting !== undefined) {
+        // If isIntersecting is defined, ensure that the element is actually intersecting.
+        // Otherwise it reports a threshold of 0
+        inView = inView && isIntersecting;
+      }
+
+      instance.inView = inView;
+      instance.callback(inView, intersection);
+    }
+  });
+}
+
+function isPlainChildren(props) {
+  return typeof props.children !== 'function';
+}
+/**
+ * Monitors scroll, and triggers the children function with updated props
+ *
+ <InView>
+ {({inView, ref}) => (
+   <h1 ref={ref}>{`${inView}`}</h1>
+ )}
+ </InView>
+ */
+
+
+var InView =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inheritsLoose2.default)(InView, _React$Component);
+
+  function InView() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "state", {
+      inView: false,
+      entry: undefined
+    });
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "node", null);
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleNode", function (node) {
+      if (_this.node) unobserve(_this.node);
+      _this.node = node ? node : null;
+
+      _this.observeNode();
+    });
+    (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "handleChange", function (inView, entry) {
+      // Only trigger a state update if inView has changed.
+      // This prevents an unnecessary extra state update during mount, when the element stats outside the viewport
+      if (inView !== _this.state.inView || inView) {
+        _this.setState({
+          inView: inView,
+          entry: entry
+        });
+      }
+
+      if (_this.props.onChange) {
+        // If the user is actively listening for onChange, always trigger it
+        _this.props.onChange(inView, entry);
+      }
+    });
+    return _this;
+  }
+
+  var _proto = InView.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    /* istanbul ignore else  */
+    if ("development" !== 'production') {
+      (0, _invariant.default)(this.node, "react-intersection-observer: No DOM node found. Make sure you forward \"ref\" to the root DOM element you want to observe.");
+    }
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    // If a IntersectionObserver option changed, reinit the observer
+    if (prevProps.rootMargin !== this.props.rootMargin || prevProps.root !== this.props.root || prevProps.threshold !== this.props.threshold) {
+      unobserve(this.node);
+      this.observeNode();
+    }
+
+    if (prevState.inView !== this.state.inView) {
+      if (this.state.inView && this.props.triggerOnce) {
+        unobserve(this.node);
+        this.node = null;
+      }
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.node) {
+      unobserve(this.node);
+      this.node = null;
+    }
+  };
+
+  _proto.observeNode = function observeNode() {
+    if (!this.node) return;
+    var _this$props = this.props,
+        threshold = _this$props.threshold,
+        root = _this$props.root,
+        rootMargin = _this$props.rootMargin;
+    observe(this.node, this.handleChange, {
+      threshold: threshold,
+      root: root,
+      rootMargin: rootMargin
+    });
+  };
+
+  _proto.render = function render() {
+    var _this$state = this.state,
+        inView = _this$state.inView,
+        entry = _this$state.entry;
+
+    if (!isPlainChildren(this.props)) {
+      return this.props.children({
+        inView: inView,
+        entry: entry,
+        ref: this.handleNode
+      });
+    }
+
+    var _this$props2 = this.props,
+        children = _this$props2.children,
+        as = _this$props2.as,
+        tag = _this$props2.tag,
+        triggerOnce = _this$props2.triggerOnce,
+        threshold = _this$props2.threshold,
+        root = _this$props2.root,
+        rootMargin = _this$props2.rootMargin,
+        props = (0, _objectWithoutPropertiesLoose2.default)(_this$props2, ["children", "as", "tag", "triggerOnce", "threshold", "root", "rootMargin"]);
+    return (0, _react.createElement)(as || tag || 'div', (0, _extends2.default)({
+      ref: this.handleNode
+    }, props), children);
+  };
+
+  return InView;
+}(_react.Component);
+
+exports.InView = InView;
+(0, _defineProperty2.default)(InView, "displayName", 'InView');
+(0, _defineProperty2.default)(InView, "defaultProps", {
+  threshold: 0,
+  triggerOnce: false
+});
+/* eslint-disable react-hooks/exhaustive-deps */
+
+function useInView(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  var _React$useState = (0, _react.useState)(null),
+      ref = _React$useState[0],
+      setRef = _React$useState[1];
+
+  var _React$useState2 = (0, _react.useState)({
+    inView: false,
+    entry: undefined
+  }),
+      state = _React$useState2[0],
+      setState = _React$useState2[1];
+
+  (0, _react.useEffect)(function () {
+    if (!ref) return;
+    observe(ref, function (inView, intersection) {
+      setState({
+        inView: inView,
+        entry: intersection
+      });
+
+      if (inView && options.triggerOnce) {
+        // If it should only trigger once, unobserve the element after it's inView
+        unobserve(ref);
+      }
+    }, options);
+    return function () {
+      unobserve(ref);
+    };
+  }, [// Only create a new Observer instance if the ref or any of the options have been changed.
+  ref, options.threshold, options.root, options.rootMargin, options.triggerOnce]);
+  (0, _react.useDebugValue)(state.inView);
+  return [setRef, state.inView, state.entry];
+}
+
+var _default = InView;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","@babel/runtime/helpers/esm/assertThisInitialized":"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js","@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","@babel/runtime/helpers/esm/defineProperty":"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/defineProperty.js","react":"../../node_modules/react/index.js","invariant":"../../node_modules/invariant/browser.js"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -64998,6 +65464,8 @@ var socialmedia_item_1 = require("./socialmedia-item");
 
 var observables_1 = require("../../access/observables/observables");
 
+var react_intersection_observer_1 = require("react-intersection-observer");
+
 var ContentItemWrapper =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65010,7 +65478,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemWrapper).call(this, props));
     _this.state = {
-      annotationAndNotesShown: false
+      annotationAndNotesShown: false,
+      showEntity: false
     };
     return _this;
   }
@@ -65033,6 +65502,17 @@ function (_React$Component) {
     value: function openContent() {
       if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video) {
         observables_1.ContentViewerData.next(this.props.data);
+      }
+    }
+  }, {
+    key: "onViewChange",
+    value: function onViewChange(inView, entry) {
+      var notInView = this.state.showEntity;
+
+      if (inView && !notInView) {
+        this.setState({
+          showEntity: true
+        });
       }
     }
   }, {
@@ -65139,16 +65619,19 @@ function (_React$Component) {
         className: "inner-content-holder ".concat(this.props.inheritDimensions ? 'inherit-dimensions' : '')
       }, React.createElement("div", {
         className: "inner-content"
+      }, React.createElement(react_intersection_observer_1.InView, {
+        onChange: this.onViewChange.bind(this),
+        className: "inview-wrapper"
       }, React.createElement("div", {
         className: "inner-content-wrapper ".concat(this.state.annotationAndNotesShown ? 'notes-open' : ''),
         onClick: this.openContent.bind(this)
-      }, currentContent, this.props.data.title && React.createElement("div", {
+      }, this.state.showEntity && currentContent, this.props.data.title && React.createElement("div", {
         className: "inner-overlay-content-wrapper"
       }, React.createElement("label", {
         className: "inner-content-title"
       }, this.props.data.title))), React.createElement("label", {
         className: "inner-content-type-label"
-      }, label)), this.state.annotationAndNotesShown && React.createElement("div", {
+      }, label))), this.state.annotationAndNotesShown && React.createElement("div", {
         className: "inner-content-meta"
       }, React.createElement("div", {
         className: "inner-content-meta-tags"
@@ -65185,7 +65668,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWrapper = ContentItemWrapper;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66205,6 +66688,7 @@ function GetWorkspaceListForSidebar() {
       link: "/workspace/".concat(item.id, "/topic/123"),
       active: false,
       subListOpen: false,
+      gradient: item.gradient,
       items: constants_1.Topiclist.map(function (topic) {
         var subItem = {
           id: topic.id,
@@ -66370,6 +66854,9 @@ function (_React$Component) {
       }, React.createElement("i", {
         className: "material-icons"
       }, "apps"), "Collections"))), React.createElement(React.Fragment, null, sideBarItems.length > 0 && sideBarItems.map(function (item, i) {
+        var styles = {
+          backgroundImage: item.gradient
+        };
         return React.createElement("li", {
           key: i,
           className: "first-level"
@@ -66378,9 +66865,11 @@ function (_React$Component) {
         }, React.createElement("label", {
           className: "first-level-label"
         }, item.subListOpen && React.createElement("i", {
-          className: "material-icons folder-icon"
+          className: "material-icons folder-icon ".concat(item.gradient ? 'apply-gradient' : ''),
+          style: styles
         }, "folder_open"), !item.subListOpen && React.createElement("i", {
-          className: "material-icons folder-icon"
+          className: "material-icons folder-icon ".concat(item.gradient ? 'apply-gradient' : ''),
+          style: styles
         }, "folder"), item.name)), item.items.length > 0 && React.createElement("span", {
           className: "list-toggler",
           onClick: _this2.openList.bind(_this2, i)
@@ -69639,6 +70128,8 @@ var types_1 = require("../../../../constants/types");
 
 var content_item_with_menu_1 = require("../../../content-item/content-item-with-menu");
 
+var observables_1 = require("../../../../access/observables/observables");
+
 var itemSource = {
   beginDrag: function beginDrag(props) {
     return {
@@ -69648,6 +70139,16 @@ var itemSource = {
   },
   canDrag: function canDrag(props) {
     return !props.isBeingResized;
+  },
+  endDrag: function endDrag(props, monitor, component) {
+    if (!monitor.didDrop()) {
+      var data = {
+        from: props.group,
+        to: null,
+        data: props.data
+      };
+      observables_1.WorkspaceContentTransfer.next(data);
+    }
   }
 };
 
@@ -69689,7 +70190,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(CanvasGroupItem);
-},{"react":"../../node_modules/react/index.js","./canvas-group-item.scss":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../../../constants/types":"constants/types.ts","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-group-item.scss":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../../../constants/types":"constants/types.ts","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx","../../../../access/observables/observables":"access/observables/observables.ts"}],"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -70732,6 +71233,14 @@ exports.WorkspaceViewSwitch = WorkspaceViewSwitch;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -70843,35 +71352,60 @@ function (_React$Component) {
       });
       this.props.actions.showWorkspaceActions();
       this.transferSubscription = observables_1.WorkspaceContentTransfer.subscribe(function (data) {
+        var contentData = data.data;
+        var change = false;
         var groups = [];
         var originalGroups = _this2.state.groups;
-        var change = false;
-        var contentData = data.data;
+        var fromGroup = originalGroups.find(function (group) {
+          return group.id === data.from;
+        });
+        var toGroup = originalGroups.find(function (group) {
+          return group.id === data.to;
+        });
         originalGroups.forEach(function (group) {
-          var groupId = group.id;
-          var currentItems = [].concat(group.items);
-
-          if (data.from === groupId) {
-            currentItems = currentItems.filter(function (temp) {
-              return temp.id !== data.data.id;
-            });
-            change = true;
-          } else if (data.to === groupId) {
-            currentItems.push({
-              id: contentData.id,
-              type: contentData.contentType,
-              props: {
-                height: constants_1.ItemHeight,
-                width: constants_1.ItemWidth
-              }
-            });
-            change = true;
-          }
-
           groups.push(Object.assign({}, group, {
-            items: currentItems
+            items: [].concat(group.items)
           }));
         });
+
+        if (fromGroup || toGroup) {
+          groups.forEach(function (group) {
+            var groupId = group.id;
+
+            if (data.from === groupId) {
+              group.items = group.items.filter(function (temp) {
+                return temp.id !== data.data.id;
+              });
+              change = true;
+            } else if (data.to === groupId) {
+              group.items.push({
+                id: contentData.id,
+                type: contentData.contentType,
+                props: {
+                  height: constants_1.ItemHeight,
+                  width: constants_1.ItemWidth
+                }
+              });
+              change = true;
+            }
+          });
+        }
+
+        if (!toGroup) {
+          var _ref2;
+
+          var group = constants_1.GetEmptyGroup();
+          group.items.push({
+            id: contentData.id,
+            type: contentData.contentType,
+            props: {
+              height: constants_1.ItemHeight,
+              width: constants_1.ItemWidth
+            }
+          });
+          groups = (_ref2 = []).concat.apply(_ref2, _toConsumableArray(groups).concat([group]));
+          change = true;
+        }
 
         if (change) {
           _this2.setState({
@@ -71241,7 +71775,7 @@ function (_React$Component) {
           isOver = _this$props.isOver,
           data = _this$props.data;
       var styles = {
-        backgroundImage: data.getImgUrl()
+        backgroundImage: data.gradient
       };
       return connectDropTarget(React.createElement("div", {
         className: "workspace ".concat(isOver ? 'entity-over' : ''),
@@ -77522,7 +78056,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52065" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57491" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

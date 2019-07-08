@@ -5,6 +5,7 @@ import { DragAndDropTypes, IContentItem, IBoardContent } from '../../../../const
 import { GetSampleItem } from '../../../../constants/dummy-data';
 import { ContentItemWrapper } from '../../../content-item/content-item';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
+import { WorkspaceContentTransfer } from '../../../../access/observables/observables';
 
 const itemSource = {
     beginDrag(props) {
@@ -15,6 +16,16 @@ const itemSource = {
     },
     canDrag(props) {
         return !props.isBeingResized;
+    },
+    endDrag(props, monitor, component) {
+        if (!monitor.didDrop()) {
+            const data = {
+                from: props.group,
+                to: null,
+                data: props.data
+            };
+            WorkspaceContentTransfer.next(data);
+        }
     }
 }
 

@@ -7,17 +7,20 @@ export interface IWorkspace {
     id?: string;
     name: string;
     image: any;
+    gradient: string;
 }
 export class Workspace implements IWorkspace {
     id?: string;
     name: string;
     image: any;
     link: string;
-    constructor(name, image) {
+    gradient: string;
+    constructor(name, image, gradient = null) {
         this.id = `${Math.floor(Math.random() * 10e8)}`;
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
+        this.gradient = gradient;
     }
     getImgUrl() {
         return `url(${this.image})`;
@@ -171,4 +174,5 @@ export interface ISideBarNavItem {
     items?: ISideBarNavItem[];
     active?: boolean;
     subListOpen?: boolean;
+    gradient?: string;
 }

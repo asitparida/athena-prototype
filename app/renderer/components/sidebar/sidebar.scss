@@ -52,6 +52,11 @@
                     i {
                         width: 36px;
                         font-size: 18px;
+                        &.folder-icon.apply-gradient {
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
                     }
                 }
             }

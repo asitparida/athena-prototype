@@ -42,7 +42,7 @@ class WorkspacePreview extends React.Component<any, any> {
     render() {
         const { connectDropTarget, isOver, data } = this.props;
         const styles = {
-            backgroundImage: data.getImgUrl()
+            backgroundImage: data.gradient
         };
         return connectDropTarget(
             <div className={`workspace ${isOver ? 'entity-over' : ''}`} style={styles}>

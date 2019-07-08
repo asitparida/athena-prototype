@@ -27,10 +27,10 @@ export const AllContentList: ContentList[] = [
 ];
 
 export const WorkspaceList: IWorkspace[] = [
-    new Workspace('Workspace #1', img1),
-    new Workspace('Workspace #2', img2),
-    new Workspace('Workspace #3', img3),
-    new Workspace('Workspace #4', img1)
+    new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
+    new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
+    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(34, 193, 195), rgb(253, 187, 45))`),
+    new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
 ];
 
 export const WorkspaceCollectionTabs = [
@@ -116,6 +116,19 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         }
     }
 ];
+
+export function GetEmptyGroup() {
+    return {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'New Group *',
+        props: { top: 0, left: 0 },
+        items: [],
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
+    };
+}
 
 export enum Cancellable {
     IdleCallback,
