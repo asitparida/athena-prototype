@@ -1,6 +1,40 @@
+import * as _ from 'lodash';
+
+export interface IState {
+    sideBarShown: boolean;
+    workspaceInHeader: boolean;
+    workspaceActionInHeader: boolean;
+    workspaceDumpBarShown: boolean;
+    workspaceDumpBarActionShown: boolean;
+    workspaceRTEShown: boolean;
+    workspaceRTEActionShown: boolean;
+    toasts: IToastItem[];
+    workspaceViewIsCanvas: boolean;
+    workspaceActionsAreShown: boolean;
+    newWorkspaceCreator: boolean;
+    newTopicCreator: boolean;
+    workspaceList?: IWorkspace[];
+    activeWorkspace?: IWorkspace;
+}
+export interface IAction {
+    type: string;
+    payload: any;
+}
+
+export interface IAppActions {
+    actions: IAction[];
+}
+
 export interface IContentItemsList {
     list: ContentList;
     title: string;
+}
+
+export interface ITopic {
+    id?: string;
+    name?: string;
+    image?: any;
+    gradient?: string;
 }
 
 export interface IWorkspace {
@@ -8,6 +42,7 @@ export interface IWorkspace {
     name: string;
     image: any;
     gradient: string;
+    topics?: ITopic[];
 }
 export class Workspace implements IWorkspace {
     id?: string;
@@ -15,6 +50,7 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     gradient: string;
+    topics: ITopic[] = [];
     constructor(name, image, gradient = null) {
         this.id = `${Math.floor(Math.random() * 10e8)}`;
         this.name = name;

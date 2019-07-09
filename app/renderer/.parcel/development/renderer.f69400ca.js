@@ -56041,6 +56041,7 @@ function () {
 
     _classCallCheck(this, Workspace);
 
+    this.topics = [];
     this.id = "".concat(Math.floor(Math.random() * 10e8));
     this.name = name;
     this.image = image;
@@ -56542,7 +56543,10 @@ exports.AllContentList = [{
   }),
   type: types_1.ContentType.Video
 }];
-exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1, "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Workspace #2', img2, "linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))"), new types_1.Workspace('Workspace #3', img3, "linear-gradient(to right, rgb(240, 152, 25), rgb(237, 222, 93))"), new types_1.Workspace('Workspace #4', img1, "linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))")];
+exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1, "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Workspace #2', img2, "linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))"), new types_1.Workspace('Workspace #3', img3, "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))"), new types_1.Workspace('Workspace #4', img1, "linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))")];
+exports.WorkspaceList.forEach(function (w) {
+  return w.topics = GetSampleTopicItems();
+});
 exports.WorkspaceCollectionTabs = [{
   id: 'all',
   name: 'All'
@@ -56580,18 +56584,37 @@ exports.DumpingGrounCollectionTabs = [{
   type: types_1.ContentType.SocialMedia
 }];
 exports.Topiclist = [{
-  id: 1,
-  name: 'Topic #1',
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  name: 'Topic #AA',
   active: true
 }, {
-  id: 2,
-  name: 'Topic #2',
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  name: 'Topic #BB',
   active: false
 }, {
-  id: 3,
-  name: 'Topic #3',
+  id: "".concat(Math.floor(Math.random() * 10e8)),
+  name: 'Topic #CC',
   active: false
 }];
+
+function GetSampleTopicItems() {
+  var items = [{
+    id: "".concat(Math.floor(Math.random() * 10e8)),
+    name: 'Topic #AA',
+    active: true
+  }, {
+    id: "".concat(Math.floor(Math.random() * 10e8)),
+    name: 'Topic #BB',
+    active: false
+  }, {
+    id: "".concat(Math.floor(Math.random() * 10e8)),
+    name: 'Topic #CC',
+    active: false
+  }];
+  return _.shuffle(items);
+}
+
+exports.GetSampleTopicItems = GetSampleTopicItems;
 
 function GetSampleBoardItems() {
   var items = [{
@@ -64317,6 +64340,9 @@ var _config = require("./internal/config");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var constants_1 = require("../../constants/constants");
+
 var IntialState = {
   sideBarShown: false,
   workspaceActionInHeader: false,
@@ -64328,10 +64354,13 @@ var IntialState = {
   toasts: [],
   workspaceViewIsCanvas: true,
   workspaceActionsAreShown: false,
-  newWorkspaceCreator: false
+  newWorkspaceCreator: false,
+  newTopicCreator: false,
+  workspaceList: constants_1.WorkspaceList,
+  activeWorkspace: constants_1.WorkspaceList[0]
 };
 exports.default = IntialState;
-},{}],"access/actions/actionTypes.ts":[function(require,module,exports) {
+},{"../../constants/constants":"constants/constants.ts"}],"access/actions/actionTypes.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64362,6 +64391,9 @@ exports.HIDE_WORKSPACE_ACTIONS = 'HIDE_WORKSPACE_ACTIONS';
 exports.TOGGLE_WORKSPACE_ACTIONS = 'TOGGLE_WORKSPACE_ACTIONS';
 exports.SHOW_WORKSPACE_CREATOR = 'SHOW_WORKSPACE_CREATOR';
 exports.HIDE_WORKSPACE_CREATOR = 'HIDE_WORKSPACE_CREATOR';
+exports.SHOW_TOPIC_CREATOR = 'SHOW_TOPIC_CREATOR';
+exports.HIDE_TOPIC_CREATOR = 'HIDE_TOPIC_CREATOR';
+exports.ACTIVATE_WORKSPACE_AND_TOPIC = 'ACTIVATE_WORKSPACE_AND_TOPIC';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64559,6 +64591,30 @@ exports.hideWorkspaceCreator = function () {
   return {
     type: types.HIDE_WORKSPACE_CREATOR,
     payload: {}
+  };
+};
+
+exports.showTopicCreator = function () {
+  return {
+    type: types.SHOW_TOPIC_CREATOR,
+    payload: {}
+  };
+};
+
+exports.hideTopicCreator = function () {
+  return {
+    type: types.HIDE_TOPIC_CREATOR,
+    payload: {}
+  };
+};
+
+exports.activateWorkshopAndTopic = function (workspaceId, topicId) {
+  return {
+    type: types.ACTIVATE_WORKSPACE_AND_TOPIC,
+    payload: {
+      workspaceId: workspaceId,
+      topicId: topicId
+    }
   };
 };
 },{"./actionTypes":"access/actions/actionTypes.ts"}],"access/reducers/reducer.ts":[function(require,module,exports) {
@@ -64845,6 +64901,39 @@ exports.default = function () {
           newWorkspaceCreator: false
         });
         return newState;
+      }
+
+    case actionTypes_1.SHOW_TOPIC_CREATOR:
+      {
+        newState = Object.assign({}, state, {
+          newTopicCreator: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_TOPIC_CREATOR:
+      {
+        newState = Object.assign({}, state, {
+          newTopicCreator: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.ACTIVATE_WORKSPACE_AND_TOPIC:
+      {
+        var activeWorkspace = state.workspaceList.find(function (w) {
+          return w.id === action.payload.workspaceId;
+        });
+
+        if (activeWorkspace) {
+          activeWorkspace.topics.forEach(function (topic) {
+            return topic.active = topic.id === action.payload.topicId;
+          });
+          newState = Object.assign({}, state, {
+            activeWorkspace: activeWorkspace
+          });
+          return newState;
+        }
       }
 
     default:
@@ -66707,10 +66796,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var constants_1 = require("./constants/constants");
-
-function GetWorkspaceListForSidebar() {
-  var result = constants_1.WorkspaceList.map(function (item) {
+function GetWorkspaceListForSidebar(Workspaces) {
+  var result = Workspaces.map(function (item) {
     var sideBarItem = {
       id: Math.floor(Math.random() * 10e8),
       name: item.name,
@@ -66718,7 +66805,7 @@ function GetWorkspaceListForSidebar() {
       active: false,
       subListOpen: false,
       gradient: item.gradient,
-      items: constants_1.Topiclist.map(function (topic) {
+      items: item.topics.map(function (topic) {
         var subItem = {
           id: topic.id,
           name: topic.name,
@@ -66789,7 +66876,7 @@ function isEqual(a, b) {
 }
 
 exports.isEqual = isEqual;
-},{"./constants/constants":"constants/constants.ts"}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
+},{}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66820,12 +66907,6 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -66838,9 +66919,25 @@ require("./sidebar.scss");
 
 var transforms_1 = require("../../transforms");
 
-var actions = __importStar(require("../../access/actions/appActions"));
+var AppActions = __importStar(require("../../access/actions/appActions"));
 
-var configureStore_1 = __importDefault(require("../../access/store/configureStore"));
+var redux_1 = require("redux");
+
+var react_redux_1 = require("react-redux");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers,
+      workspaceReducers = _ref.workspaceReducers;
+  return {
+    workspaceList: workspaceReducers.workspaceList
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
 
 var SidebarComponent =
 /*#__PURE__*/
@@ -66854,7 +66951,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SidebarComponent).call(this, props));
     _this.state = {
-      sideBarItems: transforms_1.GetWorkspaceListForSidebar()
+      sideBarItems: transforms_1.GetWorkspaceListForSidebar(_this.props.workspaceList)
     };
     return _this;
   }
@@ -66873,7 +66970,7 @@ function (_React$Component) {
   }, {
     key: "createNewWorkspace",
     value: function createNewWorkspace() {
-      configureStore_1.default.dispatch(actions.showWorkspaceCreator());
+      this.props.actions.showWorkspaceCreator();
     }
   }, {
     key: "render",
@@ -66956,8 +67053,8 @@ function (_React$Component) {
   return SidebarComponent;
 }(React.Component);
 
-exports.default = SidebarComponent;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","../../access/store/configureStore":"access/store/configureStore.ts"}],"components/workspace/workspace.scss":[function(require,module,exports) {
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/workspace/workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -71348,6 +71445,8 @@ var constants_1 = require("../../constants/constants");
 
 var workspace_view_switch_1 = require("./workspace-view-switch");
 
+var transforms_1 = require("../../transforms");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -71385,20 +71484,33 @@ function (_React$Component) {
   }
 
   _createClass(Workspace, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(props) {
+      if (transforms_1.isEqual(this.props.match.params, props.match.params) === false) {
+        this.processParamsChange();
+      }
+    }
+  }, {
+    key: "processParamsChange",
+    value: function processParamsChange() {
+      var _this$props$match$par = this.props.match.params,
+          workspaceId = _this$props$match$par.workspaceId,
+          topicId = _this$props$match$par.topicId;
+      this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
+      this.setState({
+        workspaceId: workspaceId,
+        topicId: topicId,
+        groups: constants_1.BoardGroups
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
       observables_1.ShowDumpBarAction$.next(true);
       observables_1.ShowRTEAction$.next(true);
-      var _this$props$match$par = this.props.match.params,
-          workspaceId = _this$props$match$par.workspaceId,
-          topicId = _this$props$match$par.topicId;
-      this.setState({
-        workspaceId: workspaceId,
-        topicId: topicId,
-        groups: constants_1.BoardGroups
-      });
+      this.processParamsChange();
       this.props.actions.showWorkspaceActions();
       this.transferSubscription = observables_1.WorkspaceContentTransfer.subscribe(function (data) {
         var contentData = data.data;
@@ -71520,7 +71632,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx"}],"pages/router-root.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71969,8 +72081,6 @@ var AppActions = __importStar(require("../../access/actions/appActions"));
 
 require("./header.scss");
 
-var constants_1 = require("../../constants/constants");
-
 var workspace_previewer_1 = __importDefault(require("../workspace-preview/workspace-previewer"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
@@ -71983,7 +72093,9 @@ var mapStateToProps = function mapStateToProps(_ref) {
     workspaceDumpBarShown: reducers.workspaceDumpBarShown,
     workspaceRTEShown: reducers.workspaceRTEShown,
     workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas,
-    workspaceActionsAreShown: workspaceReducers.workspaceActionsAreShown
+    workspaceActionsAreShown: workspaceReducers.workspaceActionsAreShown,
+    workspaceList: workspaceReducers.workspaceList,
+    activeWorkspace: workspaceReducers.activeWorkspace
   };
 };
 
@@ -72005,8 +72117,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
     _this.state = {
-      workspaceList: constants_1.WorkspaceList,
-      topicList: constants_1.Topiclist
+      workspaceList: _this.props.workspaceList
     };
     return _this;
   }
@@ -72038,6 +72149,20 @@ function (_React$Component) {
     value: function launchAnnotator() {
       var ipcRenderer = window.ipcRenderer;
       ipcRenderer.send('launch-annotator');
+    }
+  }, {
+    key: "toggleWorkspaceView",
+    value: function toggleWorkspaceView() {
+      this.props.actions.toggleWorkspaceViewAsCanvas();
+    }
+  }, {
+    key: "addNewTopic",
+    value: function addNewTopic() {
+      this.props.actions.showTopicCreator();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var remote = window.remote;
       var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
       fetch(api).then(function (res) {
@@ -72049,13 +72174,10 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "toggleWorkspaceView",
-    value: function toggleWorkspaceView() {
-      this.props.actions.toggleWorkspaceViewAsCanvas();
-    }
-  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "app-actions left"
       }, React.createElement("div", {
@@ -72063,15 +72185,26 @@ function (_React$Component) {
         onClick: this.toggleSidebar.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "menu")), this.props.workspaceActionsAreShown && this.state.topicList.length > 0 && React.createElement("ul", {
+      }, "menu")), this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 && React.createElement("ul", {
         className: "topic-headers"
-      }, this.state.topicList.map(function (topic, i) {
+      }, this.props.activeWorkspace.topics.map(function (topic, i) {
+        var styles = {};
+
+        if (topic.active) {
+          styles = {
+            backgroundImage: _this2.props.activeWorkspace.gradient
+          };
+        }
+
         return React.createElement("li", {
-          key: i,
+          key: topic.id,
           className: "topic ".concat(topic.active ? 'active' : '')
-        }, " ", React.createElement("label", null, topic.name));
+        }, " ", React.createElement("label", {
+          style: styles
+        }, React.createElement("span", null, topic.name)));
       }), React.createElement("li", {
-        className: "topic"
+        className: "topic",
+        onClick: this.addNewTopic.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
       }, "add")))), this.props.workspaceInHeader && React.createElement(workspace_previewer_1.default, {
@@ -72119,7 +72252,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Header);
-},{"react":"../../node_modules/react/index.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../../constants/constants":"constants/constants.ts","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -78987,6 +79120,11 @@ function (_React$Component) {
       this.props.actions.hideWorkspaceCreator();
     }
   }, {
+    key: "createWorkspace",
+    value: function createWorkspace() {
+      this.props.actions.hideWorkspaceCreator();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -79017,7 +79155,8 @@ function (_React$Component) {
           style: styles
         });
       })), React.createElement("button", {
-        className: "add-btn"
+        className: "add-btn",
+        onClick: this.createWorkspace.bind(this)
       }, "Create"))));
     }
   }]);
@@ -79026,7 +79165,135 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateWorkspace);
-},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"pages/main.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/create-workspace/create-topic.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./create-workspace.scss");
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var react_redux_1 = require("react-redux");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    workspaceRTEActionShown: reducers.workspaceRTEActionShown
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var CreateTopic =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CreateTopic, _React$Component);
+
+  function CreateTopic(props) {
+    var _this;
+
+    _classCallCheck(this, CreateTopic);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateTopic).call(this, props));
+    _this.state = {
+      newTopicName: '',
+      activeWorkspaceIndex: 0,
+      workspaceList: []
+    };
+    return _this;
+  }
+
+  _createClass(CreateTopic, [{
+    key: "selectColor",
+    value: function selectColor(i) {
+      this.setState({
+        activeGradientIndex: i
+      });
+    }
+  }, {
+    key: "onNewTopicNameChanged",
+    value: function onNewTopicNameChanged(e) {
+      this.setState({
+        newTopicName: e.target.value
+      });
+    }
+  }, {
+    key: "closeOverlay",
+    value: function closeOverlay() {
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "createTopic",
+    value: function createTopic() {
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        className: "create-workspace"
+      }, React.createElement("div", {
+        className: "create-workspace-overlay",
+        onClick: this.closeOverlay.bind(this)
+      }), React.createElement("div", {
+        className: "create-workspace-dialog"
+      }, React.createElement("label", null, "New Topic"), React.createElement("input", {
+        autoFocus: true,
+        value: this.state.newTopicName,
+        onChange: this.onNewTopicNameChanged.bind(this)
+      }), React.createElement("div", {
+        className: "create-workspace-actions"
+      }, React.createElement("button", {
+        className: "add-btn",
+        onClick: this.createTopic.bind(this)
+      }, "Create"))));
+    }
+  }]);
+
+  return CreateTopic;
+}(React.Component);
+
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateTopic);
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"pages/main.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79095,6 +79362,8 @@ var content_viewer_1 = require("../components/content-viewer/content-viewer");
 
 var create_workspace_1 = __importDefault(require("../components/create-workspace/create-workspace"));
 
+var create_topic_1 = __importDefault(require("../components/create-workspace/create-topic"));
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -79105,7 +79374,8 @@ var mapStateToProps = function mapStateToProps(_ref) {
     workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
     workspaceRTEShown: reducers.workspaceRTEShown,
     workspaceRTEActionShown: reducers.workspaceRTEActionShown,
-    newWorkspaceCreator: workspaceReducers.newWorkspaceCreator
+    newWorkspaceCreator: workspaceReducers.newWorkspaceCreator,
+    newTopicCreator: workspaceReducers.newTopicCreator
   };
 };
 
@@ -79190,7 +79460,7 @@ function (_react_1$Component) {
       }, React.createElement(router_wrap_1.RouterWrapper, {
         sideBarCollpased: sideBarCollpased,
         onLocationChanged: this.onLocationChanged.bind(this)
-      })), React.createElement(toast_1.default, null), React.createElement(content_viewer_1.ContentViewer, null), this.props.newWorkspaceCreator && React.createElement(create_workspace_1.default, null));
+      })), React.createElement(toast_1.default, null), React.createElement(content_viewer_1.ContentViewer, null), this.props.newWorkspaceCreator && React.createElement(create_workspace_1.default, null), this.props.newTopicCreator && React.createElement(create_topic_1.default, null));
     }
   }]);
 
@@ -79198,7 +79468,7 @@ function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = react_dnd_1.DragDropContext(react_dnd_html5_backend_1.default)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Main));
-},{"react":"../../node_modules/react/index.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","../components/header/header":"components/header/header.tsx","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","../components/header/header":"components/header/header.tsx","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -79268,7 +79538,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57576" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61634" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

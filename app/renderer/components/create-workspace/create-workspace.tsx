@@ -45,6 +45,9 @@ class CreateWorkspace extends React.Component<any, any> {
     closeOverlay() {
         this.props.actions.hideWorkspaceCreator();
     }
+    createWorkspace() {
+        this.props.actions.hideWorkspaceCreator();
+    }
     render() {
         return (
             <div className="create-workspace">
@@ -64,7 +67,7 @@ class CreateWorkspace extends React.Component<any, any> {
                                 })
                             }
                         </ul>
-                        <button className='add-btn'>Create</button>
+                        <button className='add-btn' onClick={this.createWorkspace.bind(this)}>Create</button>
                     </div>
                 </div>
             </div>

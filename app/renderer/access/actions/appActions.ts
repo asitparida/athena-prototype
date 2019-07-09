@@ -106,3 +106,18 @@ export const showWorkspaceCreator = () => ({
 export const hideWorkspaceCreator = () => ({
     type: types.HIDE_WORKSPACE_CREATOR, payload: {}
 })
+
+export const showTopicCreator = () => ({
+    type: types.SHOW_TOPIC_CREATOR, payload: {}
+})
+
+export const hideTopicCreator = () => ({
+    type: types.HIDE_TOPIC_CREATOR, payload: {}
+})
+
+export const activateWorkshopAndTopic = (workspaceId, topicId) => ({
+    type: types.ACTIVATE_WORKSPACE_AND_TOPIC, payload: {
+        workspaceId,
+        topicId
+    }
+})

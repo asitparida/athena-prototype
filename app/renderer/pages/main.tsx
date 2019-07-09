@@ -12,6 +12,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
 import { ContentViewer } from '../components/content-viewer/content-viewer';
 import CreateWorkspace from '../components/create-workspace/create-workspace';
+import CreateTopic from '../components/create-workspace/create-topic';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -21,7 +22,8 @@ const mapStateToProps = ({ reducers, workspaceReducers }) => {
         workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
         workspaceRTEActionShown: reducers.workspaceRTEActionShown,
-        newWorkspaceCreator: workspaceReducers.newWorkspaceCreator
+        newWorkspaceCreator: workspaceReducers.newWorkspaceCreator,
+        newTopicCreator: workspaceReducers.newTopicCreator
     };
 }
 
@@ -83,6 +85,10 @@ class Main extends Component<any, any> {
                 {
                     this.props.newWorkspaceCreator &&
                     <CreateWorkspace />
+                }
+                {
+                    this.props.newTopicCreator &&
+                    <CreateTopic />
                 }
             </div>
         );

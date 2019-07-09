@@ -4,13 +4,27 @@ import './sidebar.scss';
 import { ISideBarNavItem } from '../../constants/types';
 import { GetWorkspaceListForSidebar } from '../../transforms';
 import * as actions from '../../access/actions/appActions';
-import store from '../../access/store/configureStore';
+import * as AppActions from '../../access/actions/appActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class SidebarComponent extends React.Component<{}, any> {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
+    return {
+        workspaceList: workspaceReducers.workspaceList
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(AppActions, dispatch)
+    };
+}
+
+class SidebarComponent extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            sideBarItems: GetWorkspaceListForSidebar()
+            sideBarItems: GetWorkspaceListForSidebar(this.props.workspaceList)
         };
     }
     openList(index) {
@@ -23,7 +37,7 @@ export default class SidebarComponent extends React.Component<{}, any> {
         })
     }
     createNewWorkspace() {
-        store.dispatch(actions.showWorkspaceCreator());
+        this.props.actions.showWorkspaceCreator();
     }
     render() {
         const { sideBarItems } = this.state;
@@ -94,3 +108,5 @@ export default class SidebarComponent extends React.Component<{}, any> {
         </div>
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);

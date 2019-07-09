@@ -1,4 +1,5 @@
-import { IState } from "./types";
+import { IState } from '../../constants/types';
+import { WorkspaceList } from '../../constants/constants';
 
 const IntialState: IState = {
     sideBarShown: false,
@@ -11,7 +12,10 @@ const IntialState: IState = {
     toasts: [],
     workspaceViewIsCanvas: true,
     workspaceActionsAreShown: false,
-    newWorkspaceCreator: false
+    newWorkspaceCreator: false,
+    newTopicCreator: false,
+    workspaceList: WorkspaceList,
+    activeWorkspace: WorkspaceList[0]
 };
 
 export default IntialState;

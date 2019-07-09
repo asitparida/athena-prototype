@@ -29,9 +29,11 @@ export const AllContentList: ContentList[] = [
 export const WorkspaceList: IWorkspace[] = [
     new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
     new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
-    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(240, 152, 25), rgb(237, 222, 93))`),
+    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
     new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
 ];
+
+WorkspaceList.forEach(w => w.topics = GetSampleTopicItems());
 
 export const WorkspaceCollectionTabs = [
     { id: 'all', name: 'All' },
@@ -47,10 +49,19 @@ export const DumpingGrounCollectionTabs = [
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];
 export const Topiclist = [
-    { id: 1, name: 'Topic #1', active: true },
-    { id: 2, name: 'Topic #2', active: false },
-    { id: 3, name: 'Topic #3', active: false }
-]
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+];
+
+export function GetSampleTopicItems() {
+    const items = [
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+    ];
+    return _.shuffle(items);
+}
 
 export function GetSampleBoardItems() {
     const items = [

@@ -1,6 +1,6 @@
 import InitialState from '../store/initialState';
-import { TOGGLE_WORKSPACE_VIEW_AS_CANVAS, TOGGLE_WORKSPACE_ACTIONS, HIDE_WORKSPACE_ACTIONS, SHOW_WORKSPACE_ACTIONS, SHOW_WORKSPACE_CREATOR, HIDE_WORKSPACE_CREATOR } from '../actions/actionTypes';
-import { IAction, IState } from '../store/types';
+import { TOGGLE_WORKSPACE_VIEW_AS_CANVAS, TOGGLE_WORKSPACE_ACTIONS, HIDE_WORKSPACE_ACTIONS, SHOW_WORKSPACE_ACTIONS, SHOW_WORKSPACE_CREATOR, HIDE_WORKSPACE_CREATOR, SHOW_TOPIC_CREATOR, HIDE_TOPIC_CREATOR, ACTIVATE_WORKSPACE_AND_TOPIC } from '../actions/actionTypes';
+import { IState, IAction } from '../../constants/types';
 
 export default (state: IState = InitialState, action: IAction) => {
     let newState: IState;
@@ -42,6 +42,28 @@ export default (state: IState = InitialState, action: IAction) => {
                 newWorkspaceCreator: false
             });
             return newState;
+        }
+        case SHOW_TOPIC_CREATOR: {
+            newState = Object.assign({}, state, {
+                newTopicCreator: true
+            });
+            return newState;
+        }
+        case HIDE_TOPIC_CREATOR: {
+            newState = Object.assign({}, state, {
+                newTopicCreator: false
+            });
+            return newState;
+        }
+        case ACTIVATE_WORKSPACE_AND_TOPIC: {
+            const activeWorkspace = state.workspaceList.find(w => w.id === action.payload.workspaceId);
+            if (activeWorkspace) {
+                activeWorkspace.topics.forEach(topic => (topic as any).active = topic.id === action.payload.topicId);
+                newState = Object.assign({}, state, {
+                    activeWorkspace
+                });
+                return newState;
+            }
         }
         default: return state;
     }

@@ -11,6 +11,7 @@ import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
 import { ItemHeight, ItemWidth, BoardGroups, GetEmptyGroup } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
+import { isEqual } from '../../transforms';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -32,15 +33,24 @@ class Workspace extends React.Component<any, any> {
         super(props);
         this.state = { rteWidth: 500, dumpGroundWidth: 350, workspaceId: null, groups: [] };
     }
-    componentDidMount() {
-        ShowDumpBarAction$.next(true);
-        ShowRTEAction$.next(true);
+    componentDidUpdate(props) {
+        if (isEqual(this.props.match.params, props.match.params) === false) {
+            this.processParamsChange();
+        }
+    }
+    processParamsChange() {
         const { workspaceId, topicId } = this.props.match.params;
+        this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
         this.setState({
             workspaceId,
             topicId,
             groups: BoardGroups
         });
+    }
+    componentDidMount() {
+        ShowDumpBarAction$.next(true);
+        ShowRTEAction$.next(true);
+        this.processParamsChange();
         this.props.actions.showWorkspaceActions();
         this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
             const contentData = data.data as IContentItem<any>;

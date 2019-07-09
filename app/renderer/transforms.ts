@@ -1,8 +1,7 @@
 import { ISideBarNavItem, IWorkspace } from "./constants/types";
-import { WorkspaceList, Topiclist } from "./constants/constants";
 
-export function GetWorkspaceListForSidebar(): ISideBarNavItem[] {
-    const result: ISideBarNavItem[] = WorkspaceList.map((item: IWorkspace) => {
+export function GetWorkspaceListForSidebar(Workspaces): ISideBarNavItem[] {
+    const result: ISideBarNavItem[] = Workspaces.map((item: IWorkspace) => {
         const sideBarItem: ISideBarNavItem = {
             id: Math.floor(Math.random() * 10e8),
             name: item.name,
@@ -10,7 +9,7 @@ export function GetWorkspaceListForSidebar(): ISideBarNavItem[] {
             active: false,
             subListOpen: false,
             gradient: item.gradient,
-            items: Topiclist.map(topic => {
+            items: item.topics.map(topic => {
                 const subItem: ISideBarNavItem = {
                     id: topic.id,
                     name: topic.name,

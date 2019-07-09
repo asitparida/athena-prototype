@@ -31,6 +31,7 @@
         margin-right: 12px;
         border-radius: 20px;
         overflow: hidden;
+
         label {
             margin: 0;
             line-height: 32px;
@@ -44,11 +45,13 @@
             min-width: 80px;
             text-align: center;
             transition: background-color 0.2s linear 0s;
+
             &.active {
                 background-color: rgba(#fff, 0.1);
             }
+
             &:not(.active):hover,
-            &:not(.active):focus{
+            &:not(.active):focus {
                 background-color: rgba(#fff, 0.025);
             }
         }
@@ -76,6 +79,7 @@
             background-color: rgba(#000, 0.05);
         }
     }
+
     ul.topic-headers {
         list-style: none;
         white-space: nowrap;
@@ -83,24 +87,30 @@
         flex-flow: row;
         margin: 0px 0 6px 0;
         padding: 0 0 0 20px;
+
         li {
             padding: 0 20px;
             margin-right: 0;
             color: rgba(#fff, 0.50);
             font-size: small;
             border-right: 1px solid rgba(#fff, 0.00);
+
             &.active {
                 label {
                     background-color: rgba(#fff, 0.1);
                     border-radius: 20px;
+                    color: #fff;
+                    text-shadow: 0px 0px 10px rgba(0,0,0,0.80);
                 }
             }
+
             &:hover {
-                 label {
+                label {
                     background-color: rgba(#fff, 0.05);
                     border-radius: 20px;
-                 }
+                }
             }
+
             label {
                 display: block;
                 min-width: 100px;
@@ -111,18 +121,22 @@
                 background-color: rgba(#fff, 0.0);
                 transition: background-color 0.2s ease 0s;
             }
-            &:not(:first-child){
+
+            &:not(:first-child) {
                 border-left: 1px solid rgba(#fff, 0.10);
             }
+
             &:last-child {
                 width: 48px;
                 text-align: center;
+
                 &:hover {
                     i {
                         background-color: rgba(#fff, 0.05);
                         border-radius: 50%;
                     }
                 }
+
                 i {
                     width: 36px;
                     font-size: medium;

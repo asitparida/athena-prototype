@@ -25,6 +25,7 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
+  background-color: #333;
 }
 body #root {
   display: flex;
@@ -1508,6 +1509,8 @@ body #root .app-content .app-content-area {
 .app-actions ul.topic-headers li.active label {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
+  color: #fff;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 .app-actions ul.topic-headers li:hover label {
   background-color: rgba(255, 255, 255, 0.05);
@@ -1858,8 +1861,8 @@ body #root .app-content .app-content-area {
   position: relative;
   z-index: 2;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
-  padding: 30px 45px;
-  background-color: rgba(34, 34, 34, 0.9);
+  padding: 20px 45px 30px 45px;
+  background-color: rgba(34, 34, 34, 0.95);
   display: flex;
   flex-flow: column wrap;
   min-width: 530px;
