@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { HashRouter } from 'react-router-dom'
 import { Component } from "react";
 import { RouterWrapper } from './router-wrap';
 import '../styles.scss';
@@ -74,12 +75,14 @@ class Main extends Component<any, any> {
         return (
             <div className="app-content">
                 <div className='app-dragger' />
-                <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
-                    <Header />
-                </div>
-                <div className='app-content-bottom'>
-                    <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
-                </div>
+                <HashRouter hashType='noslash'>
+                    <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
+                        <Header />
+                    </div>
+                    <div className='app-content-bottom'>
+                        <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
+                    </div>
+                </HashRouter>
                 <Toasts />
                 <ContentViewer />
                 {

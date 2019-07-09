@@ -73,7 +73,8 @@ export enum ContentType {
     Video,
     Link,
     Article,
-    SocialMedia
+    SocialMedia,
+    Sticky
 }
 export enum MediaSourceType {
     Browser,
@@ -128,6 +129,10 @@ export interface ILinkContent {
     ogDescription?: string;
     ogSiteName?: string;
     ogImage?: string;
+}
+
+export interface INoteContent {
+    noteText?: string;
 }
 
 export interface ISocialMediaContent {

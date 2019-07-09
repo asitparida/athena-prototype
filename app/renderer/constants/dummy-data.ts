@@ -1,5 +1,6 @@
-import { IContentItem, IPhotoContent, ContentType, MediaSourceType, IVideoContent, IArticleContent, ILinkContent, ISocialMediaContent } from "./types";
+import { IContentItem, IPhotoContent, ContentType, MediaSourceType, IVideoContent, IArticleContent, ILinkContent, ISocialMediaContent, INoteContent } from "./types";
 import * as _ from 'lodash';
+import { IStickyNote } from "../../api/api-types";
 
 const ItemSize = 5;
 
@@ -26,6 +27,26 @@ export function GetSampleItem(type: ContentType): IContentItem<any> {
         case ContentType.Link: return _.sample(GetSampleLinkItems());
         case ContentType.SocialMedia: return _.sample(GetSampleSocialMediaItems());
     }
+}
+
+export function BuildStickyContentItem(data: IStickyNote): IContentItem<INoteContent> {
+    return {
+        id: data.id,
+        title: null,
+        contentType: ContentType.Sticky,
+        contentData: {
+            noteText: data.text
+        },
+        sourcePreviewAvailable: false,
+        sourceType: MediaSourceType.Browser,
+        tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+        annotations: [
+            {
+                id: `${Math.floor(Math.random() * 10e10)}`,
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
+        ]
+    };
 }
 
 export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {

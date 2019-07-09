@@ -37,8 +37,7 @@ WorkspaceList.forEach(w => w.topics = GetSampleTopicItems());
 
 export const WorkspaceCollectionTabs = [
     { id: 'all', name: 'All' },
-    { id: 'photos', name: 'Worskpace', type: ContentType.Photo },
-    { id: 'videos', name: 'Board', type: ContentType.Video },
+    { id: 'photos', name: 'Worskpace', type: ContentType.Photo }
 ];
 export const DumpingGrounCollectionTabs = [
     { id: 'all', name: 'All' },
@@ -167,4 +166,9 @@ export class CancellabelRequests {
             this.cancellableList = this.cancellableList.filter( t => !t.cleaned);
         }
     }
+}
+
+export function GetAPIUrl() {
+    const remote = (window as any).remote;
+    return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
 }

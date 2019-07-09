@@ -56,11 +56,14 @@ export default (state: IState = InitialState, action: IAction) => {
             return newState;
         }
         case ACTIVATE_WORKSPACE_AND_TOPIC: {
-            const activeWorkspace = state.workspaceList.find(w => w.id === action.payload.workspaceId);
-            if (activeWorkspace) {
-                activeWorkspace.topics.forEach(topic => (topic as any).active = topic.id === action.payload.topicId);
+            const workspace = state.workspaceList.find(w => w.id === action.payload.workspaceId);
+            if (workspace) {
+                const topics = [].concat(workspace.topics);
+                topics.forEach(topic => (topic as any).active = topic.id === action.payload.topicId);
                 newState = Object.assign({}, state, {
-                    activeWorkspace
+                    activeWorkspace: Object.assign({}, workspace, {
+                        topics
+                    })
                 });
                 return newState;
             }

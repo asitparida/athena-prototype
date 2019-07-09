@@ -15,7 +15,7 @@ export function GetWorkspaceListForSidebar(Workspaces): ISideBarNavItem[] {
                     name: topic.name,
                     active: false,
                     items: [],
-                    link: `/workspace/${item.id}/topic/${topic.id}`,
+                    link: BuildTopicLink(item.id, topic.id),
                 };
                 return subItem;
             })
@@ -23,6 +23,10 @@ export function GetWorkspaceListForSidebar(Workspaces): ISideBarNavItem[] {
         return sideBarItem;
     });
     return result;
+}
+
+export function BuildTopicLink(workspaceId, topicLink) {
+    return `/workspace/${workspaceId}/topic/${topicLink}`;
 }
 
 export function isEqual(a, b) {

@@ -1,6 +1,7 @@
 import { BrowserWindow } from 'electron';
 import { format } from 'url';
 import { GetIpcFileFixUrl } from './ipc-helper';
+import { API_PORT } from '../main';
 const { resolve } = require('app-root-path');
 const isDev = require('electron-is-dev');
 
@@ -24,6 +25,8 @@ export function BuildAnnotator() {
             preload: GetIpcFileFixUrl()
         }
     })
+    // tslint:disable:no-string-literal
+    window['API_PORT'] = API_PORT;
     window.once('ready-to-show', () => {
         window.show();
         window.focus();
@@ -39,5 +42,6 @@ export function BuildAnnotator() {
     const url = isDev ? devPath : prodPath
 
     window.setMenu(null)
-    window.loadURL(url)
+    window.loadURL(url);
+    return window;
 }

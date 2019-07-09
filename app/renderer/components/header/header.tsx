@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
+import { BuildTopicLink } from '../../transforms';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -56,17 +58,6 @@ class Header extends React.Component<any, any> {
     addNewTopic() {
         this.props.actions.showTopicCreator();
     }
-    componentDidMount() {
-        const remote = (window as any).remote;
-        const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
-        fetch(api)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            }, (data) => {
-                console.log(data);
-            });
-    }
     render() {
         return (
             <React.Fragment>
@@ -85,7 +76,8 @@ class Header extends React.Component<any, any> {
                                             backgroundImage: this.props.activeWorkspace.gradient
                                         };
                                     }
-                                    return (<li key={topic.id} className={`topic ${topic.active ? 'active' : ''}`}> <label style={styles}><span>{topic.name}</span></label></li>)
+                                    const link = BuildTopicLink(this.props.activeWorkspace.id, topic.id);
+                                    return (<li key={topic.id} className={`topic ${topic.active ? 'active' : ''}`}><NavLink to={link}><label ><span>{topic.name}</span><span style={styles} className='active-marker ' /></label></NavLink></li>)
                                 })
                             }
                             <li className='topic' onClick={this.addNewTopic.bind(this)}>

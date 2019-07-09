@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
+import * as React from 'react';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import DumpingGround from '../components/dumping-ground/dumping-ground';
 import Home from '../components/home/home';
@@ -13,7 +13,7 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string } 
     }
     render() {
         return (
-            <HashRouter hashType='noslash' >
+            <React.Fragment>
                 <div className="app-content-sidebar left" data-state={this.props.sideBarCollpased} >
                     <SidebarComponent />
                 </div>
@@ -29,7 +29,7 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string } 
                         </Switch>
                     </RouterRoot>
                 </div>
-            </HashRouter>
+            </React.Fragment>
         )
     }
 }

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Redirect } from 'react-router';
 import './home.scss';
+import { Subscription } from 'rxjs';
+import { RouteInvoke } from '../../access/observables/observables';
 
 const collect = require('../../assets/collect.png');
 const organize = require('../../assets/organize.png');
@@ -9,15 +11,20 @@ const create = require('../../assets/create.png');
 class Home extends React.Component<any, any> {
     constructor(props) {
         super(props);
-        this.state = { redirect: false };
+        this.state = {
+            redirect: false,
+            path: null
+        };
     }
-    handleOnClick = () => {
-        this.setState({ redirect: true });
+    goToDumpingGround = () => {
+        this.setState({
+            redirect: true,
+            path: '/dump'
+        });
     }
-
     render() {
         if (this.state.redirect) {
-            return <Redirect push to="/dump" />;
+            return <Redirect push to={this.state.path} />;
         }
         const combinedStyles: React.CSSProperties = {
             maskSize: '250px',
@@ -63,7 +70,7 @@ class Home extends React.Component<any, any> {
                     <label>Drag content into your documents while Fuse manages your sources.</label>
                 </div>
             </div>
-            <button onClick={this.handleOnClick.bind(this)}>View Collections</button>
+            <button onClick={this.goToDumpingGround.bind(this)}>View Collections</button>
         </div>
     }
 }

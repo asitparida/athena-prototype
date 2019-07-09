@@ -8,6 +8,7 @@ import { LinkContentItem } from './link-content';
 import { SocialMediaContentItem } from './socialmedia-item';
 import { ContentViewerData } from '../../access/observables/observables';
 import { InView } from 'react-intersection-observer';
+import { StickyContentItem } from './sticky-content';
 
 export class ContentItemWrapper extends React.Component<{
     data: IContentItem<any>,
@@ -59,6 +60,7 @@ export class ContentItemWrapper extends React.Component<{
                 }
                 break;
             }
+            case ContentType.Sticky: { label = 'Note'; break; }
             case ContentType.Link: { label = 'Link'; break; }
             case ContentType.Photo: { label = 'Photo'; break; }
             case ContentType.Video: { label = this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube'; break; }
@@ -91,6 +93,10 @@ export class ContentItemWrapper extends React.Component<{
             }
             case ContentType.SocialMedia: {
                 currentContent = <SocialMediaContentItem data={this.props.data} />
+                break;
+            }
+            case ContentType.Sticky: {
+                currentContent = <StickyContentItem data={this.props.data} />
                 break;
             }
             default: {

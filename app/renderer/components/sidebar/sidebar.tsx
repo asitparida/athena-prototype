@@ -53,8 +53,7 @@ class SidebarComponent extends React.Component<any, any> {
                             backgroundImage: item.gradient
                         };
                         return <li key={i} className="first-level">
-                            <NavLink to={item.link}>
-                                <label className='first-level-label'>
+                            <label className='first-level-label' onClick={this.openList.bind(this, i)}>
                                 {
                                     item.subListOpen && <i className={`material-icons folder-icon ${item.gradient ? 'apply-gradient' : ''}`} style={styles}>folder_open</i>
                                 }
@@ -63,7 +62,6 @@ class SidebarComponent extends React.Component<any, any> {
                                 }
                                 {item.name}
                                 </label>
-                            </NavLink>
                             {
                                 item.items.length > 0 &&
                                 <span className='list-toggler' onClick={this.openList.bind(this, i)}>

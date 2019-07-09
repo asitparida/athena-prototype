@@ -12,9 +12,6 @@ export class DumpingGroundList extends React.Component<IContentListProps, {}> {
     constructor(props) {
         super(props);
     }
-    onContextMenu(e) {
-        console.log(e, 'onContextMenu');
-    }
     render() {
         const label = this.props.title;
         return <div className='content-list-wrapper'>

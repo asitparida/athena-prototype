@@ -10,6 +10,7 @@ export const ShowWorkspaceAction$ = new Subject<boolean>();
 export const ContentViewerData = new Subject<IContentItem<any>>();
 export const WorkspaceContentTransfer = new Subject<IWorkspaceContentTransfer>();
 export const DumpingGroundTransfer = new Subject<IContentItem<any>>();
+export const RouteInvoke = new Subject<string>();
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {

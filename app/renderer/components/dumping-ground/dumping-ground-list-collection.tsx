@@ -2,9 +2,10 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { DumpingGroundList } from './dumping-ground-list';
 import { ContentType, IContentListItem, IContentItem } from '../../constants/types';
-import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection } from '../../constants/dummy-data';
+import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection, BuildStickyContentItem } from '../../constants/dummy-data';
 import { Subscription } from 'rxjs';
 import { DumpingGroundTransfer } from '../../access/observables/observables';
+import { GetAPIUrl } from '../../constants/constants';
 
 interface IProps {
     type: ContentType
@@ -44,6 +45,27 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
         const collection = GetDummifiedCollection(items);
         this.setState({
             listItems: collection
+        });
+        setTimeout(() => {
+            if (typeof this.props.type === 'undefined') {
+                const api = `${GetAPIUrl()}/api/stickies/unassigned`;
+                fetch(api)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.data && data.data.length > 0) {
+                            const mappedItems = data.data.sort((a, b) => (new Date(b.modified) as Date).getTime() - (new Date(a.modified) as Date).getTime()).map(item => BuildStickyContentItem(item));
+                            const mappedCollection = this.state.listItems;
+                            if (mappedCollection.length > 0) {
+                                mappedCollection[0].listItems = [].concat(...mappedItems, ...mappedCollection[0].listItems);
+                                this.setState({
+                                    listItems: mappedCollection
+                                });
+                            }
+                        }
+                    }, (data) => {
+                        console.log(data);
+                    });
+            }
         });
     }
     componentDidMount() {
