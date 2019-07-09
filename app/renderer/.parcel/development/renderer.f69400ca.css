@@ -151,6 +151,16 @@ body #root .app-content .app-content-area {
     opacity: 1;
   }
 }
+@keyframes slide-in-from-bottom {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 @keyframes expand-height {
   0% {
     height: 90px;
@@ -943,6 +953,30 @@ body #root .app-content .app-content-area {
 }
 .sidebar-wrapper ul li:last-child {
   border-bottom: none;
+}
+.sidebar-wrapper ul li.newWorkspace {
+  padding: 30px 30px 0px 30px;
+}
+.sidebar-wrapper ul li.newWorkspace label {
+  background-color: rgba(255, 255, 255, 0.025);
+  width: 100%;
+  line-height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s linear 0s;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: small;
+}
+.sidebar-wrapper ul li.newWorkspace label i {
+  margin-right: 15px;
+  font-size: medium;
+}
+.sidebar-wrapper ul li.newWorkspace label:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
 }
 .sidebar-wrapper ul li label {
   color: rgba(255, 255, 255, 0.5);
@@ -1803,6 +1837,127 @@ body #root .app-content .app-content-area {
   line-height: 36px;
   min-width: 60px;
   text-align: center;
+}
+.create-workspace {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.create-workspace .create-workspace-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+.create-workspace .create-workspace-dialog {
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  padding: 30px 45px;
+  background-color: rgba(34, 34, 34, 0.9);
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 530px;
+  animation: slide-in-from-bottom 0.5s linear 0.05s forwards;
+}
+.create-workspace .create-workspace-dialog label {
+  width: 100%;
+  line-height: 54px;
+  color: rgba(255, 255, 255, 0.3);
+}
+.create-workspace .create-workspace-dialog input {
+  width: 100%;
+  line-height: 54px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+  font-size: medium;
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.create-workspace .create-workspace-dialog input:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.create-workspace .create-workspace-dialog input:active, .create-workspace .create-workspace-dialog input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions {
+  padding: 20px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul {
+  list-style: none;
+  display: flex;
+  padding: 0 0 0 3px;
+  margin: 0;
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul li {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul li:not(.active):after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0);
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul li.active:after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul li:not(.active):hover:after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions ul li:not(:last-child) {
+  margin-right: 9px;
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions button {
+  cursor: pointer;
+  background: transparent;
+  line-height: 36px;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  outline: none;
+  font-size: small;
+  transition: all 0.2s linear 0s;
+}
+.create-workspace .create-workspace-dialog .create-workspace-actions button:hover {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 /*# sourceMappingURL=/renderer.f69400ca.css.map */

@@ -10,7 +10,8 @@ const IntialState: IState = {
     workspaceRTEActionShown: false,
     toasts: [],
     workspaceViewIsCanvas: true,
-    workspaceActionsAreShown: false
+    workspaceActionsAreShown: false,
+    newWorkspaceCreator: false
 };
 
 export default IntialState;

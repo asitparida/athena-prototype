@@ -11,15 +11,17 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
 import { ContentViewer } from '../components/content-viewer/content-viewer';
+import CreateWorkspace from '../components/create-workspace/create-workspace';
 
-const mapStateToProps = ({ reducers }) => {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
         workspaceInHeader: reducers.workspaceInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
         workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
-        workspaceRTEActionShown: reducers.workspaceRTEActionShown
+        workspaceRTEActionShown: reducers.workspaceRTEActionShown,
+        newWorkspaceCreator: workspaceReducers.newWorkspaceCreator
     };
 }
 
@@ -78,6 +80,10 @@ class Main extends Component<any, any> {
                 </div>
                 <Toasts />
                 <ContentViewer />
+                {
+                    this.props.newWorkspaceCreator &&
+                    <CreateWorkspace />
+                }
             </div>
         );
     }

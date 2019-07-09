@@ -98,3 +98,11 @@ export const hideWorkspaceActions = () => ({
 export const toggleWorkspaceActions = () => ({
     type: types.TOGGLE_WORKSPACE_ACTIONS, payload: {}
 })
+
+export const showWorkspaceCreator = () => ({
+    type: types.SHOW_WORKSPACE_CREATOR, payload: {}
+})
+
+export const hideWorkspaceCreator = () => ({
+    type: types.HIDE_WORKSPACE_CREATOR, payload: {}
+})

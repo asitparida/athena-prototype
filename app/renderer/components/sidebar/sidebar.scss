@@ -32,6 +32,30 @@
             &:last-child {
                 border-bottom: none;
             }
+            &.newWorkspace {
+                padding: 30px 30px 0px 30px;
+                label {
+                    background-color: rgba(#fff, 0.025);
+                    width: 100%;
+                    line-height: 54px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: background-color 0.3s linear 0s;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    font-size: small;
+                    i {
+                        margin-right: 15px;
+                        font-size: medium;
+                    }
+                    &:hover {
+                        background-color: rgba(#fff, 0.50);
+                        color: #000;
+                    }
+                }
+            }
             label {
                 color: rgba(#fff, 0.50);
                 width: 100%;

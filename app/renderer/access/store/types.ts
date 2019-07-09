@@ -11,6 +11,7 @@ export interface IState {
     toasts: IToastItem[];
     workspaceViewIsCanvas: boolean;
     workspaceActionsAreShown: boolean;
+    newWorkspaceCreator: boolean;
 }
 export interface IAction {
     type: string;

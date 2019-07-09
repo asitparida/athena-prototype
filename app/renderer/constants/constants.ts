@@ -29,7 +29,7 @@ export const AllContentList: ContentList[] = [
 export const WorkspaceList: IWorkspace[] = [
     new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
     new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
-    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(34, 193, 195), rgb(253, 187, 45))`),
+    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(240, 152, 25), rgb(237, 222, 93))`),
     new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
 ];
 
@@ -49,8 +49,7 @@ export const DumpingGrounCollectionTabs = [
 export const Topiclist = [
     { id: 1, name: 'Topic #1', active: true },
     { id: 2, name: 'Topic #2', active: false },
-    { id: 3, name: 'Topic #3', active: false },
-    { id: 4, name: 'Topic #4', active: false }
+    { id: 3, name: 'Topic #3', active: false }
 ]
 
 export function GetSampleBoardItems() {

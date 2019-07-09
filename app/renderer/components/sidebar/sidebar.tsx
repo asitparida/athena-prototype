@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
-import { WorkspaceList } from '../../constants/constants';
-import { Workspace, ISideBarNavItem } from '../../constants/types';
+import { ISideBarNavItem } from '../../constants/types';
 import { GetWorkspaceListForSidebar } from '../../transforms';
+import * as actions from '../../access/actions/appActions';
+import store from '../../access/store/configureStore';
 
 export default class SidebarComponent extends React.Component<{}, any> {
     constructor(props) {
@@ -20,6 +21,9 @@ export default class SidebarComponent extends React.Component<{}, any> {
         this.setState({
             sideBarItems
         })
+    }
+    createNewWorkspace() {
+        store.dispatch(actions.showWorkspaceCreator());
     }
     render() {
         const { sideBarItems } = this.state;
@@ -72,6 +76,7 @@ export default class SidebarComponent extends React.Component<{}, any> {
                         </li>
                     }))
                 }
+                <li className='newWorkspace' onClick={this.createNewWorkspace.bind(this)}><label><i className='material-icons'>add</i>New Workspace</label></li>
                 </React.Fragment>
             </ul>
             <div className="user-space">
