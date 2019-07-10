@@ -162,6 +162,43 @@
             }
         }
     }
+    .search-box {
+        position: relative;
+        width: 350px;
+        margin-bottom: 6px;
+        padding: 0 15px;
+        input {
+            &.search-input {
+                width: 100%;
+                border: 1px solid rgba(#fff, 0.1);
+                height: 36px;
+                line-height: 36px;
+                padding: 0 10px;
+                background: rgba(#fff, 0.0);
+                border-radius: 20px;
+                color: rgba(#fff, 0.80);
+                outline: none;
+                &:hover {
+                    background: rgba(#fff, 0.025);
+                }
+                &:focus,
+                &:active {
+                    background: rgba(#fff, 0.05);
+                }
+            }
+        }
+        i {
+            position: absolute;
+            top: 0;
+            right: 18px;
+            font-size: small;
+            color: rgba(#fff, 0.80);
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+        }
+    }
 }
 
 .app-sidebar-toggle {

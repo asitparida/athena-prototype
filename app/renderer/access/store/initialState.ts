@@ -3,6 +3,7 @@ import { WorkspaceList } from '../../constants/constants';
 
 const IntialState: IState = {
     sideBarShown: false,
+    searchBarShown: false,
     workspaceActionInHeader: false,
     workspaceInHeader: false,
     workspaceDumpBarShown: false,

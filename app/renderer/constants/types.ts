@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 
 export interface IState {
     sideBarShown: boolean;
+    searchBarShown: boolean;
     workspaceInHeader: boolean;
     workspaceActionInHeader: boolean;
     workspaceDumpBarShown: boolean;

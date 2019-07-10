@@ -64349,6 +64349,7 @@ var constants_1 = require("../../constants/constants");
 
 var IntialState = {
   sideBarShown: false,
+  searchBarShown: false,
   workspaceActionInHeader: false,
   workspaceInHeader: false,
   workspaceDumpBarShown: false,
@@ -64398,6 +64399,8 @@ exports.HIDE_WORKSPACE_CREATOR = 'HIDE_WORKSPACE_CREATOR';
 exports.SHOW_TOPIC_CREATOR = 'SHOW_TOPIC_CREATOR';
 exports.HIDE_TOPIC_CREATOR = 'HIDE_TOPIC_CREATOR';
 exports.ACTIVATE_WORKSPACE_AND_TOPIC = 'ACTIVATE_WORKSPACE_AND_TOPIC';
+exports.SHOW_SEARCH_BAR = 'SHOW_SEARCH_BAR';
+exports.HIDE_SEARCH_BAR = 'HIDE_SEARCH_BAR';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64621,6 +64624,20 @@ exports.activateWorkshopAndTopic = function (workspaceId, topicId) {
     }
   };
 };
+
+exports.showSearchBar = function () {
+  return {
+    type: types.SHOW_SEARCH_BAR,
+    payload: {}
+  };
+};
+
+exports.hideSearchBar = function () {
+  return {
+    type: types.HIDE_SEARCH_BAR,
+    payload: {}
+  };
+};
 },{"./actionTypes":"access/actions/actionTypes.ts"}],"access/reducers/reducer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64664,7 +64681,8 @@ exports.default = function () {
       {
         var current = state.workspaceDumpBarShown;
         newState = Object.assign({}, state, {
-          workspaceDumpBarShown: !current
+          workspaceDumpBarShown: !current,
+          searchBarShown: false
         });
         return newState;
       }
@@ -64673,7 +64691,24 @@ exports.default = function () {
       {
         var _current = state.sideBarShown;
         newState = Object.assign({}, state, {
-          sideBarShown: !_current
+          sideBarShown: !_current,
+          searchBarShown: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.SHOW_SEARCH_BAR:
+      {
+        newState = Object.assign({}, state, {
+          searchBarShown: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_SEARCH_BAR:
+      {
+        newState = Object.assign({}, state, {
+          searchBarShown: false
         });
         return newState;
       }
@@ -64697,7 +64732,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_WORKSPACE_DUMP_BAR:
       {
         newState = Object.assign({}, state, {
-          workspaceDumpBarShown: true
+          workspaceDumpBarShown: true,
+          searchBarShown: false
         });
         return newState;
       }
@@ -64729,7 +64765,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_WORKSPACE_RTE:
       {
         newState = Object.assign({}, state, {
-          workspaceRTEShown: true
+          workspaceRTEShown: true,
+          searchBarShown: false
         });
         return newState;
       }
@@ -64746,7 +64783,8 @@ exports.default = function () {
       {
         var _current2 = state.workspaceRTEShown;
         newState = Object.assign({}, state, {
-          workspaceRTEShown: !_current2
+          workspaceRTEShown: !_current2,
+          searchBarShown: false
         });
         return newState;
       }
@@ -66148,7 +66186,7 @@ function (_React$Component) {
       var label = this.props.title;
       return React.createElement("div", {
         className: "content-list-wrapper"
-      }, React.createElement("h1", null, label), React.createElement("div", {
+      }, !this.props.hideGroupTitle && React.createElement("h1", null, label), React.createElement("div", {
         className: "content-items-wrapper"
       }, this.props.items.map(function (item, j) {
         return React.createElement("div", {
@@ -66545,7 +66583,15 @@ function (_React$Component) {
 
         default:
           {
-            items = _.shuffle([].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList, dummy_data_1.SocialMediaContentList));
+            // tslint:disable-next-line:variable-name
+            var _items = _.shuffle([].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList, dummy_data_1.SocialMediaContentList));
+
+            if (this.props.searchBar) {
+              items = _.take(_items, _items.length / 2);
+            } else {
+              items = _.take(_items, _items.length);
+            }
+
             break;
           }
       }
@@ -66625,6 +66671,7 @@ function (_React$Component) {
 
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(dumping_ground_list_1.DumpingGroundList, {
+          hideGroupTitle: _this4.props.hideGroupTitle,
           title: item.title,
           key: i,
           type: _this4.props.type,
@@ -66749,6 +66796,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var index = 0;
       var classListName = "tabs-holder ".concat(this.props.sticky ? 'is-sticky' : '');
       return React.createElement(tabs_1.default, {
@@ -66764,6 +66813,8 @@ function (_React$Component) {
         }, React.createElement("div", {
           className: classListName
         }, React.createElement(dumping_ground_list_collection_1.DumpingGroundListCollection, {
+          searchBar: _this2.props.searchBar,
+          hideGroupTitle: _this2.props.hideGroupTitle,
           type: tab.type
         })));
       }));
@@ -67206,7 +67257,137 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/workspace/workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/searchbar/searchbar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/searchbar/searchbar.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./searchbar.scss");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var redux_1 = require("redux");
+
+var react_redux_1 = require("react-redux");
+
+var dumping_ground_1 = __importDefault(require("../dumping-ground/dumping-ground"));
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var workspaceReducers = _ref.workspaceReducers;
+  return {
+    workspaceList: workspaceReducers.workspaceList
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var SearchBarComponent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SearchBarComponent, _React$Component);
+
+  function SearchBarComponent(props) {
+    _classCallCheck(this, SearchBarComponent);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
+  }
+
+  _createClass(SearchBarComponent, [{
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        className: "searchbar-wrapper"
+      }, React.createElement("div", {
+        className: "search-meta"
+      }, React.createElement("div", {
+        className: "search-meta-top"
+      }, React.createElement("div", {
+        className: "search-meta-content"
+      }, React.createElement("div", {
+        className: "search-meta-content-left"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "local_offer"), " Tags"), React.createElement("div", {
+        className: "search-meta-content-right"
+      }, React.createElement("ul", null, React.createElement("li", null, "tag 1"), React.createElement("li", null, "tag 2"), React.createElement("li", null, "tag 3"))))), React.createElement("div", {
+        className: "search-meta-bottom"
+      }, React.createElement("div", {
+        className: "search-meta-content"
+      }, React.createElement("ul", null, React.createElement("li", null, React.createElement("i", {
+        className: "material-icons"
+      }, "filter_none"), React.createElement("label", null, "Photos (0)")), React.createElement("li", null, React.createElement("i", {
+        className: "material-icons"
+      }, "filter_none"), React.createElement("label", null, "Videos (0)")), React.createElement("li", null, React.createElement("i", {
+        className: "material-icons"
+      }, "filter_none"), React.createElement("label", null, "Articles (0)")), React.createElement("li", null, React.createElement("i", {
+        className: "material-icons"
+      }, "filter_none"), React.createElement("label", null, "Links (0)")), React.createElement("li", null, React.createElement("i", {
+        className: "material-icons"
+      }, "filter_none"), React.createElement("label", null, "Social (0)")))))), React.createElement("div", {
+        className: "search-results"
+      }, React.createElement("div", {
+        className: "search-results-inner"
+      }, React.createElement(dumping_ground_1.default, {
+        hideGroupTitle: true,
+        sticky: true,
+        workspace: true,
+        searchBar: true
+      }))));
+    }
+  }]);
+
+  return SearchBarComponent;
+}(React.Component);
+
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SearchBarComponent);
+},{"react":"../../node_modules/react/index.js","./searchbar.scss":"components/searchbar/searchbar.scss","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx"}],"components/workspace/workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -71912,6 +72093,8 @@ var home_1 = __importDefault(require("../components/home/home"));
 
 var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
 
+var searchbar_1 = __importDefault(require("../components/searchbar/searchbar"));
+
 var workspace_1 = __importDefault(require("../components/workspace/workspace"));
 
 var router_root_1 = __importDefault(require("./router-root"));
@@ -71966,7 +72149,10 @@ function (_React$Component) {
         from: "",
         exact: true,
         to: "/home"
-      })))));
+      })))), this.props.searchBarShown && React.createElement("div", {
+        className: "app-content-sidebar search-bar right",
+        "data-state": 'expanded'
+      }, React.createElement(searchbar_1.default, null)));
     }
   }]);
 
@@ -71974,7 +72160,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.RouterWrapper = RouterWrapper;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx"}],"components/header/header.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/searchbar/searchbar":"components/searchbar/searchbar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx"}],"components/header/header.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -72315,6 +72501,11 @@ function (_React$Component) {
       this.props.actions.showTopicCreator();
     }
   }, {
+    key: "onSearchFocused",
+    value: function onSearchFocused() {
+      this.props.actions.showSearchBar();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -72389,7 +72580,16 @@ function (_React$Component) {
         onClick: this.launchAnnotator.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "format_shapes"))));
+      }, "format_shapes")), React.createElement("div", {
+        className: "separator"
+      }), React.createElement("div", {
+        className: "search-box"
+      }, React.createElement("input", {
+        className: "search-input",
+        onFocus: this.onSearchFocused.bind(this)
+      }), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "search"))));
     }
   }]);
 
@@ -79516,6 +79716,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
       workspaceReducers = _ref.workspaceReducers;
   return {
     sideBarShown: reducers.sideBarShown,
+    searchBarShown: reducers.searchBarShown,
     workspaceInHeader: reducers.workspaceInHeader,
     workspaceDumpBarShown: reducers.workspaceDumpBarShown,
     workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
@@ -79608,6 +79809,7 @@ function (_react_1$Component) {
         className: "app-content-bottom"
       }, React.createElement(router_wrap_1.RouterWrapper, {
         sideBarCollpased: sideBarCollpased,
+        searchBarShown: this.props.searchBarShown,
         onLocationChanged: this.onLocationChanged.bind(this)
       }))), React.createElement(toast_1.default, null), React.createElement(content_viewer_1.ContentViewer, null), this.props.newWorkspaceCreator && React.createElement(create_workspace_1.default, null), this.props.newTopicCreator && React.createElement(create_topic_1.default, null));
     }
@@ -79687,7 +79889,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53872" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58009" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

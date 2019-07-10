@@ -6,6 +6,7 @@ interface IContentListProps {
     title?: string;
     items?: Array<IContentItem<any>>;
     type: ContentType;
+    hideGroupTitle?: boolean;
 }
 
 export class DumpingGroundList extends React.Component<IContentListProps, {}> {
@@ -15,7 +16,10 @@ export class DumpingGroundList extends React.Component<IContentListProps, {}> {
     render() {
         const label = this.props.title;
         return <div className='content-list-wrapper'>
-            <h1>{label}</h1>
+            {
+                !this.props.hideGroupTitle &&
+                <h1>{label}</h1>
+            }
             <div className='content-items-wrapper'>
                 {this.props.items.map((item, j) => {
                     return (

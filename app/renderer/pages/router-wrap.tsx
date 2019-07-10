@@ -4,10 +4,11 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import DumpingGround from '../components/dumping-ground/dumping-ground';
 import Home from '../components/home/home';
 import SidebarComponent from '../components/sidebar/sidebar';
+import SearchBarComponent from '../components/searchbar/searchbar';
 import Workspace from '../components/workspace/workspace';
 import RouterRoot from './router-root';
 
-export class RouterWrapper extends React.Component<{ sideBarCollpased: string } | any, {}> {
+export class RouterWrapper extends React.Component<{ sideBarCollpased: string, searchBarShown: boolean } | any, {}> {
     onChangeHandler() {
         this.props.onLocationChanged();
     }
@@ -29,6 +30,12 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string } 
                         </Switch>
                     </RouterRoot>
                 </div>
+                {
+                    this.props.searchBarShown &&
+                    <div className="app-content-sidebar search-bar right" data-state={'expanded'} >
+                    <SearchBarComponent />
+                </div>
+                }
             </React.Fragment>
         )
     }

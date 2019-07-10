@@ -14,7 +14,9 @@ interface IDumpingGroundState {
 
 interface IDumpingGroundProps {
     sticky?: boolean,
-    workspace?: boolean
+    workspace?: boolean,
+    hideGroupTitle?: boolean,
+    searchBar?: boolean;
 }
 
 type AllProps = IDumpingGroundProps
@@ -56,7 +58,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
                 {this.state.tabs.map((tab, i) => {
                     return <Tab title={tab.name} key={i}>
                         <div className={classListName}>
-                            <DumpingGroundListCollection type={tab.type} />
+                            <DumpingGroundListCollection searchBar={this.props.searchBar} hideGroupTitle={this.props.hideGroupTitle} type={tab.type} />
                         </div>
                     </Tab>
                 })}

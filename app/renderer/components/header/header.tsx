@@ -58,6 +58,9 @@ class Header extends React.Component<any, any> {
     addNewTopic() {
         this.props.actions.showTopicCreator();
     }
+    onSearchFocused() {
+        this.props.actions.showSearchBar();
+    }
     render() {
         return (
             <React.Fragment>
@@ -116,6 +119,10 @@ class Header extends React.Component<any, any> {
                     <div className='separator' />
                     <div className='action' onClick={this.launchAnnotator.bind(this)}>
                         <i className='material-icons'>format_shapes</i>
+                    </div>
+                    <div className='separator' />
+                    <div className='search-box'>
+                        <input className='search-input' onFocus={this.onSearchFocused.bind(this)} /> <i className='material-icons'>search</i>
                     </div>
                 </div>
             </React.Fragment>

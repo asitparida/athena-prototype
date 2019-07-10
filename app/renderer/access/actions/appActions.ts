@@ -121,3 +121,11 @@ export const activateWorkshopAndTopic = (workspaceId, topicId) => ({
         topicId
     }
 })
+
+export const showSearchBar = () => ({
+    type: types.SHOW_SEARCH_BAR, payload: {}
+})
+
+export const hideSearchBar = () => ({
+    type: types.HIDE_SEARCH_BAR, payload: {}
+})

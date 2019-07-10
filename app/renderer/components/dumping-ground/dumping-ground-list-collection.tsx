@@ -8,7 +8,9 @@ import { DumpingGroundTransfer } from '../../access/observables/observables';
 import { GetAPIUrl } from '../../constants/constants';
 
 interface IProps {
-    type: ContentType
+    type: ContentType,
+    hideGroupTitle?: boolean,
+    searchBar?: boolean;
 }
 
 interface IContentCollectionState {
@@ -33,12 +35,18 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
             case ContentType.Link: { items = LinkContentList; break; };
             case ContentType.SocialMedia: { items = SocialMediaContentList; break; };
             default: {
-                items = _.shuffle([].concat(
+                // tslint:disable-next-line:variable-name
+                const _items = _.shuffle([].concat(
                     PhotoContentList,
                     VideoContentList,
                     ArticleContentList,
                     LinkContentList,
                     SocialMediaContentList));
+                if (this.props.searchBar) {
+                    items = _.take(_items, _items.length / 2);
+                } else {
+                    items = _.take(_items, _items.length);
+                }
                 break;
             }
         }
@@ -95,7 +103,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
         return <React.Fragment>
             {
                 this.state.listItems.map((item, i) => {
-                    return <DumpingGroundList title={item.title} key={i} type={this.props.type} items={item.listItems} />
+                    return <DumpingGroundList hideGroupTitle={this.props.hideGroupTitle} title={item.title} key={i} type={this.props.type} items={item.listItems} />
                 })
             }
         </React.Fragment>

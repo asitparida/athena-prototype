@@ -18,6 +18,7 @@ import CreateTopic from '../components/create-workspace/create-topic';
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
+        searchBarShown: reducers.searchBarShown,
         workspaceInHeader: reducers.workspaceInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
         workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
@@ -80,7 +81,7 @@ class Main extends Component<any, any> {
                         <Header />
                     </div>
                     <div className='app-content-bottom'>
-                        <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
+                        <RouterWrapper sideBarCollpased={sideBarCollpased} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
                     </div>
                 </HashRouter>
                 <Toasts />
