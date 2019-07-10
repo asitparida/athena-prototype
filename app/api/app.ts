@@ -3,8 +3,9 @@ const cors = require('cors');
 import * as bodyParser from 'body-parser';
 import { IStickyNote } from './api-types';
 const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('athena_db.json')
+const FileSync = require('lowdb/adapters/FileSync');
+import { app as ElectronApp } from 'electron';
+const adapter = new FileSync( ElectronApp.getPath('userData') + '/athena_db.json')
 const db = low(adapter);
 
 db.defaults({ notes: [] })
