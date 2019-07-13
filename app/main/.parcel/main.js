@@ -1,4 +1,4 @@
-process.env.HMR_PORT=60875;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
+process.env.HMR_PORT=65391;process.env.HMR_HOSTNAME="localhost";// modules are defined as an array
 // [ module function, map of requires ]
 //
 // map of requires is short require name -> numeric require
@@ -538,6 +538,35 @@ function GetApplictaionMenu() {
       type: 'separator'
     }, {
       role: 'Quit'
+    }]
+  }, {
+    label: 'Edit',
+    submenu: [{
+      label: 'Undo',
+      accelerator: 'CmdOrCtrl+Z',
+      role: 'undo'
+    }, {
+      label: 'Redo',
+      accelerator: 'Shift+CmdOrCtrl+Z',
+      role: 'redo'
+    }, {
+      type: 'separator'
+    }, {
+      label: 'Cut',
+      accelerator: 'CmdOrCtrl+X',
+      role: 'cut'
+    }, {
+      label: 'Copy',
+      accelerator: 'CmdOrCtrl+C',
+      role: 'copy'
+    }, {
+      label: 'Paste',
+      accelerator: 'CmdOrCtrl+V',
+      role: 'paste'
+    }, {
+      label: 'Select All',
+      accelerator: 'CmdOrCtrl+A',
+      role: 'selectall'
     }]
   }, {
     label: 'View',

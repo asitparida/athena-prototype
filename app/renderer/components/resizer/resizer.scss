@@ -1,23 +1,25 @@
+@import '../../shared';
+
 .resizer-wrapper{
     width: 100%;
     height: 100%;
     position: relative;
     .resizer-handler {
-        background: rgba(#444, 1);
+        background: rgba($primary_accent, 1);
         text-align: center;
         height: 36px;
         width: 24px;
         cursor: grab;
         position: absolute;
         top: 50%;
-        left:-10px;
+        left:-5px;
         z-index: 2;
         margin-top: -18px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
         i {
             line-height: 36px;
-            opacity: 0.75;
+            opacity: 1;
             transition: opacity 0.3s linear 0s;
             position: relative;
             left: 0;

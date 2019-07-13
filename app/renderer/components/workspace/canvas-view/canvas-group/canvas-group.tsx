@@ -78,7 +78,7 @@ class GroupContent extends React.Component<IPropType | any, any> {
         const { connectDropTarget, isOver, data } = this.props;
         const { items } = this.props.data;
         return connectDropTarget(
-            <div className={`group-content ${isOver ? 'entity-over' : ''}`} >
+            <div className={`group-content  ${isOver ? 'entity-over' : ''}`} >
                 {
                     items.length > 0 &&
                     items.map((item, i) => <CanvasGroupItemWrapper group={data.id} onPropsChange={this.boardPropsChanged.bind(this, i)} data={item} key={item.id} />)

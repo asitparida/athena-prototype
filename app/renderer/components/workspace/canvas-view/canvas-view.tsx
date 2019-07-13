@@ -4,6 +4,7 @@ import CanvasGroupWrapper from './canvas-group-wrapper/canvas-group-wrapper';
 import { GroupBufffer } from '../../../constants/constants';
 import { IBoardGroupWrapper } from '../../../constants/types';
 import { isEqual } from '../../../transforms';
+import * as _ from 'lodash';
 
 class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[]}, { boardGroups: IBoardGroupWrapper[], positionX: number, positionY: number }> {
     currentZoom = 1;
@@ -78,7 +79,7 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
         this.processGroupProps();
     }
     componentDidUpdate(props) {
-        if (isEqual(this.props.groups, props.groups) === false) {
+        if (_.isEqual(this.props.groups, props.groups) === false) {
             this.processGroupProps();
         }
     }

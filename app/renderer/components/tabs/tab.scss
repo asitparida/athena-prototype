@@ -115,7 +115,7 @@
             .content-wrapper {
                 width: 20%;
                 min-width: 20%;
-                .inner-content {
+                .inner-content .inview-wrapper {
                     height: 170px;
                 }
             }
@@ -125,7 +125,7 @@
             .content-wrapper {
                 width: 25%;
                 min-width: 25%;
-                .inner-content {
+                .inner-content .inview-wrapper {
                     height: 270px;
                 }
             }
@@ -135,7 +135,7 @@
             .content-wrapper {
                 width: 50%;
                 min-width: 50%;
-                .inner-content {
+                .inner-content .inview-wrapper {
                     height: 370px;
                 }
             }
@@ -143,6 +143,11 @@
 
         &.compressed {
             padding: 15px 30px;
+            .tabs-holder .content-list-wrapper h1 {
+                padding-left: 0;
+                font-size: large;
+                font-weight: 500;
+            }
         }
 
     }

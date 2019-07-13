@@ -56455,8 +56455,8 @@ var img2 = require('../assets/church_brew.jpg');
 var img3 = require('../assets/duquesne_incline.jpg');
 
 exports.ItemWidth = 240;
-exports.ItemHeight = 180;
-exports.GroupBufffer = 20;
+exports.ItemHeight = null;
+exports.GroupBufffer = 40;
 exports.PhotosList = [{
   id: "1006",
   author: "Vladimir Kudinov",
@@ -57336,19 +57336,19 @@ function (_React$Component) {
       };
       return React.createElement("div", {
         className: "social-media-content"
-      }, React.createElement("div", {
-        className: "social-media-handle"
+      }, this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
+        className: "tweet-text"
+      }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
+        className: "insta-photo",
+        style: instaStyles
+      }), React.createElement("div", {
+        className: "social-media-handle ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram')
       }, React.createElement("div", {
         className: "social-media-text"
       }, this.props.data.contentData.handle), React.createElement("div", {
         className: "social-media-pic ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram'),
         style: styles
-      })), this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
-        className: "tweet-text"
-      }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
-        className: "insta-photo",
-        style: instaStyles
-      }));
+      })));
     }
   }]);
 
@@ -65759,6 +65759,10 @@ function (_React$Component) {
       this.setState({
         annotationAndNotesShown: !annotationAndNotesShown
       });
+
+      if (!annotationAndNotesShown) {
+        this.props.propsChanged();
+      }
     }
   }, {
     key: "openContent",
@@ -65906,9 +65910,7 @@ function (_React$Component) {
         className: "inner-overlay-content-wrapper"
       }, React.createElement("label", {
         className: "inner-content-title"
-      }, this.props.data.title))), React.createElement("label", {
-        className: "inner-content-type-label"
-      }, label))), this.state.annotationAndNotesShown && React.createElement("div", {
+      }, this.props.data.title)))), this.state.annotationAndNotesShown && React.createElement("div", {
         className: "inner-content-meta"
       }, React.createElement("div", {
         className: "inner-content-meta-tags"
@@ -65926,7 +65928,7 @@ function (_React$Component) {
         return React.createElement("p", {
           key: i
         }, note.message);
-      }))), React.createElement("div", {
+      })))), React.createElement("div", {
         className: "inner-content-item-actions"
       }, this.state.annotationAndNotesShown && React.createElement("i", {
         className: "material-icons",
@@ -66025,6 +66027,11 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "propsChanged",
+    value: function propsChanged() {
+      this.props.propsChanged();
+    }
+  }, {
     key: "render",
     value: function render() {
       var actions = [{
@@ -66053,6 +66060,7 @@ function (_React$Component) {
         resizerOptions: this.props.resizerOptions || [],
         onAction: this.actionInvoked.bind(this)
       }, React.createElement(content_item_1.ContentItemWrapper, {
+        propsChanged: this.propsChanged.bind(this),
         inheritDimensions: this.props.inheritDimensions,
         data: this.props.data,
         menuInvoked: this.contextMenuOpened.bind(this)
@@ -70718,6 +70726,11 @@ function (_React$Component) {
   }
 
   _createClass(CanvasGroupItem, [{
+    key: "propsChanged",
+    value: function propsChanged() {
+      this.props.propsChanged();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -70727,8 +70740,9 @@ function (_React$Component) {
       return connectDragSource(React.createElement("div", {
         className: "board-content"
       }, this.props.data && React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+        propsChanged: this.propsChanged.bind(this),
         data: this.props.data,
-        inheritDimensions: true
+        inheritDimensions: this.props.inheritDimensions
       })));
     }
   }]);
@@ -70872,7 +70886,21 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.originalPointerProps = Object.assign({}, this.props.data.props);
+      var _this3 = this;
+
+      setTimeout(function () {
+        var el = _this3.ref.current;
+        var props = el.getBoundingClientRect();
+        _this3.originalPointerProps = {
+          height: props.height,
+          width: props.width
+        };
+
+        _this3.props.onPropsChange({
+          width: props.width,
+          height: props.height
+        });
+      });
       var data = dummy_data_1.GetSampleItem(this.props.data.type);
       data.id = this.props.data.id;
       this.setState({
@@ -70880,13 +70908,25 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "propsChanged",
+    value: function propsChanged() {
+      console.log(11123);
+    }
+  }, {
     key: "render",
     value: function render() {
       var props = this.props.data.props;
       var styles = {
-        width: "".concat(props.width, "px"),
-        height: "".concat(props.height, "px")
+        width: "".concat(props.width, "px")
       };
+      var inheritDimensions = false;
+
+      if (!props.height) {
+        // tslint:disable-next-line:no-string-literal
+        styles['minHeight'] = '180px';
+        inheritDimensions = false;
+      }
+
       return React.createElement("div", {
         className: "board-content-wrapper",
         style: styles,
@@ -70894,13 +70934,10 @@ function (_React$Component) {
       }, React.createElement(canvas_group_item_1.default, {
         isBeingResized: this.state.isBeingResized,
         data: this.state.contentData,
-        group: this.props.group
-      }), React.createElement("div", {
-        className: "board-content-resizer",
-        onPointerDown: this.onPointerDown.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "navigate_next")));
+        group: this.props.group,
+        propsChanged: this.propsChanged.bind(this),
+        inheritDimensions: inheritDimensions
+      }));
     }
   }]);
 
@@ -71056,7 +71093,7 @@ function (_React$Component) {
           data = _this$props.data;
       var items = this.props.data.items;
       return connectDropTarget(React.createElement("div", {
-        className: "group-content ".concat(isOver ? 'entity-over' : '')
+        className: "group-content  ".concat(isOver ? 'entity-over' : '')
       }, items.length > 0 && items.map(function (item, i) {
         return React.createElement(canvas_group_item_wrapper_1.CanvasGroupItemWrapper, {
           group: data.id,
@@ -71229,7 +71266,7 @@ var canvas_group_wrapper_1 = __importDefault(require("./canvas-group-wrapper/can
 
 var constants_1 = require("../../../constants/constants");
 
-var transforms_1 = require("../../../transforms");
+var _ = __importStar(require("lodash"));
 
 var CanvasView =
 /*#__PURE__*/
@@ -71333,7 +71370,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(props) {
-      if (transforms_1.isEqual(this.props.groups, props.groups) === false) {
+      if (_.isEqual(this.props.groups, props.groups) === false) {
         this.processGroupProps();
       }
     }
@@ -71400,7 +71437,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasView;
-},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","../../../transforms":"transforms.ts"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","lodash":"../../node_modules/lodash/lodash.js"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -79552,13 +79589,16 @@ function (_React$Component) {
         onClick: this.closeOverlay.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-dialog"
-      }, React.createElement("label", null, "New Workspace"), React.createElement("input", {
+      }, React.createElement("label", null, "Enter Workspace Name"), React.createElement("input", {
         autoFocus: true,
         value: this.state.newWorkspaceName,
         onChange: this.onNewWorkspaceChanged.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-actions"
-      }, React.createElement("ul", {
+      }, React.createElement("button", {
+        className: "add-btn",
+        onClick: this.createWorkspace.bind(this)
+      }, "Create"), React.createElement("ul", {
         className: "colors"
       }, this.state.gradients.length > 0 && this.state.gradients.map(function (grad, i) {
         var styles = {
@@ -79570,10 +79610,7 @@ function (_React$Component) {
           key: i,
           style: styles
         });
-      })), React.createElement("button", {
-        className: "add-btn",
-        onClick: this.createWorkspace.bind(this)
-      }, "Create"))));
+      })))));
     }
   }]);
 
@@ -79955,7 +79992,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60874" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65390" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

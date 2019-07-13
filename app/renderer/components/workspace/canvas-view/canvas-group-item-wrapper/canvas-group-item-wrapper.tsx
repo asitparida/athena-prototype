@@ -73,25 +73,43 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
         document.removeEventListener('pointerup', this.onPointerUpBind);
     }
     componentDidMount() {
-        this.originalPointerProps = Object.assign({}, this.props.data.props);
+        setTimeout(() => {
+            const el = this.ref.current;
+            const props = (el as Element).getBoundingClientRect();
+            this.originalPointerProps = {
+                height: props.height,
+                width: props.width
+            }
+            this.props.onPropsChange({
+                width: props.width, height: props.height
+            });
+        });
         const data = GetSampleItem((this.props.data as IBoardContent).type);
         data.id = (this.props.data as IBoardContent).id;
         this.setState({
             contentData: data
         })
     }
+    propsChanged() {
+        console.log(11123);
+    }
     render() {
         const { props } = this.props.data;
         const styles = {
             width: `${props.width}px`,
-            height: `${props.height}px`,
+        }
+        let inheritDimensions = false;
+        if (!props.height) {
+            // tslint:disable-next-line:no-string-literal
+            styles['minHeight'] = '180px';
+            inheritDimensions = false;
         }
         return (
             <div className="board-content-wrapper" style={styles} ref={this.ref}>
-                <CanvasGroupItem isBeingResized={this.state.isBeingResized} data={this.state.contentData} group={this.props.group} />
-                <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
+                <CanvasGroupItem isBeingResized={this.state.isBeingResized} data={this.state.contentData} group={this.props.group} propsChanged={this.propsChanged.bind(this)} inheritDimensions={inheritDimensions} />
+                {/* <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
                     <i className='material-icons'>navigate_next</i>
-                </div>
+                </div> */}
             </div>
         );
     }

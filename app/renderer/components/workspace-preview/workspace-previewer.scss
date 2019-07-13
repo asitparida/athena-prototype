@@ -22,9 +22,9 @@
         overflow: hidden;
 
         &.entity-over {
-            label {
-                color: #000;
-            }
+            // label {
+            //     color: #000;
+            // }
             &:before {
                 content: '';
                 position: absolute;

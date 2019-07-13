@@ -1,3 +1,4 @@
+@import '../../shared';
 .app-actions {
     &.right {
         order: 2;
@@ -20,12 +21,12 @@
     .separator {
         height: 36px;
         width: 1px;
-        background-color: rgba(#000, 0.15);
+        background-color: rgba($primary_accent, 0.15);
         margin: 0 6px 6px 15px;
     }
 
     .toggler {
-        border: 2px solid rgba(#000, 0.1);
+        border: 2px solid rgba($primary_accent, 1);
         display: flex;
         margin-bottom: 6px;
         margin-right: 12px;
@@ -45,9 +46,11 @@
             min-width: 80px;
             text-align: center;
             transition: background-color 0.2s linear 0s;
+            color: $primary_accent;
 
             &.active {
-                background-color: rgba(#000, 0.1);
+                background-color: rgba($primary_accent, 1);
+                color: #fff;
             }
 
             &:not(.active):hover,
@@ -65,12 +68,12 @@
         border: 1px solid rgba(#000, 0);
 
         &.active {
-            border-color: rgba(#000, 0.30);
+            background-color: rgba($primary_accent, 0.10);
         }
 
         i {
             line-height: 48px;
-            color: rgba(#000, 0.50);
+            color: rgba($primary_accent, 0.90);
         }
 
         cursor: pointer;
@@ -170,14 +173,15 @@
         input {
             &.search-input {
                 width: 100%;
-                border: 1px solid rgba(#000, 0.1);
+                border: 1px solid rgba($primary_accent, 0.0);
                 height: 36px;
                 line-height: 36px;
                 padding: 0 10px;
-                background: rgba(#000, 0.0);
+                background: rgba(#fff, 1);
                 border-radius: 20px;
                 color: rgba(#000, 0.80);
                 outline: none;
+                box-shadow: 0px 0px 4px rgba($primary_accent, 0.2);
                 &:hover {
                     background: rgba(#000, 0.025);
                 }
@@ -192,7 +196,7 @@
             top: 0;
             right: 18px;
             font-size: small;
-            color: rgba(#000, 0.80);
+            color: rgba($primary_accent, 1);
             width: 36px;
             height: 36px;
             line-height: 36px;

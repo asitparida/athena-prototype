@@ -44,13 +44,16 @@ class CanvasGroupItem extends React.Component<IPropType | any, {}> {
     constructor(props) {
         super(props);
     }
+    propsChanged() {
+        this.props.propsChanged();
+    }
     render() {
         const { isDragging, connectDragSource, src } = this.props;
         return connectDragSource(
             <div className="board-content">
                 {
                     this.props.data &&
-                    <ContentItemWithMenu data={this.props.data} inheritDimensions={true} />
+                    <ContentItemWithMenu propsChanged={this.propsChanged.bind(this)} data={this.props.data} inheritDimensions={this.props.inheritDimensions} />
                 }
             </div>
         );

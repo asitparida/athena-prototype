@@ -14,9 +14,12 @@ export class ContentItemWrapper extends React.Component<{
     data: IContentItem<any>,
     menuInvoked?: ($event: MouseEvent) => {},
     inheritDimensions?: boolean,
-    root?: Element}, {
+    root?: Element,
+    propsChanged?: () => {}
+}, {
     annotationAndNotesShown: boolean,
-    showEntity: boolean}> {
+    showEntity: boolean
+}> {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,6 +35,9 @@ export class ContentItemWrapper extends React.Component<{
         this.setState({
             annotationAndNotesShown: !annotationAndNotesShown
         });
+        if (!annotationAndNotesShown) {
+            this.props.propsChanged();
+        }
     }
     openContent() {
         if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {
@@ -107,7 +113,7 @@ export class ContentItemWrapper extends React.Component<{
         return (
             <React.Fragment>
                 <div className={`inner-content-holder ${this.props.inheritDimensions ? 'inherit-dimensions' : ''}`}>
-                        <div className='inner-content'>
+                    <div className='inner-content'>
                         <InView onChange={this.onViewChange.bind(this)} className='inview-wrapper'>
                             <div className={`inner-content-wrapper ${this.state.annotationAndNotesShown ? 'notes-open' : ''}`} onClick={this.openContent.bind(this)}>
                                 {
@@ -121,10 +127,8 @@ export class ContentItemWrapper extends React.Component<{
                                     </div>
                                 }
                             </div>
-                            <label className='inner-content-type-label'>{label}</label>
-                            </InView>
-                        </div>
-                    {
+                        </InView>
+                        {
                         this.state.annotationAndNotesShown &&
                         <div className='inner-content-meta'>
                             <div className='inner-content-meta-tags'>
@@ -142,6 +146,7 @@ export class ContentItemWrapper extends React.Component<{
                             </div>
                         </div>
                     }
+                    </div>
                     <div className='inner-content-item-actions'>
                         {
                             this.state.annotationAndNotesShown && <i className='material-icons' onClick={this.showAnnotationAndNotes.bind(this)}>keyboard_arrow_up</i>

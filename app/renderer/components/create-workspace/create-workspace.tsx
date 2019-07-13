@@ -53,9 +53,10 @@ class CreateWorkspace extends React.Component<any, any> {
             <div className="create-workspace">
                 <div className='create-workspace-overlay' onClick={this.closeOverlay.bind(this)} />
                 <div className='create-workspace-dialog'>
-                    <label>New Workspace</label>
+                    <label>Enter Workspace Name</label>
                     <input autoFocus value={this.state.newWorkspaceName} onChange={this.onNewWorkspaceChanged.bind(this)} />
                     <div className='create-workspace-actions'>
+                        <button className='add-btn' onClick={this.createWorkspace.bind(this)}>Create</button>
                         <ul className='colors'>
                             {
                                 this.state.gradients.length > 0 &&
@@ -67,7 +68,6 @@ class CreateWorkspace extends React.Component<any, any> {
                                 })
                             }
                         </ul>
-                        <button className='add-btn' onClick={this.createWorkspace.bind(this)}>Create</button>
                     </div>
                 </div>
             </div>

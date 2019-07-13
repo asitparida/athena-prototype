@@ -14,10 +14,6 @@ export class SocialMediaContentItem extends React.Component<{ data: IContentItem
         };
         return (
             <div className='social-media-content'>
-                <div className='social-media-handle'>
-                    <div className='social-media-text'>{this.props.data.contentData.handle}</div>
-                    <div className={`social-media-pic ${this.props.data.sourceType === MediaSourceType.Twitter ? 'twitter' : 'instagram'}`} style={styles} />
-                </div>
                 {
                     this.props.data.sourceType === MediaSourceType.Twitter &&
                     <label className='tweet-text'>{this.props.data.contentData.tweetText}</label>
@@ -26,6 +22,10 @@ export class SocialMediaContentItem extends React.Component<{ data: IContentItem
                     this.props.data.sourceType === MediaSourceType.Instagram &&
                     <div className='insta-photo' style={instaStyles} />
                 }
+                <div className={`social-media-handle ${this.props.data.sourceType === MediaSourceType.Twitter ? 'twitter' : 'instagram'}`}>
+                    <div className='social-media-text'>{this.props.data.contentData.handle}</div>
+                    <div className={`social-media-pic ${this.props.data.sourceType === MediaSourceType.Twitter ? 'twitter' : 'instagram'}`} style={styles} />
+                </div>
             </div>
         );
     }

@@ -1,25 +1,4 @@
-@mixin scrollbars($size, $foreground-color, $background-color) {
-    ::-webkit-scrollbar {
-        width: $size;
-        height: $size;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: $foreground-color;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: $background-color;
-    }
-
-    // For Internet Explorer
-    .scroller {
-        -ms-scrollbar-face-color: $foreground-color;
-        scrollbar-face-color: $foreground-color;
-        -ms-scrollbar-track-color: $background-color;
-        scrollbar-track-color: $background-color;
-    }
-}
+@import 'shared';
 
 @include scrollbars(0.50em, rgba(#000, 0.25), rgba(#000, 0.10));
 
@@ -135,7 +114,7 @@ body {
                     flex: initial;
                     order: 1;
                     width: 100%;
-                    background: rgba(#f0f0f0, 1);
+                    background: rgba(#f9f9f9, 1);
                     border-bottom: 1px solid rgba(#000, 0.05);
                 }
                 .app-content-container {

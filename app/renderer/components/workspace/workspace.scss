@@ -1,3 +1,5 @@
+@import '../../shared';
+
 // Colors
 $bg-color: rgba(#000, 0.1);
 $dot-color: rgba(#000, 0.50);
@@ -11,6 +13,7 @@ $dot-space: 5px;
     height: 100%;
     display: flex;
     position: relative;
+    background-color: #f9f9f9;
 
     &.show-grid {
         background:
@@ -49,6 +52,8 @@ $dot-space: 5px;
         animation: slide-in-from-right 0.5s ease-out 0s;
         max-height: 100%;
         background-color: #fff;
+        border-left: 5px solid rgba($primary_accent, 1);
+        box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
 
         .rte-wrapper {
             height: 100%;
@@ -84,34 +89,38 @@ $dot-space: 5px;
         [class^="EditorToolbar__root"] {
             flex: initial;
             order: 1;
-            border-bottom: 1px solid rgba(#000, 0.20);
+            border-bottom: 1px solid rgba($primary_accent, 0.10);
             padding: 15px 10px 10px 10px;
             display: flex;
             flex-flow: row wrap;
             justify-content: space-around;
             align-items: center;
             margin: 0;
+            background-color: rgba($primary_accent, 0.10);
+
 
             [class^="ButtonWrap__root"] {
                 button {
-                    background: rgba(#000, 0.10);
-                    border: 1px solid rgba(#fff, 0.01);
+                    background: rgba(#000, 0.0);
+                    border: 1px solid rgba($primary_accent, 0.8);
                     margin-right: 1px;
                     color: rgba(#000, 0.50);
 
                     &[class*="IconButton__isActive"] {
-                        background: rgba(#000, 0.75);
+                        background: rgba($primary_accent, 0.20);
+                        span {
+                        }
                     }
                 }
             }
 
             [class^="Dropdown__root"] {
                 select {
-                    color: rgba(#000, 0.50);
+                    color: rgba($primary_accent, 0.90);
                 }
 
                 [class^="Dropdown__value"] {
-                    border: 1px solid rgba(#000, 0.1);
+                    border: 1px solid rgba($primary_accent, 0.8);
                 }
             }
         }
@@ -127,8 +136,8 @@ $dot-space: 5px;
         position: absolute;
         top: 0;
         right: 0;
-        background-color: rgba(#f0f0f0, 1);
-        border-left: 10px solid rgba(#444, 1);
-        box-shadow: -20px 0px 25px rgba(#000, 0.50);
+        background-color: rgba(lighten($primary_accent, 40), 1);
+        border-left: 5px solid rgba($primary_accent, 1);
+        box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
     }
 }

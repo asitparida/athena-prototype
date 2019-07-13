@@ -36,3 +36,30 @@
         @content;
     }
 }
+
+@mixin scrollbars($size, $foreground-color, $background-color) {
+    ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    .scroller {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+$primary_accent: #3783E9;
+$primary_accent_text: #ffffff;
+$dark_text: rgba(#000, 0.75);
