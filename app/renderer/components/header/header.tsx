@@ -34,9 +34,6 @@ class Header extends React.Component<any, any> {
             workspaceList: this.props.workspaceList
         };
     }
-    toggleSidebar() {
-        this.props.actions.toggleSideBar();
-    }
     toggleRTE() {
         this.props.actions.hideDumpBar();
         this.props.actions.toggleRTE();
@@ -65,9 +62,6 @@ class Header extends React.Component<any, any> {
         return (
             <React.Fragment>
                 <div className='app-actions left'>
-                    <div className='app-sidebar-toggle' onClick={this.toggleSidebar.bind(this)}>
-                        <i className='material-icons'>menu</i>
-                    </div>
                     {
                         this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 &&
                         <ul className='topic-headers'>

@@ -51,6 +51,14 @@ export const toggleSideBar = () => ({
     type: types.TOGGLE_SIDEBAR, payload: {}
 })
 
+export const showSideBar = () => ({
+    type: types.SHOW_SIDEBAR, payload: {}
+})
+
+export const hideSideBar = () => ({
+    type: types.HIDE_SIDEBAR, payload: {}
+})
+
 export const toggleWorkpsaceInHeader = () => ({
     type: types.TOGGLE_WORKSHOP_IN_HEADER, payload: {}
 })

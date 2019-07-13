@@ -10,22 +10,22 @@
         order: 1;
         flex: initial;
         margin-right: auto;
-        margin-left: 12px;
     }
 
     height: 100%;
     display: flex;
     align-items: flex-end;
+    color: rgba(#000, 0.50);
 
     .separator {
         height: 36px;
         width: 1px;
-        background-color: rgba(#fff, 0.15);
+        background-color: rgba(#000, 0.15);
         margin: 0 6px 6px 15px;
     }
 
     .toggler {
-        border: 2px solid rgba(#fff, 0.1);
+        border: 2px solid rgba(#000, 0.1);
         display: flex;
         margin-bottom: 6px;
         margin-right: 12px;
@@ -47,12 +47,12 @@
             transition: background-color 0.2s linear 0s;
 
             &.active {
-                background-color: rgba(#fff, 0.1);
+                background-color: rgba(#000, 0.1);
             }
 
             &:not(.active):hover,
             &:not(.active):focus {
-                background-color: rgba(#fff, 0.025);
+                background-color: rgba(#000, 0.025);
             }
         }
     }
@@ -65,12 +65,12 @@
         border: 1px solid rgba(#000, 0);
 
         &.active {
-            border-color: rgba(#fff, 0.30);
+            border-color: rgba(#000, 0.30);
         }
 
         i {
             line-height: 48px;
-            color: rgba(#fff, 0.50);
+            color: rgba(#000, 0.50);
         }
 
         cursor: pointer;
@@ -85,37 +85,37 @@
         white-space: nowrap;
         display: flex;
         flex-flow: row;
-        margin: 0px 0 0px 0;
+        margin: 0 0 -12px 0;
         padding: 0 0 0 20px;
 
         li {
             padding: 0 0px;
             margin-right: 0;
-            color: rgba(#fff, 0.50);
+            color: rgba(#000, 0.50);
             font-size: small;
-            border-right: 1px solid rgba(#fff, 0.00);
+            border-right: 1px solid rgba(#000, 0.00);
 
             a {
                 text-decoration: none;
-                color: rgba(#fff, 0.50);
+                color: rgba(#000, 0.50);
             }
 
             &.active {
                 label {
-                    background-color: rgba(#fff, 0.0);
+                    background-color: rgba(#000, 0.0);
                     // border-radius: 20px;
-                    color: #fff;
-                    text-shadow: 0px 0px 10px rgba(0,0,0,0.80);
+                    color: #000;
+                    text-shadow: 0px 0px 10px rgba(0,0,0,0.20);
                     position: relative;
                 }
             }
 
             &:hover {
                 label {
-                    background-color: rgba(#fff, 0.05);
+                    background-color: rgba(#000, 0.05);
                     // border-radius: 20px;
                     .active-marker {
-                        background-color: rgba(#fff, 0.10);
+                        background-color: rgba(#000, 0.10);
                     }
                 }
             }
@@ -123,11 +123,11 @@
             label {
                 display: block;
                 min-width: 100px;
-                line-height: 60px;
+                line-height: 66px;
                 margin: 0;
                 padding: 0 30px;
                 cursor: pointer;
-                background-color: rgba(#fff, 0.0);
+                background-color: rgba(#000, 0.0);
                 transition: background-color 0.2s ease 0s;
                 position: relative;
                 .active-marker {
@@ -136,7 +136,7 @@
                     left: 0;
                     height: 5px;
                     width: 100%;
-                    background-color: rgba(#fff, 0.00);
+                    background-color: rgba(#000, 0.00);
                     border-radius: 5px;
                 }
             }
@@ -148,7 +148,7 @@
 
                 &:hover {
                     i {
-                        background-color: rgba(#fff, 0.05);
+                        background-color: rgba(#000, 0.05);
                         border-radius: 50%;
                     }
                 }
@@ -170,20 +170,20 @@
         input {
             &.search-input {
                 width: 100%;
-                border: 1px solid rgba(#fff, 0.1);
+                border: 1px solid rgba(#000, 0.1);
                 height: 36px;
                 line-height: 36px;
                 padding: 0 10px;
-                background: rgba(#fff, 0.0);
+                background: rgba(#000, 0.0);
                 border-radius: 20px;
-                color: rgba(#fff, 0.80);
+                color: rgba(#000, 0.80);
                 outline: none;
                 &:hover {
-                    background: rgba(#fff, 0.025);
+                    background: rgba(#000, 0.025);
                 }
                 &:focus,
                 &:active {
-                    background: rgba(#fff, 0.05);
+                    background: rgba(#000, 0.05);
                 }
             }
         }
@@ -192,7 +192,7 @@
             top: 0;
             right: 18px;
             font-size: small;
-            color: rgba(#fff, 0.80);
+            color: rgba(#000, 0.80);
             width: 36px;
             height: 36px;
             line-height: 36px;
@@ -206,12 +206,12 @@
     bottom: 12px;
     left: 12px;
     height: 48px;
-    width: 48px;
-    border-radius: 50%;
+    width: 60px;
     text-align: center;
 
     i {
         line-height: 48px;
+        font-size: 18px;
     }
 
     cursor: pointer;

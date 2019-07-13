@@ -1,5 +1,5 @@
 import InitialState from '../store/initialState';
-import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE, HIDE_WORKSHOP_IN_HEADER, SHOW_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_ACTION_IN_HEADER, SHOW_WORKSHOP_ACTION_IN_HEADER, HIDE_WORKSHOP_ACTION_IN_HEADER, SHOW_TOAST_NOTIFICATION, REMOVE_TOAST_NOTIFICATION, HIDE_SEARCH_BAR, SHOW_SEARCH_BAR } from '../actions/actionTypes';
+import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE, HIDE_WORKSHOP_IN_HEADER, SHOW_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_ACTION_IN_HEADER, SHOW_WORKSHOP_ACTION_IN_HEADER, HIDE_WORKSHOP_ACTION_IN_HEADER, SHOW_TOAST_NOTIFICATION, REMOVE_TOAST_NOTIFICATION, HIDE_SEARCH_BAR, SHOW_SEARCH_BAR, SHOW_SIDEBAR, HIDE_SIDEBAR } from '../actions/actionTypes';
 import store from '../store/configureStore';
 import * as actions from '../actions/appActions';
 import { IToastItem, ToastType, IState, IAction } from '../../constants/types';
@@ -19,6 +19,20 @@ export default (state: IState = InitialState, action: IAction) => {
             const current = state.sideBarShown;
             newState = Object.assign({}, state, {
                 sideBarShown: !current,
+                searchBarShown: false
+            });
+            return newState;
+        }
+        case SHOW_SIDEBAR: {
+            newState = Object.assign({}, state, {
+                sideBarShown: true,
+                searchBarShown: false
+            });
+            return newState;
+        }
+        case HIDE_SIDEBAR: {
+            newState = Object.assign({}, state, {
+                sideBarShown: false,
                 searchBarShown: false
             });
             return newState;

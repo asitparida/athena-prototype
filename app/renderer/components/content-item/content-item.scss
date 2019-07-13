@@ -43,6 +43,8 @@
         border-radius: 4px;
         overflow: hidden;
         cursor: pointer;
+        background-color: rgba(#fff, 1);
+        color: rgba(#000, 0.50);
 
         &.notes-open {
             border-bottom-left-radius: 0;
@@ -83,11 +85,12 @@
 
     .inner-content-type-label {
         z-index: 3;
-        background-color: rgba(0, 0, 0, 0.30);
+        background-color: rgba(0, 0, 0, 0.10    );
+        color: rgba(#000, 0.80);
         margin: 0;
         line-height: 16px;
         font-size: xx-small;
-        padding: 2px 4px;
+        padding: 2px 8px;
         letter-spacing: 2px;
         text-transform: uppercase;
         position: absolute;
@@ -100,7 +103,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
+        background-color: rgba(#000, 0.10);
 
         .photo {
             display: block;
@@ -121,7 +124,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
+        background-color: rgba(#000, 0.10);
         position: relative;
 
         .video-duration {
@@ -179,7 +182,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
         position: relative;
         padding: 30px 15px 10px 15px;
         display: flex;
@@ -187,14 +189,14 @@
         justify-content: space-between;
         .article-title {
             font-size: small;
-            color: rgba(#fff, 0.80);
+            color: rgba(#000, 0.80);
             text-transform: lowercase;
         }
         .article-author {
             font-size: x-small;
             text-transform: uppercase;
             font-weight: bold;
-            color: rgba(#fff, 0.30);
+            color: rgba(#000, 0.30);
             letter-spacing: 1px;
         }
     }
@@ -202,7 +204,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
         position: relative;
         padding: 30px 15px 10px 15px;
         display: flex;
@@ -210,18 +211,17 @@
         justify-content: space-between;
         .link-title {
             font-size: small;
-            color: rgba(#fff, 0.80);
+            color: rgba(#000, 0.80);
         }
         .link-author {
             font-size: x-small;
-            color: rgba(#fff, 0.50);
+            color: rgba(#000, 0.50);
         }
     }
     .note-content {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
         position: relative;
         padding: 30px 15px 10px 15px;
         display: flex;
@@ -229,7 +229,7 @@
         justify-content: space-between;
         .note-text {
             font-size: small;
-            color: rgba(#fff, 0.80);
+            color: rgba(#000, 0.80);
             white-space: pre;
             width: 100%;
         }
@@ -238,7 +238,6 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background-color: rgba(#fff, 0.10);
         position: relative;
         padding: 5px 0 0 0;
         display: flex;
@@ -262,7 +261,7 @@
                 font-size: small;
                 line-height: 30px;
                 padding-left: 10px;
-                color: rgba(#fff, 0.50);
+                color: rgba(#000, 0.50);
             }
             .social-media-pic {
                 order: 1;
@@ -316,11 +315,12 @@
     display: flex;
     justify-content: space-between;
     opacity: 0;
+    color: rgba(#000, 0.50);
 
     i {
         width: 24px;
         line-height: 24px;
-        opacity: 0.50;
+        opacity: 1;
         cursor: pointer;
 
         &.smaller {
@@ -331,10 +331,10 @@
 
 .inner-content-meta {
     width: 100%;
-    background: rgba(#fff, 0.05);
+    background: rgba(#fff, 0.80);
     padding: 10px;
     font-size: small;
-    color: rgba(#fff, 0.50);
+    color: rgba(#000, 0.50);
 
     .inner-content-meta-tags {
         ul {
@@ -348,7 +348,7 @@
             flex-flow: row wrap;
 
             li {
-                background-color: rgba(#fff, 0.10);
+                background-color: rgba(#000, 0.10);
                 padding: 5px 15px;
                 margin: 5px 5px 0 0;
                 border-radius: 15px;
@@ -357,7 +357,7 @@
                 align-items: center;
 
                 &.new-tag {
-                    border: 1px solid rgba(#fff, 0.10);
+                    border: 1px solid rgba(#000, 0.10);
                     background-color: transparent;
                     text-transform: uppercase;
                     font-size: 11px;

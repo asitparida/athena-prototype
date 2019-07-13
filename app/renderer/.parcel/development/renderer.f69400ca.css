@@ -1,21 +1,21 @@
 ::-webkit-scrollbar {
-  width: 0.75em;
-  height: 0.75em;
+  width: 0.5em;
+  height: 0.5em;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .scroller {
-  -ms-scrollbar-face-color: rgba(255, 255, 255, 0.3);
-  scrollbar-face-color: rgba(255, 255, 255, 0.3);
-  -ms-scrollbar-track-color: rgba(0, 0, 0, 0.5);
-  scrollbar-track-color: rgba(0, 0, 0, 0.5);
+  -ms-scrollbar-face-color: rgba(0, 0, 0, 0.25);
+  scrollbar-face-color: rgba(0, 0, 0, 0.25);
+  -ms-scrollbar-track-color: rgba(0, 0, 0, 0.1);
+  scrollbar-track-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -58,7 +58,7 @@ body #root .app-content .app-dragger:hover {
 }
 body #root .app-content .app-content-top {
   order: 1;
-  height: 90px;
+  height: 76px;
   width: 100%;
   flex: initial;
   position: relative;
@@ -71,14 +71,13 @@ body #root .app-content .app-content-top.expanded {
   animation: expand-height 0.5s ease-out 0s;
 }
 body #root .app-content .app-content-top.collapsed {
-  height: 90px;
+  height: 76px;
   animation: collapse-height 0.5s ease-out 0s;
 }
 body #root .app-content .app-content-bottom {
   order: 2;
   flex: 1;
   width: 100%;
-  background: rgba(0, 0, 0, 0.1);
   display: flex;
   height: calc(100% - 60vh);
   position: relative;
@@ -96,7 +95,7 @@ body #root .app-content .app-content-sidebar.left {
   border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 body #root .app-content .app-content-sidebar.left[data-state=collapsed] {
-  display: none;
+  width: 70px;
 }
 body #root .app-content .app-content-sidebar.left[data-state=expanded] {
   animation: slide-in-from-left 0.5s ease-out 0s forwards;
@@ -108,6 +107,29 @@ body #root .app-content .app-content-sidebar.right {
 }
 body #root .app-content .app-content-sidebar.right.search-bar {
   min-width: 370px;
+}
+body #root .app-content .app-content-holder {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  order: 2;
+  width: 100%;
+  overflow: hidden;
+}
+body #root .app-content .app-content-holder .app-header-holder {
+  flex: initial;
+  order: 1;
+  width: 100%;
+  background: #f0f0f0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+body #root .app-content .app-content-holder .app-content-container {
+  order: 2;
+  flex: 1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  background: #f0f0f0;
 }
 body #root .app-content .app-content-area {
   padding: 0 0 0 0;
@@ -166,7 +188,7 @@ body #root .app-content .app-content-area {
 }
 @keyframes expand-height {
   0% {
-    height: 90px;
+    height: 76px;
   }
   100% {
     height: 150px;
@@ -177,7 +199,7 @@ body #root .app-content .app-content-area {
     height: 150px;
   }
   100% {
-    height: 90px;
+    height: 76px;
   }
 }
 .tabs-wrapper {
@@ -193,7 +215,7 @@ body #root .app-content .app-content-area {
   height: 60px;
   display: flex;
   padding: 0 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .tabs-wrapper .tabs-header.compressed {
   padding: 0 15px;
@@ -207,6 +229,7 @@ body #root .app-content .app-content-area {
   display: flex;
   list-style: none;
   margin: 0;
+  color: rgba(0, 0, 0, 0.5);
 }
 .tabs-wrapper .tabs-header ul.tabs-titles.compressed {
   width: 100%;
@@ -222,19 +245,20 @@ body #root .app-content .app-content-area {
   line-height: 60px;
   padding: 0 15px;
   margin-right: 1px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0);
   min-width: 100px;
-  opacity: 0.5;
+  opacity: 0.75;
   text-align: center;
   cursor: pointer;
   user-select: none;
 }
 .tabs-wrapper .tabs-header ul.tabs-titles li.active {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   opacity: 1;
+  font-weight: bold;
 }
 .tabs-wrapper .tabs-header ul.tabs-titles li:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 .tabs-wrapper .tabs-header .tabs-resizer-container {
   order: 2;
@@ -252,13 +276,13 @@ body #root .app-content .app-content-area {
 }
 .tabs-wrapper .tabs-header .tabs-resizer-container .tabs-resizer-wrapper .tabs-resizer-handler {
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   height: 8px;
 }
 .tabs-wrapper .tabs-header .tabs-resizer-container .tabs-resizer-wrapper .tabs-resizer-box {
   position: absolute;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -321,6 +345,7 @@ body #root .app-content .app-content-area {
   min-width: 200px;
   justify-content: flex-end;
   font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
 }
 .dropdown-wrapper label.dropdown-item-selected i {
   margin-left: 5px;
@@ -336,7 +361,7 @@ body #root .app-content .app-content-area {
   top: 35px;
   right: 0px;
   list-style: none;
-  background: #565656;
+  background: #f0f0f0;
   padding: 0;
   z-index: 999;
   cursor: pointer;
@@ -348,14 +373,14 @@ body #root .app-content .app-content-area {
   padding: 0 30px;
   white-space: nowrap;
   text-align: right;
+  color: rgba(0, 0, 0, 0.5);
   transition: all 0.1s linear 0s;
 }
 .dropdown-wrapper ul.dropdown-menu li.dropdown-item:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 .dropdown-wrapper ul.dropdown-menu li.dropdown-item:hover, .dropdown-wrapper ul.dropdown-menu li.dropdown-item:focus {
   background-color: #fff;
-  color: #000;
 }
 .tabs-holder {
   display: flex;
@@ -374,7 +399,7 @@ body #root .app-content .app-content-area {
 }
 .tabs-holder .content-list-wrapper h1 {
   font-weight: 100;
-  color: rgba(255, 255, 255, 0.33);
+  color: rgba(0, 0, 0, 0.33);
   margin: 0 0 20px 0;
   padding: 0 0 0 5px;
 }
@@ -523,6 +548,8 @@ body #root .app-content .app-content-area {
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.5);
 }
 .inner-content .inner-content-wrapper.notes-open {
   border-bottom-left-radius: 0;
@@ -555,11 +582,12 @@ body #root .app-content .app-content-area {
 }
 .inner-content .inner-content-type-label {
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8);
   margin: 0;
   line-height: 16px;
   font-size: xx-small;
-  padding: 2px 4px;
+  padding: 2px 8px;
   letter-spacing: 2px;
   text-transform: uppercase;
   position: absolute;
@@ -571,7 +599,7 @@ body #root .app-content .app-content-area {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .inner-content .photo-content .photo {
   display: block;
@@ -589,7 +617,7 @@ body #root .app-content .app-content-area {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   position: relative;
 }
 .inner-content .video-content .video-duration {
@@ -641,7 +669,6 @@ body #root .app-content .app-content-area {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
   position: relative;
   padding: 30px 15px 10px 15px;
   display: flex;
@@ -650,21 +677,20 @@ body #root .app-content .app-content-area {
 }
 .inner-content .article-content .article-title {
   font-size: small;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   text-transform: lowercase;
 }
 .inner-content .article-content .article-author {
   font-size: x-small;
   text-transform: uppercase;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
   letter-spacing: 1px;
 }
 .inner-content .link-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
   position: relative;
   padding: 30px 15px 10px 15px;
   display: flex;
@@ -673,17 +699,16 @@ body #root .app-content .app-content-area {
 }
 .inner-content .link-content .link-title {
   font-size: small;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .inner-content .link-content .link-author {
   font-size: x-small;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .inner-content .note-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
   position: relative;
   padding: 30px 15px 10px 15px;
   display: flex;
@@ -692,7 +717,7 @@ body #root .app-content .app-content-area {
 }
 .inner-content .note-content .note-text {
   font-size: small;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   white-space: pre;
   width: 100%;
 }
@@ -700,7 +725,6 @@ body #root .app-content .app-content-area {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
   position: relative;
   padding: 5px 0 0 0;
   display: flex;
@@ -726,7 +750,7 @@ body #root .app-content .app-content-area {
   font-size: small;
   line-height: 30px;
   padding-left: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .inner-content .social-media-content .social-media-handle .social-media-pic {
   order: 1;
@@ -777,11 +801,12 @@ body #root .app-content .app-content-area {
   display: flex;
   justify-content: space-between;
   opacity: 0;
+  color: rgba(0, 0, 0, 0.5);
 }
 .inner-content-item-actions i {
   width: 24px;
   line-height: 24px;
-  opacity: 0.5;
+  opacity: 1;
   cursor: pointer;
 }
 .inner-content-item-actions i.smaller {
@@ -790,10 +815,10 @@ body #root .app-content .app-content-area {
 
 .inner-content-meta {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   font-size: small;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .inner-content-meta .inner-content-meta-tags ul {
   padding: 0;
@@ -806,7 +831,7 @@ body #root .app-content .app-content-area {
   flex-flow: row wrap;
 }
 .inner-content-meta .inner-content-meta-tags ul li {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 5px 15px;
   margin: 5px 5px 0 0;
   border-radius: 15px;
@@ -815,7 +840,7 @@ body #root .app-content .app-content-area {
   align-items: center;
 }
 .inner-content-meta .inner-content-meta-tags ul li.new-tag {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: transparent;
   text-transform: uppercase;
   font-size: 11px;
@@ -866,11 +891,11 @@ body #root .app-content .app-content-area {
   background: transparent;
   line-height: 48px;
   border-radius: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   min-width: 100px;
   padding: 0 30px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
@@ -881,8 +906,8 @@ body #root .app-content .app-content-area {
   transition: all 0.2s linear 0s;
 }
 .app-container button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
 }
 .app-container .app-introduction {
   display: flex;
@@ -901,16 +926,16 @@ body #root .app-content .app-content-area {
 .app-container .app-introduction .step .step-pic {
   width: 300px;
   height: 300px;
-  background-color: #fff;
+  background-color: #000;
 }
 .app-container .app-introduction .step:not(:last-child) {
-  border-right: 1px dotted rgba(255, 255, 255, 0.2);
+  border-right: 1px dotted rgba(0, 0, 0, 0.2);
 }
 .app-container .app-introduction .step label.step-header {
   text-transform: uppercase;
   padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.3);
   margin-top: 75px;
   letter-spacing: 1px;
   font-weight: bold;
@@ -930,12 +955,12 @@ body #root .app-content .app-content-area {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
 }
 .app-container .app-introduction .step label:not(.step-header) {
   margin: 0;
   text-align: center;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 .sidebar-wrapper {
   width: 100%;
@@ -943,9 +968,50 @@ body #root .app-content .app-content-area {
   padding: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(0, 0, 0, 0.025);
   position: relative;
   z-index: 3;
+}
+.sidebar-wrapper.collapsed {
+  overflow: hidden;
+}
+.sidebar-wrapper.collapsed ul.workspace-list {
+  overflow-x: hidden;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li {
+  width: 70px;
+  overflow: hidden;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li label {
+  padding: 0;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li label i {
+  width: 70px;
+  text-align: center;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li label.first-level-label .name {
+  display: none;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li.newWorkspace label {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li.newWorkspace label i {
+  margin: 0;
+}
+.sidebar-wrapper.collapsed ul.workspace-list li.newWorkspace label .name {
+  display: none;
+}
+.sidebar-wrapper.collapsed .user-space {
+  padding: 0;
+}
+.sidebar-wrapper.collapsed .user-space .user-space-content {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.sidebar-wrapper.collapsed .user-space .user-space-content .user-picture-wrapper {
+  background-color: transparent;
 }
 .sidebar-wrapper ul {
   padding: 0;
@@ -966,7 +1032,7 @@ body #root .app-content .app-content-area {
 .sidebar-wrapper ul li {
   margin-bottom: 1px;
   padding: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   cursor: pointer;
   text-align: center;
   background: transparent;
@@ -974,13 +1040,17 @@ body #root .app-content .app-content-area {
 .sidebar-wrapper ul li:last-child {
   border-bottom: none;
 }
+.sidebar-wrapper ul li.hamburger {
+  padding-top: 22px;
+}
 .sidebar-wrapper ul li.newWorkspace {
   padding: 30px 30px 0px 30px;
 }
 .sidebar-wrapper ul li.newWorkspace label {
-  background-color: rgba(255, 255, 255, 0.025);
+  background-color: rgba(0, 0, 0, 0.025);
   width: 100%;
   line-height: 54px;
+  height: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -995,13 +1065,14 @@ body #root .app-content .app-content-area {
   font-size: medium;
 }
 .sidebar-wrapper ul li.newWorkspace label:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   color: #000;
 }
 .sidebar-wrapper ul li label {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   width: 100%;
   line-height: 54px;
+  height: 54px;
   text-align: left;
   padding: 0 30px;
   margin: 0;
@@ -1011,11 +1082,12 @@ body #root .app-content .app-content-area {
   padding-left: 84px;
 }
 .sidebar-wrapper ul li label:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
 }
 .sidebar-wrapper ul li label.first-level-label {
   display: flex;
   align-items: center;
+  border-left: 3px solid rgba(0, 0, 0, 0);
 }
 .sidebar-wrapper ul li label.first-level-label i {
   width: 36px;
@@ -1038,14 +1110,14 @@ body #root .app-content .app-content-area {
   border-radius: 50%;
   text-align: center;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 .sidebar-wrapper ul li.first-level .list-toggler i {
   cursor: pointer;
   line-height: 36px;
 }
 .sidebar-wrapper ul li.first-level .list-toggler:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 .sidebar-wrapper ul li.first-level ul.sub-list {
   animation: sub-list-open 0.33s linear forwards 0s;
@@ -1059,20 +1131,23 @@ body #root .app-content .app-content-area {
   width: 100%;
   padding: 0;
   text-decoration: none;
-  color: #fff;
-  border-left: 5px solid rgba(255, 255, 255, 0);
+  color: #000;
+}
+.sidebar-wrapper ul li a label {
+  border-right: 5px solid rgba(0, 0, 0, 0);
 }
 .sidebar-wrapper ul li a.active {
   opacity: 1;
-  border-left: 5px solid rgba(255, 255, 255, 0.75);
 }
 .sidebar-wrapper ul li a.active label {
-  color: white;
+  color: black;
+  border-right: 5px solid rgba(0, 0, 0, 0.3);
 }
 .sidebar-wrapper ul li.copyright-info {
   font-size: small;
   line-height: 60px;
   padding: 0 30px;
+  color: rgba(0, 0, 0, 0.5);
 }
 .sidebar-wrapper .user-space {
   order: 2;
@@ -1086,13 +1161,13 @@ body #root .app-content .app-content-area {
   flex-flow: column;
   padding: 30px 30px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.025);
+  background-color: rgba(0, 0, 0, 0.025);
   border-radius: 4px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .sidebar-wrapper .user-space .user-space-content .user-picture-wrapper {
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 60px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 70px;
   height: 60px;
   border-radius: 50%;
   display: flex;
@@ -1270,7 +1345,7 @@ body #root .app-content .app-content-area {
   position: relative;
 }
 .workspace-wrapper.show-grid {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, linear-gradient(rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, rgba(0, 0, 0, 0.01);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, linear-gradient(rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, rgba(0, 0, 0, 0.5);
   background-size: 5px 5px;
 }
 .workspace-wrapper .working-area {
@@ -1288,17 +1363,18 @@ body #root .app-content .app-content-area {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 10%, transparent 0%);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.25) 10%, #f9f9f9 0%);
   background-size: 5px 5px;
 }
 .workspace-wrapper .rte-area {
   z-index: 2;
   height: 100%;
-  width: 500px;
+  width: 350px;
   flex: initial;
   order: 2;
   animation: slide-in-from-right 0.5s ease-out 0s;
   max-height: 100%;
+  background-color: #fff;
 }
 .workspace-wrapper .rte-area .rte-wrapper {
   height: 100%;
@@ -1314,7 +1390,7 @@ body #root .app-content .app-content-area {
   flex: 1;
   order: 2;
   padding: 0px 0 10px 5px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root {
   height: calc(100vh - 166px);
@@ -1328,7 +1404,7 @@ body #root .app-content .app-content-area {
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] {
   flex: initial;
   order: 1;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 15px 10px 10px 10px;
   display: flex;
   flex-flow: row wrap;
@@ -1337,19 +1413,19 @@ body #root .app-content .app-content-area {
   margin: 0;
 }
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button {
-  background: rgba(255, 255, 255, 0.33);
-  border: 1px solid rgba(0, 0, 0, 0.01);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.01);
   margin-right: 1px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button[class*=IconButton__isActive] {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.75);
 }
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] select {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] [class^=Dropdown__value] {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .workspace-wrapper .sticky-dumping-ground {
   width: 350px;
@@ -1361,7 +1437,7 @@ body #root .app-content .app-content-area {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #333333;
+  background-color: #f0f0f0;
   border-left: 10px solid #444444;
   box-shadow: -20px 0px 25px rgba(0, 0, 0, 0.5);
 }
@@ -1419,7 +1495,7 @@ body #root .app-content .app-content-area {
   width: 48px;
   height: 48px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   margin: 0 1px;
   cursor: pointer;
 }
@@ -1435,8 +1511,8 @@ body #root .app-content .app-content-area {
   position: absolute;
   will-change: auto;
   padding: 10px 10px 0px 10px;
-  border: 1px dashed rgba(255, 255, 255, 0.25);
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px dashed rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.05);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -1446,22 +1522,22 @@ body #root .app-content .app-content-area {
   border-radius: 15px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0);
   font-size: medium;
   width: 100%;
   line-height: 60px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   padding: 0 5px;
   outline: none;
   margin-bottom: 10px;
   text-align: center;
 }
 .group-wrapper .group-title:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 .group-wrapper .group-title:active, .group-wrapper .group-title:focus {
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 .group-wrapper .group-title[readonly] {
   user-select: none;
@@ -1512,7 +1588,7 @@ body #root .app-content .app-content-area {
   height: 20px;
   line-height: 20px;
   opacity: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease-out 0s;
   cursor: pointer;
 }
@@ -1556,10 +1632,11 @@ body #root .app-content .app-content-area {
   padding: 30px 0;
 }
 .workspace-list-group:not(:first-child) {
-  border-top: 1px dotted rgba(255, 255, 255, 0.25);
+  border-top: 1px dotted rgba(0, 0, 0, 0.25);
 }
 .workspace-list-group h1 {
   font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
 }
 .workspace-list-group .workspace-list-group-items {
   display: flex;
@@ -1586,6 +1663,7 @@ body #root .app-content .app-content-area {
   height: 100%;
   display: flex;
   align-items: flex-end;
+  color: rgba(0, 0, 0, 0.5);
 }
 .app-actions.right {
   order: 2;
@@ -1597,16 +1675,15 @@ body #root .app-content .app-content-area {
   order: 1;
   flex: initial;
   margin-right: auto;
-  margin-left: 12px;
 }
 .app-actions .separator {
   height: 36px;
   width: 1px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
   margin: 0 6px 6px 15px;
 }
 .app-actions .toggler {
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   display: flex;
   margin-bottom: 6px;
   margin-right: 12px;
@@ -1628,10 +1705,10 @@ body #root .app-content .app-content-area {
   transition: background-color 0.2s linear 0s;
 }
 .app-actions .toggler label.active {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .app-actions .toggler label:not(.active):hover, .app-actions .toggler label:not(.active):focus {
-  background-color: rgba(255, 255, 255, 0.025);
+  background-color: rgba(0, 0, 0, 0.025);
 }
 .app-actions .action {
   margin-left: 10px;
@@ -1642,11 +1719,11 @@ body #root .app-content .app-content-area {
   cursor: pointer;
 }
 .app-actions .action.active {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 0, 0, 0.3);
 }
 .app-actions .action i {
   line-height: 48px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .app-actions .action:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -1656,40 +1733,40 @@ body #root .app-content .app-content-area {
   white-space: nowrap;
   display: flex;
   flex-flow: row;
-  margin: 0px 0 0px 0;
+  margin: 0 0 -12px 0;
   padding: 0 0 0 20px;
 }
 .app-actions ul.topic-headers li {
   padding: 0 0px;
   margin-right: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-size: small;
-  border-right: 1px solid rgba(255, 255, 255, 0);
+  border-right: 1px solid rgba(0, 0, 0, 0);
 }
 .app-actions ul.topic-headers li a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .app-actions ul.topic-headers li.active label {
-  background-color: rgba(255, 255, 255, 0);
-  color: #fff;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0);
+  color: #000;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 .app-actions ul.topic-headers li:hover label {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .app-actions ul.topic-headers li:hover label .active-marker {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .app-actions ul.topic-headers li label {
   display: block;
   min-width: 100px;
-  line-height: 60px;
+  line-height: 66px;
   margin: 0;
   padding: 0 30px;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.2s ease 0s;
   position: relative;
 }
@@ -1699,7 +1776,7 @@ body #root .app-content .app-content-area {
   left: 0;
   height: 5px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(0, 0, 0, 0);
   border-radius: 5px;
 }
 .app-actions ul.topic-headers li:last-child {
@@ -1708,7 +1785,7 @@ body #root .app-content .app-content-area {
   margin-left: 15px;
 }
 .app-actions ul.topic-headers li:last-child:hover i {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 50%;
 }
 .app-actions ul.topic-headers li:last-child i {
@@ -1725,27 +1802,27 @@ body #root .app-content .app-content-area {
 }
 .app-actions .search-box input.search-input {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   height: 36px;
   line-height: 36px;
   padding: 0 10px;
-  background: rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0);
   border-radius: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   outline: none;
 }
 .app-actions .search-box input.search-input:hover {
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(0, 0, 0, 0.025);
 }
 .app-actions .search-box input.search-input:focus, .app-actions .search-box input.search-input:active {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 .app-actions .search-box i {
   position: absolute;
   top: 0;
   right: 18px;
   font-size: small;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   width: 36px;
   height: 36px;
   line-height: 36px;
@@ -1757,13 +1834,13 @@ body #root .app-content .app-content-area {
   bottom: 12px;
   left: 12px;
   height: 48px;
-  width: 48px;
-  border-radius: 50%;
+  width: 60px;
   text-align: center;
   cursor: pointer;
 }
 .app-sidebar-toggle i {
   line-height: 48px;
+  font-size: 18px;
 }
 .app-sidebar-toggle:hover {
   background-color: rgba(0, 0, 0, 0.05);

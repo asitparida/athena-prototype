@@ -30,7 +30,7 @@ app.on('ready', async () => {
         resizable: false,
         fullscreenable: false,
         titleBarStyle: 'hidden',
-        vibrancy: 'ultra-dark',
+        vibrancy: 'menu',
         thickFrame: false,
         webPreferences: {
             webSecurity: false,
@@ -42,7 +42,7 @@ app.on('ready', async () => {
     const menu = GetApplictaionMenu();
     Menu.setApplicationMenu(menu);
     BuildTray(mainWindow);
-    mainWindow.setVibrancy('ultra-dark');
+    mainWindow.setVibrancy('menu');
     mainWindow.once('ready-to-show', () => {
         setTimeout(() => {
             splashWindow.destroy();

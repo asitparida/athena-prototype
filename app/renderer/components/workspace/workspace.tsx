@@ -31,7 +31,7 @@ class Workspace extends React.Component<any, any> {
     transferSubscription: Subscription;
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 500, dumpGroundWidth: 350, workspaceId: null, groups: [] };
+        this.state = { rteWidth: 350, dumpGroundWidth: 350, workspaceId: null, groups: [] };
     }
     componentDidUpdate(props) {
         if (isEqual(this.props.match.params, props.match.params) === false) {

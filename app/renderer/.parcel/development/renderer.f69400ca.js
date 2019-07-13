@@ -64382,6 +64382,8 @@ exports.HIDE_WORKSPACE_RTE = 'HIDE_WORKSPACE_RTE';
 exports.SHOW_WORKSPACE_RTE_ACTION = 'SHOW_WORKSPACE_RTE_ACTION';
 exports.HIDE_WORKSPACE_RTE_ACTION = 'HIDE_WORKSPACE_RTE_ACTION';
 exports.TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+exports.SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+exports.HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 exports.TOGGLE_WORKSHOP_IN_HEADER = 'TOGGLE_WORKSHOP_IN_HEADER';
 exports.SHOW_WORKSHOP_IN_HEADER = 'SHOW_WORKSHOP_IN_HEADER';
 exports.HIDE_WORKSHOP_IN_HEADER = 'HIDE_WORKSHOP_IN_HEADER';
@@ -64499,6 +64501,20 @@ exports.showRTE = function () {
 exports.toggleSideBar = function () {
   return {
     type: types.TOGGLE_SIDEBAR,
+    payload: {}
+  };
+};
+
+exports.showSideBar = function () {
+  return {
+    type: types.SHOW_SIDEBAR,
+    payload: {}
+  };
+};
+
+exports.hideSideBar = function () {
+  return {
+    type: types.HIDE_SIDEBAR,
     payload: {}
   };
 };
@@ -64692,6 +64708,24 @@ exports.default = function () {
         var _current = state.sideBarShown;
         newState = Object.assign({}, state, {
           sideBarShown: !_current,
+          searchBarShown: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.SHOW_SIDEBAR:
+      {
+        newState = Object.assign({}, state, {
+          sideBarShown: true,
+          searchBarShown: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_SIDEBAR:
+      {
+        newState = Object.assign({}, state, {
+          sideBarShown: false,
           searchBarShown: false
         });
         return newState;
@@ -67170,11 +67204,35 @@ function (_React$Component) {
       this.setState({
         sideBarItems: sideBarItems
       });
+
+      if (this.props.sideBarCollpased) {
+        this.props.actions.showSideBar();
+      }
+    }
+  }, {
+    key: "closeList",
+    value: function closeList() {
+      var sideBarItems = [].concat(this.state.sideBarItems);
+      sideBarItems.forEach(function (item, i) {
+        item.subListOpen = false;
+      });
+      this.setState({
+        sideBarItems: sideBarItems
+      });
     }
   }, {
     key: "createNewWorkspace",
     value: function createNewWorkspace() {
       this.props.actions.showWorkspaceCreator();
+    }
+  }, {
+    key: "toggleSidebar",
+    value: function toggleSidebar() {
+      if (this.props.sideBarCollpased) {
+        this.closeList();
+      }
+
+      this.props.actions.toggleSideBar();
     }
   }, {
     key: "render",
@@ -67183,22 +67241,33 @@ function (_React$Component) {
 
       var sideBarItems = this.state.sideBarItems;
       return React.createElement("div", {
-        className: "sidebar-wrapper"
+        className: "sidebar-wrapper ".concat(this.props.sideBarCollpased ? 'collapsed' : 'expanded')
       }, React.createElement("ul", {
         className: "workspace-list"
-      }, React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+      }, React.createElement("li", {
+        className: "hamburger",
+        onClick: this.toggleSidebar.bind(this)
+      }, React.createElement("label", {
+        className: "first-level-label"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "menu"))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
         to: "/home"
       }, React.createElement("label", {
         className: "first-level-label"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "home"), "Home"))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+      }, "home"), React.createElement("span", {
+        className: "name"
+      }, "Home")))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
         to: "/dump"
       }, React.createElement("label", {
         className: "first-level-label"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "apps"), "Collections"))), React.createElement(React.Fragment, null, sideBarItems.length > 0 && sideBarItems.map(function (item, i) {
+      }, "apps"), React.createElement("span", {
+        className: "name"
+      }, "Collections")))), React.createElement(React.Fragment, null, sideBarItems.length > 0 && sideBarItems.map(function (item, i) {
         var styles = {
           backgroundImage: item.gradient
         };
@@ -67214,14 +67283,16 @@ function (_React$Component) {
         }, "folder_open"), !item.subListOpen && React.createElement("i", {
           className: "material-icons folder-icon ".concat(item.gradient ? 'apply-gradient' : ''),
           style: styles
-        }, "folder"), item.name), item.items.length > 0 && React.createElement("span", {
+        }, "folder"), React.createElement("span", {
+          className: "name"
+        }, item.name)), !_this2.props.sideBarCollpased && item.items.length > 0 && React.createElement("span", {
           className: "list-toggler",
           onClick: _this2.openList.bind(_this2, i)
         }, item.subListOpen && React.createElement("i", {
           className: "material-icons up"
         }, "arrow_drop_up"), !item.subListOpen && React.createElement("i", {
           className: "material-icons down"
-        }, "arrow_drop_down")), item.subListOpen && item.items.length > 0 && React.createElement("ul", {
+        }, "arrow_drop_down")), !_this2.props.sideBarCollpased && item.subListOpen && item.items.length > 0 && React.createElement("ul", {
           className: "sub-list"
         }, item.items.map(function (subItem, j) {
           return React.createElement("li", {
@@ -67230,14 +67301,18 @@ function (_React$Component) {
             to: subItem.link
           }, React.createElement("label", {
             className: "second-level"
-          }, subItem.name)));
+          }, React.createElement("span", {
+            className: "name"
+          }, subItem.name))));
         })));
       }), React.createElement("li", {
         className: "newWorkspace",
         onClick: this.createNewWorkspace.bind(this)
       }, React.createElement("label", null, React.createElement("i", {
         className: "material-icons"
-      }, "add"), "New Workspace")))), React.createElement("div", {
+      }, "add"), React.createElement("span", {
+        className: "name"
+      }, "New Workspace"))))), React.createElement("div", {
         className: "user-space"
       }, React.createElement("div", {
         className: "user-space-content"
@@ -67245,7 +67320,7 @@ function (_React$Component) {
         className: "user-picture-wrapper"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "face")), React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in"))), React.createElement("ul", {
+      }, "face")), !this.props.sideBarCollpased && React.createElement(React.Fragment, null, React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in")))), !this.props.sideBarCollpased && React.createElement("ul", {
         className: "copyright-info"
       }, React.createElement("li", {
         className: "copyright-info"
@@ -67490,7 +67565,7 @@ function (_React$Component) {
     value: function render() {
       var toolbarConfig = {
         // Optionally specify the groups to display (displayed in the order listed).
-        display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS', 'BLOCK_TYPE_DROPDOWN', 'HISTORY_BUTTONS'],
+        display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_DROPDOWN'],
         INLINE_STYLE_BUTTONS: [{
           label: 'Bold',
           style: 'BOLD',
@@ -67498,15 +67573,15 @@ function (_React$Component) {
         }, {
           label: 'Italic',
           style: 'ITALIC'
+        }, // {label: 'Underline', style: 'UNDERLINE'},
+        // {label: 'Strikethrough', style: 'STRIKETHROUGH'},
+        // {label: 'Code', style: 'CODE'},
+        {
+          label: 'UL',
+          style: 'unordered-list-item'
         }, {
-          label: 'Underline',
-          style: 'UNDERLINE'
-        }, {
-          label: 'Strikethrough',
-          style: 'STRIKETHROUGH'
-        }, {
-          label: 'Code',
-          style: 'CODE'
+          label: 'OL',
+          style: 'ordered-list-item'
         }],
         BLOCK_TYPE_DROPDOWN: [{
           label: 'Normal',
@@ -67520,13 +67595,6 @@ function (_React$Component) {
         }, {
           label: 'Heading Small',
           style: 'header-three'
-        }],
-        BLOCK_TYPE_BUTTONS: [{
-          label: 'UL',
-          style: 'unordered-list-item'
-        }, {
-          label: 'OL',
-          style: 'ordered-list-item'
         }]
       };
       return React.createElement("div", {
@@ -71808,7 +71876,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Workspace).call(this, props));
     _this.state = {
-      rteWidth: 500,
+      rteWidth: 350,
       dumpGroundWidth: 350,
       workspaceId: null,
       groups: []
@@ -72042,125 +72110,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_router_dom_1.withRouter(RouterRoot);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"pages/router-wrap.tsx":[function(require,module,exports) {
-"use strict";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var React = __importStar(require("react"));
-
-var react_router_dom_1 = require("react-router-dom");
-
-var dumping_ground_1 = __importDefault(require("../components/dumping-ground/dumping-ground"));
-
-var home_1 = __importDefault(require("../components/home/home"));
-
-var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
-
-var searchbar_1 = __importDefault(require("../components/searchbar/searchbar"));
-
-var workspace_1 = __importDefault(require("../components/workspace/workspace"));
-
-var router_root_1 = __importDefault(require("./router-root"));
-
-var RouterWrapper =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(RouterWrapper, _React$Component);
-
-  function RouterWrapper() {
-    _classCallCheck(this, RouterWrapper);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
-  }
-
-  _createClass(RouterWrapper, [{
-    key: "onChangeHandler",
-    value: function onChangeHandler() {
-      this.props.onLocationChanged();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return React.createElement(React.Fragment, null, React.createElement("div", {
-        className: "app-content-sidebar left",
-        "data-state": this.props.sideBarCollpased
-      }, React.createElement(sidebar_1.default, null)), React.createElement("div", {
-        className: "app-content-area"
-      }, React.createElement(router_root_1.default, {
-        onLocationChanged: this.onChangeHandler.bind(this)
-      }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/",
-        component: home_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/home",
-        component: home_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/dump",
-        component: dumping_ground_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/workspace/:workspaceId/topic/:topicId",
-        component: workspace_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        component: function component() {
-          return React.createElement("h1", null, "204 No Content");
-        }
-      }), React.createElement(react_router_dom_1.Redirect, {
-        from: "",
-        exact: true,
-        to: "/home"
-      })))), this.props.searchBarShown && React.createElement("div", {
-        className: "app-content-sidebar search-bar right",
-        "data-state": 'expanded'
-      }, React.createElement(searchbar_1.default, null)));
-    }
-  }]);
-
-  return RouterWrapper;
-}(React.Component);
-
-exports.RouterWrapper = RouterWrapper;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/searchbar/searchbar":"components/searchbar/searchbar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx"}],"components/header/header.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/header/header.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -72463,11 +72413,6 @@ function (_React$Component) {
   }
 
   _createClass(Header, [{
-    key: "toggleSidebar",
-    value: function toggleSidebar() {
-      this.props.actions.toggleSideBar();
-    }
-  }, {
     key: "toggleRTE",
     value: function toggleRTE() {
       this.props.actions.hideDumpBar();
@@ -72512,12 +72457,7 @@ function (_React$Component) {
 
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "app-actions left"
-      }, React.createElement("div", {
-        className: "app-sidebar-toggle",
-        onClick: this.toggleSidebar.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "menu")), this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 && React.createElement("ul", {
+      }, this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 && React.createElement("ul", {
         className: "topic-headers"
       }, this.props.activeWorkspace.topics.map(function (topic, i) {
         var styles = {};
@@ -72597,7 +72537,138 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Header);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts"}],"pages/router-wrap.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_router_dom_1 = require("react-router-dom");
+
+var dumping_ground_1 = __importDefault(require("../components/dumping-ground/dumping-ground"));
+
+var home_1 = __importDefault(require("../components/home/home"));
+
+var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
+
+var searchbar_1 = __importDefault(require("../components/searchbar/searchbar"));
+
+var workspace_1 = __importDefault(require("../components/workspace/workspace"));
+
+var router_root_1 = __importDefault(require("./router-root"));
+
+var header_1 = __importDefault(require("../components/header/header"));
+
+var RouterWrapper =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RouterWrapper, _React$Component);
+
+  function RouterWrapper() {
+    _classCallCheck(this, RouterWrapper);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
+  }
+
+  _createClass(RouterWrapper, [{
+    key: "onChangeHandler",
+    value: function onChangeHandler() {
+      this.props.onLocationChanged();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "app-content-sidebar left",
+        "data-state": sideBarCollpased
+      }, React.createElement(sidebar_1.default, {
+        sideBarCollpased: !this.props.sideBarShown
+      })), React.createElement("div", {
+        className: "app-content-holder"
+      }, React.createElement("div", {
+        className: "app-header-holder"
+      }, React.createElement("div", {
+        className: "app-content-top ".concat(this.props.workspaceInHeader ? 'expanded' : 'collapsed')
+      }, React.createElement(header_1.default, null))), React.createElement("div", {
+        className: "app-content-container"
+      }, React.createElement("div", {
+        className: "app-content-area"
+      }, React.createElement(router_root_1.default, {
+        onLocationChanged: this.onChangeHandler.bind(this)
+      }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/",
+        component: home_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/home",
+        component: home_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/dump",
+        component: dumping_ground_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/workspace/:workspaceId/topic/:topicId",
+        component: workspace_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        component: function component() {
+          return React.createElement("h1", null, "204 No Content");
+        }
+      }), React.createElement(react_router_dom_1.Redirect, {
+        from: "",
+        exact: true,
+        to: "/home"
+      })))), this.props.searchBarShown && React.createElement("div", {
+        className: "app-content-sidebar search-bar right",
+        "data-state": 'expanded'
+      }, React.createElement(searchbar_1.default, null)))));
+    }
+  }]);
+
+  return RouterWrapper;
+}(React.Component);
+
+exports.RouterWrapper = RouterWrapper;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/searchbar/searchbar":"components/searchbar/searchbar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx","../components/header/header":"components/header/header.tsx"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -79697,8 +79768,6 @@ var AppActions = __importStar(require("../access/actions/appActions"));
 
 var observables_1 = require("../access/observables/observables");
 
-var header_1 = __importDefault(require("../components/header/header"));
-
 var react_dnd_1 = require("react-dnd");
 
 var react_dnd_html5_backend_1 = __importDefault(require("react-dnd-html5-backend"));
@@ -79796,7 +79865,6 @@ function (_react_1$Component) {
   }, {
     key: "render",
     value: function render() {
-      var sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
       return React.createElement("div", {
         className: "app-content"
       }, React.createElement("div", {
@@ -79804,11 +79872,9 @@ function (_react_1$Component) {
       }), React.createElement(react_router_dom_1.HashRouter, {
         hashType: "noslash"
       }, React.createElement("div", {
-        className: "app-content-top ".concat(this.props.workspaceInHeader ? 'expanded' : 'collapsed')
-      }, React.createElement(header_1.default, null)), React.createElement("div", {
         className: "app-content-bottom"
       }, React.createElement(router_wrap_1.RouterWrapper, {
-        sideBarCollpased: sideBarCollpased,
+        sideBarShown: this.props.sideBarShown,
         searchBarShown: this.props.searchBarShown,
         onLocationChanged: this.onLocationChanged.bind(this)
       }))), React.createElement(toast_1.default, null), React.createElement(content_viewer_1.ContentViewer, null), this.props.newWorkspaceCreator && React.createElement(create_workspace_1.default, null), this.props.newTopicCreator && React.createElement(create_topic_1.default, null));
@@ -79819,7 +79885,7 @@ function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = react_dnd_1.DragDropContext(react_dnd_html5_backend_1.default)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Main));
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","../components/header/header":"components/header/header.tsx","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -79889,7 +79955,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61471" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60874" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

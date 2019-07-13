@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../access/actions/appActions';
 import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observables/observables';
-import Header from '../components/header/header';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
@@ -72,16 +71,12 @@ class Main extends Component<any, any> {
         }
     }
     render() {
-        const sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
         return (
             <div className="app-content">
                 <div className='app-dragger' />
                 <HashRouter hashType='noslash'>
-                    <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
-                        <Header />
-                    </div>
                     <div className='app-content-bottom'>
-                        <RouterWrapper sideBarCollpased={sideBarCollpased} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
+                        <RouterWrapper sideBarShown={this.props.sideBarShown} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
                     </div>
                 </HashRouter>
                 <Toasts />

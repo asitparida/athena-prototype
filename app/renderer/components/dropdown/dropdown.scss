@@ -18,6 +18,7 @@
         min-width: 200px;
         justify-content: flex-end;
         font-weight: 300;
+        color: rgba(#000, 0.50);
         i {
             margin-left: 5px;
             height: 42px;
@@ -38,7 +39,7 @@
             top: 35px;
             right: 0px;
             list-style: none;
-            background: #565656;
+            background: #f0f0f0;
             padding: 0;
             z-index: 999;
             cursor: pointer;
@@ -50,9 +51,10 @@
                 padding: 0 30px;
                 white-space: nowrap;
                 text-align: right;
+                color: rgba(#000, 0.50);
 
                 &:not(:last-child) {
-                    border-bottom: 1px solid rgba(#fff, 0.10);
+                    border-bottom: 1px solid rgba(#000, 0.05);
                 }
 
                 transition: all 0.1s linear 0s;
@@ -60,7 +62,6 @@
                 &:hover,
                 &:focus {
                     background-color: #fff;
-                    color: #000;
                 }
             }
         }

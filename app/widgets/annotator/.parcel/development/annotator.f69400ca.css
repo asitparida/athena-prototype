@@ -8,14 +8,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .scroller {
   -ms-scrollbar-face-color: rgba(255, 255, 255, 0.3);
   scrollbar-face-color: rgba(255, 255, 255, 0.3);
-  -ms-scrollbar-track-color: rgba(0, 0, 0, 0.5);
-  scrollbar-track-color: rgba(0, 0, 0, 0.5);
+  -ms-scrollbar-track-color: rgba(255, 255, 255, 0.2);
+  scrollbar-track-color: rgba(255, 255, 255, 0.2);
 }
 
 body {

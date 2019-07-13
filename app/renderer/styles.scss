@@ -21,7 +21,7 @@
     }
 }
 
-@include scrollbars(0.75em, rgba(#fff, 0.30), rgba(#000, 0.50));
+@include scrollbars(0.50em, rgba(#000, 0.25), rgba(#000, 0.10));
 
 body {
     margin: 0;
@@ -66,7 +66,7 @@ body {
 
             .app-content-top {
                 order: 1;
-                height: 90px;
+                height: 76px;
                 width: 100%;
                 flex: initial;
                 position: relative;
@@ -78,7 +78,7 @@ body {
                     animation: expand-height 0.5s ease-out 0s;
                 }
                 &.collapsed {
-                    height: 90px;
+                    height: 76px;
                     animation: collapse-height 0.5s ease-out 0s;
                 }
                 
@@ -88,7 +88,6 @@ body {
                 order: 2;
                 flex: 1;
                 width: 100%;
-                background: rgba(#000, 0.10);
                 display: flex;
                 height: calc(100% - 60vh);
                 position: relative;
@@ -107,7 +106,7 @@ body {
                     border-right: 1px solid rgba(#ffffff, 0.05);
 
                     &[data-state="collapsed"] {
-                        display: none;
+                        width: 70px;
                     }
 
                     &[data-state="expanded"] {
@@ -122,6 +121,30 @@ body {
                     &.search-bar {
                         min-width: 370px;
                     }
+                }
+            }
+
+            .app-content-holder {
+                display: flex;
+                flex-flow: column;
+                flex: 1;
+                order: 2;
+                width: 100%;
+                overflow: hidden;
+                .app-header-holder {
+                    flex: initial;
+                    order: 1;
+                    width: 100%;
+                    background: rgba(#f0f0f0, 1);
+                    border-bottom: 1px solid rgba(#000, 0.05);
+                }
+                .app-content-container {
+                    order: 2;
+                    flex: 1;
+                    width: 100%;
+                    position: relative;
+                    display: flex;
+                    background: rgba(#f0f0f0, 1);
                 }
             }
 
@@ -207,7 +230,7 @@ body {
 
 @keyframes expand-height {
     0% {
-        height: 90px;
+        height: 76px;
     }
     100% {
         height: 150px;
@@ -218,6 +241,6 @@ body {
         height: 150px;
     }
     100% {
-        height: 90px;
+        height: 76px;
     }
 }
