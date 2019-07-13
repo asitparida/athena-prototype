@@ -1,9 +1,8 @@
 import InitialState from '../store/initialState';
-import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE, HIDE_WORKSHOP_IN_HEADER, SHOW_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_ACTION_IN_HEADER, SHOW_WORKSHOP_ACTION_IN_HEADER, HIDE_WORKSHOP_ACTION_IN_HEADER, SHOW_TOAST_NOTIFICATION, REMOVE_TOAST_NOTIFICATION } from '../actions/actionTypes';
-import { IAction, IState } from '../store/types';
+import { TOGGLE_WORKSPACE_DUMP_BAR, TOGGLE_SIDEBAR, HIDE_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_DUMP_BAR_ACTION, SHOW_WORKSPACE_RTE_ACTION, HIDE_WORKSPACE_RTE_ACTION, TOGGLE_WORKSPACE_RTE, SHOW_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_DUMP_BAR, HIDE_WORKSPACE_RTE, SHOW_WORKSPACE_RTE, HIDE_WORKSHOP_IN_HEADER, SHOW_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_IN_HEADER, TOGGLE_WORKSHOP_ACTION_IN_HEADER, SHOW_WORKSHOP_ACTION_IN_HEADER, HIDE_WORKSHOP_ACTION_IN_HEADER, SHOW_TOAST_NOTIFICATION, REMOVE_TOAST_NOTIFICATION, HIDE_SEARCH_BAR, SHOW_SEARCH_BAR } from '../actions/actionTypes';
 import store from '../store/configureStore';
 import * as actions from '../actions/appActions';
-import { IToastItem, ToastType } from '../../constants/types';
+import { IToastItem, ToastType, IState, IAction } from '../../constants/types';
 
 export default (state: IState = InitialState, action: IAction) => {
     let newState: IState;
@@ -11,14 +10,28 @@ export default (state: IState = InitialState, action: IAction) => {
         case TOGGLE_WORKSPACE_DUMP_BAR: {
             const current = state.workspaceDumpBarShown;
             newState = Object.assign({}, state, {
-                workspaceDumpBarShown: !current
+                workspaceDumpBarShown: !current,
+                searchBarShown: false
             });
             return newState;
         }
         case TOGGLE_SIDEBAR: {
             const current = state.sideBarShown;
             newState = Object.assign({}, state, {
-                sideBarShown: !current
+                sideBarShown: !current,
+                searchBarShown: false
+            });
+            return newState;
+        }
+        case SHOW_SEARCH_BAR: {
+            newState = Object.assign({}, state, {
+                searchBarShown: true
+            });
+            return newState;
+        }
+        case HIDE_SEARCH_BAR: {
+            newState = Object.assign({}, state, {
+                searchBarShown: false
             });
             return newState;
         }
@@ -36,13 +49,14 @@ export default (state: IState = InitialState, action: IAction) => {
         }
         case SHOW_WORKSPACE_DUMP_BAR: {
             newState = Object.assign({}, state, {
-                workspaceDumpBarShown: true
+                workspaceDumpBarShown: true,
+                searchBarShown: false
             });
             return newState;
         }
         case HIDE_WORKSPACE_DUMP_BAR: {
             newState = Object.assign({}, state, {
-                workspaceDumpBarShown: false
+                workspaceDumpBarShown: false,
             });
             return newState;
         }
@@ -60,7 +74,8 @@ export default (state: IState = InitialState, action: IAction) => {
         }
         case SHOW_WORKSPACE_RTE: {
             newState = Object.assign({}, state, {
-                workspaceRTEShown: true
+                workspaceRTEShown: true,
+                searchBarShown: false
             });
             return newState;
         }
@@ -74,6 +89,7 @@ export default (state: IState = InitialState, action: IAction) => {
             const current = state.workspaceRTEShown;
             newState = Object.assign({}, state, {
                 workspaceRTEShown: !current,
+                searchBarShown: false
             });
             return newState;
         }

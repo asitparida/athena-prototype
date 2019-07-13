@@ -5,13 +5,23 @@ import './content-item.scss'
 import { VideoContentItem } from './video-content';
 import { ArticleContentItem } from './article-content';
 import { LinkContentItem } from './link-content';
+import { SocialMediaContentItem } from './socialmedia-item';
 import { ContentViewerData } from '../../access/observables/observables';
+import { InView } from 'react-intersection-observer';
+import { StickyContentItem } from './sticky-content';
 
-export class ContentItemWrapper extends React.Component<{ data: IContentItem<any>, menuInvoked: ($event: MouseEvent) => {} }, { annotationAndNotesShown: boolean }> {
+export class ContentItemWrapper extends React.Component<{
+    data: IContentItem<any>,
+    menuInvoked?: ($event: MouseEvent) => {},
+    inheritDimensions?: boolean,
+    root?: Element}, {
+    annotationAndNotesShown: boolean,
+    showEntity: boolean}> {
     constructor(props) {
         super(props);
         this.state = {
-            annotationAndNotesShown: false
+            annotationAndNotesShown: false,
+            showEntity: false
         };
     }
     invokeMenu($event) {
@@ -24,7 +34,17 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
         });
     }
     openContent() {
-        ContentViewerData.next(this.props.data);
+        if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {
+            ContentViewerData.next(this.props.data);
+        }
+    }
+    onViewChange(inView, entry) {
+        const notInView = this.state.showEntity;
+        if (inView && !notInView) {
+            this.setState({
+                showEntity: true
+            });
+        }
     }
     render() {
         const type = this.props.data.contentType;
@@ -40,10 +60,18 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
                 }
                 break;
             }
+            case ContentType.Sticky: { label = 'Note'; break; }
             case ContentType.Link: { label = 'Link'; break; }
             case ContentType.Photo: { label = 'Photo'; break; }
-            case ContentType.Video: { label =  this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube'; break; }
-            case ContentType.SocialMedia: { label = 'Social Media'; break; }
+            case ContentType.Video: { label = this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube'; break; }
+            case ContentType.SocialMedia: {
+                if (this.props.data.sourceType === MediaSourceType.Twitter) {
+                    label = 'Twitter'
+                } else if (this.props.data.sourceType === MediaSourceType.Instagram) {
+                    label = 'Instagram'
+                }
+                break;
+            }
         }
         let currentContent = <React.Fragment><h1>Content</h1><h2>...</h2></React.Fragment>;
         switch (type) {
@@ -63,6 +91,14 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
                 currentContent = <LinkContentItem data={this.props.data} />
                 break;
             }
+            case ContentType.SocialMedia: {
+                currentContent = <SocialMediaContentItem data={this.props.data} />
+                break;
+            }
+            case ContentType.Sticky: {
+                currentContent = <StickyContentItem data={this.props.data} />
+                break;
+            }
             default: {
                 currentContent = <React.Fragment><h1>Content</h1><h2>...</h2></React.Fragment>
                 break;
@@ -70,21 +106,24 @@ export class ContentItemWrapper extends React.Component<{ data: IContentItem<any
         }
         return (
             <React.Fragment>
-                <div className='inner-content-holder'>
-                    <div className='inner-content'>
-                        <div className={`inner-content-wrapper ${this.state.annotationAndNotesShown ? 'notes-open' : ''}`} onClick={this.openContent.bind(this)}>
-                            {
-                                currentContent
-                            }
-                            {
-                                this.props.data.title &&
-                                <div className='inner-overlay-content-wrapper'>
-                                    <label className='inner-content-title'>{this.props.data.title}</label>
-                                </div>
-                            }
+                <div className={`inner-content-holder ${this.props.inheritDimensions ? 'inherit-dimensions' : ''}`}>
+                        <div className='inner-content'>
+                        <InView onChange={this.onViewChange.bind(this)} className='inview-wrapper'>
+                            <div className={`inner-content-wrapper ${this.state.annotationAndNotesShown ? 'notes-open' : ''}`} onClick={this.openContent.bind(this)}>
+                                {
+                                    this.state.showEntity &&
+                                    currentContent
+                                }
+                                {
+                                    this.props.data.title &&
+                                    <div className='inner-overlay-content-wrapper'>
+                                        <label className='inner-content-title'>{this.props.data.title}</label>
+                                    </div>
+                                }
+                            </div>
+                            <label className='inner-content-type-label'>{label}</label>
+                            </InView>
                         </div>
-                        <label className='inner-content-type-label'>{label}</label>
-                    </div>
                     {
                         this.state.annotationAndNotesShown &&
                         <div className='inner-content-meta'>

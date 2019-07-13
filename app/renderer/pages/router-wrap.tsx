@@ -1,19 +1,20 @@
-import * as React from 'react'
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
+import * as React from 'react';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import DumpingGround from '../components/dumping-ground/dumping-ground';
 import Home from '../components/home/home';
 import SidebarComponent from '../components/sidebar/sidebar';
+import SearchBarComponent from '../components/searchbar/searchbar';
 import Workspace from '../components/workspace/workspace';
 import RouterRoot from './router-root';
 
-export class RouterWrapper extends React.Component<{ sideBarCollpased: string } | any, {}> {
+export class RouterWrapper extends React.Component<{ sideBarCollpased: string, searchBarShown: boolean } | any, {}> {
     onChangeHandler() {
         this.props.onLocationChanged();
     }
     render() {
         return (
-            <HashRouter hashType='noslash' >
+            <React.Fragment>
                 <div className="app-content-sidebar left" data-state={this.props.sideBarCollpased} >
                     <SidebarComponent />
                 </div>
@@ -23,13 +24,19 @@ export class RouterWrapper extends React.Component<{ sideBarCollpased: string } 
                             <Route exact path='/' component={Home} />
                             <Route exact path='/home' component={Home} />
                             <Route exact path='/dump' component={DumpingGround} />
-                            <Route exact path='/workspace/:id' component={Workspace} />
+                            <Route exact path='/workspace/:workspaceId/topic/:topicId' component={Workspace} />
                             <Route component={() => <h1>204 No Content</h1>} />
                             <Redirect from='' exact to='/home' />
                         </Switch>
                     </RouterRoot>
                 </div>
-            </HashRouter>
+                {
+                    this.props.searchBarShown &&
+                    <div className="app-content-sidebar search-bar right" data-state={'expanded'} >
+                    <SearchBarComponent />
+                </div>
+                }
+            </React.Fragment>
         )
     }
 }

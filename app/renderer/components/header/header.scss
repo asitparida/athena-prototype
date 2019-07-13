@@ -17,6 +17,46 @@
     display: flex;
     align-items: flex-end;
 
+    .separator {
+        height: 36px;
+        width: 1px;
+        background-color: rgba(#fff, 0.15);
+        margin: 0 6px 6px 15px;
+    }
+
+    .toggler {
+        border: 2px solid rgba(#fff, 0.1);
+        display: flex;
+        margin-bottom: 6px;
+        margin-right: 12px;
+        border-radius: 20px;
+        overflow: hidden;
+
+        label {
+            margin: 0;
+            line-height: 32px;
+            height: 32px;
+            padding: 0 10px;
+            font-size: x-small;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            min-width: 80px;
+            text-align: center;
+            transition: background-color 0.2s linear 0s;
+
+            &.active {
+                background-color: rgba(#fff, 0.1);
+            }
+
+            &:not(.active):hover,
+            &:not(.active):focus {
+                background-color: rgba(#fff, 0.025);
+            }
+        }
+    }
+
     .action {
         margin-left: 10px;
         height: 48px;
@@ -39,60 +79,124 @@
             background-color: rgba(#000, 0.05);
         }
     }
+
     ul.topic-headers {
         list-style: none;
         white-space: nowrap;
         display: flex;
         flex-flow: row;
-        margin: 0px 0 6px 0;
+        margin: 0px 0 0px 0;
         padding: 0 0 0 20px;
+
         li {
-            padding: 0 20px;
+            padding: 0 0px;
             margin-right: 0;
             color: rgba(#fff, 0.50);
             font-size: small;
             border-right: 1px solid rgba(#fff, 0.00);
+
+            a {
+                text-decoration: none;
+                color: rgba(#fff, 0.50);
+            }
+
             &.active {
                 label {
-                    background-color: rgba(#fff, 0.1);
-                    border-radius: 20px;
+                    background-color: rgba(#fff, 0.0);
+                    // border-radius: 20px;
+                    color: #fff;
+                    text-shadow: 0px 0px 10px rgba(0,0,0,0.80);
+                    position: relative;
                 }
             }
+
             &:hover {
-                 label {
+                label {
                     background-color: rgba(#fff, 0.05);
-                    border-radius: 20px;
-                 }
+                    // border-radius: 20px;
+                    .active-marker {
+                        background-color: rgba(#fff, 0.10);
+                    }
+                }
             }
+
             label {
                 display: block;
                 min-width: 100px;
-                line-height: 36px;
+                line-height: 60px;
                 margin: 0;
-                padding: 0 20px;
+                padding: 0 30px;
                 cursor: pointer;
                 background-color: rgba(#fff, 0.0);
                 transition: background-color 0.2s ease 0s;
+                position: relative;
+                .active-marker {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 5px;
+                    width: 100%;
+                    background-color: rgba(#fff, 0.00);
+                    border-radius: 5px;
+                }
             }
-            &:not(:first-child){
-                border-left: 1px solid rgba(#fff, 0.10);
-            }
+
             &:last-child {
                 width: 48px;
                 text-align: center;
+                margin-left: 15px;
+
                 &:hover {
                     i {
                         background-color: rgba(#fff, 0.05);
                         border-radius: 50%;
                     }
                 }
+
                 i {
-                    width: 36px;
+                    width: 60px;
                     font-size: medium;
-                    line-height: 36px;
+                    line-height: 60px;
                     cursor: pointer;
                 }
             }
+        }
+    }
+    .search-box {
+        position: relative;
+        width: 350px;
+        margin-bottom: 6px;
+        padding: 0 15px;
+        input {
+            &.search-input {
+                width: 100%;
+                border: 1px solid rgba(#fff, 0.1);
+                height: 36px;
+                line-height: 36px;
+                padding: 0 10px;
+                background: rgba(#fff, 0.0);
+                border-radius: 20px;
+                color: rgba(#fff, 0.80);
+                outline: none;
+                &:hover {
+                    background: rgba(#fff, 0.025);
+                }
+                &:focus,
+                &:active {
+                    background: rgba(#fff, 0.05);
+                }
+            }
+        }
+        i {
+            position: absolute;
+            top: 0;
+            right: 18px;
+            font-size: small;
+            color: rgba(#fff, 0.80);
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
         }
     }
 }

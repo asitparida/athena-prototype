@@ -82,3 +82,50 @@ export const showToastNotification = (message: IToastItem) => ({
 export const removeToastNotification = (toastId: string) => ({
     type: types.REMOVE_TOAST_NOTIFICATION, payload: toastId
 })
+
+export const toggleWorkspaceViewAsCanvas = () => ({
+    type: types.TOGGLE_WORKSPACE_VIEW_AS_CANVAS, payload: {}
+})
+
+export const showWorkspaceActions = () => ({
+    type: types.SHOW_WORKSPACE_ACTIONS, payload: {}
+})
+
+export const hideWorkspaceActions = () => ({
+    type: types.HIDE_WORKSPACE_ACTIONS, payload: {}
+})
+
+export const toggleWorkspaceActions = () => ({
+    type: types.TOGGLE_WORKSPACE_ACTIONS, payload: {}
+})
+
+export const showWorkspaceCreator = () => ({
+    type: types.SHOW_WORKSPACE_CREATOR, payload: {}
+})
+
+export const hideWorkspaceCreator = () => ({
+    type: types.HIDE_WORKSPACE_CREATOR, payload: {}
+})
+
+export const showTopicCreator = () => ({
+    type: types.SHOW_TOPIC_CREATOR, payload: {}
+})
+
+export const hideTopicCreator = () => ({
+    type: types.HIDE_TOPIC_CREATOR, payload: {}
+})
+
+export const activateWorkshopAndTopic = (workspaceId, topicId) => ({
+    type: types.ACTIVATE_WORKSPACE_AND_TOPIC, payload: {
+        workspaceId,
+        topicId
+    }
+})
+
+export const showSearchBar = () => ({
+    type: types.SHOW_SEARCH_BAR, payload: {}
+})
+
+export const hideSearchBar = () => ({
+    type: types.HIDE_SEARCH_BAR, payload: {}
+})

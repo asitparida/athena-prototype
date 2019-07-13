@@ -1,11 +1,12 @@
 import { ContentList, ContentType, Workspace, IWorkspace, IBoardGroupWrapper } from "./types";
+import * as _ from 'lodash';
 const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
-export const ItemWidth = 200;
-export const ItemHeight = 150;
-export const GroupBufffer = 120;
+export const ItemWidth = 240;
+export const ItemHeight = 180;
+export const GroupBufffer = 20;
 
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },
@@ -26,16 +27,17 @@ export const AllContentList: ContentList[] = [
 ];
 
 export const WorkspaceList: IWorkspace[] = [
-    new Workspace('Workspace #1', img1),
-    new Workspace('Workspace #2', img2),
-    new Workspace('Workspace #3', img3),
-    new Workspace('Workspace #4', img1)
+    new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
+    new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
+    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
+    new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
 ];
+
+WorkspaceList.forEach(w => w.topics = GetSampleTopicItems());
 
 export const WorkspaceCollectionTabs = [
     { id: 'all', name: 'All' },
-    { id: 'photos', name: 'Worskpace', type: ContentType.Photo },
-    { id: 'videos', name: 'Board', type: ContentType.Video },
+    { id: 'photos', name: 'Worskpace', type: ContentType.Photo }
 ];
 export const DumpingGrounCollectionTabs = [
     { id: 'all', name: 'All' },
@@ -46,48 +48,127 @@ export const DumpingGrounCollectionTabs = [
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];
 export const Topiclist = [
-    { id: 1, name: 'Topic #1', active: true },
-    { id: 2, name: 'Topic #2', active: false },
-    { id: 3, name: 'Topic #3', active: false },
-    { id: 4, name: 'Topic #4', active: false }
-]
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
+    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+];
+
+export function GetSampleTopicItems() {
+    const items = [
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
+        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+    ];
+    return _.shuffle(items);
+}
+
+export function GetSampleBoardItems() {
+    const items = [
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
+        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
+    ];
+    return _.take(_.shuffle(items), 3);
+}
 
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #1',
         props: { top: 0, left: 0 },
-        annotationData: []
+        items: GetSampleBoardItems(),
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #2',
         props: { top: 0, left: 0 },
-        annotationData: []
+        items: GetSampleBoardItems(),
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #3',
         props: { top: 0, left: 0 },
-        annotationData: []
+        items: GetSampleBoardItems(),
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #4',
         props: { top: 0, left: 0 },
-        annotationData: []
+        items: GetSampleBoardItems(),
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     },
     {
         id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'Group #5',
         props: { top: 0, left: 0 },
-        annotationData: []
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        props: { top: 0, left: 0 },
-        annotationData: []
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        props: { top: 0, left: 0 },
-        annotationData: []
+        items: GetSampleBoardItems(),
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     }
 ];
 
-BoardGroups = BoardGroups.filter((bg, i) => i < 3);
+export function GetEmptyGroup() {
+    return {
+        id: `${Math.floor(Math.random() * 10e8)}`,
+        title: 'New Group *',
+        props: { top: 0, left: 0 },
+        items: [],
+        annotation: {
+            id: `${Math.floor(Math.random() * 10e10)}`,
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
+    };
+}
+
+export enum Cancellable {
+    IdleCallback,
+    AnimationFrame,
+    Timeout,
+    Interval
+}
+
+export class CancellabelRequests {
+    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean}> = [];
+    push(requestId, type: Cancellable) {
+        this.cancellableList.push( { type, requestId, cleaned: false })
+    }
+    clean(id?) {
+        if (typeof id !== 'undefined') {
+            this.cancellableList = this.cancellableList.filter( t => t.requestId !== id);
+        } else if (this.cancellableList.length > 0) {
+            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean}) => {
+                switch (item.type) {
+                    case Cancellable.AnimationFrame : { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Timeout : { clearTimeout(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Interval : { clearInterval(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.IdleCallback : { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
+                }
+            });
+            this.cancellableList = this.cancellableList.filter( t => !t.cleaned);
+        }
+    }
+}
+
+export function GetAPIUrl() {
+    const remote = (window as any).remote;
+    return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
+}

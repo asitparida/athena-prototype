@@ -30,7 +30,7 @@ body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     color: rgba(#fff, 0.80);
-    background: #000;
+    // background-color: #333;
 
     #root {
         display: flex;
@@ -119,6 +119,9 @@ body {
                     height: 100%;
                     width: 300px;
                     order: 2;
+                    &.search-bar {
+                        min-width: 370px;
+                    }
                 }
             }
 
@@ -131,20 +134,20 @@ body {
                 z-index: 1;
                 position: relative;
 
-                input {
-                    background: rgba(#fff, 0.05);
-                    color: rgba(#ffffff, 0.75);
-                    font-size: x-large;
-                    padding: 0 10px;
-                    line-height: 60px;
-                    border-radius: 4px;
-                    min-width: 100px;
-                    text-align: center;
-                    border: 1px solid rgba(#ffffff, 0.50);
-                    font-weight: 100;
-                    margin: 0;
-                    outline: none;
-                }
+                // input {
+                //     background: rgba(#fff, 0.05);
+                //     color: rgba(#ffffff, 0.75);
+                //     font-size: x-large;
+                //     padding: 0 10px;
+                //     line-height: 60px;
+                //     border-radius: 4px;
+                //     min-width: 100px;
+                //     text-align: center;
+                //     border: 1px solid rgba(#ffffff, 0.50);
+                //     font-weight: 100;
+                //     margin: 0;
+                //     outline: none;
+                // }
             }
         }
     }
@@ -181,6 +184,18 @@ body {
 @keyframes slide-in-from-top {
     0% {
         transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-from-bottom {
+    0% {
+        transform: translateY(30px);
         opacity: 0;
     }
 

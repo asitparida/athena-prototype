@@ -2,11 +2,9 @@ import * as React from 'react'
 import Tabs from '../tabs/tabs';
 import Tab from '../tabs/Tab';
 import './dumping-ground.scss';
-import { ContentListCollection } from '../contents/content-list-collection';
+import { DumpingGroundListCollection } from './dumping-ground-list-collection';
 import { ShowWorkspaceAction$ } from '../../access/observables/observables';
-import { ContentType, IDumpingGroundTab } from '../../constants/types';
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
+import { IDumpingGroundTab } from '../../constants/types';
 import { DumpingGrounCollectionTabs, WorkspaceCollectionTabs } from '../../constants/constants';
 
 interface IDumpingGroundState {
@@ -16,7 +14,9 @@ interface IDumpingGroundState {
 
 interface IDumpingGroundProps {
     sticky?: boolean,
-    workspace?: boolean
+    workspace?: boolean,
+    hideGroupTitle?: boolean,
+    searchBar?: boolean;
 }
 
 type AllProps = IDumpingGroundProps
@@ -58,7 +58,7 @@ class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
                 {this.state.tabs.map((tab, i) => {
                     return <Tab title={tab.name} key={i}>
                         <div className={classListName}>
-                            <ContentListCollection type={tab.type} />
+                            <DumpingGroundListCollection searchBar={this.props.searchBar} hideGroupTitle={this.props.hideGroupTitle} type={tab.type} />
                         </div>
                     </Tab>
                 })}

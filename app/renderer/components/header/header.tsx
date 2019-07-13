@@ -1,20 +1,23 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
-import { WorkspaceList, Topiclist } from '../../constants/constants';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
+import { BuildTopicLink } from '../../transforms';
 
-const mapStateToProps = ({ reducers }) => {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
         workspaceInHeader: reducers.workspaceInHeader,
         workspaceActionInHeader: reducers.workspaceActionInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
-        workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
-        workspaceRTEActionShown: reducers.workspaceRTEActionShown
+        workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas,
+        workspaceActionsAreShown: workspaceReducers.workspaceActionsAreShown,
+        workspaceList: workspaceReducers.workspaceList,
+        activeWorkspace: workspaceReducers.activeWorkspace
     };
 }
 
@@ -28,8 +31,7 @@ class Header extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            workspaceList: WorkspaceList,
-            topicList: Topiclist
+            workspaceList: this.props.workspaceList
         };
     }
     toggleSidebar() {
@@ -49,15 +51,15 @@ class Header extends React.Component<any, any> {
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
         ipcRenderer.send('launch-annotator');
-        const remote = (window as any).remote;
-        const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
-        fetch(api)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            }, (data) => {
-                console.log(data);
-            });
+    }
+    toggleWorkspaceView() {
+        this.props.actions.toggleWorkspaceViewAsCanvas();
+    }
+    addNewTopic() {
+        this.props.actions.showTopicCreator();
+    }
+    onSearchFocused() {
+        this.props.actions.showSearchBar();
     }
     render() {
         return (
@@ -67,14 +69,21 @@ class Header extends React.Component<any, any> {
                         <i className='material-icons'>menu</i>
                     </div>
                     {
-                        this.props.workspaceRTEActionShown && this.state.topicList.length > 0 &&
+                        this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 &&
                         <ul className='topic-headers'>
                             {
-                                this.state.topicList.map((topic, i) => {
-                                    return (<li key={i} className={`topic ${topic.active ? 'active' : ''}`}> <label>{topic.name}</label></li>)
+                                this.props.activeWorkspace.topics.map((topic, i) => {
+                                    let styles = {};
+                                    if (topic.active) {
+                                        styles = {
+                                            backgroundImage: this.props.activeWorkspace.gradient
+                                        };
+                                    }
+                                    const link = BuildTopicLink(this.props.activeWorkspace.id, topic.id);
+                                    return (<li key={topic.id} className={`topic ${topic.active ? 'active' : ''}`}><NavLink to={link}><label ><span>{topic.name}</span><span style={styles} className='active-marker ' /></label></NavLink></li>)
                                 })
                             }
-                            <li className='topic'>
+                            <li className='topic' onClick={this.addNewTopic.bind(this)}>
                                 <i className='material-icons'>add</i>
                             </li>
                         </ul>
@@ -86,25 +95,34 @@ class Header extends React.Component<any, any> {
                 }
                 <div className='app-actions right'>
                     {
-                        this.props.workspaceRTEActionShown &&
-                        <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
-                            <i className="material-icons">text_fields</i>
-                        </div>
-                    }
-                    {
-                        this.props.workspaceDumpBarActionShown &&
-                        <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
-                            <i className='material-icons'>apps</i>
-                        </div>
+                        this.props.workspaceActionsAreShown &&
+                        <React.Fragment>
+                            <div className='toggler' onClick={this.toggleWorkspaceView.bind(this)}>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? 'active' : ''}`}>Canvas</label>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>Grid</label>
+                            </div>
+                            <div className='separator' />
+                            <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
+                                <i className="material-icons">text_fields</i>
+                            </div>
+                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
+                                <i className='material-icons'>apps</i>
+                            </div>
+                        </React.Fragment>
                     }
                     {
                         this.props.workspaceActionInHeader &&
                         <div className={`action ${this.props.workspaceInHeader ? 'active' : ''}`} onClick={this.toggleWorkspaceInBar.bind(this)}>
-                            <i className='material-icons'>storage</i>
+                            <i className='material-icons'>view_week</i>
                         </div>
                     }
+                    <div className='separator' />
                     <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                        <i className='material-icons'>text_format</i>
+                        <i className='material-icons'>format_shapes</i>
+                    </div>
+                    <div className='separator' />
+                    <div className='search-box'>
+                        <input className='search-input' onFocus={this.onSearchFocused.bind(this)} /> <i className='material-icons'>search</i>
                     </div>
                 </div>
             </React.Fragment>

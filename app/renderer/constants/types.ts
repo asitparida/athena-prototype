@@ -1,23 +1,63 @@
+import * as _ from 'lodash';
+
+export interface IState {
+    sideBarShown: boolean;
+    searchBarShown: boolean;
+    workspaceInHeader: boolean;
+    workspaceActionInHeader: boolean;
+    workspaceDumpBarShown: boolean;
+    workspaceDumpBarActionShown: boolean;
+    workspaceRTEShown: boolean;
+    workspaceRTEActionShown: boolean;
+    toasts: IToastItem[];
+    workspaceViewIsCanvas: boolean;
+    workspaceActionsAreShown: boolean;
+    newWorkspaceCreator: boolean;
+    newTopicCreator: boolean;
+    workspaceList?: IWorkspace[];
+    activeWorkspace?: IWorkspace;
+}
+export interface IAction {
+    type: string;
+    payload: any;
+}
+
+export interface IAppActions {
+    actions: IAction[];
+}
+
 export interface IContentItemsList {
     list: ContentList;
     title: string;
+}
+
+export interface ITopic {
+    id?: string;
+    name?: string;
+    image?: any;
+    gradient?: string;
 }
 
 export interface IWorkspace {
     id?: string;
     name: string;
     image: any;
+    gradient: string;
+    topics?: ITopic[];
 }
 export class Workspace implements IWorkspace {
     id?: string;
     name: string;
     image: any;
     link: string;
-    constructor(name, image) {
+    gradient: string;
+    topics: ITopic[] = [];
+    constructor(name, image, gradient = null) {
         this.id = `${Math.floor(Math.random() * 10e8)}`;
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
+        this.gradient = gradient;
     }
     getImgUrl() {
         return `url(${this.image})`;
@@ -34,7 +74,8 @@ export enum ContentType {
     Video,
     Link,
     Article,
-    SocialMedia
+    SocialMedia,
+    Sticky
 }
 export enum MediaSourceType {
     Browser,
@@ -91,6 +132,18 @@ export interface ILinkContent {
     ogImage?: string;
 }
 
+export interface INoteContent {
+    noteText?: string;
+}
+
+export interface ISocialMediaContent {
+    tweetText?: string;
+    instragramImageUrl?: string;
+    handle?: string;
+    profileLink?: string;
+    profileImgUrl?: string;
+}
+
 export interface IContextMenuAction {
     icon: string;
     name: string;
@@ -105,6 +158,12 @@ export interface IContentItem<T> {
     sourcePreviewAvailable?: boolean;
     tags?: any[];
     annotations?: IAnnotation[];
+}
+
+export interface IWorkspaceContentTransfer {
+    from: string;
+    to: string;
+    data: IContentItem<any>;
 }
 
 export enum ToastType {
@@ -140,12 +199,14 @@ export interface IBoardContent {
     props?: IRectProps;
 }
 export interface IBoardGroupContent {
-    annotationData?: IAnnotation[];
+    annotation?: IAnnotation;
 }
 export interface IBoardGroupWrapper {
     id?: string;
+    title?: string;
     props?: IRectProps;
-    annotationData?: IAnnotation[];
+    annotation?: IAnnotation;
+    items?: IBoardContent[];
 }
 
 export interface ISideBarNavItem {
@@ -155,4 +216,5 @@ export interface ISideBarNavItem {
     items?: ISideBarNavItem[];
     active?: boolean;
     subListOpen?: boolean;
+    gradient?: string;
 }

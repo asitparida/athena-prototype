@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { HashRouter } from 'react-router-dom'
 import { Component } from "react";
 import { RouterWrapper } from './router-wrap';
 import '../styles.scss';
@@ -11,15 +12,20 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
 import { ContentViewer } from '../components/content-viewer/content-viewer';
+import CreateWorkspace from '../components/create-workspace/create-workspace';
+import CreateTopic from '../components/create-workspace/create-topic';
 
-const mapStateToProps = ({ reducers }) => {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         sideBarShown: reducers.sideBarShown,
+        searchBarShown: reducers.searchBarShown,
         workspaceInHeader: reducers.workspaceInHeader,
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
         workspaceDumpBarActionShown: reducers.workspaceDumpBarActionShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
-        workspaceRTEActionShown: reducers.workspaceRTEActionShown
+        workspaceRTEActionShown: reducers.workspaceRTEActionShown,
+        newWorkspaceCreator: workspaceReducers.newWorkspaceCreator,
+        newTopicCreator: workspaceReducers.newTopicCreator
     };
 }
 
@@ -70,14 +76,24 @@ class Main extends Component<any, any> {
         return (
             <div className="app-content">
                 <div className='app-dragger' />
-                <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
-                    <Header />
-                </div>
-                <div className='app-content-bottom'>
-                    <RouterWrapper sideBarCollpased={sideBarCollpased} onLocationChanged={this.onLocationChanged.bind(this)} />
-                </div>
+                <HashRouter hashType='noslash'>
+                    <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
+                        <Header />
+                    </div>
+                    <div className='app-content-bottom'>
+                        <RouterWrapper sideBarCollpased={sideBarCollpased} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
+                    </div>
+                </HashRouter>
                 <Toasts />
                 <ContentViewer />
+                {
+                    this.props.newWorkspaceCreator &&
+                    <CreateWorkspace />
+                }
+                {
+                    this.props.newTopicCreator &&
+                    <CreateTopic />
+                }
             </div>
         );
     }

@@ -1,15 +1,30 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
-import { WorkspaceList } from '../../constants/constants';
-import { Workspace, ISideBarNavItem } from '../../constants/types';
+import { ISideBarNavItem } from '../../constants/types';
 import { GetWorkspaceListForSidebar } from '../../transforms';
+import * as actions from '../../access/actions/appActions';
+import * as AppActions from '../../access/actions/appActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class SidebarComponent extends React.Component<{}, any> {
+const mapStateToProps = ({ reducers, workspaceReducers }) => {
+    return {
+        workspaceList: workspaceReducers.workspaceList
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(AppActions, dispatch)
+    };
+}
+
+class SidebarComponent extends React.Component<any, any> {
     constructor(props) {
         super(props);
         this.state = {
-            sideBarItems: GetWorkspaceListForSidebar()
+            sideBarItems: GetWorkspaceListForSidebar(this.props.workspaceList)
         };
     }
     openList(index) {
@@ -21,6 +36,9 @@ export default class SidebarComponent extends React.Component<{}, any> {
             sideBarItems
         })
     }
+    createNewWorkspace() {
+        this.props.actions.showWorkspaceCreator();
+    }
     render() {
         const { sideBarItems } = this.state;
         return <div className='sidebar-wrapper'>
@@ -31,18 +49,19 @@ export default class SidebarComponent extends React.Component<{}, any> {
                 {
                     sideBarItems.length > 0 &&
                     (sideBarItems as ISideBarNavItem[]).map(((item, i) => {
+                        const styles = {
+                            backgroundImage: item.gradient
+                        };
                         return <li key={i} className="first-level">
-                            <NavLink to={item.link}>
-                                <label className='first-level-label'>
+                            <label className='first-level-label' onClick={this.openList.bind(this, i)}>
                                 {
-                                    item.subListOpen && <i className='material-icons folder-icon'>folder_open</i>
+                                    item.subListOpen && <i className={`material-icons folder-icon ${item.gradient ? 'apply-gradient' : ''}`} style={styles}>folder_open</i>
                                 }
                                 {
-                                    !item.subListOpen && <i className='material-icons folder-icon'>folder</i>
+                                    !item.subListOpen && <i className={`material-icons folder-icon ${item.gradient ? 'apply-gradient' : ''}`} style={styles}>folder</i>
                                 }
                                 {item.name}
                                 </label>
-                            </NavLink>
                             {
                                 item.items.length > 0 &&
                                 <span className='list-toggler' onClick={this.openList.bind(this, i)}>
@@ -69,6 +88,7 @@ export default class SidebarComponent extends React.Component<{}, any> {
                         </li>
                     }))
                 }
+                <li className='newWorkspace' onClick={this.createNewWorkspace.bind(this)}><label><i className='material-icons'>add</i>New Workspace</label></li>
                 </React.Fragment>
             </ul>
             <div className="user-space">
@@ -86,3 +106,5 @@ export default class SidebarComponent extends React.Component<{}, any> {
         </div>
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);

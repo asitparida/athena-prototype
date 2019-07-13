@@ -8,8 +8,7 @@ export class LinkContentItem extends React.Component<{ data: IContentItem<ILinkC
     render() {
         return (
             <div className='link-content'>
-                <label className='link-title'>{this.props.data.contentData.ogTitle}</label>
-                <label className='link-author'>{this.props.data.contentData.ogDescription}</label>
+                <label className='link-title'>{this.props.data.contentData.ogDescription}</label>
             </div>
         );
     }

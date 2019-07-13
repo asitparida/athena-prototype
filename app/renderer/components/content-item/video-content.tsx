@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { IContentItem, IVideoContent } from '../../constants/types';
 import { GetDuration } from '../../helper';
+import { CancellabelRequests, Cancellable } from '../../constants/constants';
 
 export class VideoContentItem extends React.Component<{ data: IContentItem<IVideoContent> }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
+    imageElement: HTMLImageElement;
+    cancellable = new CancellabelRequests();
     constructor(props) {
         super(props);
         this.state = {
@@ -13,27 +16,45 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
     }
     componentDidMount() {
         if (this.props.data.contentData.videoThumbnailUrl) {
-            window.requestAnimationFrame(() => {
-                const elem = document.createElement('IMG') as HTMLImageElement;
-                elem.onload = () => {
-                    window.requestAnimationFrame(() => {
+            const idleCallbackID = (window as any).requestIdleCallback(() => {
+                this.imageElement = new Image();
+                this.imageElement.onload = () => {
+                    const animationId = window.requestAnimationFrame(() => {
                         this.setState({
                             imgAvailable: true,
                             imgUrl: this.props.data.contentData.videoThumbnailUrl
                         });
-                        setTimeout(() => {
+                        const timer1 = setTimeout(() => {
                             this.setState({
                                 showImg: true
                             });
-                            setTimeout(() => {
-                                elem.remove();
+                            const timer2 = setTimeout(() => {
+                                if (this.imageElement) {
+                                    this.imageElement.remove();
+                                    this.imageElement = null;
+                                }
+                                this.cancellable.clean(timer2);
                             });
-                        }, 100)
-                    })
+                            this.cancellable.clean(timer1);
+                            this.cancellable.push(timer2, Cancellable.Timeout);
+                        }, 100);
+                        this.cancellable.clean(animationId);
+                        this.cancellable.push(timer1, Cancellable.Timeout);
+                    });
+                    this.cancellable.push(animationId, Cancellable.AnimationFrame);
                 }
-                elem.src = this.props.data.contentData.videoThumbnailUrl;
+                this.cancellable.clean(idleCallbackID);
+                this.imageElement.src = this.props.data.contentData.videoThumbnailUrl;
             });
+            this.cancellable.push(idleCallbackID, Cancellable.IdleCallback);
         }
+    }
+    componentWillUnmount() {
+        if (this.imageElement) {
+            this.imageElement.remove();
+            this.imageElement = null;
+        }
+        this.cancellable.clean();
     }
     render() {
         const duration = GetDuration(this.props.data.contentData.videoLength);

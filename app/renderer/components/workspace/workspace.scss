@@ -20,8 +20,6 @@ $dot-space: 5px;
         background-size: $dot-space $dot-space;
     }
 
-    &:not(.show-grid) {}
-
     .working-area {
         flex: 1;
         order: 1;
@@ -124,8 +122,6 @@ $dot-space: 5px;
                     &[class*="IconButton__isActive"] {
                         background: rgba(#fff, 0.75);
                     }
-
-                    &:hover {}
                 }
             }
 
@@ -142,15 +138,17 @@ $dot-space: 5px;
     }
 
     .sticky-dumping-ground {
-        width: 300px;
+        width: 350px;
         flex: initial;
         order: 3;
         animation: slide-in-from-right 0.5s ease-out 0s;
-        // position: absolute;
-        // right: 0;
-        // top: 0;
-        // background-color: rgba(#000, 1);
         z-index: 2;
         height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: rgba(#333, 1);
+        border-left: 10px solid rgba(#444, 1);
+        box-shadow: -20px 0px 25px rgba(#000, 0.50);
     }
 }

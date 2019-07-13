@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     background: rgba(#fff, 0.025);
+    position: relative;
+    z-index: 3;
     ul {
         padding: 0;
         list-style: none;
@@ -30,6 +32,30 @@
             &:last-child {
                 border-bottom: none;
             }
+            &.newWorkspace {
+                padding: 30px 30px 0px 30px;
+                label {
+                    background-color: rgba(#fff, 0.025);
+                    width: 100%;
+                    line-height: 54px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: background-color 0.3s linear 0s;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    font-size: small;
+                    i {
+                        margin-right: 15px;
+                        font-size: medium;
+                    }
+                    &:hover {
+                        background-color: rgba(#fff, 0.50);
+                        color: #000;
+                    }
+                }
+            }
             label {
                 color: rgba(#fff, 0.50);
                 width: 100%;
@@ -39,7 +65,7 @@
                 margin: 0;
                 cursor: pointer;
                 &.second-level {
-                    padding-left: 54px;
+                    padding-left: 84px;
                 }
                 &:hover {
                     background: rgba(#fff, 0.10);
@@ -50,13 +76,16 @@
                     i {
                         width: 36px;
                         font-size: 18px;
+                        &.folder-icon.apply-gradient {
+                            background-clip: text;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
                     }
                 }
             }
             &.first-level {
                 position: relative;
-                label {
-                }
                 .list-toggler {
                     position: absolute;
                     right: 12px;
@@ -77,7 +106,7 @@
                 }
                 ul.sub-list {
                     animation: sub-list-open 0.33s linear forwards 0s;
-                    padding-left: 18px;
+                    padding-left: 0;
                     li {
                         label {
                             line-height: 48px;

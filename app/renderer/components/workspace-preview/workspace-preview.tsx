@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import store from '../../access/store/configureStore';
 import { IToastItem, ToastType, DragAndDropTypes } from '../../constants/types';
+import { DumpingGroundTransfer } from '../../access/observables/observables';
 
 const mapStateToProps = ({ reducers }) => {
     return {};
@@ -17,16 +18,15 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const itemSource = {
-    drop: (props) => {
+    drop: (props, monitor) => {
+        const dropItemResult = monitor.getItem();
         const toast: IToastItem = {
             id: `${Math.floor(Math.random() * 10e8)}`,
             message: `The clip has been pushed to the ${props.data.name}`,
             type: ToastType.Success
         };
         store.dispatch(AppActions.showToastNotification(toast))
-    },
-    hover: (props) => {
-        // console.log(props);
+        DumpingGroundTransfer.next(dropItemResult.dragObject);
     }
 }
 
@@ -42,7 +42,7 @@ class WorkspacePreview extends React.Component<any, any> {
     render() {
         const { connectDropTarget, isOver, data } = this.props;
         const styles = {
-            backgroundImage: data.getImgUrl()
+            backgroundImage: data.gradient
         };
         return connectDropTarget(
             <div className={`workspace ${isOver ? 'entity-over' : ''}`} style={styles}>

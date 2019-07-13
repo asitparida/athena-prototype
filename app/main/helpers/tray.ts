@@ -1,5 +1,5 @@
 import { nativeImage, Tray, Menu, app, BrowserWindow } from 'electron';
-import logo from '../assets/network.png';
+const logo = require('../assets/owl.png');
 import { BuildAnnotator } from './annotator';
 let tray: Tray = null;
 export function BuildTray(win: BrowserWindow) {

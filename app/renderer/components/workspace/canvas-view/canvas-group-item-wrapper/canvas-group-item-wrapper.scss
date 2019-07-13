@@ -1,0 +1,37 @@
+.board-content-wrapper {
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 0 0 0 0;
+    border-radius: 5px;
+    position: relative;
+    will-change: auto;
+    &:last-child {
+        margin: 0;
+    }
+    .board-content {
+        position: relative;
+        z-index: 1;
+    }
+    &:hover {
+        .board-content-resizer {
+            opacity: 1;
+        }
+    }
+    .board-content-resizer {
+        z-index: 2;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        opacity: 0;
+        color: rgba(#fff, 0.50);
+        transition: opacity 0.3s ease-out 0s;
+        cursor: pointer;
+        i {
+            transform-origin: center;
+            transform: rotate(45deg);
+        }
+    }
+}
