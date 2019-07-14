@@ -37,7 +37,16 @@
             padding: 0;
             max-width: 200px;
             .inner-content {
-                height: 150px;
+                .inner-content-wrapper {
+                    height: auto;
+                    & > div {
+                        min-height: 120px;
+                        height: auto;
+                        &.photo-content {
+                           height: 120px;
+                        }
+                    }
+                }
             }
         }
     }

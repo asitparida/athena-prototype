@@ -6,11 +6,24 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    background: rgba(#000, 0.025);
     position: relative;
     z-index: 3;
+    overflow-x: hidden;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 100%;
+        // background-image: linear-gradient(to bottom, rgba($primary_accent, 0.15), rgba(white, 1));
+        background-image: url('../../assets/icon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top center;
+        filter: blur(120px);
+        z-index: 1;
+    }
     &.collapsed {
-        overflow: hidden;
+        overflow-x: hidden;
         ul {
             &.workspace-list {
                 overflow-x: hidden;
@@ -52,6 +65,7 @@
             .user-space-content {
                 padding-top: 15px;
                 padding-bottom: 15px;
+                background-color: rgba(0, 0, 0, 0.0);
                 .user-picture-wrapper {
                     background-color: transparent;
                 }
@@ -62,6 +76,8 @@
         padding: 0;
         list-style: none;
         margin: 0;
+        position: relative;
+        z-index: 2;
         &.workspace-list {
             margin-top: 0;
             margin-bottom: auto;
@@ -122,6 +138,9 @@
                 cursor: pointer;
                 &.second-level {
                     padding-left: 84px;
+                    .name {
+                        font-size: 14px;
+                    }
                 }
                 &:hover {
                     background: rgba(#000, 0.05);
@@ -129,7 +148,11 @@
                 &.first-level-label {
                     display: flex;
                     align-items: center;
-                    border-left: 3px solid rgba(#000, 0);
+                    border-left: 5px solid rgba(#000, 0);
+                    border-right: 5px solid rgba(#000, 0);
+                    .name {
+                        font-size: 14px;
+                    }
                     i {
                         width: 36px;
                         font-size: 18px;
@@ -179,11 +202,13 @@
                 color: #000;
                 label {
                     border-right: 5px solid rgba(#000, 0.0);
+                    border-left: 5px solid rgba(#000, 0.0);
                 }
                 &.active {
                     label {
                         color: rgba(#000, 1);
                         border-right: 5px solid rgba(#000, 0.30);
+                        .name { font-weight: 600; }
                     }
                     opacity: 1;
                 }

@@ -35,11 +35,11 @@ body {
                 right: 5px;
                 top: 5px;
                 z-index: 2;
-                background-color: rgba(#ffffff, 0.30);
+                background-color: rgba($primary_accent, 0.30);
                 -webkit-app-region: drag;
 
                 &:hover {
-                    background-color: rgba(#ffffff, 0.75);
+                    background-color: rgba($primary_accent, 0.75);
                 }
             }
 
@@ -77,12 +77,12 @@ body {
                 flex: initial;
                 height: 100%;
                 display: flex;
+                background: rgba(#fff, 1);
 
                 &.left {
                     width: 300px;
                     order: 1;
                     height: 100%;
-                    border-right: 1px solid rgba(#ffffff, 0.05);
 
                     &[data-state="collapsed"] {
                         width: 70px;
@@ -98,7 +98,8 @@ body {
                     width: 300px;
                     order: 2;
                     &.search-bar {
-                        min-width: 370px;
+                        min-width: 350px;
+                        background: #f9f9f9;
                     }
                 }
             }
@@ -114,7 +115,7 @@ body {
                     flex: initial;
                     order: 1;
                     width: 100%;
-                    background: rgba(#f9f9f9, 1);
+                    background: rgba(#F3F8FF, 1);
                     border-bottom: 1px solid rgba(#000, 0.05);
                 }
                 .app-content-container {
@@ -123,7 +124,7 @@ body {
                     width: 100%;
                     position: relative;
                     display: flex;
-                    background: rgba(#f0f0f0, 1);
+                    background: rgba(#f9f9f9, 1);
                 }
             }
 

@@ -137,3 +137,7 @@ export const showSearchBar = () => ({
 export const hideSearchBar = () => ({
     type: types.HIDE_SEARCH_BAR, payload: {}
 })
+
+export const toggleSearchBar = () => ({
+    type: types.TOGGLE_SEARCH_BAR, payload: {}
+})

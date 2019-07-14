@@ -4,7 +4,7 @@
         order: 2;
         flex: initial;
         margin-left: auto;
-        margin-right: 12px;
+        margin-right: 30px;
     }
 
     &.left {
@@ -165,11 +165,14 @@
             }
         }
     }
-    .search-box {
+    .right-box {
+        width: 332px;
         position: relative;
-        width: 350px;
         margin-bottom: 6px;
-        padding: 0 15px;
+        padding: 0 9px 0 15px;
+    }
+    .search-box {
+        width: 100%;
         input {
             &.search-input {
                 width: 100%;

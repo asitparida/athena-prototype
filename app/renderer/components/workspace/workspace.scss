@@ -1,19 +1,10 @@
 @import '../../shared';
 
-// Colors
-$bg-color: rgba(#000, 0.1);
-$dot-color: rgba(#000, 0.50);
-
-// Dimensions
-$dot-size: 5px;
-$dot-space: 5px;
-
 .workspace-wrapper {
     width: 100%;
     height: 100%;
     display: flex;
     position: relative;
-    background-color: #f9f9f9;
 
     &.show-grid {
         background:
@@ -54,6 +45,9 @@ $dot-space: 5px;
         background-color: #fff;
         border-left: 5px solid rgba($primary_accent, 1);
         box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
+        position: absolute;
+        right: 0;
+        top: 0;
 
         .rte-wrapper {
             height: 100%;
@@ -96,7 +90,7 @@ $dot-space: 5px;
             justify-content: space-around;
             align-items: center;
             margin: 0;
-            background-color: rgba($primary_accent, 0.10);
+            background-color: rgba($primary_accent, 0.0);
 
 
             [class^="ButtonWrap__root"] {
@@ -108,8 +102,6 @@ $dot-space: 5px;
 
                     &[class*="IconButton__isActive"] {
                         background: rgba($primary_accent, 0.20);
-                        span {
-                        }
                     }
                 }
             }
@@ -136,7 +128,7 @@ $dot-space: 5px;
         position: absolute;
         top: 0;
         right: 0;
-        background-color: rgba(lighten($primary_accent, 40), 1);
+        background-color: rgba(#f9f9f9, 1);
         border-left: 5px solid rgba($primary_accent, 1);
         box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
     }

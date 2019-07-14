@@ -58,6 +58,9 @@ class Header extends React.Component<any, any> {
     onSearchFocused() {
         this.props.actions.showSearchBar();
     }
+    launchSearch() {
+        this.props.actions.toggleSearchBar();
+    }
     render() {
         return (
             <React.Fragment>
@@ -115,8 +118,8 @@ class Header extends React.Component<any, any> {
                         <i className='material-icons'>format_shapes</i>
                     </div>
                     <div className='separator' />
-                    <div className='search-box'>
-                        <input className='search-input' onFocus={this.onSearchFocused.bind(this)} /> <i className='material-icons'>search</i>
+                    <div className='action' onClick={this.launchSearch.bind(this)}>
+                        <i className='material-icons'>search</i>
                     </div>
                 </div>
             </React.Fragment>

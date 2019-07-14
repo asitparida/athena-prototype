@@ -64403,6 +64403,7 @@ exports.HIDE_TOPIC_CREATOR = 'HIDE_TOPIC_CREATOR';
 exports.ACTIVATE_WORKSPACE_AND_TOPIC = 'ACTIVATE_WORKSPACE_AND_TOPIC';
 exports.SHOW_SEARCH_BAR = 'SHOW_SEARCH_BAR';
 exports.HIDE_SEARCH_BAR = 'HIDE_SEARCH_BAR';
+exports.TOGGLE_SEARCH_BAR = 'TOGGLE_SEARCH_BAR';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64654,6 +64655,13 @@ exports.hideSearchBar = function () {
     payload: {}
   };
 };
+
+exports.toggleSearchBar = function () {
+  return {
+    type: types.TOGGLE_SEARCH_BAR,
+    payload: {}
+  };
+};
 },{"./actionTypes":"access/actions/actionTypes.ts"}],"access/reducers/reducer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64731,10 +64739,20 @@ exports.default = function () {
         return newState;
       }
 
+    case actionTypes_1.TOGGLE_SEARCH_BAR:
+      {
+        var _current2 = state.searchBarShown;
+        newState = Object.assign({}, state, {
+          searchBarShown: !_current2
+        });
+        return newState;
+      }
+
     case actionTypes_1.SHOW_SEARCH_BAR:
       {
         newState = Object.assign({}, state, {
-          searchBarShown: true
+          searchBarShown: true,
+          workspaceDumpBarShown: false
         });
         return newState;
       }
@@ -64815,9 +64833,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSPACE_RTE:
       {
-        var _current2 = state.workspaceRTEShown;
+        var _current3 = state.workspaceRTEShown;
         newState = Object.assign({}, state, {
-          workspaceRTEShown: !_current2,
+          workspaceRTEShown: !_current3,
           searchBarShown: false
         });
         return newState;
@@ -64825,9 +64843,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSHOP_IN_HEADER:
       {
-        var _current3 = state.workspaceInHeader;
+        var _current4 = state.workspaceInHeader;
         newState = Object.assign({}, state, {
-          workspaceInHeader: !_current3,
+          workspaceInHeader: !_current4,
           sideBarShown: false
         });
         return newState;
@@ -64851,9 +64869,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSHOP_ACTION_IN_HEADER:
       {
-        var _current4 = state.workspaceActionInHeader;
+        var _current5 = state.workspaceActionInHeader;
         newState = Object.assign({}, state, {
-          workspaceActionInHeader: !_current4
+          workspaceActionInHeader: !_current5
         });
         return newState;
       }
@@ -67029,7 +67047,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"transforms.ts":[function(require,module,exports) {
+},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"transforms.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -67417,18 +67435,69 @@ function (_React$Component) {
   _inherits(SearchBarComponent, _React$Component);
 
   function SearchBarComponent(props) {
+    var _this;
+
     _classCallCheck(this, SearchBarComponent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
+    _this.state = {
+      showSearchMeta: false,
+      contentTypeResults: [{
+        icon: 'image',
+        name: 'Images',
+        count: 0
+      }, {
+        icon: 'movie',
+        name: 'Videos',
+        count: 0
+      }, {
+        icon: 'insert_drive_file',
+        name: 'Articles',
+        count: 0
+      }, {
+        icon: 'attach_file',
+        name: 'Links',
+        count: 0
+      }, {
+        icon: 'textsms',
+        name: 'Social',
+        count: 0
+      }]
+    };
+    return _this;
   }
 
   _createClass(SearchBarComponent, [{
+    key: "onFocus",
+    value: function onFocus() {
+      this.setState({
+        showSearchMeta: true
+      });
+    }
+  }, {
+    key: "onBlur",
+    value: function onBlur() {
+      this.setState({
+        showSearchMeta: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
         className: "searchbar-wrapper"
       }, React.createElement("div", {
         className: "search-meta"
+      }, React.createElement("div", {
+        className: "search-box ".concat(this.state.showSearchMeta ? 'active' : '')
+      }, React.createElement("input", {
+        className: "search-input",
+        onFocus: this.onFocus.bind(this),
+        onBlur: this.onBlur.bind(this)
+      }), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "search")), this.state.showSearchMeta && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "search-meta-wrapper"
       }, React.createElement("div", {
         className: "search-meta-top"
       }, React.createElement("div", {
@@ -67437,23 +67506,19 @@ function (_React$Component) {
         className: "search-meta-content-left"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "local_offer"), " Tags"), React.createElement("div", {
+      }, "label"), " Tags"), React.createElement("div", {
         className: "search-meta-content-right"
       }, React.createElement("ul", null, React.createElement("li", null, "tag 1"), React.createElement("li", null, "tag 2"), React.createElement("li", null, "tag 3"))))), React.createElement("div", {
         className: "search-meta-bottom"
       }, React.createElement("div", {
         className: "search-meta-content"
-      }, React.createElement("ul", null, React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Photos (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Videos (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Articles (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Links (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Social (0)")))))), React.createElement("div", {
+      }, this.state.contentTypeResults.length > 0 && React.createElement("ul", null, this.state.contentTypeResults.map(function (type) {
+        return React.createElement("li", {
+          key: type.name
+        }, React.createElement("i", {
+          className: "material-icons"
+        }, type.icon), React.createElement("label", null, type.name, " (", type.count, ")"));
+      }))))))), React.createElement("div", {
         className: "search-results"
       }, React.createElement("div", {
         className: "search-results-inner"
@@ -67462,7 +67527,9 @@ function (_React$Component) {
         sticky: true,
         workspace: true,
         searchBar: true
-      }))));
+      }))), this.state.showSearchMeta && React.createElement("div", {
+        className: "overlay"
+      }));
     }
   }]);
 
@@ -72488,6 +72555,11 @@ function (_React$Component) {
       this.props.actions.showSearchBar();
     }
   }, {
+    key: "launchSearch",
+    value: function launchSearch() {
+      this.props.actions.toggleSearchBar();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -72560,11 +72632,9 @@ function (_React$Component) {
       }, "format_shapes")), React.createElement("div", {
         className: "separator"
       }), React.createElement("div", {
-        className: "search-box"
-      }, React.createElement("input", {
-        className: "search-input",
-        onFocus: this.onSearchFocused.bind(this)
-      }), " ", React.createElement("i", {
+        className: "action",
+        onClick: this.launchSearch.bind(this)
+      }, React.createElement("i", {
         className: "material-icons"
       }, "search"))));
     }
@@ -79992,7 +80062,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65390" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60918" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

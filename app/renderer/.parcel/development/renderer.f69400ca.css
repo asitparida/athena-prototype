@@ -50,11 +50,11 @@ body #root .app-content .app-dragger {
   right: 5px;
   top: 5px;
   z-index: 2;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(55, 131, 233, 0.3);
   -webkit-app-region: drag;
 }
 body #root .app-content .app-dragger:hover {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(55, 131, 233, 0.75);
 }
 body #root .app-content .app-content-top {
   order: 1;
@@ -87,12 +87,12 @@ body #root .app-content .app-content-sidebar {
   flex: initial;
   height: 100%;
   display: flex;
+  background: white;
 }
 body #root .app-content .app-content-sidebar.left {
   width: 300px;
   order: 1;
   height: 100%;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 body #root .app-content .app-content-sidebar.left[data-state=collapsed] {
   width: 70px;
@@ -106,7 +106,8 @@ body #root .app-content .app-content-sidebar.right {
   order: 2;
 }
 body #root .app-content .app-content-sidebar.right.search-bar {
-  min-width: 370px;
+  min-width: 350px;
+  background: #f9f9f9;
 }
 body #root .app-content .app-content-holder {
   display: flex;
@@ -120,7 +121,7 @@ body #root .app-content .app-content-holder .app-header-holder {
   flex: initial;
   order: 1;
   width: 100%;
-  background: #f9f9f9;
+  background: #f3f8ff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 body #root .app-content .app-content-holder .app-content-container {
@@ -129,7 +130,7 @@ body #root .app-content .app-content-holder .app-content-container {
   width: 100%;
   position: relative;
   display: flex;
-  background: #f0f0f0;
+  background: #f9f9f9;
 }
 body #root .app-content .app-content-area {
   padding: 0 0 0 0;
@@ -422,8 +423,15 @@ body #root .app-content .app-content-area {
   padding: 0;
   max-width: 200px;
 }
-.tabs-holder.is-sticky .content-wrapper .inner-content {
-  height: 150px;
+.tabs-holder.is-sticky .content-wrapper .inner-content .inner-content-wrapper {
+  height: auto;
+}
+.tabs-holder.is-sticky .content-wrapper .inner-content .inner-content-wrapper > div {
+  min-height: 120px;
+  height: auto;
+}
+.tabs-holder.is-sticky .content-wrapper .inner-content .inner-content-wrapper > div.photo-content {
+  height: 120px;
 }
 .tabs-holder .content-wrapper {
   padding: 10px 17.5px 0 17.5px;
@@ -607,7 +615,6 @@ body #root .app-content .app-content-area {
   height: 100%;
   min-height: 170px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
 }
 .inner-content .photo-content .photo {
   display: block;
@@ -627,7 +634,6 @@ body #root .app-content .app-content-area {
   height: 100%;
   min-height: 170px;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
   position: relative;
 }
 .inner-content .video-content .video-duration {
@@ -682,7 +688,7 @@ body #root .app-content .app-content-area {
   min-height: 170px;
   overflow: hidden;
   position: relative;
-  padding: 30px 15px 10px 15px;
+  padding: 15px 15px 10px 15px;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -724,7 +730,7 @@ body #root .app-content .app-content-area {
   min-height: 170px;
   overflow: hidden;
   position: relative;
-  padding: 30px 15px 10px 15px;
+  padding: 15px 15px 10px 15px;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -734,6 +740,7 @@ body #root .app-content .app-content-area {
   color: rgba(0, 0, 0, 0.8);
   white-space: pre;
   width: 100%;
+  margin: 0;
 }
 .inner-content .social-media-content {
   width: 100%;
@@ -741,7 +748,7 @@ body #root .app-content .app-content-area {
   min-height: 170px;
   overflow: hidden;
   position: relative;
-  padding: 5px 0 0 0;
+  padding: 0 0 0 0;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -790,7 +797,7 @@ body #root .app-content .app-content-area {
 }
 .inner-content .social-media-content .tweet-text {
   font-size: small;
-  padding: 15px;
+  padding: 15px 15px 0 15px;
 }
 .inner-content .social-media-content .insta-photo {
   width: 100%;
@@ -987,12 +994,24 @@ body #root .app-content .app-content-area {
   padding: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.025);
   position: relative;
   z-index: 3;
+  overflow-x: hidden;
+}
+.sidebar-wrapper:before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background-image: url("/icon.9c86b69e.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+  filter: blur(120px);
+  z-index: 1;
 }
 .sidebar-wrapper.collapsed {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .sidebar-wrapper.collapsed ul.workspace-list {
   overflow-x: hidden;
@@ -1032,6 +1051,7 @@ body #root .app-content .app-content-area {
 .sidebar-wrapper.collapsed .user-space .user-space-content {
   padding-top: 15px;
   padding-bottom: 15px;
+  background-color: rgba(0, 0, 0, 0);
 }
 .sidebar-wrapper.collapsed .user-space .user-space-content .user-picture-wrapper {
   background-color: transparent;
@@ -1040,6 +1060,8 @@ body #root .app-content .app-content-area {
   padding: 0;
   list-style: none;
   margin: 0;
+  position: relative;
+  z-index: 2;
 }
 .sidebar-wrapper ul.workspace-list {
   margin-top: 0;
@@ -1104,13 +1126,20 @@ body #root .app-content .app-content-area {
 .sidebar-wrapper ul li label.second-level {
   padding-left: 84px;
 }
+.sidebar-wrapper ul li label.second-level .name {
+  font-size: 14px;
+}
 .sidebar-wrapper ul li label:hover {
   background: rgba(0, 0, 0, 0.05);
 }
 .sidebar-wrapper ul li label.first-level-label {
   display: flex;
   align-items: center;
-  border-left: 3px solid rgba(0, 0, 0, 0);
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  border-right: 5px solid rgba(0, 0, 0, 0);
+}
+.sidebar-wrapper ul li label.first-level-label .name {
+  font-size: 14px;
 }
 .sidebar-wrapper ul li label.first-level-label i {
   width: 36px;
@@ -1158,6 +1187,7 @@ body #root .app-content .app-content-area {
 }
 .sidebar-wrapper ul li a label {
   border-right: 5px solid rgba(0, 0, 0, 0);
+  border-left: 5px solid rgba(0, 0, 0, 0);
 }
 .sidebar-wrapper ul li a.active {
   opacity: 1;
@@ -1165,6 +1195,9 @@ body #root .app-content .app-content-area {
 .sidebar-wrapper ul li a.active label {
   color: black;
   border-right: 5px solid rgba(0, 0, 0, 0.3);
+}
+.sidebar-wrapper ul li a.active label .name {
+  font-weight: 600;
 }
 .sidebar-wrapper ul li.copyright-info {
   font-size: small;
@@ -1226,19 +1259,73 @@ body #root .app-content .app-content-area {
   padding: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.025);
   position: relative;
   z-index: 3;
 }
+.searchbar-wrapper .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(3, 15, 30, 0.75);
+}
 .searchbar-wrapper .search-meta {
+  z-index: 6;
   order: 1;
   flex: initial;
-  padding: 5px 15px 0 15px;
+  padding: 15px;
   display: flex;
   flex-flow: column;
   border-radius: 4px;
   flex: initial;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(55, 131, 233, 0.05);
+  position: relative;
+}
+.searchbar-wrapper .search-meta .search-box {
+  width: 100%;
+  position: relative;
+}
+.searchbar-wrapper .search-meta .search-box.active input.search-input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.searchbar-wrapper .search-meta .search-box input.search-input {
+  width: 100%;
+  border: 1px solid rgba(55, 131, 233, 0);
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px 0 36px;
+  background: white;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(55, 131, 233, 0.2);
+}
+.searchbar-wrapper .search-meta .search-box i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: medium;
+  color: #3783e9;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+.searchbar-wrapper .search-meta .search-meta-wrapper {
+  position: absolute;
+  background: #fff;
+  top: 51px;
+  width: calc(100% - 30px);
+  left: 15px;
+  z-index: 999;
+  box-shadow: 0px 4px 4px rgba(55, 131, 233, 0.2);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 0 15px;
 }
 .searchbar-wrapper .search-meta .search-meta-top {
   width: 100%;
@@ -1246,20 +1333,24 @@ body #root .app-content .app-content-area {
 .searchbar-wrapper .search-meta .search-meta-top .search-meta-content {
   flex-flow: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 .searchbar-wrapper .search-meta .search-meta-top .search-meta-content .search-meta-content-left {
   flex: initial;
   order: 1;
   opacity: 0.5;
+  display: flex;
+  justify-content: center;
   line-height: 36px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: small;
+  font-size: x-small;
+  color: rgba(0, 0, 0, 0.75);
 }
 .searchbar-wrapper .search-meta .search-meta-top .search-meta-content .search-meta-content-left i {
-  font-size: small;
+  font-size: medium;
   line-height: 36px;
+  margin-right: 5px;
 }
 .searchbar-wrapper .search-meta .search-meta-top .search-meta-content .search-meta-content-right {
   flex: 1;
@@ -1273,17 +1364,19 @@ body #root .app-content .app-content-area {
   white-space: nowrap;
   list-style: none;
   margin: 0;
+  justify-content: center;
 }
 .searchbar-wrapper .search-meta .search-meta-top .search-meta-content .search-meta-content-right ul li {
   padding: 5px 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   margin: 5px;
-  font-size: small;
+  font-size: x-small;
+  color: rgba(0, 0, 0, 0.75);
 }
 .searchbar-wrapper .search-meta .search-meta-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin: 0 -10px;
 }
 .searchbar-wrapper .search-meta .search-meta-bottom .search-meta-content {
   border-radius: 0;
@@ -1300,7 +1393,7 @@ body #root .app-content .app-content-area {
   width: 100%;
 }
 .searchbar-wrapper .search-meta .search-meta-bottom .search-meta-content ul li {
-  padding: 10px 0;
+  padding: 5px 0 10px 0;
   font-size: small;
   display: flex;
   flex-flow: column;
@@ -1309,6 +1402,7 @@ body #root .app-content .app-content-area {
   flex: 1;
 }
 .searchbar-wrapper .search-meta .search-meta-bottom .search-meta-content ul li label {
+  color: rgba(0, 0, 0, 0.75);
   font-size: x-small;
   margin: 0;
   padding: 0;
@@ -1318,7 +1412,8 @@ body #root .app-content .app-content-area {
   font-size: medium;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.75;
+  color: rgba(0, 0, 0, 0.75);
 }
 .searchbar-wrapper .search-meta .search-meta-bottom .search-meta-content ul li:hover {
   background-color: rgba(255, 255, 255, 0.075);
@@ -1328,7 +1423,7 @@ body #root .app-content .app-content-area {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  padding: 15px 15px;
+  padding: 10px 0;
   width: 100%;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -1336,6 +1431,8 @@ body #root .app-content .app-content-area {
   order: 2;
   flex: 1;
   height: calc(100% - 300px);
+  position: relative;
+  z-index: 4;
 }
 .searchbar-wrapper .search-results .search-results-inner {
   height: 100%;
@@ -1366,7 +1463,6 @@ body #root .app-content .app-content-area {
   height: 100%;
   display: flex;
   position: relative;
-  background-color: #f9f9f9;
 }
 .workspace-wrapper.show-grid {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, linear-gradient(rgba(0, 0, 0, 0.1) 0px, transparent 1%) center, rgba(0, 0, 0, 0.5);
@@ -1401,6 +1497,9 @@ body #root .app-content .app-content-area {
   background-color: #fff;
   border-left: 5px solid #3783e9;
   box-shadow: -20px 0px 25px rgba(55, 131, 233, 0.15);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .workspace-wrapper .rte-area .rte-wrapper {
   height: 100%;
@@ -1437,7 +1536,7 @@ body #root .app-content .app-content-area {
   justify-content: space-around;
   align-items: center;
   margin: 0;
-  background-color: rgba(55, 131, 233, 0.1);
+  background-color: rgba(55, 131, 233, 0);
 }
 .workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button {
   background: rgba(0, 0, 0, 0);
@@ -1464,7 +1563,7 @@ body #root .app-content .app-content-area {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #eff5fd;
+  background-color: #f9f9f9;
   border-left: 5px solid #3783e9;
   box-shadow: -20px 0px 25px rgba(55, 131, 233, 0.15);
 }
@@ -1539,7 +1638,7 @@ body #root .app-content .app-content-area {
   will-change: auto;
   padding: 0;
   border-radius: 20px;
-  background-color: #f1f3f5;
+  background-color: #f9f9f9;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -1556,7 +1655,8 @@ body #root .app-content .app-content-area {
   outline: none;
   margin-bottom: 10px;
   text-align: center;
-  background: rgba(55, 131, 233, 0.05);
+  background: #f3f8ff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.075);
 }
 .group-wrapper .group-title:hover {
   background: rgba(0, 0, 0, 0.025);
@@ -1659,7 +1759,7 @@ body #root .app-content .app-content-area {
   padding: 30px 0;
 }
 .workspace-list-group:not(:first-child) {
-  border-top: 1px dotted rgba(0, 0, 0, 0.25);
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
 }
 .workspace-list-group h1 {
   font-weight: 100;
@@ -1696,7 +1796,7 @@ body #root .app-content .app-content-area {
   order: 2;
   flex: initial;
   margin-left: auto;
-  margin-right: 12px;
+  margin-right: 30px;
 }
 .app-actions.left {
   order: 1;
@@ -1823,11 +1923,14 @@ body #root .app-content .app-content-area {
   line-height: 60px;
   cursor: pointer;
 }
-.app-actions .search-box {
+.app-actions .right-box {
+  width: 332px;
   position: relative;
-  width: 350px;
   margin-bottom: 6px;
-  padding: 0 15px;
+  padding: 0 9px 0 15px;
+}
+.app-actions .search-box {
+  width: 100%;
 }
 .app-actions .search-box input.search-input {
   width: 100%;
