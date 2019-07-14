@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba($color: #000, $alpha: 0.750);
+    background-color: $dark_overlay;
     .create-workspace-overlay {
         position: absolute;
         width: 100vw;
@@ -24,7 +24,8 @@
         display: flex;
         flex-flow: column wrap;
         min-width: 530px;
-        animation: slide-in-from-bottom 0.5s linear 0.05s forwards;
+        opacity: 0;
+        animation: slide-in-from-top 0.5s linear 0.05s forwards;
 
         label {
             width: 100%;

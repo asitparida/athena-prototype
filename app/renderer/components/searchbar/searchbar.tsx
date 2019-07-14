@@ -3,7 +3,8 @@ import './searchbar.scss';
 import * as AppActions from '../../access/actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import DumpingGround from '../dumping-ground/dumping-ground';
+import Dropdown from '../dropdown/dropdown';
+import { DumpingGroundListCollection } from '../dumping-ground/dumping-ground-list-collection';
 
 const mapStateToProps = ({ workspaceReducers }) => {
     return {
@@ -28,6 +29,13 @@ class SearchBarComponent extends React.Component<any, any> {
                 { icon: 'insert_drive_file', name: 'Articles', count: 0 },
                 { icon: 'attach_file', name: 'Links', count: 0 },
                 { icon: 'textsms', name: 'Social', count: 0 }
+            ],
+            categories: [
+                { id: 'unclassified', name: 'Unclassified' },
+                { id: 'classified', name: 'Classified' },
+                { id: 'workspace-1', name: 'Workspace #1' },
+                { id: 'workspace-2', name: 'Workspace #2' },
+                { id: 'workspace-3', name: 'Workspace #3' }
             ]
         };
     }
@@ -84,7 +92,15 @@ class SearchBarComponent extends React.Component<any, any> {
             </div>
             <div className='search-results'>
                 <div className='search-results-inner'>
-                    <DumpingGround hideGroupTitle={true} sticky={true} workspace={true} searchBar={true} />
+                    <div className='search-results-top'>
+                        <Dropdown items={this.state.categories} />
+                    </div>
+                    <div className='search-results-bottom'>
+                        <div className='dumping-ground-list-wrapper'>
+                            <DumpingGroundListCollection searchBar={true} hideGroupTitle={true} />
+                        </div>
+
+                    </div>
                 </div>
             </div>
             {

@@ -8,7 +8,7 @@ import { DumpingGroundTransfer } from '../../access/observables/observables';
 import { GetAPIUrl } from '../../constants/constants';
 
 interface IProps {
-    type: ContentType,
+    type?: ContentType,
     hideGroupTitle?: boolean,
     searchBar?: boolean;
 }

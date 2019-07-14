@@ -96,7 +96,7 @@ class Header extends React.Component<any, any> {
                         <React.Fragment>
                             <div className='toggler' onClick={this.toggleWorkspaceView.bind(this)}>
                                 <label role="button" className={`${this.props.workspaceViewIsCanvas ? 'active' : ''}`}>Canvas</label>
-                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>Grid</label>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>List</label>
                             </div>
                             <div className='separator' />
                             <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>

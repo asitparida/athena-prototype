@@ -64349,7 +64349,7 @@ var constants_1 = require("../../constants/constants");
 
 var IntialState = {
   sideBarShown: false,
-  searchBarShown: false,
+  searchBarShown: true,
   workspaceActionInHeader: false,
   workspaceInHeader: false,
   workspaceDumpBarShown: false,
@@ -67414,7 +67414,9 @@ var redux_1 = require("redux");
 
 var react_redux_1 = require("react-redux");
 
-var dumping_ground_1 = __importDefault(require("../dumping-ground/dumping-ground"));
+var dropdown_1 = __importDefault(require("../dropdown/dropdown"));
+
+var dumping_ground_list_collection_1 = require("../dumping-ground/dumping-ground-list-collection");
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var workspaceReducers = _ref.workspaceReducers;
@@ -67462,6 +67464,22 @@ function (_React$Component) {
         icon: 'textsms',
         name: 'Social',
         count: 0
+      }],
+      categories: [{
+        id: 'unclassified',
+        name: 'Unclassified'
+      }, {
+        id: 'classified',
+        name: 'Classified'
+      }, {
+        id: 'workspace-1',
+        name: 'Workspace #1'
+      }, {
+        id: 'workspace-2',
+        name: 'Workspace #2'
+      }, {
+        id: 'workspace-3',
+        name: 'Workspace #3'
       }]
     };
     return _this;
@@ -67522,12 +67540,18 @@ function (_React$Component) {
         className: "search-results"
       }, React.createElement("div", {
         className: "search-results-inner"
-      }, React.createElement(dumping_ground_1.default, {
-        hideGroupTitle: true,
-        sticky: true,
-        workspace: true,
-        searchBar: true
-      }))), this.state.showSearchMeta && React.createElement("div", {
+      }, React.createElement("div", {
+        className: "search-results-top"
+      }, React.createElement(dropdown_1.default, {
+        items: this.state.categories
+      })), React.createElement("div", {
+        className: "search-results-bottom"
+      }, React.createElement("div", {
+        className: "dumping-ground-list-wrapper"
+      }, React.createElement(dumping_ground_list_collection_1.DumpingGroundListCollection, {
+        searchBar: true,
+        hideGroupTitle: true
+      }))))), this.state.showSearchMeta && React.createElement("div", {
         className: "overlay"
       }));
     }
@@ -67537,7 +67561,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SearchBarComponent);
-},{"react":"../../node_modules/react/index.js","./searchbar.scss":"components/searchbar/searchbar.scss","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx"}],"components/workspace/workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./searchbar.scss":"components/searchbar/searchbar.scss","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../dropdown/dropdown":"components/dropdown/dropdown.tsx","../dumping-ground/dumping-ground-list-collection":"components/dumping-ground/dumping-ground-list-collection.tsx"}],"components/workspace/workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
