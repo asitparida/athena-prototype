@@ -25,6 +25,7 @@ body {
   position: relative;
   font-family: "Open Sans", sans-serif;
   color: rgba(255, 255, 255, 0.8);
+  background-color: #f9f9f9;
 }
 body #root {
   display: flex;
@@ -58,7 +59,7 @@ body #root .app-content .app-dragger:hover {
 }
 body #root .app-content .app-content-top {
   order: 1;
-  height: 76px;
+  height: 83px;
   width: 100%;
   flex: initial;
   position: relative;
@@ -71,7 +72,7 @@ body #root .app-content .app-content-top.expanded {
   animation: expand-height 0.5s ease-out 0s;
 }
 body #root .app-content .app-content-top.collapsed {
-  height: 76px;
+  height: 83px;
   animation: collapse-height 0.5s ease-out 0s;
 }
 body #root .app-content .app-content-bottom {
@@ -94,6 +95,9 @@ body #root .app-content .app-content-sidebar.left {
   order: 1;
   height: 100%;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 body #root .app-content .app-content-sidebar.left[data-state=collapsed] {
   width: 70px;
@@ -111,10 +115,9 @@ body #root .app-content .app-content-sidebar.right.search-bar {
   right: 0;
   top: 0;
   min-width: 350px;
-  background: #f9f9f9;
   background-color: #f9f9f9;
-  border-left: 5px solid #3783e9;
-  box-shadow: -20px 0px 25px rgba(55, 131, 233, 0.15);
+  border-left: 5px solid #e8e8e8;
+  box-shadow: -3px 0px 5px rgba(0, 0, 0, 0.15);
 }
 body #root .app-content .app-content-holder {
   display: flex;
@@ -123,13 +126,14 @@ body #root .app-content .app-content-holder {
   order: 2;
   width: 100%;
   overflow: hidden;
+  padding-left: 70px;
 }
 body #root .app-content .app-content-holder .app-header-holder {
   flex: initial;
   order: 1;
   width: 100%;
-  background: #f3f8ff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: white;
 }
 body #root .app-content .app-content-holder .app-content-container {
   order: 2;
@@ -156,12 +160,10 @@ body #root .app-content .app-content-area {
 
 @keyframes slide-in-from-left {
   0% {
-    transform: translateX(-50px);
-    opacity: 0;
+    transform: translateX(-10px);
   }
   100% {
     transform: translateX(0px);
-    opacity: 1;
   }
 }
 @keyframes slide-in-from-right {
@@ -196,7 +198,7 @@ body #root .app-content .app-content-area {
 }
 @keyframes expand-height {
   0% {
-    height: 76px;
+    height: 83px;
   }
   100% {
     height: 150px;
@@ -207,7 +209,7 @@ body #root .app-content .app-content-area {
     height: 150px;
   }
   100% {
-    height: 76px;
+    height: 83px;
   }
 }
 .tabs-wrapper {
@@ -267,7 +269,7 @@ body #root .app-content .app-content-area {
   font-weight: bold;
 }
 .tabs-wrapper .tabs-header ul.tabs-titles li:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.025);
 }
 .tabs-wrapper .tabs-header .tabs-resizer-container {
   order: 2;
@@ -353,7 +355,6 @@ body #root .app-content .app-content-area {
   display: block;
   padding: 0;
   font-size: small;
-  letter-spacing: 1px;
   display: flex;
   cursor: pointer;
   min-width: 200px;
@@ -375,7 +376,7 @@ body #root .app-content .app-content-area {
   top: 35px;
   right: 0px;
   list-style: none;
-  background: #f0f0f0;
+  background: #fff;
   padding: 0;
   z-index: 999;
   cursor: pointer;
@@ -389,7 +390,7 @@ body #root .app-content .app-content-area {
   text-align: right;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 500;
-  font-size: small;
+  font-size: medium;
   transition: all 0.1s linear 0s;
 }
 .dropdown-wrapper ul.dropdown-menu li.dropdown-item:not(:last-child) {
@@ -1030,6 +1031,9 @@ body #root .app-content .app-content-area {
   width: 70px;
   overflow: hidden;
 }
+.sidebar-wrapper.collapsed ul.workspace-list li.hamburger {
+  padding: 0;
+}
 .sidebar-wrapper.collapsed ul.workspace-list li label {
   padding: 0;
 }
@@ -1096,7 +1100,25 @@ body #root .app-content .app-content-area {
   border-bottom: none;
 }
 .sidebar-wrapper ul li.hamburger {
-  padding-top: 22px;
+  margin-top: 30px;
+  height: 54px;
+  display: flex;
+  padding-left: 0px;
+}
+.sidebar-wrapper ul li.hamburger i {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 18px;
+  margin-right: auto;
+  margin-left: 10px;
+  height: 48px;
+  width: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 50%;
+}
+.sidebar-wrapper ul li.hamburger i:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
 }
 .sidebar-wrapper ul li.newWorkspace {
   padding: 30px 30px 0px 30px;
@@ -1129,7 +1151,7 @@ body #root .app-content .app-content-area {
   line-height: 54px;
   height: 54px;
   text-align: left;
-  padding: 0 30px;
+  padding: 0 21px;
   margin: 0;
   cursor: pointer;
 }
@@ -1285,7 +1307,7 @@ body #root .app-content .app-content-area {
   z-index: 6;
   order: 1;
   flex: initial;
-  padding: 15px 15px 0 15px;
+  padding: 25px 15px 0 15px;
   display: flex;
   flex-flow: column;
   border-radius: 4px;
@@ -1305,14 +1327,15 @@ body #root .app-content .app-content-area {
 .searchbar-wrapper .search-meta .search-box input.search-input {
   width: 100%;
   border: 1px solid rgba(55, 131, 233, 0);
-  height: 36px;
-  line-height: 36px;
+  height: 42px;
+  line-height: 42px;
   padding: 0 10px 0 36px;
   background: white;
   border-radius: 20px;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.5);
   outline: none;
   box-shadow: 0px 0px 4px rgba(55, 131, 233, 0.2);
+  font-size: medium;
 }
 .searchbar-wrapper .search-meta .search-box i {
   position: absolute;
@@ -1321,14 +1344,14 @@ body #root .app-content .app-content-area {
   font-size: medium;
   color: #3783e9;
   width: 36px;
-  height: 36px;
-  line-height: 36px;
+  height: 42px;
+  line-height: 42px;
   text-align: center;
 }
 .searchbar-wrapper .search-meta .search-meta-wrapper {
   position: absolute;
   background: #fff;
-  top: 51px;
+  top: 58px;
   width: calc(100% - 30px);
   left: 15px;
   z-index: 999;
@@ -1453,7 +1476,7 @@ body #root .app-content .app-content-area {
 }
 .searchbar-wrapper .search-results .search-results-inner .search-results-top {
   order: 1;
-  height: 48px;
+  height: 40px;
   flex: initial;
   display: flex;
   background: rgba(55, 131, 233, 0.05);
@@ -1545,63 +1568,11 @@ body #root .app-content .app-content-area {
   animation: slide-in-from-right 0.5s ease-out 0s;
   max-height: 100%;
   background-color: #fff;
-  border-left: 5px solid #3783e9;
-  box-shadow: -20px 0px 25px rgba(55, 131, 233, 0.15);
+  border-left: 5px solid #e8e8e8;
+  box-shadow: -6px 0px 20px rgba(0, 0, 0, 0.2);
   position: absolute;
   right: 0;
   top: 0;
-}
-.workspace-wrapper .rte-area .rte-wrapper {
-  height: 100%;
-}
-.workspace-wrapper .rte-area [class^=RichTextEditor__root] {
-  background: none;
-  border: none;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-}
-.workspace-wrapper .rte-area [class^=RichTextEditor__editor] {
-  flex: 1;
-  order: 2;
-  padding: 0px 0 10px 5px;
-  color: rgba(0, 0, 0, 0.5);
-}
-.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root {
-  height: calc(100vh - 166px);
-}
-.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer {
-  z-index: 2;
-}
-.workspace-wrapper .rte-area [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
-  padding-top: 15px;
-}
-.workspace-wrapper .rte-area [class^=EditorToolbar__root] {
-  flex: initial;
-  order: 1;
-  border-bottom: 1px solid rgba(55, 131, 233, 0.1);
-  padding: 15px 10px 10px 10px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0;
-  background-color: rgba(55, 131, 233, 0);
-}
-.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button {
-  background: rgba(0, 0, 0, 0);
-  border: 1px solid rgba(55, 131, 233, 0.8);
-  margin-right: 1px;
-  color: rgba(0, 0, 0, 0.5);
-}
-.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=ButtonWrap__root] button[class*=IconButton__isActive] {
-  background: rgba(55, 131, 233, 0.2);
-}
-.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] select {
-  color: rgba(55, 131, 233, 0.9);
-}
-.workspace-wrapper .rte-area [class^=EditorToolbar__root] [class^=Dropdown__root] [class^=Dropdown__value] {
-  border: 1px solid rgba(55, 131, 233, 0.8);
 }
 .workspace-wrapper .sticky-dumping-ground {
   width: 350px;
@@ -1614,8 +1585,112 @@ body #root .app-content .app-content-area {
   top: 0;
   right: 0;
   background-color: #f9f9f9;
-  border-left: 5px solid #3783e9;
-  box-shadow: -20px 0px 25px rgba(55, 131, 233, 0.15);
+  border-left: 5px solid #e8e8e8;
+  box-shadow: -6px 0px 20px rgba(0, 0, 0, 0.2);
+}
+.rte-wrapper {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.rte-wrapper .rte-header {
+  order: 1;
+  flex: initial;
+  height: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 0 10px;
+}
+.rte-wrapper .rte-header button {
+  background: none;
+  border: none;
+  padding: 0 15px 0 0px;
+  text-align: center;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 20px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgba(55, 131, 233, 0.2);
+  flex: 1;
+}
+.rte-wrapper .rte-header button i {
+  font-size: medium;
+  cursor: pointer;
+  margin-left: 6px;
+}
+.rte-wrapper .rte-header button:hover {
+  color: rgba(55, 131, 233, 0.8);
+}
+.rte-wrapper .rte-header button:last-child {
+  margin-left: auto;
+  margin-right: 0;
+  border-right: none;
+}
+.rte-wrapper .rte-content {
+  order: 2;
+  flex: 1;
+  height: calc(100% - 48px);
+  width: 100%;
+}
+.rte-wrapper .rte-content [class^=RichTextEditor__root] {
+  background: none;
+  border: none;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.rte-wrapper .rte-content [class^=RichTextEditor__editor] {
+  flex: 1;
+  order: 2;
+  padding: 0px 0 10px 5px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.rte-wrapper .rte-content [class^=RichTextEditor__editor] .DraftEditor-root {
+  height: calc(100vh - 166px);
+}
+.rte-wrapper .rte-content [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer {
+  z-index: 2;
+}
+.rte-wrapper .rte-content [class^=RichTextEditor__editor] .DraftEditor-root .DraftEditor-editorContainer .public-DraftEditor-content {
+  padding-top: 15px;
+}
+.rte-wrapper .rte-content [class^=EditorToolbar__root] {
+  flex: initial;
+  order: 1;
+  border-bottom: 1px solid rgba(55, 131, 233, 0.1);
+  padding: 15px 10px 10px 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  background-color: rgba(55, 131, 233, 0);
+}
+.rte-wrapper .rte-content [class^=EditorToolbar__root] [class^=ButtonWrap__root] button {
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(55, 131, 233, 0.8);
+  margin-right: 1px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.rte-wrapper .rte-content [class^=EditorToolbar__root] [class^=ButtonWrap__root] button[class*=IconButton__isActive] {
+  background: rgba(55, 131, 233, 0.2);
+}
+.rte-wrapper .rte-content [class^=EditorToolbar__root] [class^=Dropdown__root] select {
+  color: rgba(55, 131, 233, 0.9);
+}
+.rte-wrapper .rte-content [class^=EditorToolbar__root] [class^=Dropdown__root] [class^=Dropdown__value] {
+  border: 1px solid rgba(55, 131, 233, 0.8);
 }
 .resizer-wrapper {
   width: 100%;
@@ -1623,7 +1698,7 @@ body #root .app-content .app-content-area {
   position: relative;
 }
 .resizer-wrapper .resizer-handler {
-  background: #3783e9;
+  background: #e8e8e8;
   text-align: center;
   height: 36px;
   width: 24px;
@@ -1635,10 +1710,11 @@ body #root .app-content .app-content-area {
   margin-top: -18px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  color: rgba(0, 0, 0, 0.75);
 }
 .resizer-wrapper .resizer-handler i {
   line-height: 36px;
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 0.3s linear 0s;
   position: relative;
   left: 0;
@@ -1687,20 +1763,20 @@ body #root .app-content .app-content-area {
   position: absolute;
   will-change: auto;
   padding: 0;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 .group-wrapper .group-title {
   border: none;
   border-bottom: 1px solid transparent;
-  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background: rgba(0, 0, 0, 0);
   font-size: medium;
   width: 100%;
   line-height: 60px;
-  color: rgba(55, 131, 233, 0.8);
+  color: rgba(0, 0, 0, 0.75);
   padding: 0 5px;
   outline: none;
   margin-bottom: 10px;
@@ -1709,17 +1785,16 @@ body #root .app-content .app-content-area {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.075);
 }
 .group-wrapper .group-title:hover {
-  background: rgba(0, 0, 0, 0.025);
+  background-color: rgba(0, 0, 0, 0.025);
 }
 .group-wrapper .group-title:active, .group-wrapper .group-title:focus {
-  background: rgba(0, 0, 0, 0.025);
-  border-bottom: 1px solid rgba(55, 131, 233, 0.5);
+  border-bottom: 1px solid rgba(55, 131, 233, 0.25);
 }
 .group-wrapper .group-title[readonly] {
   user-select: none;
 }
 .group-content {
-  padding: 10px 15px;
+  padding: 15px 20px 0 20px;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -1736,7 +1811,7 @@ body #root .app-content .app-content-area {
   width: 100%;
   height: 100%;
   background-color: rgba(55, 131, 233, 0.05);
-  border: 2px dashed rgba(55, 131, 233, 0.25);
+  border: 2px dashed rgba(55, 131, 233, 0.5);
 }
 .board-content-wrapper {
   display: inline-block;
@@ -2033,7 +2108,7 @@ body #root .app-content .app-content-area {
   order: 2;
   flex: 1;
   display: flex;
-  padding-top: 30px;
+  padding-top: 16px;
   margin-left: 12px;
   justify-content: center;
 }
@@ -2062,8 +2137,8 @@ body #root .app-content .app-content-area {
 .app-workspace-preview .workspace label {
   text-transform: uppercase;
   font-size: small;
-  line-height: 42px;
-  height: 42px;
+  line-height: 48px;
+  height: 48px;
   letter-spacing: 1px;
   position: relative;
   z-index: 2;

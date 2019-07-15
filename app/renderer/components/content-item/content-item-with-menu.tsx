@@ -26,7 +26,7 @@ export class ContentItemWithMenu extends React.Component<any, any> {
         }
     }
     propsChanged() {
-        this.props.propsChanged();
+        // this.props.propsChanged();
     }
     render() {
         const actions: IContextMenuAction[] = [

@@ -56456,7 +56456,7 @@ var img3 = require('../assets/duquesne_incline.jpg');
 
 exports.ItemWidth = 240;
 exports.ItemHeight = null;
-exports.GroupBufffer = 40;
+exports.GroupBufffer = 60;
 exports.PhotosList = [{
   id: "1006",
   author: "Vladimir Kudinov",
@@ -64349,7 +64349,7 @@ var constants_1 = require("../../constants/constants");
 
 var IntialState = {
   sideBarShown: false,
-  searchBarShown: true,
+  searchBarShown: false,
   workspaceActionInHeader: false,
   workspaceInHeader: false,
   workspaceDumpBarShown: false,
@@ -65776,11 +65776,9 @@ function (_React$Component) {
       var annotationAndNotesShown = this.state.annotationAndNotesShown;
       this.setState({
         annotationAndNotesShown: !annotationAndNotesShown
-      });
-
-      if (!annotationAndNotesShown) {
-        this.props.propsChanged();
-      }
+      }); // if (!annotationAndNotesShown) {
+      //     this.props.propsChanged();
+      // }
     }
   }, {
     key: "openContent",
@@ -66046,8 +66044,7 @@ function (_React$Component) {
     }
   }, {
     key: "propsChanged",
-    value: function propsChanged() {
-      this.props.propsChanged();
+    value: function propsChanged() {// this.props.propsChanged();
     }
   }, {
     key: "render",
@@ -67273,11 +67270,9 @@ function (_React$Component) {
       }, React.createElement("li", {
         className: "hamburger",
         onClick: this.toggleSidebar.bind(this)
-      }, React.createElement("label", {
-        className: "first-level-label"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "menu"))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+      }, "menu")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
         to: "/home"
       }, React.createElement("label", {
         className: "first-level-label"
@@ -67698,11 +67693,21 @@ function (_React$Component) {
       };
       return React.createElement("div", {
         className: "rte-wrapper"
+      }, React.createElement("div", {
+        className: "rte-header"
+      }, React.createElement("button", null, React.createElement("span", null, "Gather"), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "exit_to_app")), React.createElement("button", null, React.createElement("span", null, "Export"), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "save_alt")), React.createElement("button", null, React.createElement("span", null, "Close"), React.createElement("i", {
+        className: "material-icons"
+      }, "close"))), React.createElement("div", {
+        className: "rte-content"
       }, React.createElement(react_rte_1.default, {
         toolbarConfig: toolbarConfig,
         value: this.state.value,
         onChange: this.onChange.bind(this)
-      }));
+      })));
     }
   }]);
 
@@ -70818,8 +70823,7 @@ function (_React$Component) {
 
   _createClass(CanvasGroupItem, [{
     key: "propsChanged",
-    value: function propsChanged() {
-      this.props.propsChanged();
+    value: function propsChanged() {// this.props.propsChanged();
     }
   }, {
     key: "render",
@@ -72629,7 +72633,7 @@ function (_React$Component) {
       }, "Canvas"), React.createElement("label", {
         role: "button",
         className: "".concat(this.props.workspaceViewIsCanvas ? '' : 'active')
-      }, "Grid")), React.createElement("div", {
+      }, "List")), React.createElement("div", {
         className: "separator"
       }), React.createElement("div", {
         className: "action ".concat(this.props.workspaceRTEShown ? 'active' : ''),
@@ -80086,7 +80090,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60918" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58377" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

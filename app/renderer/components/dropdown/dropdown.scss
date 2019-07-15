@@ -12,7 +12,7 @@
         display: block;
         padding: 0;
         font-size: small;
-        letter-spacing: 1px;
+        // letter-spacing: 1px;
         display: flex;
         cursor: pointer;
         min-width: 200px;
@@ -39,7 +39,7 @@
             top: 35px;
             right: 0px;
             list-style: none;
-            background: #f0f0f0;
+            background: #fff;
             padding: 0;
             z-index: 999;
             cursor: pointer;
@@ -53,7 +53,7 @@
                 text-align: right;
                 color: rgba(#000, 0.50);
                 font-weight: 500;
-                font-size: small;
+                font-size: medium;
 
                 &:not(:last-child) {
                     border-bottom: 1px solid rgba(#000, 0.05);

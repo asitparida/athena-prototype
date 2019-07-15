@@ -35,9 +35,9 @@ export class ContentItemWrapper extends React.Component<{
         this.setState({
             annotationAndNotesShown: !annotationAndNotesShown
         });
-        if (!annotationAndNotesShown) {
-            this.props.propsChanged();
-        }
+        // if (!annotationAndNotesShown) {
+        //     this.props.propsChanged();
+        // }
     }
     openContent() {
         if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {

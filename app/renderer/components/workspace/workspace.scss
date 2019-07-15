@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(rgba(#000, 0.25) 10%, #f9f9f9 0%);
+            background-image: radial-gradient(rgba(#000, 0.25) 10%, $light-accent-color2 0%);
             background-size: $dot-space $dot-space;
         }
     }
@@ -43,79 +43,11 @@
         animation: slide-in-from-right 0.5s ease-out 0s;
         max-height: 100%;
         background-color: #fff;
-        border-left: 5px solid rgba($primary_accent, 1);
-        box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
+        border-left: 5px solid rgba(#e8e8e8, 1);
+        box-shadow: -6px 0px 20px rgba(#000, 0.20);
         position: absolute;
         right: 0;
         top: 0;
-
-        .rte-wrapper {
-            height: 100%;
-        }
-
-        [class^="RichTextEditor__root"] {
-            background: none;
-            border: none;
-            height: 100%;
-            display: flex;
-            flex-flow: column;
-        }
-
-        [class^="RichTextEditor__editor"] {
-            flex: 1;
-            order: 2;
-            padding: 0px 0 10px 5px;
-            color: rgba(#000, 0.50);
-
-            .DraftEditor-root {
-                height: calc(100vh - 166px);
-
-
-                .DraftEditor-editorContainer {
-                    z-index: 2;
-                    .public-DraftEditor-content {
-                        padding-top: 15px;
-                    }
-                }
-            }
-        }
-
-        [class^="EditorToolbar__root"] {
-            flex: initial;
-            order: 1;
-            border-bottom: 1px solid rgba($primary_accent, 0.10);
-            padding: 15px 10px 10px 10px;
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-around;
-            align-items: center;
-            margin: 0;
-            background-color: rgba($primary_accent, 0.0);
-
-
-            [class^="ButtonWrap__root"] {
-                button {
-                    background: rgba(#000, 0.0);
-                    border: 1px solid rgba($primary_accent, 0.8);
-                    margin-right: 1px;
-                    color: rgba(#000, 0.50);
-
-                    &[class*="IconButton__isActive"] {
-                        background: rgba($primary_accent, 0.20);
-                    }
-                }
-            }
-
-            [class^="Dropdown__root"] {
-                select {
-                    color: rgba($primary_accent, 0.90);
-                }
-
-                [class^="Dropdown__value"] {
-                    border: 1px solid rgba($primary_accent, 0.8);
-                }
-            }
-        }
     }
 
     .sticky-dumping-ground {
@@ -128,8 +60,8 @@
         position: absolute;
         top: 0;
         right: 0;
-        background-color: rgba(#f9f9f9, 1);
-        border-left: 5px solid rgba($primary_accent, 1);
-        box-shadow: -20px 0px 25px rgba($primary_accent, 0.15);
+        background-color: rgba($light-accent-color2, 1);
+        border-left: 5px solid rgba(#e8e8e8, 1);
+        box-shadow: -6px 0px 20px rgba(#000, 0.20);
     }
 }

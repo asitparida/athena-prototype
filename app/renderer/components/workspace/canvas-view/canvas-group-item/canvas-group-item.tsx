@@ -45,7 +45,7 @@ class CanvasGroupItem extends React.Component<IPropType | any, {}> {
         super(props);
     }
     propsChanged() {
-        this.props.propsChanged();
+        // this.props.propsChanged();
     }
     render() {
         const { isDragging, connectDragSource, src } = this.props;

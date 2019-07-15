@@ -6,7 +6,7 @@ const img3 = require('../assets/duquesne_incline.jpg');
 
 export const ItemWidth = 240;
 export const ItemHeight = null;
-export const GroupBufffer = 40;
+export const GroupBufffer = 60;
 
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },

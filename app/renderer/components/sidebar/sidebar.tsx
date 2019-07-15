@@ -61,7 +61,7 @@ class SidebarComponent extends React.Component<any, any> {
         const { sideBarItems } = this.state;
         return <div className={`sidebar-wrapper ${this.props.sideBarCollpased ? 'collapsed' : 'expanded'}`}>
             <ul className="workspace-list" >
-                <li className='hamburger' onClick={this.toggleSidebar.bind(this)}><label className='first-level-label'><i className='material-icons'>menu</i></label></li>
+                <li className='hamburger' onClick={this.toggleSidebar.bind(this)}><i className='material-icons'>menu</i></li>
                 <li><NavLink to="/home"><label className='first-level-label'><i className='material-icons'>home</i><span className='name'>Home</span></label></NavLink></li>
                 <li><NavLink to="/dump"><label className='first-level-label'><i className='material-icons'>apps</i><span className='name'>Collections</span></label></NavLink></li>
                 <React.Fragment>

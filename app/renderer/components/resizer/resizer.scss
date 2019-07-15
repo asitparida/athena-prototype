@@ -5,7 +5,7 @@
     height: 100%;
     position: relative;
     .resizer-handler {
-        background: rgba($primary_accent, 1);
+        background: rgba(#e8e8e8, 1);
         text-align: center;
         height: 36px;
         width: 24px;
@@ -17,9 +17,10 @@
         margin-top: -18px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
+        color: $dark_text;
         i {
             line-height: 36px;
-            opacity: 1;
+            opacity: 0.50;
             transition: opacity 0.3s linear 0s;
             position: relative;
             left: 0;

@@ -30,6 +30,9 @@
                 li {
                     width: 70px;
                     overflow: hidden;
+                    &.hamburger {
+                        padding: 0;
+                    }
                     label {
                         padding: 0;
                         i {
@@ -100,7 +103,25 @@
                 border-bottom: none;
             }
             &.hamburger {
-                padding-top: 22px;
+                margin-top: 30px;
+                height: 54px;
+                display: flex;
+                padding-left: 0px;
+                i {
+                    color: $dark_text;
+                    font-size: 18px;
+                    margin-right: auto;
+                    margin-left: 10px;
+                    height: 48px;
+                    width: 48px;
+                    line-height: 48px;
+                    text-align: center;
+                    border-radius: 50%;
+                    &:hover {
+                        background-color: rgba(#000, 0.10);
+                        color: #000;
+                    }
+                }
             }
             &.newWorkspace {
                 padding: 30px 30px 0px 30px;
@@ -133,7 +154,7 @@
                 line-height: 54px;
                 height: 54px;
                 text-align: left;
-                padding: 0 30px;
+                padding: 0 21px;
                 margin: 0;
                 cursor: pointer;
                 &.second-level {
