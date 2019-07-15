@@ -7,7 +7,7 @@ export class ArticleContentItem extends React.Component<{ data: IContentItem<IAr
     }
     render() {
         return (
-            <div className='article-content'>
+            <div className='article-content content-marker'>
                 <label className='article-title'>{this.props.data.contentData.articleTitle}</label>
                 <label className='article-author'>{this.props.data.contentData.authorName}</label>
             </div>

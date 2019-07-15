@@ -4,7 +4,7 @@ import { DumpingGroundList } from './dumping-ground-list';
 import { ContentType, IContentListItem, IContentItem } from '../../constants/types';
 import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection, BuildStickyContentItem } from '../../constants/dummy-data';
 import { Subscription } from 'rxjs';
-import { DumpingGroundTransfer } from '../../access/observables/observables';
+import { DumpingGroundTransfer, DumpingGroundSelections } from '../../access/observables/observables';
 import { GetAPIUrl } from '../../constants/constants';
 
 interface IProps {
@@ -19,6 +19,7 @@ interface IContentCollectionState {
 
 export class DumpingGroundListCollection extends React.Component<IProps, IContentCollectionState> {
     dumpingGroundTransferSubscription: Subscription;
+    dumpingGroundSelectionSubscription: Subscription;
     constructor(props) {
         super(props);
         this.state = {
@@ -90,9 +91,31 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
                 listItems: newCollection
             })
         });
+        this.dumpingGroundSelectionSubscription = DumpingGroundSelections.subscribe((data: any) => {
+            if (data === null) {
+                return;
+            }
+            const collection = this.state.listItems;
+            const newCollection = [];
+            collection.forEach(collect => {
+                const items = [];
+                collect.listItems.forEach(item => {
+                    items.push(Object.assign({}, item, {
+                        selected: _.indexOf(data, item.id) !== -1
+                    }));
+                });
+                newCollection.push(Object.assign({}, collect, {
+                    listItems: items
+                }));
+            })
+            this.setState({
+                listItems: newCollection
+            })
+        });
     }
     componentWillUnmount() {
         this.dumpingGroundTransferSubscription.unsubscribe();
+        this.dumpingGroundSelectionSubscription.unsubscribe();
     }
     componentDidUpdate(props) {
         if (this.props.type !== props.type) {

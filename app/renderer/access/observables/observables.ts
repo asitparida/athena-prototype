@@ -1,4 +1,4 @@
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, BehaviorSubject } from 'rxjs';
 import store from '../store/configureStore';
 import * as actions from '../actions/appActions';
 import { IContentItem, IWorkspaceContentTransfer } from '../../constants/types';
@@ -11,6 +11,7 @@ export const ContentViewerData = new Subject<IContentItem<any>>();
 export const WorkspaceContentTransfer = new Subject<IWorkspaceContentTransfer>();
 export const DumpingGroundTransfer = new Subject<IContentItem<any>>();
 export const RouteInvoke = new Subject<string>();
+export const DumpingGroundSelections = new BehaviorSubject<string[]>(null);
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {
@@ -39,4 +40,20 @@ export function InitializeSubscriptions() {
 }
 export function RemoveSubscriptions() {
     subscriptions.forEach(s => s.unsubscribe());
+}
+export function ToggleSelection(id) {
+    const collection = DumpingGroundSelections.value || [];
+    const record = collection.find(item => item === id);
+    let newCollection = [];
+    if (!record) {
+        newCollection = [].concat(collection, id);
+    } else {
+        newCollection = [].concat(collection.filter(item => item !== id));
+    }
+    DumpingGroundSelections.next(newCollection);
+    if (newCollection.length > 0) {
+        store.dispatch(actions.enableSelectionInDumpingGround());
+    } else {
+        store.dispatch(actions.disableSelectionInDumpingGround());
+    }
 }

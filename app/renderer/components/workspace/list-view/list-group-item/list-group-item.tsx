@@ -29,9 +29,9 @@ class ListGroupItem extends React.Component<{ data: IBoardContent }, { contentDa
     }
     render() {
         const resizerOptions: IContextMenuAction[] = [
-            {  icon: 'crop_7_5', name: 'NORMAL_SIZE'},
-            {  icon: 'crop_5_4', name: 'DOUBLE_SIZE'},
-            {  icon: 'crop_din', name: 'MAX_SIZE'}
+            { id: 'NORMAL_SIZE',  icon: 'crop_7_5', name: 'NORMAL_SIZE'},
+            { id: 'DOUBLE_SIZE',  icon: 'crop_5_4', name: 'DOUBLE_SIZE'},
+            { id: 'MAX_SIZE',  icon: 'crop_din', name: 'MAX_SIZE'}
         ];
         return (
             <div className={`workspace-list-group-item-holder ${this.state.contentSize}`}>

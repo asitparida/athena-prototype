@@ -141,3 +141,15 @@ export const hideSearchBar = () => ({
 export const toggleSearchBar = () => ({
     type: types.TOGGLE_SEARCH_BAR, payload: {}
 })
+
+export const toggleSelectionInDumpingGround = () => ({
+    type: types.TOGGLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})
+
+export const enableSelectionInDumpingGround = () => ({
+    type: types.ENABLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})
+
+export const disableSelectionInDumpingGround = () => ({
+    type: types.DISABLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})

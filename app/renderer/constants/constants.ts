@@ -4,6 +4,20 @@ const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
+export const MediaTypeImages = {
+    instagram: require('../assets/media-types/instagram.png'),
+    medium: require('../assets/media-types/medium.png'),
+    news: require('../assets/media-types/open-book.png'),
+    photo: require('../assets/media-types/photo.png'),
+    quora: require('../assets/media-types/quora.png'),
+    twitter: require('../assets/media-types/twitter.png'),
+    videoPlayer: require('../assets/media-types/video-player.png'),
+    vimeo: require('../assets/media-types/vimeo.png'),
+    youtube: require('../assets/media-types/youtube.png'),
+    notes: require('../assets/media-types/notes.png'),
+    link: require('../assets/media-types/link.png')
+}
+
 export const ItemWidth = 240;
 export const ItemHeight = null;
 export const GroupBufffer = 60;

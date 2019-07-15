@@ -7,7 +7,7 @@ export class StickyContentItem extends React.Component<{ data: IContentItem<INot
     }
     render() {
         return (
-            <div className='note-content'>
+            <div className='note-content content-marker'>
                 <p className='note-text'>{this.props.data.contentData.noteText}</p>
             </div>
         );

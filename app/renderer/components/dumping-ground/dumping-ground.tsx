@@ -18,8 +18,7 @@ interface IDumpingGroundProps {
     hideGroupTitle?: boolean,
     searchBar?: boolean;
 }
-
-type AllProps = IDumpingGroundProps
+type AllProps = IDumpingGroundProps;
 
 class DumpingGround extends React.Component<AllProps, IDumpingGroundState> {
     isInWorkspace = false;

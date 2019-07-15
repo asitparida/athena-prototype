@@ -220,7 +220,7 @@
                         .inner-content {
                             .inner-content-wrapper {
                                 height: auto;
-                                & > div {
+                                .content-marker {
                                     min-height: 120px;
                                     height: auto;
                                     &.photo-content {

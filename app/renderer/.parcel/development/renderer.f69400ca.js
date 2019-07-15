@@ -56249,7 +56249,7 @@ function (_React$Component) {
         }, option.icon));
       })), this.props.actions.length > 0 && this.props.actions.map(function (action, i) {
         return React.createElement("li", {
-          onClick: _this2.onAction.bind(_this2, action.name),
+          onClick: _this2.onAction.bind(_this2, action.id),
           tabIndex: 0,
           key: i
         }, React.createElement("i", {
@@ -56421,6 +56421,28 @@ module.exports = "/carnegie_museum_art.66ef529f.jpg";
 module.exports = "/church_brew.2a31e89e.jpg";
 },{}],"assets/duquesne_incline.jpg":[function(require,module,exports) {
 module.exports = "/duquesne_incline.c7cce539.jpg";
+},{}],"assets/media-types/instagram.png":[function(require,module,exports) {
+module.exports = "/instagram.7976014b.png";
+},{}],"assets/media-types/medium.png":[function(require,module,exports) {
+module.exports = "/medium.1c3287bd.png";
+},{}],"assets/media-types/open-book.png":[function(require,module,exports) {
+module.exports = "/open-book.cb9d43e6.png";
+},{}],"assets/media-types/photo.png":[function(require,module,exports) {
+module.exports = "/photo.0fe832b1.png";
+},{}],"assets/media-types/quora.png":[function(require,module,exports) {
+module.exports = "/quora.707f1e41.png";
+},{}],"assets/media-types/twitter.png":[function(require,module,exports) {
+module.exports = "/twitter.4218dc1d.png";
+},{}],"assets/media-types/video-player.png":[function(require,module,exports) {
+module.exports = "/video-player.4f276a9b.png";
+},{}],"assets/media-types/vimeo.png":[function(require,module,exports) {
+module.exports = "/vimeo.c27c0aee.png";
+},{}],"assets/media-types/youtube.png":[function(require,module,exports) {
+module.exports = "/youtube.298480ee.png";
+},{}],"assets/media-types/notes.png":[function(require,module,exports) {
+module.exports = "/notes.132c10a1.png";
+},{}],"assets/media-types/link.png":[function(require,module,exports) {
+module.exports = "/link.47db01d8.png";
 },{}],"constants/constants.ts":[function(require,module,exports) {
 "use strict";
 
@@ -56454,6 +56476,19 @@ var img2 = require('../assets/church_brew.jpg');
 
 var img3 = require('../assets/duquesne_incline.jpg');
 
+exports.MediaTypeImages = {
+  instagram: require('../assets/media-types/instagram.png'),
+  medium: require('../assets/media-types/medium.png'),
+  news: require('../assets/media-types/open-book.png'),
+  photo: require('../assets/media-types/photo.png'),
+  quora: require('../assets/media-types/quora.png'),
+  twitter: require('../assets/media-types/twitter.png'),
+  videoPlayer: require('../assets/media-types/video-player.png'),
+  vimeo: require('../assets/media-types/vimeo.png'),
+  youtube: require('../assets/media-types/youtube.png'),
+  notes: require('../assets/media-types/notes.png'),
+  link: require('../assets/media-types/link.png')
+};
 exports.ItemWidth = 240;
 exports.ItemHeight = null;
 exports.GroupBufffer = 60;
@@ -56817,7 +56852,7 @@ function GetAPIUrl() {
 }
 
 exports.GetAPIUrl = GetAPIUrl;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
+},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg","../assets/media-types/instagram.png":"assets/media-types/instagram.png","../assets/media-types/medium.png":"assets/media-types/medium.png","../assets/media-types/open-book.png":"assets/media-types/open-book.png","../assets/media-types/photo.png":"assets/media-types/photo.png","../assets/media-types/quora.png":"assets/media-types/quora.png","../assets/media-types/twitter.png":"assets/media-types/twitter.png","../assets/media-types/video-player.png":"assets/media-types/video-player.png","../assets/media-types/vimeo.png":"assets/media-types/vimeo.png","../assets/media-types/youtube.png":"assets/media-types/youtube.png","../assets/media-types/notes.png":"assets/media-types/notes.png","../assets/media-types/link.png":"assets/media-types/link.png"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56942,7 +56977,7 @@ function (_React$Component) {
     value: function render() {
       var bgUrl = "url(".concat(this.state.imgUrl, ")");
       return React.createElement("div", {
-        className: "photo-content"
+        className: "photo-content content-marker"
       }, this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
         className: "photo ".concat(this.state.showImg ? 'shown' : ''),
         style: {
@@ -57127,7 +57162,7 @@ function (_React$Component) {
       var duration = helper_1.GetDuration(this.props.data.contentData.videoLength);
       var bgUrl = "url(".concat(this.state.imgUrl, ")");
       return React.createElement("div", {
-        className: "video-content"
+        className: "video-content content-marker"
       }, React.createElement("label", {
         className: "video-duration"
       }, duration), this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
@@ -57199,7 +57234,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "article-content"
+        className: "article-content content-marker"
       }, React.createElement("label", {
         className: "article-title"
       }, this.props.data.contentData.articleTitle), React.createElement("label", {
@@ -57264,7 +57299,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "link-content"
+        className: "link-content content-marker"
       }, React.createElement("label", {
         className: "link-title"
       }, this.props.data.contentData.ogDescription));
@@ -57335,7 +57370,7 @@ function (_React$Component) {
         backgroundImage: "url(".concat(this.props.data.contentData.instragramImageUrl, ")")
       };
       return React.createElement("div", {
-        className: "social-media-content"
+        className: "social-media-content content-marker"
       }, this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
         className: "tweet-text"
       }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
@@ -64362,7 +64397,8 @@ var IntialState = {
   newWorkspaceCreator: false,
   newTopicCreator: false,
   workspaceList: constants_1.WorkspaceList,
-  activeWorkspace: constants_1.WorkspaceList[0]
+  activeWorkspace: constants_1.WorkspaceList[0],
+  isSelectionEnabled: false
 };
 exports.default = IntialState;
 },{"../../constants/constants":"constants/constants.ts"}],"access/actions/actionTypes.ts":[function(require,module,exports) {
@@ -64404,6 +64440,9 @@ exports.ACTIVATE_WORKSPACE_AND_TOPIC = 'ACTIVATE_WORKSPACE_AND_TOPIC';
 exports.SHOW_SEARCH_BAR = 'SHOW_SEARCH_BAR';
 exports.HIDE_SEARCH_BAR = 'HIDE_SEARCH_BAR';
 exports.TOGGLE_SEARCH_BAR = 'TOGGLE_SEARCH_BAR';
+exports.ENABLE_SELECTION_IN_DUMPING_GROUND = 'ENABLE_SELECTION_IN_DUMPING_GROUND';
+exports.DISABLE_SELECTION_IN_DUMPING_GROUND = 'DISABLE_SELECTION_IN_DUMPING_GROUND';
+exports.TOGGLE_SELECTION_IN_DUMPING_GROUND = 'TOGGLE_SELECTION_IN_DUMPING_GROUND';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64659,6 +64698,27 @@ exports.hideSearchBar = function () {
 exports.toggleSearchBar = function () {
   return {
     type: types.TOGGLE_SEARCH_BAR,
+    payload: {}
+  };
+};
+
+exports.toggleSelectionInDumpingGround = function () {
+  return {
+    type: types.TOGGLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.enableSelectionInDumpingGround = function () {
+  return {
+    type: types.ENABLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.disableSelectionInDumpingGround = function () {
+  return {
+    type: types.DISABLE_SELECTION_IN_DUMPING_GROUND,
     payload: {}
   };
 };
@@ -64920,6 +64980,31 @@ exports.default = function () {
         return newState;
       }
 
+    case actionTypes_1.TOGGLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        var _current6 = state.isSelectionEnabled;
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: !_current6
+        });
+        return newState;
+      }
+
+    case actionTypes_1.ENABLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.DISABLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: false
+        });
+        return newState;
+      }
+
     default:
       return state;
   }
@@ -65145,6 +65230,7 @@ exports.ContentViewerData = new rxjs_1.Subject();
 exports.WorkspaceContentTransfer = new rxjs_1.Subject();
 exports.DumpingGroundTransfer = new rxjs_1.Subject();
 exports.RouteInvoke = new rxjs_1.Subject();
+exports.DumpingGroundSelections = new rxjs_1.BehaviorSubject(null);
 
 function InitializeSubscriptions() {
   var dumpBarSubscription = exports.ShowDumpBarAction$.subscribe(function (data) {
@@ -65182,6 +65268,32 @@ function RemoveSubscriptions() {
 }
 
 exports.RemoveSubscriptions = RemoveSubscriptions;
+
+function ToggleSelection(id) {
+  var collection = exports.DumpingGroundSelections.value || [];
+  var record = collection.find(function (item) {
+    return item === id;
+  });
+  var newCollection = [];
+
+  if (!record) {
+    newCollection = [].concat(collection, id);
+  } else {
+    newCollection = [].concat(collection.filter(function (item) {
+      return item !== id;
+    }));
+  }
+
+  exports.DumpingGroundSelections.next(newCollection);
+
+  if (newCollection.length > 0) {
+    configureStore_1.default.dispatch(actions.enableSelectionInDumpingGround());
+  } else {
+    configureStore_1.default.dispatch(actions.disableSelectionInDumpingGround());
+  }
+}
+
+exports.ToggleSelection = ToggleSelection;
 },{"rxjs":"../../node_modules/rxjs/_esm5/index.js","../store/configureStore":"access/store/configureStore.ts","../actions/appActions":"access/actions/appActions.ts"}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
 "use strict";
 
@@ -65679,7 +65791,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "note-content"
+        className: "note-content content-marker"
       }, React.createElement("p", {
         className: "note-text"
       }, this.props.data.contentData.noteText));
@@ -65747,6 +65859,8 @@ var react_intersection_observer_1 = require("react-intersection-observer");
 
 var sticky_content_1 = require("./sticky-content");
 
+var constants_1 = require("../../constants/constants");
+
 var ContentItemWrapper =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65776,9 +65890,7 @@ function (_React$Component) {
       var annotationAndNotesShown = this.state.annotationAndNotesShown;
       this.setState({
         annotationAndNotesShown: !annotationAndNotesShown
-      }); // if (!annotationAndNotesShown) {
-      //     this.props.propsChanged();
-      // }
+      });
     }
   }, {
     key: "openContent",
@@ -65803,16 +65915,26 @@ function (_React$Component) {
     value: function render() {
       var type = this.props.data.contentType;
       var label = '';
+      var currentContentImage = null;
+      var currentContentImageClass = 'content-type-image ';
 
       switch (type) {
         case types_1.ContentType.Article:
           {
+            currentContentImage = constants_1.MediaTypeImages.news;
+            currentContentImageClass = 'content-type-image no-shadow';
+
             if (this.props.data.sourceType === types_1.MediaSourceType.ACM) {
               label = 'ACM';
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Scholar) {
               label = 'Scholar';
+            } else if (this.props.data.sourceType === types_1.MediaSourceType.Medium) {
+              label = 'Medium';
+              currentContentImage = constants_1.MediaTypeImages.medium;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Quora) {
               label = 'Quora';
+              currentContentImage = constants_1.MediaTypeImages.quora;
+              currentContentImageClass = currentContentImageClass + ' small';
             }
 
             break;
@@ -65821,24 +65943,39 @@ function (_React$Component) {
         case types_1.ContentType.Sticky:
           {
             label = 'Note';
+            currentContentImageClass = 'content-type-image no-shadow';
+            currentContentImage = constants_1.MediaTypeImages.notes;
             break;
           }
 
         case types_1.ContentType.Link:
           {
             label = 'Link';
+            currentContentImage = constants_1.MediaTypeImages.link;
+            currentContentImageClass = 'content-type-image no-shadow';
+            currentContentImageClass = currentContentImageClass + ' small';
             break;
           }
 
         case types_1.ContentType.Photo:
           {
             label = 'Photo';
+            currentContentImage = constants_1.MediaTypeImages.photo;
             break;
           }
 
         case types_1.ContentType.Video:
           {
             label = this.props.data.sourceType === types_1.MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube';
+
+            if (this.props.data.sourceType === types_1.MediaSourceType.Vimeo) {
+              currentContentImage = constants_1.MediaTypeImages.vimeo;
+            } else if (this.props.data.sourceType === types_1.MediaSourceType.Youtube) {
+              currentContentImage = constants_1.MediaTypeImages.youtube;
+            } else {
+              currentContentImage = constants_1.MediaTypeImages.videoPlayer;
+            }
+
             break;
           }
 
@@ -65846,8 +65983,11 @@ function (_React$Component) {
           {
             if (this.props.data.sourceType === types_1.MediaSourceType.Twitter) {
               label = 'Twitter';
+              currentContentImageClass = 'content-type-image no-shadow';
+              currentContentImage = constants_1.MediaTypeImages.twitter;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Instagram) {
               label = 'Instagram';
+              currentContentImage = constants_1.MediaTypeImages.instagram;
             }
 
             break;
@@ -65912,6 +66052,9 @@ function (_React$Component) {
           }
       }
 
+      var contentImageStyle = {
+        backgroundImage: "url(".concat(currentContentImage, ")")
+      };
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "inner-content-holder ".concat(this.props.inheritDimensions ? 'inherit-dimensions' : '')
       }, React.createElement("div", {
@@ -65922,7 +66065,12 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "inner-content-wrapper ".concat(this.state.annotationAndNotesShown ? 'notes-open' : ''),
         onClick: this.openContent.bind(this)
-      }, this.state.showEntity && currentContent, this.props.data.title && React.createElement("div", {
+      }, currentContentImage && React.createElement("div", {
+        className: currentContentImageClass
+      }, React.createElement("div", {
+        className: "image",
+        style: contentImageStyle
+      })), this.state.showEntity && currentContent, this.props.data.title && React.createElement("div", {
         className: "inner-overlay-content-wrapper"
       }, React.createElement("label", {
         className: "inner-content-title"
@@ -65963,7 +66111,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWrapper = ContentItemWrapper;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx","../../constants/constants":"constants/constants.ts"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66050,21 +66198,31 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var actions = [{
+        id: 'select',
+        icon: 'select_all',
+        name: 'Select'
+      }, {
+        id: 'annotate',
         icon: 'notes',
         name: 'Annotate'
       }, {
+        id: 'tag',
         icon: 'label',
         name: 'Tag'
       }, {
+        id: 'edit',
         icon: 'edit',
         name: 'Edit'
       }, {
+        id: 'source',
         icon: 'open_in_new',
         name: 'Source'
       }, {
+        id: 'archive',
         icon: 'archive',
         name: 'Archive'
       }, {
+        id: 'delete',
         icon: 'delete',
         name: 'Delete'
       }];
@@ -66130,6 +66288,27 @@ var types_1 = require("../../constants/types");
 
 var content_item_with_menu_1 = require("../content-item/content-item-with-menu");
 
+var react_redux_1 = require("react-redux");
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var observables_1 = require("../../access/observables/observables");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    isSelectionEnabled: reducers.isSelectionEnabled
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
 var itemSource = {
   beginDrag: function beginDrag(props) {
     return {
@@ -66138,9 +66317,9 @@ var itemSource = {
   }
 };
 
-function collect(connect, monitor) {
+function collect(connector, monitor) {
   return {
-    connectDragSource: connect.dragSource(),
+    connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging()
   };
 }
@@ -66150,10 +66329,10 @@ var DumpingGroundItem =
 function (_React$Component) {
   _inherits(DumpingGroundItem, _React$Component);
 
-  function DumpingGroundItem() {
+  function DumpingGroundItem(props) {
     _classCallCheck(this, DumpingGroundItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundItem).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundItem).call(this, props));
   }
 
   _createClass(DumpingGroundItem, [{
@@ -66162,17 +66341,36 @@ function (_React$Component) {
       this.props.menuInvoked($event);
     }
   }, {
+    key: "onActionInvoked",
+    value: function onActionInvoked(name) {
+      if (name === 'select') {
+        observables_1.ToggleSelection(this.props.data.id);
+      }
+    }
+  }, {
+    key: "toggleSelection",
+    value: function toggleSelection() {
+      observables_1.ToggleSelection(this.props.data.id);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           isDragging = _this$props.isDragging,
           connectDragSource = _this$props.connectDragSource,
-          src = _this$props.src;
+          src = _this$props.src,
+          isSelectionEnabled = _this$props.isSelectionEnabled;
       return connectDragSource(React.createElement("div", {
-        className: "content-item-wrapper"
-      }, React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+        className: "content-item-wrapper ".concat(isSelectionEnabled ? 'show-selection' : '')
+      }, React.createElement("div", {
+        className: "selection-mask ".concat(this.props.data.selected ? 'active' : ''),
+        onClick: this.toggleSelection.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "check")), React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
         data: this.props.data,
-        menuInvoked: this.menuInvoked.bind(this)
+        menuInvoked: this.menuInvoked.bind(this),
+        onActionInvoked: this.onActionInvoked.bind(this)
       })));
     }
   }]);
@@ -66180,8 +66378,8 @@ function (_React$Component) {
   return DumpingGroundItem;
 }(React.Component);
 
-exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(DumpingGroundItem);
-},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/dumping-ground/dumping-ground-list.tsx":[function(require,module,exports) {
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DumpingGroundItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/dumping-ground/dumping-ground-list.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66708,11 +66906,35 @@ function (_React$Component) {
           listItems: newCollection
         });
       });
+      this.dumpingGroundSelectionSubscription = observables_1.DumpingGroundSelections.subscribe(function (data) {
+        if (data === null) {
+          return;
+        }
+
+        var collection = _this3.state.listItems;
+        var newCollection = [];
+        collection.forEach(function (collect) {
+          var items = [];
+          collect.listItems.forEach(function (item) {
+            items.push(Object.assign({}, item, {
+              selected: _.indexOf(data, item.id) !== -1
+            }));
+          });
+          newCollection.push(Object.assign({}, collect, {
+            listItems: items
+          }));
+        });
+
+        _this3.setState({
+          listItems: newCollection
+        });
+      });
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.dumpingGroundTransferSubscription.unsubscribe();
+      this.dumpingGroundSelectionSubscription.unsubscribe();
     }
   }, {
     key: "componentDidUpdate",
@@ -71640,12 +71862,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var resizerOptions = [{
+        id: 'NORMAL_SIZE',
         icon: 'crop_7_5',
         name: 'NORMAL_SIZE'
       }, {
+        id: 'DOUBLE_SIZE',
         icon: 'crop_5_4',
         name: 'DOUBLE_SIZE'
       }, {
+        id: 'MAX_SIZE',
         icon: 'crop_din',
         name: 'MAX_SIZE'
       }];
@@ -80090,7 +80315,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58377" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50845" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -16,6 +16,7 @@ export interface IState {
     newTopicCreator: boolean;
     workspaceList?: IWorkspace[];
     activeWorkspace?: IWorkspace;
+    isSelectionEnabled?: boolean;
 }
 export interface IAction {
     type: string;
@@ -145,6 +146,7 @@ export interface ISocialMediaContent {
 }
 
 export interface IContextMenuAction {
+    id: string;
     icon: string;
     name: string;
 }

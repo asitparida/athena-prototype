@@ -13,7 +13,7 @@ export class SocialMediaContentItem extends React.Component<{ data: IContentItem
             backgroundImage: `url(${this.props.data.contentData.instragramImageUrl})`
         };
         return (
-            <div className='social-media-content'>
+            <div className='social-media-content content-marker'>
                 {
                     this.props.data.sourceType === MediaSourceType.Twitter &&
                     <label className='tweet-text'>{this.props.data.contentData.tweetText}</label>

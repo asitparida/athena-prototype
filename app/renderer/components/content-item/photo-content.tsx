@@ -58,7 +58,7 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
     render() {
         const bgUrl = `url(${this.state.imgUrl})`;
         return (
-            <div className='photo-content'>
+            <div className='photo-content content-marker'>
                 {
                     this.state.imgAvailable && this.state.imgUrl &&
                     <div className={`photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />

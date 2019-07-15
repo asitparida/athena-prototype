@@ -60,7 +60,7 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
         const duration = GetDuration(this.props.data.contentData.videoLength);
         const bgUrl = `url(${this.state.imgUrl})`;
         return (
-            <div className='video-content'>
+            <div className='video-content content-marker'>
                 <label className='video-duration'>{duration}</label>
                 {
                     this.state.imgAvailable && this.state.imgUrl &&

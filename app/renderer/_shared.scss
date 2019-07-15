@@ -4,38 +4,38 @@
     }
 }
 
-@mixin respond-to-except-mobile {
+@mixin respond-to-except-mobile-only {
     @media only screen and (min-width: 769px) {
         @content;
     }
 }
 @mixin respond-to-medium-screen-only {
-    @media only screen and (min-width: 1600px) {
+    @media (min-width: 769px) and (max-width: 1600px) {
         @content;
     }
 }
 @mixin respond-to-large-screen-only {
-    @media only screen and (min-width: 1920px) {
+    @media (min-width: 1601px) {
         @content;
     }
 }
 
-@mixin respond-to-mobile {
-    @media only screen and (max-width: 768px) {
-        @content;
-    }
-}
+// @mixin respond-to-mobile {
+//     @media only screen and (max-width: 768px) {
+//         @content;
+//     }
+// }
 
-@mixin respond-to-medium-screen {
-    @media only screen and (min-width: 1920px) {
-        @content;
-    }
-}
-@mixin respond-to-large-screen {
-    @media only screen and (min-width: 1920px) {
-        @content;
-    }
-}
+// @mixin respond-to-medium-screen {
+//     @media only screen and (min-width: 1920px) {
+//         @content;
+//     }
+// }
+// @mixin respond-to-large-screen {
+//     @media only screen and (min-width: 1920px) {
+//         @content;
+//     }
+// }
 
 @mixin scrollbars($size, $foreground-color, $background-color) {
     ::-webkit-scrollbar {

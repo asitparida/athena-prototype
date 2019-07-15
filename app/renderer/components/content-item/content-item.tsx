@@ -9,6 +9,7 @@ import { SocialMediaContentItem } from './socialmedia-item';
 import { ContentViewerData } from '../../access/observables/observables';
 import { InView } from 'react-intersection-observer';
 import { StickyContentItem } from './sticky-content';
+import { MediaTypeImages } from '../../constants/constants';
 
 export class ContentItemWrapper extends React.Component<{
     data: IContentItem<any>,
@@ -35,9 +36,6 @@ export class ContentItemWrapper extends React.Component<{
         this.setState({
             annotationAndNotesShown: !annotationAndNotesShown
         });
-        // if (!annotationAndNotesShown) {
-        //     this.props.propsChanged();
-        // }
     }
     openContent() {
         if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {
@@ -55,26 +53,62 @@ export class ContentItemWrapper extends React.Component<{
     render() {
         const type = this.props.data.contentType;
         let label = '';
+        let currentContentImage = null;
+        let currentContentImageClass = 'content-type-image ';
         switch (type) {
             case ContentType.Article: {
+                currentContentImage = MediaTypeImages.news;
+                currentContentImageClass = 'content-type-image no-shadow';
                 if (this.props.data.sourceType === MediaSourceType.ACM) {
                     label = 'ACM'
                 } else if (this.props.data.sourceType === MediaSourceType.Scholar) {
                     label = 'Scholar'
+                } else if (this.props.data.sourceType === MediaSourceType.Medium) {
+                    label = 'Medium'
+                    currentContentImage = MediaTypeImages.medium;
                 } else if (this.props.data.sourceType === MediaSourceType.Quora) {
-                    label = 'Quora'
+                    label = 'Quora';
+                    currentContentImage = MediaTypeImages.quora;
+                    currentContentImageClass = currentContentImageClass + ' small';
                 }
                 break;
             }
-            case ContentType.Sticky: { label = 'Note'; break; }
-            case ContentType.Link: { label = 'Link'; break; }
-            case ContentType.Photo: { label = 'Photo'; break; }
-            case ContentType.Video: { label = this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube'; break; }
+            case ContentType.Sticky: {
+                label = 'Note';
+                currentContentImageClass = 'content-type-image no-shadow';
+                currentContentImage = MediaTypeImages.notes;
+                break;
+            }
+            case ContentType.Link: {
+                label = 'Link';
+                currentContentImage = MediaTypeImages.link;
+                currentContentImageClass = 'content-type-image no-shadow';
+                currentContentImageClass = currentContentImageClass + ' small';
+                break;
+            }
+            case ContentType.Photo: {
+                label = 'Photo'; currentContentImage = MediaTypeImages.photo;
+                break;
+            }
+            case ContentType.Video: {
+                label = this.props.data.sourceType === MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube';
+                if (this.props.data.sourceType === MediaSourceType.Vimeo) {
+                    currentContentImage = MediaTypeImages.vimeo;
+                } else if (this.props.data.sourceType === MediaSourceType.Youtube) {
+                    currentContentImage = MediaTypeImages.youtube;
+                } else {
+                    currentContentImage = MediaTypeImages.videoPlayer;
+                }
+                break;
+            }
             case ContentType.SocialMedia: {
                 if (this.props.data.sourceType === MediaSourceType.Twitter) {
-                    label = 'Twitter'
+                    label = 'Twitter';
+                    currentContentImageClass = 'content-type-image no-shadow';
+                    currentContentImage = MediaTypeImages.twitter;
                 } else if (this.props.data.sourceType === MediaSourceType.Instagram) {
-                    label = 'Instagram'
+                    label = 'Instagram';
+                    currentContentImage = MediaTypeImages.instagram;
                 }
                 break;
             }
@@ -110,12 +144,19 @@ export class ContentItemWrapper extends React.Component<{
                 break;
             }
         }
+        const contentImageStyle = {
+            backgroundImage: `url(${currentContentImage})`
+        };
         return (
             <React.Fragment>
                 <div className={`inner-content-holder ${this.props.inheritDimensions ? 'inherit-dimensions' : ''}`}>
                     <div className='inner-content'>
                         <InView onChange={this.onViewChange.bind(this)} className='inview-wrapper'>
                             <div className={`inner-content-wrapper ${this.state.annotationAndNotesShown ? 'notes-open' : ''}`} onClick={this.openContent.bind(this)}>
+                                {
+                                    currentContentImage &&
+                                    <div className={currentContentImageClass}><div className='image' style={contentImageStyle} /></div>
+                                }
                                 {
                                     this.state.showEntity &&
                                     currentContent
@@ -129,23 +170,23 @@ export class ContentItemWrapper extends React.Component<{
                             </div>
                         </InView>
                         {
-                        this.state.annotationAndNotesShown &&
-                        <div className='inner-content-meta'>
-                            <div className='inner-content-meta-tags'>
-                                <ul>
+                            this.state.annotationAndNotesShown &&
+                            <div className='inner-content-meta'>
+                                <div className='inner-content-meta-tags'>
+                                    <ul>
+                                        {
+                                            this.props.data.tags.map((tag, i) => <li key={i}>{tag}</li>)
+                                        }
+                                        <li className='new-tag'><i className='material-icons'>add</i> New</li>
+                                    </ul>
+                                </div>
+                                <div className='inner-content-meta-notes'>
                                     {
-                                        this.props.data.tags.map((tag, i) => <li key={i}>{tag}</li>)
+                                        this.props.data.annotations.map((note, i) => <p key={i}>{note.message}</p>)
                                     }
-                                    <li className='new-tag'><i className='material-icons'>add</i> New</li>
-                                </ul>
+                                </div>
                             </div>
-                            <div className='inner-content-meta-notes'>
-                                {
-                                    this.props.data.annotations.map((note, i) => <p key={i}>{note.message}</p>)
-                                }
-                            </div>
-                        </div>
-                    }
+                        }
                     </div>
                     <div className='inner-content-item-actions'>
                         {
