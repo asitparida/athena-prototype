@@ -62,79 +62,79 @@ export const DumpingGrounCollectionTabs = [
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];
 export const Topiclist = [
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+    { id: GetRandomId(), name: 'Topic #AA', active: true },
+    { id: GetRandomId(), name: 'Topic #BB', active: false },
+    { id: GetRandomId(), name: 'Topic #CC', active: false }
 ];
 
 export function GetSampleTopicItems() {
     const items = [
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+        { id: GetRandomId(), name: 'Topic #AA', active: true },
+        { id: GetRandomId(), name: 'Topic #BB', active: false },
+        { id: GetRandomId(), name: 'Topic #CC', active: false }
     ];
     return _.shuffle(items);
 }
 
 export function GetSampleBoardItems() {
     const items = [
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
+        { id: GetRandomId(), type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
+        { id: GetRandomId(), type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
+        { id: GetRandomId(), type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
+        { id: GetRandomId(), type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
+        { id: GetRandomId(), type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
     ];
     return _.take(_.shuffle(items), 3);
 }
 
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'Group #1',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     },
     {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'Group #2',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     },
     {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'Group #3',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     },
     {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'Group #4',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     },
     {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'Group #5',
         props: { top: 0, left: 0 },
         items: GetSampleBoardItems(),
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     }
@@ -142,12 +142,12 @@ export let BoardGroups: IBoardGroupWrapper[] = [
 
 export function GetEmptyGroup() {
     return {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'New Group *',
         props: { top: 0, left: 0 },
         items: [],
         annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
         }
     };
@@ -189,3 +189,5 @@ export function GetAPIUrl() {
     }
     return null;
 }
+
+export function GetRandomId() { return `${Math.floor(Math.random() * 10e10)}` };

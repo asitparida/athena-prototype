@@ -1,5 +1,5 @@
 import InitialState from '../store/initialState';
-import { TOGGLE_WORKSPACE_VIEW_AS_CANVAS, TOGGLE_WORKSPACE_ACTIONS, HIDE_WORKSPACE_ACTIONS, SHOW_WORKSPACE_ACTIONS, SHOW_WORKSPACE_CREATOR, HIDE_WORKSPACE_CREATOR, SHOW_TOPIC_CREATOR, HIDE_TOPIC_CREATOR, ACTIVATE_WORKSPACE_AND_TOPIC } from '../actions/actionTypes';
+import { TOGGLE_WORKSPACE_VIEW_AS_CANVAS, TOGGLE_WORKSPACE_ACTIONS, HIDE_WORKSPACE_ACTIONS, SHOW_WORKSPACE_ACTIONS, SHOW_WORKSPACE_CREATOR, HIDE_WORKSPACE_CREATOR, SHOW_TOPIC_CREATOR, HIDE_TOPIC_CREATOR, ACTIVATE_WORKSPACE_AND_TOPIC, TOGGLE_MANAGE_HEADERS, SHOW_MANAGE_HEADERS, HIDE_MANAGE_HEADERS } from '../actions/actionTypes';
 import { IState, IAction } from '../../constants/types';
 
 export default (state: IState = InitialState, action: IAction) => {
@@ -33,25 +33,48 @@ export default (state: IState = InitialState, action: IAction) => {
         }
         case SHOW_WORKSPACE_CREATOR: {
             newState = Object.assign({}, state, {
-                newWorkspaceCreator: true
+                newWorkspaceCreator: true,
+                manageHeadersDialog: false
             });
             return newState;
         }
         case HIDE_WORKSPACE_CREATOR: {
             newState = Object.assign({}, state, {
-                newWorkspaceCreator: false
+                newWorkspaceCreator: false,
+                manageHeadersDialog: false
             });
             return newState;
         }
         case SHOW_TOPIC_CREATOR: {
             newState = Object.assign({}, state, {
-                newTopicCreator: true
+                newTopicCreator: true,
+                manageHeadersDialog: false
             });
             return newState;
         }
         case HIDE_TOPIC_CREATOR: {
             newState = Object.assign({}, state, {
-                newTopicCreator: false
+                newTopicCreator: false,
+                manageHeadersDialog: false
+            });
+            return newState;
+        }
+        case TOGGLE_MANAGE_HEADERS: {
+            const current = state.manageHeadersDialog;
+            newState = Object.assign({}, state, {
+                manageHeadersDialog: !current,
+            });
+            return newState;
+        }
+        case SHOW_MANAGE_HEADERS: {
+            newState = Object.assign({}, state, {
+                manageHeadersDialog: true,
+            });
+            return newState;
+        }
+        case HIDE_MANAGE_HEADERS: {
+            newState = Object.assign({}, state, {
+                manageHeadersDialog: false,
             });
             return newState;
         }

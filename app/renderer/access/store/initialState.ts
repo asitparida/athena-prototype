@@ -17,7 +17,8 @@ const IntialState: IState = {
     newTopicCreator: false,
     workspaceList: WorkspaceList,
     activeWorkspace: WorkspaceList[0],
-    isSelectionEnabled: false
+    isSelectionEnabled: false,
+    manageHeadersDialog: false
 };
 
 export default IntialState;

@@ -63,6 +63,9 @@ class Header extends React.Component<any, any> {
     launchSearch() {
         this.props.actions.toggleSearchBar();
     }
+    manageHeaders() {
+        this.props.actions.showManageHeadersDialog();
+    }
     render() {
         return (
             <React.Fragment>
@@ -96,13 +99,17 @@ class Header extends React.Component<any, any> {
                     {
                         this.props.workspaceActionsAreShown &&
                         <React.Fragment>
+                            <div className='action' onClick={this.manageHeaders.bind(this)}>
+                                <i className='material-icons'>device_hub</i>
+                            </div>
+                            <div className='separator' />
                             <div className='toggler' onClick={this.toggleWorkspaceView.bind(this)}>
                                 <label role="button" className={`${this.props.workspaceViewIsCanvas ? 'active' : ''}`}>Canvas</label>
                                 <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>List</label>
                             </div>
                             <div className='separator' />
                             <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
-                                <i className="material-icons">text_fields</i>
+                                <i className="material-icons">format_shapes</i>
                             </div>
                             <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
                                 <i className='material-icons'>apps</i>
@@ -115,10 +122,6 @@ class Header extends React.Component<any, any> {
                             <i className='material-icons'>view_week</i>
                         </div>
                     }
-                    <div className='separator' />
-                    <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                        <i className='material-icons'>format_shapes</i>
-                    </div>
                     <div className='separator' />
                     <div className='action' onClick={this.launchSearch.bind(this)}>
                         <i className='material-icons'>search</i>

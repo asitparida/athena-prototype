@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IBoardGroupWrapper } from '../../constants/types';
+import { IBoardGroupWrapper, IGroupHeader } from '../../constants/types';
 import CanvasView from './canvas-view/canvas-view';
 import ListView from './list-view/list-view';
 
-export class WorkspaceViewSwitch extends React.Component<{ canvasView?: boolean, workspaceId?: string, groups?: IBoardGroupWrapper[]}, any> {
+export class WorkspaceViewSwitch extends React.Component<{ canvasView?: boolean, workspaceId?: string, groups?: IBoardGroupWrapper[], headers?: IGroupHeader[]}, any> {
 
     render() {
         return (
@@ -11,7 +11,7 @@ export class WorkspaceViewSwitch extends React.Component<{ canvasView?: boolean,
                 {
                     this.props.canvasView &&
                     <div className="working-area">
-                        <CanvasView id={this.props.workspaceId} groups={this.props.groups} />
+                        <CanvasView id={this.props.workspaceId} groups={this.props.groups} headers={this.props.headers} />
                     </div>
                 }
                 {

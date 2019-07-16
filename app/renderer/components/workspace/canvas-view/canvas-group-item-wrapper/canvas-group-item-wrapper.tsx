@@ -85,7 +85,6 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
             });
         });
         const data = GetSampleItem((this.props.data as IBoardContent).type, this.props.data);
-        console.log(this.props.data);
         data.id = (this.props.data as IBoardContent).id;
         this.setState({
             contentData: data

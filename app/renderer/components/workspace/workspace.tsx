@@ -7,17 +7,19 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
+import { IWorkspaceContentTransfer, IContentItem, IGroupHeader } from '../../constants/types';
 import { ItemHeight, ItemWidth, BoardGroups, GetEmptyGroup } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
 import { isEqual } from '../../transforms';
+import ManageHeaders from '../manage-headers/manage-headers';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         workspaceDumpBarShown: reducers.workspaceDumpBarShown,
         workspaceRTEShown: reducers.workspaceRTEShown,
-        workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas
+        manageHeadersDialog: workspaceReducers.manageHeadersDialog,
+        workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas,
     };
 }
 
@@ -31,12 +33,32 @@ class Workspace extends React.Component<any, any> {
     transferSubscription: Subscription;
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 350, dumpGroundWidth: 350, workspaceId: null, groups: [] };
+        this.state = { rteWidth: 350, dumpGroundWidth: 350, workspaceId: null, groups: [], headers: [] };
     }
     componentDidUpdate(props) {
         if (isEqual(this.props.match.params, props.match.params) === false) {
             this.processParamsChange();
         }
+    }
+    // tslint:disable-next-line:variable-name
+    getHeaders(_groups) {
+        const headers: IGroupHeader[] = [];
+        const groups = _groups || [];
+        if (groups && groups.length > 0) {
+            headers.push({
+                id: `${Math.floor(Math.random() * 10e8)}`,
+                name: 'Header',
+                groups: [groups[0].id, groups[1].id],
+                drawProps: {}
+            });
+            headers.push({
+                id: `${Math.floor(Math.random() * 10e8)}`,
+                name: 'Header',
+                groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+                drawProps: {}
+            });
+        }
+        return headers;
     }
     processParamsChange() {
         const { workspaceId, topicId } = this.props.match.params;
@@ -44,7 +66,8 @@ class Workspace extends React.Component<any, any> {
         this.setState({
             workspaceId,
             topicId,
-            groups: BoardGroups
+            groups: BoardGroups,
+            headers: this.getHeaders(BoardGroups)
         });
     }
     componentDidMount() {
@@ -87,7 +110,8 @@ class Workspace extends React.Component<any, any> {
                 change = true;
             }
             if (change) {
-                this.setState({ groups });
+                const headers = this.getHeaders(groups);
+                this.setState({ groups, headers });
             }
         });
     }
@@ -116,7 +140,7 @@ class Workspace extends React.Component<any, any> {
         }
         return (
             <div className="workspace-wrapper">
-                <WorkspaceViewSwitch canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} />
+                <WorkspaceViewSwitch canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} headers={this.state.headers} />
                 {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>
@@ -132,6 +156,10 @@ class Workspace extends React.Component<any, any> {
                             <DumpingGround sticky={true} workspace={true} />
                         </Resizer>
                     </div>
+                }
+                {
+                    this.props.manageHeadersDialog &&
+                    <ManageHeaders fixed={true} groups={this.state.groups} headers={this.state.headers} />
                 }
             </div>
         );

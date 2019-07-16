@@ -3,21 +3,24 @@ import './canvas-view.scss';
 import CanvasGroupWrapper from './canvas-group-wrapper/canvas-group-wrapper';
 import { GroupBufffer } from '../../../constants/constants';
 import { IBoardGroupWrapper, IGroupHeader } from '../../../constants/types';
-import { isEqual, GetGroupWrapperId } from '../../../transforms';
 import * as _ from 'lodash';
 import CanvasGroupHeader from './canvas-group-header/canvas-group-header';
 
 class CanvasView extends React.Component<{
     id: any,
-    groups?: IBoardGroupWrapper[]
+    groups?: IBoardGroupWrapper[],
+    headers?: IGroupHeader[]
 }, {
     boardGroups: IBoardGroupWrapper[],
     positionX: number,
     positionY: number,
     headers: IGroupHeader[],
-    showHeaders: boolean
+    showHeaders: boolean,
+    scale: number;
 }> {
     currentZoom = 1;
+    scale = 1;
+    ticked = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +28,8 @@ class CanvasView extends React.Component<{
             positionX: 0,
             positionY: 0,
             headers: [],
-            showHeaders: false
+            showHeaders: false,
+            scale: 1
         };
     }
     adjustPosition(zoom = 1, smooth = false) {
@@ -58,7 +62,7 @@ class CanvasView extends React.Component<{
                     positionY: differenceHeight / 2
                 });
             }
-            const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2));
+            const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2)) - 150;
             const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
             window.requestAnimationFrame(() => {
                 currentPositioner.scroll({
@@ -80,25 +84,9 @@ class CanvasView extends React.Component<{
         });
     }
     processGroupProps() {
-        const headers: IGroupHeader[] = [];
-        const groups = this.props.groups || [];
-        if (groups && groups.length > 0) {
-            headers.push({
-                id: `${Math.floor(Math.random() * 10e8)}`,
-                name: 'Header',
-                groups: [groups[0].id, groups[1].id],
-                drawProps: {}
-            });
-            headers.push({
-                id: `${Math.floor(Math.random() * 10e8)}`,
-                name: 'Header',
-                groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
-                drawProps: {}
-            });
-        }
         this.setState({
             boardGroups: this.props.groups,
-            headers,
+            headers: this.props.headers,
             showHeaders: true
         })
         window.requestAnimationFrame(() => {
@@ -129,14 +117,34 @@ class CanvasView extends React.Component<{
             boardGroups: this.props.groups
         });
     }
+    onWheel(e) {
+        e.persist();
+        if (e.ctrlKey) {
+            if (!this.ticked) {
+                this.ticked = true;
+                window.requestAnimationFrame(() => {
+                    this.scale -= e.deltaY * 0.01;
+                    this.scale = this.scale < 0.50 ? 0.50 : this.scale;
+                    this.scale = this.scale > 1 ? 1 : this.scale;
+                    this.setState({
+                        scale: this.scale
+                    });
+                    this.ticked = false;
+                })
+            }
+        }
+    }
     render() {
-        const { boardGroups = [], headers, showHeaders } = this.state;
+        const { boardGroups = [], headers, showHeaders, scale } = this.state;
+        const styles = {
+            transform: `scale(${scale})`
+        };
         return (
             <React.Fragment >
                 <div className="board-group-outer">
                     {
                         boardGroups.length > 0 &&
-                        <div className='board-group-holder'>
+                        <div className='board-group-holder' onWheel={this.onWheel.bind(this)} style={styles}>
                             <div className='board-group-inner'>
                                 {
                                     boardGroups.map((bg, i) => <CanvasGroupWrapper showAnchor={false} onPropsChange={this.onGroupPropsChange.bind(this, i)} parentX={this.state.positionX} parentY={this.state.positionY} key={bg.id} data={bg} />)

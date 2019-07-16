@@ -156,3 +156,15 @@ export const enableSelectionInDumpingGround = () => ({
 export const disableSelectionInDumpingGround = () => ({
     type: types.DISABLE_SELECTION_IN_DUMPING_GROUND, payload: {}
 })
+
+export const showManageHeadersDialog = () => ({
+    type: types.SHOW_MANAGE_HEADERS, payload: {}
+})
+
+export const hideManageHeadersDialog = () => ({
+    type: types.HIDE_MANAGE_HEADERS, payload: {}
+})
+
+export const toggleManageHeadersDialog = () => ({
+    type: types.TOGGLE_MANAGE_HEADERS, payload: {}
+})

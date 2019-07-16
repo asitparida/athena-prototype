@@ -14,6 +14,7 @@ export interface IState {
     workspaceActionsAreShown: boolean;
     newWorkspaceCreator: boolean;
     newTopicCreator: boolean;
+    manageHeadersDialog: boolean;
     workspaceList?: IWorkspace[];
     activeWorkspace?: IWorkspace;
     isSelectionEnabled?: boolean;
@@ -67,7 +68,8 @@ export class Workspace implements IWorkspace {
 
 export const DragAndDropTypes = {
     DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
-    BOARD_ITEM: 'BOARD_ITEM'
+    BOARD_ITEM: 'BOARD_ITEM',
+    HEADER_ITEM: 'HEADER_ITEM'
 }
 
 export enum ContentType {
@@ -224,7 +226,7 @@ export interface ISideBarNavItem {
 export interface IGroupHeader {
     id: string;
     name: string;
-    groups: string[];
+    groups: [];
     drawProps?: {
         groupProps?: Array<{top: number, left: number }>;
         top?: number;

@@ -56062,7 +56062,8 @@ function () {
 exports.Workspace = Workspace;
 exports.DragAndDropTypes = {
   DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
-  BOARD_ITEM: 'BOARD_ITEM'
+  BOARD_ITEM: 'BOARD_ITEM',
+  HEADER_ITEM: 'HEADER_ITEM'
 };
 var ContentType;
 
@@ -56616,30 +56617,30 @@ exports.DumpingGrounCollectionTabs = [{
   type: types_1.ContentType.SocialMedia
 }];
 exports.Topiclist = [{
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   name: 'Topic #AA',
   active: true
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   name: 'Topic #BB',
   active: false
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   name: 'Topic #CC',
   active: false
 }];
 
 function GetSampleTopicItems() {
   var items = [{
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     name: 'Topic #AA',
     active: true
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     name: 'Topic #BB',
     active: false
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     name: 'Topic #CC',
     active: false
   }];
@@ -56650,35 +56651,35 @@ exports.GetSampleTopicItems = GetSampleTopicItems;
 
 function GetSampleBoardItems() {
   var items = [{
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     type: types_1.ContentType.Video,
     props: {
       height: exports.ItemHeight,
       width: exports.ItemWidth
     }
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     type: types_1.ContentType.Article,
     props: {
       height: exports.ItemHeight,
       width: exports.ItemWidth
     }
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     type: types_1.ContentType.Photo,
     props: {
       height: exports.ItemHeight,
       width: exports.ItemWidth
     }
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     type: types_1.ContentType.Link,
     props: {
       height: exports.ItemHeight,
       width: exports.ItemWidth
     }
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     type: types_1.ContentType.SocialMedia,
     props: {
       height: exports.ItemHeight,
@@ -56690,7 +56691,7 @@ function GetSampleBoardItems() {
 
 exports.GetSampleBoardItems = GetSampleBoardItems;
 exports.BoardGroups = [{
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   title: 'Group #1',
   props: {
     top: 0,
@@ -56698,11 +56699,11 @@ exports.BoardGroups = [{
   },
   items: GetSampleBoardItems(),
   annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
+    id: GetRandomId(),
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   title: 'Group #2',
   props: {
     top: 0,
@@ -56710,11 +56711,11 @@ exports.BoardGroups = [{
   },
   items: GetSampleBoardItems(),
   annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
+    id: GetRandomId(),
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   title: 'Group #3',
   props: {
     top: 0,
@@ -56722,11 +56723,11 @@ exports.BoardGroups = [{
   },
   items: GetSampleBoardItems(),
   annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
+    id: GetRandomId(),
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   title: 'Group #4',
   props: {
     top: 0,
@@ -56734,11 +56735,11 @@ exports.BoardGroups = [{
   },
   items: GetSampleBoardItems(),
   annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
+    id: GetRandomId(),
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
+  id: GetRandomId(),
   title: 'Group #5',
   props: {
     top: 0,
@@ -56746,14 +56747,14 @@ exports.BoardGroups = [{
   },
   items: GetSampleBoardItems(),
   annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
+    id: GetRandomId(),
     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   }
 }];
 
 function GetEmptyGroup() {
   return {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     title: 'New Group *',
     props: {
       top: 0,
@@ -56761,7 +56762,7 @@ function GetEmptyGroup() {
     },
     items: [],
     annotation: {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: GetRandomId(),
       message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     }
   };
@@ -56857,6 +56858,13 @@ function GetAPIUrl() {
 }
 
 exports.GetAPIUrl = GetAPIUrl;
+
+function GetRandomId() {
+  return "".concat(Math.floor(Math.random() * 10e10));
+}
+
+exports.GetRandomId = GetRandomId;
+;
 },{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg","../assets/media-types/instagram.png":"assets/media-types/instagram.png","../assets/media-types/medium.png":"assets/media-types/medium.png","../assets/media-types/open-book.png":"assets/media-types/open-book.png","../assets/media-types/photo.png":"assets/media-types/photo.png","../assets/media-types/quora.png":"assets/media-types/quora.png","../assets/media-types/twitter.png":"assets/media-types/twitter.png","../assets/media-types/video-player.png":"assets/media-types/video-player.png","../assets/media-types/vimeo.png":"assets/media-types/vimeo.png","../assets/media-types/youtube.png":"assets/media-types/youtube.png","../assets/media-types/notes.png":"assets/media-types/notes.png","../assets/media-types/link.png":"assets/media-types/link.png"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -64403,7 +64411,8 @@ var IntialState = {
   newTopicCreator: false,
   workspaceList: constants_1.WorkspaceList,
   activeWorkspace: constants_1.WorkspaceList[0],
-  isSelectionEnabled: false
+  isSelectionEnabled: false,
+  manageHeadersDialog: false
 };
 exports.default = IntialState;
 },{"../../constants/constants":"constants/constants.ts"}],"access/actions/actionTypes.ts":[function(require,module,exports) {
@@ -64448,6 +64457,9 @@ exports.TOGGLE_SEARCH_BAR = 'TOGGLE_SEARCH_BAR';
 exports.ENABLE_SELECTION_IN_DUMPING_GROUND = 'ENABLE_SELECTION_IN_DUMPING_GROUND';
 exports.DISABLE_SELECTION_IN_DUMPING_GROUND = 'DISABLE_SELECTION_IN_DUMPING_GROUND';
 exports.TOGGLE_SELECTION_IN_DUMPING_GROUND = 'TOGGLE_SELECTION_IN_DUMPING_GROUND';
+exports.SHOW_MANAGE_HEADERS = 'SHOW_MANAGE_HEADERS';
+exports.HIDE_MANAGE_HEADERS = 'HIDE_MANAGE_HEADERS';
+exports.TOGGLE_MANAGE_HEADERS = 'TOGGLE_MANAGE_HEADERS';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64729,6 +64741,27 @@ exports.enableSelectionInDumpingGround = function () {
 exports.disableSelectionInDumpingGround = function () {
   return {
     type: types.DISABLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.showManageHeadersDialog = function () {
+  return {
+    type: types.SHOW_MANAGE_HEADERS,
+    payload: {}
+  };
+};
+
+exports.hideManageHeadersDialog = function () {
+  return {
+    type: types.HIDE_MANAGE_HEADERS,
+    payload: {}
+  };
+};
+
+exports.toggleManageHeadersDialog = function () {
+  return {
+    type: types.TOGGLE_MANAGE_HEADERS,
     payload: {}
   };
 };
@@ -65079,7 +65112,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_WORKSPACE_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newWorkspaceCreator: true
+          newWorkspaceCreator: true,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -65087,7 +65121,8 @@ exports.default = function () {
     case actionTypes_1.HIDE_WORKSPACE_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newWorkspaceCreator: false
+          newWorkspaceCreator: false,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -65095,7 +65130,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_TOPIC_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newTopicCreator: true
+          newTopicCreator: true,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -65103,7 +65139,33 @@ exports.default = function () {
     case actionTypes_1.HIDE_TOPIC_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newTopicCreator: false
+          newTopicCreator: false,
+          manageHeadersDialog: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.TOGGLE_MANAGE_HEADERS:
+      {
+        var _current2 = state.manageHeadersDialog;
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: !_current2
+        });
+        return newState;
+      }
+
+    case actionTypes_1.SHOW_MANAGE_HEADERS:
+      {
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_MANAGE_HEADERS:
+      {
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -66490,6 +66552,8 @@ var types_1 = require("./types");
 
 var _ = __importStar(require("lodash"));
 
+var constants_1 = require("./constants");
+
 var ItemSize = 5;
 exports.PhotoContentList = GetSamplePhotoItems();
 exports.VideoContentList = GetSampleVideoItems();
@@ -66553,7 +66617,7 @@ function BuildStickyContentItem(data) {
       return "tag-".concat(t);
     }),
     annotations: [{
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     }]
   };
@@ -66575,7 +66639,7 @@ function GetSampleStickyItem(data) {
       return "tag-".concat(t);
     }),
     annotations: [{
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     }]
   };
@@ -66588,7 +66652,7 @@ function GetSamplePhotoItems() {
 
   _.range(ItemSize).forEach(function () {
     var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       title: 'Sample Photo Lorem ipsum',
       contentType: types_1.ContentType.Photo,
       contentData: {
@@ -66600,7 +66664,7 @@ function GetSamplePhotoItems() {
         return "tag-".concat(t);
       }),
       annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
+        id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
       }]
     };
@@ -66617,7 +66681,7 @@ function GetSampleVideoItems() {
 
   _.range(ItemSize).forEach(function () {
     var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       title: 'Sample Photo Lorem ipsum',
       contentType: types_1.ContentType.Video,
       contentData: {
@@ -66633,7 +66697,7 @@ function GetSampleVideoItems() {
         return "tag-".concat(t);
       }),
       annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
+        id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
       }]
     };
@@ -66651,7 +66715,7 @@ function GetSampleArticleItems() {
 
   _.range(ItemSize).forEach(function () {
     var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       title: 'https://dl.acm.org/citation.cfm?id=1357127',
       contentType: types_1.ContentType.Article,
       contentData: {
@@ -66665,7 +66729,7 @@ function GetSampleArticleItems() {
         return "tag-".concat(t);
       }),
       annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
+        id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
       }]
     };
@@ -66696,7 +66760,7 @@ function GetSampleLinkItems() {
   }];
   items.forEach(function (data) {
     var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       title: data.ogSiteName,
       contentType: types_1.ContentType.Link,
       contentData: data,
@@ -66706,7 +66770,7 @@ function GetSampleLinkItems() {
         return "tag-".concat(t);
       }),
       annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
+        id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
       }]
     };
@@ -66722,7 +66786,7 @@ function GetSampleSocialMediaItems() {
 
   _.range(ItemSize).forEach(function (data) {
     var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
+      id: constants_1.GetRandomId(),
       title: null,
       contentType: types_1.ContentType.SocialMedia,
       contentData: {
@@ -66734,7 +66798,7 @@ function GetSampleSocialMediaItems() {
         return "tag-".concat(t);
       }),
       annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
+        id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
       }]
     };
@@ -66754,7 +66818,7 @@ function GetSampleSocialMediaItems() {
 }
 
 exports.GetSampleSocialMediaItems = GetSampleSocialMediaItems;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","./constants":"constants/constants.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71264,7 +71328,6 @@ function (_React$Component) {
         });
       });
       var data = dummy_data_1.GetSampleItem(this.props.data.type, this.props.data);
-      console.log(this.props.data);
       data.id = this.props.data.id;
       this.setState({
         contentData: data
@@ -71819,12 +71882,15 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CanvasView).call(this, props));
     _this.currentZoom = 1;
+    _this.scale = 1;
+    _this.ticked = false;
     _this.state = {
       boardGroups: [],
       positionX: 0,
       positionY: 0,
       headers: [],
-      showHeaders: false
+      showHeaders: false,
+      scale: 1
     };
     return _this;
   }
@@ -71866,7 +71932,7 @@ function (_React$Component) {
           });
         }
 
-        var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2;
+        var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2 - 150;
         var leftOffset = currentHolderProps.width * zoom / 2 - currentPositionerProps.width / 2;
         window.requestAnimationFrame(function () {
           currentPositioner.scroll({
@@ -71896,27 +71962,9 @@ function (_React$Component) {
     value: function processGroupProps() {
       var _this3 = this;
 
-      var headers = [];
-      var groups = this.props.groups || [];
-
-      if (groups && groups.length > 0) {
-        headers.push({
-          id: "".concat(Math.floor(Math.random() * 10e8)),
-          name: 'Header',
-          groups: [groups[0].id, groups[1].id],
-          drawProps: {}
-        });
-        headers.push({
-          id: "".concat(Math.floor(Math.random() * 10e8)),
-          name: 'Header',
-          groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
-          drawProps: {}
-        });
-      }
-
       this.setState({
         boardGroups: this.props.groups,
-        headers: headers,
+        headers: this.props.headers,
         showHeaders: true
       });
       window.requestAnimationFrame(function () {
@@ -71956,27 +72004,57 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "onWheel",
+    value: function onWheel(e) {
+      var _this4 = this;
+
+      e.persist();
+
+      if (e.ctrlKey) {
+        if (!this.ticked) {
+          this.ticked = true;
+          window.requestAnimationFrame(function () {
+            _this4.scale -= e.deltaY * 0.01;
+            _this4.scale = _this4.scale < 0.50 ? 0.50 : _this4.scale;
+            _this4.scale = _this4.scale > 1 ? 1 : _this4.scale;
+
+            _this4.setState({
+              scale: _this4.scale
+            });
+
+            _this4.ticked = false;
+          });
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var _this$state = this.state,
           _this$state$boardGrou = _this$state.boardGroups,
           boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou,
           headers = _this$state.headers,
-          showHeaders = _this$state.showHeaders;
+          showHeaders = _this$state.showHeaders,
+          scale = _this$state.scale;
+      var styles = {
+        transform: "scale(".concat(scale, ")")
+      };
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "board-group-outer"
       }, boardGroups.length > 0 && React.createElement("div", {
-        className: "board-group-holder"
+        className: "board-group-holder",
+        onWheel: this.onWheel.bind(this),
+        style: styles
       }, React.createElement("div", {
         className: "board-group-inner"
       }, boardGroups.map(function (bg, i) {
         return React.createElement(canvas_group_wrapper_1.default, {
           showAnchor: false,
-          onPropsChange: _this4.onGroupPropsChange.bind(_this4, i),
-          parentX: _this4.state.positionX,
-          parentY: _this4.state.positionY,
+          onPropsChange: _this5.onGroupPropsChange.bind(_this5, i),
+          parentX: _this5.state.positionX,
+          parentY: _this5.state.positionY,
           key: bg.id,
           data: bg
         });
@@ -72392,7 +72470,8 @@ function (_React$Component) {
         className: "working-area"
       }, React.createElement(canvas_view_1.default, {
         id: this.props.workspaceId,
-        groups: this.props.groups
+        groups: this.props.groups,
+        headers: this.props.headers
       })), !this.props.canvasView && React.createElement(list_view_1.default, {
         id: this.props.workspaceId,
         groups: this.props.groups
@@ -72404,7 +72483,395 @@ function (_React$Component) {
 }(React.Component);
 
 exports.WorkspaceViewSwitch = WorkspaceViewSwitch;
-},{"react":"../../node_modules/react/index.js","./canvas-view/canvas-view":"components/workspace/canvas-view/canvas-view.tsx","./list-view/list-view":"components/workspace/list-view/list-view.tsx"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-view/canvas-view":"components/workspace/canvas-view/canvas-view.tsx","./list-view/list-view":"components/workspace/list-view/list-view.tsx"}],"components/manage-headers/headers-block.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_dnd_1 = require("react-dnd");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var redux_1 = require("redux");
+
+var react_redux_1 = require("react-redux");
+
+var types_1 = require("../../constants/types");
+
+var observables_1 = require("../../access/observables/observables");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var itemSource = {
+  drop: function drop(props, monitor) {
+    var dropItemResult = monitor.getItem();
+    observables_1.DumpingGroundTransfer.next(dropItemResult.dragObject);
+  }
+};
+
+function collect(connector, monitor) {
+  return {
+    connectDropTarget: connector.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+var HeadersBlockItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(HeadersBlockItem, _React$Component);
+
+  function HeadersBlockItem() {
+    _classCallCheck(this, HeadersBlockItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HeadersBlockItem).apply(this, arguments));
+  }
+
+  _createClass(HeadersBlockItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          connectDropTarget = _this$props.connectDropTarget,
+          isOver = _this$props.isOver,
+          data = _this$props.data;
+      return connectDropTarget(React.createElement("div", {
+        className: "headers-block-item-wrapper ".concat(isOver ? 'entity-over' : '')
+      }, this.props.data && React.createElement(React.Fragment, null, React.createElement("input", {
+        className: "header-title",
+        defaultValue: this.props.data.name
+      }), React.createElement("div", {
+        className: "groups-block"
+      }, this.props.data.groups.length > 0 && this.props.data.groups.map(function (group, i) {
+        return React.createElement("div", {
+          key: group,
+          className: "groups-block-item-wrapper"
+        }, React.createElement("label", {
+          className: "group-title"
+        }, group), React.createElement("i", {
+          className: "material-icons"
+        }, "close"));
+      }))), !this.props.data && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "new-header"
+      }, React.createElement("input", {
+        className: "header-title",
+        placeholder: "Group Name"
+      })), React.createElement("div", {
+        className: "drop-area"
+      }, React.createElement("label", null, "Drag and drop groups here")))));
+    }
+  }]);
+
+  return HeadersBlockItem;
+}(React.Component);
+
+exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.HEADER_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(HeadersBlockItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../constants/types":"constants/types.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/manage-headers/groups-block.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_dnd_1 = require("react-dnd");
+
+var types_1 = require("../../constants/types");
+
+var react_redux_1 = require("react-redux");
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var observables_1 = require("../../access/observables/observables");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    isSelectionEnabled: reducers.isSelectionEnabled
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var itemSource = {
+  beginDrag: function beginDrag(props) {
+    return {
+      dragObject: props.data
+    };
+  }
+};
+
+function collect(connector, monitor) {
+  return {
+    connectDragSource: connector.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
+
+var GroupsBlockItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GroupsBlockItem, _React$Component);
+
+  function GroupsBlockItem(props) {
+    _classCallCheck(this, GroupsBlockItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GroupsBlockItem).call(this, props));
+  } // onActionInvoked(name) {}
+
+
+  _createClass(GroupsBlockItem, [{
+    key: "toggleSelection",
+    value: function toggleSelection() {
+      observables_1.ToggleSelection(this.props.data.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          isDragging = _this$props.isDragging,
+          connectDragSource = _this$props.connectDragSource;
+      return connectDragSource(React.createElement("div", {
+        className: "groups-block-item-wrapper ".concat(isDragging ? 'entity-dragged' : '')
+      }, React.createElement("label", {
+        className: "group-title"
+      }, this.props.data.title)));
+    }
+  }]);
+
+  return GroupsBlockItem;
+}(React.Component);
+
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.HEADER_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(GroupsBlockItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/manage-headers/manage-headers.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/manage-headers/manage-headers.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
+
+var headers_block_1 = __importDefault(require("./headers-block"));
+
+var groups_block_1 = __importDefault(require("./groups-block"));
+
+var constants_1 = require("../../constants/constants");
+
+require("./manage-headers.scss");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    workspaceRTEActionShown: reducers.workspaceRTEActionShown
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var ManageHeaders =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ManageHeaders, _React$Component);
+
+  function ManageHeaders(props) {
+    var _this;
+
+    _classCallCheck(this, ManageHeaders);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ManageHeaders).call(this, props));
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(ManageHeaders, [{
+    key: "closeOverlay",
+    value: function closeOverlay() {
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "saveHeaders",
+    value: function saveHeaders() {
+      console.log('saveHeaders');
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log(this.props.groups);
+      console.log(this.props.headers);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          groups = _this$props.groups,
+          headers = _this$props.headers;
+      var newGroupId = constants_1.GetRandomId();
+      return react_dom_1.default.createPortal(React.createElement("div", {
+        className: "create-workspace w1000"
+      }, React.createElement("div", {
+        className: "create-workspace-overlay",
+        onClick: this.closeOverlay.bind(this)
+      }), React.createElement("div", {
+        className: "create-workspace-dialog"
+      }, React.createElement("label", {
+        className: "title"
+      }, "Manage Headers"), React.createElement("div", {
+        className: "headers-block"
+      }, headers.length > 0 && headers.map(function (item, i) {
+        return React.createElement(headers_block_1.default, {
+          key: item.id,
+          data: item
+        });
+      }), React.createElement(headers_block_1.default, {
+        key: newGroupId
+      })), React.createElement("div", {
+        className: "groups-block"
+      }, groups.length > 0 && groups.map(function (item, i) {
+        return React.createElement(groups_block_1.default, {
+          key: item.id,
+          data: item
+        });
+      })), React.createElement("div", {
+        className: "create-workspace-actions"
+      }, React.createElement("button", {
+        className: "add-btn",
+        onClick: this.saveHeaders.bind(this)
+      }, "Save")))), document.body);
+    }
+  }]);
+
+  return ManageHeaders;
+}(React.Component);
+
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
+},{"react":"../../node_modules/react/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72477,12 +72944,15 @@ var workspace_view_switch_1 = require("./workspace-view-switch");
 
 var transforms_1 = require("../../transforms");
 
+var manage_headers_1 = __importDefault(require("../manage-headers/manage-headers"));
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
   return {
     workspaceDumpBarShown: reducers.workspaceDumpBarShown,
     workspaceRTEShown: reducers.workspaceRTEShown,
+    manageHeadersDialog: workspaceReducers.manageHeadersDialog,
     workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas
   };
 };
@@ -72508,7 +72978,8 @@ function (_React$Component) {
       rteWidth: 350,
       dumpGroundWidth: 350,
       workspaceId: null,
-      groups: []
+      groups: [],
+      headers: []
     };
     return _this;
   }
@@ -72519,6 +72990,30 @@ function (_React$Component) {
       if (transforms_1.isEqual(this.props.match.params, props.match.params) === false) {
         this.processParamsChange();
       }
+    } // tslint:disable-next-line:variable-name
+
+  }, {
+    key: "getHeaders",
+    value: function getHeaders(_groups) {
+      var headers = [];
+      var groups = _groups || [];
+
+      if (groups && groups.length > 0) {
+        headers.push({
+          id: "".concat(Math.floor(Math.random() * 10e8)),
+          name: 'Header',
+          groups: [groups[0].id, groups[1].id],
+          drawProps: {}
+        });
+        headers.push({
+          id: "".concat(Math.floor(Math.random() * 10e8)),
+          name: 'Header',
+          groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+          drawProps: {}
+        });
+      }
+
+      return headers;
     }
   }, {
     key: "processParamsChange",
@@ -72530,7 +73025,8 @@ function (_React$Component) {
       this.setState({
         workspaceId: workspaceId,
         topicId: topicId,
-        groups: constants_1.BoardGroups
+        groups: constants_1.BoardGroups,
+        headers: this.getHeaders(constants_1.BoardGroups)
       });
     }
   }, {
@@ -72599,8 +73095,11 @@ function (_React$Component) {
         }
 
         if (change) {
+          var headers = _this2.getHeaders(groups);
+
           _this2.setState({
-            groups: groups
+            groups: groups,
+            headers: headers
           });
         }
       });
@@ -72641,7 +73140,8 @@ function (_React$Component) {
       }, React.createElement(workspace_view_switch_1.WorkspaceViewSwitch, {
         canvasView: this.props.workspaceViewIsCanvas,
         workspaceId: this.state.workspaceId,
-        groups: this.state.groups
+        groups: this.state.groups,
+        headers: this.state.headers
       }), this.props.workspaceRTEShown && React.createElement("div", {
         className: "rte-area",
         style: rteWidth
@@ -72655,7 +73155,11 @@ function (_React$Component) {
       }, React.createElement(dumping_ground_1.default, {
         sticky: true,
         workspace: true
-      }))));
+      }))), this.props.manageHeadersDialog && React.createElement(manage_headers_1.default, {
+        fixed: true,
+        groups: this.state.groups,
+        headers: this.state.headers
+      }));
     }
   }]);
 
@@ -72663,7 +73167,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx"}],"pages/router-root.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73089,6 +73593,11 @@ function (_React$Component) {
       this.props.actions.toggleSearchBar();
     }
   }, {
+    key: "manageHeaders",
+    value: function manageHeaders() {
+      this.props.actions.showManageHeadersDialog();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -73126,6 +73635,13 @@ function (_React$Component) {
       }), React.createElement("div", {
         className: "app-actions right"
       }, this.props.workspaceActionsAreShown && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "action",
+        onClick: this.manageHeaders.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "device_hub")), React.createElement("div", {
+        className: "separator"
+      }), React.createElement("div", {
         className: "toggler",
         onClick: this.toggleWorkspaceView.bind(this)
       }, React.createElement("label", {
@@ -73141,7 +73657,7 @@ function (_React$Component) {
         onClick: this.toggleRTE.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "text_fields")), React.createElement("div", {
+      }, "format_shapes")), React.createElement("div", {
         className: "action ".concat(this.props.workspaceDumpBarShown ? 'active' : ''),
         onClick: this.toggleDumpBar.bind(this)
       }, React.createElement("i", {
@@ -73152,13 +73668,6 @@ function (_React$Component) {
       }, React.createElement("i", {
         className: "material-icons"
       }, "view_week")), React.createElement("div", {
-        className: "separator"
-      }), React.createElement("div", {
-        className: "action",
-        onClick: this.launchAnnotator.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "format_shapes")), React.createElement("div", {
         className: "separator"
       }), React.createElement("div", {
         className: "action",
@@ -80097,6 +80606,12 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -80114,6 +80629,8 @@ var redux_1 = require("redux");
 var AppActions = __importStar(require("../../access/actions/appActions"));
 
 var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
@@ -80181,14 +80698,16 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
+      return react_dom_1.default.createPortal(React.createElement("div", {
         className: "create-workspace"
       }, React.createElement("div", {
         className: "create-workspace-overlay",
         onClick: this.closeOverlay.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-dialog"
-      }, React.createElement("label", null, "Enter Workspace Name"), React.createElement("input", {
+      }, React.createElement("label", {
+        className: "title"
+      }, "Enter Workspace Name"), React.createElement("input", {
         autoFocus: true,
         value: this.state.newWorkspaceName,
         onChange: this.onNewWorkspaceChanged.bind(this)
@@ -80209,7 +80728,7 @@ function (_React$Component) {
           key: i,
           style: styles
         });
-      })))));
+      }))))), document.body);
     }
   }]);
 
@@ -80217,7 +80736,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateWorkspace);
-},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/create-workspace/create-topic.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js"}],"components/create-workspace/create-topic.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -80248,6 +80767,12 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -80261,6 +80786,8 @@ var redux_1 = require("redux");
 var AppActions = __importStar(require("../../access/actions/appActions"));
 
 var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
@@ -80321,14 +80848,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react_dom_1.default.createPortal(React.createElement("div", {
         className: "create-workspace"
       }, React.createElement("div", {
         className: "create-workspace-overlay",
         onClick: this.closeOverlay.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-dialog"
-      }, React.createElement("label", null, "New Topic"), React.createElement("input", {
+      }, React.createElement("label", {
+        className: "title"
+      }, "New Topic"), React.createElement("input", {
         autoFocus: true,
         value: this.state.newTopicName,
         onChange: this.onNewTopicNameChanged.bind(this)
@@ -80337,7 +80866,7 @@ function (_React$Component) {
       }, React.createElement("button", {
         className: "add-btn",
         onClick: this.createTopic.bind(this)
-      }, "Create"))));
+      }, "Create")))), document.body);
     }
   }]);
 
@@ -80345,7 +80874,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateTopic);
-},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"pages/main.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js"}],"pages/main.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -80598,7 +81127,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62433" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60278" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,6 @@
 @import '../../shared';
 .create-workspace {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     z-index: 999;
@@ -8,6 +8,16 @@
     justify-content: center;
     align-items: center;
     background-color: $dark_overlay;
+    top: 0;
+    left: 0;
+    &.w1000 {
+        .create-workspace-dialog {
+            min-width: 800px;
+        }
+    }
+    &.position-fixed {
+        position: fixed;
+    }
     .create-workspace-overlay {
         position: absolute;
         width: 100vw;
@@ -28,9 +38,11 @@
         animation: slide-in-from-top 0.5s linear 0.05s forwards;
 
         label {
-            width: 100%;
-            line-height: 54px;
-            color: rgba($color: $primary_accent, $alpha: 1);
+            &.title {
+                width: 100%;
+                line-height: 54px;
+                color: rgba($color: $primary_accent, $alpha: 1);
+            }
         }
 
         input {

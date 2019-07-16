@@ -1,6 +1,7 @@
 import { IContentItem, IPhotoContent, ContentType, MediaSourceType, IVideoContent, IArticleContent, ILinkContent, ISocialMediaContent, INoteContent } from "./types";
 import * as _ from 'lodash';
 import { IStickyNote } from "../../api/api-types";
+import { GetRandomId } from "./constants";
 
 const ItemSize = 5;
 
@@ -43,7 +44,7 @@ export function BuildStickyContentItem(data: IStickyNote): IContentItem<INoteCon
         tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
         annotations: [
             {
-                id: `${Math.floor(Math.random() * 10e10)}`,
+                id: GetRandomId(),
                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
             }
         ]
@@ -63,7 +64,7 @@ export function GetSampleStickyItem(data): IContentItem<INoteContent> {
         tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
         annotations: [
             {
-                id: `${Math.floor(Math.random() * 10e10)}`,
+                id: GetRandomId(),
                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
             }
         ]
@@ -74,7 +75,7 @@ export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
     const result = [];
     _.range(ItemSize).forEach(() => {
         const item: IContentItem<IPhotoContent> = {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             title: 'Sample Photo Lorem ipsum',
             contentType: ContentType.Photo,
             contentData: {
@@ -91,7 +92,7 @@ export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
-                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    id: GetRandomId(),
                     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
                 }
             ]
@@ -105,7 +106,7 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
     const result = [];
     _.range(ItemSize).forEach(() => {
         const item: IContentItem<IVideoContent> = {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             title: 'Sample Photo Lorem ipsum',
             contentType: ContentType.Video,
             contentData: {
@@ -132,7 +133,7 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
-                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    id: GetRandomId(),
                     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
                 }
             ]
@@ -147,7 +148,7 @@ export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
     const result = [];
     _.range(ItemSize).forEach(() => {
         const item: IContentItem<IArticleContent> = {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             title: 'https://dl.acm.org/citation.cfm?id=1357127',
             contentType: ContentType.Article,
             contentData: {
@@ -177,7 +178,7 @@ export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
-                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    id: GetRandomId(),
                     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
                 }
             ]
@@ -208,7 +209,7 @@ export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
     ];
     items.forEach((data) => {
         const item: IContentItem<ILinkContent> = {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             title: data.ogSiteName,
             contentType: ContentType.Link,
             contentData: data,
@@ -217,7 +218,7 @@ export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
-                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    id: GetRandomId(),
                     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
                 }
             ]
@@ -231,7 +232,7 @@ export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaCont
     const result = [];
     _.range(ItemSize).forEach((data) => {
         const item: IContentItem<ISocialMediaContent> = {
-            id: `${Math.floor(Math.random() * 10e10)}`,
+            id: GetRandomId(),
             title: null,
             contentType: ContentType.SocialMedia,
             contentData: {
@@ -248,7 +249,7 @@ export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaCont
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
             annotations: [
                 {
-                    id: `${Math.floor(Math.random() * 10e10)}`,
+                    id: GetRandomId(),
                     message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
                 }
             ]
