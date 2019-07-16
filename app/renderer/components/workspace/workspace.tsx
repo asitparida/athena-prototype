@@ -45,18 +45,24 @@ class Workspace extends React.Component<any, any> {
         const headers: IGroupHeader[] = [];
         const groups = _groups || [];
         if (groups && groups.length > 0) {
-            headers.push({
+            const header: IGroupHeader = {
                 id: `${Math.floor(Math.random() * 10e8)}`,
                 name: 'Header',
-                groups: [groups[0].id, groups[1].id],
+                groups: [],
                 drawProps: {}
-            });
-            headers.push({
+            }
+            if (groups[0]) { header.groups.push({ id: groups[0].id, name: groups[0].title})}
+            if (groups[1]) { header.groups.push({ id: groups[1].id, name: groups[1].title})}
+            headers.push(header);
+            const header2: IGroupHeader = {
                 id: `${Math.floor(Math.random() * 10e8)}`,
                 name: 'Header',
-                groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+                groups: [],
                 drawProps: {}
-            });
+            }
+            if (groups[groups.length - 1]) { header2.groups.push({ id: groups[groups.length - 1].id, name: groups[groups.length - 1].title})}
+            if (groups[groups.length - 2]) { header2.groups.push({ id: groups[groups.length - 2].id, name: groups[groups.length - 2].title})}
+            headers.push(header2);
         }
         return headers;
     }
@@ -131,6 +137,11 @@ class Workspace extends React.Component<any, any> {
             dumpGroundWidth: width
         });
     }
+    updateHeaders(headers) {
+        this.setState({
+            headers
+        });
+    }
     render() {
         const rteWidth = {
             width: `${this.state.rteWidth}px`
@@ -159,7 +170,7 @@ class Workspace extends React.Component<any, any> {
                 }
                 {
                     this.props.manageHeadersDialog &&
-                    <ManageHeaders fixed={true} groups={this.state.groups} headers={this.state.headers} />
+                    <ManageHeaders fixed={true} groups={this.state.groups} headers={this.state.headers} updateHeaders={this.updateHeaders.bind(this)} />
                 }
             </div>
         );

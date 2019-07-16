@@ -19,6 +19,7 @@
     "max-line-length": false,
     "label-position": false,
     "no-unused-expression": false,
-    "max-classes-per-file": false
+    "max-classes-per-file": false,
+    "variable-name": false
   }
 }

@@ -20,7 +20,9 @@ const mapDispatchToProps = (dispatch) => {
 const itemSource = {
     drop: (props, monitor) => {
         const dropItemResult = monitor.getItem();
-        DumpingGroundTransfer.next(dropItemResult.dragObject);
+        if (dropItemResult.dragObject) {
+            props.groupAdded(dropItemResult.dragObject);
+        }
     }
 }
 
@@ -32,9 +34,20 @@ function collect(connector, monitor) {
 }
 
 class HeadersBlockItem extends React.Component<{
-    data?: IGroupHeader
-} | any, any> {
-
+    data?: IGroupHeader,
+    removeGroup?: () => {}
+} | any, {
+}> {
+    constructor(props) {
+        super(props);
+    }
+    removeGroup(id) {
+        console.log(this.props);
+        this.props.removeGroup(id);
+    }
+    onHeaderChange(e) {
+        this.props.updateHeaderTitle(e.target.value)
+    }
     render() {
         const { connectDropTarget, isOver, data } = this.props;
         return connectDropTarget(
@@ -42,16 +55,16 @@ class HeadersBlockItem extends React.Component<{
                 {
                     this.props.data &&
                     <React.Fragment>
-                        <input className='header-title' defaultValue={this.props.data.name} />
+                        <input className='header-title' value={this.props.data.name} onChange={this.onHeaderChange.bind(this)} />
                         {
                             <div className='groups-block'>
                                 {
                                     this.props.data.groups.length > 0 &&
                                     this.props.data.groups.map((group, i) => {
                                         return (
-                                            <div key={group} className={`groups-block-item-wrapper`}>
-                                                <label className='group-title'>{group}</label>
-                                                <i className='material-icons'>close</i>
+                                            <div key={group.id} className={`groups-block-item-wrapper`}>
+                                                <label className='group-title'>{group.name}</label>
+                                                <i className='material-icons' onClick={this.removeGroup.bind(this, group.id)}>close</i>
                                             </div>);
                                     })
                                 }

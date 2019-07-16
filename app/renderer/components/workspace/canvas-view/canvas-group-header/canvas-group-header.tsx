@@ -27,8 +27,8 @@ class CanvasGroupHeader extends React.Component<{
         let right = Number.MIN_VALUE;
         const groups = this.props.data.groups;
         if (groups.length > 0) {
-            this.props.data.groups.forEach(groupId => {
-                const elem = document.getElementById(GetGroupWrapperId(groupId));
+            this.props.data.groups.forEach(group => {
+                const elem = document.getElementById(GetGroupWrapperId(group.id));
                 if (elem) {
                     groupProps.push({
                         top: elem.offsetTop,
@@ -57,6 +57,11 @@ class CanvasGroupHeader extends React.Component<{
         }
     }
     componentDidMount() {
+        setTimeout(() => {
+            this.buildHeader();
+        });
+    }
+    componentDidUpdate() {
         setTimeout(() => {
             this.buildHeader();
         });

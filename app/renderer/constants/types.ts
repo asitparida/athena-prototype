@@ -226,7 +226,7 @@ export interface ISideBarNavItem {
 export interface IGroupHeader {
     id: string;
     name: string;
-    groups: [];
+    groups: Array<{ id?: string; name?: string}>;
     drawProps?: {
         groupProps?: Array<{top: number, left: number }>;
         top?: number;

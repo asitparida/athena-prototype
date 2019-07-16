@@ -97,7 +97,9 @@ class CanvasView extends React.Component<{
         this.processGroupProps();
     }
     componentDidUpdate(props) {
-        if (_.isEqual(this.props.groups, props.groups) === false) {
+        if (
+            _.isEqual(this.props.groups, props.groups) === false ||
+            _.isEqual(this.props.headers, props.headers) === false) {
             this.processGroupProps();
         }
     }

@@ -71724,8 +71724,8 @@ function (_React$Component) {
       var groups = this.props.data.groups;
 
       if (groups.length > 0) {
-        this.props.data.groups.forEach(function (groupId) {
-          var elem = document.getElementById(transforms_1.GetGroupWrapperId(groupId));
+        this.props.data.groups.forEach(function (group) {
+          var elem = document.getElementById(transforms_1.GetGroupWrapperId(group.id));
 
           if (elem) {
             groupProps.push({
@@ -71763,6 +71763,15 @@ function (_React$Component) {
 
       setTimeout(function () {
         _this2.buildHeader();
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this3 = this;
+
+      setTimeout(function () {
+        _this3.buildHeader();
       });
     }
   }, {
@@ -71979,7 +71988,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(props) {
-      if (_.isEqual(this.props.groups, props.groups) === false) {
+      if (_.isEqual(this.props.groups, props.groups) === false || _.isEqual(this.props.headers, props.headers) === false) {
         this.processGroupProps();
       }
     }
@@ -72530,8 +72539,6 @@ var react_redux_1 = require("react-redux");
 
 var types_1 = require("../../constants/types");
 
-var observables_1 = require("../../access/observables/observables");
-
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
   return {};
@@ -72546,7 +72553,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var itemSource = {
   drop: function drop(props, monitor) {
     var dropItemResult = monitor.getItem();
-    observables_1.DumpingGroundTransfer.next(dropItemResult.dragObject);
+
+    if (dropItemResult.dragObject) {
+      props.groupAdded(dropItemResult.dragObject);
+    }
   }
 };
 
@@ -72562,15 +72572,28 @@ var HeadersBlockItem =
 function (_React$Component) {
   _inherits(HeadersBlockItem, _React$Component);
 
-  function HeadersBlockItem() {
+  function HeadersBlockItem(props) {
     _classCallCheck(this, HeadersBlockItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(HeadersBlockItem).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(HeadersBlockItem).call(this, props));
   }
 
   _createClass(HeadersBlockItem, [{
+    key: "removeGroup",
+    value: function removeGroup(id) {
+      console.log(this.props);
+      this.props.removeGroup(id);
+    }
+  }, {
+    key: "onHeaderChange",
+    value: function onHeaderChange(e) {
+      this.props.updateHeaderTitle(e.target.value);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var _this$props = this.props,
           connectDropTarget = _this$props.connectDropTarget,
           isOver = _this$props.isOver,
@@ -72579,17 +72602,19 @@ function (_React$Component) {
         className: "headers-block-item-wrapper ".concat(isOver ? 'entity-over' : '')
       }, this.props.data && React.createElement(React.Fragment, null, React.createElement("input", {
         className: "header-title",
-        defaultValue: this.props.data.name
+        value: this.props.data.name,
+        onChange: this.onHeaderChange.bind(this)
       }), React.createElement("div", {
         className: "groups-block"
       }, this.props.data.groups.length > 0 && this.props.data.groups.map(function (group, i) {
         return React.createElement("div", {
-          key: group,
+          key: group.id,
           className: "groups-block-item-wrapper"
         }, React.createElement("label", {
           className: "group-title"
-        }, group), React.createElement("i", {
-          className: "material-icons"
+        }, group.name), React.createElement("i", {
+          className: "material-icons",
+          onClick: _this.removeGroup.bind(_this, group.id)
         }, "close"));
       }))), !this.props.data && React.createElement(React.Fragment, null, React.createElement("div", {
         className: "new-header"
@@ -72606,7 +72631,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.HEADER_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(HeadersBlockItem));
-},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../constants/types":"constants/types.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/manage-headers/groups-block.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../constants/types":"constants/types.ts"}],"components/manage-headers/groups-block.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72766,6 +72791,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var _ = __importStar(require("lodash"));
+
 var redux_1 = require("redux");
 
 var AppActions = __importStar(require("../../access/actions/appActions"));
@@ -72806,7 +72833,11 @@ function (_React$Component) {
     _classCallCheck(this, ManageHeaders);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ManageHeaders).call(this, props));
-    _this.state = {};
+    _this.state = {
+      headers: [],
+      groups: [],
+      newGroupId: constants_1.GetRandomId()
+    };
     return _this;
   }
 
@@ -72816,23 +72847,153 @@ function (_React$Component) {
       this.props.actions.hideTopicCreator();
     }
   }, {
-    key: "saveHeaders",
-    value: function saveHeaders() {
-      console.log('saveHeaders');
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props.groups);
-      console.log(this.props.headers);
+      var usedGroupHeaders = [];
+      this.props.headers.forEach(function (head) {
+        head.groups.forEach(function (group) {
+          if (_.indexOf(usedGroupHeaders, group.id)) {
+            usedGroupHeaders.push(group.id);
+          }
+        });
+      });
+      var groups = [].concat(this.props.groups);
+      groups.forEach(function (group) {
+        group.available = _.indexOf(usedGroupHeaders, group.id) !== -1;
+      });
+      this.setState({
+        headers: this.props.headers,
+        groups: groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "saveHeaders",
+    value: function saveHeaders() {
+      var headers = this.state.headers.filter(function (head) {
+        return head.groups.length > 0;
+      });
+      this.props.updateHeaders(headers);
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "groupAdded",
+    value: function groupAdded(headerId) {
+      var isNew = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var group = arguments.length > 2 ? arguments[2] : undefined;
+      var headers = [].concat(this.state.headers);
+      var newHeaders = [];
+      var newGroupProps = {
+        id: group.id,
+        name: group.title
+      };
+
+      if (isNew) {
+        var newHeader = {
+          groups: [newGroupProps],
+          id: headerId,
+          name: 'New Group'
+        };
+        newHeaders = headers;
+        newHeaders.push(newHeader);
+      } else {
+        headers.forEach(function (head) {
+          var _groups = [].concat(head.groups);
+
+          if (head.id === headerId) {
+            _groups = [].concat(_groups, newGroupProps);
+          }
+
+          newHeaders.push({
+            groups: _groups,
+            id: head.id,
+            name: head.name
+          });
+        });
+      }
+
+      var usedGroupHeaders = [];
+      newHeaders.forEach(function (head) {
+        head.groups.forEach(function (item) {
+          if (_.indexOf(usedGroupHeaders, item.id)) {
+            usedGroupHeaders.push(item.id);
+          }
+        });
+      });
+      var groups = [].concat(this.state.groups);
+      groups.forEach(function (item) {
+        item.available = _.indexOf(usedGroupHeaders, item.id) !== -1;
+      });
+      this.setState({
+        headers: newHeaders,
+        groups: groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "removeGroup",
+    value: function removeGroup(headerId, groupId) {
+      var headers = [].concat(this.state.headers);
+      var newHeaders = [];
+      headers.forEach(function (head) {
+        // tslint:disable-next-line:variable-name
+        var _groups = [].concat(head.groups);
+
+        if (head.id === headerId) {
+          _groups = _groups.filter(function (group) {
+            return group.id !== groupId;
+          });
+        }
+
+        newHeaders.push({
+          groups: [].concat(_groups),
+          id: head.id,
+          name: head.name
+        });
+      });
+      var usedGroupHeaders = [];
+      newHeaders.forEach(function (head) {
+        head.groups.forEach(function (item) {
+          if (_.indexOf(usedGroupHeaders, item.id)) {
+            usedGroupHeaders.push(item.id);
+          }
+        });
+      });
+      var groups = [].concat(this.state.groups);
+      groups.forEach(function (item) {
+        item.available = _.indexOf(usedGroupHeaders, item.id) !== -1;
+      });
+      this.setState({
+        headers: newHeaders,
+        // groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "updateHeaderTitle",
+    value: function updateHeaderTitle(headerId, title) {
+      var headers = [].concat(this.state.headers);
+      var header = headers.find(function (head) {
+        return head.id === headerId;
+      });
+
+      if (header) {
+        header.name = title;
+      }
+
+      this.setState({
+        headers: headers
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          groups = _this$props.groups,
-          headers = _this$props.headers;
-      var newGroupId = constants_1.GetRandomId();
+      var _this2 = this;
+
+      var _this$state = this.state,
+          headers = _this$state.headers,
+          newGroupId = _this$state.newGroupId,
+          groups = _this$state.groups;
       return react_dom_1.default.createPortal(React.createElement("div", {
         className: "create-workspace w1000"
       }, React.createElement("div", {
@@ -72846,18 +73007,28 @@ function (_React$Component) {
         className: "headers-block"
       }, headers.length > 0 && headers.map(function (item, i) {
         return React.createElement(headers_block_1.default, {
+          updateHeaderTitle: _this2.updateHeaderTitle.bind(_this2, item.id),
           key: item.id,
-          data: item
+          data: item,
+          groupAdded: _this2.groupAdded.bind(_this2, item.id, false),
+          removeGroup: _this2.removeGroup.bind(_this2, item.id)
         });
       }), React.createElement(headers_block_1.default, {
-        key: newGroupId
-      })), React.createElement("div", {
+        updateHeaderTitle: this.updateHeaderTitle.bind(this, newGroupId),
+        key: newGroupId,
+        groupAdded: this.groupAdded.bind(this, newGroupId, true),
+        removeGroup: this.removeGroup.bind(this, newGroupId)
+      })), React.createElement("label", {
+        className: "avaialble-group-label"
+      }, "Avaialble Groups"), React.createElement("div", {
         className: "groups-block"
       }, groups.length > 0 && groups.map(function (item, i) {
-        return React.createElement(groups_block_1.default, {
-          key: item.id,
-          data: item
-        });
+        if (!item.available) {
+          return React.createElement(groups_block_1.default, {
+            key: item.id,
+            data: item
+          });
+        }
       })), React.createElement("div", {
         className: "create-workspace-actions"
       }, React.createElement("button", {
@@ -72871,7 +73042,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
-},{"react":"../../node_modules/react/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72999,18 +73170,50 @@ function (_React$Component) {
       var groups = _groups || [];
 
       if (groups && groups.length > 0) {
-        headers.push({
+        var header = {
           id: "".concat(Math.floor(Math.random() * 10e8)),
           name: 'Header',
-          groups: [groups[0].id, groups[1].id],
+          groups: [],
           drawProps: {}
-        });
-        headers.push({
+        };
+
+        if (groups[0]) {
+          header.groups.push({
+            id: groups[0].id,
+            name: groups[0].title
+          });
+        }
+
+        if (groups[1]) {
+          header.groups.push({
+            id: groups[1].id,
+            name: groups[1].title
+          });
+        }
+
+        headers.push(header);
+        var header2 = {
           id: "".concat(Math.floor(Math.random() * 10e8)),
           name: 'Header',
-          groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+          groups: [],
           drawProps: {}
-        });
+        };
+
+        if (groups[groups.length - 1]) {
+          header2.groups.push({
+            id: groups[groups.length - 1].id,
+            name: groups[groups.length - 1].title
+          });
+        }
+
+        if (groups[groups.length - 2]) {
+          header2.groups.push({
+            id: groups[groups.length - 2].id,
+            name: groups[groups.length - 2].title
+          });
+        }
+
+        headers.push(header2);
       }
 
       return headers;
@@ -73127,6 +73330,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "updateHeaders",
+    value: function updateHeaders(headers) {
+      this.setState({
+        headers: headers
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var rteWidth = {
@@ -73158,7 +73368,8 @@ function (_React$Component) {
       }))), this.props.manageHeadersDialog && React.createElement(manage_headers_1.default, {
         fixed: true,
         groups: this.state.groups,
-        headers: this.state.headers
+        headers: this.state.headers,
+        updateHeaders: this.updateHeaders.bind(this)
       }));
     }
   }]);
@@ -81127,7 +81338,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60278" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49718" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
