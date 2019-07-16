@@ -228,7 +228,7 @@
                 &.active {
                     label {
                         color: rgba(#000, 1);
-                        border-right: 5px solid rgba(#000, 0.30);
+                        border-right: 5px solid rgba($primary_accent, 1);
                         .name { font-weight: 600; }
                     }
                     opacity: 1;

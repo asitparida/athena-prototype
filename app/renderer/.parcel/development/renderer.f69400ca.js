@@ -65972,6 +65972,7 @@ function (_React$Component) {
               currentContentImage = constants_1.MediaTypeImages.vimeo;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Youtube) {
               currentContentImage = constants_1.MediaTypeImages.youtube;
+              currentContentImageClass = currentContentImageClass + ' youtube';
             } else {
               currentContentImage = constants_1.MediaTypeImages.videoPlayer;
             }
@@ -66504,7 +66505,7 @@ function GetDummifiedCollection(items) {
 
 exports.GetDummifiedCollection = GetDummifiedCollection;
 
-function GetSampleItem(type) {
+function GetSampleItem(type, data) {
   switch (type) {
     case types_1.ContentType.Photo:
       return _.sample(GetSamplePhotoItems());
@@ -66520,6 +66521,9 @@ function GetSampleItem(type) {
 
     case types_1.ContentType.SocialMedia:
       return _.sample(GetSampleSocialMediaItems());
+
+    case types_1.ContentType.Sticky:
+      return GetSampleStickyItem(data);
   }
 }
 
@@ -66546,6 +66550,28 @@ function BuildStickyContentItem(data) {
 }
 
 exports.BuildStickyContentItem = BuildStickyContentItem;
+
+function GetSampleStickyItem(data) {
+  return {
+    id: data.id,
+    title: null,
+    contentType: types_1.ContentType.Sticky,
+    contentData: {
+      noteText: data.text
+    },
+    sourcePreviewAvailable: false,
+    sourceType: types_1.MediaSourceType.Browser,
+    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
+      return "tag-".concat(t);
+    }),
+    annotations: [{
+      id: "".concat(Math.floor(Math.random() * 10e10)),
+      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+    }]
+  };
+}
+
+exports.GetSampleStickyItem = GetSampleStickyItem;
 
 function GetSamplePhotoItems() {
   var result = [];
@@ -67359,6 +67385,13 @@ function isEqual(a, b) {
 }
 
 exports.isEqual = isEqual;
+
+function GetGroupWrapperId(id) {
+  return "GROUP-".concat(id);
+}
+
+exports.GetGroupWrapperId = GetGroupWrapperId;
+;
 },{}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -71020,6 +71053,8 @@ var itemSource = {
         to: null,
         data: props.data
       };
+      console.log(props);
+      console.log(data);
       observables_1.WorkspaceContentTransfer.next(data);
     }
   }
@@ -71218,7 +71253,8 @@ function (_React$Component) {
           height: props.height
         });
       });
-      var data = dummy_data_1.GetSampleItem(this.props.data.type);
+      var data = dummy_data_1.GetSampleItem(this.props.data.type, this.props.data);
+      console.log(this.props.data);
       data.id = this.props.data.id;
       this.setState({
         contentData: data
@@ -71235,7 +71271,8 @@ function (_React$Component) {
       var props = this.props.data.props;
       var styles = {
         width: "".concat(props.width, "px")
-      };
+      }; // console.log(styles);
+
       var inheritDimensions = false;
 
       if (!props.height) {
@@ -71473,6 +71510,8 @@ require("./canvas-group-wrapper.scss");
 
 var canvas_group_1 = __importDefault(require("../canvas-group/canvas-group"));
 
+var transforms_1 = require("../../../../transforms");
+
 var CanvasGroupWrapper =
 /*#__PURE__*/
 function (_React$Component) {
@@ -71518,7 +71557,8 @@ function (_React$Component) {
       };
       return React.createElement("div", {
         className: "group-wrapper",
-        style: styles
+        style: styles,
+        id: transforms_1.GetGroupWrapperId(this.props.data.id)
       }, React.createElement("input", {
         className: "group-title",
         value: this.state.groupTitle,
@@ -71526,6 +71566,8 @@ function (_React$Component) {
       }), React.createElement(canvas_group_1.default, {
         data: this.props.data,
         onPropsChange: this.groupPropsChanged.bind(this)
+      }), this.props.showAnchor && React.createElement("div", {
+        className: "group-anchor"
       }));
     }
   }]);
@@ -71534,7 +71576,175 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasGroupWrapper;
-},{"react":"../../node_modules/react/index.js","./canvas-group-wrapper.scss":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss","../canvas-group/canvas-group":"components/workspace/canvas-view/canvas-group/canvas-group.tsx"}],"components/workspace/canvas-view/canvas-view.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-group-wrapper.scss":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss","../canvas-group/canvas-group":"components/workspace/canvas-view/canvas-group/canvas-group.tsx","../../../../transforms":"transforms.ts"}],"components/workspace/canvas-view/canvas-group-header/canvas-group-header.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-header/canvas-group-header.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./canvas-group-header.scss");
+
+var transforms_1 = require("../../../../transforms");
+
+var CanvasGroupHeader =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CanvasGroupHeader, _React$Component);
+
+  function CanvasGroupHeader(props) {
+    var _this;
+
+    _classCallCheck(this, CanvasGroupHeader);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CanvasGroupHeader).call(this, props));
+    _this.state = {
+      left: 0,
+      top: 0,
+      width: 0
+    };
+    return _this;
+  }
+
+  _createClass(CanvasGroupHeader, [{
+    key: "buildHeader",
+    value: function buildHeader() {
+      var groupProps = [];
+      var top = Number.MAX_VALUE;
+      var left = Number.MAX_VALUE;
+      var right = Number.MIN_VALUE;
+      var groups = this.props.data.groups;
+
+      if (groups.length > 0) {
+        this.props.data.groups.forEach(function (groupId) {
+          var elem = document.getElementById(transforms_1.GetGroupWrapperId(groupId));
+
+          if (elem) {
+            groupProps.push({
+              top: elem.offsetTop,
+              left: elem.offsetLeft + elem.offsetWidth / 2
+            });
+            top = Math.min(top, elem.offsetTop);
+            left = Math.min(left, elem.offsetLeft);
+            right = Math.max(right, elem.offsetLeft + elem.offsetWidth);
+          }
+        });
+        groupProps = groupProps.sort(function (a, b) {
+          return a.left - b.left;
+        });
+        var midLine = {
+          left: groupProps[0].left,
+          right: groupProps[groupProps.length - 1].left,
+          width: groupProps[groupProps.length - 1].left - groupProps[0].left,
+          top: top
+        };
+        var width = right - left;
+        this.setState({
+          groupProps: groupProps,
+          left: left,
+          top: top,
+          width: width,
+          midLine: midLine
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.buildHeader();
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          top = _this$state.top,
+          left = _this$state.left,
+          width = _this$state.width,
+          midLine = _this$state.midLine,
+          groupProps = _this$state.groupProps;
+      var styles = {
+        left: "".concat(left, "px"),
+        top: "".concat(top - 144, "px"),
+        width: "".concat(width, "px")
+      };
+      var midLineStyles = {};
+
+      if (midLine) {
+        midLineStyles = {
+          left: "".concat(midLine.left, "px"),
+          top: "".concat(midLine.top - 48, "px"),
+          width: "".concat(midLine.width, "px")
+        };
+      }
+
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "group-header",
+        style: styles
+      }, React.createElement("div", {
+        className: "group-header-title"
+      }, this.props.data.name)), midLine && React.createElement("div", {
+        className: "mid-line",
+        style: midLineStyles
+      }), groupProps && groupProps.length > 0 && groupProps.map(function (prop, i) {
+        var dropLineStyles = {};
+        dropLineStyles = {
+          left: "".concat(prop.left, "px"),
+          top: "".concat(midLine.top - 48, "px"),
+          height: "48px"
+        };
+        return React.createElement("div", {
+          key: i,
+          className: "drop-line",
+          style: dropLineStyles
+        });
+      }));
+    }
+  }]);
+
+  return CanvasGroupHeader;
+}(React.Component);
+
+exports.default = CanvasGroupHeader;
+},{"react":"../../node_modules/react/index.js","./canvas-group-header.scss":"components/workspace/canvas-view/canvas-group-header/canvas-group-header.scss","../../../../transforms":"transforms.ts"}],"components/workspace/canvas-view/canvas-view.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71585,6 +71795,8 @@ var constants_1 = require("../../../constants/constants");
 
 var _ = __importStar(require("lodash"));
 
+var canvas_group_header_1 = __importDefault(require("./canvas-group-header/canvas-group-header"));
+
 var CanvasView =
 /*#__PURE__*/
 function (_React$Component) {
@@ -71600,7 +71812,9 @@ function (_React$Component) {
     _this.state = {
       boardGroups: [],
       positionX: 0,
-      positionY: 0
+      positionY: 0,
+      headers: [],
+      showHeaders: false
     };
     return _this;
   }
@@ -71672,8 +71886,28 @@ function (_React$Component) {
     value: function processGroupProps() {
       var _this3 = this;
 
+      var headers = [];
+      var groups = this.props.groups || [];
+
+      if (groups && groups.length > 0) {
+        headers.push({
+          id: "".concat(Math.floor(Math.random() * 10e8)),
+          name: 'Header',
+          groups: [groups[0].id, groups[1].id],
+          drawProps: {}
+        });
+        headers.push({
+          id: "".concat(Math.floor(Math.random() * 10e8)),
+          name: 'Header',
+          groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+          drawProps: {}
+        });
+      }
+
       this.setState({
-        boardGroups: this.props.groups
+        boardGroups: this.props.groups,
+        headers: headers,
+        showHeaders: true
       });
       window.requestAnimationFrame(function () {
         _this3.adjustPosition(1, false);
@@ -71716,8 +71950,11 @@ function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var _this$state$boardGrou = this.state.boardGroups,
-          boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou;
+      var _this$state = this.state,
+          _this$state$boardGrou = _this$state.boardGroups,
+          boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou,
+          headers = _this$state.headers,
+          showHeaders = _this$state.showHeaders;
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "board-group-outer"
       }, boardGroups.length > 0 && React.createElement("div", {
@@ -71726,11 +71963,17 @@ function (_React$Component) {
         className: "board-group-inner"
       }, boardGroups.map(function (bg, i) {
         return React.createElement(canvas_group_wrapper_1.default, {
+          showAnchor: false,
           onPropsChange: _this4.onGroupPropsChange.bind(_this4, i),
           parentX: _this4.state.positionX,
           parentY: _this4.state.positionY,
           key: bg.id,
           data: bg
+        });
+      }), showHeaders && headers.map(function (header, i) {
+        return React.createElement(canvas_group_header_1.default, {
+          data: header,
+          key: header.id
         });
       })))), React.createElement("div", {
         className: "workspace-actions"
@@ -71754,7 +71997,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasView;
-},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","lodash":"../../node_modules/lodash/lodash.js"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","lodash":"../../node_modules/lodash/lodash.js","./canvas-group-header/canvas-group-header":"components/workspace/canvas-view/canvas-group-header/canvas-group-header.tsx"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -71823,7 +72066,7 @@ function (_React$Component) {
   _createClass(ListGroupItem, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var data = dummy_data_1.GetSampleItem(this.props.data.type);
+      var data = dummy_data_1.GetSampleItem(this.props.data.type, this.props.data);
       data.id = this.props.data.id;
       this.setState({
         contentData: data
@@ -71946,18 +72189,37 @@ var ListGroupWrapper =
 function (_React$Component) {
   _inherits(ListGroupWrapper, _React$Component);
 
-  function ListGroupWrapper() {
+  function ListGroupWrapper(props) {
+    var _this;
+
     _classCallCheck(this, ListGroupWrapper);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ListGroupWrapper).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListGroupWrapper).call(this, props));
+    _this.state = {
+      title: _this.props.group.title
+    };
+    return _this;
   }
 
   _createClass(ListGroupWrapper, [{
+    key: "onTextChange",
+    value: function onTextChange(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
         className: "workspace-list-group"
-      }, React.createElement("h1", null, this.props.group.title), React.createElement("div", {
+      }, React.createElement("input", {
+        placeholder: "What would like to name this group ?",
+        value: this.state.title,
+        onChange: this.onTextChange.bind(this)
+      }), React.createElement("textarea", {
+        placeholder: "What are your thoughts ?"
+      }), React.createElement("div", {
         className: "workspace-list-group-items"
       }, React.createElement("div", {
         className: "workspace-list-group-items-inner"
@@ -72319,7 +72581,7 @@ function (_React$Component) {
             type: contentData.contentType,
             props: {
               height: constants_1.ItemHeight,
-              width: constants_1.ItemWidth
+              width: constants_1.ItemWidth + 20
             }
           });
           groups = (_ref2 = []).concat.apply(_ref2, _toConsumableArray(groups).concat([group]));
@@ -72336,6 +72598,7 @@ function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
+      this.transferSubscription.unsubscribe();
       observables_1.ShowDumpBarAction$.next(false);
       observables_1.ShowRTEAction$.next(false);
       this.props.actions.hideWorkspaceActions();
@@ -80315,7 +80578,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62433" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -84,7 +84,8 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
                 width: props.width, height: props.height
             });
         });
-        const data = GetSampleItem((this.props.data as IBoardContent).type);
+        const data = GetSampleItem((this.props.data as IBoardContent).type, this.props.data);
+        console.log(this.props.data);
         data.id = (this.props.data as IBoardContent).id;
         this.setState({
             contentData: data
@@ -98,6 +99,7 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
         const styles = {
             width: `${props.width}px`,
         }
+        // console.log(styles);
         let inheritDimensions = false;
         if (!props.height) {
             // tslint:disable-next-line:no-string-literal

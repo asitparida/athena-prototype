@@ -69,3 +69,5 @@ export function isEqual(a, b) {
     }
     return false;
 }
+
+export function GetGroupWrapperId(id) { return `GROUP-${id}`};

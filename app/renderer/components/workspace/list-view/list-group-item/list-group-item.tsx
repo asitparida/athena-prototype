@@ -14,7 +14,7 @@ class ListGroupItem extends React.Component<{ data: IBoardContent }, { contentDa
         };
     }
     componentDidMount() {
-        const data = GetSampleItem((this.props.data as IBoardContent).type);
+        const data = GetSampleItem((this.props.data as IBoardContent).type, this.props.data);
         data.id = (this.props.data as IBoardContent).id;
         this.setState({
             contentData: data

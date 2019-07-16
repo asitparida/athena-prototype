@@ -96,6 +96,7 @@ export class ContentItemWrapper extends React.Component<{
                     currentContentImage = MediaTypeImages.vimeo;
                 } else if (this.props.data.sourceType === MediaSourceType.Youtube) {
                     currentContentImage = MediaTypeImages.youtube;
+                    currentContentImageClass = currentContentImageClass + ' youtube';
                 } else {
                     currentContentImage = MediaTypeImages.videoPlayer;
                 }

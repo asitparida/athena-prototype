@@ -19,17 +19,38 @@ export function GetDummifiedCollection(items) {
     ];
 }
 
-export function GetSampleItem(type: ContentType): IContentItem<any> {
+export function GetSampleItem(type: ContentType, data?: any): IContentItem<any> {
     switch (type) {
         case ContentType.Photo: return _.sample(GetSamplePhotoItems());
         case ContentType.Video: return _.sample(GetSampleVideoItems());
         case ContentType.Article: return _.sample(GetSampleArticleItems());
         case ContentType.Link: return _.sample(GetSampleLinkItems());
         case ContentType.SocialMedia: return _.sample(GetSampleSocialMediaItems());
+        case ContentType.Sticky: return GetSampleStickyItem(data);
     }
 }
 
 export function BuildStickyContentItem(data: IStickyNote): IContentItem<INoteContent> {
+    return {
+        id: data.id,
+        title: null,
+        contentType: ContentType.Sticky,
+        contentData: {
+            noteText: data.text
+        },
+        sourcePreviewAvailable: false,
+        sourceType: MediaSourceType.Browser,
+        tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+        annotations: [
+            {
+                id: `${Math.floor(Math.random() * 10e10)}`,
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
+        ]
+    };
+}
+
+export function GetSampleStickyItem(data): IContentItem<INoteContent> {
     return {
         id: data.id,
         title: null,

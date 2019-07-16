@@ -1,15 +1,19 @@
 .inview-wrapper {
-    width:100%;
+    width: 100%;
 }
+
 .inner-content-holder {
     position: relative;
     display: flex;
     flex-flow: column;
+
     &.inherit-dimensions {
-        width:100%;
+        width: 100%;
         height: 100%;
+
         .inner-content {
-            width:100%;
+            width: 100%;
+
             .inview-wrapper {
                 width: 100%;
             }
@@ -57,21 +61,41 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
             &.no-shadow {
                 background-color: rgba(#000, 0.00);
             }
+
             &.small {
                 .image {
                     width: 12px;
                     height: 12px;
                 }
             }
+
+            &.youtube {
+                &:before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-top: -5px;
+                    margin-left: -5px;
+                    background: #fff;
+                    z-index: 6;
+                }
+            }
+
             .image {
                 width: 16px;
                 height: 16px;
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
+                position: relative;
+                z-index: 7;
             }
         }
 
@@ -221,11 +245,13 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
+
         .article-title {
             font-size: small;
             color: rgba(#000, 0.80);
             text-transform: lowercase;
         }
+
         .article-author {
             font-size: x-small;
             text-transform: uppercase;
@@ -234,6 +260,7 @@
             letter-spacing: 1px;
         }
     }
+
     .link-content {
         width: 100%;
         height: 100%;
@@ -244,15 +271,18 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
+
         .link-title {
             font-size: small;
             color: rgba(#000, 0.80);
         }
+
         .link-author {
             font-size: x-small;
             color: rgba(#000, 0.50);
         }
     }
+
     .note-content {
         width: 100%;
         height: 100%;
@@ -263,6 +293,7 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
+
         .note-text {
             font-size: small;
             color: rgba(#000, 0.80);
@@ -270,6 +301,7 @@
             width: 100%;
             margin: 0;
         }
+
         &:after {
             content: '';
             position: absolute;
@@ -278,6 +310,7 @@
             background-image: linear-gradient(to bottom, rgba(#fff, 0) 20%, rgba(#fff, 1));
         }
     }
+
     .social-media-content {
         width: 100%;
         height: 100%;
@@ -289,6 +322,7 @@
         flex-flow: column;
         justify-content: space-between;
         z-index: 1;
+
         .social-media-handle {
             width: 100%;
             height: 60px;
@@ -296,12 +330,15 @@
             display: flex;
             align-items: flex-end;
             z-index: 3;
+
             &.instagram {
                 margin-top: auto;
+
                 .social-media-text {
                     color: rgba(#fff, 0.50);
                 }
             }
+
             .social-media-text {
                 order: 2;
                 flex: 1;
@@ -311,6 +348,7 @@
                 padding-left: 10px;
                 color: rgba(#000, 0.50);
             }
+
             .social-media-pic {
                 order: 1;
                 flex: initial;
@@ -322,18 +360,22 @@
                 background-size: cover;
                 box-shadow: 0px 0px 4px rgba(#000, 0.30);
                 border: 2px solid transparent;
+
                 &.twitter {
                     border-color: #1da1f2;
                 }
+
                 &.instagram {
                     border-color: #E1306C;
                 }
             }
         }
+
         .tweet-text {
             font-size: small;
             padding: 40px 15px 0 15px;
         }
+
         .insta-photo {
             width: 100%;
             height: 100%;
@@ -342,6 +384,7 @@
             position: absolute;
             top: 0;
             left: 0;
+
             &:after {
                 content: '';
                 width: 100%;

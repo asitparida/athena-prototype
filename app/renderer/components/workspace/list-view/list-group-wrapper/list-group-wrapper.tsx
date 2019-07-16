@@ -4,10 +4,22 @@ import ListGroupItem from '../list-group-item/list-group-item';
 import './list-group-wrapper.scss';
 
 class ListGroupWrapper extends React.Component<{ group: IBoardGroupWrapper }, any> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: this.props.group.title
+        };
+    }
+    onTextChange(e) {
+        this.setState({
+            title: e.target.value
+        })
+    }
     render() {
         return (
             <div className='workspace-list-group'>
-                <h1>{this.props.group.title}</h1>
+                <input placeholder='What would like to name this group ?' value={this.state.title} onChange={this.onTextChange.bind(this)} />
+                <textarea placeholder="What are your thoughts ?" />
                 <div className='workspace-list-group-items'>
                     <div className='workspace-list-group-items-inner'>
                         {

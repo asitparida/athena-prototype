@@ -24,6 +24,8 @@ const itemSource = {
                 to: null,
                 data: props.data
             };
+            console.log(props);
+            console.log(data);
             WorkspaceContentTransfer.next(data);
         }
     }

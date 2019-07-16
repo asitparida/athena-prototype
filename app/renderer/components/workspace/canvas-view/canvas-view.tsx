@@ -2,18 +2,30 @@ import * as React from 'react';
 import './canvas-view.scss';
 import CanvasGroupWrapper from './canvas-group-wrapper/canvas-group-wrapper';
 import { GroupBufffer } from '../../../constants/constants';
-import { IBoardGroupWrapper } from '../../../constants/types';
-import { isEqual } from '../../../transforms';
+import { IBoardGroupWrapper, IGroupHeader } from '../../../constants/types';
+import { isEqual, GetGroupWrapperId } from '../../../transforms';
 import * as _ from 'lodash';
+import CanvasGroupHeader from './canvas-group-header/canvas-group-header';
 
-class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[]}, { boardGroups: IBoardGroupWrapper[], positionX: number, positionY: number }> {
+class CanvasView extends React.Component<{
+    id: any,
+    groups?: IBoardGroupWrapper[]
+}, {
+    boardGroups: IBoardGroupWrapper[],
+    positionX: number,
+    positionY: number,
+    headers: IGroupHeader[],
+    showHeaders: boolean
+}> {
     currentZoom = 1;
     constructor(props) {
         super(props);
         this.state = {
             boardGroups: [],
             positionX: 0,
-            positionY: 0
+            positionY: 0,
+            headers: [],
+            showHeaders: false
         };
     }
     adjustPosition(zoom = 1, smooth = false) {
@@ -68,8 +80,26 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
         });
     }
     processGroupProps() {
+        const headers: IGroupHeader[] = [];
+        const groups = this.props.groups || [];
+        if (groups && groups.length > 0) {
+            headers.push({
+                id: `${Math.floor(Math.random() * 10e8)}`,
+                name: 'Header',
+                groups: [groups[0].id, groups[1].id],
+                drawProps: {}
+            });
+            headers.push({
+                id: `${Math.floor(Math.random() * 10e8)}`,
+                name: 'Header',
+                groups: [groups[groups.length - 1].id, groups[groups.length - 2].id, groups[groups.length - 3].id],
+                drawProps: {}
+            });
+        }
         this.setState({
-            boardGroups: this.props.groups
+            boardGroups: this.props.groups,
+            headers,
+            showHeaders: true
         })
         window.requestAnimationFrame(() => {
             this.adjustPosition(1, false);
@@ -100,7 +130,7 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
         });
     }
     render() {
-        const { boardGroups = [] } = this.state;
+        const { boardGroups = [], headers, showHeaders } = this.state;
         return (
             <React.Fragment >
                 <div className="board-group-outer">
@@ -109,7 +139,11 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
                         <div className='board-group-holder'>
                             <div className='board-group-inner'>
                                 {
-                                    boardGroups.map((bg, i) => <CanvasGroupWrapper onPropsChange={this.onGroupPropsChange.bind(this, i)} parentX={this.state.positionX} parentY={this.state.positionY} key={bg.id} data={bg} />)
+                                    boardGroups.map((bg, i) => <CanvasGroupWrapper showAnchor={false} onPropsChange={this.onGroupPropsChange.bind(this, i)} parentX={this.state.positionX} parentY={this.state.positionY} key={bg.id} data={bg} />)
+                                }
+                                {
+                                    showHeaders &&
+                                    headers.map((header, i) => <CanvasGroupHeader data={header} key={header.id} />)
                                 }
                             </div >
                         </div >

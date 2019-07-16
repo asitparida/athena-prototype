@@ -220,3 +220,15 @@ export interface ISideBarNavItem {
     subListOpen?: boolean;
     gradient?: string;
 }
+
+export interface IGroupHeader {
+    id: string;
+    name: string;
+    groups: string[];
+    drawProps?: {
+        groupProps?: Array<{top: number, left: number }>;
+        top?: number;
+        left?: number;
+        right?: number;
+    }
+}

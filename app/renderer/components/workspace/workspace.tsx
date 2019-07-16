@@ -81,7 +81,7 @@ class Workspace extends React.Component<any, any> {
             if (!toGroup) {
                 const group = GetEmptyGroup();
                 group.items.push({
-                    id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
+                    id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth + 20 }
                 });
                 groups = [].concat(...groups, group);
                 change = true;
@@ -92,6 +92,7 @@ class Workspace extends React.Component<any, any> {
         });
     }
     componentWillUnmount() {
+        this.transferSubscription.unsubscribe();
         ShowDumpBarAction$.next(false);
         ShowRTEAction$.next(false);
         this.props.actions.hideWorkspaceActions();
