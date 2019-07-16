@@ -18,11 +18,11 @@ export let API_PORT = null;
 
 app.on('ready', async () => {
     BuildMenu();
-    app.setName('Project Athena');
+    app.setName('Element');
     const splashWindow = GetSplashWindow();
     const size = electron.screen.getPrimaryDisplay().size;
     const mainWindow = new BrowserWindow({
-        title: 'Project Athena',
+        title: 'Element',
         width: size.width,
         height: size.height - 22,
         show: false,
