@@ -50,16 +50,20 @@ class Main extends Component<any, any> {
     }
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
-        ipcRenderer.send('launch-annotator');
+        if (ipcRenderer) {
+            ipcRenderer.send('launch-annotator');
+        }
         const remote = (window as any).remote;
-        const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
-        fetch(api)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            }, (data) => {
-                console.log(data);
-            });
+        if (remote) {
+            const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
+            fetch(api)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                }, (data) => {
+                    console.log(data);
+                });
+        }
     }
     toggleRTE() {
         this.props.actions.hideDumpBar();

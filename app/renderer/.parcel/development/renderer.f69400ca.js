@@ -56848,7 +56848,12 @@ exports.CancellabelRequests = CancellabelRequests;
 
 function GetAPIUrl() {
   var remote = window.remote;
-  return "http://localhost:".concat(remote.getCurrentWindow().API_PORT);
+
+  if (remote) {
+    return "http://localhost:".concat(remote.getCurrentWindow().API_PORT);
+  }
+
+  return null;
 }
 
 exports.GetAPIUrl = GetAPIUrl;
@@ -64464,6 +64469,11 @@ var types = __importStar(require("./actionTypes"));
 
 function SampleFetchUrl() {
   var remote = window.remote;
+
+  if (!remote) {
+    return null;
+  }
+
   var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
   return api;
 }
@@ -73053,7 +73063,10 @@ function (_React$Component) {
     key: "launchAnnotator",
     value: function launchAnnotator() {
       var ipcRenderer = window.ipcRenderer;
-      ipcRenderer.send('launch-annotator');
+
+      if (ipcRenderer) {
+        ipcRenderer.send('launch-annotator');
+      }
     }
   }, {
     key: "toggleWorkspaceView",
@@ -80461,16 +80474,23 @@ function (_react_1$Component) {
     key: "launchAnnotator",
     value: function launchAnnotator() {
       var ipcRenderer = window.ipcRenderer;
-      ipcRenderer.send('launch-annotator');
+
+      if (ipcRenderer) {
+        ipcRenderer.send('launch-annotator');
+      }
+
       var remote = window.remote;
-      var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
-      fetch(api).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        console.log(data);
-      }, function (data) {
-        console.log(data);
-      });
+
+      if (remote) {
+        var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          console.log(data);
+        }, function (data) {
+          console.log(data);
+        });
+      }
     }
   }, {
     key: "toggleRTE",

@@ -184,5 +184,8 @@ export class CancellabelRequests {
 
 export function GetAPIUrl() {
     const remote = (window as any).remote;
-    return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
+    if (remote) {
+        return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
+    }
+    return null;
 }

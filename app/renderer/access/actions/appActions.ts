@@ -3,6 +3,9 @@ import { IToastItem } from '../../constants/types';
 
 function SampleFetchUrl() {
     const remote = (window as any).remote;
+    if (!remote) {
+        return null;
+    }
     const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
     return api;
 }

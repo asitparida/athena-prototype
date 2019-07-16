@@ -47,7 +47,9 @@ class Header extends React.Component<any, any> {
     }
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
-        ipcRenderer.send('launch-annotator');
+        if (ipcRenderer) {
+            ipcRenderer.send('launch-annotator');
+        }
     }
     toggleWorkspaceView() {
         this.props.actions.toggleWorkspaceViewAsCanvas();
