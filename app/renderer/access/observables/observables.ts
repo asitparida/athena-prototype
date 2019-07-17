@@ -12,6 +12,7 @@ export const WorkspaceContentTransfer = new Subject<IWorkspaceContentTransfer>()
 export const DumpingGroundTransfer = new Subject<IContentItem<any>>();
 export const RouteInvoke = new Subject<string>();
 export const DumpingGroundSelections = new BehaviorSubject<string[]>(null);
+export const OpenAllNotesAction = new Subject<boolean>();
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {

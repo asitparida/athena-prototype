@@ -6,6 +6,7 @@ import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
 import { BuildTopicLink } from '../../transforms';
+import { OpenAllNotesAction } from '../../access/observables/observables';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Header extends React.Component<any, any> {
+    allNotesOpened = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -66,6 +68,10 @@ class Header extends React.Component<any, any> {
     manageHeaders() {
         this.props.actions.showManageHeadersDialog();
     }
+    openAllNotes() {
+        this.allNotesOpened = !this.allNotesOpened;
+        OpenAllNotesAction.next(this.allNotesOpened);
+    }
     render() {
         return (
             <React.Fragment>
@@ -96,6 +102,10 @@ class Header extends React.Component<any, any> {
                     <WorkspacePreviewer workspaces={this.state.workspaceList} />
                 }
                 <div className='app-actions right'>
+                    <div className='action' onClick={this.openAllNotes.bind(this)}>
+                        <i className='material-icons'>notes</i>
+                    </div>
+                    <div className='separator' />
                     {
                         this.props.workspaceActionsAreShown &&
                         <React.Fragment>

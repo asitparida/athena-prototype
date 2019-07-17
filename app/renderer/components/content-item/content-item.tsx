@@ -6,10 +6,11 @@ import { VideoContentItem } from './video-content';
 import { ArticleContentItem } from './article-content';
 import { LinkContentItem } from './link-content';
 import { SocialMediaContentItem } from './socialmedia-item';
-import { ContentViewerData } from '../../access/observables/observables';
+import { ContentViewerData, OpenAllNotesAction } from '../../access/observables/observables';
 import { InView } from 'react-intersection-observer';
 import { StickyContentItem } from './sticky-content';
 import { MediaTypeImages } from '../../constants/constants';
+import { Subscription } from 'rxjs';
 
 export class ContentItemWrapper extends React.Component<{
     data: IContentItem<any>,
@@ -19,13 +20,22 @@ export class ContentItemWrapper extends React.Component<{
     propsChanged?: () => {}
 }, {
     annotationAndNotesShown: boolean,
-    showEntity: boolean
+    showEntity: boolean,
+    newTagBeingAdded: boolean,
+    newTag: string,
+    tags: any,
+    annotation: any
 }> {
+    openAllNotesActionSubscription: Subscription;
     constructor(props) {
         super(props);
         this.state = {
             annotationAndNotesShown: false,
-            showEntity: false
+            showEntity: false,
+            newTagBeingAdded: false,
+            newTag: '',
+            tags: this.props.data.tags,
+            annotation: this.props.data.annotations
         };
     }
     invokeMenu($event) {
@@ -49,6 +59,42 @@ export class ContentItemWrapper extends React.Component<{
                 showEntity: true
             });
         }
+    }
+    addTag() {
+        this.setState({
+            newTag: '',
+            newTagBeingAdded: true
+        })
+    }
+    onNewTagChange(e) {
+        this.setState({
+            newTag: e.target.value
+        })
+    }
+    onAnnotationChange(e) {
+        this.setState({
+            annotation: e.target.value
+        })
+    }
+    onNewTagKeyUp(e: KeyboardEvent) {
+        if (e.keyCode === 13) {
+            const tags = [].concat(this.state.tags, this.state.newTag);
+            this.setState({
+                newTag: '',
+                newTagBeingAdded: false,
+                tags
+            })
+        }
+    }
+    componentDidMount() {
+        this.openAllNotesActionSubscription = OpenAllNotesAction.subscribe(data => {
+            this.setState({
+                annotationAndNotesShown: data
+            });
+        });
+    }
+    componentWillUnmount() {
+        this.openAllNotesActionSubscription.unsubscribe();
     }
     render() {
         const type = this.props.data.contentType;
@@ -148,6 +194,7 @@ export class ContentItemWrapper extends React.Component<{
         const contentImageStyle = {
             backgroundImage: `url(${currentContentImage})`
         };
+        const { newTagBeingAdded, tags, annotation } = this.state;
         return (
             <React.Fragment>
                 <div className={`inner-content-holder ${this.props.inheritDimensions ? 'inherit-dimensions' : ''}`}>
@@ -176,16 +223,26 @@ export class ContentItemWrapper extends React.Component<{
                                 <div className='inner-content-meta-tags'>
                                     <ul>
                                         {
-                                            this.props.data.tags.map((tag, i) => <li key={i}>{tag}</li>)
+                                            tags.map((tag, i) => <li key={i}>{tag}</li>)
                                         }
-                                        <li className='new-tag'><i className='material-icons'>add</i> New</li>
+                                        <li className='new-tag' onClick={this.addTag.bind(this)}>
+                                            {
+                                                !newTagBeingAdded && <React.Fragment><i className='material-icons'>add</i> New</React.Fragment>
+                                            }
+                                            {
+                                                newTagBeingAdded && <React.Fragment><input onKeyUp={this.onNewTagKeyUp.bind(this)} size={8} width="auto" value={this.state.newTag} onChange={this.onNewTagChange.bind(this)} /></React.Fragment>
+                                            }
+                                        </li>
                                     </ul>
                                 </div>
-                                <div className='inner-content-meta-notes'>
+                                {
+                                    this.props.data.annotations &&
+                                    <div className='inner-content-meta-notes'>
                                     {
-                                        this.props.data.annotations.map((note, i) => <p key={i}>{note.message}</p>)
+                                        <textarea defaultValue={annotation.message} onChange={this.onAnnotationChange.bind(this)} />
                                     }
                                 </div>
+                                }
                             </div>
                         }
                     </div>

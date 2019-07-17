@@ -65303,6 +65303,7 @@ exports.WorkspaceContentTransfer = new rxjs_1.Subject();
 exports.DumpingGroundTransfer = new rxjs_1.Subject();
 exports.RouteInvoke = new rxjs_1.Subject();
 exports.DumpingGroundSelections = new rxjs_1.BehaviorSubject(null);
+exports.OpenAllNotesAction = new rxjs_1.Subject();
 
 function InitializeSubscriptions() {
   var dumpBarSubscription = exports.ShowDumpBarAction$.subscribe(function (data) {
@@ -65946,7 +65947,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemWrapper).call(this, props));
     _this.state = {
       annotationAndNotesShown: false,
-      showEntity: false
+      showEntity: false,
+      newTagBeingAdded: false,
+      newTag: '',
+      tags: _this.props.data.tags,
+      annotation: _this.props.data.annotations
     };
     return _this;
   }
@@ -65981,6 +65986,56 @@ function (_React$Component) {
           showEntity: true
         });
       }
+    }
+  }, {
+    key: "addTag",
+    value: function addTag() {
+      this.setState({
+        newTag: '',
+        newTagBeingAdded: true
+      });
+    }
+  }, {
+    key: "onNewTagChange",
+    value: function onNewTagChange(e) {
+      this.setState({
+        newTag: e.target.value
+      });
+    }
+  }, {
+    key: "onAnnotationChange",
+    value: function onAnnotationChange(e) {
+      this.setState({
+        annotation: e.target.value
+      });
+    }
+  }, {
+    key: "onNewTagKeyUp",
+    value: function onNewTagKeyUp(e) {
+      if (e.keyCode === 13) {
+        var tags = [].concat(this.state.tags, this.state.newTag);
+        this.setState({
+          newTag: '',
+          newTagBeingAdded: false,
+          tags: tags
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.openAllNotesActionSubscription = observables_1.OpenAllNotesAction.subscribe(function (data) {
+        _this2.setState({
+          annotationAndNotesShown: data
+        });
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.openAllNotesActionSubscription.unsubscribe();
     }
   }, {
     key: "render",
@@ -66128,6 +66183,10 @@ function (_React$Component) {
       var contentImageStyle = {
         backgroundImage: "url(".concat(currentContentImage, ")")
       };
+      var _this$state = this.state,
+          newTagBeingAdded = _this$state.newTagBeingAdded,
+          tags = _this$state.tags,
+          annotation = _this$state.annotation;
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "inner-content-holder ".concat(this.props.inheritDimensions ? 'inherit-dimensions' : '')
       }, React.createElement("div", {
@@ -66151,20 +66210,26 @@ function (_React$Component) {
         className: "inner-content-meta"
       }, React.createElement("div", {
         className: "inner-content-meta-tags"
-      }, React.createElement("ul", null, this.props.data.tags.map(function (tag, i) {
+      }, React.createElement("ul", null, tags.map(function (tag, i) {
         return React.createElement("li", {
           key: i
         }, tag);
       }), React.createElement("li", {
-        className: "new-tag"
-      }, React.createElement("i", {
+        className: "new-tag",
+        onClick: this.addTag.bind(this)
+      }, !newTagBeingAdded && React.createElement(React.Fragment, null, React.createElement("i", {
         className: "material-icons"
-      }, "add"), " New"))), React.createElement("div", {
+      }, "add"), " New"), newTagBeingAdded && React.createElement(React.Fragment, null, React.createElement("input", {
+        onKeyUp: this.onNewTagKeyUp.bind(this),
+        size: 8,
+        width: "auto",
+        value: this.state.newTag,
+        onChange: this.onNewTagChange.bind(this)
+      }))))), this.props.data.annotations && React.createElement("div", {
         className: "inner-content-meta-notes"
-      }, this.props.data.annotations.map(function (note, i) {
-        return React.createElement("p", {
-          key: i
-        }, note.message);
+      }, React.createElement("textarea", {
+        defaultValue: annotation.message,
+        onChange: this.onAnnotationChange.bind(this)
       })))), React.createElement("div", {
         className: "inner-content-item-actions"
       }, this.state.annotationAndNotesShown && React.createElement("i", {
@@ -66184,7 +66249,119 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWrapper = ContentItemWrapper;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx","../../constants/constants":"constants/constants.ts"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx","../../constants/constants":"constants/constants.ts"}],"transforms.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function GetWorkspaceListForSidebar(Workspaces) {
+  var result = Workspaces.map(function (item) {
+    var sideBarItem = {
+      id: Math.floor(Math.random() * 10e8),
+      name: item.name,
+      link: "/workspace/".concat(item.id, "/topic/123"),
+      active: false,
+      subListOpen: false,
+      gradient: item.gradient,
+      items: item.topics.map(function (topic) {
+        var subItem = {
+          id: topic.id,
+          name: topic.name,
+          active: false,
+          items: [],
+          link: BuildTopicLink(item.id, topic.id)
+        };
+        return subItem;
+      })
+    };
+    return sideBarItem;
+  });
+  return result;
+}
+
+exports.GetWorkspaceListForSidebar = GetWorkspaceListForSidebar;
+
+function BuildTopicLink(workspaceId, topicLink) {
+  return "/workspace/".concat(workspaceId, "/topic/").concat(topicLink);
+}
+
+exports.BuildTopicLink = BuildTopicLink;
+
+function isEqual(a, b) {
+  if (typeof a === 'string' && typeof b === 'string') {
+    return a.localeCompare(b) === 0;
+  }
+
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a === b;
+  }
+
+  if (a instanceof Date && b instanceof Date) {
+    return a.getTime() === b.getTime();
+  }
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length === b.length) {
+      for (var i = 0; i < a.length; i++) {
+        var equal = isEqual(a[i], b[i]);
+
+        if (!equal) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  }
+
+  if (a instanceof Object && b instanceof Object) {
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    if (aProps.length !== bProps.length) {
+      return false;
+    } else {
+      // tslint:disable-next-line:prefer-for-of
+      for (var _i = 0; _i < aProps.length; _i++) {
+        var prop = aProps[_i];
+
+        var _equal = isEqual(a[prop], b[prop]);
+
+        if (!_equal) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  }
+
+  return false;
+}
+
+exports.isEqual = isEqual;
+
+function GetGroupWrapperId(id) {
+  return "GROUP-".concat(id);
+}
+
+exports.GetGroupWrapperId = GetGroupWrapperId;
+;
+
+function OpenExternalUrl(url) {
+  var shell = window.shell;
+
+  if (shell) {
+    shell.openExternal(url);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+exports.OpenExternalUrl = OpenExternalUrl;
+},{}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66225,6 +66402,8 @@ var context_menu_1 = require("../context-menu/context-menu");
 
 var content_item_1 = require("./content-item");
 
+var transforms_1 = require("../../transforms");
+
 var ContentItemWithMenu =
 /*#__PURE__*/
 function (_React$Component) {
@@ -66259,7 +66438,9 @@ function (_React$Component) {
   }, {
     key: "actionInvoked",
     value: function actionInvoked(action) {
-      if (this.props.onActionInvoked) {
+      if (action === 'source') {
+        transforms_1.OpenExternalUrl(this.props.data.sourceUrl);
+      } else {
         this.props.onActionInvoked(action);
       }
     }
@@ -66299,6 +66480,13 @@ function (_React$Component) {
         icon: 'delete',
         name: 'Delete'
       }];
+
+      if (!this.props.data.sourceUrl) {
+        actions = actions.filter(function (action) {
+          return action.id !== 'source';
+        });
+      }
+
       return React.createElement(context_menu_1.ContextMenu, {
         actions: actions,
         open: this.state.menuOpen,
@@ -66318,7 +66506,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWithMenu = ContentItemWithMenu;
-},{"react":"../../node_modules/react/index.js","../context-menu/context-menu":"components/context-menu/context-menu.tsx","./content-item":"components/content-item/content-item.tsx"}],"components/dumping-ground/dumping-ground-item.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../context-menu/context-menu":"components/context-menu/context-menu.tsx","./content-item":"components/content-item/content-item.tsx","../../transforms":"transforms.ts"}],"components/dumping-ground/dumping-ground-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66616,10 +66804,10 @@ function BuildStickyContentItem(data) {
     tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
       return "tag-".concat(t);
     }),
-    annotations: [{
+    annotations: {
       id: constants_1.GetRandomId(),
       message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }]
+    }
   };
 }
 
@@ -66638,10 +66826,10 @@ function GetSampleStickyItem(data) {
     tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
       return "tag-".concat(t);
     }),
-    annotations: [{
+    annotations: {
       id: constants_1.GetRandomId(),
       message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }]
+    }
   };
 }
 
@@ -66663,11 +66851,12 @@ function GetSamplePhotoItems() {
       tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
         return "tag-".concat(t);
       }),
-      annotations: [{
+      annotations: {
         id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
+      }
     };
+    item.sourceUrl = null;
     result.push(item);
   });
 
@@ -66696,12 +66885,13 @@ function GetSampleVideoItems() {
       tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
         return "tag-".concat(t);
       }),
-      annotations: [{
+      annotations: {
         id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
+      }
     };
     item.contentData.videoUrl = "https://www.youtube.com/watch?v=".concat(item.contentData.videoId);
+    item.sourceUrl = item.contentData.videoUrl;
     result.push(item);
   });
 
@@ -66728,11 +66918,12 @@ function GetSampleArticleItems() {
       tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
         return "tag-".concat(t);
       }),
-      annotations: [{
+      annotations: {
         id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
+      }
     };
+    item.sourceUrl = item.title;
     result.push(item);
   });
 
@@ -66769,11 +66960,12 @@ function GetSampleLinkItems() {
       tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
         return "tag-".concat(t);
       }),
-      annotations: [{
+      annotations: {
         id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
+      }
     };
+    item.sourceUrl = item.contentData.ogLink;
     result.push(item);
   });
   return result;
@@ -66797,10 +66989,10 @@ function GetSampleSocialMediaItems() {
       tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
         return "tag-".concat(t);
       }),
-      annotations: [{
+      annotations: {
         id: constants_1.GetRandomId(),
         message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
+      }
     };
 
     if (item.sourceType === types_1.MediaSourceType.Twitter) {
@@ -67366,107 +67558,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"transforms.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function GetWorkspaceListForSidebar(Workspaces) {
-  var result = Workspaces.map(function (item) {
-    var sideBarItem = {
-      id: Math.floor(Math.random() * 10e8),
-      name: item.name,
-      link: "/workspace/".concat(item.id, "/topic/123"),
-      active: false,
-      subListOpen: false,
-      gradient: item.gradient,
-      items: item.topics.map(function (topic) {
-        var subItem = {
-          id: topic.id,
-          name: topic.name,
-          active: false,
-          items: [],
-          link: BuildTopicLink(item.id, topic.id)
-        };
-        return subItem;
-      })
-    };
-    return sideBarItem;
-  });
-  return result;
-}
-
-exports.GetWorkspaceListForSidebar = GetWorkspaceListForSidebar;
-
-function BuildTopicLink(workspaceId, topicLink) {
-  return "/workspace/".concat(workspaceId, "/topic/").concat(topicLink);
-}
-
-exports.BuildTopicLink = BuildTopicLink;
-
-function isEqual(a, b) {
-  if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b) === 0;
-  }
-
-  if (typeof a === 'number' && typeof b === 'number') {
-    return a === b;
-  }
-
-  if (a instanceof Date && b instanceof Date) {
-    return a.getTime() === b.getTime();
-  }
-
-  if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length === b.length) {
-      for (var i = 0; i < a.length; i++) {
-        var equal = isEqual(a[i], b[i]);
-
-        if (!equal) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-  }
-
-  if (a instanceof Object && b instanceof Object) {
-    var aProps = Object.getOwnPropertyNames(a);
-    var bProps = Object.getOwnPropertyNames(b);
-
-    if (aProps.length !== bProps.length) {
-      return false;
-    } else {
-      // tslint:disable-next-line:prefer-for-of
-      for (var _i = 0; _i < aProps.length; _i++) {
-        var prop = aProps[_i];
-
-        var _equal = isEqual(a[prop], b[prop]);
-
-        if (!_equal) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-  }
-
-  return false;
-}
-
-exports.isEqual = isEqual;
-
-function GetGroupWrapperId(id) {
-  return "GROUP-".concat(id);
-}
-
-exports.GetGroupWrapperId = GetGroupWrapperId;
-;
-},{}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
+},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73718,6 +73810,8 @@ var workspace_previewer_1 = __importDefault(require("../workspace-preview/worksp
 
 var transforms_1 = require("../../transforms");
 
+var observables_1 = require("../../access/observables/observables");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -73751,6 +73845,7 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+    _this.allNotesOpened = false;
     _this.state = {
       workspaceList: _this.props.workspaceList
     };
@@ -73809,6 +73904,12 @@ function (_React$Component) {
       this.props.actions.showManageHeadersDialog();
     }
   }, {
+    key: "openAllNotes",
+    value: function openAllNotes() {
+      this.allNotesOpened = !this.allNotesOpened;
+      observables_1.OpenAllNotesAction.next(this.allNotesOpened);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -73845,7 +73946,14 @@ function (_React$Component) {
         workspaces: this.state.workspaceList
       }), React.createElement("div", {
         className: "app-actions right"
-      }, this.props.workspaceActionsAreShown && React.createElement(React.Fragment, null, React.createElement("div", {
+      }, React.createElement("div", {
+        className: "action",
+        onClick: this.openAllNotes.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "notes")), React.createElement("div", {
+        className: "separator"
+      }), this.props.workspaceActionsAreShown && React.createElement(React.Fragment, null, React.createElement("div", {
         className: "action",
         onClick: this.manageHeaders.bind(this)
       }, React.createElement("i", {
@@ -73893,7 +74001,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Header);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts"}],"pages/router-wrap.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts","../../access/observables/observables":"access/observables/observables.ts"}],"pages/router-wrap.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -81338,7 +81446,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51537" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -427,6 +427,7 @@
     padding: 10px;
     font-size: small;
     color: rgba(#000, 0.50);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 
     .inner-content-meta-tags {
         ul {
@@ -449,6 +450,7 @@
                 align-items: center;
 
                 &.new-tag {
+                    cursor: pointer;
                     border: 1px solid rgba(#000, 0.10);
                     background-color: transparent;
                     text-transform: uppercase;
@@ -457,17 +459,37 @@
                     padding-right: 10px;
 
                     i {
+                        cursor: pointer;
                         font-size: small;
                         margin-right: 5px;
                     }
+                }
+                input {
+                    border: none;
+                    font-size: small;
+                    outline: none;
+                    width: auto;
                 }
             }
         }
     }
 
     .inner-content-meta-notes {
-        p {
-            margin: 10px 0 5px 0;
+        width: 100%;
+        textarea {
+            color: rgba(#000, 0.50);
+            font-size: small;
+            height: 100px;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            background: transparent;
+            border: none;
+            margin: 10px 0 0px 0;
+            &:focus,
+            &:hover {
+                outline: 1px dashed rgba(#000, 0.25);
+            }
         }
     }
 }

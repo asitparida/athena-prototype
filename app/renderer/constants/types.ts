@@ -159,9 +159,10 @@ export interface IContentItem<T> {
     contentType?: ContentType;
     sourceType?: MediaSourceType;
     contentData?: T;
+    sourceUrl?: string;
     sourcePreviewAvailable?: boolean;
     tags?: any[];
-    annotations?: IAnnotation[];
+    annotations?: IAnnotation;
 }
 
 export interface IWorkspaceContentTransfer {

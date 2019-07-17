@@ -42,12 +42,10 @@ export function BuildStickyContentItem(data: IStickyNote): IContentItem<INoteCon
         sourcePreviewAvailable: false,
         sourceType: MediaSourceType.Browser,
         tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-        annotations: [
-            {
-                id: GetRandomId(),
-                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-            }
-        ]
+        annotations: {
+            id: GetRandomId(),
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     };
 }
 
@@ -62,12 +60,10 @@ export function GetSampleStickyItem(data): IContentItem<INoteContent> {
         sourcePreviewAvailable: false,
         sourceType: MediaSourceType.Browser,
         tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-        annotations: [
-            {
-                id: GetRandomId(),
-                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-            }
-        ]
+        annotations: {
+            id: GetRandomId(),
+            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        }
     };
 }
 
@@ -90,13 +86,12 @@ export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
             sourcePreviewAvailable: false,
             sourceType: MediaSourceType.Browser,
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-            annotations: [
-                {
-                    id: GetRandomId(),
-                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-                }
-            ]
+            annotations: {
+                id: GetRandomId(),
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
         };
+        item.sourceUrl = null;
         result.push(item);
     })
     return result;
@@ -131,14 +126,13 @@ export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
             sourcePreviewAvailable: false,
             sourceType: _.sample([MediaSourceType.Youtube, MediaSourceType.Vimeo]),
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-            annotations: [
-                {
-                    id: GetRandomId(),
-                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-                }
-            ]
+            annotations: {
+                id: GetRandomId(),
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
         };
         item.contentData.videoUrl = `https://www.youtube.com/watch?v=${item.contentData.videoId}`
+        item.sourceUrl = item.contentData.videoUrl;
         result.push(item);
     })
     return result;
@@ -176,13 +170,12 @@ export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
             sourcePreviewAvailable: false,
             sourceType: _.sample([MediaSourceType.Quora, MediaSourceType.ACM, MediaSourceType.Scholar]),
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-            annotations: [
-                {
-                    id: GetRandomId(),
-                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-                }
-            ]
+            annotations: {
+                id: GetRandomId(),
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
         };
+        item.sourceUrl = item.title;
         result.push(item);
     })
     return result;
@@ -216,13 +209,12 @@ export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
             sourcePreviewAvailable: false,
             sourceType: null,
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-            annotations: [
-                {
-                    id: GetRandomId(),
-                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-                }
-            ]
+            annotations: {
+                id: GetRandomId(),
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
         };
+        item.sourceUrl = item.contentData.ogLink;
         result.push(item);
     });
     return result;
@@ -247,12 +239,10 @@ export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaCont
                 MediaSourceType.Twitter
             ]),
             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-            annotations: [
-                {
-                    id: GetRandomId(),
-                    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-                }
-            ]
+            annotations: {
+                id: GetRandomId(),
+                message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+            }
         };
         if (item.sourceType === MediaSourceType.Twitter) {
             item.contentData.tweetText = _.sample([
