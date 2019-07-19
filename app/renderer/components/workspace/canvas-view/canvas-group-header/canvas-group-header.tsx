@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IGroupHeader } from '../../../../constants/types';
 import './canvas-group-header.scss';
 import { GetGroupWrapperId } from '../../../../transforms';
+import { CancellabelRequests, Cancellable } from '../../../../constants/constants';
 
 class CanvasGroupHeader extends React.Component<{
     data?: IGroupHeader
@@ -12,6 +13,7 @@ class CanvasGroupHeader extends React.Component<{
     groupProps?: [],
     midLine?: {}
 } | any> {
+    cancellable = new CancellabelRequests();
     constructor(props) {
         super(props);
         this.state = {
@@ -40,31 +42,40 @@ class CanvasGroupHeader extends React.Component<{
                 }
             });
             groupProps = groupProps.sort((a, b) => a.left - b.left);
-            const midLine = {
-                left: groupProps[0].left,
-                right: groupProps[groupProps.length - 1].left,
-                width: groupProps[groupProps.length - 1].left - groupProps[0].left,
-                top
-            };
-            const width = right - left;
-            this.setState({
-                groupProps,
-                left,
-                top,
-                width,
-                midLine
-            });
+            if (groupProps.length > 0) {
+                const midLine = {
+                    left: groupProps[0].left,
+                    right: groupProps[groupProps.length - 1].left,
+                    width: groupProps[groupProps.length - 1].left - groupProps[0].left,
+                    top
+                };
+                const width = right - left;
+                this.setState({
+                    groupProps,
+                    left,
+                    top,
+                    width,
+                    midLine
+                });
+            }
         }
     }
     componentDidMount() {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             this.buildHeader();
+            this.cancellable.clean(timeoutId)
         });
+        this.cancellable.push(timeoutId, Cancellable.Timeout);
     }
     componentDidUpdate() {
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             this.buildHeader();
+            this.cancellable.clean(timeoutId)
         });
+        this.cancellable.push(timeoutId, Cancellable.Timeout);
+    }
+    componentWillUnmount() {
+        this.cancellable.clean();
     }
     render() {
         const { top, left, width, midLine, groupProps } = this.state;

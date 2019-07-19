@@ -15,7 +15,7 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
     }
     componentDidMount() {
         if (this.props.data.contentData.imgUrl) {
-            const idleCallbackID = (window as any).requestIdleCallback(() => {
+            const idleCallbackID = (window as any).requestAnimationFrame(() => {
                 this.imageElement = new Image();
                 this.imageElement.onload = () => {
                     const animationId = window.requestAnimationFrame(() => {
@@ -45,18 +45,19 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
                 this.cancellable.clean(idleCallbackID);
                 this.imageElement.src = this.props.data.contentData.imgUrl;
             });
-            this.cancellable.push(idleCallbackID, Cancellable.IdleCallback);
+            this.cancellable.push(idleCallbackID, Cancellable.AnimationFrame);
         }
     }
     componentWillUnmount() {
         if (this.imageElement) {
+            this.imageElement.onload = null;
             this.imageElement.remove();
             this.imageElement = null;
         }
         this.cancellable.clean();
     }
     render() {
-        const bgUrl = `url(${this.state.imgUrl})`;
+        const bgUrl = `url(${this.props.data.contentData.imgUrl})`;
         return (
             <div className='photo-content content-marker'>
                 {

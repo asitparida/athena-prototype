@@ -57,7 +57,7 @@ class GroupContent extends React.Component<IPropType | any, any> {
     }
     boardPropsChanged(i, data) {
         const rowItems = [].concat(this.props.data.items);
-        rowItems[i].props.width = data.width + 20;
+        rowItems[i].props.width = data.width;
         rowItems[i].props.height = data.height;
         this.setState({
             items: rowItems

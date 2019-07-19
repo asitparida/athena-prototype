@@ -16,7 +16,7 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
     }
     componentDidMount() {
         if (this.props.data.contentData.videoThumbnailUrl) {
-            const idleCallbackID = (window as any).requestIdleCallback(() => {
+            const idleCallbackID = (window as any).requestAnimationFrame(() => {
                 this.imageElement = new Image();
                 this.imageElement.onload = () => {
                     const animationId = window.requestAnimationFrame(() => {
@@ -46,11 +46,12 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
                 this.cancellable.clean(idleCallbackID);
                 this.imageElement.src = this.props.data.contentData.videoThumbnailUrl;
             });
-            this.cancellable.push(idleCallbackID, Cancellable.IdleCallback);
+            this.cancellable.push(idleCallbackID, Cancellable.AnimationFrame);
         }
     }
     componentWillUnmount() {
         if (this.imageElement) {
+            this.imageElement.onload = null;
             this.imageElement.remove();
             this.imageElement = null;
         }

@@ -11,13 +11,15 @@ export function BuildAnnotator() {
         width: 300,
         height: 200,
         show: false,
-        transparent: true,
+        transparent: false,
         // resizable: false,
         fullscreenable: false,
-        vibrancy: 'ultra-dark',
+        minimizable: false,
+        maximizable: false,
+        vibrancy: 'light',
         alwaysOnTop: true,
-        skipTaskbar: true,
-        frame: false,
+        skipTaskbar: false,
+        frame: true,
         webPreferences: {
             webSecurity: false,
             scrollBounce: true,
@@ -28,6 +30,8 @@ export function BuildAnnotator() {
     // tslint:disable:no-string-literal
     window['API_PORT'] = API_PORT;
     window.once('ready-to-show', () => {
+        window.setMaximizable(false);
+        window.setMinimizable(false);
         window.show();
         window.focus();
         if (isDev && false) { window.webContents.openDevTools() }

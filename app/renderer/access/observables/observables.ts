@@ -13,6 +13,7 @@ export const DumpingGroundTransfer = new Subject<IContentItem<any>>();
 export const RouteInvoke = new Subject<string>();
 export const DumpingGroundSelections = new BehaviorSubject<string[]>(null);
 export const OpenAllNotesAction = new Subject<boolean>();
+export const CurrentEnableScrollIntoCenter = new BehaviorSubject<boolean>(true);
 export function InitializeSubscriptions() {
     const dumpBarSubscription = ShowDumpBarAction$.subscribe((data) => {
         if (data) {
@@ -37,7 +38,6 @@ export function InitializeSubscriptions() {
             store.dispatch(actions.hideWorkpsaceActionInHeader())
         }
     });
-    subscriptions.push(worskpaceInHeaderSubscription);
 }
 export function RemoveSubscriptions() {
     subscriptions.forEach(s => s.unsubscribe());

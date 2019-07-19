@@ -8,6 +8,8 @@ import * as AppActions from '../../access/actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+const elementLogo = require('../../assets/element_logo.png');
+
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
         workspaceList: workspaceReducers.workspaceList
@@ -113,7 +115,7 @@ class SidebarComponent extends React.Component<any, any> {
             <div className="user-space">
                 <div className='user-space-content'>
                     <div className='user-picture-wrapper'>
-                        <i className="material-icons">face</i>
+                        <img src={elementLogo} />
                     </div>
                     {
                         !this.props.sideBarCollpased &&

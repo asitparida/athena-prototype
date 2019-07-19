@@ -5,12 +5,13 @@ import { IStickyNote } from './api-types';
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync');
 import { app as ElectronApp } from 'electron';
-const adapter = new FileSync( ElectronApp.getPath('userData') + '/athena_db.json')
+import { getLocalDBFile } from './helpers';
+const adapter = new FileSync(getLocalDBFile())
 const db = low(adapter);
 
 db.defaults({ notes: [] })
     .write();
-// db.set('notes', []).write();
+db.set('notes', []).write();
 
 const app = express();
 app.use(cors());

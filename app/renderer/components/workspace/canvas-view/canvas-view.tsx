@@ -5,11 +5,13 @@ import { GroupBufffer } from '../../../constants/constants';
 import { IBoardGroupWrapper, IGroupHeader } from '../../../constants/types';
 import * as _ from 'lodash';
 import CanvasGroupHeader from './canvas-group-header/canvas-group-header';
+import { CurrentEnableScrollIntoCenter } from '../../../access/observables/observables';
 
 class CanvasView extends React.Component<{
     id: any,
     groups?: IBoardGroupWrapper[],
-    headers?: IGroupHeader[]
+    headers?: IGroupHeader[],
+    scrollToCenter?: boolean,
 }, {
     boardGroups: IBoardGroupWrapper[],
     positionX: number,
@@ -62,15 +64,23 @@ class CanvasView extends React.Component<{
                     positionY: differenceHeight / 2
                 });
             }
-            const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2)) - 150;
-            const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
-            window.requestAnimationFrame(() => {
-                currentPositioner.scroll({
-                    top: topOffset,
-                    left: leftOffset,
-                    behavior: smooth ? "smooth" : 'auto'
+            const value = CurrentEnableScrollIntoCenter.value;
+            let scroll = !!this.props.scrollToCenter;
+            if (value === true && this.props.scrollToCenter === false) {
+                scroll = true;
+            }
+            if (scroll) {
+                console.log('scrollToCenter')
+                const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2)) - 150;
+                const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
+                window.requestAnimationFrame(() => {
+                    currentPositioner.scroll({
+                        top: topOffset,
+                        left: leftOffset,
+                        behavior: smooth ? "smooth" : 'auto'
+                    });
                 });
-            });
+            }
         }
     }
     changeZoom(dir) {
@@ -88,7 +98,7 @@ class CanvasView extends React.Component<{
             boardGroups: this.props.groups,
             headers: this.props.headers,
             showHeaders: true
-        })
+        });
         window.requestAnimationFrame(() => {
             this.adjustPosition(1, false);
         });

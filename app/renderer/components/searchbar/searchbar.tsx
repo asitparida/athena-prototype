@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Dropdown from '../dropdown/dropdown';
 import { DumpingGroundListCollection } from '../dumping-ground/dumping-ground-list-collection';
+import ComboDropdown from '../combo-dropdown/combo-dropdown';
 
 const mapStateToProps = ({ workspaceReducers }) => {
     return {
@@ -36,7 +37,8 @@ class SearchBarComponent extends React.Component<any, any> {
                 { id: 'workspace-1', name: 'Workspace #1' },
                 { id: 'workspace-2', name: 'Workspace #2' },
                 { id: 'workspace-3', name: 'Workspace #3' }
-            ]
+            ],
+            activeCategory: { id: 'unclassified', name: 'Unclassified' }
         };
     }
     onFocus() {
@@ -52,49 +54,10 @@ class SearchBarComponent extends React.Component<any, any> {
     render() {
         return <div className='searchbar-wrapper'>
             <div className="search-meta">
-                <div className={`search-box ${this.state.showSearchMeta ? 'active' : ''}`}>
-                    <input className='search-input' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} /> <i className='material-icons'>search</i>
-                </div>
-                {
-                    this.state.showSearchMeta &&
-                    <React.Fragment>
-                        <div className='search-meta-wrapper'>
-                            <div className='search-meta-top'>
-                                <div className='search-meta-content'>
-                                    <div className='search-meta-content-left'>
-                                        <i className='material-icons'>label</i> Tags
-                                    </div>
-                                    <div className='search-meta-content-right'>
-                                        <ul>
-                                            <li>tag 1</li>
-                                            <li>tag 2</li>
-                                            <li>tag 3</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='search-meta-bottom'>
-                                <div className='search-meta-content'>
-                                    {
-                                        this.state.contentTypeResults.length > 0 &&
-                                        <ul>
-                                            {
-                                                this.state.contentTypeResults.map(type => <li key={type.name}><i className='material-icons'>{type.icon}</i><label>{type.name} ({type.count})</label></li>)
-                                            }
-                                        </ul>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </React.Fragment>
-
-                }
+                <ComboDropdown onInputFocus={this.onFocus.bind(this)}  contentTypeResults={this.state.contentTypeResults} onInputBlur={this.onBlur.bind(this)} categories={this.state.categories} activeItem={this.state.activeCategory} />
             </div>
             <div className='search-results'>
                 <div className='search-results-inner'>
-                    <div className='search-results-top'>
-                        <Dropdown items={this.state.categories} />
-                    </div>
                     <div className='search-results-bottom'>
                         <div className='dumping-ground-list-wrapper'>
                             <DumpingGroundListCollection searchBar={true} hideGroupTitle={true} />

@@ -9,12 +9,15 @@ import { GetIpcFileFixUrl } from './helpers/ipc-helper';
 import { GetAPIServer } from '../api/server';
 import { GetSplashWindow } from './helpers/splash';
 import { GetApplictaionMenu } from './helpers/menu';
+// import { Twilio } from './helpers/twilio';
 const electron = require('electron');
 const { BrowserWindow, app, Menu } = electron;
 const isDev = require('electron-is-dev')
 const { resolve } = require('app-root-path');
 
 export let API_PORT = null;
+
+// let twilioInterval;
 
 app.on('ready', async () => {
     BuildMenu();
@@ -50,6 +53,16 @@ app.on('ready', async () => {
                 mainWindow.show();
             }, 30);
         }, 2000);
+        // console.log('Twilio.initialize');
+        // Twilio.initialize();
+        // if (twilioInterval) {
+        //     clearInterval(twilioInterval);
+        //     twilioInterval = null
+        // }
+        // twilioInterval = setInterval(() => {
+        //     Twilio.getMessages();
+        // }, 10000)
+        // Twilio.getMessages();
         if (isDev && false) { mainWindow.webContents.openDevTools() }
     });
     mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
@@ -72,4 +85,7 @@ app.on('ready', async () => {
     // tslint:disable-next-line:no-string-literal
     mainWindow['API_PORT'] = server.API_PORT;
 })
-app.on('window-all-closed', app.quit)
+app.on('window-all-closed', () => {
+    console.log('App Quit');
+    app.quit();
+})

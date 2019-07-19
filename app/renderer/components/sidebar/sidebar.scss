@@ -228,7 +228,7 @@
                 &.active {
                     label {
                         color: rgba(#000, 1);
-                        border-right: 5px solid rgba($primary_accent, 1);
+                        border-left: 5px solid rgba($primary_accent, 1);
                         .name { font-weight: 600; }
                     }
                     opacity: 1;
@@ -257,19 +257,23 @@
             border-radius: 4px;
             color: $dark_text;
             .user-picture-wrapper {
-                background-color: rgba(#000, 0.10);
+                background-color: rgba(#000, 0.0);
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                img {
+                    width: 60%;
+                }
             }
             label {
                 font-size: medium;
                 margin: 0;
                 padding: 0;
-                margin-top: 30px;
+                margin-top: 10px;
             }
             p {
                 font-size: small;

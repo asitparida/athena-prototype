@@ -62,7 +62,7 @@ class Annotator extends Component<{}, IAnnotatorState> {
     render() {
         return (
             <div className="app-content">
-                <div className="app-dragger" />
+                {/* <div className="app-dragger" /> */}
                 <div className='app-content-area'>
                     <textarea placeholder="Type your notes here ..." value={this.state.message} onChange={this.onMessageContentChanged.bind(this)} />
                 </div>

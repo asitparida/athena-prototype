@@ -53,12 +53,12 @@ export class ContentItemWrapper extends React.Component<{
         }
     }
     onViewChange(inView, entry) {
-        const notInView = this.state.showEntity;
-        if (inView && !notInView) {
-            this.setState({
-                showEntity: true
-            });
-        }
+        // const notInView = this.state.showEntity;
+        // if (inView && !notInView) {
+        // }
+        this.setState({
+            showEntity: inView
+        });
     }
     addTag() {
         this.setState({

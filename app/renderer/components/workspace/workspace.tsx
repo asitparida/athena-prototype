@@ -4,7 +4,7 @@ import DumpingGround from '../dumping-ground/dumping-ground';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../../access/actions/appActions';
-import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer } from '../../access/observables/observables';
+import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer, CurrentEnableScrollIntoCenter } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
 import { IWorkspaceContentTransfer, IContentItem, IGroupHeader } from '../../constants/types';
@@ -33,7 +33,14 @@ class Workspace extends React.Component<any, any> {
     transferSubscription: Subscription;
     constructor(props) {
         super(props);
-        this.state = { rteWidth: 350, dumpGroundWidth: 350, workspaceId: null, groups: [], headers: [] };
+        this.state = {
+            rteWidth: 350,
+            dumpGroundWidth: 350,
+            workspaceId: null,
+            groups: [],
+            headers: [],
+            scrollToCenter: true
+        };
     }
     componentDidUpdate(props) {
         if (isEqual(this.props.match.params, props.match.params) === false) {
@@ -79,6 +86,7 @@ class Workspace extends React.Component<any, any> {
     componentDidMount() {
         ShowDumpBarAction$.next(true);
         ShowRTEAction$.next(true);
+        this.props.actions.hideWorkpsaceInHeader();
         this.processParamsChange();
         this.props.actions.showWorkspaceActions();
         this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
@@ -117,8 +125,9 @@ class Workspace extends React.Component<any, any> {
             }
             if (change) {
                 const headers = this.getHeaders(groups);
-                this.setState({ groups, headers });
+                this.setState({ groups, headers, scrollToCenter: false });
             }
+            CurrentEnableScrollIntoCenter.next(false);
         });
     }
     componentWillUnmount() {
@@ -151,7 +160,7 @@ class Workspace extends React.Component<any, any> {
         }
         return (
             <div className="workspace-wrapper">
-                <WorkspaceViewSwitch canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} headers={this.state.headers} />
+                <WorkspaceViewSwitch scrollToCenter={this.state.scrollToCenter} canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} headers={this.state.headers} />
                 {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>
