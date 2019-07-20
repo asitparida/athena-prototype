@@ -1,10 +1,10 @@
 import * as React from 'react';
 import './canvas-group-item-wrapper.scss'
 import CanvasGroupItem from '../canvas-group-item/canvas-group-item';
-import { IBoardContent } from '../../../../constants/types';
+import { IContentItem } from '../../../../constants/types';
 
 interface IPropType {
-    data: IBoardContent,
+    data: IContentItem<any>,
     group: string;
     onPropsChange: (props: any) => {}
 }
@@ -92,7 +92,6 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
         const styles = {
             width: `${props.width}px`,
         }
-        // console.log(styles);
         let inheritDimensions = false;
         if (!props.height) {
             // tslint:disable-next-line:no-string-literal
@@ -102,9 +101,6 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
         return (
             <div className="board-content-wrapper" style={styles} ref={this.ref}>
                 <CanvasGroupItem isBeingResized={this.state.isBeingResized} data={this.props.data} group={this.props.group} propsChanged={this.propsChanged.bind(this)} inheritDimensions={inheritDimensions} />
-                {/* <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
-                    <i className='material-icons'>navigate_next</i>
-                </div> */}
             </div>
         );
     }

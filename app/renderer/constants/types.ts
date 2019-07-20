@@ -164,7 +164,6 @@ export interface IContentItem<T> {
     sourceUrl?: string;
     sourcePreviewAvailable?: boolean;
     tags?: any[];
-    annotations?: IAnnotation;
     annotation?: string;
     props?: IRectProps;
 }
@@ -194,29 +193,12 @@ export interface IRectProps {
     height?: number;
 }
 
-export interface IAnnotation {
-    id?: string;
-    message?: string;
-}
-
-export interface IBoardContent {
-    id?: string;
-    contentType?: ContentType;
-    annotation?: string;
-    contentData?: any;
-    props?: IRectProps;
-    label?: string;
-    annotationData?: IAnnotation[];
-}
-export interface IBoardGroupContent {
-    annotation?: IAnnotation;
-}
 export interface IBoardGroupWrapper {
     id?: string;
     title?: string;
     props?: IRectProps;
     annotation?: string;
-    items?: IBoardContent[];
+    items?: Array<IContentItem<any>>;
 }
 
 export interface ISideBarNavItem {

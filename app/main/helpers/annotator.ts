@@ -7,12 +7,10 @@ const isDev = require('electron-is-dev');
 
 export function BuildAnnotator() {
     const window = new BrowserWindow({
-        // parent: mainWindow,
         width: 300,
         height: 200,
         show: false,
         transparent: false,
-        // resizable: false,
         fullscreenable: false,
         minimizable: false,
         maximizable: false,

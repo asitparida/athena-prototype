@@ -100,8 +100,6 @@ export function GetApplictaionMenu() {
                 label: 'Close',
                 click: (item, focusedWindow: BrowserWindow) => {
                     if (focusedWindow) {
-                        // on reload, start fresh and close any old
-                        // open secondary windows
                         if (focusedWindow.id === 1) {
                           BrowserWindow.getAllWindows().forEach(win => {
                             if (win.id > 1) {

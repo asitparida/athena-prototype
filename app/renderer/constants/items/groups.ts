@@ -5,17 +5,6 @@ import { DummyPhotoItems } from "./photo-items";
 import { DummySocialMediaItems } from "./socialmedia-items";
 import { DummyVideoItems } from "./video-items";
 
-// export function GetSampleBoardItems() {
-//     const items = [
-//         { id: GetRandomId(), type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
-//     ];
-//     return _.take(_.shuffle(items), 3);
-// }
-
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
         id: 'group_1',

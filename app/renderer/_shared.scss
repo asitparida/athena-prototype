@@ -20,23 +20,6 @@
     }
 }
 
-// @mixin respond-to-mobile {
-//     @media only screen and (max-width: 768px) {
-//         @content;
-//     }
-// }
-
-// @mixin respond-to-medium-screen {
-//     @media only screen and (min-width: 1920px) {
-//         @content;
-//     }
-// }
-// @mixin respond-to-large-screen {
-//     @media only screen and (min-width: 1920px) {
-//         @content;
-//     }
-// }
-
 @mixin scrollbars($size, $foreground-color, $background-color) {
     ::-webkit-scrollbar {
         width: $size;
@@ -61,7 +44,6 @@
 }
 
 $primary_accent: #3783E9;
-// $primary_accent: #565656;
 $primary_accent_text: #ffffff;
 $dark_text: rgba(#000, 0.75);
 $light-accent-color: #f3f8ff; //#f6f6f6; //

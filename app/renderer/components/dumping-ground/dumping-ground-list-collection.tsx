@@ -2,16 +2,11 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { DumpingGroundList } from './dumping-ground-list';
 import { ContentType, IContentListItem, IContentItem } from '../../constants/types';
-import { GetDummifiedCollection, BuildStickyContentItem, BuildMMSContentItem } from '../../constants/dummy-data';
+import { BuildStickyContentItem, BuildMMSContentItem } from '../../constants/dummy-data';
 import { Subscription } from 'rxjs';
 import { DumpingGroundTransfer, DumpingGroundSelections } from '../../access/observables/observables';
 import { GetAPIUrl, CancellabelRequests, Cancellable } from '../../constants/constants';
 import { IMms } from '../../../api/api-types';
-import { DummyPhotoItems } from '../../constants/items/photo-items';
-import { DummyVideoItems } from '../../constants/items/video-items';
-import { DummyArticleItems } from '../../constants/items/article-items';
-import { DummyLinkItems } from '../../constants/items/link-items';
-import { DummySocialMediaItems } from '../../constants/items/socialmedia-items';
 import { DumpingGroundCollection, FilterDumpingGroundCollection } from '../../constants/items/dumping-ground';
 
 interface IProps {
@@ -68,10 +63,14 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     insertNewItems(mappedItems: any[]) {
         const mappedCollection = this.state.listItems;
         if (mappedCollection.length > 0) {
-            mappedCollection[0].listItems = [].concat(...mappedItems, ...mappedCollection[0].listItems);
-            this.setState({
-                listItems: mappedCollection
-            });
+            const mappedCollectionIds = mappedCollection[0].listItems.map(item => item.id);
+            mappedItems = mappedItems.filter(item => _.indexOf(mappedCollectionIds, item.id) === -1);
+            if (mappedItems.length > 0) {
+                mappedCollection[0].listItems = [].concat(...mappedItems, ...mappedCollection[0].listItems);
+                this.setState({
+                    listItems: mappedCollection
+                });
+            }
         }
     }
     initializeMMSListener() {

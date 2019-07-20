@@ -865,7 +865,6 @@ body #root .app-content .app-content-area {
 .inner-content .note-content .note-text {
   font-size: small;
   color: rgba(0, 0, 0, 0.8);
-  white-space: pre;
   width: 100%;
   margin: 0;
 }

@@ -66370,10 +66370,6 @@ function (_React$Component) {
       }
     }
   }, {
-    key: "propsChanged",
-    value: function propsChanged() {// this.props.propsChanged();
-    }
-  }, {
     key: "render",
     value: function render() {
       var actions = [{
@@ -66419,7 +66415,6 @@ function (_React$Component) {
         resizerOptions: this.props.resizerOptions || [],
         onAction: this.actionInvoked.bind(this)
       }, React.createElement(content_item_1.ContentItemWrapper, {
-        propsChanged: this.propsChanged.bind(this),
         inheritDimensions: this.props.inheritDimensions,
         data: this.props.data,
         menuInvoked: this.contextMenuOpened.bind(this)
@@ -66663,40 +66658,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var types_1 = require("./types");
 
-var _ = __importStar(require("lodash")); // export const PhotoContentList: Array<IContentItem<IPhotoContent>> = GetSamplePhotoItems();
-// export const VideoContentList: Array<IContentItem<IVideoContent>> = GetSampleVideoItems();
-// export const ArticleContentList: Array<IContentItem<IArticleContent>> = GetSampleArticleItems();
-// export const LinkContentList: Array<IContentItem<ILinkContent>> = GetSampleLinkItems();
-// export const SocialMediaContentList: Array<IContentItem<ISocialMediaContent>> = GetSampleSocialMediaItems();
-// export function GetSampleItem(type: ContentType, data?: any): IContentItem<any> {
-//     switch (type) {
-//         case ContentType.Photo: return _.sample(DummyPhotoItems);
-//         case ContentType.Video: return _.sample(DummyVideoItems);
-//         case ContentType.Article: return _.sample(DummyArticleItems);
-//         case ContentType.Link: return _.sample(DummyLinkItems);
-//         case ContentType.SocialMedia: return _.sample(DummySocialMediaItems);
-//         case ContentType.Sticky: return GetSampleStickyItem(data);
-//     }
-// }
-
-
-function GetDummifiedCollection(items) {
-  return [{
-    title: 'Recent',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'Yesterday',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'June 12, 2019',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'June 11, 2019',
-    listItems: _.shuffle(items)
-  }];
-}
-
-exports.GetDummifiedCollection = GetDummifiedCollection;
+var _ = __importStar(require("lodash"));
 
 function BuildStickyContentItem(data) {
   return {
@@ -66754,204 +66716,7 @@ function GetSampleStickyItem(data) {
   };
 }
 
-exports.GetSampleStickyItem = GetSampleStickyItem; // export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
-//     const result = [];
-//     _.range(ItemSize).forEach(() => {
-//         const item: IContentItem<IPhotoContent> = {
-//             id: GetRandomId(),
-//             title: 'Sample Photo Lorem ipsum',
-//             contentType: ContentType.Photo,
-//             contentData: {
-//                 imgUrl: _.sample([
-//                     'https://picsum.photos/id/1001/5616/3744',
-//                     'https://picsum.photos/id/1002/4312/2868',
-//                     'https://picsum.photos/id/1003/1181/1772',
-//                     'https://picsum.photos/id/1004/5616/3744',
-//                     'https://picsum.photos/id/1005/5760/3840'
-//                 ])
-//             },
-//             sourcePreviewAvailable: false,
-//             sourceType: MediaSourceType.Browser,
-//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-//             annotations: {
-//                 id: GetRandomId(),
-//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-//             }
-//         };
-//         item.sourceUrl = null;
-//         result.push(item);
-//     })
-//     return result;
-// }
-// export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
-//     const result = [];
-//     _.range(ItemSize).forEach(() => {
-//         const item: IContentItem<IVideoContent> = {
-//             id: GetRandomId(),
-//             title: 'Sample Photo Lorem ipsum',
-//             contentType: ContentType.Video,
-//             contentData: {
-//                 videoThumbnailUrl: _.sample([
-//                     'https://picsum.photos/id/1001/5616/3744',
-//                     'https://picsum.photos/id/1002/4312/2868',
-//                     'https://picsum.photos/id/1003/1181/1772',
-//                     'https://picsum.photos/id/1004/5616/3744',
-//                     'https://picsum.photos/id/1005/5760/3840'
-//                 ]),
-//                 videoId: _.sample([
-//                     'bTqVqk7FSmY',
-//                     '7T2RonyJ_Ts',
-//                     'tq9mgTRQM8k',
-//                     'rKa1YLIoeN4',
-//                     'PxVgQrw0RVQ'
-//                 ]),
-//                 videoEndTick: 0,
-//                 videoStartTick: 0,
-//                 videoLength: _.sample(_.range(45, 200))
-//             },
-//             sourcePreviewAvailable: false,
-//             sourceType: _.sample([MediaSourceType.Youtube, MediaSourceType.Vimeo]),
-//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-//             annotations: {
-//                 id: GetRandomId(),
-//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-//             }
-//         };
-//         item.contentData.videoUrl = `https://www.youtube.com/watch?v=${item.contentData.videoId}`
-//         item.sourceUrl = item.contentData.videoUrl;
-//         result.push(item);
-//     })
-//     return result;
-// }
-// export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
-//     const result = [];
-//     _.range(ItemSize).forEach(() => {
-//         const item: IContentItem<IArticleContent> = {
-//             id: GetRandomId(),
-//             title: 'https://dl.acm.org/citation.cfm?id=1357127',
-//             contentType: ContentType.Article,
-//             contentData: {
-//                 articleLink: _.sample([
-//                     'https://picsum.photos/id/1001/5616/3744',
-//                     'https://picsum.photos/id/1002/4312/2868',
-//                     'https://picsum.photos/id/1003/1181/1772',
-//                     'https://picsum.photos/id/1004/5616/3744',
-//                     'https://picsum.photos/id/1005/5760/3840'
-//                 ]),
-//                 authorName: _.sample([
-//                     'Aniket K',
-//                     'Napol R',
-//                     'Nathan H',
-//                     'Niko N'
-//                 ]),
-//                 articleTitle: _.sample([
-//                     'Crowdsourcing user studies with Mechanical Turk',
-//                     'Towards a Universal Knowledge Accelerator',
-//                     'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships',
-//                     'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise',
-//                     'A Contingency View of Transferring and Adapting Best Practices within Online Communities'
-//                 ]),
-//             },
-//             sourcePreviewAvailable: false,
-//             sourceType: _.sample([MediaSourceType.Quora, MediaSourceType.ACM, MediaSourceType.Scholar]),
-//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-//             annotations: {
-//                 id: GetRandomId(),
-//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-//             }
-//         };
-//         item.sourceUrl = item.title;
-//         result.push(item);
-//     })
-//     return result;
-// }
-// export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
-//     const result = [];
-//     const items: ILinkContent[] = [
-//         {
-//             ogLink: `https://www.ndcollaborative.com/sensemaking/`,
-//             ogTitle: `Navigating Change with Collective Sensemaking - New Directions Collaborative`,
-//             ogDescription: `These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.`,
-//             ogImage: `https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg`,
-//             ogSiteName: `New Directions Collaborative`
-//         }, {
-//             ogLink: `https://cognitive-edge.com/blog/what-is-sense-making/`,
-//             ogTitle: `What is Sense-making? - Cognitive Edge`,
-//             ogDescription: `This apparently innocent question was asked on the ActKM forum this morning. I replied and…`
-//         }, {
-//             ogLink: `https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise`,
-//             ogTitle: `Micro-Shopping on the Rise`,
-//             ogDescription: `Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services.`
-//         }
-//     ];
-//     items.forEach((data) => {
-//         const item: IContentItem<ILinkContent> = {
-//             id: GetRandomId(),
-//             title: data.ogSiteName,
-//             contentType: ContentType.Link,
-//             contentData: data,
-//             sourcePreviewAvailable: false,
-//             sourceType: null,
-//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-//             annotations: {
-//                 id: GetRandomId(),
-//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-//             }
-//         };
-//         item.sourceUrl = item.contentData.ogLink;
-//         result.push(item);
-//     });
-//     return result;
-// }
-// export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaContent>> {
-//     const result = [];
-//     _.range(ItemSize).forEach((data) => {
-//         const item: IContentItem<ISocialMediaContent> = {
-//             id: GetRandomId(),
-//             title: null,
-//             contentType: ContentType.SocialMedia,
-//             contentData: {
-//                 profileImgUrl: _.sample([
-//                     'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-//                     'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'
-//                 ])
-//             },
-//             sourcePreviewAvailable: false,
-//             sourceType: _.sample([
-//                 MediaSourceType.Instagram,
-//                 MediaSourceType.Twitter
-//             ]),
-//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-//             annotations: {
-//                 id: GetRandomId(),
-//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-//             }
-//         };
-//         if (item.sourceType === MediaSourceType.Twitter) {
-//             item.contentData.tweetText = _.sample([
-//                 `These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.`,
-//                 `And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home 🤷🏻‍♂️🤣`
-//             ]);
-//             item.contentData.handle = _.sample([
-//                 '@anomaly123',
-//                 '@anonymous42',
-//             ]);
-//         } else if (item.sourceType === MediaSourceType.Instagram) {
-//             item.contentData.instragramImageUrl = _.sample([
-//                 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-//                 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-//                 'https://picsum.photos/id/1003/1181/1772',
-//                 'https://picsum.photos/id/1004/5616/3744',
-//             ]);
-//             item.contentData.handle = _.sample([
-//                 'anomaly_123',
-//                 'anonymous_42',
-//             ]);
-//         }
-//         result.push(item);
-//     })
-//     return result;
-// }
+exports.GetSampleStickyItem = GetSampleStickyItem;
 },{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"constants/items/photo-items.ts":[function(require,module,exports) {
 "use strict";
 
@@ -67594,12 +67359,21 @@ function (_React$Component) {
       var mappedCollection = this.state.listItems;
 
       if (mappedCollection.length > 0) {
-        var _ref;
-
-        mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
-        this.setState({
-          listItems: mappedCollection
+        var mappedCollectionIds = mappedCollection[0].listItems.map(function (item) {
+          return item.id;
         });
+        mappedItems = mappedItems.filter(function (item) {
+          return _.indexOf(mappedCollectionIds, item.id) === -1;
+        });
+
+        if (mappedItems.length > 0) {
+          var _ref;
+
+          mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
+          this.setState({
+            listItems: mappedCollection
+          });
+        }
       }
     }
   }, {
@@ -72013,8 +71787,7 @@ function (_React$Component) {
       var props = this.props.data.props;
       var styles = {
         width: "".concat(props.width, "px")
-      }; // console.log(styles);
-
+      };
       var inheritDimensions = false;
 
       if (!props.height) {
@@ -72637,7 +72410,6 @@ function (_React$Component) {
         }
 
         if (scroll) {
-          console.log('scrollToCenter');
           var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2 - 150;
           var leftOffset = currentHolderProps.width * zoom / 2 - currentPositionerProps.width / 2;
           window.requestAnimationFrame(function () {
@@ -73405,8 +73177,7 @@ function (_React$Component) {
     _classCallCheck(this, GroupsBlockItem);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(GroupsBlockItem).call(this, props));
-  } // onActionInvoked(name) {}
-
+  }
 
   _createClass(GroupsBlockItem, [{
     key: "toggleSelection",
@@ -73745,17 +73516,7 @@ var photo_items_1 = require("./photo-items");
 
 var socialmedia_items_1 = require("./socialmedia-items");
 
-var video_items_1 = require("./video-items"); // export function GetSampleBoardItems() {
-//     const items = [
-//         { id: GetRandomId(), type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
-//         { id: GetRandomId(), type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
-//     ];
-//     return _.take(_.shuffle(items), 3);
-// }
-
+var video_items_1 = require("./video-items");
 
 exports.BoardGroups = [{
   id: 'group_1',
@@ -82130,7 +81891,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56381" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

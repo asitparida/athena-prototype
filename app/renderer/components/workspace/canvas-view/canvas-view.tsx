@@ -70,7 +70,6 @@ class CanvasView extends React.Component<{
                 scroll = true;
             }
             if (scroll) {
-                console.log('scrollToCenter')
                 const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2)) - 150;
                 const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
                 window.requestAnimationFrame(() => {

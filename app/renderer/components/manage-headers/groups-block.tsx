@@ -40,7 +40,6 @@ class GroupsBlockItem extends React.Component<{
     constructor(props) {
         super(props);
     }
-    // onActionInvoked(name) {}
     toggleSelection() {
         ToggleSelection(this.props.data.id);
     }

@@ -5,5 +5,18 @@
         "**/bower_components": true,
         "**/tmp": true,
         "**/.parcel": true
-    }
+    },
+    "LineCount.excludes": [
+        "**/.vscode/**",
+        "**/node_modules/**",
+        "**/.cache/**",
+        "**/release/**",
+        "**/.parcel/**",
+        "**/tests/**",
+        "LICENSE",
+        "**/*.md",
+        "**/*.json",
+        "yarn.lock",
+        "yarn-error.log"
+    ]
 }

@@ -126,7 +126,6 @@ body {
                     order: 1;
                     width: 100%;
                     border-bottom: 1px solid rgba(#000, 0.05);
-                    // background-color: $light-accent-color;
                     background: rgba(#fff, 1);
                 }
                 .app-content-container {
@@ -161,12 +160,10 @@ body {
 @keyframes slide-in-from-left {
     0% {
         transform: translateX(-10px);
-        // opacity: 0;
     }
 
     100% {
         transform: translateX(0px);
-        // opacity: 1;
     }
 }
 @keyframes slide-in-from-right {

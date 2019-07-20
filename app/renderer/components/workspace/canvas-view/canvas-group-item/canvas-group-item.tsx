@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './canvas-group-item.scss'
 import { DragSource } from 'react-dnd';
-import { DragAndDropTypes, IBoardContent } from '../../../../constants/types';
+import { DragAndDropTypes, IContentItem } from '../../../../constants/types';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 import { WorkspaceContentTransfer } from '../../../../access/observables/observables';
 
@@ -35,7 +35,7 @@ function collect(connect, monitor) {
 }
 
 interface IPropType {
-    data: IBoardContent;
+    data: IContentItem<any>;
 }
 
 class CanvasGroupItem extends React.Component<IPropType | any, {}> {

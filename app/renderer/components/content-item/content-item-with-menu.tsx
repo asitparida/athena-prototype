@@ -28,9 +28,6 @@ export class ContentItemWithMenu extends React.Component<any, any> {
             this.props.onActionInvoked(action);
         }
     }
-    propsChanged() {
-        // this.props.propsChanged();
-    }
     render() {
         let actions: IContextMenuAction[] = [
             { id: 'select', icon: 'select_all', name: 'Select' },
@@ -46,7 +43,7 @@ export class ContentItemWithMenu extends React.Component<any, any> {
         }
         return (
             < ContextMenu actions={actions} open={this.state.menuOpen} menuClosed={this.menuClosed.bind(this)} resizerOptions={this.props.resizerOptions || []} onAction={this.actionInvoked.bind(this)} >
-                <ContentItemWrapper propsChanged={this.propsChanged.bind(this)} inheritDimensions={this.props.inheritDimensions} data={this.props.data} menuInvoked={this.contextMenuOpened.bind(this)}  />
+                <ContentItemWrapper inheritDimensions={this.props.inheritDimensions} data={this.props.data} menuInvoked={this.contextMenuOpened.bind(this)}  />
             </ContextMenu >
         );
     }

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IBoardContent, IContentItem, IContextMenuAction } from '../../../../constants/types';
+import { IContentItem, IContextMenuAction } from '../../../../constants/types';
 import { ContentItemWrapper } from '../../../content-item/content-item';
 import './list-group-item.scss';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 
-class ListGroupItem extends React.Component<{ data: IBoardContent }, { contentData: IContentItem<any>, contentSize: string}> {
+class ListGroupItem extends React.Component<{ data: IContentItem<any> }, { contentData: IContentItem<any>, contentSize: string}> {
     constructor(props) {
         super(props);
         this.state = {
