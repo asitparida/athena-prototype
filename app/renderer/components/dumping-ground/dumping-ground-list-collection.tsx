@@ -2,10 +2,17 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { DumpingGroundList } from './dumping-ground-list';
 import { ContentType, IContentListItem, IContentItem } from '../../constants/types';
-import { PhotoContentList, VideoContentList, ArticleContentList, LinkContentList, SocialMediaContentList, GetDummifiedCollection, BuildStickyContentItem } from '../../constants/dummy-data';
+import { GetDummifiedCollection, BuildStickyContentItem, BuildMMSContentItem } from '../../constants/dummy-data';
 import { Subscription } from 'rxjs';
 import { DumpingGroundTransfer, DumpingGroundSelections } from '../../access/observables/observables';
-import { GetAPIUrl } from '../../constants/constants';
+import { GetAPIUrl, CancellabelRequests, Cancellable } from '../../constants/constants';
+import { IMms } from '../../../api/api-types';
+import { DummyPhotoItems } from '../../constants/items/photo-items';
+import { DummyVideoItems } from '../../constants/items/video-items';
+import { DummyArticleItems } from '../../constants/items/article-items';
+import { DummyLinkItems } from '../../constants/items/link-items';
+import { DummySocialMediaItems } from '../../constants/items/socialmedia-items';
+import { DumpingGroundCollection, FilterDumpingGroundCollection } from '../../constants/items/dumping-ground';
 
 interface IProps {
     type?: ContentType,
@@ -20,6 +27,8 @@ interface IContentCollectionState {
 export class DumpingGroundListCollection extends React.Component<IProps, IContentCollectionState> {
     dumpingGroundTransferSubscription: Subscription;
     dumpingGroundSelectionSubscription: Subscription;
+    mmsCollection: IMms[] = [];
+    cancellable = new CancellabelRequests();
     constructor(props) {
         super(props);
         this.state = {
@@ -27,33 +36,18 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
         };
     }
     updateCollection() {
-        let items = [];
+        let dumpingGroundCollection = [];
         const type = this.props.type;
         switch (type) {
-            case ContentType.Photo: { items = PhotoContentList; break; };
-            case ContentType.Video: { items = VideoContentList; break; };
-            case ContentType.Article: { items = ArticleContentList; break; };
-            case ContentType.Link: { items = LinkContentList; break; };
-            case ContentType.SocialMedia: { items = SocialMediaContentList; break; };
-            default: {
-                // tslint:disable-next-line:variable-name
-                const _items = _.shuffle([].concat(
-                    PhotoContentList,
-                    VideoContentList,
-                    ArticleContentList,
-                    LinkContentList,
-                    SocialMediaContentList));
-                if (this.props.searchBar) {
-                    items = _.take(_items, _items.length / 2);
-                } else {
-                    items = _.take(_items, _items.length);
-                }
-                break;
-            }
+            case ContentType.Photo:
+            case ContentType.Video:
+            case ContentType.Article:
+            case ContentType.Link:
+            case ContentType.SocialMedia: { dumpingGroundCollection = [].concat(FilterDumpingGroundCollection(type)); break; };
+            default: { dumpingGroundCollection = [].concat(DumpingGroundCollection); break; };
         }
-        const collection = GetDummifiedCollection(items);
         this.setState({
-            listItems: collection
+            listItems: dumpingGroundCollection
         });
         setTimeout(() => {
             if (typeof this.props.type === 'undefined') {
@@ -63,13 +57,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
                     .then((data) => {
                         if (data.data && data.data.length > 0) {
                             const mappedItems = data.data.sort((a, b) => (new Date(b.modified) as Date).getTime() - (new Date(a.modified) as Date).getTime()).map(item => BuildStickyContentItem(item));
-                            const mappedCollection = this.state.listItems;
-                            if (mappedCollection.length > 0) {
-                                mappedCollection[0].listItems = [].concat(...mappedItems, ...mappedCollection[0].listItems);
-                                this.setState({
-                                    listItems: mappedCollection
-                                });
-                            }
+                            this.insertNewItems(mappedItems);
                         }
                     }, (data) => {
                         console.log(data);
@@ -77,8 +65,42 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
             }
         });
     }
+    insertNewItems(mappedItems: any[]) {
+        const mappedCollection = this.state.listItems;
+        if (mappedCollection.length > 0) {
+            mappedCollection[0].listItems = [].concat(...mappedItems, ...mappedCollection[0].listItems);
+            this.setState({
+                listItems: mappedCollection
+            });
+        }
+    }
+    initializeMMSListener() {
+        const interval = setInterval(() => {
+            const api = `${GetAPIUrl()}/api/mms`;
+            fetch(api)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.data && data.data.length > 0) {
+                        const mmsCollection = data.data as IMms[];
+                        const newCollection = [];
+                        mmsCollection.forEach(item => {
+                            if (!this.mmsCollection.find(t => t.sid === item.sid)) {
+                                this.mmsCollection.push(item);
+                                newCollection.push(item)
+                            }
+                        })
+                        const mappedItems = newCollection.sort((a, b) => (new Date(a.modified) as Date).getTime() - (new Date(b.modified) as Date).getTime()).map(item => BuildMMSContentItem(item));
+                        this.insertNewItems(mappedItems);
+                    }
+                }, (data) => {
+                    console.log(data);
+                });
+        }, 10000);
+        this.cancellable.push(interval, Cancellable.Interval);
+    }
     componentDidMount() {
         this.updateCollection();
+        this.initializeMMSListener();
         this.dumpingGroundTransferSubscription = DumpingGroundTransfer.subscribe((data: IContentItem<any>) => {
             const collection = this.state.listItems;
             const newCollection = [];
@@ -116,6 +138,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     componentWillUnmount() {
         this.dumpingGroundTransferSubscription.unsubscribe();
         this.dumpingGroundSelectionSubscription.unsubscribe();
+        this.cancellable.clean();
     }
     componentDidUpdate(props) {
         if (this.props.type !== props.type) {

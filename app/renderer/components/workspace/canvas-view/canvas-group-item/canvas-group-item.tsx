@@ -1,9 +1,7 @@
 import * as React from 'react';
 import './canvas-group-item.scss'
 import { DragSource } from 'react-dnd';
-import { DragAndDropTypes, IContentItem, IBoardContent } from '../../../../constants/types';
-import { GetSampleItem } from '../../../../constants/dummy-data';
-import { ContentItemWrapper } from '../../../content-item/content-item';
+import { DragAndDropTypes, IBoardContent } from '../../../../constants/types';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 import { WorkspaceContentTransfer } from '../../../../access/observables/observables';
 
@@ -24,8 +22,6 @@ const itemSource = {
                 to: null,
                 data: props.data
             };
-            console.log(props);
-            console.log(data);
             WorkspaceContentTransfer.next(data);
         }
     }

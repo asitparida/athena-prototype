@@ -221,6 +221,10 @@
                         min-width: 100%;
                         padding: 0;
                         max-width: 200px;
+                        .selection-mask {
+                            display: none;
+                            
+                        }
                         .inner-content {
                             .inner-content-wrapper {
                                 height: auto;

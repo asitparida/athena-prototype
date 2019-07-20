@@ -122,9 +122,6 @@ class Header extends React.Component<any, any> {
                             <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
                                 <i className="material-icons">format_shapes</i>
                             </div>
-                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
-                                <i className='material-icons'>apps</i>
-                            </div>
                         </React.Fragment>
                     }
                     {

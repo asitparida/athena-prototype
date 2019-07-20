@@ -425,7 +425,7 @@ body #root .app-content .app-content-area {
   text-align: right;
   color: rgba(0, 0, 0, 0.5);
   font-weight: 500;
-  font-size: medium;
+  font-size: small;
   transition: all 0.1s linear 0s;
 }
 .dropdown-wrapper ul.dropdown-menu li.dropdown-item:not(:last-child) {
@@ -1678,6 +1678,9 @@ body #root .app-content .app-content-area {
   padding: 0;
   max-width: 200px;
 }
+.searchbar-wrapper .search-results .search-results-inner .search-results-bottom .dumping-ground-list-wrapper .content-wrapper .selection-mask {
+  display: none;
+}
 .searchbar-wrapper .search-results .search-results-inner .search-results-bottom .dumping-ground-list-wrapper .content-wrapper .inner-content .inner-content-wrapper {
   height: auto;
 }
@@ -2022,13 +2025,14 @@ body #root .app-content .app-content-area {
   width: 48px;
   height: 48px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.1);
   margin: 0 1px;
   cursor: pointer;
 }
 .workspace-actions .workspace-action i {
   line-height: 48px;
-  opacity: 0.33;
+  opacity: 1;
+  color: #000;
 }
 .workspace-actions .workspace-action:hover i {
   opacity: 1;
@@ -2319,7 +2323,7 @@ body #root .app-content .app-content-area {
   width: 100%;
   padding: 10px;
   font-size: small;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.5);
   margin: 10px 0;
 }
 .workspace-list-group textarea:hover {

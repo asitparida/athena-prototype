@@ -3,7 +3,10 @@ import { IContentItem, IVideoContent } from '../../constants/types';
 import { GetDuration } from '../../helper';
 import { CancellabelRequests, Cancellable } from '../../constants/constants';
 
-export class VideoContentItem extends React.Component<{ data: IContentItem<IVideoContent> }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
+export class VideoContentItem extends React.Component<{
+    data: IContentItem<IVideoContent>,
+    showEntity?: boolean
+}, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
     imageElement: HTMLImageElement;
     cancellable = new CancellabelRequests();
     constructor(props) {
@@ -62,14 +65,19 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
         const bgUrl = `url(${this.state.imgUrl})`;
         return (
             <div className='video-content content-marker'>
-                <label className='video-duration'>{duration}</label>
                 {
-                    this.state.imgAvailable && this.state.imgUrl &&
-                    <div className={`video-photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
+                    this.props.showEntity &&
+                    <React.Fragment>
+                        <label className='video-duration'>{duration}</label>
+                        {
+                            this.state.imgAvailable && this.state.imgUrl && this.props.showEntity &&
+                            <div className={`video-photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
+                        }
+                        <div className={`video-overlay ${this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : ''}`}>
+                            <i className='material-icons play-icon'>play_circle_filled</i>
+                        </div>
+                    </React.Fragment>
                 }
-                <div className={`video-overlay ${this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : ''}`}>
-                    <i className='material-icons play-icon'>play_circle_filled</i>
-                </div>
             </div>
         );
     }

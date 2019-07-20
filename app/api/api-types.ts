@@ -6,3 +6,10 @@ export interface IStickyNote {
     assigned?: boolean;
     modified?: Date;
 }
+
+export interface IMms {
+    text?: string;
+    mediaUrl?: string;
+    sid?: string;
+    modified?: Date;
+}

@@ -2,7 +2,6 @@ import * as React from 'react';
 import './canvas-group-item-wrapper.scss'
 import CanvasGroupItem from '../canvas-group-item/canvas-group-item';
 import { IBoardContent } from '../../../../constants/types';
-import { GetSampleItem } from '../../../../constants/dummy-data';
 
 interface IPropType {
     data: IBoardContent,
@@ -84,11 +83,6 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
                 width: props.width, height: props.height
             });
         });
-        const data = GetSampleItem((this.props.data as IBoardContent).type, this.props.data);
-        data.id = (this.props.data as IBoardContent).id;
-        this.setState({
-            contentData: data
-        })
     }
     propsChanged() {
         console.log(11123);
@@ -107,7 +101,7 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
         }
         return (
             <div className="board-content-wrapper" style={styles} ref={this.ref}>
-                <CanvasGroupItem isBeingResized={this.state.isBeingResized} data={this.state.contentData} group={this.props.group} propsChanged={this.propsChanged.bind(this)} inheritDimensions={inheritDimensions} />
+                <CanvasGroupItem isBeingResized={this.state.isBeingResized} data={this.props.data} group={this.props.group} propsChanged={this.propsChanged.bind(this)} inheritDimensions={inheritDimensions} />
                 {/* <div className="board-content-resizer" onPointerDown={this.onPointerDown.bind(this)}>
                     <i className='material-icons'>navigate_next</i>
                 </div> */}

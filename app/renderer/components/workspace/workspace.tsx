@@ -7,12 +7,13 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer, CurrentEnableScrollIntoCenter } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import { IWorkspaceContentTransfer, IContentItem, IGroupHeader } from '../../constants/types';
-import { ItemHeight, ItemWidth, BoardGroups, GetEmptyGroup } from '../../constants/constants';
+import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
+import { GetEmptyGroup } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
 import { isEqual } from '../../transforms';
 import ManageHeaders from '../manage-headers/manage-headers';
+import { BoardGroups, GroupHeaders } from '../../constants/items/groups';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -48,31 +49,6 @@ class Workspace extends React.Component<any, any> {
         }
     }
     // tslint:disable-next-line:variable-name
-    getHeaders(_groups) {
-        const headers: IGroupHeader[] = [];
-        const groups = _groups || [];
-        if (groups && groups.length > 0) {
-            const header: IGroupHeader = {
-                id: `${Math.floor(Math.random() * 10e8)}`,
-                name: 'Header',
-                groups: [],
-                drawProps: {}
-            }
-            if (groups[0]) { header.groups.push({ id: groups[0].id, name: groups[0].title})}
-            if (groups[1]) { header.groups.push({ id: groups[1].id, name: groups[1].title})}
-            headers.push(header);
-            const header2: IGroupHeader = {
-                id: `${Math.floor(Math.random() * 10e8)}`,
-                name: 'Header',
-                groups: [],
-                drawProps: {}
-            }
-            if (groups[groups.length - 1]) { header2.groups.push({ id: groups[groups.length - 1].id, name: groups[groups.length - 1].title})}
-            if (groups[groups.length - 2]) { header2.groups.push({ id: groups[groups.length - 2].id, name: groups[groups.length - 2].title})}
-            headers.push(header2);
-        }
-        return headers;
-    }
     processParamsChange() {
         const { workspaceId, topicId } = this.props.match.params;
         this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
@@ -80,7 +56,7 @@ class Workspace extends React.Component<any, any> {
             workspaceId,
             topicId,
             groups: BoardGroups,
-            headers: this.getHeaders(BoardGroups)
+            headers: GroupHeaders
         });
     }
     componentDidMount() {
@@ -90,7 +66,7 @@ class Workspace extends React.Component<any, any> {
         this.processParamsChange();
         this.props.actions.showWorkspaceActions();
         this.transferSubscription = WorkspaceContentTransfer.subscribe((data: IWorkspaceContentTransfer) => {
-            const contentData = data.data as IContentItem<any>;
+            const content = data.data as IContentItem<any>;
             let change = false;
             let groups = [];
             const originalGroups = this.state.groups;
@@ -108,23 +84,19 @@ class Workspace extends React.Component<any, any> {
                         group.items = group.items.filter(temp => temp.id !== data.data.id);
                         change = true;
                     } else if (data.to === groupId) {
-                        group.items.push({
-                            id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth }
-                        });
+                        group.items.push(content);
                         change = true;
                     }
                 })
             }
             if (!toGroup) {
                 const group = GetEmptyGroup();
-                group.items.push({
-                    id: contentData.id, type: contentData.contentType, props: { height: ItemHeight, width: ItemWidth + 20 }
-                });
+                group.items.push(content);
                 groups = [].concat(...groups, group);
                 change = true;
             }
             if (change) {
-                const headers = this.getHeaders(groups);
+                const headers = this.state.headers;
                 this.setState({ groups, headers, scrollToCenter: false });
             }
             CurrentEnableScrollIntoCenter.next(false);

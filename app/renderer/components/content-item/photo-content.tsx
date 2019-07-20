@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IContentItem, IPhotoContent } from '../../constants/types';
 import { CancellabelRequests, Cancellable } from '../../constants/constants';
 
-export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhotoContent> }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
+export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhotoContent>, showEntity?: boolean }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
     imageElement: HTMLImageElement;
     cancellable = new CancellabelRequests();
     constructor(props) {
@@ -61,7 +61,7 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
         return (
             <div className='photo-content content-marker'>
                 {
-                    this.state.imgAvailable && this.state.imgUrl &&
+                    this.state.imgAvailable && this.state.imgUrl && this.props.showEntity &&
                     <div className={`photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
                 }
             </div>

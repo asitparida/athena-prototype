@@ -90,7 +90,8 @@ export enum MediaSourceType {
     Youtube,
     Vimeo,
     ACM,
-    Scholar
+    Scholar,
+    MMS
 }
 export class ContentList {
     items: any[];
@@ -137,6 +138,7 @@ export interface ILinkContent {
 
 export interface INoteContent {
     noteText?: string;
+    mediaUrl?: string;
 }
 
 export interface ISocialMediaContent {
@@ -163,6 +165,8 @@ export interface IContentItem<T> {
     sourcePreviewAvailable?: boolean;
     tags?: any[];
     annotations?: IAnnotation;
+    annotation?: string;
+    props?: IRectProps;
 }
 
 export interface IWorkspaceContentTransfer {
@@ -196,12 +200,13 @@ export interface IAnnotation {
 }
 
 export interface IBoardContent {
-    type?: ContentType;
-    label?: string;
     id?: string;
-    data?: any;
-    annotationData?: IAnnotation[];
+    contentType?: ContentType;
+    annotation?: string;
+    contentData?: any;
     props?: IRectProps;
+    label?: string;
+    annotationData?: IAnnotation[];
 }
 export interface IBoardGroupContent {
     annotation?: IAnnotation;
@@ -210,7 +215,7 @@ export interface IBoardGroupWrapper {
     id?: string;
     title?: string;
     props?: IRectProps;
-    annotation?: IAnnotation;
+    annotation?: string;
     items?: IBoardContent[];
 }
 

@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -227,7 +227,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],"../../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
+},{}],"../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2245,7 +2245,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -26669,7 +26669,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   ReactPropTypes.PropTypes = ReactPropTypes;
   return ReactPropTypes;
 };
-},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
+},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -56089,6 +56089,7 @@ var MediaSourceType;
   MediaSourceType[MediaSourceType["Vimeo"] = 7] = "Vimeo";
   MediaSourceType[MediaSourceType["ACM"] = 8] = "ACM";
   MediaSourceType[MediaSourceType["Scholar"] = 9] = "Scholar";
+  MediaSourceType[MediaSourceType["MMS"] = 10] = "MMS";
 })(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
 
 var ContentList = function ContentList() {
@@ -56651,109 +56652,6 @@ function GetSampleTopicItems() {
 
 exports.GetSampleTopicItems = GetSampleTopicItems;
 
-function GetSampleBoardItems() {
-  var items = [{
-    id: GetRandomId(),
-    type: types_1.ContentType.Video,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: GetRandomId(),
-    type: types_1.ContentType.Article,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: GetRandomId(),
-    type: types_1.ContentType.Photo,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: GetRandomId(),
-    type: types_1.ContentType.Link,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: GetRandomId(),
-    type: types_1.ContentType.SocialMedia,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }];
-  return _.take(_.shuffle(items), 3);
-}
-
-exports.GetSampleBoardItems = GetSampleBoardItems;
-exports.BoardGroups = [{
-  id: GetRandomId(),
-  title: 'Group #1',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: GetRandomId(),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: GetRandomId(),
-  title: 'Group #2',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: GetRandomId(),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: GetRandomId(),
-  title: 'Group #3',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: GetRandomId(),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: GetRandomId(),
-  title: 'Group #4',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: GetRandomId(),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: GetRandomId(),
-  title: 'Group #5',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: GetRandomId(),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}];
-
 function GetEmptyGroup() {
   return {
     id: GetRandomId(),
@@ -56994,7 +56892,7 @@ function (_React$Component) {
       var bgUrl = "url(".concat(this.props.data.contentData.imgUrl, ")");
       return React.createElement("div", {
         className: "photo-content content-marker"
-      }, this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
+      }, this.state.imgAvailable && this.state.imgUrl && this.props.showEntity && React.createElement("div", {
         className: "photo ".concat(this.state.showImg ? 'shown' : ''),
         style: {
           backgroundImage: bgUrl
@@ -57180,9 +57078,9 @@ function (_React$Component) {
       var bgUrl = "url(".concat(this.state.imgUrl, ")");
       return React.createElement("div", {
         className: "video-content content-marker"
-      }, React.createElement("label", {
+      }, this.props.showEntity && React.createElement(React.Fragment, null, React.createElement("label", {
         className: "video-duration"
-      }, duration), this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
+      }, duration), this.state.imgAvailable && this.state.imgUrl && this.props.showEntity && React.createElement("div", {
         className: "video-photo ".concat(this.state.showImg ? 'shown' : ''),
         style: {
           backgroundImage: bgUrl
@@ -57191,7 +57089,7 @@ function (_React$Component) {
         className: "video-overlay ".concat(this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : '')
       }, React.createElement("i", {
         className: "material-icons play-icon"
-      }, "play_circle_filled")));
+      }, "play_circle_filled"))));
     }
   }]);
 
@@ -57252,11 +57150,11 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("div", {
         className: "article-content content-marker"
-      }, React.createElement("label", {
+      }, this.props.showEntity && React.createElement(React.Fragment, null, React.createElement("label", {
         className: "article-title"
       }, this.props.data.contentData.articleTitle), React.createElement("label", {
         className: "article-author"
-      }, this.props.data.contentData.authorName));
+      }, this.props.data.contentData.authorName)));
     }
   }]);
 
@@ -57317,7 +57215,7 @@ function (_React$Component) {
     value: function render() {
       return React.createElement("div", {
         className: "link-content content-marker"
-      }, React.createElement("label", {
+      }, this.props.showEntity && React.createElement("label", {
         className: "link-title"
       }, this.props.data.contentData.ogDescription));
     }
@@ -57388,7 +57286,7 @@ function (_React$Component) {
       };
       return React.createElement("div", {
         className: "social-media-content content-marker"
-      }, this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
+      }, this.props.showEntity && React.createElement(React.Fragment, null, this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
         className: "tweet-text"
       }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
         className: "insta-photo",
@@ -57400,7 +57298,7 @@ function (_React$Component) {
       }, this.props.data.contentData.handle), React.createElement("div", {
         className: "social-media-pic ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram'),
         style: styles
-      })));
+      }))));
     }
   }]);
 
@@ -65853,25 +65751,43 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var types_1 = require("../../constants/types");
+
 var StickyContentItem =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(StickyContentItem, _React$Component);
 
   function StickyContentItem(props) {
+    var _this;
+
     _classCallCheck(this, StickyContentItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(StickyContentItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(StickyContentItem).call(this, props));
+    _this.state = {
+      imgAvailable: true,
+      showImg: true,
+      imgUrl: null
+    };
+    return _this;
   }
 
   _createClass(StickyContentItem, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      var bgUrl = "url(".concat(this.props.data.contentData.mediaUrl, ")");
+      return React.createElement(React.Fragment, null, this.props.data.sourceType === types_1.MediaSourceType.MMS && this.props.showEntity && React.createElement("div", {
+        className: "photo-content content-marker"
+      }, this.state.imgAvailable && React.createElement("div", {
+        className: "photo ".concat(this.state.showImg ? 'shown' : ''),
+        style: {
+          backgroundImage: bgUrl
+        }
+      })), !this.props.data.sourceType && this.props.showEntity && React.createElement("div", {
         className: "note-content content-marker"
       }, React.createElement("p", {
         className: "note-text"
-      }, this.props.data.contentData.noteText));
+      }, this.props.data.contentData.noteText)));
     }
   }]);
 
@@ -65879,7 +65795,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.StickyContentItem = StickyContentItem;
-},{"react":"../../node_modules/react/index.js"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65955,7 +65871,7 @@ function (_React$Component) {
       newTagBeingAdded: false,
       newTag: '',
       tags: _this.props.data.tags,
-      annotation: _this.props.data.annotations
+      annotation: _this.props.data.annotation
     };
     return _this;
   }
@@ -65976,7 +65892,7 @@ function (_React$Component) {
   }, {
     key: "openContent",
     value: function openContent() {
-      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video) {
+      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video || this.props.data.contentType === types_1.ContentType.Sticky && this.props.data.sourceType === types_1.MediaSourceType.MMS) {
         observables_1.ContentViewerData.next(this.props.data);
       }
     }
@@ -66131,7 +66047,8 @@ function (_React$Component) {
         case types_1.ContentType.Photo:
           {
             currentContent = React.createElement(photo_content_1.PhotoContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66139,7 +66056,8 @@ function (_React$Component) {
         case types_1.ContentType.Video:
           {
             currentContent = React.createElement(video_content_1.VideoContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66147,7 +66065,8 @@ function (_React$Component) {
         case types_1.ContentType.Article:
           {
             currentContent = React.createElement(article_content_1.ArticleContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66155,7 +66074,8 @@ function (_React$Component) {
         case types_1.ContentType.Link:
           {
             currentContent = React.createElement(link_content_1.LinkContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66163,7 +66083,8 @@ function (_React$Component) {
         case types_1.ContentType.SocialMedia:
           {
             currentContent = React.createElement(socialmedia_item_1.SocialMediaContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66171,7 +66092,8 @@ function (_React$Component) {
         case types_1.ContentType.Sticky:
           {
             currentContent = React.createElement(sticky_content_1.StickyContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -66205,7 +66127,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "image",
         style: contentImageStyle
-      })), this.state.showEntity && currentContent, this.props.data.title && React.createElement("div", {
+      })), currentContent, this.props.data.title && React.createElement("div", {
         className: "inner-overlay-content-wrapper"
       }, React.createElement("label", {
         className: "inner-content-title"
@@ -66228,10 +66150,10 @@ function (_React$Component) {
         width: "auto",
         value: this.state.newTag,
         onChange: this.onNewTagChange.bind(this)
-      }))))), this.props.data.annotations && React.createElement("div", {
+      }))))), React.createElement("div", {
         className: "inner-content-meta-notes"
       }, React.createElement("textarea", {
-        defaultValue: annotation.message,
+        defaultValue: annotation,
         onChange: this.onAnnotationChange.bind(this)
       })))), React.createElement("div", {
         className: "inner-content-item-actions"
@@ -66741,16 +66663,22 @@ Object.defineProperty(exports, "__esModule", {
 
 var types_1 = require("./types");
 
-var _ = __importStar(require("lodash"));
+var _ = __importStar(require("lodash")); // export const PhotoContentList: Array<IContentItem<IPhotoContent>> = GetSamplePhotoItems();
+// export const VideoContentList: Array<IContentItem<IVideoContent>> = GetSampleVideoItems();
+// export const ArticleContentList: Array<IContentItem<IArticleContent>> = GetSampleArticleItems();
+// export const LinkContentList: Array<IContentItem<ILinkContent>> = GetSampleLinkItems();
+// export const SocialMediaContentList: Array<IContentItem<ISocialMediaContent>> = GetSampleSocialMediaItems();
+// export function GetSampleItem(type: ContentType, data?: any): IContentItem<any> {
+//     switch (type) {
+//         case ContentType.Photo: return _.sample(DummyPhotoItems);
+//         case ContentType.Video: return _.sample(DummyVideoItems);
+//         case ContentType.Article: return _.sample(DummyArticleItems);
+//         case ContentType.Link: return _.sample(DummyLinkItems);
+//         case ContentType.SocialMedia: return _.sample(DummySocialMediaItems);
+//         case ContentType.Sticky: return GetSampleStickyItem(data);
+//     }
+// }
 
-var constants_1 = require("./constants");
-
-var ItemSize = 5;
-exports.PhotoContentList = GetSamplePhotoItems();
-exports.VideoContentList = GetSampleVideoItems();
-exports.ArticleContentList = GetSampleArticleItems();
-exports.LinkContentList = GetSampleLinkItems();
-exports.SocialMediaContentList = GetSampleSocialMediaItems();
 
 function GetDummifiedCollection(items) {
   return [{
@@ -66770,30 +66698,6 @@ function GetDummifiedCollection(items) {
 
 exports.GetDummifiedCollection = GetDummifiedCollection;
 
-function GetSampleItem(type, data) {
-  switch (type) {
-    case types_1.ContentType.Photo:
-      return _.sample(GetSamplePhotoItems());
-
-    case types_1.ContentType.Video:
-      return _.sample(GetSampleVideoItems());
-
-    case types_1.ContentType.Article:
-      return _.sample(GetSampleArticleItems());
-
-    case types_1.ContentType.Link:
-      return _.sample(GetSampleLinkItems());
-
-    case types_1.ContentType.SocialMedia:
-      return _.sample(GetSampleSocialMediaItems());
-
-    case types_1.ContentType.Sticky:
-      return GetSampleStickyItem(data);
-  }
-}
-
-exports.GetSampleItem = GetSampleItem;
-
 function BuildStickyContentItem(data) {
   return {
     id: data.id,
@@ -66807,14 +66711,31 @@ function BuildStickyContentItem(data) {
     tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
       return "tag-".concat(t);
     }),
-    annotations: {
-      id: constants_1.GetRandomId(),
-      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }
+    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   };
 }
 
 exports.BuildStickyContentItem = BuildStickyContentItem;
+
+function BuildMMSContentItem(data) {
+  return {
+    id: data.sid,
+    title: null,
+    contentType: types_1.ContentType.Sticky,
+    contentData: {
+      noteText: data.text,
+      mediaUrl: data.mediaUrl
+    },
+    sourcePreviewAvailable: false,
+    sourceType: data.mediaUrl ? types_1.MediaSourceType.MMS : null,
+    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
+      return "tag-".concat(t);
+    }),
+    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  };
+}
+
+exports.BuildMMSContentItem = BuildMMSContentItem;
 
 function GetSampleStickyItem(data) {
   return {
@@ -66829,191 +66750,715 @@ function GetSampleStickyItem(data) {
     tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
       return "tag-".concat(t);
     }),
-    annotations: {
-      id: constants_1.GetRandomId(),
-      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }
+    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
   };
 }
 
-exports.GetSampleStickyItem = GetSampleStickyItem;
+exports.GetSampleStickyItem = GetSampleStickyItem; // export function GetSamplePhotoItems(): Array<IContentItem<IPhotoContent>> {
+//     const result = [];
+//     _.range(ItemSize).forEach(() => {
+//         const item: IContentItem<IPhotoContent> = {
+//             id: GetRandomId(),
+//             title: 'Sample Photo Lorem ipsum',
+//             contentType: ContentType.Photo,
+//             contentData: {
+//                 imgUrl: _.sample([
+//                     'https://picsum.photos/id/1001/5616/3744',
+//                     'https://picsum.photos/id/1002/4312/2868',
+//                     'https://picsum.photos/id/1003/1181/1772',
+//                     'https://picsum.photos/id/1004/5616/3744',
+//                     'https://picsum.photos/id/1005/5760/3840'
+//                 ])
+//             },
+//             sourcePreviewAvailable: false,
+//             sourceType: MediaSourceType.Browser,
+//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+//             annotations: {
+//                 id: GetRandomId(),
+//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+//             }
+//         };
+//         item.sourceUrl = null;
+//         result.push(item);
+//     })
+//     return result;
+// }
+// export function GetSampleVideoItems(): Array<IContentItem<IVideoContent>> {
+//     const result = [];
+//     _.range(ItemSize).forEach(() => {
+//         const item: IContentItem<IVideoContent> = {
+//             id: GetRandomId(),
+//             title: 'Sample Photo Lorem ipsum',
+//             contentType: ContentType.Video,
+//             contentData: {
+//                 videoThumbnailUrl: _.sample([
+//                     'https://picsum.photos/id/1001/5616/3744',
+//                     'https://picsum.photos/id/1002/4312/2868',
+//                     'https://picsum.photos/id/1003/1181/1772',
+//                     'https://picsum.photos/id/1004/5616/3744',
+//                     'https://picsum.photos/id/1005/5760/3840'
+//                 ]),
+//                 videoId: _.sample([
+//                     'bTqVqk7FSmY',
+//                     '7T2RonyJ_Ts',
+//                     'tq9mgTRQM8k',
+//                     'rKa1YLIoeN4',
+//                     'PxVgQrw0RVQ'
+//                 ]),
+//                 videoEndTick: 0,
+//                 videoStartTick: 0,
+//                 videoLength: _.sample(_.range(45, 200))
+//             },
+//             sourcePreviewAvailable: false,
+//             sourceType: _.sample([MediaSourceType.Youtube, MediaSourceType.Vimeo]),
+//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+//             annotations: {
+//                 id: GetRandomId(),
+//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+//             }
+//         };
+//         item.contentData.videoUrl = `https://www.youtube.com/watch?v=${item.contentData.videoId}`
+//         item.sourceUrl = item.contentData.videoUrl;
+//         result.push(item);
+//     })
+//     return result;
+// }
+// export function GetSampleArticleItems(): Array<IContentItem<IArticleContent>> {
+//     const result = [];
+//     _.range(ItemSize).forEach(() => {
+//         const item: IContentItem<IArticleContent> = {
+//             id: GetRandomId(),
+//             title: 'https://dl.acm.org/citation.cfm?id=1357127',
+//             contentType: ContentType.Article,
+//             contentData: {
+//                 articleLink: _.sample([
+//                     'https://picsum.photos/id/1001/5616/3744',
+//                     'https://picsum.photos/id/1002/4312/2868',
+//                     'https://picsum.photos/id/1003/1181/1772',
+//                     'https://picsum.photos/id/1004/5616/3744',
+//                     'https://picsum.photos/id/1005/5760/3840'
+//                 ]),
+//                 authorName: _.sample([
+//                     'Aniket K',
+//                     'Napol R',
+//                     'Nathan H',
+//                     'Niko N'
+//                 ]),
+//                 articleTitle: _.sample([
+//                     'Crowdsourcing user studies with Mechanical Turk',
+//                     'Towards a Universal Knowledge Accelerator',
+//                     'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships',
+//                     'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise',
+//                     'A Contingency View of Transferring and Adapting Best Practices within Online Communities'
+//                 ]),
+//             },
+//             sourcePreviewAvailable: false,
+//             sourceType: _.sample([MediaSourceType.Quora, MediaSourceType.ACM, MediaSourceType.Scholar]),
+//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+//             annotations: {
+//                 id: GetRandomId(),
+//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+//             }
+//         };
+//         item.sourceUrl = item.title;
+//         result.push(item);
+//     })
+//     return result;
+// }
+// export function GetSampleLinkItems(): Array<IContentItem<ILinkContent>> {
+//     const result = [];
+//     const items: ILinkContent[] = [
+//         {
+//             ogLink: `https://www.ndcollaborative.com/sensemaking/`,
+//             ogTitle: `Navigating Change with Collective Sensemaking - New Directions Collaborative`,
+//             ogDescription: `These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.`,
+//             ogImage: `https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg`,
+//             ogSiteName: `New Directions Collaborative`
+//         }, {
+//             ogLink: `https://cognitive-edge.com/blog/what-is-sense-making/`,
+//             ogTitle: `What is Sense-making? - Cognitive Edge`,
+//             ogDescription: `This apparently innocent question was asked on the ActKM forum this morning. I replied and…`
+//         }, {
+//             ogLink: `https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise`,
+//             ogTitle: `Micro-Shopping on the Rise`,
+//             ogDescription: `Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services.`
+//         }
+//     ];
+//     items.forEach((data) => {
+//         const item: IContentItem<ILinkContent> = {
+//             id: GetRandomId(),
+//             title: data.ogSiteName,
+//             contentType: ContentType.Link,
+//             contentData: data,
+//             sourcePreviewAvailable: false,
+//             sourceType: null,
+//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+//             annotations: {
+//                 id: GetRandomId(),
+//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+//             }
+//         };
+//         item.sourceUrl = item.contentData.ogLink;
+//         result.push(item);
+//     });
+//     return result;
+// }
+// export function GetSampleSocialMediaItems(): Array<IContentItem<ISocialMediaContent>> {
+//     const result = [];
+//     _.range(ItemSize).forEach((data) => {
+//         const item: IContentItem<ISocialMediaContent> = {
+//             id: GetRandomId(),
+//             title: null,
+//             contentType: ContentType.SocialMedia,
+//             contentData: {
+//                 profileImgUrl: _.sample([
+//                     'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+//                     'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'
+//                 ])
+//             },
+//             sourcePreviewAvailable: false,
+//             sourceType: _.sample([
+//                 MediaSourceType.Instagram,
+//                 MediaSourceType.Twitter
+//             ]),
+//             tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+//             annotations: {
+//                 id: GetRandomId(),
+//                 message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+//             }
+//         };
+//         if (item.sourceType === MediaSourceType.Twitter) {
+//             item.contentData.tweetText = _.sample([
+//                 `These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.`,
+//                 `And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home 🤷🏻‍♂️🤣`
+//             ]);
+//             item.contentData.handle = _.sample([
+//                 '@anomaly123',
+//                 '@anonymous42',
+//             ]);
+//         } else if (item.sourceType === MediaSourceType.Instagram) {
+//             item.contentData.instragramImageUrl = _.sample([
+//                 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+//                 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+//                 'https://picsum.photos/id/1003/1181/1772',
+//                 'https://picsum.photos/id/1004/5616/3744',
+//             ]);
+//             item.contentData.handle = _.sample([
+//                 'anomaly_123',
+//                 'anonymous_42',
+//             ]);
+//         }
+//         result.push(item);
+//     })
+//     return result;
+// }
+},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"constants/items/photo-items.ts":[function(require,module,exports) {
+"use strict";
 
-function GetSamplePhotoItems() {
-  var result = [];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: constants_1.GetRandomId(),
-      title: 'Sample Photo Lorem ipsum',
-      contentType: types_1.ContentType.Photo,
-      contentData: {
-        imgUrl: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: types_1.MediaSourceType.Browser,
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: {
-        id: constants_1.GetRandomId(),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }
-    };
-    item.sourceUrl = null;
-    result.push(item);
-  });
+var types_1 = require("../types");
 
+var constants_1 = require("../constants");
+
+exports.DummyPhotoItems = [{
+  id: 'photo_1',
+  title: 'Sample Photo Lorem ipsum 1',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: 'https://picsum.photos/id/1001/5616/3744'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: 'https://picsum.photos/id/1002/4312/2868'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_3',
+  title: 'Sample Photo Lorem ipsum 3',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: 'https://picsum.photos/id/1003/1181/1772'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_4',
+  title: 'Sample Photo Lorem ipsum 4',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: 'https://picsum.photos/id/1004/5616/3744'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_5',
+  title: 'Sample Photo Lorem ipsum 5',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: 'https://picsum.photos/id/1005/5760/3840'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/video-items.ts":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
   return result;
-}
+};
 
-exports.GetSamplePhotoItems = GetSamplePhotoItems;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function GetSampleVideoItems() {
-  var result = [];
+var types_1 = require("../types");
 
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: constants_1.GetRandomId(),
-      title: 'Sample Photo Lorem ipsum',
-      contentType: types_1.ContentType.Video,
-      contentData: {
-        videoThumbnailUrl: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840']),
-        videoId: _.sample(['bTqVqk7FSmY', '7T2RonyJ_Ts', 'tq9mgTRQM8k', 'rKa1YLIoeN4', 'PxVgQrw0RVQ']),
-        videoEndTick: 0,
-        videoStartTick: 0,
-        videoLength: _.sample(_.range(45, 200))
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Youtube, types_1.MediaSourceType.Vimeo]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: {
-        id: constants_1.GetRandomId(),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }
-    };
-    item.contentData.videoUrl = "https://www.youtube.com/watch?v=".concat(item.contentData.videoId);
-    item.sourceUrl = item.contentData.videoUrl;
-    result.push(item);
-  });
+var _ = __importStar(require("lodash"));
 
-  return result;
-}
+var constants_1 = require("../constants");
 
-exports.GetSampleVideoItems = GetSampleVideoItems;
+exports.DummyVideoItems = [{
+  id: 'video_1',
+  title: 'Sample Photo Lorem ipsum 1',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: 'https://picsum.photos/id/1001/5616/3744',
+    videoId: 'bTqVqk7FSmY',
+    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: 'https://picsum.photos/id/1002/4312/2868',
+    videoId: '7T2RonyJ_Ts',
+    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_3',
+  title: 'Sample Photo Lorem ipsum 3',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: 'https://picsum.photos/id/1003/1181/1772',
+    videoId: 'tq9mgTRQM8k',
+    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_4',
+  title: 'Sample Photo Lorem ipsum 4',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: 'https://picsum.photos/id/1004/5616/3744',
+    videoId: 'rKa1YLIoeN4',
+    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_5',
+  title: 'Sample Photo Lorem ipsum 5',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: 'https://picsum.photos/id/1005/5760/3840',
+    videoId: 'PxVgQrw0RVQ',
+    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../constants":"constants/constants.ts"}],"constants/items/article-items.ts":[function(require,module,exports) {
+"use strict";
 
-function GetSampleArticleItems() {
-  var result = [];
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: constants_1.GetRandomId(),
-      title: 'https://dl.acm.org/citation.cfm?id=1357127',
-      contentType: types_1.ContentType.Article,
-      contentData: {
-        articleLink: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840']),
-        authorName: _.sample(['Aniket K', 'Napol R', 'Nathan H', 'Niko N']),
-        articleTitle: _.sample(['Crowdsourcing user studies with Mechanical Turk', 'Towards a Universal Knowledge Accelerator', 'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships', 'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise', 'A Contingency View of Transferring and Adapting Best Practices within Online Communities'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Quora, types_1.MediaSourceType.ACM, types_1.MediaSourceType.Scholar]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: {
-        id: constants_1.GetRandomId(),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }
-    };
-    item.sourceUrl = item.title;
-    result.push(item);
-  });
+var types_1 = require("../types");
 
-  return result;
-}
+var constants_1 = require("../constants");
 
-exports.GetSampleArticleItems = GetSampleArticleItems;
+exports.DummyArticleItems = [{
+  id: 'article_1',
+  title: 'https://dl.acm.org/citation.cfm?id=1357127',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
+    authorName: 'Aniket K',
+    articleTitle: 'Crowdsourcing user studies with Mechanical Turk'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_2',
+  title: 'https://dl.acm.org/citation.cfm?id=1357127',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
+    authorName: 'Napol R',
+    articleTitle: 'Towards a Universal Knowledge Accelerator'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_3',
+  title: 'https://dl.acm.org/citation.cfm?id=1357127',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
+    authorName: 'Nathan H',
+    articleTitle: 'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_4',
+  title: 'https://dl.acm.org/citation.cfm?id=1357127',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
+    authorName: 'Niko N',
+    articleTitle: 'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_5',
+  title: 'https://dl.acm.org/citation.cfm?id=1357127',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
+    authorName: 'Niko N',
+    articleTitle: 'A Contingency View of Transferring and Adapting Best Practices within Online Communities'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/link-items.ts":[function(require,module,exports) {
+"use strict";
 
-function GetSampleLinkItems() {
-  var result = [];
-  var items = [{
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummyLinkItems = [{
+  id: 'link_1',
+  title: "New Directions Collaborative",
+  contentType: types_1.ContentType.Link,
+  contentData: {
     ogLink: "https://www.ndcollaborative.com/sensemaking/",
     ogTitle: "Navigating Change with Collective Sensemaking - New Directions Collaborative",
     ogDescription: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
     ogImage: "https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg",
     ogSiteName: "New Directions Collaborative"
-  }, {
+  },
+  sourceUrl: "https://www.ndcollaborative.com/sensemaking/",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'link_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.Link,
+  contentData: {
     ogLink: "https://cognitive-edge.com/blog/what-is-sense-making/",
     ogTitle: "What is Sense-making? - Cognitive Edge",
     ogDescription: "This apparently innocent question was asked on the ActKM forum this morning. I replied and\u2026"
-  }, {
+  },
+  sourceUrl: "https://cognitive-edge.com/blog/what-is-sense-making/",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'link_3',
+  title: 'Sample Photo Lorem ipsum 3',
+  contentType: types_1.ContentType.Link,
+  contentData: {
     ogLink: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
     ogTitle: "Micro-Shopping on the Rise",
     ogDescription: "Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services."
-  }];
-  items.forEach(function (data) {
-    var item = {
-      id: constants_1.GetRandomId(),
-      title: data.ogSiteName,
-      contentType: types_1.ContentType.Link,
-      contentData: data,
-      sourcePreviewAvailable: false,
-      sourceType: null,
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: {
-        id: constants_1.GetRandomId(),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }
-    };
-    item.sourceUrl = item.contentData.ogLink;
-    result.push(item);
-  });
-  return result;
-}
+  },
+  sourceUrl: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/socialmedia-items.ts":[function(require,module,exports) {
+"use strict";
 
-exports.GetSampleLinkItems = GetSampleLinkItems;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function GetSampleSocialMediaItems() {
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummySocialMediaItems = [{
+  id: 'socialmedia_1',
+  title: 'Sample Photo Lorem ipsum 1',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_3',
+  title: 'Sample Photo Lorem ipsum 4',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    tweetText: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Twitter,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_4',
+  title: 'Sample Photo Lorem ipsum 5',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    tweetText: "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23",
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Twitter,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/dumping-ground.ts":[function(require,module,exports) {
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var photo_items_1 = require("../../constants/items/photo-items");
+
+var video_items_1 = require("../../constants/items/video-items");
+
+var article_items_1 = require("../../constants/items/article-items");
+
+var link_items_1 = require("../../constants/items/link-items");
+
+var socialmedia_items_1 = require("../../constants/items/socialmedia-items");
+
+function FilterDumpingGroundCollection(type) {
+  console.log(exports.DumpingGroundCollection);
   var result = [];
+  exports.DumpingGroundCollection.forEach(function (item) {
+    var _ref;
 
-  _.range(ItemSize).forEach(function (data) {
-    var item = {
-      id: constants_1.GetRandomId(),
-      title: null,
-      contentType: types_1.ContentType.SocialMedia,
-      contentData: {
-        profileImgUrl: _.sample(['https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg', 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Instagram, types_1.MediaSourceType.Twitter]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: {
-        id: constants_1.GetRandomId(),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }
-    };
+    var list = (_ref = []).concat.apply(_ref, _toConsumableArray(item.listItems));
 
-    if (item.sourceType === types_1.MediaSourceType.Twitter) {
-      item.contentData.tweetText = _.sample(["These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.", "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23"]);
-      item.contentData.handle = _.sample(['@anomaly123', '@anonymous42']);
-    } else if (item.sourceType === types_1.MediaSourceType.Instagram) {
-      item.contentData.instragramImageUrl = _.sample(['https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744']);
-      item.contentData.handle = _.sample(['anomaly_123', 'anonymous_42']);
-    }
-
-    result.push(item);
+    result.push(Object.assign({}, item, {
+      listItems: list.filter(function (t) {
+        return t.contentType === type;
+      })
+    }));
   });
-
   return result;
 }
 
-exports.GetSampleSocialMediaItems = GetSampleSocialMediaItems;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","./constants":"constants/constants.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+exports.FilterDumpingGroundCollection = FilterDumpingGroundCollection;
+exports.DumpingGroundCollection = [{
+  title: 'Recent',
+  listItems: [article_items_1.DummyArticleItems[3], link_items_1.DummyLinkItems[2], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]]
+}, {
+  title: 'Yesterday',
+  listItems: [article_items_1.DummyArticleItems[4], photo_items_1.DummyPhotoItems[4], video_items_1.DummyVideoItems[4]]
+}];
+},{"../../constants/items/photo-items":"constants/items/photo-items.ts","../../constants/items/video-items":"constants/items/video-items.ts","../../constants/items/article-items":"constants/items/article-items.ts","../../constants/items/link-items":"constants/items/link-items.ts","../../constants/items/socialmedia-items":"constants/items/socialmedia-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67070,6 +67515,8 @@ var observables_1 = require("../../access/observables/observables");
 
 var constants_1 = require("../../constants/constants");
 
+var dumping_ground_1 = require("../../constants/items/dumping-ground");
+
 var DumpingGroundListCollection =
 /*#__PURE__*/
 function (_React$Component) {
@@ -67081,6 +67528,8 @@ function (_React$Component) {
     _classCallCheck(this, DumpingGroundListCollection);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundListCollection).call(this, props));
+    _this.mmsCollection = [];
+    _this.cancellable = new constants_1.CancellabelRequests();
     _this.state = {
       listItems: []
     };
@@ -67092,63 +67541,31 @@ function (_React$Component) {
     value: function updateCollection() {
       var _this2 = this;
 
-      var items = [];
+      var dumpingGroundCollection = [];
       var type = this.props.type;
 
       switch (type) {
         case types_1.ContentType.Photo:
-          {
-            items = dummy_data_1.PhotoContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Video:
-          {
-            items = dummy_data_1.VideoContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Article:
-          {
-            items = dummy_data_1.ArticleContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Link:
-          {
-            items = dummy_data_1.LinkContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.SocialMedia:
           {
-            items = dummy_data_1.SocialMediaContentList;
+            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(type));
             break;
           }
           ;
 
         default:
           {
-            // tslint:disable-next-line:variable-name
-            var _items = _.shuffle([].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList, dummy_data_1.SocialMediaContentList));
-
-            if (this.props.searchBar) {
-              items = _.take(_items, _items.length / 2);
-            } else {
-              items = _.take(_items, _items.length);
-            }
-
+            dumpingGroundCollection = [].concat(dumping_ground_1.DumpingGroundCollection);
             break;
           }
+          ;
       }
 
-      var collection = dummy_data_1.GetDummifiedCollection(items);
       this.setState({
-        listItems: collection
+        listItems: dumpingGroundCollection
       });
       setTimeout(function () {
         if (typeof _this2.props.type === 'undefined') {
@@ -67162,17 +67579,8 @@ function (_React$Component) {
               }).map(function (item) {
                 return dummy_data_1.BuildStickyContentItem(item);
               });
-              var mappedCollection = _this2.state.listItems;
 
-              if (mappedCollection.length > 0) {
-                var _ref;
-
-                mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
-
-                _this2.setState({
-                  listItems: mappedCollection
-                });
-              }
+              _this2.insertNewItems(mappedItems);
             }
           }, function (data) {
             console.log(data);
@@ -67181,13 +67589,64 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "insertNewItems",
+    value: function insertNewItems(mappedItems) {
+      var mappedCollection = this.state.listItems;
+
+      if (mappedCollection.length > 0) {
+        var _ref;
+
+        mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
+        this.setState({
+          listItems: mappedCollection
+        });
+      }
+    }
+  }, {
+    key: "initializeMMSListener",
+    value: function initializeMMSListener() {
       var _this3 = this;
 
+      var interval = setInterval(function () {
+        var api = "".concat(constants_1.GetAPIUrl(), "/api/mms");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          if (data.data && data.data.length > 0) {
+            var mmsCollection = data.data;
+            var newCollection = [];
+            mmsCollection.forEach(function (item) {
+              if (!_this3.mmsCollection.find(function (t) {
+                return t.sid === item.sid;
+              })) {
+                _this3.mmsCollection.push(item);
+
+                newCollection.push(item);
+              }
+            });
+            var mappedItems = newCollection.sort(function (a, b) {
+              return new Date(a.modified).getTime() - new Date(b.modified).getTime();
+            }).map(function (item) {
+              return dummy_data_1.BuildMMSContentItem(item);
+            });
+
+            _this3.insertNewItems(mappedItems);
+          }
+        }, function (data) {
+          console.log(data);
+        });
+      }, 10000);
+      this.cancellable.push(interval, constants_1.Cancellable.Interval);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this4 = this;
+
       this.updateCollection();
+      this.initializeMMSListener();
       this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
-        var collection = _this3.state.listItems;
+        var collection = _this4.state.listItems;
         var newCollection = [];
         collection.forEach(function (collect) {
           newCollection.push(Object.assign({}, collect, {
@@ -67197,7 +67656,7 @@ function (_React$Component) {
           }));
         });
 
-        _this3.setState({
+        _this4.setState({
           listItems: newCollection
         });
       });
@@ -67206,7 +67665,7 @@ function (_React$Component) {
           return;
         }
 
-        var collection = _this3.state.listItems;
+        var collection = _this4.state.listItems;
         var newCollection = [];
         collection.forEach(function (collect) {
           var items = [];
@@ -67220,7 +67679,7 @@ function (_React$Component) {
           }));
         });
 
-        _this3.setState({
+        _this4.setState({
           listItems: newCollection
         });
       });
@@ -67230,6 +67689,7 @@ function (_React$Component) {
     value: function componentWillUnmount() {
       this.dumpingGroundTransferSubscription.unsubscribe();
       this.dumpingGroundSelectionSubscription.unsubscribe();
+      this.cancellable.clean();
     }
   }, {
     key: "componentDidUpdate",
@@ -67241,14 +67701,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(dumping_ground_list_1.DumpingGroundList, {
-          hideGroupTitle: _this4.props.hideGroupTitle,
+          hideGroupTitle: _this5.props.hideGroupTitle,
           title: item.title,
           key: i,
-          type: _this4.props.type,
+          type: _this5.props.type,
           items: item.listItems
         });
       }));
@@ -67259,7 +67719,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.DumpingGroundListCollection = DumpingGroundListCollection;
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts","../../constants/items/dumping-ground":"constants/items/dumping-ground.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71345,8 +71805,6 @@ var itemSource = {
         to: null,
         data: props.data
       };
-      console.log(props);
-      console.log(data);
       observables_1.WorkspaceContentTransfer.next(data);
     }
   }
@@ -71441,8 +71899,6 @@ var React = __importStar(require("react"));
 require("./canvas-group-item-wrapper.scss");
 
 var canvas_group_item_1 = __importDefault(require("../canvas-group-item/canvas-group-item"));
-
-var dummy_data_1 = require("../../../../constants/dummy-data");
 
 var CanvasGroupItemWrapper =
 /*#__PURE__*/
@@ -71545,11 +72001,6 @@ function (_React$Component) {
           height: props.height
         });
       });
-      var data = dummy_data_1.GetSampleItem(this.props.data.type, this.props.data);
-      data.id = this.props.data.id;
-      this.setState({
-        contentData: data
-      });
     }
   }, {
     key: "propsChanged",
@@ -71578,7 +72029,7 @@ function (_React$Component) {
         ref: this.ref
       }, React.createElement(canvas_group_item_1.default, {
         isBeingResized: this.state.isBeingResized,
-        data: this.state.contentData,
+        data: this.props.data,
         group: this.props.group,
         propsChanged: this.propsChanged.bind(this),
         inheritDimensions: inheritDimensions
@@ -71590,7 +72041,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.CanvasGroupItemWrapper = CanvasGroupItemWrapper;
-},{"react":"../../node_modules/react/index.js","./canvas-group-item-wrapper.scss":"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss","../canvas-group-item/canvas-group-item":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx","../../../../constants/dummy-data":"constants/dummy-data.ts"}],"components/workspace/canvas-view/canvas-group/canvas-group.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-group-item-wrapper.scss":"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss","../canvas-group-item/canvas-group-item":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx"}],"components/workspace/canvas-view/canvas-group/canvas-group.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72385,8 +72836,6 @@ var React = __importStar(require("react"));
 
 require("./list-group-item.scss");
 
-var dummy_data_1 = require("../../../../constants/dummy-data");
-
 var content_item_with_menu_1 = require("../../../content-item/content-item-with-menu");
 
 var ListGroupItem =
@@ -72408,15 +72857,6 @@ function (_React$Component) {
   }
 
   _createClass(ListGroupItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var data = dummy_data_1.GetSampleItem(this.props.data.type, this.props.data);
-      data.id = this.props.data.id;
-      this.setState({
-        contentData: data
-      });
-    }
-  }, {
     key: "onActionInvoked",
     value: function onActionInvoked(action) {
       switch (action) {
@@ -72463,9 +72903,9 @@ function (_React$Component) {
       }];
       return React.createElement("div", {
         className: "workspace-list-group-item-holder ".concat(this.state.contentSize)
-      }, this.state.contentData && React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+      }, React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
         onActionInvoked: this.onActionInvoked.bind(this),
-        data: this.state.contentData,
+        data: this.props.data,
         inheritDimensions: false,
         resizerOptions: resizerOptions
       }));
@@ -72476,7 +72916,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = ListGroupItem;
-},{"react":"../../node_modules/react/index.js","./list-group-item.scss":"components/workspace/list-view/list-group-item/list-group-item.scss","../../../../constants/dummy-data":"constants/dummy-data.ts","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./list-group-item.scss":"components/workspace/list-view/list-group-item/list-group-item.scss","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -72562,7 +73002,8 @@ function (_React$Component) {
         value: this.state.title,
         onChange: this.onTextChange.bind(this)
       }), React.createElement("textarea", {
-        placeholder: "What are your thoughts ?"
+        placeholder: "What are your thoughts ?",
+        defaultValue: this.props.group.annotation
       }), React.createElement("div", {
         className: "workspace-list-group-items"
       }, React.createElement("div", {
@@ -72829,7 +73270,6 @@ function (_React$Component) {
   _createClass(HeadersBlockItem, [{
     key: "removeGroup",
     value: function removeGroup(id) {
-      console.log(this.props);
       this.props.removeGroup(id);
     }
   }, {
@@ -73290,7 +73730,82 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/items/groups.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var article_items_1 = require("./article-items");
+
+var link_items_1 = require("./link-items");
+
+var photo_items_1 = require("./photo-items");
+
+var socialmedia_items_1 = require("./socialmedia-items");
+
+var video_items_1 = require("./video-items"); // export function GetSampleBoardItems() {
+//     const items = [
+//         { id: GetRandomId(), type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
+//         { id: GetRandomId(), type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
+//         { id: GetRandomId(), type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
+//         { id: GetRandomId(), type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
+//         { id: GetRandomId(), type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
+//     ];
+//     return _.take(_.shuffle(items), 3);
+// }
+
+
+exports.BoardGroups = [{
+  id: 'group_1',
+  title: 'Group #1',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[0], link_items_1.DummyLinkItems[0], photo_items_1.DummyPhotoItems[0], video_items_1.DummyVideoItems[0], socialmedia_items_1.DummySocialMediaItems[0]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}, {
+  id: 'group_2',
+  title: 'Group #2',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[1], link_items_1.DummyLinkItems[1], photo_items_1.DummyPhotoItems[1], video_items_1.DummyVideoItems[1], socialmedia_items_1.DummySocialMediaItems[1]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}, {
+  id: 'group_3',
+  title: 'Group #3',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[2], photo_items_1.DummyPhotoItems[2], video_items_1.DummyVideoItems[2], socialmedia_items_1.DummySocialMediaItems[2]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}, {
+  id: 'group_4',
+  title: 'Group #4',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}];
+exports.GroupHeaders = [{
+  id: 'header_1',
+  name: 'Haeder #1',
+  groups: [{
+    id: exports.BoardGroups[0].id,
+    name: exports.BoardGroups[0].title
+  }, {
+    id: exports.BoardGroups[1].id,
+    name: exports.BoardGroups[2].title
+  }]
+}];
+},{"./article-items":"constants/items/article-items.ts","./link-items":"constants/items/link-items.ts","./photo-items":"constants/items/photo-items.ts","./socialmedia-items":"constants/items/socialmedia-items.ts","./video-items":"constants/items/video-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73365,6 +73880,8 @@ var transforms_1 = require("../../transforms");
 
 var manage_headers_1 = __importDefault(require("../manage-headers/manage-headers"));
 
+var groups_1 = require("../../constants/items/groups");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -73413,61 +73930,6 @@ function (_React$Component) {
     } // tslint:disable-next-line:variable-name
 
   }, {
-    key: "getHeaders",
-    value: function getHeaders(_groups) {
-      var headers = [];
-      var groups = _groups || [];
-
-      if (groups && groups.length > 0) {
-        var header = {
-          id: "".concat(Math.floor(Math.random() * 10e8)),
-          name: 'Header',
-          groups: [],
-          drawProps: {}
-        };
-
-        if (groups[0]) {
-          header.groups.push({
-            id: groups[0].id,
-            name: groups[0].title
-          });
-        }
-
-        if (groups[1]) {
-          header.groups.push({
-            id: groups[1].id,
-            name: groups[1].title
-          });
-        }
-
-        headers.push(header);
-        var header2 = {
-          id: "".concat(Math.floor(Math.random() * 10e8)),
-          name: 'Header',
-          groups: [],
-          drawProps: {}
-        };
-
-        if (groups[groups.length - 1]) {
-          header2.groups.push({
-            id: groups[groups.length - 1].id,
-            name: groups[groups.length - 1].title
-          });
-        }
-
-        if (groups[groups.length - 2]) {
-          header2.groups.push({
-            id: groups[groups.length - 2].id,
-            name: groups[groups.length - 2].title
-          });
-        }
-
-        headers.push(header2);
-      }
-
-      return headers;
-    }
-  }, {
     key: "processParamsChange",
     value: function processParamsChange() {
       var _this$props$match$par = this.props.match.params,
@@ -73477,8 +73939,8 @@ function (_React$Component) {
       this.setState({
         workspaceId: workspaceId,
         topicId: topicId,
-        groups: constants_1.BoardGroups,
-        headers: this.getHeaders(constants_1.BoardGroups)
+        groups: groups_1.BoardGroups,
+        headers: groups_1.GroupHeaders
       });
     }
   }, {
@@ -73492,7 +73954,7 @@ function (_React$Component) {
       this.processParamsChange();
       this.props.actions.showWorkspaceActions();
       this.transferSubscription = observables_1.WorkspaceContentTransfer.subscribe(function (data) {
-        var contentData = data.data;
+        var content = data.data;
         var change = false;
         var groups = [];
         var originalGroups = _this2.state.groups;
@@ -73518,14 +73980,7 @@ function (_React$Component) {
               });
               change = true;
             } else if (data.to === groupId) {
-              group.items.push({
-                id: contentData.id,
-                type: contentData.contentType,
-                props: {
-                  height: constants_1.ItemHeight,
-                  width: constants_1.ItemWidth
-                }
-              });
+              group.items.push(content);
               change = true;
             }
           });
@@ -73535,20 +73990,13 @@ function (_React$Component) {
           var _ref2;
 
           var group = constants_1.GetEmptyGroup();
-          group.items.push({
-            id: contentData.id,
-            type: contentData.contentType,
-            props: {
-              height: constants_1.ItemHeight,
-              width: constants_1.ItemWidth + 20
-            }
-          });
+          group.items.push(content);
           groups = (_ref2 = []).concat.apply(_ref2, _toConsumableArray(groups).concat([group]));
           change = true;
         }
 
         if (change) {
-          var headers = _this2.getHeaders(groups);
+          var headers = _this2.state.headers;
 
           _this2.setState({
             groups: groups,
@@ -73632,7 +74080,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx"}],"pages/router-root.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx","../../constants/items/groups":"constants/items/groups.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -74139,12 +74587,7 @@ function (_React$Component) {
         onClick: this.toggleRTE.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "format_shapes")), React.createElement("div", {
-        className: "action ".concat(this.props.workspaceDumpBarShown ? 'active' : ''),
-        onClick: this.toggleDumpBar.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "apps"))), this.props.workspaceActionInHeader && React.createElement(React.Fragment, null, React.createElement("div", {
+      }, "format_shapes"))), this.props.workspaceActionInHeader && React.createElement(React.Fragment, null, React.createElement("div", {
         className: "action",
         onClick: this.openAllNotes.bind(this)
       }, React.createElement("i", {
@@ -79914,7 +80357,74 @@ function (_React$Component) {
 }(React.Component);
 
 exports.VideoContentViewer = VideoContentViewer;
-},{"react":"../../node_modules/react/index.js","plyr":"../../node_modules/plyr/dist/plyr.min.js"}],"components/content-viewer/content-viewer.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","plyr":"../../node_modules/plyr/dist/plyr.min.js"}],"components/content-viewer/mms-content-viewer.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var MMSContentViewer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MMSContentViewer, _React$Component);
+
+  function MMSContentViewer(props) {
+    _classCallCheck(this, MMSContentViewer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MMSContentViewer).call(this, props));
+  }
+
+  _createClass(MMSContentViewer, [{
+    key: "render",
+    value: function render() {
+      var bgUrl = "url(".concat(this.props.data.contentData.mediaUrl, ")");
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "photo-content-viewer"
+      }, React.createElement("div", {
+        className: "photo-content-image",
+        style: {
+          backgroundImage: bgUrl
+        }
+      })));
+    }
+  }]);
+
+  return MMSContentViewer;
+}(React.Component);
+
+exports.MMSContentViewer = MMSContentViewer;
+},{"react":"../../node_modules/react/index.js"}],"components/content-viewer/content-viewer.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79958,6 +80468,8 @@ var photo_content_viewer_1 = require("./photo-content-viewer");
 require("./content-viewer.scss");
 
 var video_content_viewer_1 = require("./video-content-viewer");
+
+var mms_content_viewer_1 = require("./mms-content-viewer");
 
 var observables_1 = require("../../access/observables/observables");
 
@@ -80033,6 +80545,8 @@ function (_React$Component) {
         data: this.state.data
       }), this.state.data.contentType === types_1.ContentType.Video && React.createElement(video_content_viewer_1.VideoContentViewer, {
         data: this.state.data
+      }), this.state.data.contentType === types_1.ContentType.Sticky && React.createElement(mms_content_viewer_1.MMSContentViewer, {
+        data: this.state.data
       }), this.state.data.title && React.createElement("label", {
         className: "content-viewer-title"
       }, this.state.data.title), this.state.data.tags.length > 0 && React.createElement("div", {
@@ -80050,7 +80564,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentViewer = ContentViewer;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","./mms-content-viewer":"components/content-viewer/mms-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -81616,7 +82130,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61989" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56381" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -2,29 +2,29 @@ import { BuildMenu } from './helpers/dock';
 import { BuildTray } from './helpers/tray';
 import { onMovedDebounced } from './helpers/screen';
 import * as _ from 'lodash';
-
+const fetch = require('node-fetch');
 import { format } from 'url';
 import { BuildAnnotator } from './helpers/annotator';
 import { GetIpcFileFixUrl } from './helpers/ipc-helper';
 import { GetAPIServer } from '../api/server';
 import { GetSplashWindow } from './helpers/splash';
 import { GetApplictaionMenu } from './helpers/menu';
-// import { Twilio } from './helpers/twilio';
+import { Twilio } from './helpers/twilio';
 const electron = require('electron');
 const { BrowserWindow, app, Menu } = electron;
 const isDev = require('electron-is-dev')
 const { resolve } = require('app-root-path');
 
 export let API_PORT = null;
-
-// let twilioInterval;
+export const EnableTwilio = false;
+let mainWindow;
 
 app.on('ready', async () => {
     BuildMenu();
     app.setName('Element');
     const splashWindow = GetSplashWindow();
     const size = electron.screen.getPrimaryDisplay().size;
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         title: 'Element',
         width: size.width,
         height: size.height - 22,
@@ -33,7 +33,6 @@ app.on('ready', async () => {
         resizable: false,
         fullscreenable: false,
         titleBarStyle: 'hidden',
-        // vibrancy: 'menu',
         thickFrame: false,
         webPreferences: {
             webSecurity: false,
@@ -45,7 +44,6 @@ app.on('ready', async () => {
     const menu = GetApplictaionMenu();
     Menu.setApplicationMenu(menu);
     BuildTray(mainWindow);
-    // mainWindow.setVibrancy('menu');
     mainWindow.once('ready-to-show', () => {
         setTimeout(() => {
             splashWindow.destroy();
@@ -53,16 +51,10 @@ app.on('ready', async () => {
                 mainWindow.show();
             }, 30);
         }, 2000);
-        // console.log('Twilio.initialize');
-        // Twilio.initialize();
-        // if (twilioInterval) {
-        //     clearInterval(twilioInterval);
-        //     twilioInterval = null
-        // }
-        // twilioInterval = setInterval(() => {
-        //     Twilio.getMessages();
-        // }, 10000)
-        // Twilio.getMessages();
+        if (EnableTwilio) {
+            Twilio.initialize();
+            Twilio.startFetch();
+        }
         if (isDev && false) { mainWindow.webContents.openDevTools() }
     });
     mainWindow.on('move', onMovedDebounced.bind(this, mainWindow))
@@ -89,3 +81,20 @@ app.on('window-all-closed', () => {
     console.log('App Quit');
     app.quit();
 })
+
+export async function SaveMedia(mediaUrl, text, sid, modified) {
+    const data = {
+        mediaUrl,
+        text,
+        sid,
+        modified
+    };
+    const mmsPostUrl = `http://localhost:${API_PORT}/api/mms/`;
+    fetch(mmsPostUrl, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+    }).then(() => {
+        // mainWindow.webContents.send('new-mms-data');
+    }, console.log)
+}

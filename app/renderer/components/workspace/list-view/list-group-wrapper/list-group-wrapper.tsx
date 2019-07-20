@@ -19,7 +19,7 @@ class ListGroupWrapper extends React.Component<{ group: IBoardGroupWrapper }, an
         return (
             <div className='workspace-list-group'>
                 <input placeholder='What would like to name this group ?' value={this.state.title} onChange={this.onTextChange.bind(this)} />
-                <textarea placeholder="What are your thoughts ?" />
+                <textarea placeholder="What are your thoughts ?" defaultValue={this.props.group.annotation} />
                 <div className='workspace-list-group-items'>
                     <div className='workspace-list-group-items-inner'>
                         {

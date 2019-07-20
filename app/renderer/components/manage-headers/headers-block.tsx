@@ -42,7 +42,6 @@ class HeadersBlockItem extends React.Component<{
         super(props);
     }
     removeGroup(id) {
-        console.log(this.props);
         this.props.removeGroup(id);
     }
     onHeaderChange(e) {

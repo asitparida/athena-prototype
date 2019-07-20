@@ -35,7 +35,7 @@ export class ContentItemWrapper extends React.Component<{
             newTagBeingAdded: false,
             newTag: '',
             tags: this.props.data.tags,
-            annotation: this.props.data.annotations
+            annotation: this.props.data.annotation
         };
     }
     invokeMenu($event) {
@@ -48,7 +48,9 @@ export class ContentItemWrapper extends React.Component<{
         });
     }
     openContent() {
-        if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video) {
+        if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video || (
+            this.props.data.contentType === ContentType.Sticky && this.props.data.sourceType === MediaSourceType.MMS
+        )) {
             ContentViewerData.next(this.props.data);
         }
     }
@@ -163,27 +165,27 @@ export class ContentItemWrapper extends React.Component<{
         let currentContent = <React.Fragment><h1>Content</h1><h2>...</h2></React.Fragment>;
         switch (type) {
             case ContentType.Photo: {
-                currentContent = <PhotoContentItem data={this.props.data} />
+                currentContent = <PhotoContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             case ContentType.Video: {
-                currentContent = <VideoContentItem data={this.props.data} />
+                currentContent = <VideoContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             case ContentType.Article: {
-                currentContent = <ArticleContentItem data={this.props.data} />
+                currentContent = <ArticleContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             case ContentType.Link: {
-                currentContent = <LinkContentItem data={this.props.data} />
+                currentContent = <LinkContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             case ContentType.SocialMedia: {
-                currentContent = <SocialMediaContentItem data={this.props.data} />
+                currentContent = <SocialMediaContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             case ContentType.Sticky: {
-                currentContent = <StickyContentItem data={this.props.data} />
+                currentContent = <StickyContentItem data={this.props.data} showEntity={this.state.showEntity} />
                 break;
             }
             default: {
@@ -206,7 +208,6 @@ export class ContentItemWrapper extends React.Component<{
                                     <div className={currentContentImageClass}><div className='image' style={contentImageStyle} /></div>
                                 }
                                 {
-                                    this.state.showEntity &&
                                     currentContent
                                 }
                                 {
@@ -236,10 +237,9 @@ export class ContentItemWrapper extends React.Component<{
                                     </ul>
                                 </div>
                                 {
-                                    this.props.data.annotations &&
                                     <div className='inner-content-meta-notes'>
                                     {
-                                        <textarea defaultValue={annotation.message} onChange={this.onAnnotationChange.bind(this)} />
+                                        <textarea defaultValue={annotation} onChange={this.onAnnotationChange.bind(this)} />
                                     }
                                 </div>
                                 }

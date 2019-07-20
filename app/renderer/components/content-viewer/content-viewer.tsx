@@ -4,6 +4,7 @@ import { PhotoContentList, VideoContentList } from '../../constants/dummy-data';
 import { PhotoContentViewer } from './photo-content-viewer';
 import './content-viewer.scss';
 import { VideoContentViewer } from './video-content-viewer';
+import { MMSContentViewer } from './mms-content-viewer';
 import { ContentViewerData } from '../../access/observables/observables';
 import { Subscription } from 'rxjs';
 
@@ -59,6 +60,9 @@ export class ContentViewer extends React.Component<{}, { data: IContentItem<any>
                                 }
                                 {
                                     this.state.data.contentType === ContentType.Video && <VideoContentViewer data={this.state.data} />
+                                }
+                                {
+                                    this.state.data.contentType === ContentType.Sticky && <MMSContentViewer data={this.state.data} />
                                 }
                                 {
                                     this.state.data.title &&
