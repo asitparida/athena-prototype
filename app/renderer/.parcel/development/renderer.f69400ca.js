@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../../../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -227,7 +227,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],"../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
+},{}],"../../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2245,7 +2245,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../node_modules/react/index.js","object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -26669,7 +26669,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   ReactPropTypes.PropTypes = ReactPropTypes;
   return ReactPropTypes;
 };
-},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
+},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -32933,7 +32933,7 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"../../../node_modules/buffer/index.js":[function(require,module,exports) {
+},{}],"../../node_modules/buffer/index.js":[function(require,module,exports) {
 
 var global = arguments[3];
 /*!
@@ -34726,7 +34726,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"../../../node_modules/base64-js/index.js","ieee754":"../../../node_modules/ieee754/index.js","isarray":"../../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
+},{"base64-js":"../../../node_modules/base64-js/index.js","ieee754":"../../../node_modules/ieee754/index.js","isarray":"../../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
 var global = arguments[3];
 var Buffer = require("buffer").Buffer;
 var define;
@@ -51838,7 +51838,7 @@ var define;
   }
 }.call(this));
 
-},{"buffer":"../../../node_modules/buffer/index.js"}],"../../node_modules/dnd-core/lib/interfaces.js":[function(require,module,exports) {
+},{"buffer":"../../node_modules/buffer/index.js"}],"../../node_modules/dnd-core/lib/interfaces.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -56758,6 +56758,16 @@ function GetAPIUrl() {
 }
 
 exports.GetAPIUrl = GetAPIUrl;
+
+function ExportNote(value) {
+  var ipcRenderer = window.ipcRenderer;
+
+  if (ipcRenderer) {
+    ipcRenderer.send('export-composition', value);
+  }
+}
+
+exports.ExportNote = ExportNote;
 
 function GetRandomId() {
   return "".concat(Math.floor(Math.random() * 10e10));
@@ -68455,6 +68465,8 @@ function (_React$Component) {
   }, {
     key: "export",
     value: function _export() {
+      this.propagateChange();
+      this.props.exportNotes();
       console.log('export');
     }
   }, {
@@ -72479,17 +72491,40 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "processGroupProps",
-    value: function processGroupProps() {
+    key: "buildHeaders",
+    value: function buildHeaders() {
       var _this3 = this;
 
+      var headersFromProps = this.props.headers;
+      var headers = [];
+      headersFromProps.forEach(function (header) {
+        var groups = [].concat(header.groups);
+        groups.forEach(function (group) {
+          var _group = _this3.props.groups.find(function (item) {
+            return item.id === group.id;
+          });
+
+          group.name = _group ? _group.title : '';
+        });
+        headers.push(Object.assign({}, header, {
+          groups: [].concat(groups)
+        }));
+      });
+      return headers;
+    }
+  }, {
+    key: "processGroupProps",
+    value: function processGroupProps() {
+      var _this4 = this;
+
+      var headers = this.buildHeaders();
       this.setState({
         boardGroups: this.props.groups,
-        headers: this.props.headers,
+        headers: headers,
         showHeaders: true
       });
       window.requestAnimationFrame(function () {
-        _this3.adjustPosition(1, false);
+        _this4.adjustPosition(1, false);
       });
     }
   }, {
@@ -72527,7 +72562,7 @@ function (_React$Component) {
   }, {
     key: "onWheel",
     value: function onWheel(e) {
-      var _this4 = this;
+      var _this5 = this;
 
       e.persist();
 
@@ -72535,15 +72570,15 @@ function (_React$Component) {
         if (!this.ticked) {
           this.ticked = true;
           window.requestAnimationFrame(function () {
-            _this4.scale -= e.deltaY * 0.01;
-            _this4.scale = _this4.scale < 0.50 ? 0.50 : _this4.scale;
-            _this4.scale = _this4.scale > 1 ? 1 : _this4.scale;
+            _this5.scale -= e.deltaY * 0.01;
+            _this5.scale = _this5.scale < 0.50 ? 0.50 : _this5.scale;
+            _this5.scale = _this5.scale > 1 ? 1 : _this5.scale;
 
-            _this4.setState({
-              scale: _this4.scale
+            _this5.setState({
+              scale: _this5.scale
             });
 
-            _this4.ticked = false;
+            _this5.ticked = false;
           });
         }
       }
@@ -72551,7 +72586,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       var _this$state = this.state,
           _this$state$boardGrou = _this$state.boardGroups,
@@ -72573,9 +72608,9 @@ function (_React$Component) {
       }, boardGroups.map(function (bg, i) {
         return React.createElement(canvas_group_wrapper_1.default, {
           showAnchor: false,
-          onPropsChange: _this5.onGroupPropsChange.bind(_this5, i),
-          parentX: _this5.state.positionX,
-          parentY: _this5.state.positionY,
+          onPropsChange: _this6.onGroupPropsChange.bind(_this6, i),
+          parentX: _this6.state.positionX,
+          parentY: _this6.state.positionY,
           key: bg.id,
           data: bg
         });
@@ -72778,6 +72813,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var _ = __importStar(require("lodash"));
+
 var list_group_item_1 = __importDefault(require("../list-group-item/list-group-item"));
 
 require("./list-group-wrapper.scss");
@@ -72793,18 +72830,50 @@ function (_React$Component) {
     _classCallCheck(this, ListGroupWrapper);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ListGroupWrapper).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 1000);
     _this.state = {
-      title: _this.props.group.title
+      title: _this.props.group.title,
+      annotation: _this.props.group.annotation
     };
     return _this;
   }
 
   _createClass(ListGroupWrapper, [{
-    key: "onTextChange",
-    value: function onTextChange(e) {
+    key: "onTitleTextChange",
+    value: function onTitleTextChange(e) {
       this.setState({
         title: e.target.value
       });
+      this.debouncedPropagate();
+    }
+  }, {
+    key: "onNotesTextChange",
+    value: function onNotesTextChange(e) {
+      this.setState({
+        annotation: e.target.value
+      });
+      this.debouncedPropagate();
+    }
+  }, {
+    key: "propagateChange",
+    value: function propagateChange() {
+      var _this$state = this.state,
+          title = _this$state.title,
+          annotation = _this$state.annotation;
+
+      if (this.props.onNotesAndTitleChanged) {
+        this.props.onNotesAndTitleChanged({
+          id: this.props.group.id,
+          title: title,
+          annotation: annotation
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
     }
   }, {
     key: "render",
@@ -72814,10 +72883,11 @@ function (_React$Component) {
       }, React.createElement("input", {
         placeholder: "What would like to name this group ?",
         value: this.state.title,
-        onChange: this.onTextChange.bind(this)
+        onChange: this.onTitleTextChange.bind(this)
       }), React.createElement("textarea", {
         placeholder: "What are your thoughts ?",
-        defaultValue: this.props.group.annotation
+        value: this.state.annotation,
+        onChange: this.onNotesTextChange.bind(this)
       }), React.createElement("div", {
         className: "workspace-list-group-items"
       }, React.createElement("div", {
@@ -72835,7 +72905,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = ListGroupWrapper;
-},{"react":"../../node_modules/react/index.js","../list-group-item/list-group-item":"components/workspace/list-view/list-group-item/list-group-item.tsx","./list-group-wrapper.scss":"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"}],"components/workspace/list-view/list-view.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","../list-group-item/list-group-item":"components/workspace/list-view/list-group-item/list-group-item.tsx","./list-group-wrapper.scss":"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"}],"components/workspace/list-view/list-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -72899,12 +72969,20 @@ function (_React$Component) {
   }
 
   _createClass(ListView, [{
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      this.props.onNotesAndTitleChanged(data);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       return React.createElement("div", {
         className: "workspace-list-groups"
       }, this.props.groups.map(function (group, i) {
         return React.createElement(list_group_wrapper_1.default, {
+          onNotesAndTitleChanged: _this.onNotesAndTitleChanged.bind(_this),
           key: group.id,
           group: group
         });
@@ -72975,6 +73053,11 @@ function (_React$Component) {
   }
 
   _createClass(WorkspaceViewSwitch, [{
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      this.props.onNotesAndTitleChanged(data);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(React.Fragment, null, this.props.canvasView && React.createElement("div", {
@@ -72986,7 +73069,8 @@ function (_React$Component) {
         headers: this.props.headers
       })), !this.props.canvasView && React.createElement(list_view_1.default, {
         id: this.props.workspaceId,
-        groups: this.props.groups
+        groups: this.props.groups,
+        onNotesAndTitleChanged: this.onNotesAndTitleChanged.bind(this)
       }));
     }
   }]);
@@ -73599,13 +73683,11 @@ exports.BoardGroups = [{
 }];
 exports.GroupHeaders = [{
   id: 'header_1',
-  name: 'Haeder #1',
+  name: 'Header #1',
   groups: [{
-    id: exports.BoardGroups[0].id,
-    name: exports.BoardGroups[0].title
+    id: exports.BoardGroups[0].id
   }, {
-    id: exports.BoardGroups[1].id,
-    name: exports.BoardGroups[2].title
+    id: exports.BoardGroups[1].id
   }]
 }];
 },{"./article-items":"constants/items/article-items.ts","./link-items":"constants/items/link-items.ts","./photo-items":"constants/items/photo-items.ts","./socialmedia-items":"constants/items/socialmedia-items.ts","./video-items":"constants/items/video-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
@@ -73870,6 +73952,26 @@ function (_React$Component) {
       this.compositionValue = value;
     }
   }, {
+    key: "exportComposition",
+    value: function exportComposition() {
+      constants_1.ExportNote(this.compositionValue);
+    }
+  }, {
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      var groups = [];
+      var originalGroups = this.state.groups;
+      originalGroups.forEach(function (group) {
+        groups.push(Object.assign({}, group, {
+          title: group.id === data.id ? data.title : group.title,
+          annotation: group.id === data.id ? data.annotation : group.annotation
+        }));
+      });
+      this.setState({
+        groups: groups
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var rteWidth = {
@@ -73881,6 +73983,7 @@ function (_React$Component) {
       return React.createElement("div", {
         className: "workspace-wrapper"
       }, React.createElement(workspace_view_switch_1.WorkspaceViewSwitch, {
+        onNotesAndTitleChanged: this.onNotesAndTitleChanged.bind(this),
         scrollToCenter: this.state.scrollToCenter,
         canvasView: this.props.workspaceViewIsCanvas,
         workspaceId: this.state.workspaceId,
@@ -73892,6 +73995,7 @@ function (_React$Component) {
       }, React.createElement(resizer_1.Resizer, {
         onSizeChange: this.onRTESizeChange.bind(this)
       }, React.createElement(rte_editor_1.default, {
+        exportNotes: this.exportComposition.bind(this),
         onChange: this.rteValueChange.bind(this),
         gatherNotes: this.gatherNotes.bind(this),
         closeEditor: this.closeEditor.bind(this),
@@ -81967,7 +82071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62176" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50472" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -11,9 +11,11 @@ import { GetSplashWindow } from './helpers/splash';
 import { GetApplictaionMenu } from './helpers/menu';
 import { Twilio } from './helpers/twilio';
 const electron = require('electron');
-const { BrowserWindow, app, Menu } = electron;
+const { BrowserWindow, app, Menu, ipcMain, dialog } = electron;
 const isDev = require('electron-is-dev')
 const { resolve } = require('app-root-path');
+const htmlToRtf = require('html-to-rtf');
+import * as fs from 'fs';
 
 export let API_PORT = null;
 export const EnableTwilio = false;
@@ -80,6 +82,26 @@ app.on('ready', async () => {
 app.on('window-all-closed', () => {
     console.log('App Quit');
     app.quit();
+})
+ipcMain.on('export-composition', (event, arg) => {
+    if (!_.isEmpty(arg)) {
+        const options = {
+            title: 'Save Composition As',
+            filters: [
+                { name: 'Rich Text Format', extensions: ['rtf'] }
+            ]
+        };
+        dialog.showSaveDialog(options, (fileName) => {
+            fs.writeFile(fileName, htmlToRtf.convertHtmlToRtf(arg), (err) => {
+                if (err) {
+                    alert("An error ocurred updating the file" + err.message);
+                    console.log(err);
+                    return;
+                }
+                console.log("The file has been succesfully saved");
+            });
+        });
+    }
 })
 
 export async function SaveMedia(mediaUrl, text, sid, modified) {

@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../../../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -227,7 +227,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],"../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
+},{}],"../../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2245,7 +2245,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../node_modules/react/index.js","object-assign":"../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -26066,7 +26066,7 @@ module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"../../../node_modules/buffer/index.js":[function(require,module,exports) {
+},{}],"../../node_modules/buffer/index.js":[function(require,module,exports) {
 
 var global = arguments[3];
 /*!
@@ -27859,7 +27859,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"../../../node_modules/base64-js/index.js","ieee754":"../../../node_modules/ieee754/index.js","isarray":"../../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
+},{"base64-js":"../../../node_modules/base64-js/index.js","ieee754":"../../../node_modules/ieee754/index.js","isarray":"../../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
 var global = arguments[3];
 var Buffer = require("buffer").Buffer;
 var define;
@@ -44971,7 +44971,7 @@ var define;
   }
 }.call(this));
 
-},{"buffer":"../../../node_modules/buffer/index.js"}],"annotator.tsx":[function(require,module,exports) {
+},{"buffer":"../../node_modules/buffer/index.js"}],"annotator.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -45166,7 +45166,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62175" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50470" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

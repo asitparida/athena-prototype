@@ -6,6 +6,7 @@ import './rte-editor.scss';
 export default class RTEEditor extends React.Component<{value: any,
     closeEditor: () => {},
     gatherNotes: () => {},
+    exportNotes: () => {},
     onChange: (value) => {}
 }, any> {
     debouncedPropagate = _.debounce(this.propagateChange, 1000);
@@ -34,6 +35,8 @@ export default class RTEEditor extends React.Component<{value: any,
     }
 
     export() {
+        this.propagateChange();
+        this.props.exportNotes();
         console.log('export');
     }
 

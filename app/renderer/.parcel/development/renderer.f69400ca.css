@@ -1922,7 +1922,7 @@ body #root .app-content .app-content-area {
 .rte-wrapper .rte-content [class^=RichTextEditor__editor] {
   flex: 1;
   order: 2;
-  padding: 0px 0 10px 5px;
+  padding: 0px 10px 10px 15px;
   color: rgba(0, 0, 0, 0.5);
 }
 .rte-wrapper .rte-content [class^=RichTextEditor__editor] .DraftEditor-root {

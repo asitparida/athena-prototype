@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IContentItem, ContentType } from '../../constants/types';
-import { PhotoContentList, VideoContentList } from '../../constants/dummy-data';
 import { PhotoContentViewer } from './photo-content-viewer';
 import './content-viewer.scss';
 import { VideoContentViewer } from './video-content-viewer';

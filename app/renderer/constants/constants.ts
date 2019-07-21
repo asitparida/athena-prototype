@@ -97,23 +97,23 @@ export enum Cancellable {
 }
 
 export class CancellabelRequests {
-    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean}> = [];
+    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean }> = [];
     push(requestId, type: Cancellable) {
-        this.cancellableList.push( { type, requestId, cleaned: false })
+        this.cancellableList.push({ type, requestId, cleaned: false })
     }
     clean(id?) {
         if (typeof id !== 'undefined') {
-            this.cancellableList = this.cancellableList.filter( t => t.requestId !== id);
+            this.cancellableList = this.cancellableList.filter(t => t.requestId !== id);
         } else if (this.cancellableList.length > 0) {
-            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean}) => {
+            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean }) => {
                 switch (item.type) {
-                    case Cancellable.AnimationFrame : { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.Timeout : { clearTimeout(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.Interval : { clearInterval(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.IdleCallback : { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.AnimationFrame: { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Timeout: { clearTimeout(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Interval: { clearInterval(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.IdleCallback: { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
                 }
             });
-            this.cancellableList = this.cancellableList.filter( t => !t.cleaned);
+            this.cancellableList = this.cancellableList.filter(t => !t.cleaned);
         }
     }
 }
@@ -124,6 +124,13 @@ export function GetAPIUrl() {
         return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
     }
     return null;
+}
+
+export function ExportNote(value) {
+    const ipcRenderer = (window as any).ipcRenderer;
+    if (ipcRenderer) {
+        ipcRenderer.send('export-composition', value);
+    }
 }
 
 export function GetRandomId() { return `${Math.floor(Math.random() * 10e10)}` };

@@ -8,7 +8,7 @@ import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer, CurrentEn
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
 import { IWorkspaceContentTransfer, IContentItem, IBoardGroupWrapper, IGroupHeader } from '../../constants/types';
-import { GetEmptyGroup } from '../../constants/constants';
+import { GetEmptyGroup, ExportNote } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
 import { isEqual } from '../../transforms';
@@ -153,6 +153,22 @@ class Workspace extends React.Component<any, IState> {
     rteValueChange(value) {
         this.compositionValue = value;
     }
+    exportComposition() {
+        ExportNote(this.compositionValue);
+    }
+    onNotesAndTitleChanged(data) {
+        const groups = [];
+        const originalGroups = this.state.groups;
+        originalGroups.forEach((group: IBoardGroupWrapper) => {
+            groups.push(Object.assign({}, group, {
+                title: group.id === data.id ? data.title : group.title,
+                annotation: group.id === data.id ? data.annotation : group.annotation
+            }));
+        })
+        this.setState({
+            groups
+        })
+    }
     render() {
         const rteWidth = {
             width: `${this.state.rteWidth}px`
@@ -162,12 +178,12 @@ class Workspace extends React.Component<any, IState> {
         }
         return (
             <div className="workspace-wrapper">
-                <WorkspaceViewSwitch scrollToCenter={this.state.scrollToCenter} canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} headers={this.state.headers} />
+                <WorkspaceViewSwitch onNotesAndTitleChanged={this.onNotesAndTitleChanged.bind(this)} scrollToCenter={this.state.scrollToCenter} canvasView={this.props.workspaceViewIsCanvas} workspaceId={this.state.workspaceId} groups={this.state.groups} headers={this.state.headers} />
                 {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>
                         <Resizer onSizeChange={this.onRTESizeChange.bind(this)}>
-                            <RTEEditor onChange={this.rteValueChange.bind(this)} gatherNotes={this.gatherNotes.bind(this)} closeEditor={this.closeEditor.bind(this)} value={this.state.composition} />
+                            <RTEEditor exportNotes={this.exportComposition.bind(this)} onChange={this.rteValueChange.bind(this)} gatherNotes={this.gatherNotes.bind(this)} closeEditor={this.closeEditor.bind(this)} value={this.state.composition} />
                         </Resizer>
                     </div>
                 }

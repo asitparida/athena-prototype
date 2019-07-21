@@ -92,10 +92,26 @@ class CanvasView extends React.Component<{
             this.adjustPosition(this.currentZoom);
         });
     }
+    buildHeaders() {
+        const headersFromProps = this.props.headers;
+        const headers = [];
+        headersFromProps.forEach((header: IGroupHeader) => {
+            const groups = [].concat(header.groups);
+            groups.forEach((group) => {
+                const _group = this.props.groups.find(item => item.id === group.id);
+                group.name = _group ? _group.title : '';
+            });
+            headers.push(Object.assign({}, header, {
+                groups: [].concat(groups)
+            }));
+        });
+        return headers;
+    }
     processGroupProps() {
+        const headers = this.buildHeaders();
         this.setState({
             boardGroups: this.props.groups,
-            headers: this.props.headers,
+            headers,
             showHeaders: true
         });
         window.requestAnimationFrame(() => {

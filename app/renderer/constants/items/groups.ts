@@ -59,14 +59,12 @@ export let BoardGroups: IBoardGroupWrapper[] = [
 ];
 
 export let GroupHeaders: IGroupHeader[] = [
-    { id: 'header_1', name: 'Haeder #1', groups: [
+    { id: 'header_1', name: 'Header #1', groups: [
         {
             id: BoardGroups[0].id,
-            name: BoardGroups[0].title
         },
         {
             id: BoardGroups[1].id,
-            name: BoardGroups[2].title
         }
     ]}
 ];
