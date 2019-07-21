@@ -7,7 +7,7 @@ import * as AppActions from '../../access/actions/appActions';
 import { ShowDumpBarAction$, ShowRTEAction$, WorkspaceContentTransfer, CurrentEnableScrollIntoCenter } from '../../access/observables/observables';
 import RTEEditor from '../rte-editor/rte-editor';
 import { Resizer } from '../resizer/resizer';
-import { IWorkspaceContentTransfer, IContentItem } from '../../constants/types';
+import { IWorkspaceContentTransfer, IContentItem, IBoardGroupWrapper, IGroupHeader } from '../../constants/types';
 import { GetEmptyGroup } from '../../constants/constants';
 import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
@@ -30,17 +30,31 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-class Workspace extends React.Component<any, any> {
+interface IState {
+    rteWidth: number;
+    dumpGroundWidth: number;
+    workspaceId: string;
+    topicId: string;
+    groups: IBoardGroupWrapper[];
+    headers: IGroupHeader[];
+    scrollToCenter: boolean;
+    composition: string;
+}
+
+class Workspace extends React.Component<any, IState> {
     transferSubscription: Subscription;
+    compositionValue = null;
     constructor(props) {
         super(props);
         this.state = {
             rteWidth: 350,
             dumpGroundWidth: 350,
             workspaceId: null,
+            topicId: null,
             groups: [],
             headers: [],
-            scrollToCenter: true
+            scrollToCenter: true,
+            composition: null
         };
     }
     componentDidUpdate(props) {
@@ -123,6 +137,22 @@ class Workspace extends React.Component<any, any> {
             headers
         });
     }
+    closeEditor() {
+        this.props.actions.hideRTE();
+    }
+    gatherNotes() {
+        let rteData = null;
+        if (this.state.groups && this.state.groups.length > 0) {
+            rteData = this.state.groups.reduce((prev, curr) => prev + `<p><strong>${curr.title}</strong></p><p>${curr.annotation}</p>`, '');
+        }
+        const compositionValue = this.compositionValue + rteData;
+        this.setState({
+            composition: compositionValue
+        });
+    }
+    rteValueChange(value) {
+        this.compositionValue = value;
+    }
     render() {
         const rteWidth = {
             width: `${this.state.rteWidth}px`
@@ -137,7 +167,7 @@ class Workspace extends React.Component<any, any> {
                     this.props.workspaceRTEShown &&
                     <div className="rte-area" style={rteWidth}>
                         <Resizer onSizeChange={this.onRTESizeChange.bind(this)}>
-                            <RTEEditor />
+                            <RTEEditor onChange={this.rteValueChange.bind(this)} gatherNotes={this.gatherNotes.bind(this)} closeEditor={this.closeEditor.bind(this)} value={this.state.composition} />
                         </Resizer>
                     </div>
                 }

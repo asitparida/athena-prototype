@@ -68404,6 +68404,8 @@ var React = __importStar(require("react"));
 
 var react_rte_1 = __importDefault(require("react-rte"));
 
+var _ = __importStar(require("lodash"));
+
 require("./rte-editor.scss");
 
 var RTEEditor =
@@ -68417,29 +68419,63 @@ function (_React$Component) {
     _classCallCheck(this, RTEEditor);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RTEEditor).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 1000);
 
     _this.onChange = function (value) {
       _this.setState({
         value: value
-      }); // if (this.props.onChange) {
-      //   this.props.onChange(
-      //     value.toString('html')
-      //   );
-      // }
+      });
 
+      _this.debouncedPropagate();
     };
 
     _this.state = {
-      value: react_rte_1.default.createEmptyValue()
+      value: _this.props.value ? react_rte_1.default.createValueFromString(_this.props.value, 'html') : react_rte_1.default.createEmptyValue()
     };
     return _this;
   }
 
   _createClass(RTEEditor, [{
+    key: "propagateChange",
+    value: function propagateChange() {
+      var value = this.state.value;
+      this.props.onChange(value.toString('html'));
+    }
+  }, {
+    key: "onClose",
+    value: function onClose() {
+      this.props.closeEditor();
+    }
+  }, {
+    key: "gatherNotes",
+    value: function gatherNotes() {
+      this.propagateChange();
+      this.props.gatherNotes();
+    }
+  }, {
+    key: "export",
+    value: function _export() {
+      console.log('export');
+    }
+  }, {
+    key: "componentWillUpdate",
+    value: function componentWillUpdate(props) {
+      if (!_.isEqual(props.value, this.props.value)) {
+        this.setState({
+          value: props.value ? react_rte_1.default.createValueFromString(props.value, 'html') : react_rte_1.default.createEmptyValue()
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
+    }
+  }, {
     key: "render",
     value: function render() {
       var toolbarConfig = {
-        // Optionally specify the groups to display (displayed in the order listed).
         display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_DROPDOWN'],
         INLINE_STYLE_BUTTONS: [{
           label: 'Bold',
@@ -68448,10 +68484,10 @@ function (_React$Component) {
         }, {
           label: 'Italic',
           style: 'ITALIC'
-        }, // {label: 'Underline', style: 'UNDERLINE'},
-        // {label: 'Strikethrough', style: 'STRIKETHROUGH'},
-        // {label: 'Code', style: 'CODE'},
-        {
+        }, {
+          label: 'Code',
+          style: 'CODE'
+        }, {
           label: 'UL',
           style: 'unordered-list-item'
         }, {
@@ -68476,11 +68512,17 @@ function (_React$Component) {
         className: "rte-wrapper"
       }, React.createElement("div", {
         className: "rte-header"
-      }, React.createElement("button", null, React.createElement("span", null, "Gather"), " ", React.createElement("i", {
+      }, React.createElement("button", {
+        onClick: this.gatherNotes.bind(this)
+      }, React.createElement("span", null, "Gather"), " ", React.createElement("i", {
         className: "material-icons"
-      }, "exit_to_app")), React.createElement("button", null, React.createElement("span", null, "Export"), " ", React.createElement("i", {
+      }, "exit_to_app")), React.createElement("button", {
+        onClick: this.export.bind(this)
+      }, React.createElement("span", null, "Export"), " ", React.createElement("i", {
         className: "material-icons"
-      }, "save_alt")), React.createElement("button", null, React.createElement("span", null, "Close"), React.createElement("i", {
+      }, "save_alt")), React.createElement("button", {
+        onClick: this.onClose.bind(this)
+      }, React.createElement("span", null, "Close"), React.createElement("i", {
         className: "material-icons"
       }, "close"))), React.createElement("div", {
         className: "rte-content"
@@ -68496,7 +68538,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = RTEEditor;
-},{"react":"../../node_modules/react/index.js","react-rte":"../../node_modules/react-rte/dist/react-rte.js","./rte-editor.scss":"components/rte-editor/rte-editor.scss"}],"components/resizer/resizer.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-rte":"../../node_modules/react-rte/dist/react-rte.js","lodash":"../../node_modules/lodash/lodash.js","./rte-editor.scss":"components/rte-editor/rte-editor.scss"}],"components/resizer/resizer.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -73671,13 +73713,16 @@ function (_React$Component) {
     _classCallCheck(this, Workspace);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Workspace).call(this, props));
+    _this.compositionValue = null;
     _this.state = {
       rteWidth: 350,
       dumpGroundWidth: 350,
       workspaceId: null,
+      topicId: null,
       groups: [],
       headers: [],
-      scrollToCenter: true
+      scrollToCenter: true,
+      composition: null
     };
     return _this;
   }
@@ -73799,6 +73844,32 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "closeEditor",
+    value: function closeEditor() {
+      this.props.actions.hideRTE();
+    }
+  }, {
+    key: "gatherNotes",
+    value: function gatherNotes() {
+      var rteData = null;
+
+      if (this.state.groups && this.state.groups.length > 0) {
+        rteData = this.state.groups.reduce(function (prev, curr) {
+          return prev + "<p><strong>".concat(curr.title, "</strong></p><p>").concat(curr.annotation, "</p>");
+        }, '');
+      }
+
+      var compositionValue = this.compositionValue + rteData;
+      this.setState({
+        composition: compositionValue
+      });
+    }
+  }, {
+    key: "rteValueChange",
+    value: function rteValueChange(value) {
+      this.compositionValue = value;
+    }
+  }, {
     key: "render",
     value: function render() {
       var rteWidth = {
@@ -73820,7 +73891,12 @@ function (_React$Component) {
         style: rteWidth
       }, React.createElement(resizer_1.Resizer, {
         onSizeChange: this.onRTESizeChange.bind(this)
-      }, React.createElement(rte_editor_1.default, null))), this.props.workspaceDumpBarShown && React.createElement("div", {
+      }, React.createElement(rte_editor_1.default, {
+        onChange: this.rteValueChange.bind(this),
+        gatherNotes: this.gatherNotes.bind(this),
+        closeEditor: this.closeEditor.bind(this),
+        value: this.state.composition
+      }))), this.props.workspaceDumpBarShown && React.createElement("div", {
         className: "sticky-dumping-ground",
         style: dumpGroundWidth
       }, React.createElement(resizer_1.Resizer, {
@@ -81891,7 +81967,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57220" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62176" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
