@@ -65994,7 +65994,7 @@ function (_React$Component) {
               label = 'Scholar';
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Medium) {
               label = 'Medium';
-              currentContentImage = constants_1.MediaTypeImages.link;
+              currentContentImage = constants_1.MediaTypeImages.medium;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Quora) {
               label = 'Quora';
               currentContentImage = constants_1.MediaTypeImages.link;
@@ -66735,315 +66735,7 @@ function GetSampleStickyItem(data) {
 }
 
 exports.GetSampleStickyItem = GetSampleStickyItem;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"constants/items/photo-items.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var types_1 = require("../types");
-
-var constants_1 = require("../constants");
-
-exports.DummyPhotoItems = [{
-  id: 'photo_1',
-  title: 'Sample Photo Lorem ipsum 1',
-  contentType: types_1.ContentType.Photo,
-  contentData: {
-    imgUrl: 'https://picsum.photos/id/1001/5616/3744'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Browser,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'photo_2',
-  title: 'Sample Photo Lorem ipsum 2',
-  contentType: types_1.ContentType.Photo,
-  contentData: {
-    imgUrl: 'https://picsum.photos/id/1002/4312/2868'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Browser,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'photo_3',
-  title: 'Sample Photo Lorem ipsum 3',
-  contentType: types_1.ContentType.Photo,
-  contentData: {
-    imgUrl: 'https://picsum.photos/id/1003/1181/1772'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Browser,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'photo_4',
-  title: 'Sample Photo Lorem ipsum 4',
-  contentType: types_1.ContentType.Photo,
-  contentData: {
-    imgUrl: 'https://picsum.photos/id/1004/5616/3744'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Browser,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'photo_5',
-  title: 'Sample Photo Lorem ipsum 5',
-  contentType: types_1.ContentType.Photo,
-  contentData: {
-    imgUrl: 'https://picsum.photos/id/1005/5760/3840'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Browser,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/video-items.ts":[function(require,module,exports) {
-"use strict";
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var types_1 = require("../types");
-
-var _ = __importStar(require("lodash"));
-
-var constants_1 = require("../constants");
-
-exports.DummyVideoItems = [{
-  id: 'video_1',
-  title: 'Sample Photo Lorem ipsum 1',
-  contentType: types_1.ContentType.Video,
-  contentData: {
-    videoThumbnailUrl: 'https://picsum.photos/id/1001/5616/3744',
-    videoId: 'bTqVqk7FSmY',
-    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    videoEndTick: 0,
-    videoStartTick: 0,
-    videoLength: _.sample(_.range(45, 200))
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Youtube,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'video_2',
-  title: 'Sample Photo Lorem ipsum 2',
-  contentType: types_1.ContentType.Video,
-  contentData: {
-    videoThumbnailUrl: 'https://picsum.photos/id/1002/4312/2868',
-    videoId: '7T2RonyJ_Ts',
-    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    videoEndTick: 0,
-    videoStartTick: 0,
-    videoLength: _.sample(_.range(45, 200))
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Youtube,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'video_3',
-  title: 'Sample Photo Lorem ipsum 3',
-  contentType: types_1.ContentType.Video,
-  contentData: {
-    videoThumbnailUrl: 'https://picsum.photos/id/1003/1181/1772',
-    videoId: 'tq9mgTRQM8k',
-    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    videoEndTick: 0,
-    videoStartTick: 0,
-    videoLength: _.sample(_.range(45, 200))
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Youtube,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'video_4',
-  title: 'Sample Photo Lorem ipsum 4',
-  contentType: types_1.ContentType.Video,
-  contentData: {
-    videoThumbnailUrl: 'https://picsum.photos/id/1004/5616/3744',
-    videoId: 'rKa1YLIoeN4',
-    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    videoEndTick: 0,
-    videoStartTick: 0,
-    videoLength: _.sample(_.range(45, 200))
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Youtube,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'video_5',
-  title: 'Sample Photo Lorem ipsum 5',
-  contentType: types_1.ContentType.Video,
-  contentData: {
-    videoThumbnailUrl: 'https://picsum.photos/id/1005/5760/3840',
-    videoId: 'PxVgQrw0RVQ',
-    videoUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    videoEndTick: 0,
-    videoStartTick: 0,
-    videoLength: _.sample(_.range(45, 200))
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Youtube,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../constants":"constants/constants.ts"}],"constants/items/article-items.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var types_1 = require("../types");
-
-var constants_1 = require("../constants");
-
-exports.DummyArticleItems = [{
-  id: 'article_1',
-  title: 'https://dl.acm.org/citation.cfm?id=1357127',
-  contentType: types_1.ContentType.Article,
-  contentData: {
-    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
-    authorName: 'Aniket K',
-    articleTitle: 'Crowdsourcing user studies with Mechanical Turk'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'article_2',
-  title: 'https://dl.acm.org/citation.cfm?id=1357127',
-  contentType: types_1.ContentType.Article,
-  contentData: {
-    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
-    authorName: 'Napol R',
-    articleTitle: 'Towards a Universal Knowledge Accelerator'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'article_3',
-  title: 'https://dl.acm.org/citation.cfm?id=1357127',
-  contentType: types_1.ContentType.Article,
-  contentData: {
-    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
-    authorName: 'Nathan H',
-    articleTitle: 'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'article_4',
-  title: 'https://dl.acm.org/citation.cfm?id=1357127',
-  contentType: types_1.ContentType.Article,
-  contentData: {
-    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
-    authorName: 'Niko N',
-    articleTitle: 'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'article_5',
-  title: 'https://dl.acm.org/citation.cfm?id=1357127',
-  contentType: types_1.ContentType.Article,
-  contentData: {
-    articleLink: 'https://dl.acm.org/citation.cfm?id=1357127',
-    authorName: 'Niko N',
-    articleTitle: 'A Contingency View of Transferring and Adapting Best Practices within Online Communities'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
+},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
 module.exports = "/adult-boy-casual-220453.213a8f54.jpg";
 },{}],"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":[function(require,module,exports) {
 module.exports = "/Screen Shot 2019-07-15 at 2.02.18 PM.93e806c5.png";
@@ -67296,8 +66988,7 @@ var types_1 = require("../types");
 
 var _ = __importStar(require("lodash"));
 
-var constants_1 = require("../constants"); // require('../../assets/dummy/
-
+var constants_1 = require("../constants");
 
 exports.DummifiedVideoItems = [{
   id: 'video_6',
@@ -67697,7 +67388,7 @@ exports.DummifiedArticleItems = [{
     articleTitle: 'Dangerous DIY Sunscreen Recipes Are Spreading on Pinterest'
   },
   sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Quora,
+  sourceType: types_1.MediaSourceType.Medium,
   tags: ['safety', 'DIY', 'sunscreen'],
   annotation: 'Most people think homemade sunscreens are good for you (they are not)',
   props: {
@@ -67856,19 +67547,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var photo_items_1 = require("../../constants/items/photo-items");
-
-var video_items_1 = require("../../constants/items/video-items");
-
-var article_items_1 = require("../../constants/items/article-items");
-
 var socialmedia_items_1 = require("./socialmedia-items");
 
-var video_items_2 = require("./video-items");
+var video_items_1 = require("./video-items");
 
-var photo_items_2 = require("./photo-items");
+var photo_items_1 = require("./photo-items");
 
-var article_items_2 = require("./article-items");
+var article_items_1 = require("./article-items");
 
 function FilterDumpingGroundCollection(type) {
   var result = [];
@@ -67889,12 +67574,12 @@ function FilterDumpingGroundCollection(type) {
 exports.FilterDumpingGroundCollection = FilterDumpingGroundCollection;
 exports.DumpingGroundCollection = [{
   title: 'Recent',
-  listItems: [].concat(_toConsumableArray(article_items_2.DummifiedArticleItems), _toConsumableArray(photo_items_2.DummifiedPhotoItems), _toConsumableArray(video_items_2.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
+  listItems: [].concat(_toConsumableArray(article_items_1.DummifiedArticleItems), _toConsumableArray(photo_items_1.DummifiedPhotoItems), _toConsumableArray(video_items_1.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
 }, {
   title: 'Yesterday',
-  listItems: [article_items_1.DummyArticleItems[4], photo_items_1.DummyPhotoItems[4], video_items_1.DummyVideoItems[4]]
+  listItems: [].concat(_toConsumableArray(article_items_1.DummifiedArticleItems), _toConsumableArray(photo_items_1.DummifiedPhotoItems), _toConsumableArray(video_items_1.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
 }];
-},{"../../constants/items/photo-items":"constants/items/photo-items.ts","../../constants/items/video-items":"constants/items/video-items.ts","../../constants/items/article-items":"constants/items/article-items.ts","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+},{"./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -74288,170 +73973,20 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/items/link-items.ts":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/samples/groups.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var types_1 = require("../types");
+var article_items_1 = require("./article-items");
 
-var constants_1 = require("../constants");
+var socialmedia_items_1 = require("./socialmedia-items");
 
-exports.DummyLinkItems = [{
-  id: 'link_1',
-  title: "New Directions Collaborative",
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://www.ndcollaborative.com/sensemaking/",
-    ogTitle: "Navigating Change with Collective Sensemaking - New Directions Collaborative",
-    ogDescription: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
-    ogImage: "https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg",
-    ogSiteName: "New Directions Collaborative"
-  },
-  sourceUrl: "https://www.ndcollaborative.com/sensemaking/",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'link_2',
-  title: 'Sample Photo Lorem ipsum 2',
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://cognitive-edge.com/blog/what-is-sense-making/",
-    ogTitle: "What is Sense-making? - Cognitive Edge",
-    ogDescription: "This apparently innocent question was asked on the ActKM forum this morning. I replied and\u2026"
-  },
-  sourceUrl: "https://cognitive-edge.com/blog/what-is-sense-making/",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'link_3',
-  title: 'Sample Photo Lorem ipsum 3',
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
-    ogTitle: "Micro-Shopping on the Rise",
-    ogDescription: "Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services."
-  },
-  sourceUrl: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/socialmedia-items.ts":[function(require,module,exports) {
-"use strict";
+var video_items_1 = require("./video-items");
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var types_1 = require("../types");
-
-var constants_1 = require("../constants");
-
-exports.DummySocialMediaItems = [{
-  id: 'socialmedia_1',
-  title: 'Sample Photo Lorem ipsum 1',
-  contentType: types_1.ContentType.SocialMedia,
-  contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-    handle: 'anonymous_42'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Instagram,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'socialmedia_2',
-  title: 'Sample Photo Lorem ipsum 2',
-  contentType: types_1.ContentType.SocialMedia,
-  contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-    handle: 'anonymous_42'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Instagram,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'socialmedia_3',
-  title: 'Sample Photo Lorem ipsum 4',
-  contentType: types_1.ContentType.SocialMedia,
-  contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    tweetText: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
-    handle: 'anonymous_42'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Twitter,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'socialmedia_4',
-  title: 'Sample Photo Lorem ipsum 5',
-  contentType: types_1.ContentType.SocialMedia,
-  contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    tweetText: "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23",
-    handle: 'anonymous_42'
-  },
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Twitter,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/samples/groups.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var article_items_1 = require("../items/article-items");
-
-var link_items_1 = require("../items/link-items");
-
-var photo_items_1 = require("../items/photo-items");
-
-var video_items_1 = require("../items/video-items");
-
-var socialmedia_items_1 = require("../items/socialmedia-items");
+var photo_items_1 = require("./photo-items");
 
 exports.BoardGroups = [{
   id: 'group_1',
@@ -74460,7 +73995,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[0], link_items_1.DummyLinkItems[0], photo_items_1.DummyPhotoItems[0], video_items_1.DummyVideoItems[0], socialmedia_items_1.DummySocialMediaItems[0]],
+  items: [article_items_1.DummifiedArticleItems[1], article_items_1.DummifiedArticleItems[4], photo_items_1.DummifiedPhotoItems[3]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_2',
@@ -74469,7 +74004,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[1], link_items_1.DummyLinkItems[1], photo_items_1.DummyPhotoItems[1], video_items_1.DummyVideoItems[1], socialmedia_items_1.DummySocialMediaItems[1]],
+  items: [article_items_1.DummifiedArticleItems[0], socialmedia_items_1.DummifiedSocialMediaItems[3]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_3',
@@ -74478,7 +74013,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[2], photo_items_1.DummyPhotoItems[2], video_items_1.DummyVideoItems[2], socialmedia_items_1.DummySocialMediaItems[2]],
+  items: [article_items_1.DummifiedArticleItems[3], article_items_1.DummifiedArticleItems[6]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_4',
@@ -74487,7 +74022,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  items: [article_items_1.DummifiedArticleItems[5], socialmedia_items_1.DummifiedSocialMediaItems[2], photo_items_1.DummifiedPhotoItems[4]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_5',
@@ -74496,7 +74031,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  items: [article_items_1.DummifiedArticleItems[2], socialmedia_items_1.DummifiedSocialMediaItems[1], video_items_1.DummifiedVideoItems[1]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_6',
@@ -74505,7 +74040,7 @@ exports.BoardGroups = [{
     top: 0,
     left: 0
   },
-  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  items: [socialmedia_items_1.DummifiedSocialMediaItems[0], video_items_1.DummifiedVideoItems[0], article_items_1.DummifiedArticleItems[7]],
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }];
 exports.GroupHeaders = [{
@@ -74527,7 +74062,7 @@ exports.GroupHeaders = [{
     id: exports.BoardGroups[4].id
   }]
 }];
-},{"../items/article-items":"constants/items/article-items.ts","../items/link-items":"constants/items/link-items.ts","../items/photo-items":"constants/items/photo-items.ts","../items/video-items":"constants/items/video-items.ts","../items/socialmedia-items":"constants/items/socialmedia-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"./article-items":"constants/samples/article-items.ts","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -82908,7 +82443,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53017" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52349" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

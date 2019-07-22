@@ -2,7 +2,6 @@ import { IContentItem, ContentType, MediaSourceType, IVideoContent } from "../ty
 import * as _ from 'lodash';
 import { ItemHeight, ItemWidth } from "../constants";
 
-// require('../../assets/dummy/
 export const DummifiedVideoItems: Array<IContentItem<IVideoContent>> = [
     {
         id: 'video_6',

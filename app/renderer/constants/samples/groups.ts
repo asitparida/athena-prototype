@@ -1,9 +1,8 @@
 import { IBoardGroupWrapper, IGroupHeader } from "../types";
-import { DummyArticleItems } from "../items/article-items";
-import { DummyLinkItems } from "../items/link-items";
-import { DummyPhotoItems } from "../items/photo-items";
-import { DummyVideoItems } from "../items/video-items";
-import { DummySocialMediaItems } from "../items/socialmedia-items";
+import { DummifiedArticleItems } from "./article-items";
+import { DummifiedSocialMediaItems } from "./socialmedia-items";
+import { DummifiedVideoItems } from "./video-items";
+import { DummifiedPhotoItems } from "./photo-items";
 
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
@@ -11,11 +10,9 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'Zinc Oxide',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[0],
-            DummyLinkItems[0],
-            DummyPhotoItems[0],
-            DummyVideoItems[0],
-            DummySocialMediaItems[0],
+            DummifiedArticleItems[1],
+            DummifiedArticleItems[4],
+            DummifiedPhotoItems[3]
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     },
@@ -24,11 +21,8 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'Why Mineral ?',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[1],
-            DummyLinkItems[1],
-            DummyPhotoItems[1],
-            DummyVideoItems[1],
-            DummySocialMediaItems[1],
+            DummifiedArticleItems[0],
+            DummifiedSocialMediaItems[3]
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     },
@@ -37,10 +31,8 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'Mineral Sunscreens and UV',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[2],
-            DummyPhotoItems[2],
-            DummyVideoItems[2],
-            DummySocialMediaItems[2],
+            DummifiedArticleItems[3],
+            DummifiedArticleItems[6],
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     },
@@ -49,10 +41,9 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'Avobenzone',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[3],
-            DummyPhotoItems[3],
-            DummyVideoItems[3],
-            DummySocialMediaItems[3],
+            DummifiedArticleItems[5],
+            DummifiedSocialMediaItems[2],
+            DummifiedPhotoItems[4]
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     },
@@ -61,10 +52,9 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'Why Chemical? ',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[3],
-            DummyPhotoItems[3],
-            DummyVideoItems[3],
-            DummySocialMediaItems[3],
+            DummifiedArticleItems[2],
+            DummifiedSocialMediaItems[1],
+            DummifiedVideoItems[1]
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     },
@@ -73,10 +63,9 @@ export let BoardGroups: IBoardGroupWrapper[] = [
         title: 'DIY Sunscreen',
         props: { top: 0, left: 0 },
         items: [
-            DummyArticleItems[3],
-            DummyPhotoItems[3],
-            DummyVideoItems[3],
-            DummySocialMediaItems[3],
+            DummifiedSocialMediaItems[0],
+            DummifiedVideoItems[0],
+            DummifiedArticleItems[7]
         ],
         annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
     }

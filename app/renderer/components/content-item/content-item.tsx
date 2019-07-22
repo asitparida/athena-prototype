@@ -113,7 +113,7 @@ export class ContentItemWrapper extends React.Component<{
                     label = 'Scholar'
                 } else if (this.props.data.sourceType === MediaSourceType.Medium) {
                     label = 'Medium'
-                    currentContentImage = MediaTypeImages.link;
+                    currentContentImage = MediaTypeImages.medium;
                 } else if (this.props.data.sourceType === MediaSourceType.Quora) {
                     label = 'Quora';
                     currentContentImage = MediaTypeImages.link;

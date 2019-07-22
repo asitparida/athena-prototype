@@ -118,7 +118,7 @@ export const DummifiedArticleItems: Array<IContentItem<IArticleContent>> = [
             articleTitle: 'Dangerous DIY Sunscreen Recipes Are Spreading on Pinterest'
         },
         sourcePreviewAvailable: false,
-        sourceType: MediaSourceType.Quora,
+        sourceType: MediaSourceType.Medium,
         tags: ['safety', 'DIY', 'sunscreen'],
         annotation: 'Most people think homemade sunscreens are good for you (they are not)',
         props: { height: ItemHeight, width: ItemWidth }
