@@ -56037,7 +56037,8 @@ var Workspace =
 /*#__PURE__*/
 function () {
   function Workspace(name, image) {
-    var gradient = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var topics = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var gradient = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
     _classCallCheck(this, Workspace);
 
@@ -56047,6 +56048,7 @@ function () {
     this.image = image;
     this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
     this.gradient = gradient;
+    this.topics = topics;
   }
 
   _createClass(Workspace, [{
@@ -56456,23 +56458,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var types_1 = require("./types");
-
-var _ = __importStar(require("lodash"));
 
 var img1 = require('../assets/carnegie_museum_art.jpg');
 
@@ -56583,10 +56573,31 @@ exports.AllContentList = [{
   }),
   type: types_1.ContentType.Video
 }];
-exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1, "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Workspace #2', img2, "linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))"), new types_1.Workspace('Workspace #3', img3, "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))"), new types_1.Workspace('Workspace #4', img1, "linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))")];
-exports.WorkspaceList.forEach(function (w) {
-  return w.topics = GetSampleTopicItems();
-});
+exports.WorkspaceList = [new types_1.Workspace('Instagram', img1, [{
+  id: GetRandomId(),
+  name: 'Sunscreen Debate',
+  active: true
+}, {
+  id: GetRandomId(),
+  name: 'Microdermabrasion',
+  active: false
+}, {
+  id: GetRandomId(),
+  name: 'Copper Peptides',
+  active: false
+}], "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Blog', img3, [{
+  id: GetRandomId(),
+  name: 'K-Beauty Trends',
+  active: true
+}, {
+  id: GetRandomId(),
+  name: 'Retinol Routine',
+  active: false
+}, {
+  id: GetRandomId(),
+  name: 'Retinol Routine',
+  active: false
+}], "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))")];
 exports.WorkspaceCollectionTabs = [{
   id: 'all',
   name: 'All'
@@ -56610,44 +56621,41 @@ exports.DumpingGrounCollectionTabs = [{
   id: 'articles',
   name: 'Articles',
   type: types_1.ContentType.Article
-}, {
-  id: 'links',
-  name: 'Links',
-  type: types_1.ContentType.Link
-}, {
+}, // { id: 'links', name: 'Links', type: ContentType.Link },
+{
   id: 'social-media',
   name: 'Social Media',
   type: types_1.ContentType.SocialMedia
 }];
 exports.Topiclist = [{
   id: GetRandomId(),
-  name: 'Topic #AA',
+  name: 'Sunscreen Debate',
   active: true
 }, {
   id: GetRandomId(),
-  name: 'Topic #BB',
+  name: 'Microdermabrasion',
   active: false
 }, {
   id: GetRandomId(),
-  name: 'Topic #CC',
+  name: 'Copper Peptides',
   active: false
 }];
 
 function GetSampleTopicItems() {
   var items = [{
     id: GetRandomId(),
-    name: 'Topic #AA',
+    name: 'Sunscreen Debate',
     active: true
   }, {
     id: GetRandomId(),
-    name: 'Topic #BB',
+    name: 'Microdermabrasion',
     active: false
   }, {
     id: GetRandomId(),
-    name: 'Topic #CC',
+    name: 'Copper Peptides',
     active: false
   }];
-  return _.shuffle(items);
+  return items;
 }
 
 exports.GetSampleTopicItems = GetSampleTopicItems;
@@ -56775,7 +56783,7 @@ function GetRandomId() {
 
 exports.GetRandomId = GetRandomId;
 ;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg","../assets/media-types/instagram.png":"assets/media-types/instagram.png","../assets/media-types/medium.png":"assets/media-types/medium.png","../assets/media-types/open-book.png":"assets/media-types/open-book.png","../assets/media-types/photo.png":"assets/media-types/photo.png","../assets/media-types/quora.png":"assets/media-types/quora.png","../assets/media-types/twitter.png":"assets/media-types/twitter.png","../assets/media-types/video-player.png":"assets/media-types/video-player.png","../assets/media-types/vimeo.png":"assets/media-types/vimeo.png","../assets/media-types/youtube.png":"assets/media-types/youtube.png","../assets/media-types/notes.png":"assets/media-types/notes.png","../assets/media-types/link.png":"assets/media-types/link.png"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
+},{"./types":"constants/types.ts","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg","../assets/media-types/instagram.png":"assets/media-types/instagram.png","../assets/media-types/medium.png":"assets/media-types/medium.png","../assets/media-types/open-book.png":"assets/media-types/open-book.png","../assets/media-types/photo.png":"assets/media-types/photo.png","../assets/media-types/quora.png":"assets/media-types/quora.png","../assets/media-types/twitter.png":"assets/media-types/twitter.png","../assets/media-types/video-player.png":"assets/media-types/video-player.png","../assets/media-types/vimeo.png":"assets/media-types/vimeo.png","../assets/media-types/youtube.png":"assets/media-types/youtube.png","../assets/media-types/notes.png":"assets/media-types/notes.png","../assets/media-types/link.png":"assets/media-types/link.png"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -57085,7 +57093,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var duration = helper_1.GetDuration(this.props.data.contentData.videoLength);
-      var bgUrl = "url(".concat(this.state.imgUrl, ")");
+      var bgUrl = "url('".concat(this.state.imgUrl, "')");
       return React.createElement("div", {
         className: "video-content content-marker"
       }, this.props.showEntity && React.createElement(React.Fragment, null, React.createElement("label", {
@@ -57292,7 +57300,7 @@ function (_React$Component) {
         backgroundImage: "url(".concat(this.props.data.contentData.profileImgUrl, ")")
       };
       var instaStyles = {
-        backgroundImage: "url(".concat(this.props.data.contentData.instragramImageUrl, ")")
+        backgroundImage: "url('".concat(this.props.data.contentData.instragramImageUrl, "')")
       };
       return React.createElement("div", {
         className: "social-media-content content-marker"
@@ -65977,7 +65985,7 @@ function (_React$Component) {
       switch (type) {
         case types_1.ContentType.Article:
           {
-            currentContentImage = constants_1.MediaTypeImages.news;
+            currentContentImage = constants_1.MediaTypeImages.link;
             currentContentImageClass = 'content-type-image no-shadow';
 
             if (this.props.data.sourceType === types_1.MediaSourceType.ACM) {
@@ -65986,10 +65994,10 @@ function (_React$Component) {
               label = 'Scholar';
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Medium) {
               label = 'Medium';
-              currentContentImage = constants_1.MediaTypeImages.medium;
+              currentContentImage = constants_1.MediaTypeImages.link;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Quora) {
               label = 'Quora';
-              currentContentImage = constants_1.MediaTypeImages.quora;
+              currentContentImage = constants_1.MediaTypeImages.link;
               currentContentImageClass = currentContentImageClass + ' small';
             }
 
@@ -66703,7 +66711,7 @@ function BuildMMSContentItem(data) {
     tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
       return "tag-".concat(t);
     }),
-    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+    annotation: data.text
   };
 }
 
@@ -67035,7 +67043,31 @@ exports.DummyArticleItems = [{
     width: constants_1.ItemWidth
   }
 }];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/link-items.ts":[function(require,module,exports) {
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
+module.exports = "/adult-boy-casual-220453.213a8f54.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 2.02.18 PM.93e806c5.png";
+},{}],"assets/dummy/beautiful-brunette-cute-774909.jpg":[function(require,module,exports) {
+module.exports = "/beautiful-brunette-cute-774909.7407e60f.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.43.00 PM.39a5975d.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.38.34 PM.a35e71a5.png";
+},{}],"assets/dummy/blur-casual-close-up-462680.jpg":[function(require,module,exports) {
+module.exports = "/blur-casual-close-up-462680.aa379638.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.27.34 PM.d3b3f2ca.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.34.19 PM.7d92a926.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.44.26 PM.74eee687.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.50.41 PM.3d07c578.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.54.05 PM.584a7ed3.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 2.00.39 PM.09369c32.png";
+},{}],"constants/samples/socialmedia-items.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -67046,144 +67078,770 @@ var types_1 = require("../types");
 
 var constants_1 = require("../constants");
 
-exports.DummyLinkItems = [{
-  id: 'link_1',
-  title: "New Directions Collaborative",
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://www.ndcollaborative.com/sensemaking/",
-    ogTitle: "Navigating Change with Collective Sensemaking - New Directions Collaborative",
-    ogDescription: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
-    ogImage: "https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg",
-    ogSiteName: "New Directions Collaborative"
-  },
-  sourceUrl: "https://www.ndcollaborative.com/sensemaking/",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'link_2',
-  title: 'Sample Photo Lorem ipsum 2',
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://cognitive-edge.com/blog/what-is-sense-making/",
-    ogTitle: "What is Sense-making? - Cognitive Edge",
-    ogDescription: "This apparently innocent question was asked on the ActKM forum this morning. I replied and\u2026"
-  },
-  sourceUrl: "https://cognitive-edge.com/blog/what-is-sense-making/",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}, {
-  id: 'link_3',
-  title: 'Sample Photo Lorem ipsum 3',
-  contentType: types_1.ContentType.Link,
-  contentData: {
-    ogLink: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
-    ogTitle: "Micro-Shopping on the Rise",
-    ogDescription: "Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services."
-  },
-  sourceUrl: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
-  sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Scholar,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
-  props: {
-    height: constants_1.ItemHeight,
-    width: constants_1.ItemWidth
-  }
-}];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/socialmedia-items.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var types_1 = require("../types");
-
-var constants_1 = require("../constants");
-
-exports.DummySocialMediaItems = [{
+exports.DummifiedSocialMediaItems = [{
   id: 'socialmedia_1',
-  title: 'Sample Photo Lorem ipsum 1',
+  title: '',
   contentType: types_1.ContentType.SocialMedia,
   contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-    handle: 'anonymous_42'
+    profileImgUrl: require('../../assets/dummy/adult-boy-casual-220453.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BzF-fhWnWhG/',
+    handle: '@labmuffinbeautyscience'
   },
   sourcePreviewAvailable: false,
   sourceType: types_1.MediaSourceType.Instagram,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  tags: ['chemical', 'mineral', 'sunscreen', 'zinc oxide', 'DIY'],
+  annotation: 'don\'t smear diaper cream on your face as a way to "DIY sunscreen"',
   props: {
     height: constants_1.ItemHeight,
     width: constants_1.ItemWidth
   }
 }, {
   id: 'socialmedia_2',
-  title: 'Sample Photo Lorem ipsum 2',
+  title: '',
   contentType: types_1.ContentType.SocialMedia,
   contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
-    handle: 'anonymous_42'
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BqDD9C5HlUC/',
+    handle: '@skincaregoalsaf'
   },
   sourcePreviewAvailable: false,
   sourceType: types_1.MediaSourceType.Instagram,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  tags: ['sunscreen'],
+  annotation: '@bioreus spf50+',
   props: {
     height: constants_1.ItemHeight,
     width: constants_1.ItemWidth
   }
 }, {
   id: 'socialmedia_3',
-  title: 'Sample Photo Lorem ipsum 4',
+  title: '',
   contentType: types_1.ContentType.SocialMedia,
   contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    tweetText: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
-    handle: 'anonymous_42'
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bz8VHwmHFkj/',
+    handle: '@made_u_blush'
   },
   sourcePreviewAvailable: false,
-  sourceType: types_1.MediaSourceType.Twitter,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: 'Dynamic Skin Recovery SPF 50 with Kale + Green Tea Spinach Cleanser, Hyaluronic Acid Serum Booster',
   props: {
     height: constants_1.ItemHeight,
     width: constants_1.ItemWidth
   }
 }, {
   id: 'socialmedia_4',
-  title: 'Sample Photo Lorem ipsum 5',
+  title: '',
   contentType: types_1.ContentType.SocialMedia,
   contentData: {
-    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
-    tweetText: "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23",
-    handle: 'anonymous_42'
+    profileImgUrl: require('../../assets/dummy/blur-casual-close-up-462680.jpg'),
+    tweetText: "Chemicals in #sunscreen can be harmful to corals and other marine life. #Hawaii has officially banned oxybenzone and octinoxate ...",
+    tweetUrl: 'https://twitter.com/4oceanbracelets/status/1014931415224471552',
+    handle: '@4oceanbracelets'
   },
   sourcePreviewAvailable: false,
   sourceType: types_1.MediaSourceType.Twitter,
-  tags: ['tag-1', 'tag-2'],
-  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  tags: ['chemical', 'sunscreen', 'environment'],
+  annotation: 'Hawaii banned oxybenzone and octinoxate in sunscreen because it\'s harmful to the ocean, particularly coral reefs',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_5',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BtyVv2vHPGs/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: '',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_6',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BtyVv2vHPGs/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['body'],
+  annotation: 'Top body shimmer product for summer ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_7',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bpri2KCAWCk/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: 'Ascorbyl Glucoside Solution 12% (Okay)⁣, Moisturizing Eye Bomb (Recommend) ⁣, Protini Polypeptide Cream (Not recommend)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_8',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bzct2-WgQe3/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'lip products'],
+  annotation: 'Espoir Moonlit shade',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_9',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Be_s97BDtrK/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'lip products'],
+  annotation: 'new mlbb espoir velvet lipsticks for spring 2018 ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_10',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bz52fw_gVRw/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'foundations'],
+  annotation: 'Peripera\'s Blurring Skin Tint (tried the cc and will recommend) ',
   props: {
     height: constants_1.ItemHeight,
     width: constants_1.ItemWidth
   }
 }];
-},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/dumping-ground.ts":[function(require,module,exports) {
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts","../../assets/dummy/adult-boy-casual-220453.jpg":"assets/dummy/adult-boy-casual-220453.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png","../../assets/dummy/beautiful-brunette-cute-774909.jpg":"assets/dummy/beautiful-brunette-cute-774909.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png","../../assets/dummy/blur-casual-close-up-462680.jpg":"assets/dummy/blur-casual-close-up-462680.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png"}],"assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.39.09 PM.ff22e35e.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.58.26 PM.84384a35.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.42.33 PM.133ee245.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.47.19 PM.2878d901.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.46.02 PM.2f36d156.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.49.12 PM.ae95acbf.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.51.34 PM.d3cdac1c.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.54.55 PM.08fa106c.png";
+},{}],"constants/samples/video-items.ts":[function(require,module,exports) {
+"use strict";
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("../types");
+
+var _ = __importStar(require("lodash"));
+
+var constants_1 = require("../constants"); // require('../../assets/dummy/
+
+
+exports.DummifiedVideoItems = [{
+  id: 'video_6',
+  title: 'Why DIY Sunscreen Doesn Not Work | Lab Muffin Beauty Science',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png'),
+    videoId: 'aTNcbLHZusc',
+    videoUrl: "https://www.youtube.com/watch?v=aTNcbLHZusc",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['chemical', 'mineral', 'sunscreen', 'DIY'],
+  annotation: 'DIY sunscreen uses uncoated zinc oxide which leads to poor coverage - therefore very dangerous. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_7',
+  title: 'How Sunscreen Works',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png'),
+    videoId: 'cC-d9ZsnLds',
+    videoUrl: "https://www.youtube.com/watch?v=cC-d9ZsnLds",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['sunscreen', 'protection', 'UV rays'],
+  annotation: 'no sunscreen completely blocks UV rays so you need to cover your body with clothing as well as additional protection that protects against both UVA and UVB rays. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_8',
+  title: 'Physical vs Chemical Sunscreen - How To Choose The Best Sunscreen',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png'),
+    videoId: 'c9z-MNOFCZIg',
+    videoUrl: "https://www.youtube.com/watch?v=9z-MNOFCZIg",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['sunscreen'],
+  annotation: 'Physical vs Chemical sunscreen product comparison',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_9',
+  title: 'Mineral Sunscreen vs Chemical Sunscreen: Which is Best? | Beauty with Susan Yara',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png'),
+    videoId: '9M4Lkx03QVw',
+    videoUrl: "https://www.youtube.com/watch?v=9M4Lkx03QVw",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['chemical'],
+  annotation: 'Best product review: Mineral vs Chemical sunscreen',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_10',
+  title: 'LIP CARE 💋Moisturizing Lip Products for Dry, Chapped Lips & Angular Cheilitis',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png'),
+    videoId: 'XUSLVPzgo6c',
+    videoUrl: "https://www.youtube.com/watch?v=XUSLVPzgo6c",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['lip products'],
+  annotation: 'Lip Products, Mosturizing',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_11',
+  title: 'How To Get That Glow For Korean Glass Skin WITHOUT MAKEUP (feat. Sharmander)',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png'),
+    videoId: 'usmxR965Kko',
+    videoUrl: "https://www.youtube.com/watch?v=usmxR965Kko",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['skincare'],
+  annotation: 'Glass skin glow',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_12',
+  title: 'K Pop Idol Beauty Secrets Revealed! BTS & Red Velvet’s Tips for Glowing Skin! | Teen Beauty Bible',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png'),
+    videoId: 'gzQCoQlOyFg',
+    videoUrl: "https://www.youtube.com/watch?v=gzQCoQlOyFg",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['skincare'],
+  annotation: 'Skincare Routine',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_13',
+  title: 'BT21 Makeup Season 2- Did they get it right this time?',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png'),
+    videoId: 'EUceC1GcTH4',
+    videoUrl: "https://www.youtube.com/watch?v=EUceC1GcTH4",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['makeup'],
+  annotation: 'celebrity makeup',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../constants":"constants/constants.ts","../../assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png"}],"assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg":[function(require,module,exports) {
+module.exports = "/a0e63d5c263029849dde1918e5f99930.26e1c6a3.jpg";
+},{}],"assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg":[function(require,module,exports) {
+module.exports = "/e56d1f2cd2c3c7cf3e41240b40d9b291.d525ec06.jpg";
+},{}],"assets/dummy/8898550740df58d37ffa251b13faef2c.jpg":[function(require,module,exports) {
+module.exports = "/8898550740df58d37ffa251b13faef2c.d895ef93.jpg";
+},{}],"assets/dummy/sunscreen-white-cast-3.jpg":[function(require,module,exports) {
+module.exports = "/sunscreen-white-cast-3.22082bee.jpg";
+},{}],"assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg":[function(require,module,exports) {
+module.exports = "/Sunscreen-Ingredients-UVA-UVB-protection.6bc12a52.jpg";
+},{}],"constants/samples/photo-items.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummifiedPhotoItems = [{
+  id: 'photo_1',
+  title: 'Sunscreen SPF 50',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['sunscreen', 'sensitive skin'],
+  annotation: 'SPF 50 for sensitive skin',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_2',
+  title: 'Makeup Collection',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['makeup', 'tag-2'],
+  annotation: 'All makeup collection photo',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_3',
+  title: 'All Natural Face Mask',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/8898550740df58d37ffa251b13faef2c.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['skincare', 'facemask'],
+  annotation: 'Best selling face mask. All natural ingredient',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_4',
+  title: 'Sunscreen Comparison',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/sunscreen-white-cast-3.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['mineral', 'zinc oxide', 'white cast', 'sunscreen'],
+  annotation: 'Comparing types of sunscreen and the white cast they give on face; Sunsense has least white cast and Invisible Zinc has the most (Neutrogena in the middle)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_5',
+  title: 'Ingredients for UVA/UVB',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['chemical', 'avobenzone', 'sunscreen'],
+  annotation: 'Avobenzone covers both UVB and UVA at the same level as zinc oxide, but is simply the chemical version',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts","../../assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg":"assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg","../../assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg":"assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg","../../assets/dummy/8898550740df58d37ffa251b13faef2c.jpg":"assets/dummy/8898550740df58d37ffa251b13faef2c.jpg","../../assets/dummy/sunscreen-white-cast-3.jpg":"assets/dummy/sunscreen-white-cast-3.jpg","../../assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg":"assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg"}],"constants/samples/article-items.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummifiedArticleItems = [{
+  id: 'article_1',
+  title: 'https://www.piedmont.org/living-better/the-difference-between-physical-and-chemical-sunscreen',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.piedmont.org/living-better/the-difference-between-physical-and-chemical-sunscreen',
+    authorName: 'Piedmont Healthcare',
+    articleTitle: 'The difference between physical and chemical sunscreen'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemical', 'mineral', 'sunscreen'],
+  annotation: 'chemical sunscreen more water-resistant, but mineral sunscreen more moisturizing',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_2',
+  title: 'https://www.thecut.com/2019/05/sunscreens-bloodstream-fda-study.html',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.thecut.com/2019/05/sunscreens-bloodstream-fda-study.html',
+    authorName: 'Erica Smith',
+    articleTitle: 'The Chemicals in Your Sunscreen Are Being Absorbed Into Your Blood'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['mineral', 'sunscreen', 'zinc oxide', 'safety'],
+  annotation: 'Chemical sunscreens absorbed into bloodstream at low concentrations, still better than no sunscreen',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_3',
+  title: 'https://www.nytimes.com/2019/06/10/upshot/how-safe-is-sunscreen.html',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.nytimes.com/2019/06/10/upshot/how-safe-is-sunscreen.html',
+    authorName: 'Aaron E. Carroll',
+    articleTitle: 'How Safe Is Sunscreen?'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['skin cancer', 'sunscreen'],
+  annotation: 'chemical sunscreens might be bad but skin cancer is worse!!!',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_4',
+  title: 'https://academic.oup.com/toxsci/article/123/1/264/1644613',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://academic.oup.com/toxsci/article/123/1/264/1644613',
+    authorName: 'N.A. Monteiro-Riviere etc.',
+    articleTitle: 'Safety Evaluation of Sunscreen Formulations Containing Titanium Dioxide and Zinc Oxide Nanoparticles in UVB Sunburned Skin: An In Vitro and In Vivo Study'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['zinc oxide', 'mineral', 'sunscreen'],
+  annotation: 'Zinc/Titanium not absorbed through skin even if sunburned',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_5',
+  title: 'https://onlinelibrary.wiley.com/doi/full/10.1046/j.1524-4725.2000.99237.x',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://onlinelibrary.wiley.com/doi/full/10.1046/j.1524-4725.2000.99237.x',
+    authorName: 'Sheldon R. Pinnell MD',
+    articleTitle: 'Microfine Zinc Oxide is a Superior Sunscreen Ingredient to Microfine Titanium Dioxide'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['zinc oxide', 'titanium dioxide', 'mineral', 'sunscreen'],
+  annotation: 'Zinc a better mineral material than Titanium (not as white, absorbs more UVA)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_6',
+  title: 'http://www.skintherapyletter.com/sunscreen/advances-update/',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'http://www.skintherapyletter.com/sunscreen/advances-update/',
+    authorName: 'R. Bissonnette, MD, FRCPC',
+    articleTitle: 'Update on Sunscreens'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemical', 'mineral', 'sunscreen'],
+  annotation: 'General discussion of sunscreen, importance of UVA protection',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_7',
+  title: 'https://link.springer.com/article/10.2165/11537050-000000000-00000',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://link.springer.com/article/10.2165/11537050-000000000-00000',
+    authorName: 'Donathan G. Beasley',
+    articleTitle: 'Characterization of the UVA Protection Provided by Avobenzone, Zinc Oxide, and Titanium Dioxide in Broad-Spectrum Sunscreen Products'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemica', 'mineral', 'sunscreen'],
+  annotation: 'Comparison of Zinc/avobenzone in UVA protection (chemical vs. mineral)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_8',
+  title: 'https://onezero.medium.com/pinterest-has-a-fake-news-problem-about-sunscreen-c3f21f87c6b1',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://onezero.medium.com/pinterest-has-a-fake-news-problem-about-sunscreen-c3f21f87c6b1',
+    authorName: 'Angela Lashbrook',
+    articleTitle: 'Dangerous DIY Sunscreen Recipes Are Spreading on Pinterest'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['safety', 'DIY', 'sunscreen'],
+  annotation: 'Most people think homemade sunscreens are good for you (they are not)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_9',
+  title: 'https://www.healthline.com/health/beauty-skin-care/nose-pores',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.healthline.com/health/beauty-skin-care/nose-pores',
+    authorName: 'Healthline',
+    articleTitle: 'What Causes Large Nose Pores and What Can You Do?'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['face', 'clean', 'pores'],
+  annotation: 'How to clean englarged nose pores',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_10',
+  title: 'https://www.medicalnewstoday.com/articles/322421.php',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.medicalnewstoday.com/articles/322421.php',
+    authorName: 'Zawn Villnes',
+    articleTitle: 'Six natural ways to whiten teeth'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['natural', 'teeth', 'tooth care'],
+  annotation: 'Pay attention to tip #2 and #3',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_11',
+  title: 'https://www.businessinsider.com/dangerous-chemicals-in-beauty-products-makeup-list-2019-6',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.businessinsider.com/dangerous-chemicals-in-beauty-products-makeup-list-2019-6',
+    authorName: 'Zawn Villnes',
+    articleTitle: 'Cancer-causing toxins were just found in foundation and sparkly makeup — here are 11 chemicals that could lurk in your lipstick, lotion, and eye powder'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['clean makeup', 'chemicals', 'asbestos'],
+  annotation: 'Parabens are also common in shampoo, shaving cream, moisturizers, and other makeup - good to check for',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_12',
+  title: 'https://www.whowhatwear.com/how-to-unclog-pores',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.whowhatwear.com/how-to-unclog-pores',
+    authorName: 'Micaela English',
+    articleTitle: '5 Skincare Experts Share the Best Products and Tips for Unclogging Pores'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['cleansing'],
+  annotation: 'some tips on cleanser. Dont agree with #3',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_13',
+  title: 'https://patents.google.com/patent/US5593662A/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US5593662A/en',
+    authorName: 'George E Deckner',
+    articleTitle: 'Moisturizing lipstick compositions'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['water-free moisturizing'],
+  annotation: 'interesting lipstick innovation - look to see how used',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_14',
+  title: 'https://www.researchgate.net/publication/51714131_Topical_effectiveness_of_a_cosmetic_skincare_treatment_for_acne-prone_skin_A_clinical_study',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.researchgate.net/publication/51714131_Topical_effectiveness_of_a_cosmetic_skincare_treatment_for_acne-prone_skin_A_clinical_study',
+    authorName: 'Igor Bartenjev',
+    articleTitle: 'Topical effectiveness of a cosmetic skincare treatment for acne-prone skin: A clinical study'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['acne'],
+  annotation: 'Normaderm had significant impact on pore appearance',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_15',
+  title: 'https://patents.google.com/patent/US20070202060A1/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US20070202060A1/en',
+    authorName: 'Arne Ptock',
+    articleTitle: 'Retinoid-Containing Preparations'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['retinoid'],
+  annotation: '',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_16',
+  title: 'https://patents.google.com/patent/US5876736A/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US5876736A/en',
+    authorName: 'Kenneth A Cohen',
+    articleTitle: 'Skin revitalizing makeup'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['antioxidant', 'makeup'],
+  annotation: 'makeup that could actually be good for your skin',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/samples/dumping-ground.ts":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -67204,12 +67862,15 @@ var video_items_1 = require("../../constants/items/video-items");
 
 var article_items_1 = require("../../constants/items/article-items");
 
-var link_items_1 = require("../../constants/items/link-items");
+var socialmedia_items_1 = require("./socialmedia-items");
 
-var socialmedia_items_1 = require("../../constants/items/socialmedia-items");
+var video_items_2 = require("./video-items");
+
+var photo_items_2 = require("./photo-items");
+
+var article_items_2 = require("./article-items");
 
 function FilterDumpingGroundCollection(type) {
-  console.log(exports.DumpingGroundCollection);
   var result = [];
   exports.DumpingGroundCollection.forEach(function (item) {
     var _ref;
@@ -67228,12 +67889,12 @@ function FilterDumpingGroundCollection(type) {
 exports.FilterDumpingGroundCollection = FilterDumpingGroundCollection;
 exports.DumpingGroundCollection = [{
   title: 'Recent',
-  listItems: [article_items_1.DummyArticleItems[3], link_items_1.DummyLinkItems[2], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]]
+  listItems: [].concat(_toConsumableArray(article_items_2.DummifiedArticleItems), _toConsumableArray(photo_items_2.DummifiedPhotoItems), _toConsumableArray(video_items_2.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
 }, {
   title: 'Yesterday',
   listItems: [article_items_1.DummyArticleItems[4], photo_items_1.DummyPhotoItems[4], video_items_1.DummyVideoItems[4]]
 }];
-},{"../../constants/items/photo-items":"constants/items/photo-items.ts","../../constants/items/video-items":"constants/items/video-items.ts","../../constants/items/article-items":"constants/items/article-items.ts","../../constants/items/link-items":"constants/items/link-items.ts","../../constants/items/socialmedia-items":"constants/items/socialmedia-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+},{"../../constants/items/photo-items":"constants/items/photo-items.ts","../../constants/items/video-items":"constants/items/video-items.ts","../../constants/items/article-items":"constants/items/article-items.ts","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67290,7 +67951,7 @@ var observables_1 = require("../../access/observables/observables");
 
 var constants_1 = require("../../constants/constants");
 
-var dumping_ground_1 = require("../../constants/items/dumping-ground");
+var dumping_ground_1 = require("../../constants/samples/dumping-ground");
 
 var DumpingGroundListCollection =
 /*#__PURE__*/
@@ -67427,8 +68088,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this4 = this;
 
-      this.updateCollection();
-      this.initializeMMSListener();
+      this.updateCollection(); // this.initializeMMSListener();
+
       this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
         var collection = _this4.state.listItems;
         var newCollection = [];
@@ -67503,7 +68164,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.DumpingGroundListCollection = DumpingGroundListCollection;
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts","../../constants/items/dumping-ground":"constants/items/dumping-ground.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts","../../constants/samples/dumping-ground":"constants/samples/dumping-ground.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73627,26 +74288,174 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/items/groups.ts":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/items/link-items.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var article_items_1 = require("./article-items");
+var types_1 = require("../types");
 
-var link_items_1 = require("./link-items");
+var constants_1 = require("../constants");
 
-var photo_items_1 = require("./photo-items");
+exports.DummyLinkItems = [{
+  id: 'link_1',
+  title: "New Directions Collaborative",
+  contentType: types_1.ContentType.Link,
+  contentData: {
+    ogLink: "https://www.ndcollaborative.com/sensemaking/",
+    ogTitle: "Navigating Change with Collective Sensemaking - New Directions Collaborative",
+    ogDescription: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
+    ogImage: "https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg",
+    ogSiteName: "New Directions Collaborative"
+  },
+  sourceUrl: "https://www.ndcollaborative.com/sensemaking/",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'link_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.Link,
+  contentData: {
+    ogLink: "https://cognitive-edge.com/blog/what-is-sense-making/",
+    ogTitle: "What is Sense-making? - Cognitive Edge",
+    ogDescription: "This apparently innocent question was asked on the ActKM forum this morning. I replied and\u2026"
+  },
+  sourceUrl: "https://cognitive-edge.com/blog/what-is-sense-making/",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'link_3',
+  title: 'Sample Photo Lorem ipsum 3',
+  contentType: types_1.ContentType.Link,
+  contentData: {
+    ogLink: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
+    ogTitle: "Micro-Shopping on the Rise",
+    ogDescription: "Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services."
+  },
+  sourceUrl: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Scholar,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '3The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/items/socialmedia-items.ts":[function(require,module,exports) {
+"use strict";
 
-var socialmedia_items_1 = require("./socialmedia-items");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var video_items_1 = require("./video-items");
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummySocialMediaItems = [{
+  id: 'socialmedia_1',
+  title: 'Sample Photo Lorem ipsum 1',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '1The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_2',
+  title: 'Sample Photo Lorem ipsum 2',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    instragramImageUrl: 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com',
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '2The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_3',
+  title: 'Sample Photo Lorem ipsum 4',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    tweetText: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Twitter,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '4The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_4',
+  title: 'Sample Photo Lorem ipsum 5',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: 'https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg',
+    tweetText: "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23",
+    handle: 'anonymous_42'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Twitter,
+  tags: ['tag-1', 'tag-2'],
+  annotation: '5The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/samples/groups.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var article_items_1 = require("../items/article-items");
+
+var link_items_1 = require("../items/link-items");
+
+var photo_items_1 = require("../items/photo-items");
+
+var video_items_1 = require("../items/video-items");
+
+var socialmedia_items_1 = require("../items/socialmedia-items");
 
 exports.BoardGroups = [{
   id: 'group_1',
-  title: 'Group #1',
+  title: 'Zinc Oxide',
   props: {
     top: 0,
     left: 0
@@ -73655,7 +74464,7 @@ exports.BoardGroups = [{
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_2',
-  title: 'Group #2',
+  title: 'Why Mineral ?',
   props: {
     top: 0,
     left: 0
@@ -73664,7 +74473,7 @@ exports.BoardGroups = [{
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_3',
-  title: 'Group #3',
+  title: 'Mineral Sunscreens and UV',
   props: {
     top: 0,
     left: 0
@@ -73673,7 +74482,25 @@ exports.BoardGroups = [{
   annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
 }, {
   id: 'group_4',
-  title: 'Group #4',
+  title: 'Avobenzone',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}, {
+  id: 'group_5',
+  title: 'Why Chemical? ',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummyArticleItems[3], photo_items_1.DummyPhotoItems[3], video_items_1.DummyVideoItems[3], socialmedia_items_1.DummySocialMediaItems[3]],
+  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+}, {
+  id: 'group_6',
+  title: 'DIY Sunscreen',
   props: {
     top: 0,
     left: 0
@@ -73683,14 +74510,24 @@ exports.BoardGroups = [{
 }];
 exports.GroupHeaders = [{
   id: 'header_1',
-  name: 'Header #1',
+  name: 'Mineral Sunscreens',
   groups: [{
     id: exports.BoardGroups[0].id
   }, {
     id: exports.BoardGroups[1].id
+  }, {
+    id: exports.BoardGroups[2].id
+  }]
+}, {
+  id: 'header_2',
+  name: 'Chemical Sunscreens',
+  groups: [{
+    id: exports.BoardGroups[3].id
+  }, {
+    id: exports.BoardGroups[4].id
   }]
 }];
-},{"./article-items":"constants/items/article-items.ts","./link-items":"constants/items/link-items.ts","./photo-items":"constants/items/photo-items.ts","./socialmedia-items":"constants/items/socialmedia-items.ts","./video-items":"constants/items/video-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"../items/article-items":"constants/items/article-items.ts","../items/link-items":"constants/items/link-items.ts","../items/photo-items":"constants/items/photo-items.ts","../items/video-items":"constants/items/video-items.ts","../items/socialmedia-items":"constants/items/socialmedia-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73765,7 +74602,7 @@ var transforms_1 = require("../../transforms");
 
 var manage_headers_1 = __importDefault(require("../manage-headers/manage-headers"));
 
-var groups_1 = require("../../constants/items/groups");
+var groups_1 = require("../../constants/samples/groups");
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
@@ -74021,7 +74858,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx","../../constants/items/groups":"constants/items/groups.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx","../../constants/samples/groups":"constants/samples/groups.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -82071,7 +82908,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53017" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

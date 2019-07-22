@@ -54,12 +54,13 @@ export class Workspace implements IWorkspace {
     link: string;
     gradient: string;
     topics: ITopic[] = [];
-    constructor(name, image, gradient = null) {
+    constructor(name, image, topics = [], gradient = null) {
         this.id = `${Math.floor(Math.random() * 10e8)}`;
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
         this.gradient = gradient;
+        this.topics = topics;
     }
     getImgUrl() {
         return `url(${this.image})`;
@@ -143,7 +144,9 @@ export interface INoteContent {
 
 export interface ISocialMediaContent {
     tweetText?: string;
+    tweetUrl?: string;
     instragramImageUrl?: string;
+    instagramPostUrl?: string;
     handle?: string;
     profileLink?: string;
     profileImgUrl?: string;

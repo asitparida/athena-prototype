@@ -18,7 +18,7 @@ const htmlToRtf = require('html-to-rtf');
 import * as fs from 'fs';
 
 export let API_PORT = null;
-export const EnableTwilio = false;
+export const EnableTwilio = true;
 let mainWindow;
 
 app.on('ready', async () => {

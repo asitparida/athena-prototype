@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { DumpingGroundTransfer, DumpingGroundSelections } from '../../access/observables/observables';
 import { GetAPIUrl, CancellabelRequests, Cancellable } from '../../constants/constants';
 import { IMms } from '../../../api/api-types';
-import { DumpingGroundCollection, FilterDumpingGroundCollection } from '../../constants/items/dumping-ground';
+import { DumpingGroundCollection, FilterDumpingGroundCollection } from '../../constants/samples/dumping-ground';
 
 interface IProps {
     type?: ContentType,
@@ -99,7 +99,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     }
     componentDidMount() {
         this.updateCollection();
-        this.initializeMMSListener();
+        // this.initializeMMSListener();
         this.dumpingGroundTransferSubscription = DumpingGroundTransfer.subscribe((data: IContentItem<any>) => {
             const collection = this.state.listItems;
             const newCollection = [];

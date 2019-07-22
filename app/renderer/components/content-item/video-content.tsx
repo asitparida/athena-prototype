@@ -62,7 +62,7 @@ export class VideoContentItem extends React.Component<{
     }
     render() {
         const duration = GetDuration(this.props.data.contentData.videoLength);
-        const bgUrl = `url(${this.state.imgUrl})`;
+        const bgUrl = `url('${this.state.imgUrl}')`;
         return (
             <div className='video-content content-marker'>
                 {

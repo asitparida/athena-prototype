@@ -105,7 +105,7 @@ export class ContentItemWrapper extends React.Component<{
         let currentContentImageClass = 'content-type-image ';
         switch (type) {
             case ContentType.Article: {
-                currentContentImage = MediaTypeImages.news;
+                currentContentImage = MediaTypeImages.link;
                 currentContentImageClass = 'content-type-image no-shadow';
                 if (this.props.data.sourceType === MediaSourceType.ACM) {
                     label = 'ACM'
@@ -113,10 +113,10 @@ export class ContentItemWrapper extends React.Component<{
                     label = 'Scholar'
                 } else if (this.props.data.sourceType === MediaSourceType.Medium) {
                     label = 'Medium'
-                    currentContentImage = MediaTypeImages.medium;
+                    currentContentImage = MediaTypeImages.link;
                 } else if (this.props.data.sourceType === MediaSourceType.Quora) {
                     label = 'Quora';
-                    currentContentImage = MediaTypeImages.quora;
+                    currentContentImage = MediaTypeImages.link;
                     currentContentImageClass = currentContentImageClass + ' small';
                 }
                 break;

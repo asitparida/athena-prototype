@@ -10,7 +10,7 @@ export class SocialMediaContentItem extends React.Component<{ data: IContentItem
             backgroundImage: `url(${this.props.data.contentData.profileImgUrl})`
         };
         const instaStyles = {
-            backgroundImage: `url(${this.props.data.contentData.instragramImageUrl})`
+            backgroundImage: `url('${this.props.data.contentData.instragramImageUrl}')`
         };
         return (
             <div className='social-media-content content-marker'>

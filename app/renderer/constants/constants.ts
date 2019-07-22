@@ -41,13 +41,17 @@ export const AllContentList: ContentList[] = [
 ];
 
 export const WorkspaceList: IWorkspace[] = [
-    new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
-    new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
-    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
-    new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
+    new Workspace('Instagram', img1, [
+        { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
+        { id: GetRandomId(), name: 'Microdermabrasion', active: false },
+        { id: GetRandomId(), name: 'Copper Peptides', active: false }
+    ], `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
+    new Workspace('Blog', img3, [
+        { id: GetRandomId(), name: 'K-Beauty Trends', active: true },
+        { id: GetRandomId(), name: 'Retinol Routine', active: false },
+        { id: GetRandomId(), name: 'Retinol Routine', active: false }
+    ], `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
 ];
-
-WorkspaceList.forEach(w => w.topics = GetSampleTopicItems());
 
 export const WorkspaceCollectionTabs = [
     { id: 'all', name: 'All' },
@@ -58,22 +62,22 @@ export const DumpingGrounCollectionTabs = [
     { id: 'photos', name: 'Photos', type: ContentType.Photo },
     { id: 'videos', name: 'Videos', type: ContentType.Video },
     { id: 'articles', name: 'Articles', type: ContentType.Article },
-    { id: 'links', name: 'Links', type: ContentType.Link },
+    // { id: 'links', name: 'Links', type: ContentType.Link },
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];
 export const Topiclist = [
-    { id: GetRandomId(), name: 'Topic #AA', active: true },
-    { id: GetRandomId(), name: 'Topic #BB', active: false },
-    { id: GetRandomId(), name: 'Topic #CC', active: false }
+    { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
+    { id: GetRandomId(), name: 'Microdermabrasion', active: false },
+    { id: GetRandomId(), name: 'Copper Peptides', active: false }
 ];
 
 export function GetSampleTopicItems() {
     const items = [
-        { id: GetRandomId(), name: 'Topic #AA', active: true },
-        { id: GetRandomId(), name: 'Topic #BB', active: false },
-        { id: GetRandomId(), name: 'Topic #CC', active: false }
+        { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
+        { id: GetRandomId(), name: 'Microdermabrasion', active: false },
+        { id: GetRandomId(), name: 'Copper Peptides', active: false }
     ];
-    return _.shuffle(items);
+    return items;
 }
 
 export function GetEmptyGroup() {

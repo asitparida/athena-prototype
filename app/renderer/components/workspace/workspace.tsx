@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 import { WorkspaceViewSwitch } from './workspace-view-switch';
 import { isEqual } from '../../transforms';
 import ManageHeaders from '../manage-headers/manage-headers';
-import { BoardGroups, GroupHeaders } from '../../constants/items/groups';
+import { BoardGroups, GroupHeaders } from '../../constants/samples/groups';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
