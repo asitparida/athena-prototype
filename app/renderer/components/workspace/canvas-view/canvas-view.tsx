@@ -83,14 +83,26 @@ class CanvasView extends React.Component<{
         }
     }
     changeZoom(dir) {
-        this.currentZoom = this.currentZoom + (0.1 * dir);
-        this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
-        this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
-        const currentHolder = document.querySelector('.board-group-holder');
-        (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
-        window.requestAnimationFrame(() => {
-            this.adjustPosition(this.currentZoom);
-        });
+        if (!this.ticked) {
+            this.ticked = true;
+            window.requestAnimationFrame(() => {
+                this.scale += 0.01 * dir ;
+                this.scale = this.scale < 0.50 ? 0.50 : this.scale;
+                this.scale = this.scale > 1 ? 1 : this.scale;
+                this.setState({
+                    scale: this.scale
+                });
+                this.ticked = false;
+            })
+        }
+        // this.currentZoom = this.currentZoom + (0.1 * dir);
+        // this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
+        // this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
+        // const currentHolder = document.querySelector('.board-group-holder');
+        // (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
+        // window.requestAnimationFrame(() => {
+        //     this.adjustPosition(this.currentZoom);
+        // });
     }
     buildHeaders() {
         const headersFromProps = this.props.headers;

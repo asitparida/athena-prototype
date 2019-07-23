@@ -67771,8 +67771,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this4 = this;
 
-      this.updateCollection(); // this.initializeMMSListener();
-
+      this.updateCollection();
+      this.initializeMMSListener();
       this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
         var collection = _this4.state.listItems;
         var newCollection = [];
@@ -72184,7 +72184,7 @@ function (_React$Component) {
     value: function render() {
       var props = this.props.data.props;
       var styles = {
-        width: "".concat(props.width, "px")
+        width: "240px"
       };
       var inheritDimensions = false;
 
@@ -72830,14 +72830,28 @@ function (_React$Component) {
     value: function changeZoom(dir) {
       var _this2 = this;
 
-      this.currentZoom = this.currentZoom + 0.1 * dir;
-      this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
-      this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
-      var currentHolder = document.querySelector('.board-group-holder');
-      currentHolder.style.zoom = "".concat(this.currentZoom);
-      window.requestAnimationFrame(function () {
-        _this2.adjustPosition(_this2.currentZoom);
-      });
+      if (!this.ticked) {
+        this.ticked = true;
+        window.requestAnimationFrame(function () {
+          _this2.scale += 0.01 * dir;
+          _this2.scale = _this2.scale < 0.50 ? 0.50 : _this2.scale;
+          _this2.scale = _this2.scale > 1 ? 1 : _this2.scale;
+
+          _this2.setState({
+            scale: _this2.scale
+          });
+
+          _this2.ticked = false;
+        });
+      } // this.currentZoom = this.currentZoom + (0.1 * dir);
+      // this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
+      // this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
+      // const currentHolder = document.querySelector('.board-group-holder');
+      // (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
+      // window.requestAnimationFrame(() => {
+      //     this.adjustPosition(this.currentZoom);
+      // });
+
     }
   }, {
     key: "buildHeaders",
@@ -82458,7 +82472,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53307" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51729" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -99,7 +99,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     }
     componentDidMount() {
         this.updateCollection();
-        // this.initializeMMSListener();
+        this.initializeMMSListener();
         this.dumpingGroundTransferSubscription = DumpingGroundTransfer.subscribe((data: IContentItem<any>) => {
             const collection = this.state.listItems;
             const newCollection = [];

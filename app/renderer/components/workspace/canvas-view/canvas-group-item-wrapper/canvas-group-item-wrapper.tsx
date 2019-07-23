@@ -90,7 +90,7 @@ export class CanvasGroupItemWrapper extends React.Component<IPropType | any, any
     render() {
         const { props } = this.props.data;
         const styles = {
-            width: `${props.width}px`,
+            width: `240px`,
         }
         let inheritDimensions = false;
         if (!props.height) {
