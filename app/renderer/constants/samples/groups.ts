@@ -3,6 +3,7 @@ import { DummifiedArticleItems } from "./article-items";
 import { DummifiedSocialMediaItems } from "./socialmedia-items";
 import { DummifiedVideoItems } from "./video-items";
 import { DummifiedPhotoItems } from "./photo-items";
+import { GetRandomId } from "../constants";
 
 export let BoardGroups: IBoardGroupWrapper[] = [
     {
@@ -14,7 +15,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedArticleItems[4],
             DummifiedPhotoItems[3]
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     },
     {
         id: 'group_2',
@@ -24,7 +25,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedArticleItems[0],
             DummifiedSocialMediaItems[3]
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     },
     {
         id: 'group_3',
@@ -34,7 +35,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedArticleItems[3],
             DummifiedArticleItems[6],
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     },
     {
         id: 'group_4',
@@ -45,7 +46,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedSocialMediaItems[2],
             DummifiedPhotoItems[4]
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     },
     {
         id: 'group_5',
@@ -56,7 +57,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedSocialMediaItems[1],
             DummifiedVideoItems[1]
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     },
     {
         id: 'group_6',
@@ -67,7 +68,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedVideoItems[0],
             DummifiedArticleItems[7]
         ],
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        annotation: ''
     }
 ];
 

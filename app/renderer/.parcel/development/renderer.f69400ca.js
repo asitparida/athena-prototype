@@ -56043,7 +56043,7 @@ function () {
     _classCallCheck(this, Workspace);
 
     this.topics = [];
-    this.id = "".concat(Math.floor(Math.random() * 10e8));
+    this.id = name.toLowerCase();
     this.name = name;
     this.image = image;
     this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
@@ -56574,28 +56574,28 @@ exports.AllContentList = [{
   type: types_1.ContentType.Video
 }];
 exports.WorkspaceList = [new types_1.Workspace('Instagram', img1, [{
-  id: GetRandomId(),
+  id: 'sunscreen',
   name: 'Sunscreen Debate',
   active: true
 }, {
-  id: GetRandomId(),
+  id: 'microdermabrasion',
   name: 'Microdermabrasion',
   active: false
 }, {
-  id: GetRandomId(),
+  id: 'copper-peptides',
   name: 'Copper Peptides',
   active: false
 }], "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Blog', img3, [{
-  id: GetRandomId(),
+  id: 'k-beauty',
   name: 'K-Beauty Trends',
   active: true
 }, {
-  id: GetRandomId(),
+  id: 'retinol',
   name: 'Retinol Routine',
   active: false
 }, {
-  id: GetRandomId(),
-  name: 'Retinol Routine',
+  id: 'routine',
+  name: 'Peptides Routine',
   active: false
 }], "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))")];
 exports.WorkspaceCollectionTabs = [{
@@ -56669,10 +56669,8 @@ function GetEmptyGroup() {
       left: 0
     },
     items: [],
-    annotation: {
-      id: GetRandomId(),
-      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }
+    annotation: '',
+    isEmpty: true
   };
 }
 
@@ -72349,6 +72347,7 @@ function (_React$Component) {
           return curr + prev.props.height;
         }, 0)
       };
+      data.width = data.width < 240 ? 240 : data.width;
       this.props.onPropsChange(data);
     }
   }, {
@@ -72363,14 +72362,18 @@ function (_React$Component) {
       var items = this.props.data.items;
       return connectDropTarget(React.createElement("div", {
         className: "group-content  ".concat(isOver ? 'entity-over' : '')
-      }, items.length > 0 && items.map(function (item, i) {
+      }, items.length > 0 && !data.isEmpty && items.map(function (item, i) {
         return React.createElement(canvas_group_item_wrapper_1.CanvasGroupItemWrapper, {
           group: data.id,
           onPropsChange: _this2.boardPropsChanged.bind(_this2, i),
           data: item,
           key: item.id
         });
-      })));
+      }), data.isEmpty && React.createElement("div", {
+        className: "new-group-marker"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "add"), React.createElement("span", null, "Drop clips here "))));
     }
   }]);
 
@@ -73996,7 +73999,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[1], article_items_1.DummifiedArticleItems[4], photo_items_1.DummifiedPhotoItems[3]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }, {
   id: 'group_2',
   title: 'Why Mineral ?',
@@ -74005,7 +74008,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[0], socialmedia_items_1.DummifiedSocialMediaItems[3]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }, {
   id: 'group_3',
   title: 'Mineral Sunscreens and UV',
@@ -74014,7 +74017,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[3], article_items_1.DummifiedArticleItems[6]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }, {
   id: 'group_4',
   title: 'Avobenzone',
@@ -74023,7 +74026,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[5], socialmedia_items_1.DummifiedSocialMediaItems[2], photo_items_1.DummifiedPhotoItems[4]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }, {
   id: 'group_5',
   title: 'Why Chemical? ',
@@ -74032,7 +74035,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[2], socialmedia_items_1.DummifiedSocialMediaItems[1], video_items_1.DummifiedVideoItems[1]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }, {
   id: 'group_6',
   title: 'DIY Sunscreen',
@@ -74041,7 +74044,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [socialmedia_items_1.DummifiedSocialMediaItems[0], video_items_1.DummifiedVideoItems[0], article_items_1.DummifiedArticleItems[7]],
-  annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+  annotation: ''
 }];
 exports.GroupHeaders = [{
   id: 'header_1',
@@ -74196,11 +74199,21 @@ function (_React$Component) {
           workspaceId = _this$props$match$par.workspaceId,
           topicId = _this$props$match$par.topicId;
       this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
+      var groups = [];
+      var headers = [];
+
+      if (workspaceId === 'instagram' && topicId === 'sunscreen') {
+        groups = groups_1.BoardGroups;
+        headers = groups_1.GroupHeaders;
+      } else {
+        groups = [constants_1.GetEmptyGroup()];
+      }
+
       this.setState({
         workspaceId: workspaceId,
         topicId: topicId,
-        groups: groups_1.BoardGroups,
-        headers: groups_1.GroupHeaders
+        groups: groups,
+        headers: headers
       });
     }
   }, {
@@ -74241,6 +74254,7 @@ function (_React$Component) {
               change = true;
             } else if (data.to === groupId) {
               group.items.push(content);
+              group.isEmpty = false;
               change = true;
             }
           });
@@ -74251,6 +74265,7 @@ function (_React$Component) {
 
           var group = constants_1.GetEmptyGroup();
           group.items.push(content);
+          group.isEmpty = false;
           groups = (_ref2 = []).concat.apply(_ref2, _toConsumableArray(groups).concat([group]));
           change = true;
         }
@@ -82443,7 +82458,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52349" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53307" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

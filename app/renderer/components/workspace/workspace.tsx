@@ -66,11 +66,19 @@ class Workspace extends React.Component<any, IState> {
     processParamsChange() {
         const { workspaceId, topicId } = this.props.match.params;
         this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
+        let groups = [];
+        let headers = [];
+        if (workspaceId === 'instagram' && topicId === 'sunscreen') {
+            groups = BoardGroups;
+            headers = GroupHeaders;
+        } else {
+            groups = [GetEmptyGroup()];
+        }
         this.setState({
             workspaceId,
             topicId,
-            groups: BoardGroups,
-            headers: GroupHeaders
+            groups,
+            headers
         });
     }
     componentDidMount() {
@@ -99,6 +107,7 @@ class Workspace extends React.Component<any, IState> {
                         change = true;
                     } else if (data.to === groupId) {
                         group.items.push(content);
+                        group.isEmpty = false;
                         change = true;
                     }
                 })
@@ -106,6 +115,7 @@ class Workspace extends React.Component<any, IState> {
             if (!toGroup) {
                 const group = GetEmptyGroup();
                 group.items.push(content);
+                group.isEmpty = false;
                 groups = [].concat(...groups, group);
                 change = true;
             }

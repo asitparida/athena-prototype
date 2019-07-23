@@ -55,7 +55,7 @@ export class Workspace implements IWorkspace {
     gradient: string;
     topics: ITopic[] = [];
     constructor(name, image, topics = [], gradient = null) {
-        this.id = `${Math.floor(Math.random() * 10e8)}`;
+        this.id = (name as string).toLowerCase();
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
@@ -202,6 +202,7 @@ export interface IBoardGroupWrapper {
     props?: IRectProps;
     annotation?: string;
     items?: Array<IContentItem<any>>;
+    isEmpty?: boolean;
 }
 
 export interface ISideBarNavItem {

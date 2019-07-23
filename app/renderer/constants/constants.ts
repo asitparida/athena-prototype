@@ -42,14 +42,14 @@ export const AllContentList: ContentList[] = [
 
 export const WorkspaceList: IWorkspace[] = [
     new Workspace('Instagram', img1, [
-        { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
-        { id: GetRandomId(), name: 'Microdermabrasion', active: false },
-        { id: GetRandomId(), name: 'Copper Peptides', active: false }
+        { id: 'sunscreen', name: 'Sunscreen Debate', active: true },
+        { id: 'microdermabrasion', name: 'Microdermabrasion', active: false },
+        { id: 'copper-peptides', name: 'Copper Peptides', active: false }
     ], `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
     new Workspace('Blog', img3, [
-        { id: GetRandomId(), name: 'K-Beauty Trends', active: true },
-        { id: GetRandomId(), name: 'Retinol Routine', active: false },
-        { id: GetRandomId(), name: 'Retinol Routine', active: false }
+        { id: 'k-beauty', name: 'K-Beauty Trends', active: true },
+        { id: 'retinol', name: 'Retinol Routine', active: false },
+        { id: 'routine', name: 'Peptides Routine', active: false }
     ], `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
 ];
 
@@ -86,10 +86,8 @@ export function GetEmptyGroup() {
         title: 'New Group *',
         props: { top: 0, left: 0 },
         items: [],
-        annotation: {
-            id: GetRandomId(),
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
+        annotation: '',
+        isEmpty: true
     };
 }
 
