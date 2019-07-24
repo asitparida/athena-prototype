@@ -52,7 +52,7 @@ class DumpingGroundItem extends React.Component<any, any> {
     render() {
         const { isDragging, connectDragSource, src, isSelectionEnabled } = this.props;
         return connectDragSource(
-            <div className={`content-item-wrapper ${isSelectionEnabled ? 'show-selection' : ''}`}>
+            <div className={`content-item-wrapper ${isSelectionEnabled ? 'show-selection' : ''} ${isDragging ? ' is-draging' : ''}`}>
                 <div className={`selection-mask ${this.props.data.selected ? 'active' : ''}`} onClick={this.toggleSelection.bind(this)}><i className='material-icons'>check</i></div>
                 <ContentItemWithMenu data={this.props.data} menuInvoked={this.menuInvoked.bind(this)} onActionInvoked={this.onActionInvoked.bind(this)}  />
             </div>

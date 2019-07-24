@@ -53,14 +53,18 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     gradient: string;
+    color1: string;
+    color2: string;
     topics: ITopic[] = [];
-    constructor(name, image, topics = [], gradient = null) {
+    constructor(name, image, topics = [], gradient = null, color1 = '#f0f0f0', color2 = '#e0e0e0') {
         this.id = (name as string).toLowerCase();
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
         this.gradient = gradient;
         this.topics = topics;
+        this.color1 = color1;
+        this.color2 = color2;
     }
     getImgUrl() {
         return `url(${this.image})`;
