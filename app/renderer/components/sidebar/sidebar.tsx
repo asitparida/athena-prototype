@@ -8,7 +8,7 @@ import * as AppActions from '../../access/actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const elementLogo = require('../../assets/element_logo.png');
+const elementLogo = require('../../assets/blue-element-logo.png');
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -64,7 +64,7 @@ class SidebarComponent extends React.Component<any, any> {
         return <div className={`sidebar-wrapper ${this.props.sideBarCollpased ? 'collapsed' : 'expanded'}`}>
             <ul className="workspace-list" >
                 <li className='hamburger' onClick={this.toggleSidebar.bind(this)}><i className='material-icons'>menu</i></li>
-                <li><NavLink to="/home"><label className='first-level-label'><i className='material-icons'>home</i><span className='name'>Home</span></label></NavLink></li>
+                {/* <li><NavLink to="/home"><label className='first-level-label'><i className='material-icons'>home</i><span className='name'>Home</span></label></NavLink></li> */}
                 <li><NavLink to="/dump"><label className='first-level-label'><i className='material-icons'>apps</i><span className='name'>Collections</span></label></NavLink></li>
                 <React.Fragment>
                 {
@@ -115,7 +115,7 @@ class SidebarComponent extends React.Component<any, any> {
             <div className="user-space">
                 <div className='user-space-content'>
                     <div className='user-picture-wrapper'>
-                        <img src={elementLogo} />
+                        <NavLink to="/home"><img src={elementLogo} /></NavLink>
                     </div>
                     {
                         !this.props.sideBarCollpased &&

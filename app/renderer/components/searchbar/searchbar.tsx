@@ -24,6 +24,7 @@ class SearchBarComponent extends React.Component<any, any> {
         super(props);
         this.state = {
             showSearchMeta: false,
+            searchToken: '',
             contentTypeResults: [
                 { icon: 'image', name: 'Images', count: 0 },
                 { icon: 'movie', name: 'Videos', count: 0 },
@@ -32,13 +33,14 @@ class SearchBarComponent extends React.Component<any, any> {
                 { icon: 'textsms', name: 'Social', count: 0 }
             ],
             categories: [
+                { id: 'all', name: 'All' },
                 { id: 'unclassified', name: 'Unclassified' },
                 { id: 'classified', name: 'Classified' },
                 { id: 'workspace-1', name: 'Workspace #1' },
                 { id: 'workspace-2', name: 'Workspace #2' },
                 { id: 'workspace-3', name: 'Workspace #3' }
             ],
-            activeCategory: { id: 'unclassified', name: 'Unclassified' }
+            activeCategory:  { id: 'all', name: 'All' }
         };
     }
     onFocus() {
@@ -51,16 +53,21 @@ class SearchBarComponent extends React.Component<any, any> {
             showSearchMeta: false
         });
     }
+    onSearchTokenChanged(data) {
+        this.setState({
+            searchToken: data
+        });
+    }
     render() {
         return <div className='searchbar-wrapper'>
             <div className="search-meta">
-                <ComboDropdown onInputFocus={this.onFocus.bind(this)}  contentTypeResults={this.state.contentTypeResults} onInputBlur={this.onBlur.bind(this)} categories={this.state.categories} activeItem={this.state.activeCategory} />
+                <ComboDropdown propagateChange={this.onSearchTokenChanged.bind(this)} onInputFocus={this.onFocus.bind(this)}  contentTypeResults={this.state.contentTypeResults} onInputBlur={this.onBlur.bind(this)} categories={this.state.categories} activeItem={this.state.activeCategory} />
             </div>
             <div className='search-results'>
                 <div className='search-results-inner'>
                     <div className='search-results-bottom'>
                         <div className='dumping-ground-list-wrapper'>
-                            <DumpingGroundListCollection searchBar={true} hideGroupTitle={true} />
+                            <DumpingGroundListCollection searchBar={true} hideGroupTitle={true} searchToken={this.state.searchToken} />
                         </div>
 
                     </div>

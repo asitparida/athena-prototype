@@ -823,7 +823,6 @@ body #root .app-content .app-content-area {
 .inner-content .article-content .article-title {
   font-size: small;
   color: rgba(0, 0, 0, 0.8);
-  text-transform: lowercase;
 }
 .inner-content .article-content .article-author {
   font-size: x-small;
@@ -1224,12 +1223,12 @@ body #root .app-content .app-content-area {
   padding: 0;
 }
 .sidebar-wrapper.collapsed .user-space .user-space-content {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 5px 0;
   background-color: rgba(0, 0, 0, 0);
 }
 .sidebar-wrapper.collapsed .user-space .user-space-content .user-picture-wrapper {
   background-color: transparent;
+  cursor: pointer;
 }
 .sidebar-wrapper ul {
   padding: 0;
@@ -1402,6 +1401,8 @@ body #root .app-content .app-content-area {
   order: 2;
   flex: initial;
   padding: 15px 30px 0 30px;
+  position: relative;
+  z-index: 2;
 }
 .sidebar-wrapper .user-space .user-space-content {
   display: flex;
@@ -1422,6 +1423,12 @@ body #root .app-content .app-content-area {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.sidebar-wrapper .user-space .user-space-content .user-picture-wrapper a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 .sidebar-wrapper .user-space .user-space-content .user-picture-wrapper img {
   width: 60%;

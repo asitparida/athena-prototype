@@ -13,6 +13,9 @@ interface IProps {
     type?: ContentType,
     hideGroupTitle?: boolean,
     searchBar?: boolean;
+    searchToken?: string;
+    disableNotesFetch?: boolean;
+    disableMMSFetch?: boolean;
 }
 
 interface IContentCollectionState {
@@ -38,27 +41,32 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
             case ContentType.Video:
             case ContentType.Article:
             case ContentType.Link:
-            case ContentType.SocialMedia: { dumpingGroundCollection = [].concat(FilterDumpingGroundCollection(type)); break; };
-            default: { dumpingGroundCollection = [].concat(DumpingGroundCollection); break; };
+            case ContentType.SocialMedia: { dumpingGroundCollection = [].concat(FilterDumpingGroundCollection(type, this.props.searchToken)); break; };
+            default: { dumpingGroundCollection = [].concat(FilterDumpingGroundCollection(null, this.props.searchToken)); break; };
         }
         this.setState({
             listItems: dumpingGroundCollection
         });
-        setTimeout(() => {
-            if (typeof this.props.type === 'undefined') {
-                const api = `${GetAPIUrl()}/api/stickies/unassigned`;
-                fetch(api)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.data && data.data.length > 0) {
-                            const mappedItems = data.data.sort((a, b) => (new Date(b.modified) as Date).getTime() - (new Date(a.modified) as Date).getTime()).map(item => BuildStickyContentItem(item));
-                            this.insertNewItems(mappedItems);
-                        }
-                    }, (data) => {
-                        console.log(data);
-                    });
-            }
-        });
+        if (!this.props.disableNotesFetch) {
+            setTimeout(() => {
+                this.getNotesItems();
+            });
+        }
+    }
+    getNotesItems() {
+        if (typeof this.props.type === 'undefined') {
+            const api = `${GetAPIUrl()}/api/stickies/unassigned`;
+            fetch(api)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.data && data.data.length > 0) {
+                        const mappedItems = data.data.sort((a, b) => (new Date(b.modified) as Date).getTime() - (new Date(a.modified) as Date).getTime()).map(item => BuildStickyContentItem(item));
+                        this.insertNewItems(mappedItems);
+                    }
+                }, (data) => {
+                    console.log(data);
+                });
+        }
     }
     insertNewItems(mappedItems: any[]) {
         const mappedCollection = this.state.listItems;
@@ -99,7 +107,9 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
     }
     componentDidMount() {
         this.updateCollection();
-        this.initializeMMSListener();
+        if (!this.props.disableMMSFetch) {
+            this.initializeMMSListener();
+        }
         this.dumpingGroundTransferSubscription = DumpingGroundTransfer.subscribe((data: IContentItem<any>) => {
             const collection = this.state.listItems;
             const newCollection = [];
@@ -140,7 +150,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
         this.cancellable.clean();
     }
     componentDidUpdate(props) {
-        if (this.props.type !== props.type) {
+        if ((this.props.type !== props.type) || (this.props.searchToken !== props.searchToken)) {
             this.updateCollection();
         }
     }

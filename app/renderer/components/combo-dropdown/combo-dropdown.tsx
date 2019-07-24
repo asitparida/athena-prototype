@@ -1,15 +1,26 @@
 import * as React from 'react';
+import * as _ from 'lodash';
 import Dropdown from '../dropdown/dropdown';
 import './combo-dropdown.scss';
 
 class ComboDropdown extends React.Component<any, any> {
+    debouncedPropagate = _.debounce(this.propagateChange, 300);
     constructor(props) {
         super(props);
         this.state = {
             categories: [],
             showSearchMeta: false,
-            contentTypeResults: []
+            contentTypeResults: [],
+            searchToken: ''
         };
+    }
+    propagateChange() {
+        if (this.props.propagateChange) {
+            const token = this.state.searchToken;
+            if (token.length > 2 || _.isEmpty(token)) {
+                this.props.propagateChange(token);
+            }
+        }
     }
     onFocus() {
         this.props.onInputFocus();
@@ -23,11 +34,21 @@ class ComboDropdown extends React.Component<any, any> {
             showSearchMeta: false
         });
     }
+    onSearchTokenChange(e) {
+        this.setState({
+            searchToken: e.target.value
+        });
+        this.debouncedPropagate();
+    }
     componentDidMount() {
         this.setState({
             categories: this.props.categories,
             contentTypeResults: this.props.contentTypeResults
         });
+    }
+    componentWillUnmount() {
+        this.propagateChange();
+        this.debouncedPropagate.cancel();
     }
     render() {
         return (
@@ -35,7 +56,7 @@ class ComboDropdown extends React.Component<any, any> {
                 <div className={`combo-dropdown ${this.state.showSearchMeta ? 'expanded' : ''}`}>
                     <div className='search-part'>
                         <i className='material-icons'>search</i>
-                        <input placeholder='Search' onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} />
+                        <input placeholder='Search' onChange={this.onSearchTokenChange.bind(this)} value={this.state.searchToken} onFocus={this.onFocus.bind(this)} onBlur={this.onBlur.bind(this)} />
                     </div>
                     <div className='dropdown-part'>
                         <Dropdown items={this.state.categories} activeItem={this.props.activeItem} />

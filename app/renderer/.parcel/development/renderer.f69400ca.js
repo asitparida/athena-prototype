@@ -67541,9 +67541,21 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _ = __importStar(require("lodash"));
 
 var socialmedia_items_1 = require("./socialmedia-items");
 
@@ -67553,31 +67565,65 @@ var photo_items_1 = require("./photo-items");
 
 var article_items_1 = require("./article-items");
 
-function FilterDumpingGroundCollection(type) {
+function FilterDumpingGroundCollection() {
+  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var searchToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
   var result = [];
   exports.DumpingGroundCollection.forEach(function (item) {
     var _ref;
 
     var list = (_ref = []).concat.apply(_ref, _toConsumableArray(item.listItems));
 
+    var tempList = type ? list.filter(function (t) {
+      return t.contentType === type;
+    }) : list;
+
+    if (!_.isEmpty(searchToken)) {
+      tempList = tempList.filter(function (_i) {
+        return JSON.stringify(_i).indexOf(searchToken) !== -1;
+      });
+    }
+
     result.push(Object.assign({}, item, {
-      listItems: list.filter(function (t) {
-        return t.contentType === type;
-      })
+      listItems: tempList
     }));
   });
   return result;
 }
 
 exports.FilterDumpingGroundCollection = FilterDumpingGroundCollection;
+var _allCollections = [article_items_1.DummifiedArticleItems.reverse(), photo_items_1.DummifiedPhotoItems.reverse(), video_items_1.DummifiedVideoItems.reverse(), socialmedia_items_1.DummifiedSocialMediaItems.reverse()];
+var recentCollection = [];
+var yesterdayCollection = [];
+var lastWeekCollection = [];
+
+_allCollections.forEach(function (collection) {
+  var chunks = _.chunk(collection, 3);
+
+  if (chunks[0]) {
+    recentCollection.push.apply(recentCollection, _toConsumableArray(chunks[0]));
+  }
+
+  if (chunks[1]) {
+    yesterdayCollection.push.apply(yesterdayCollection, _toConsumableArray(chunks[1]));
+  }
+
+  if (chunks[2]) {
+    lastWeekCollection.push.apply(lastWeekCollection, _toConsumableArray(chunks[2]));
+  }
+});
+
 exports.DumpingGroundCollection = [{
   title: 'Recent',
-  listItems: [].concat(_toConsumableArray(article_items_1.DummifiedArticleItems), _toConsumableArray(photo_items_1.DummifiedPhotoItems), _toConsumableArray(video_items_1.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
+  listItems: _.shuffle(recentCollection)
 }, {
   title: 'Yesterday',
-  listItems: [].concat(_toConsumableArray(article_items_1.DummifiedArticleItems), _toConsumableArray(photo_items_1.DummifiedPhotoItems), _toConsumableArray(video_items_1.DummifiedVideoItems), _toConsumableArray(socialmedia_items_1.DummifiedSocialMediaItems))
+  listItems: _.shuffle(yesterdayCollection)
+}, {
+  title: 'Last Week',
+  listItems: _.shuffle(lastWeekCollection)
 }];
-},{"./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+},{"lodash":"../../node_modules/lodash/lodash.js","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67670,14 +67716,14 @@ function (_React$Component) {
         case types_1.ContentType.Link:
         case types_1.ContentType.SocialMedia:
           {
-            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(type));
+            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(type, this.props.searchToken));
             break;
           }
           ;
 
         default:
           {
-            dumpingGroundCollection = [].concat(dumping_ground_1.DumpingGroundCollection);
+            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(null, this.props.searchToken));
             break;
           }
           ;
@@ -67686,26 +67732,36 @@ function (_React$Component) {
       this.setState({
         listItems: dumpingGroundCollection
       });
-      setTimeout(function () {
-        if (typeof _this2.props.type === 'undefined') {
-          var api = "".concat(constants_1.GetAPIUrl(), "/api/stickies/unassigned");
-          fetch(api).then(function (res) {
-            return res.json();
-          }).then(function (data) {
-            if (data.data && data.data.length > 0) {
-              var mappedItems = data.data.sort(function (a, b) {
-                return new Date(b.modified).getTime() - new Date(a.modified).getTime();
-              }).map(function (item) {
-                return dummy_data_1.BuildStickyContentItem(item);
-              });
 
-              _this2.insertNewItems(mappedItems);
-            }
-          }, function (data) {
-            console.log(data);
-          });
-        }
-      });
+      if (!this.props.disableNotesFetch) {
+        setTimeout(function () {
+          _this2.getNotesItems();
+        });
+      }
+    }
+  }, {
+    key: "getNotesItems",
+    value: function getNotesItems() {
+      var _this3 = this;
+
+      if (typeof this.props.type === 'undefined') {
+        var api = "".concat(constants_1.GetAPIUrl(), "/api/stickies/unassigned");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          if (data.data && data.data.length > 0) {
+            var mappedItems = data.data.sort(function (a, b) {
+              return new Date(b.modified).getTime() - new Date(a.modified).getTime();
+            }).map(function (item) {
+              return dummy_data_1.BuildStickyContentItem(item);
+            });
+
+            _this3.insertNewItems(mappedItems);
+          }
+        }, function (data) {
+          console.log(data);
+        });
+      }
     }
   }, {
     key: "insertNewItems",
@@ -67733,7 +67789,7 @@ function (_React$Component) {
   }, {
     key: "initializeMMSListener",
     value: function initializeMMSListener() {
-      var _this3 = this;
+      var _this4 = this;
 
       var interval = setInterval(function () {
         var api = "".concat(constants_1.GetAPIUrl(), "/api/mms");
@@ -67744,10 +67800,10 @@ function (_React$Component) {
             var mmsCollection = data.data;
             var newCollection = [];
             mmsCollection.forEach(function (item) {
-              if (!_this3.mmsCollection.find(function (t) {
+              if (!_this4.mmsCollection.find(function (t) {
                 return t.sid === item.sid;
               })) {
-                _this3.mmsCollection.push(item);
+                _this4.mmsCollection.push(item);
 
                 newCollection.push(item);
               }
@@ -67758,7 +67814,7 @@ function (_React$Component) {
               return dummy_data_1.BuildMMSContentItem(item);
             });
 
-            _this3.insertNewItems(mappedItems);
+            _this4.insertNewItems(mappedItems);
           }
         }, function (data) {
           console.log(data);
@@ -67769,12 +67825,16 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.updateCollection();
-      this.initializeMMSListener();
+
+      if (!this.props.disableMMSFetch) {
+        this.initializeMMSListener();
+      }
+
       this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
-        var collection = _this4.state.listItems;
+        var collection = _this5.state.listItems;
         var newCollection = [];
         collection.forEach(function (collect) {
           newCollection.push(Object.assign({}, collect, {
@@ -67784,7 +67844,7 @@ function (_React$Component) {
           }));
         });
 
-        _this4.setState({
+        _this5.setState({
           listItems: newCollection
         });
       });
@@ -67793,7 +67853,7 @@ function (_React$Component) {
           return;
         }
 
-        var collection = _this4.state.listItems;
+        var collection = _this5.state.listItems;
         var newCollection = [];
         collection.forEach(function (collect) {
           var items = [];
@@ -67807,7 +67867,7 @@ function (_React$Component) {
           }));
         });
 
-        _this4.setState({
+        _this5.setState({
           listItems: newCollection
         });
       });
@@ -67822,21 +67882,21 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(props) {
-      if (this.props.type !== props.type) {
+      if (this.props.type !== props.type || this.props.searchToken !== props.searchToken) {
         this.updateCollection();
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(dumping_ground_list_1.DumpingGroundList, {
-          hideGroupTitle: _this5.props.hideGroupTitle,
+          hideGroupTitle: _this6.props.hideGroupTitle,
           title: item.title,
           key: i,
-          type: _this5.props.type,
+          type: _this6.props.type,
           items: item.listItems
         });
       }));
@@ -68149,8 +68209,8 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/element_logo.png":[function(require,module,exports) {
-module.exports = "/element_logo.da0f79ed.png";
+},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/blue-element-logo.png":[function(require,module,exports) {
+module.exports = "/blue-element-logo.35b96c0e.png";
 },{}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -68200,7 +68260,7 @@ var redux_1 = require("redux");
 
 var react_redux_1 = require("react-redux");
 
-var elementLogo = require('../../assets/element_logo.png');
+var elementLogo = require('../../assets/blue-element-logo.png');
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
@@ -68289,14 +68349,6 @@ function (_React$Component) {
       }, React.createElement("i", {
         className: "material-icons"
       }, "menu")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
-        to: "/home"
-      }, React.createElement("label", {
-        className: "first-level-label"
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "home"), React.createElement("span", {
-        className: "name"
-      }, "Home")))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
         to: "/dump"
       }, React.createElement("label", {
         className: "first-level-label"
@@ -68355,9 +68407,11 @@ function (_React$Component) {
         className: "user-space-content"
       }, React.createElement("div", {
         className: "user-picture-wrapper"
+      }, React.createElement(react_router_dom_1.NavLink, {
+        to: "/home"
       }, React.createElement("img", {
         src: elementLogo
-      })), !this.props.sideBarCollpased && React.createElement(React.Fragment, null, React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in")))), !this.props.sideBarCollpased && React.createElement("ul", {
+      }))), !this.props.sideBarCollpased && React.createElement(React.Fragment, null, React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in")))), !this.props.sideBarCollpased && React.createElement("ul", {
         className: "copyright-info"
       }, React.createElement("li", {
         className: "copyright-info"
@@ -68369,7 +68423,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../assets/element_logo.png":"assets/element_logo.png"}],"components/searchbar/searchbar.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../assets/blue-element-logo.png":"assets/blue-element-logo.png"}],"components/searchbar/searchbar.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -68422,6 +68476,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var _ = __importStar(require("lodash"));
+
 var dropdown_1 = __importDefault(require("../dropdown/dropdown"));
 
 require("./combo-dropdown.scss");
@@ -68437,15 +68493,28 @@ function (_React$Component) {
     _classCallCheck(this, ComboDropdown);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ComboDropdown).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 300);
     _this.state = {
       categories: [],
       showSearchMeta: false,
-      contentTypeResults: []
+      contentTypeResults: [],
+      searchToken: ''
     };
     return _this;
   }
 
   _createClass(ComboDropdown, [{
+    key: "propagateChange",
+    value: function propagateChange() {
+      if (this.props.propagateChange) {
+        var token = this.state.searchToken;
+
+        if (token.length > 2 || _.isEmpty(token)) {
+          this.props.propagateChange(token);
+        }
+      }
+    }
+  }, {
     key: "onFocus",
     value: function onFocus() {
       this.props.onInputFocus();
@@ -68462,12 +68531,26 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "onSearchTokenChange",
+    value: function onSearchTokenChange(e) {
+      this.setState({
+        searchToken: e.target.value
+      });
+      this.debouncedPropagate();
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
         categories: this.props.categories,
         contentTypeResults: this.props.contentTypeResults
       });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
     }
   }, {
     key: "render",
@@ -68480,6 +68563,8 @@ function (_React$Component) {
         className: "material-icons"
       }, "search"), React.createElement("input", {
         placeholder: "Search",
+        onChange: this.onSearchTokenChange.bind(this),
+        value: this.state.searchToken,
         onFocus: this.onFocus.bind(this),
         onBlur: this.onBlur.bind(this)
       })), React.createElement("div", {
@@ -68517,7 +68602,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = ComboDropdown;
-},{"react":"../../node_modules/react/index.js","../dropdown/dropdown":"components/dropdown/dropdown.tsx","./combo-dropdown.scss":"components/combo-dropdown/combo-dropdown.scss"}],"components/searchbar/searchbar.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","../dropdown/dropdown":"components/dropdown/dropdown.tsx","./combo-dropdown.scss":"components/combo-dropdown/combo-dropdown.scss"}],"components/searchbar/searchbar.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -68598,6 +68683,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
     _this.state = {
       showSearchMeta: false,
+      searchToken: '',
       contentTypeResults: [{
         icon: 'image',
         name: 'Images',
@@ -68620,6 +68706,9 @@ function (_React$Component) {
         count: 0
       }],
       categories: [{
+        id: 'all',
+        name: 'All'
+      }, {
         id: 'unclassified',
         name: 'Unclassified'
       }, {
@@ -68636,8 +68725,8 @@ function (_React$Component) {
         name: 'Workspace #3'
       }],
       activeCategory: {
-        id: 'unclassified',
-        name: 'Unclassified'
+        id: 'all',
+        name: 'All'
       }
     };
     return _this;
@@ -68658,6 +68747,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "onSearchTokenChanged",
+    value: function onSearchTokenChanged(data) {
+      this.setState({
+        searchToken: data
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
@@ -68665,6 +68761,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "search-meta"
       }, React.createElement(combo_dropdown_1.default, {
+        propagateChange: this.onSearchTokenChanged.bind(this),
         onInputFocus: this.onFocus.bind(this),
         contentTypeResults: this.state.contentTypeResults,
         onInputBlur: this.onBlur.bind(this),
@@ -68680,7 +68777,8 @@ function (_React$Component) {
         className: "dumping-ground-list-wrapper"
       }, React.createElement(dumping_ground_list_collection_1.DumpingGroundListCollection, {
         searchBar: true,
-        hideGroupTitle: true
+        hideGroupTitle: true,
+        searchToken: this.state.searchToken
       }))))), this.state.showSearchMeta && React.createElement("div", {
         className: "overlay"
       }));
@@ -73569,7 +73667,7 @@ function (_React$Component) {
         className: "new-header"
       }, React.createElement("input", {
         className: "header-title",
-        placeholder: "Group Name"
+        placeholder: "Header Name"
       })), React.createElement("div", {
         className: "drop-area"
       }, React.createElement("label", null, "Drag and drop groups here")))));
@@ -82472,7 +82570,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54461" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

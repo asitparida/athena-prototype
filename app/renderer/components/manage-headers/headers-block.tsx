@@ -75,7 +75,7 @@ class HeadersBlockItem extends React.Component<{
                     !this.props.data &&
                     <React.Fragment>
                         <div className='new-header'>
-                            <input className='header-title' placeholder='Group Name' />
+                            <input className='header-title' placeholder='Header Name' />
                         </div>
                         <div className='drop-area'>
                             <label>Drag and drop groups here</label>
