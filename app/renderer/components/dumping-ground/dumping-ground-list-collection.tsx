@@ -102,7 +102,7 @@ export class DumpingGroundListCollection extends React.Component<IProps, IConten
                 }, (data) => {
                     console.log(data);
                 });
-        }, 10000);
+        }, 5000);
         this.cancellable.push(interval, Cancellable.Interval);
     }
     componentDidMount() {

@@ -25,7 +25,7 @@ export const DummifiedPhotoItems: Array<IContentItem<IPhotoContent>> = [
         },
         sourcePreviewAvailable: false,
         sourceType: MediaSourceType.Browser,
-        tags: [ 'makeup', 'tag-2' ],
+        tags: [ 'makeup'],
         annotation: 'All makeup collection photo',
         props: { height: ItemHeight, width: ItemWidth }
     },

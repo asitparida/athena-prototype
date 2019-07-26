@@ -12,8 +12,8 @@ export function BuildStickyContentItem(data: IStickyNote): IContentItem<INoteCon
         },
         sourcePreviewAvailable: false,
         sourceType: MediaSourceType.Browser,
-        tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        tags: [],
+        annotation: ''
     };
 }
 
@@ -28,7 +28,7 @@ export function BuildMMSContentItem(data: IMms): IContentItem<INoteContent> {
         },
         sourcePreviewAvailable: false,
         sourceType: data.mediaUrl ? MediaSourceType.MMS : null,
-        tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
+        tags: [],
         annotation: data.text
     };
 }
@@ -43,7 +43,7 @@ export function GetSampleStickyItem(data): IContentItem<INoteContent> {
         },
         sourcePreviewAvailable: false,
         sourceType: MediaSourceType.Browser,
-        tags: _.range(Math.floor(Math.random() * 5)).map(t => `tag-${t}`),
-        annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+        tags: [],
+        annotation: ' '
     };
 }

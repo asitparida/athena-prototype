@@ -98,6 +98,7 @@ ipcMain.on('export-composition', (event, arg) => {
                     console.log(err);
                     return;
                 }
+                mainWindow.webContents.send('composition-saved', fileName);
                 console.log("The file has been succesfully saved");
             });
         });
@@ -116,7 +117,5 @@ export async function SaveMedia(mediaUrl, text, sid, modified) {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
-    }).then(() => {
-        // mainWindow.webContents.send('new-mms-data');
-    }, console.log)
+    }).then(console.log, console.log)
 }

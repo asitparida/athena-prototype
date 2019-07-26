@@ -49,8 +49,10 @@ export class ContentItemWrapper extends React.Component<{
     }
     openContent() {
         if (this.props.data.contentType === ContentType.Photo || this.props.data.contentType === ContentType.Video || (
-            this.props.data.contentType === ContentType.Sticky && this.props.data.sourceType === MediaSourceType.MMS
-        )) {
+            this.props.data.contentType === ContentType.Sticky && this.props.data.sourceType === MediaSourceType.MMS ) || (
+                this.props.data.contentType === ContentType.SocialMedia && this.props.data.sourceType === MediaSourceType.Instagram
+            )
+        ) {
             ContentViewerData.next(this.props.data);
         }
     }

@@ -13,6 +13,8 @@ import Toasts from '../components/toasts/toast';
 import { ContentViewer } from '../components/content-viewer/content-viewer';
 import CreateWorkspace from '../components/create-workspace/create-workspace';
 import CreateTopic from '../components/create-workspace/create-topic';
+import store from '../access/store/configureStore';
+import { IToastItem, ToastType } from '../constants/types';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -72,6 +74,19 @@ class Main extends Component<any, any> {
     onLocationChanged() {
         if (this.props.sideBarShown) {
             this.props.actions.toggleSideBar();
+        }
+    }
+    componentDidMount() {
+        const ipcRenderer = (window as any).ipcRenderer;
+        if (ipcRenderer) {
+            ipcRenderer.on('composition-saved', (e, arg) => {
+                const toast: IToastItem = {
+                    id: `${Math.floor(Math.random() * 10e8)}`,
+                    message: `Composition saved as "${arg}"`,
+                    type: ToastType.Success
+                };
+                store.dispatch(AppActions.showToastNotification(toast))
+            });
         }
     }
     render() {

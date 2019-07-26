@@ -73,9 +73,9 @@ class ComboDropdown extends React.Component<any, any> {
                                 </div>
                                     <div className='search-meta-content-right'>
                                         <ul>
-                                            <li>tag 1</li>
-                                            <li>tag 2</li>
-                                            <li>tag 3</li>
+                                            <li>make-up</li>
+                                            <li>sunscreen</li>
+                                            <li>natural</li>
                                         </ul>
                                     </div>
                                 </div>

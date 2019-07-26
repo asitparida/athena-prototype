@@ -25,7 +25,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedArticleItems[0],
             DummifiedSocialMediaItems[3]
         ],
-        annotation: ''
+        annotation: 'Chemical sunscreen can be really bad for the environment'
     },
     {
         id: 'group_3',
@@ -35,7 +35,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedArticleItems[3],
             DummifiedArticleItems[6],
         ],
-        annotation: ''
+        annotation: 'For mineral sunscreens, zinc oxide is much better protection than titanium dioxide'
     },
     {
         id: 'group_4',
@@ -46,7 +46,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedSocialMediaItems[2],
             DummifiedPhotoItems[4]
         ],
-        annotation: ''
+        annotation: 'has the same coverage of UVA and UVB rays as zinc oxide but is simply the chemical alternative'
     },
     {
         id: 'group_5',
@@ -57,7 +57,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedSocialMediaItems[1],
             DummifiedVideoItems[1]
         ],
-        annotation: ''
+        annotation: 'Covers UVA and UVB rays'
     },
     {
         id: 'group_6',
@@ -68,7 +68,7 @@ export let BoardGroups: IBoardGroupWrapper[] = [
             DummifiedVideoItems[0],
             DummifiedArticleItems[7]
         ],
-        annotation: ''
+        annotation: 'Even if you use the correct ingredients in DIY sunscreen, the ingredients will never be at the grade used in sunscreen to ensure proper coverage and it can be extremely dangerous'
     }
 ];
 

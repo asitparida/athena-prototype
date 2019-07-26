@@ -22,7 +22,7 @@ const itemSource = {
         const dropItemResult = monitor.getItem();
         const toast: IToastItem = {
             id: `${Math.floor(Math.random() * 10e8)}`,
-            message: `The clip has been pushed to the ${props.data.name}`,
+            message: `The clip has been pushed to the board "${props.data.name}"`,
             type: ToastType.Success
         };
         store.dispatch(AppActions.showToastNotification(toast))

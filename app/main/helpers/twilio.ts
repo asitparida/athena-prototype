@@ -5,7 +5,7 @@ const extName = require('ext-name');
 
 let client;
 let twilioInterval;
-const TwilioPingInterval = 10000;
+const TwilioPingInterval = 5000;
 
 class TwilioManager {
     client = null;

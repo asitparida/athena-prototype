@@ -64321,7 +64321,7 @@ var IntialState = {
   sideBarShown: false,
   searchBarShown: false,
   workspaceActionInHeader: false,
-  workspaceInHeader: true,
+  workspaceInHeader: false,
   workspaceDumpBarShown: false,
   workspaceDumpBarActionShown: false,
   workspaceRTEShown: false,
@@ -65912,7 +65912,7 @@ function (_React$Component) {
   }, {
     key: "openContent",
     value: function openContent() {
-      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video || this.props.data.contentType === types_1.ContentType.Sticky && this.props.data.sourceType === types_1.MediaSourceType.MMS) {
+      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video || this.props.data.contentType === types_1.ContentType.Sticky && this.props.data.sourceType === types_1.MediaSourceType.MMS || this.props.data.contentType === types_1.ContentType.SocialMedia && this.props.data.sourceType === types_1.MediaSourceType.Instagram) {
         observables_1.ContentViewerData.next(this.props.data);
       }
     }
@@ -66662,23 +66662,11 @@ exports.DumpingGroundList = DumpingGroundList;
 },{"react":"../../node_modules/react/index.js","./dumping-ground-item":"components/dumping-ground/dumping-ground-item.tsx"}],"constants/dummy-data.ts":[function(require,module,exports) {
 "use strict";
 
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var types_1 = require("./types");
-
-var _ = __importStar(require("lodash"));
 
 function BuildStickyContentItem(data) {
   return {
@@ -66690,10 +66678,8 @@ function BuildStickyContentItem(data) {
     },
     sourcePreviewAvailable: false,
     sourceType: types_1.MediaSourceType.Browser,
-    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-      return "tag-".concat(t);
-    }),
-    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+    tags: [],
+    annotation: ''
   };
 }
 
@@ -66710,9 +66696,7 @@ function BuildMMSContentItem(data) {
     },
     sourcePreviewAvailable: false,
     sourceType: data.mediaUrl ? types_1.MediaSourceType.MMS : null,
-    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-      return "tag-".concat(t);
-    }),
+    tags: [],
     annotation: data.text
   };
 }
@@ -66729,15 +66713,13 @@ function GetSampleStickyItem(data) {
     },
     sourcePreviewAvailable: false,
     sourceType: types_1.MediaSourceType.Browser,
-    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-      return "tag-".concat(t);
-    }),
-    annotation: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
+    tags: [],
+    annotation: ' '
   };
 }
 
 exports.GetSampleStickyItem = GetSampleStickyItem;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
+},{"./types":"constants/types.ts"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
 module.exports = "/adult-boy-casual-220453.213a8f54.jpg";
 },{}],"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":[function(require,module,exports) {
 module.exports = "/Screen Shot 2019-07-15 at 2.02.18 PM.93e806c5.png";
@@ -67198,7 +67180,7 @@ exports.DummifiedPhotoItems = [{
   },
   sourcePreviewAvailable: false,
   sourceType: types_1.MediaSourceType.Browser,
-  tags: ['makeup', 'tag-2'],
+  tags: ['makeup'],
   annotation: 'All makeup collection photo',
   props: {
     height: constants_1.ItemHeight,
@@ -67823,7 +67805,7 @@ function (_React$Component) {
         }, function (data) {
           console.log(data);
         });
-      }, 10000);
+      }, 5000);
       this.cancellable.push(interval, constants_1.Cancellable.Interval);
     }
   }, {
@@ -68588,7 +68570,7 @@ function (_React$Component) {
         className: "material-icons"
       }, "label"), " Tags"), React.createElement("div", {
         className: "search-meta-content-right"
-      }, React.createElement("ul", null, React.createElement("li", null, "tag 1"), React.createElement("li", null, "tag 2"), React.createElement("li", null, "tag 3"))))), React.createElement("div", {
+      }, React.createElement("ul", null, React.createElement("li", null, "make-up"), React.createElement("li", null, "sunscreen"), React.createElement("li", null, "natural"))))), React.createElement("div", {
         className: "search-meta-bottom"
       }, React.createElement("div", {
         className: "search-meta-content"
@@ -74124,7 +74106,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[0], socialmedia_items_1.DummifiedSocialMediaItems[3]],
-  annotation: ''
+  annotation: 'Chemical sunscreen can be really bad for the environment'
 }, {
   id: 'group_3',
   title: 'Mineral Sunscreens and UV',
@@ -74133,7 +74115,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[3], article_items_1.DummifiedArticleItems[6]],
-  annotation: ''
+  annotation: 'For mineral sunscreens, zinc oxide is much better protection than titanium dioxide'
 }, {
   id: 'group_4',
   title: 'Avobenzone',
@@ -74142,7 +74124,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[5], socialmedia_items_1.DummifiedSocialMediaItems[2], photo_items_1.DummifiedPhotoItems[4]],
-  annotation: ''
+  annotation: 'has the same coverage of UVA and UVB rays as zinc oxide but is simply the chemical alternative'
 }, {
   id: 'group_5',
   title: 'Why Chemical? ',
@@ -74151,7 +74133,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [article_items_1.DummifiedArticleItems[2], socialmedia_items_1.DummifiedSocialMediaItems[1], video_items_1.DummifiedVideoItems[1]],
-  annotation: ''
+  annotation: 'Covers UVA and UVB rays'
 }, {
   id: 'group_6',
   title: 'DIY Sunscreen',
@@ -74160,7 +74142,7 @@ exports.BoardGroups = [{
     left: 0
   },
   items: [socialmedia_items_1.DummifiedSocialMediaItems[0], video_items_1.DummifiedVideoItems[0], article_items_1.DummifiedArticleItems[7]],
-  annotation: ''
+  annotation: 'Even if you use the correct ingredients in DIY sunscreen, the ingredients will never be at the grade used in sunscreen to ensure proper coverage and it can be extremely dangerous'
 }];
 exports.GroupHeaders = [{
   id: 'header_1',
@@ -74679,7 +74661,7 @@ var itemSource = {
     var dropItemResult = monitor.getItem();
     var toast = {
       id: "".concat(Math.floor(Math.random() * 10e8)),
-      message: "The clip has been pushed to the ".concat(props.data.name),
+      message: "The clip has been pushed to the board \"".concat(props.data.name, "\""),
       type: types_1.ToastType.Success
     };
     configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
@@ -76451,11 +76433,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Toasts).call(this, props));
     _this.state = {
-      toasts: [{
-        id: '1',
-        message: 'The clip has been pushed to the Workspace.',
-        type: types_1.ToastType.Success
-      }]
+      toasts: []
     };
     return _this;
   }
@@ -80934,6 +80912,101 @@ function (_React$Component) {
 }(React.Component);
 
 exports.MMSContentViewer = MMSContentViewer;
+},{"react":"../../node_modules/react/index.js"}],"components/content-viewer/instagram-content-viewer.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var InstagramContentViewer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(InstagramContentViewer, _React$Component);
+
+  function InstagramContentViewer(props) {
+    var _this;
+
+    _classCallCheck(this, InstagramContentViewer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InstagramContentViewer).call(this, props));
+    _this.state = {
+      instagramHTML: null
+    };
+    return _this;
+  }
+
+  _createClass(InstagramContentViewer, [{
+    key: "fetchInstagramContent",
+    value: function fetchInstagramContent() {
+      var _this2 = this;
+
+      var url = "https://api.instagram.com/oembed?url=".concat(this.props.data.contentData.instagramPostUrl, "&OMITSCRIPT=true");
+      fetch(url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this2.setState({
+          instagramHTML: res.html
+        });
+
+        setTimeout(function () {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        }, 100);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchInstagramContent();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "instagram-wrapper",
+        dangerouslySetInnerHTML: {
+          __html: this.state.instagramHTML
+        }
+      }));
+    }
+  }]);
+
+  return InstagramContentViewer;
+}(React.Component);
+
+exports.InstagramContentViewer = InstagramContentViewer;
 },{"react":"../../node_modules/react/index.js"}],"components/content-viewer/content-viewer.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -80983,6 +81056,8 @@ var mms_content_viewer_1 = require("./mms-content-viewer");
 
 var observables_1 = require("../../access/observables/observables");
 
+var instagram_content_viewer_1 = require("./instagram-content-viewer");
+
 var ContentViewer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -80996,7 +81071,9 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentViewer).call(this, props));
     _this.state = {
       data: null,
-      isOpen: false
+      isOpen: false,
+      isInstagram: false,
+      instagramHTML: null
     };
     return _this;
   }
@@ -81043,6 +81120,9 @@ function (_React$Component) {
       return React.createElement(React.Fragment, null, this.state.isOpen && React.createElement("div", {
         className: "content-viewer-holder"
       }, React.createElement("div", {
+        className: "overlay",
+        onClick: this.closeViewer.bind(this)
+      }), React.createElement("div", {
         className: "close-viewer",
         onClick: this.closeViewer.bind(this)
       }, React.createElement("i", {
@@ -81056,6 +81136,8 @@ function (_React$Component) {
       }), this.state.data.contentType === types_1.ContentType.Video && React.createElement(video_content_viewer_1.VideoContentViewer, {
         data: this.state.data
       }), this.state.data.contentType === types_1.ContentType.Sticky && React.createElement(mms_content_viewer_1.MMSContentViewer, {
+        data: this.state.data
+      }), this.state.data.contentType === types_1.ContentType.SocialMedia && this.state.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement(instagram_content_viewer_1.InstagramContentViewer, {
         data: this.state.data
       }), this.state.data.title && React.createElement("label", {
         className: "content-viewer-title"
@@ -81074,7 +81156,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentViewer = ContentViewer;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","./mms-content-viewer":"components/content-viewer/mms-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","./mms-content-viewer":"components/content-viewer/mms-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts","./instagram-content-viewer":"components/content-viewer/instagram-content-viewer.tsx"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -82458,6 +82540,10 @@ var create_workspace_1 = __importDefault(require("../components/create-workspace
 
 var create_topic_1 = __importDefault(require("../components/create-workspace/create-topic"));
 
+var configureStore_1 = __importDefault(require("../access/store/configureStore"));
+
+var types_1 = require("../constants/types");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -82548,6 +82634,22 @@ function (_react_1$Component) {
       }
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var ipcRenderer = window.ipcRenderer;
+
+      if (ipcRenderer) {
+        ipcRenderer.on('composition-saved', function (e, arg) {
+          var toast = {
+            id: "".concat(Math.floor(Math.random() * 10e8)),
+            message: "Composition saved as \"".concat(arg, "\""),
+            type: types_1.ToastType.Success
+          };
+          configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
@@ -82570,7 +82672,7 @@ function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = react_dnd_1.DragDropContext(react_dnd_html5_backend_1.default)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Main));
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx","../access/store/configureStore":"access/store/configureStore.ts","../constants/types":"constants/types.ts"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -82640,7 +82742,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51468" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54906" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
