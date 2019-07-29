@@ -56074,12 +56074,13 @@ exports.DragAndDropTypes = {
 var ContentType;
 
 (function (ContentType) {
-  ContentType[ContentType["Photo"] = 0] = "Photo";
-  ContentType[ContentType["Video"] = 1] = "Video";
-  ContentType[ContentType["Link"] = 2] = "Link";
-  ContentType[ContentType["Article"] = 3] = "Article";
-  ContentType[ContentType["SocialMedia"] = 4] = "SocialMedia";
-  ContentType[ContentType["Sticky"] = 5] = "Sticky";
+  ContentType[ContentType["Random"] = 0] = "Random";
+  ContentType[ContentType["Photo"] = 1] = "Photo";
+  ContentType[ContentType["Video"] = 2] = "Video";
+  ContentType[ContentType["Link"] = 3] = "Link";
+  ContentType[ContentType["Article"] = 4] = "Article";
+  ContentType[ContentType["SocialMedia"] = 5] = "SocialMedia";
+  ContentType[ContentType["Sticky"] = 6] = "Sticky";
 })(ContentType = exports.ContentType || (exports.ContentType = {}));
 
 var MediaSourceType;
@@ -82742,7 +82743,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54451" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

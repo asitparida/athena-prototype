@@ -43428,6 +43428,1358 @@
                     "comment": 0
                 }
             ]
+        },
+        {
+            "version": "0.1.7",
+            "counttime": "2019-07-27 20:16:28",
+            "filesum": 211,
+            "codesum": 11221,
+            "commentsum": 553,
+            "blanksum": 586,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/api/api-types.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 73,
+                    "comment": 1,
+                    "filename": "app/api/app.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "app/api/helpers.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 30,
+                    "comment": 1,
+                    "filename": "app/api/server.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "app/electron-ipc.js"
+                },
+                {
+                    "filename": "app/main/assets/icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/network.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/owl.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/owl@1.5x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/owl@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/main/assets/owl@3x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 45,
+                    "comment": 1,
+                    "filename": "app/main/helpers/annotator.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "app/main/helpers/dock.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "app/main/helpers/ipc-helper.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 116,
+                    "comment": 0,
+                    "filename": "app/main/helpers/menu.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "app/main/helpers/screen.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "app/main/helpers/splash.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "app/main/helpers/tray.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 56,
+                    "comment": 4,
+                    "filename": "app/main/helpers/twilio.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 115,
+                    "comment": 2,
+                    "filename": "app/main/main.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 56,
+                    "comment": 3,
+                    "filename": "app/renderer/_shared.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "app/renderer/access/actions/actionTypes.ts"
+                },
+                {
+                    "blank": 40,
+                    "code": 130,
+                    "comment": 1,
+                    "filename": "app/renderer/access/actions/appActions.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "app/renderer/access/observables/observables.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 197,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/reducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/rootReducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 95,
+                    "comment": 0,
+                    "filename": "app/renderer/access/reducers/workspace-reducer.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "app/renderer/access/store/configureStore.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "app/renderer/access/store/initialState.ts"
+                },
+                {
+                    "filename": "app/renderer/assets/14862848018_d05d01dcd9_k.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/any_warhol.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/blue-element-logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/carnegie_museum_art.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/church_brew.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/collect.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/create.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/21-tess-beauty.nocrop.w710.h2147483647.2x.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/22221de6c9cb3f80ca771f53c79505be.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/8898550740df58d37ffa251b13faef2c.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/adult-beautiful-blush-1547971.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/adult-boy-casual-220453.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/beautiful-brunette-cute-774909.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/blur-casual-close-up-462680.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/chemical_physical sunscreen.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/merlin_111585803_347382c9-d2b1-4e6e-add8-08be002c78ad-superJumbo.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/sunburnt-relief-157420046.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/sunscreen-white-cast-3.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/dummy/sunscreen_image.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/duquesne_incline.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/element_logo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/mattress_factory.jpg",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/book.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/instagram.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/link.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/medium.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/news.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/notes.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/open-book.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/photo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/quora.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/twitter.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/video-player.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/vimeo.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/media-types/youtube.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "app/renderer/assets/organize.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 9,
+                    "code": 68,
+                    "comment": 1,
+                    "filename": "app/renderer/components/combo-dropdown/combo-dropdown.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 101,
+                    "comment": 0,
+                    "filename": "app/renderer/components/combo-dropdown/combo-dropdown.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/article-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/content-item-with-menu.tsx"
+                },
+                {
+                    "blank": 62,
+                    "code": 460,
+                    "comment": 2,
+                    "filename": "app/renderer/components/content-item/content-item.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 259,
+                    "comment": 3,
+                    "filename": "app/renderer/components/content-item/content-item.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/link-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 69,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/photo-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/socialmedia-item.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/sticky-content.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 83,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-item/video-content.tsx"
+                },
+                {
+                    "blank": 20,
+                    "code": 165,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/content-viewer.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 88,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/content-viewer.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 36,
+                    "comment": 1,
+                    "filename": "app/renderer/components/content-viewer/instagram-content-viewer.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/mms-content-viewer.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/photo-content-viewer.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "app/renderer/components/content-viewer/video-content-viewer.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 90,
+                    "comment": 1,
+                    "filename": "app/renderer/components/context-menu/context-menu-list.tsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/context-menu/context-menu.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 84,
+                    "comment": 1,
+                    "filename": "app/renderer/components/context-menu/context-menu.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "app/renderer/components/create-workspace/create-topic.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 129,
+                    "comment": 0,
+                    "filename": "app/renderer/components/create-workspace/create-workspace.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 75,
+                    "comment": 0,
+                    "filename": "app/renderer/components/create-workspace/create-workspace.tsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 63,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dropdown/dropdown.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dropdown/dropdown.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground-item.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 163,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground-list-collection.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground-list.tsx"
+                },
+                {
+                    "blank": 10,
+                    "code": 115,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 64,
+                    "comment": 0,
+                    "filename": "app/renderer/components/dumping-ground/dumping-ground.tsx"
+                },
+                {
+                    "blank": 25,
+                    "code": 205,
+                    "comment": 0,
+                    "filename": "app/renderer/components/header/header.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 145,
+                    "comment": 0,
+                    "filename": "app/renderer/components/header/header.tsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 85,
+                    "comment": 0,
+                    "filename": "app/renderer/components/home/home.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 75,
+                    "comment": 0,
+                    "filename": "app/renderer/components/home/home.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 50,
+                    "comment": 0,
+                    "filename": "app/renderer/components/manage-headers/groups-block.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 84,
+                    "comment": 0,
+                    "filename": "app/renderer/components/manage-headers/headers-block.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 122,
+                    "comment": 1,
+                    "filename": "app/renderer/components/manage-headers/manage-headers.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 188,
+                    "comment": 2,
+                    "filename": "app/renderer/components/manage-headers/manage-headers.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "app/renderer/components/resizer/resizer.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "app/renderer/components/resizer/resizer.tsx"
+                },
+                {
+                    "blank": 11,
+                    "code": 109,
+                    "comment": 0,
+                    "filename": "app/renderer/components/rte-editor/rte-editor.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 83,
+                    "comment": 0,
+                    "filename": "app/renderer/components/rte-editor/rte-editor.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 259,
+                    "comment": 0,
+                    "filename": "app/renderer/components/searchbar/searchbar.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 79,
+                    "comment": 0,
+                    "filename": "app/renderer/components/searchbar/searchbar.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 301,
+                    "comment": 0,
+                    "filename": "app/renderer/components/sidebar/sidebar.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 134,
+                    "comment": 0,
+                    "filename": "app/renderer/components/sidebar/sidebar.tsx"
+                },
+                {
+                    "blank": 19,
+                    "code": 150,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tab.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tab.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 93,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tabs-resizer.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/tabs/tabs.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 56,
+                    "comment": 0,
+                    "filename": "app/renderer/components/toasts/toast.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 71,
+                    "comment": 0,
+                    "filename": "app/renderer/components/toasts/toasts.scss"
+                },
+                {
+                    "blank": 7,
+                    "code": 71,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace-preview/workspace-preview.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 73,
+                    "comment": 10,
+                    "filename": "app/renderer/components/workspace-preview/workspace-previewer.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace-preview/workspace-previewer.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-header/canvas-group-header.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 119,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-header/canvas-group-header.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 103,
+                    "comment": 2,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 55,
+                    "comment": 1,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group/canvas-group.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 89,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-group/canvas-group.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-view.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 198,
+                    "comment": 8,
+                    "filename": "app/renderer/components/workspace/canvas-view/canvas-view.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-item/list-group-item.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-item/list-group-item.tsx"
+                },
+                {
+                    "blank": 16,
+                    "code": 138,
+                    "comment": 8,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-group-wrapper/list-group-wrapper.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-view.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/list-view/list-view.tsx"
+                },
+                {
+                    "blank": 1,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/workspace-view-switch.tsx"
+                },
+                {
+                    "blank": 6,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "app/renderer/components/workspace/workspace.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 211,
+                    "comment": 1,
+                    "filename": "app/renderer/components/workspace/workspace.tsx"
+                },
+                {
+                    "blank": 13,
+                    "code": 124,
+                    "comment": 2,
+                    "filename": "app/renderer/constants/constants.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/dummy-data.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1339,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/gradients.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 80,
+                    "filename": "app/renderer/constants/items/article-items.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 0,
+                    "comment": 36,
+                    "filename": "app/renderer/constants/items/dumping-ground.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 0,
+                    "comment": 68,
+                    "filename": "app/renderer/constants/items/groups.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 55,
+                    "filename": "app/renderer/constants/items/link-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 70,
+                    "filename": "app/renderer/constants/items/photo-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 65,
+                    "filename": "app/renderer/constants/items/socialmedia-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 0,
+                    "comment": 95,
+                    "filename": "app/renderer/constants/items/video-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 245,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/samples/article-items.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 46,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/samples/dumping-ground.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 93,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/samples/groups.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 55,
+                    "comment": 7,
+                    "filename": "app/renderer/constants/samples/link-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 70,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/samples/photo-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 165,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/samples/socialmedia-items.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 149,
+                    "comment": 8,
+                    "filename": "app/renderer/constants/samples/video-items.ts"
+                },
+                {
+                    "blank": 24,
+                    "code": 208,
+                    "comment": 0,
+                    "filename": "app/renderer/constants/types.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "app/renderer/helper.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "app/renderer/index.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "app/renderer/index.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 115,
+                    "comment": 1,
+                    "filename": "app/renderer/pages/main.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "app/renderer/pages/router-root.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "app/renderer/pages/router-wrap.tsx"
+                },
+                {
+                    "blank": 25,
+                    "code": 195,
+                    "comment": 0,
+                    "filename": "app/renderer/styles.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 76,
+                    "comment": 1,
+                    "filename": "app/renderer/transforms.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 118,
+                    "comment": 5,
+                    "filename": "app/widgets/annotator/annotator.scss"
+                },
+                {
+                    "blank": 4,
+                    "code": 70,
+                    "comment": 4,
+                    "filename": "app/widgets/annotator/annotator.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "app/widgets/annotator/index.html"
+                },
+                {
+                    "blank": 2,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "app/widgets/annotator/index.tsx"
+                },
+                {
+                    "blank": 2,
+                    "code": 59,
+                    "comment": 0,
+                    "filename": "azure-pipelines.yml"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "bs-config.js"
+                },
+                {
+                    "filename": "build/icon.icns",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "build/icon/icon.iconset/Icon\r"
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_128x128.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_128x128@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_16x16.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_16x16@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_256x256.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_256x256@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_32x32.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_32x32@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_512x512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "build/icon/icon.iconset/icon_512x512@2x.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "build/splash.html"
+                },
+                {
+                    "filename": "icon.icns",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 54,
+                    "comment": 1,
+                    "filename": "instagram.embed.js"
+                }
+            ]
         }
     ]
 }

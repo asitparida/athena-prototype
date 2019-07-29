@@ -78,6 +78,7 @@ export const DragAndDropTypes = {
 }
 
 export enum ContentType {
+    Random,
     Photo,
     Video,
     Link,
