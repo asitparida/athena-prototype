@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IContextMenuAction } from '../../constants/types';
 import { ContextMenu } from '../context-menu/context-menu';
 import { ContentItemWrapper } from './content-item';
+import { OpenExternalUrl } from '../../transforms';
 
 export class ContentItemWithMenu extends React.Component<any, any> {
     constructor(props) {
@@ -21,19 +22,25 @@ export class ContentItemWithMenu extends React.Component<any, any> {
         });
     }
     actionInvoked(action) {
-        if (this.props.onActionInvoked) {
+        if (action === 'source') {
+            OpenExternalUrl(this.props.data.sourceUrl);
+        } else {
             this.props.onActionInvoked(action);
         }
     }
     render() {
-        const actions: IContextMenuAction[] = [
-            { icon: 'notes', name: 'Annotate' },
-            { icon: 'label', name: 'Tag' },
-            { icon: 'edit', name: 'Edit' },
-            { icon: 'open_in_new', name: 'Source' },
-            { icon: 'archive', name: 'Archive' },
-            { icon: 'delete', name: 'Delete' }
+        let actions: IContextMenuAction[] = [
+            { id: 'select', icon: 'select_all', name: 'Select' },
+            { id: 'annotate', icon: 'notes', name: 'Annotate' },
+            { id: 'tag', icon: 'label', name: 'Tag' },
+            { id: 'edit', icon: 'edit', name: 'Edit' },
+            { id: 'source', icon: 'open_in_new', name: 'Source' },
+            { id: 'archive', icon: 'archive', name: 'Archive' },
+            { id: 'delete', icon: 'delete', name: 'Delete' }
         ];
+        if (!this.props.data.sourceUrl) {
+            actions = actions.filter(action => action.id !== 'source');
+        }
         return (
             < ContextMenu actions={actions} open={this.state.menuOpen} menuClosed={this.menuClosed.bind(this)} resizerOptions={this.props.resizerOptions || []} onAction={this.actionInvoked.bind(this)} >
                 <ContentItemWrapper inheritDimensions={this.props.inheritDimensions} data={this.props.data} menuInvoked={this.contextMenuOpened.bind(this)}  />

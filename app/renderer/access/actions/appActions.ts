@@ -3,6 +3,9 @@ import { IToastItem } from '../../constants/types';
 
 function SampleFetchUrl() {
     const remote = (window as any).remote;
+    if (!remote) {
+        return null;
+    }
     const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
     return api;
 }
@@ -49,6 +52,14 @@ export const showRTE = () => ({
 
 export const toggleSideBar = () => ({
     type: types.TOGGLE_SIDEBAR, payload: {}
+})
+
+export const showSideBar = () => ({
+    type: types.SHOW_SIDEBAR, payload: {}
+})
+
+export const hideSideBar = () => ({
+    type: types.HIDE_SIDEBAR, payload: {}
 })
 
 export const toggleWorkpsaceInHeader = () => ({
@@ -128,4 +139,32 @@ export const showSearchBar = () => ({
 
 export const hideSearchBar = () => ({
     type: types.HIDE_SEARCH_BAR, payload: {}
+})
+
+export const toggleSearchBar = () => ({
+    type: types.TOGGLE_SEARCH_BAR, payload: {}
+})
+
+export const toggleSelectionInDumpingGround = () => ({
+    type: types.TOGGLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})
+
+export const enableSelectionInDumpingGround = () => ({
+    type: types.ENABLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})
+
+export const disableSelectionInDumpingGround = () => ({
+    type: types.DISABLE_SELECTION_IN_DUMPING_GROUND, payload: {}
+})
+
+export const showManageHeadersDialog = () => ({
+    type: types.SHOW_MANAGE_HEADERS, payload: {}
+})
+
+export const hideManageHeadersDialog = () => ({
+    type: types.HIDE_MANAGE_HEADERS, payload: {}
+})
+
+export const toggleManageHeadersDialog = () => ({
+    type: types.TOGGLE_MANAGE_HEADERS, payload: {}
 })

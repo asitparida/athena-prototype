@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IContentItem, IPhotoContent } from '../../constants/types';
 import { CancellabelRequests, Cancellable } from '../../constants/constants';
 
-export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhotoContent> }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
+export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhotoContent>, showEntity?: boolean }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
     imageElement: HTMLImageElement;
     cancellable = new CancellabelRequests();
     constructor(props) {
@@ -15,7 +15,7 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
     }
     componentDidMount() {
         if (this.props.data.contentData.imgUrl) {
-            const idleCallbackID = (window as any).requestIdleCallback(() => {
+            const idleCallbackID = (window as any).requestAnimationFrame(() => {
                 this.imageElement = new Image();
                 this.imageElement.onload = () => {
                     const animationId = window.requestAnimationFrame(() => {
@@ -45,22 +45,23 @@ export class PhotoContentItem extends React.Component<{ data: IContentItem<IPhot
                 this.cancellable.clean(idleCallbackID);
                 this.imageElement.src = this.props.data.contentData.imgUrl;
             });
-            this.cancellable.push(idleCallbackID, Cancellable.IdleCallback);
+            this.cancellable.push(idleCallbackID, Cancellable.AnimationFrame);
         }
     }
     componentWillUnmount() {
         if (this.imageElement) {
+            this.imageElement.onload = null;
             this.imageElement.remove();
             this.imageElement = null;
         }
         this.cancellable.clean();
     }
     render() {
-        const bgUrl = `url(${this.state.imgUrl})`;
+        const bgUrl = `url(${this.props.data.contentData.imgUrl})`;
         return (
-            <div className='photo-content'>
+            <div className='photo-content content-marker'>
                 {
-                    this.state.imgAvailable && this.state.imgUrl &&
+                    this.state.imgAvailable && this.state.imgUrl && this.props.showEntity &&
                     <div className={`photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
                 }
             </div>

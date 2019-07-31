@@ -7,13 +7,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../access/actions/appActions';
 import { InitializeSubscriptions, RemoveSubscriptions } from '../access/observables/observables';
-import Header from '../components/header/header';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Toasts from '../components/toasts/toast';
 import { ContentViewer } from '../components/content-viewer/content-viewer';
 import CreateWorkspace from '../components/create-workspace/create-workspace';
 import CreateTopic from '../components/create-workspace/create-topic';
+import store from '../access/store/configureStore';
+import { IToastItem, ToastType } from '../constants/types';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -51,16 +52,20 @@ class Main extends Component<any, any> {
     }
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
-        ipcRenderer.send('launch-annotator');
+        if (ipcRenderer) {
+            ipcRenderer.send('launch-annotator');
+        }
         const remote = (window as any).remote;
-        const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
-        fetch(api)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            }, (data) => {
-                console.log(data);
-            });
+        if (remote) {
+            const api = `http://localhost:${remote.getCurrentWindow().API_PORT}/api/meta/`;
+            fetch(api)
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                }, (data) => {
+                    console.log(data);
+                });
+        }
     }
     toggleRTE() {
         this.props.actions.hideDumpBar();
@@ -71,17 +76,26 @@ class Main extends Component<any, any> {
             this.props.actions.toggleSideBar();
         }
     }
+    componentDidMount() {
+        const ipcRenderer = (window as any).ipcRenderer;
+        if (ipcRenderer) {
+            ipcRenderer.on('composition-saved', (e, arg) => {
+                const toast: IToastItem = {
+                    id: `${Math.floor(Math.random() * 10e8)}`,
+                    message: `Composition saved as "${arg}"`,
+                    type: ToastType.Success
+                };
+                store.dispatch(AppActions.showToastNotification(toast))
+            });
+        }
+    }
     render() {
-        const sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
         return (
             <div className="app-content">
                 <div className='app-dragger' />
                 <HashRouter hashType='noslash'>
-                    <div className={`app-content-top ${this.props.workspaceInHeader ? 'expanded' : 'collapsed'}`}>
-                        <Header />
-                    </div>
                     <div className='app-content-bottom'>
-                        <RouterWrapper sideBarCollpased={sideBarCollpased} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
+                        <RouterWrapper sideBarShown={this.props.sideBarShown} searchBarShown={this.props.searchBarShown} onLocationChanged={this.onLocationChanged.bind(this)} />
                     </div>
                 </HashRouter>
                 <Toasts />

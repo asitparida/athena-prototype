@@ -2,17 +2,36 @@ import * as React from 'react';
 import './canvas-view.scss';
 import CanvasGroupWrapper from './canvas-group-wrapper/canvas-group-wrapper';
 import { GroupBufffer } from '../../../constants/constants';
-import { IBoardGroupWrapper } from '../../../constants/types';
-import { isEqual } from '../../../transforms';
+import { IBoardGroupWrapper, IGroupHeader } from '../../../constants/types';
+import * as _ from 'lodash';
+import CanvasGroupHeader from './canvas-group-header/canvas-group-header';
+import { CurrentEnableScrollIntoCenter } from '../../../access/observables/observables';
 
-class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[]}, { boardGroups: IBoardGroupWrapper[], positionX: number, positionY: number }> {
+class CanvasView extends React.Component<{
+    id: any,
+    groups?: IBoardGroupWrapper[],
+    headers?: IGroupHeader[],
+    scrollToCenter?: boolean,
+}, {
+    boardGroups: IBoardGroupWrapper[],
+    positionX: number,
+    positionY: number,
+    headers: IGroupHeader[],
+    showHeaders: boolean,
+    scale: number;
+}> {
     currentZoom = 1;
+    scale = 1;
+    ticked = false;
     constructor(props) {
         super(props);
         this.state = {
             boardGroups: [],
             positionX: 0,
-            positionY: 0
+            positionY: 0,
+            headers: [],
+            showHeaders: false,
+            scale: 1
         };
     }
     adjustPosition(zoom = 1, smooth = false) {
@@ -45,31 +64,68 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
                     positionY: differenceHeight / 2
                 });
             }
-            const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2));
-            const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
-            window.requestAnimationFrame(() => {
-                currentPositioner.scroll({
-                    top: topOffset,
-                    left: leftOffset,
-                    behavior: smooth ? "smooth" : 'auto'
+            const value = CurrentEnableScrollIntoCenter.value;
+            let scroll = !!this.props.scrollToCenter;
+            if (value === true && this.props.scrollToCenter === false) {
+                scroll = true;
+            }
+            if (scroll) {
+                const topOffset = (((currentHolderProps.height * zoom) / 2) - (currentPositionerProps.height / 2)) - 150;
+                const leftOffset = (((currentHolderProps.width * zoom) / 2) - (currentPositionerProps.width / 2));
+                window.requestAnimationFrame(() => {
+                    currentPositioner.scroll({
+                        top: topOffset,
+                        left: leftOffset,
+                        behavior: smooth ? "smooth" : 'auto'
+                    });
                 });
-            });
+            }
         }
     }
     changeZoom(dir) {
-        this.currentZoom = this.currentZoom + (0.1 * dir);
-        this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
-        this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
-        const currentHolder = document.querySelector('.board-group-holder');
-        (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
-        window.requestAnimationFrame(() => {
-            this.adjustPosition(this.currentZoom);
+        if (!this.ticked) {
+            this.ticked = true;
+            window.requestAnimationFrame(() => {
+                this.scale += 0.01 * dir ;
+                this.scale = this.scale < 0.50 ? 0.50 : this.scale;
+                this.scale = this.scale > 1 ? 1 : this.scale;
+                this.setState({
+                    scale: this.scale
+                });
+                this.ticked = false;
+            })
+        }
+        // this.currentZoom = this.currentZoom + (0.1 * dir);
+        // this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
+        // this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
+        // const currentHolder = document.querySelector('.board-group-holder');
+        // (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
+        // window.requestAnimationFrame(() => {
+        //     this.adjustPosition(this.currentZoom);
+        // });
+    }
+    buildHeaders() {
+        const headersFromProps = this.props.headers;
+        const headers = [];
+        headersFromProps.forEach((header: IGroupHeader) => {
+            const groups = [].concat(header.groups);
+            groups.forEach((group) => {
+                const _group = this.props.groups.find(item => item.id === group.id);
+                group.name = _group ? _group.title : '';
+            });
+            headers.push(Object.assign({}, header, {
+                groups: [].concat(groups)
+            }));
         });
+        return headers;
     }
     processGroupProps() {
+        const headers = this.buildHeaders();
         this.setState({
-            boardGroups: this.props.groups
-        })
+            boardGroups: this.props.groups,
+            headers,
+            showHeaders: true
+        });
         window.requestAnimationFrame(() => {
             this.adjustPosition(1, false);
         });
@@ -78,7 +134,9 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
         this.processGroupProps();
     }
     componentDidUpdate(props) {
-        if (isEqual(this.props.groups, props.groups) === false) {
+        if (
+            _.isEqual(this.props.groups, props.groups) === false ||
+            _.isEqual(this.props.headers, props.headers) === false) {
             this.processGroupProps();
         }
     }
@@ -98,17 +156,41 @@ class CanvasView extends React.Component<{ id: any, groups?: IBoardGroupWrapper[
             boardGroups: this.props.groups
         });
     }
+    onWheel(e) {
+        e.persist();
+        if (e.ctrlKey) {
+            if (!this.ticked) {
+                this.ticked = true;
+                window.requestAnimationFrame(() => {
+                    this.scale -= e.deltaY * 0.01;
+                    this.scale = this.scale < 0.50 ? 0.50 : this.scale;
+                    this.scale = this.scale > 1 ? 1 : this.scale;
+                    this.setState({
+                        scale: this.scale
+                    });
+                    this.ticked = false;
+                })
+            }
+        }
+    }
     render() {
-        const { boardGroups = [] } = this.state;
+        const { boardGroups = [], headers, showHeaders, scale } = this.state;
+        const styles = {
+            transform: `scale(${scale})`
+        };
         return (
             <React.Fragment >
                 <div className="board-group-outer">
                     {
                         boardGroups.length > 0 &&
-                        <div className='board-group-holder'>
+                        <div className='board-group-holder' onWheel={this.onWheel.bind(this)} style={styles}>
                             <div className='board-group-inner'>
                                 {
-                                    boardGroups.map((bg, i) => <CanvasGroupWrapper onPropsChange={this.onGroupPropsChange.bind(this, i)} parentX={this.state.positionX} parentY={this.state.positionY} key={bg.id} data={bg} />)
+                                    boardGroups.map((bg, i) => <CanvasGroupWrapper showAnchor={false} onPropsChange={this.onGroupPropsChange.bind(this, i)} parentX={this.state.positionX} parentY={this.state.positionY} key={bg.id} data={bg} />)
+                                }
+                                {
+                                    showHeaders &&
+                                    headers.map((header, i) => <CanvasGroupHeader data={header} key={header.id} />)
                                 }
                             </div >
                         </div >

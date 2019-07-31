@@ -82,7 +82,7 @@ export class ContextMenuList extends React.Component<{
                     {
                         this.props.actions.length > 0 &&
                         this.props.actions.map((action, i) => {
-                            return <li onClick={this.onAction.bind(this, action.name)} tabIndex={0} key={i}><i className='material-icons'>{action.icon}</i>{action.name}</li>
+                            return <li onClick={this.onAction.bind(this, action.id)} tabIndex={0} key={i}><i className='material-icons'>{action.icon}</i>{action.name}</li>
                         })
                     }
                 </ul>

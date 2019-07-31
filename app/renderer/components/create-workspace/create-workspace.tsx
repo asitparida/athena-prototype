@@ -5,6 +5,7 @@ import { GraidentSchemes } from '../../constants/gradients';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../../access/actions/appActions';
 import { connect } from 'react-redux';
+import ReactDOM from 'react-dom';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -49,13 +50,14 @@ class CreateWorkspace extends React.Component<any, any> {
         this.props.actions.hideWorkspaceCreator();
     }
     render() {
-        return (
+        return ReactDOM.createPortal((
             <div className="create-workspace">
                 <div className='create-workspace-overlay' onClick={this.closeOverlay.bind(this)} />
                 <div className='create-workspace-dialog'>
-                    <label>New Workspace</label>
+                    <label className='title'>Enter Workspace Name</label>
                     <input autoFocus value={this.state.newWorkspaceName} onChange={this.onNewWorkspaceChanged.bind(this)} />
                     <div className='create-workspace-actions'>
+                        <button className='add-btn' onClick={this.createWorkspace.bind(this)}>Create</button>
                         <ul className='colors'>
                             {
                                 this.state.gradients.length > 0 &&
@@ -67,11 +69,10 @@ class CreateWorkspace extends React.Component<any, any> {
                                 })
                             }
                         </ul>
-                        <button className='add-btn' onClick={this.createWorkspace.bind(this)}>Create</button>
                     </div>
                 </div>
             </div>
-        );
+        ), document.body);
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)(CreateWorkspace);

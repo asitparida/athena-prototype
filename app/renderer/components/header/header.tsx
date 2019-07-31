@@ -6,6 +6,7 @@ import * as AppActions from '../../access/actions/appActions';
 import './header.scss';
 import WorkspacePreviewer from '../workspace-preview/workspace-previewer';
 import { BuildTopicLink } from '../../transforms';
+import { OpenAllNotesAction, CurrentEnableScrollIntoCenter } from '../../access/observables/observables';
 
 const mapStateToProps = ({ reducers, workspaceReducers }) => {
     return {
@@ -28,14 +29,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class Header extends React.Component<any, any> {
+    allNotesOpened = false;
     constructor(props) {
         super(props);
         this.state = {
             workspaceList: this.props.workspaceList
         };
-    }
-    toggleSidebar() {
-        this.props.actions.toggleSideBar();
     }
     toggleRTE() {
         this.props.actions.hideDumpBar();
@@ -50,9 +49,12 @@ class Header extends React.Component<any, any> {
     }
     launchAnnotator() {
         const ipcRenderer = (window as any).ipcRenderer;
-        ipcRenderer.send('launch-annotator');
+        if (ipcRenderer) {
+            ipcRenderer.send('launch-annotator');
+        }
     }
     toggleWorkspaceView() {
+        CurrentEnableScrollIntoCenter.next(true);
         this.props.actions.toggleWorkspaceViewAsCanvas();
     }
     addNewTopic() {
@@ -61,13 +63,20 @@ class Header extends React.Component<any, any> {
     onSearchFocused() {
         this.props.actions.showSearchBar();
     }
+    launchSearch() {
+        this.props.actions.toggleSearchBar();
+    }
+    manageHeaders() {
+        this.props.actions.showManageHeadersDialog();
+    }
+    openAllNotes() {
+        this.allNotesOpened = !this.allNotesOpened;
+        OpenAllNotesAction.next(this.allNotesOpened);
+    }
     render() {
         return (
             <React.Fragment>
                 <div className='app-actions left'>
-                    <div className='app-sidebar-toggle' onClick={this.toggleSidebar.bind(this)}>
-                        <i className='material-icons'>menu</i>
-                    </div>
                     {
                         this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 &&
                         <ul className='topic-headers'>
@@ -97,32 +106,39 @@ class Header extends React.Component<any, any> {
                     {
                         this.props.workspaceActionsAreShown &&
                         <React.Fragment>
+                            <div className='action' onClick={this.openAllNotes.bind(this)}>
+                                <i className='material-icons'>notes</i>
+                            </div>
+                            <div className='separator' />
+                            <div className='action' onClick={this.manageHeaders.bind(this)}>
+                                <i className='material-icons'>device_hub</i>
+                            </div>
+                            <div className='separator' />
                             <div className='toggler' onClick={this.toggleWorkspaceView.bind(this)}>
                                 <label role="button" className={`${this.props.workspaceViewIsCanvas ? 'active' : ''}`}>Canvas</label>
-                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>Grid</label>
+                                <label role="button" className={`${this.props.workspaceViewIsCanvas ? '' : 'active'}`}>List</label>
                             </div>
                             <div className='separator' />
                             <div className={`action ${this.props.workspaceRTEShown ? 'active' : ''}`} onClick={this.toggleRTE.bind(this)}>
-                                <i className="material-icons">text_fields</i>
-                            </div>
-                            <div className={`action ${this.props.workspaceDumpBarShown ? 'active' : ''}`} onClick={this.toggleDumpBar.bind(this)}>
-                                <i className='material-icons'>apps</i>
+                                <i className="material-icons">format_shapes</i>
                             </div>
                         </React.Fragment>
                     }
                     {
                         this.props.workspaceActionInHeader &&
-                        <div className={`action ${this.props.workspaceInHeader ? 'active' : ''}`} onClick={this.toggleWorkspaceInBar.bind(this)}>
-                            <i className='material-icons'>view_week</i>
-                        </div>
+                        <React.Fragment>
+                            <div className='action' onClick={this.openAllNotes.bind(this)}>
+                                <i className='material-icons'>notes</i>
+                            </div>
+                            <div className='separator' />
+                            <div className={`action ${this.props.workspaceInHeader ? 'active' : ''}`} onClick={this.toggleWorkspaceInBar.bind(this)}>
+                                <i className='material-icons'>view_week</i>
+                            </div>
+                        </React.Fragment>
                     }
                     <div className='separator' />
-                    <div className='action' onClick={this.launchAnnotator.bind(this)}>
-                        <i className='material-icons'>format_shapes</i>
-                    </div>
-                    <div className='separator' />
-                    <div className='search-box'>
-                        <input className='search-input' onFocus={this.onSearchFocused.bind(this)} /> <i className='material-icons'>search</i>
+                    <div className='action' onClick={this.launchSearch.bind(this)}>
+                        <i className='material-icons'>search</i>
                     </div>
                 </div>
             </React.Fragment>

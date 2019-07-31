@@ -5,6 +5,7 @@ import { GraidentSchemes } from '../../constants/gradients';
 import { bindActionCreators } from 'redux';
 import * as AppActions from '../../access/actions/appActions';
 import { connect } from 'react-redux';
+import ReactDOM from 'react-dom';
 
 const mapStateToProps = ({ reducers }) => {
     return {
@@ -44,18 +45,18 @@ class CreateTopic extends React.Component<any, any> {
         this.props.actions.hideTopicCreator();
     }
     render() {
-        return (
+        return ReactDOM.createPortal((
             <div className="create-workspace">
                 <div className='create-workspace-overlay' onClick={this.closeOverlay.bind(this)} />
                 <div className='create-workspace-dialog'>
-                    <label>New Topic</label>
+                    <label className='title'>New Topic</label>
                     <input autoFocus value={this.state.newTopicName} onChange={this.onNewTopicNameChanged.bind(this)} />
                     <div className='create-workspace-actions'>
                         <button className='add-btn' onClick={this.createTopic.bind(this)}>Create</button>
                     </div>
                 </div>
             </div>
-        );
+        ), document.body);
     }
 }
 export default connect( mapStateToProps, mapDispatchToProps)(CreateTopic);

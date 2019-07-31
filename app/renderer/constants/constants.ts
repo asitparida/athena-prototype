@@ -4,9 +4,23 @@ const img1 = require('../assets/carnegie_museum_art.jpg');
 const img2 = require('../assets/church_brew.jpg');
 const img3 = require('../assets/duquesne_incline.jpg');
 
+export const MediaTypeImages = {
+    instagram: require('../assets/media-types/instagram.png'),
+    medium: require('../assets/media-types/medium.png'),
+    news: require('../assets/media-types/open-book.png'),
+    photo: require('../assets/media-types/photo.png'),
+    quora: require('../assets/media-types/quora.png'),
+    twitter: require('../assets/media-types/twitter.png'),
+    videoPlayer: require('../assets/media-types/video-player.png'),
+    vimeo: require('../assets/media-types/vimeo.png'),
+    youtube: require('../assets/media-types/youtube.png'),
+    notes: require('../assets/media-types/notes.png'),
+    link: require('../assets/media-types/link.png')
+}
+
 export const ItemWidth = 240;
-export const ItemHeight = 180;
-export const GroupBufffer = 20;
+export const ItemHeight = null;
+export const GroupBufffer = 60;
 
 export const PhotosList: any[] = [
     { id: "1006", author: "Vladimir Kudinov", width: 3000, height: 2000, url: "https://unsplash.com/photos/-wWRHIUklxM", download_url: "https://picsum.photos/id/1006/3000/2000" },
@@ -27,13 +41,17 @@ export const AllContentList: ContentList[] = [
 ];
 
 export const WorkspaceList: IWorkspace[] = [
-    new Workspace('Workspace #1', img1, `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`),
-    new Workspace('Workspace #2', img2, `linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))`),
-    new Workspace('Workspace #3', img3, `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`),
-    new Workspace('Workspace #4', img1, `linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))`)
+    new Workspace('Instagram', img1, [
+        { id: 'sunscreen', name: 'Sunscreen Debate', active: true },
+        { id: 'microdermabrasion', name: 'Microdermabrasion', active: false },
+        { id: 'copper-peptides', name: 'Copper Peptides', active: false }
+    ], `linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))`, 'rgb(56, 239, 125)', 'rgb(17, 153, 142)'),
+    new Workspace('Blog', img3, [
+        { id: 'k-beauty', name: 'K-Beauty Trends', active: true },
+        { id: 'retinol', name: 'Retinol Routine', active: false },
+        { id: 'routine', name: 'Peptides Routine', active: false }
+    ], `linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))`, '#8fddfe', 'rgb(32, 189, 255)'),
 ];
-
-WorkspaceList.forEach(w => w.topics = GetSampleTopicItems());
 
 export const WorkspaceCollectionTabs = [
     { id: 'all', name: 'All' },
@@ -44,98 +62,32 @@ export const DumpingGrounCollectionTabs = [
     { id: 'photos', name: 'Photos', type: ContentType.Photo },
     { id: 'videos', name: 'Videos', type: ContentType.Video },
     { id: 'articles', name: 'Articles', type: ContentType.Article },
-    { id: 'links', name: 'Links', type: ContentType.Link },
+    // { id: 'links', name: 'Links', type: ContentType.Link },
     { id: 'social-media', name: 'Social Media', type: ContentType.SocialMedia },
 ];
 export const Topiclist = [
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
-    { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+    { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
+    { id: GetRandomId(), name: 'Microdermabrasion', active: false },
+    { id: GetRandomId(), name: 'Copper Peptides', active: false }
 ];
 
 export function GetSampleTopicItems() {
     const items = [
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #AA', active: true },
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #BB', active: false },
-        { id: `${Math.floor(Math.random() * 10e8)}`, name: 'Topic #CC', active: false }
+        { id: GetRandomId(), name: 'Sunscreen Debate', active: true },
+        { id: GetRandomId(), name: 'Microdermabrasion', active: false },
+        { id: GetRandomId(), name: 'Copper Peptides', active: false }
     ];
-    return _.shuffle(items);
+    return items;
 }
-
-export function GetSampleBoardItems() {
-    const items = [
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Video, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Article, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Photo, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.Link, props: { height: ItemHeight, width: ItemWidth } },
-        { id: `${Math.floor(Math.random() * 10e8)}`, type: ContentType.SocialMedia, props: { height: ItemHeight, width: ItemWidth } },
-    ];
-    return _.take(_.shuffle(items), 3);
-}
-
-export let BoardGroups: IBoardGroupWrapper[] = [
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        title: 'Group #1',
-        props: { top: 0, left: 0 },
-        items: GetSampleBoardItems(),
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        title: 'Group #2',
-        props: { top: 0, left: 0 },
-        items: GetSampleBoardItems(),
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        title: 'Group #3',
-        props: { top: 0, left: 0 },
-        items: GetSampleBoardItems(),
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        title: 'Group #4',
-        props: { top: 0, left: 0 },
-        items: GetSampleBoardItems(),
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
-    },
-    {
-        id: `${Math.floor(Math.random() * 10e8)}`,
-        title: 'Group #5',
-        props: { top: 0, left: 0 },
-        items: GetSampleBoardItems(),
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
-    }
-];
 
 export function GetEmptyGroup() {
     return {
-        id: `${Math.floor(Math.random() * 10e8)}`,
+        id: GetRandomId(),
         title: 'New Group *',
         props: { top: 0, left: 0 },
         items: [],
-        annotation: {
-            id: `${Math.floor(Math.random() * 10e10)}`,
-            message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-        }
+        annotation: '',
+        isEmpty: true
     };
 }
 
@@ -147,28 +99,40 @@ export enum Cancellable {
 }
 
 export class CancellabelRequests {
-    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean}> = [];
+    cancellableList: Array<{ type: Cancellable, requestId: any, cleaned?: boolean }> = [];
     push(requestId, type: Cancellable) {
-        this.cancellableList.push( { type, requestId, cleaned: false })
+        this.cancellableList.push({ type, requestId, cleaned: false })
     }
     clean(id?) {
         if (typeof id !== 'undefined') {
-            this.cancellableList = this.cancellableList.filter( t => t.requestId !== id);
+            this.cancellableList = this.cancellableList.filter(t => t.requestId !== id);
         } else if (this.cancellableList.length > 0) {
-            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean}) => {
+            this.cancellableList.forEach((item: { type: Cancellable, requestId: any, cleaned?: boolean }) => {
                 switch (item.type) {
-                    case Cancellable.AnimationFrame : { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.Timeout : { clearTimeout(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.Interval : { clearInterval(item.requestId); item.cleaned = true; break; }
-                    case Cancellable.IdleCallback : { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.AnimationFrame: { window.cancelAnimationFrame(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Timeout: { clearTimeout(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.Interval: { clearInterval(item.requestId); item.cleaned = true; break; }
+                    case Cancellable.IdleCallback: { (window as any).cancelIdleCallback(item.requestId); item.cleaned = true; break; }
                 }
             });
-            this.cancellableList = this.cancellableList.filter( t => !t.cleaned);
+            this.cancellableList = this.cancellableList.filter(t => !t.cleaned);
         }
     }
 }
 
 export function GetAPIUrl() {
     const remote = (window as any).remote;
-    return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
+    if (remote) {
+        return `http://localhost:${remote.getCurrentWindow().API_PORT}`;
+    }
+    return null;
 }
+
+export function ExportNote(value) {
+    const ipcRenderer = (window as any).ipcRenderer;
+    if (ipcRenderer) {
+        ipcRenderer.send('export-composition', value);
+    }
+}
+
+export function GetRandomId() { return `${Math.floor(Math.random() * 10e10)}` };

@@ -1,0 +1,120 @@
+@import '../../shared';
+.rte-wrapper {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    .rte-header {
+        order: 1;
+        flex: initial;
+        height: 48px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $light-accent-color2;
+        padding: 0 10px;
+        button {
+            background: none;
+            border: none;
+            padding: 0 15px 0 0px;
+            text-align: center;
+            height: 36px;
+            background-color: rgba(#000, 0.0);
+            border: 1px solid rgba(#000, 0.0);
+            color: rgba(#000, 0.5);;
+            margin-right: 20px;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid rgba($primary_accent, 0.20);
+            flex: 1;
+            i {
+                font-size: medium;
+                cursor: pointer;
+                margin-left: 6px;
+            }
+            &:hover {
+                color: rgba($primary_accent, 0.80);
+            }
+            &:last-child {
+                margin-left: auto;
+                margin-right: 0;
+                border-right: none;
+            }
+        }
+    }
+    .rte-content {
+        order: 2;
+        flex: 1;
+        height: calc(100% - 48px);
+        width: 100%;
+
+        [class^="RichTextEditor__root"] {
+            background: none;
+            border: none;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+        }
+        
+        [class^="RichTextEditor__editor"] {
+            flex: 1;
+            order: 2;
+            padding: 0px 10px 10px 15px;
+            color: rgba(#000, 0.50);
+        
+            .DraftEditor-root {
+                height: calc(100vh - 166px);
+        
+        
+                .DraftEditor-editorContainer {
+                    z-index: 2;
+                    .public-DraftEditor-content {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+        
+        [class^="EditorToolbar__root"] {
+            flex: initial;
+            order: 1;
+            border-bottom: 1px solid rgba($primary_accent, 0.10);
+            padding: 15px 10px 10px 10px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            background-color: rgba($primary_accent, 0.0);
+        
+        
+            [class^="ButtonWrap__root"] {
+                button {
+                    background: rgba(#000, 0.0);
+                    border: 1px solid rgba($primary_accent, 0.8);
+                    margin-right: 1px;
+                    color: rgba(#000, 0.50);
+        
+                    &[class*="IconButton__isActive"] {
+                        background: rgba($primary_accent, 0.20);
+                    }
+                }
+            }
+        
+            [class^="Dropdown__root"] {
+                select {
+                    color: rgba($primary_accent, 0.90);
+                }
+        
+                [class^="Dropdown__value"] {
+                    border: 1px solid rgba($primary_accent, 0.8);
+                }
+            }
+        }
+    }
+}

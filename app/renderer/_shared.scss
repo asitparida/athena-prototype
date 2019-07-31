@@ -4,35 +4,64 @@
     }
 }
 
-@mixin respond-to-except-mobile {
+@mixin respond-to-except-mobile-only {
     @media only screen and (min-width: 769px) {
         @content;
     }
 }
 @mixin respond-to-medium-screen-only {
-    @media only screen and (min-width: 1600px) {
+    @media (min-width: 769px) and (max-width: 1600px) {
         @content;
     }
 }
 @mixin respond-to-large-screen-only {
-    @media only screen and (min-width: 1920px) {
+    @media (min-width: 1601px) {
         @content;
     }
 }
 
-@mixin respond-to-mobile {
-    @media only screen and (max-width: 768px) {
-        @content;
+@mixin scrollbars($size, $foreground-color, $background-color) {
+    ::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    .scroller {
+        -ms-scrollbar-face-color: $foreground-color;
+        scrollbar-face-color: $foreground-color;
+        -ms-scrollbar-track-color: $background-color;
+        scrollbar-track-color: $background-color;
     }
 }
 
-@mixin respond-to-medium-screen {
-    @media only screen and (min-width: 1920px) {
-        @content;
+$primary_accent: #3783E9;
+$primary_accent_text: #ffffff;
+$dark_text: rgba(#000, 0.75);
+$light-accent-color: #f3f8ff; //#f6f6f6; //
+$light-accent-color2: #f9f9f9;
+
+$bg-color: rgba(#000, 0.1);
+$dot-color: rgba(#000, 0.50);
+
+// Dimensions
+$dot-size: 5px;
+$dot-space: 5px;
+$dark_overlay: rgba(darken($primary_accent, 50), 0.75);
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
     }
-}
-@mixin respond-to-large-screen {
-    @media only screen and (min-width: 1920px) {
-        @content;
+    100% {
+        opacity: 1;
     }
 }

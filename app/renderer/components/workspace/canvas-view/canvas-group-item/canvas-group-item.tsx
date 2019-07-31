@@ -1,9 +1,7 @@
 import * as React from 'react';
 import './canvas-group-item.scss'
 import { DragSource } from 'react-dnd';
-import { DragAndDropTypes, IContentItem, IBoardContent } from '../../../../constants/types';
-import { GetSampleItem } from '../../../../constants/dummy-data';
-import { ContentItemWrapper } from '../../../content-item/content-item';
+import { DragAndDropTypes, IContentItem } from '../../../../constants/types';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 import { WorkspaceContentTransfer } from '../../../../access/observables/observables';
 
@@ -37,12 +35,15 @@ function collect(connect, monitor) {
 }
 
 interface IPropType {
-    data: IBoardContent;
+    data: IContentItem<any>;
 }
 
 class CanvasGroupItem extends React.Component<IPropType | any, {}> {
     constructor(props) {
         super(props);
+    }
+    propsChanged() {
+        // this.props.propsChanged();
     }
     render() {
         const { isDragging, connectDragSource, src } = this.props;
@@ -50,7 +51,7 @@ class CanvasGroupItem extends React.Component<IPropType | any, {}> {
             <div className="board-content">
                 {
                     this.props.data &&
-                    <ContentItemWithMenu data={this.props.data} inheritDimensions={true} />
+                    <ContentItemWithMenu propsChanged={this.propsChanged.bind(this)} data={this.props.data} inheritDimensions={this.props.inheritDimensions} />
                 }
             </div>
         );

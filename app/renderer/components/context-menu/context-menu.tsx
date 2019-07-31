@@ -53,6 +53,8 @@ export class ContextMenu extends React.Component<{
     }
     onContextMenuInvoked(e) {
         this.openMenu(e);
+        e.preventDefault();
+        e.stopPropagation();
     }
     componentDidUpdate(props) {
         if (this.props.open !== props.open) {

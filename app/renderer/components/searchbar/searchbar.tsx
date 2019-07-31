@@ -3,7 +3,9 @@ import './searchbar.scss';
 import * as AppActions from '../../access/actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import DumpingGround from '../dumping-ground/dumping-ground';
+import Dropdown from '../dropdown/dropdown';
+import { DumpingGroundListCollection } from '../dumping-ground/dumping-ground-list-collection';
+import ComboDropdown from '../combo-dropdown/combo-dropdown';
 
 const mapStateToProps = ({ workspaceReducers }) => {
     return {
@@ -20,57 +22,62 @@ const mapDispatchToProps = (dispatch) => {
 class SearchBarComponent extends React.Component<any, any> {
     constructor(props) {
         super(props);
+        this.state = {
+            showSearchMeta: false,
+            searchToken: '',
+            contentTypeResults: [
+                { icon: 'image', name: 'Images', count: 0 },
+                { icon: 'movie', name: 'Videos', count: 0 },
+                { icon: 'insert_drive_file', name: 'Articles', count: 0 },
+                { icon: 'attach_file', name: 'Links', count: 0 },
+                { icon: 'textsms', name: 'Social', count: 0 }
+            ],
+            categories: [
+                { id: 'all', name: 'All' },
+                { id: 'unclassified', name: 'Unclassified' },
+                { id: 'classified', name: 'Classified' },
+                { id: 'workspace-1', name: 'Workspace #1' },
+                { id: 'workspace-2', name: 'Workspace #2' },
+                { id: 'workspace-3', name: 'Workspace #3' }
+            ],
+            activeCategory:  { id: 'all', name: 'All' }
+        };
+    }
+    onFocus() {
+        this.setState({
+            showSearchMeta: true
+        });
+    }
+    onBlur() {
+        this.setState({
+            showSearchMeta: false
+        });
+    }
+    onSearchTokenChanged(data) {
+        this.setState({
+            searchToken: data
+        });
     }
     render() {
         return <div className='searchbar-wrapper'>
             <div className="search-meta">
-                <div className='search-meta-top'>
-                    <div className='search-meta-content'>
-                        <div className='search-meta-content-left'>
-                            <i className='material-icons'>local_offer</i> Tags
-                        </div>
-                        <div className='search-meta-content-right'>
-                            <ul>
-                                <li>tag 1</li>
-                                <li>tag 2</li>
-                                <li>tag 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div className='search-meta-bottom'>
-                    <div className='search-meta-content'>
-                        <ul>
-                            <li>
-                                <i className='material-icons'>filter_none</i>
-                                <label>Photos (0)</label>
-                            </li>
-                            <li>
-                                <i className='material-icons'>filter_none</i>
-                                <label>Videos (0)</label>
-                            </li>
-                            <li>
-                                <i className='material-icons'>filter_none</i>
-                                <label>Articles (0)</label>
-                            </li>
-                            <li>
-                                <i className='material-icons'>filter_none</i>
-                                <label>Links (0)</label>
-                            </li>
-                            <li>
-                                <i className='material-icons'>filter_none</i>
-                                <label>Social (0)</label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <ComboDropdown propagateChange={this.onSearchTokenChanged.bind(this)} onInputFocus={this.onFocus.bind(this)}  contentTypeResults={this.state.contentTypeResults} onInputBlur={this.onBlur.bind(this)} categories={this.state.categories} activeItem={this.state.activeCategory} />
             </div>
             <div className='search-results'>
                 <div className='search-results-inner'>
-                    <DumpingGround hideGroupTitle={true} sticky={true} workspace={true} searchBar={true} />
+                    <div className='search-results-bottom'>
+                        <div className='dumping-ground-list-wrapper'>
+                            <DumpingGroundListCollection searchBar={true} hideGroupTitle={true} searchToken={this.state.searchToken} />
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
+            {
+                this.state.showSearchMeta &&
+                <div className='overlay' />
+            }
+        </div >
     }
 }
 

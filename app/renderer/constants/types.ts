@@ -14,8 +14,10 @@ export interface IState {
     workspaceActionsAreShown: boolean;
     newWorkspaceCreator: boolean;
     newTopicCreator: boolean;
+    manageHeadersDialog: boolean;
     workspaceList?: IWorkspace[];
     activeWorkspace?: IWorkspace;
+    isSelectionEnabled?: boolean;
 }
 export interface IAction {
     type: string;
@@ -51,13 +53,18 @@ export class Workspace implements IWorkspace {
     image: any;
     link: string;
     gradient: string;
+    color1: string;
+    color2: string;
     topics: ITopic[] = [];
-    constructor(name, image, gradient = null) {
-        this.id = `${Math.floor(Math.random() * 10e8)}`;
+    constructor(name, image, topics = [], gradient = null, color1 = '#f0f0f0', color2 = '#e0e0e0') {
+        this.id = (name as string).toLowerCase();
         this.name = name;
         this.image = image;
         this.link = `/workspace/${Math.floor(Math.random() * 10e6)}`;
         this.gradient = gradient;
+        this.topics = topics;
+        this.color1 = color1;
+        this.color2 = color2;
     }
     getImgUrl() {
         return `url(${this.image})`;
@@ -66,10 +73,12 @@ export class Workspace implements IWorkspace {
 
 export const DragAndDropTypes = {
     DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
-    BOARD_ITEM: 'BOARD_ITEM'
+    BOARD_ITEM: 'BOARD_ITEM',
+    HEADER_ITEM: 'HEADER_ITEM'
 }
 
 export enum ContentType {
+    Random,
     Photo,
     Video,
     Link,
@@ -87,7 +96,8 @@ export enum MediaSourceType {
     Youtube,
     Vimeo,
     ACM,
-    Scholar
+    Scholar,
+    MMS
 }
 export class ContentList {
     items: any[];
@@ -134,17 +144,21 @@ export interface ILinkContent {
 
 export interface INoteContent {
     noteText?: string;
+    mediaUrl?: string;
 }
 
 export interface ISocialMediaContent {
     tweetText?: string;
+    tweetUrl?: string;
     instragramImageUrl?: string;
+    instagramPostUrl?: string;
     handle?: string;
     profileLink?: string;
     profileImgUrl?: string;
 }
 
 export interface IContextMenuAction {
+    id: string;
     icon: string;
     name: string;
 }
@@ -155,9 +169,11 @@ export interface IContentItem<T> {
     contentType?: ContentType;
     sourceType?: MediaSourceType;
     contentData?: T;
+    sourceUrl?: string;
     sourcePreviewAvailable?: boolean;
     tags?: any[];
-    annotations?: IAnnotation[];
+    annotation?: string;
+    props?: IRectProps;
 }
 
 export interface IWorkspaceContentTransfer {
@@ -185,28 +201,13 @@ export interface IRectProps {
     height?: number;
 }
 
-export interface IAnnotation {
-    id?: string;
-    message?: string;
-}
-
-export interface IBoardContent {
-    type?: ContentType;
-    label?: string;
-    id?: string;
-    data?: any;
-    annotationData?: IAnnotation[];
-    props?: IRectProps;
-}
-export interface IBoardGroupContent {
-    annotation?: IAnnotation;
-}
 export interface IBoardGroupWrapper {
     id?: string;
     title?: string;
     props?: IRectProps;
-    annotation?: IAnnotation;
-    items?: IBoardContent[];
+    annotation?: string;
+    items?: Array<IContentItem<any>>;
+    isEmpty?: boolean;
 }
 
 export interface ISideBarNavItem {
@@ -217,4 +218,16 @@ export interface ISideBarNavItem {
     active?: boolean;
     subListOpen?: boolean;
     gradient?: string;
+}
+
+export interface IGroupHeader {
+    id: string;
+    name: string;
+    groups: Array<{ id?: string; name?: string}>;
+    drawProps?: {
+        groupProps?: Array<{top: number, left: number }>;
+        top?: number;
+        left?: number;
+        right?: number;
+    }
 }

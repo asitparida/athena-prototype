@@ -1,16 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 import * as bodyParser from 'body-parser';
-import { IStickyNote } from './api-types';
+import { IStickyNote, IMms } from './api-types';
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync');
 import { app as ElectronApp } from 'electron';
-const adapter = new FileSync( ElectronApp.getPath('userData') + '/athena_db.json')
+import { getLocalDBFile } from './helpers';
+import * as _ from 'lodash';
+const adapter = new FileSync(getLocalDBFile())
 const db = low(adapter);
 
 db.defaults({ notes: [] })
     .write();
-// db.set('notes', []).write();
+db.set('notes', []).write();
+db.set('mms', []).write();
 
 const app = express();
 app.use(cors());
@@ -50,5 +53,25 @@ app.get('/api/stickies/unassigned', (req, res) => {
         .value();
     res.json({ data: notes });
 });
-
+app.get('/api/mms/', (req, res) => {
+    const notes: IMms[] = db.get('mms')
+        .value();
+    res.json({ data: notes });
+})
+app.get('/api/mms/list', (req, res) => {
+    const mms: IMms[] = db.get('mms')
+        .value();
+    res.json({ data: mms.map(m => m.sid) });
+})
+app.post('/api/mms', (req, res) => {
+    const mms: IMms = req.body;
+    const collection = db.defaults({ posts: [] }).get('mms');
+    const mmsCollection: IMms[] = collection.value();
+    if (!_.find(mmsCollection, item => item.sid === mms.sid )) {
+        db.set('mms', [].concat(...mmsCollection, mms)).write();
+        res.json({ data: true });
+    } else {
+        res.json({ data: false });
+    }
+})
 export default app;

@@ -1,24 +1,16 @@
 import * as React from 'react';
-import { IBoardContent, IContentItem, IContextMenuAction } from '../../../../constants/types';
+import { IContentItem, IContextMenuAction } from '../../../../constants/types';
 import { ContentItemWrapper } from '../../../content-item/content-item';
 import './list-group-item.scss';
-import { GetSampleItem } from '../../../../constants/dummy-data';
 import { ContentItemWithMenu } from '../../../content-item/content-item-with-menu';
 
-class ListGroupItem extends React.Component<{ data: IBoardContent }, { contentData: IContentItem<any>, contentSize: string}> {
+class ListGroupItem extends React.Component<{ data: IContentItem<any> }, { contentData: IContentItem<any>, contentSize: string}> {
     constructor(props) {
         super(props);
         this.state = {
             contentData: null,
             contentSize: 'normal'
         };
-    }
-    componentDidMount() {
-        const data = GetSampleItem((this.props.data as IBoardContent).type);
-        data.id = (this.props.data as IBoardContent).id;
-        this.setState({
-            contentData: data
-        })
     }
     onActionInvoked(action) {
         switch (action) {
@@ -29,16 +21,13 @@ class ListGroupItem extends React.Component<{ data: IBoardContent }, { contentDa
     }
     render() {
         const resizerOptions: IContextMenuAction[] = [
-            {  icon: 'crop_7_5', name: 'NORMAL_SIZE'},
-            {  icon: 'crop_5_4', name: 'DOUBLE_SIZE'},
-            {  icon: 'crop_din', name: 'MAX_SIZE'}
+            { id: 'NORMAL_SIZE',  icon: 'crop_7_5', name: 'NORMAL_SIZE'},
+            { id: 'DOUBLE_SIZE',  icon: 'crop_5_4', name: 'DOUBLE_SIZE'},
+            { id: 'MAX_SIZE',  icon: 'crop_din', name: 'MAX_SIZE'}
         ];
         return (
             <div className={`workspace-list-group-item-holder ${this.state.contentSize}`}>
-                {
-                        this.state.contentData &&
-                        <ContentItemWithMenu onActionInvoked={this.onActionInvoked.bind(this)} data={this.state.contentData} inheritDimensions={false} resizerOptions={resizerOptions} />
-                    }
+                <ContentItemWithMenu onActionInvoked={this.onActionInvoked.bind(this)} data={this.props.data} inheritDimensions={false} resizerOptions={resizerOptions} />
             </div>
         );
     }

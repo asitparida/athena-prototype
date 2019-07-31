@@ -3,7 +3,10 @@ import { IContentItem, IVideoContent } from '../../constants/types';
 import { GetDuration } from '../../helper';
 import { CancellabelRequests, Cancellable } from '../../constants/constants';
 
-export class VideoContentItem extends React.Component<{ data: IContentItem<IVideoContent> }, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
+export class VideoContentItem extends React.Component<{
+    data: IContentItem<IVideoContent>,
+    showEntity?: boolean
+}, { showImg: boolean, imgAvailable: boolean, imgUrl: string }> {
     imageElement: HTMLImageElement;
     cancellable = new CancellabelRequests();
     constructor(props) {
@@ -16,7 +19,7 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
     }
     componentDidMount() {
         if (this.props.data.contentData.videoThumbnailUrl) {
-            const idleCallbackID = (window as any).requestIdleCallback(() => {
+            const idleCallbackID = (window as any).requestAnimationFrame(() => {
                 this.imageElement = new Image();
                 this.imageElement.onload = () => {
                     const animationId = window.requestAnimationFrame(() => {
@@ -46,11 +49,12 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
                 this.cancellable.clean(idleCallbackID);
                 this.imageElement.src = this.props.data.contentData.videoThumbnailUrl;
             });
-            this.cancellable.push(idleCallbackID, Cancellable.IdleCallback);
+            this.cancellable.push(idleCallbackID, Cancellable.AnimationFrame);
         }
     }
     componentWillUnmount() {
         if (this.imageElement) {
+            this.imageElement.onload = null;
             this.imageElement.remove();
             this.imageElement = null;
         }
@@ -58,17 +62,22 @@ export class VideoContentItem extends React.Component<{ data: IContentItem<IVide
     }
     render() {
         const duration = GetDuration(this.props.data.contentData.videoLength);
-        const bgUrl = `url(${this.state.imgUrl})`;
+        const bgUrl = `url('${this.state.imgUrl}')`;
         return (
-            <div className='video-content'>
-                <label className='video-duration'>{duration}</label>
+            <div className='video-content content-marker'>
                 {
-                    this.state.imgAvailable && this.state.imgUrl &&
-                    <div className={`video-photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
+                    this.props.showEntity &&
+                    <React.Fragment>
+                        <label className='video-duration'>{duration}</label>
+                        {
+                            this.state.imgAvailable && this.state.imgUrl && this.props.showEntity &&
+                            <div className={`video-photo ${this.state.showImg ? 'shown' : ''}`} style={{ backgroundImage: bgUrl }} />
+                        }
+                        <div className={`video-overlay ${this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : ''}`}>
+                            <i className='material-icons play-icon'>play_circle_filled</i>
+                        </div>
+                    </React.Fragment>
                 }
-                <div className={`video-overlay ${this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : ''}`}>
-                    <i className='material-icons play-icon'>play_circle_filled</i>
-                </div>
             </div>
         );
     }

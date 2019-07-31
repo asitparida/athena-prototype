@@ -12,6 +12,36 @@ export function GetApplictaionMenu() {
             ]
         },
         {
+            label: 'Edit',
+            submenu: [{
+              label: 'Undo',
+              accelerator: 'CmdOrCtrl+Z',
+              role: 'undo'
+            }, {
+              label: 'Redo',
+              accelerator: 'Shift+CmdOrCtrl+Z',
+              role: 'redo'
+            }, {
+              type: 'separator'
+            }, {
+              label: 'Cut',
+              accelerator: 'CmdOrCtrl+X',
+              role: 'cut'
+            }, {
+              label: 'Copy',
+              accelerator: 'CmdOrCtrl+C',
+              role: 'copy'
+            }, {
+              label: 'Paste',
+              accelerator: 'CmdOrCtrl+V',
+              role: 'paste'
+            }, {
+              label: 'Select All',
+              accelerator: 'CmdOrCtrl+A',
+              role: 'selectall'
+            }]
+          },
+        {
             label: 'View',
             submenu: [{
                 label: 'Reload',
@@ -70,8 +100,6 @@ export function GetApplictaionMenu() {
                 label: 'Close',
                 click: (item, focusedWindow: BrowserWindow) => {
                     if (focusedWindow) {
-                        // on reload, start fresh and close any old
-                        // open secondary windows
                         if (focusedWindow.id === 1) {
                           BrowserWindow.getAllWindows().forEach(win => {
                             if (win.id > 1) {

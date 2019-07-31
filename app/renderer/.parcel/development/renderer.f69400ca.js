@@ -213,7 +213,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
   return to;
 };
-},{}],"../../node_modules/prop-types/lib/ReactPropTypesSecret.js":[function(require,module,exports) {
+},{}],"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -227,7 +227,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],"../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
+},{}],"../../../node_modules/prop-types/checkPropTypes.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -323,7 +323,7 @@ checkPropTypes.resetWarningCache = function () {
 };
 
 module.exports = checkPropTypes;
-},{"./lib/ReactPropTypesSecret":"../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
+},{"./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js"}],"../../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
 /** @license React v16.8.6
  * react.development.js
  *
@@ -2245,7 +2245,7 @@ if ("development" !== "production") {
     module.exports = react;
   })();
 }
-},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -25710,7 +25710,7 @@ if ("development" !== "production") {
     module.exports = reactDom;
   })();
 }
-},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","object-assign":"../../../node_modules/object-assign/index.js","prop-types/checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js","scheduler":"../../../node_modules/scheduler/index.js","scheduler/tracing":"../../../node_modules/scheduler/tracing.js"}],"../../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -26669,7 +26669,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
   ReactPropTypes.PropTypes = ReactPropTypes;
   return ReactPropTypes;
 };
-},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
+},{"react-is":"../../node_modules/prop-types/node_modules/react-is/index.js","object-assign":"../../../node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"../../../node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"../../../node_modules/prop-types/checkPropTypes.js"}],"../../node_modules/prop-types/index.js":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -29379,7 +29379,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -29419,7 +29419,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/@babel/runtime/helpers/inheritsLoose.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/@babel/runtime/helpers/inheritsLoose.js":[function(require,module,exports) {
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -32220,7 +32220,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/tabs/tabs-resizer.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/tabs/tabs-resizer.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32392,7 +32392,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/dropdown/dropdown.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/dropdown/dropdown.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32443,7 +32443,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
     _this.state = {
-      activeItem: _this.props.items[0],
+      activeItem: null,
       open: false
     };
     return _this;
@@ -32475,9 +32475,9 @@ function (_React$Component) {
       }, React.createElement("label", {
         className: "dropdown-item-selected",
         onClick: this.toggleMenu.bind(this)
-      }, this.state.activeItem.name, React.createElement("i", {
+      }, this.props.activeItem ? this.props.activeItem.name : '', React.createElement("i", {
         className: "material-icons"
-      }, this.state.open ? 'keyboard_arrow_up' : 'keyboard_arrow_down')), React.createElement("ul", {
+      }, this.state.open ? 'keyboard_arrow_up' : 'keyboard_arrow_down')), this.props.items.length > 0 && React.createElement("ul", {
         className: "dropdown-menu"
       }, this.props.items.map(function (category, i) {
         return React.createElement("li", {
@@ -32687,7 +32687,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/base64-js/index.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../node_modules/base64-js/index.js":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -32840,7 +32840,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"../../node_modules/ieee754/index.js":[function(require,module,exports) {
+},{}],"../../../node_modules/ieee754/index.js":[function(require,module,exports) {
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -32926,7 +32926,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"../../node_modules/buffer/node_modules/isarray/index.js":[function(require,module,exports) {
+},{}],"../../../node_modules/buffer/node_modules/isarray/index.js":[function(require,module,exports) {
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
@@ -34726,7 +34726,7 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":"../../node_modules/base64-js/index.js","ieee754":"../../node_modules/ieee754/index.js","isarray":"../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
+},{"base64-js":"../../../node_modules/base64-js/index.js","ieee754":"../../../node_modules/ieee754/index.js","isarray":"../../../node_modules/buffer/node_modules/isarray/index.js","buffer":"../../node_modules/buffer/index.js"}],"../../node_modules/lodash/lodash.js":[function(require,module,exports) {
 var global = arguments[3];
 var Buffer = require("buffer").Buffer;
 var define;
@@ -56037,16 +56037,22 @@ var Workspace =
 /*#__PURE__*/
 function () {
   function Workspace(name, image) {
-    var gradient = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var topics = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var gradient = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+    var color1 = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '#f0f0f0';
+    var color2 = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : '#e0e0e0';
 
     _classCallCheck(this, Workspace);
 
     this.topics = [];
-    this.id = "".concat(Math.floor(Math.random() * 10e8));
+    this.id = name.toLowerCase();
     this.name = name;
     this.image = image;
     this.link = "/workspace/".concat(Math.floor(Math.random() * 10e6));
     this.gradient = gradient;
+    this.topics = topics;
+    this.color1 = color1;
+    this.color2 = color2;
   }
 
   _createClass(Workspace, [{
@@ -56062,17 +56068,19 @@ function () {
 exports.Workspace = Workspace;
 exports.DragAndDropTypes = {
   DUMPING_GROUND_ITEM: 'DUMPING_GROUND_ITEM',
-  BOARD_ITEM: 'BOARD_ITEM'
+  BOARD_ITEM: 'BOARD_ITEM',
+  HEADER_ITEM: 'HEADER_ITEM'
 };
 var ContentType;
 
 (function (ContentType) {
-  ContentType[ContentType["Photo"] = 0] = "Photo";
-  ContentType[ContentType["Video"] = 1] = "Video";
-  ContentType[ContentType["Link"] = 2] = "Link";
-  ContentType[ContentType["Article"] = 3] = "Article";
-  ContentType[ContentType["SocialMedia"] = 4] = "SocialMedia";
-  ContentType[ContentType["Sticky"] = 5] = "Sticky";
+  ContentType[ContentType["Random"] = 0] = "Random";
+  ContentType[ContentType["Photo"] = 1] = "Photo";
+  ContentType[ContentType["Video"] = 2] = "Video";
+  ContentType[ContentType["Link"] = 3] = "Link";
+  ContentType[ContentType["Article"] = 4] = "Article";
+  ContentType[ContentType["SocialMedia"] = 5] = "SocialMedia";
+  ContentType[ContentType["Sticky"] = 6] = "Sticky";
 })(ContentType = exports.ContentType || (exports.ContentType = {}));
 
 var MediaSourceType;
@@ -56088,6 +56096,7 @@ var MediaSourceType;
   MediaSourceType[MediaSourceType["Vimeo"] = 7] = "Vimeo";
   MediaSourceType[MediaSourceType["ACM"] = 8] = "ACM";
   MediaSourceType[MediaSourceType["Scholar"] = 9] = "Scholar";
+  MediaSourceType[MediaSourceType["MMS"] = 10] = "MMS";
 })(MediaSourceType = exports.MediaSourceType || (exports.MediaSourceType = {}));
 
 var ContentList = function ContentList() {
@@ -56107,7 +56116,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu-list.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/context-menu/context-menu-list.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56249,7 +56258,7 @@ function (_React$Component) {
         }, option.icon));
       })), this.props.actions.length > 0 && this.props.actions.map(function (action, i) {
         return React.createElement("li", {
-          onClick: _this2.onAction.bind(_this2, action.name),
+          onClick: _this2.onAction.bind(_this2, action.id),
           tabIndex: 0,
           key: i
         }, React.createElement("i", {
@@ -56369,6 +56378,8 @@ function (_React$Component) {
     key: "onContextMenuInvoked",
     value: function onContextMenuInvoked(e) {
       this.openMenu(e);
+      e.preventDefault();
+      e.stopPropagation();
     }
   }, {
     key: "componentDidUpdate",
@@ -56421,6 +56432,28 @@ module.exports = "/carnegie_museum_art.66ef529f.jpg";
 module.exports = "/church_brew.2a31e89e.jpg";
 },{}],"assets/duquesne_incline.jpg":[function(require,module,exports) {
 module.exports = "/duquesne_incline.c7cce539.jpg";
+},{}],"assets/media-types/instagram.png":[function(require,module,exports) {
+module.exports = "/instagram.7976014b.png";
+},{}],"assets/media-types/medium.png":[function(require,module,exports) {
+module.exports = "/medium.1c3287bd.png";
+},{}],"assets/media-types/open-book.png":[function(require,module,exports) {
+module.exports = "/open-book.cb9d43e6.png";
+},{}],"assets/media-types/photo.png":[function(require,module,exports) {
+module.exports = "/photo.0fe832b1.png";
+},{}],"assets/media-types/quora.png":[function(require,module,exports) {
+module.exports = "/quora.707f1e41.png";
+},{}],"assets/media-types/twitter.png":[function(require,module,exports) {
+module.exports = "/twitter.4218dc1d.png";
+},{}],"assets/media-types/video-player.png":[function(require,module,exports) {
+module.exports = "/video-player.4f276a9b.png";
+},{}],"assets/media-types/vimeo.png":[function(require,module,exports) {
+module.exports = "/vimeo.c27c0aee.png";
+},{}],"assets/media-types/youtube.png":[function(require,module,exports) {
+module.exports = "/youtube.298480ee.png";
+},{}],"assets/media-types/notes.png":[function(require,module,exports) {
+module.exports = "/notes.132c10a1.png";
+},{}],"assets/media-types/link.png":[function(require,module,exports) {
+module.exports = "/link.47db01d8.png";
 },{}],"constants/constants.ts":[function(require,module,exports) {
 "use strict";
 
@@ -56430,23 +56463,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
 var types_1 = require("./types");
-
-var _ = __importStar(require("lodash"));
 
 var img1 = require('../assets/carnegie_museum_art.jpg');
 
@@ -56454,9 +56475,22 @@ var img2 = require('../assets/church_brew.jpg');
 
 var img3 = require('../assets/duquesne_incline.jpg');
 
+exports.MediaTypeImages = {
+  instagram: require('../assets/media-types/instagram.png'),
+  medium: require('../assets/media-types/medium.png'),
+  news: require('../assets/media-types/open-book.png'),
+  photo: require('../assets/media-types/photo.png'),
+  quora: require('../assets/media-types/quora.png'),
+  twitter: require('../assets/media-types/twitter.png'),
+  videoPlayer: require('../assets/media-types/video-player.png'),
+  vimeo: require('../assets/media-types/vimeo.png'),
+  youtube: require('../assets/media-types/youtube.png'),
+  notes: require('../assets/media-types/notes.png'),
+  link: require('../assets/media-types/link.png')
+};
 exports.ItemWidth = 240;
-exports.ItemHeight = 180;
-exports.GroupBufffer = 20;
+exports.ItemHeight = null;
+exports.GroupBufffer = 60;
 exports.PhotosList = [{
   id: "1006",
   author: "Vladimir Kudinov",
@@ -56544,10 +56578,31 @@ exports.AllContentList = [{
   }),
   type: types_1.ContentType.Video
 }];
-exports.WorkspaceList = [new types_1.Workspace('Workspace #1', img1, "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))"), new types_1.Workspace('Workspace #2', img2, "linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51))"), new types_1.Workspace('Workspace #3', img3, "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))"), new types_1.Workspace('Workspace #4', img1, "linear-gradient(to left, rgb(100, 43, 115), rgb(198, 66, 110))")];
-exports.WorkspaceList.forEach(function (w) {
-  return w.topics = GetSampleTopicItems();
-});
+exports.WorkspaceList = [new types_1.Workspace('Instagram', img1, [{
+  id: 'sunscreen',
+  name: 'Sunscreen Debate',
+  active: true
+}, {
+  id: 'microdermabrasion',
+  name: 'Microdermabrasion',
+  active: false
+}, {
+  id: 'copper-peptides',
+  name: 'Copper Peptides',
+  active: false
+}], "linear-gradient(to right, rgb(17, 153, 142), rgb(56, 239, 125))", 'rgb(56, 239, 125)', 'rgb(17, 153, 142)'), new types_1.Workspace('Blog', img3, [{
+  id: 'k-beauty',
+  name: 'K-Beauty Trends',
+  active: true
+}, {
+  id: 'retinol',
+  name: 'Retinol Routine',
+  active: false
+}, {
+  id: 'routine',
+  name: 'Peptides Routine',
+  active: false
+}], "linear-gradient(to right, rgb(84, 51, 255), rgb(32, 189, 255), rgb(165, 254, 203))", '#8fddfe', 'rgb(32, 189, 255)')];
 exports.WorkspaceCollectionTabs = [{
   id: 'all',
   name: 'All'
@@ -56571,164 +56626,56 @@ exports.DumpingGrounCollectionTabs = [{
   id: 'articles',
   name: 'Articles',
   type: types_1.ContentType.Article
-}, {
-  id: 'links',
-  name: 'Links',
-  type: types_1.ContentType.Link
-}, {
+}, // { id: 'links', name: 'Links', type: ContentType.Link },
+{
   id: 'social-media',
   name: 'Social Media',
   type: types_1.ContentType.SocialMedia
 }];
 exports.Topiclist = [{
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  name: 'Topic #AA',
+  id: GetRandomId(),
+  name: 'Sunscreen Debate',
   active: true
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  name: 'Topic #BB',
+  id: GetRandomId(),
+  name: 'Microdermabrasion',
   active: false
 }, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  name: 'Topic #CC',
+  id: GetRandomId(),
+  name: 'Copper Peptides',
   active: false
 }];
 
 function GetSampleTopicItems() {
   var items = [{
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    name: 'Topic #AA',
+    id: GetRandomId(),
+    name: 'Sunscreen Debate',
     active: true
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    name: 'Topic #BB',
+    id: GetRandomId(),
+    name: 'Microdermabrasion',
     active: false
   }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    name: 'Topic #CC',
+    id: GetRandomId(),
+    name: 'Copper Peptides',
     active: false
   }];
-  return _.shuffle(items);
+  return items;
 }
 
 exports.GetSampleTopicItems = GetSampleTopicItems;
 
-function GetSampleBoardItems() {
-  var items = [{
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    type: types_1.ContentType.Video,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    type: types_1.ContentType.Article,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    type: types_1.ContentType.Photo,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    type: types_1.ContentType.Link,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }, {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
-    type: types_1.ContentType.SocialMedia,
-    props: {
-      height: exports.ItemHeight,
-      width: exports.ItemWidth
-    }
-  }];
-  return _.take(_.shuffle(items), 3);
-}
-
-exports.GetSampleBoardItems = GetSampleBoardItems;
-exports.BoardGroups = [{
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  title: 'Group #1',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  title: 'Group #2',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  title: 'Group #3',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  title: 'Group #4',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}, {
-  id: "".concat(Math.floor(Math.random() * 10e8)),
-  title: 'Group #5',
-  props: {
-    top: 0,
-    left: 0
-  },
-  items: GetSampleBoardItems(),
-  annotation: {
-    id: "".concat(Math.floor(Math.random() * 10e10)),
-    message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-  }
-}];
-
 function GetEmptyGroup() {
   return {
-    id: "".concat(Math.floor(Math.random() * 10e8)),
+    id: GetRandomId(),
     title: 'New Group *',
     props: {
       top: 0,
       left: 0
     },
     items: [],
-    annotation: {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }
+    annotation: '',
+    isEmpty: true
   };
 }
 
@@ -56813,11 +56760,33 @@ exports.CancellabelRequests = CancellabelRequests;
 
 function GetAPIUrl() {
   var remote = window.remote;
-  return "http://localhost:".concat(remote.getCurrentWindow().API_PORT);
+
+  if (remote) {
+    return "http://localhost:".concat(remote.getCurrentWindow().API_PORT);
+  }
+
+  return null;
 }
 
 exports.GetAPIUrl = GetAPIUrl;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
+
+function ExportNote(value) {
+  var ipcRenderer = window.ipcRenderer;
+
+  if (ipcRenderer) {
+    ipcRenderer.send('export-composition', value);
+  }
+}
+
+exports.ExportNote = ExportNote;
+
+function GetRandomId() {
+  return "".concat(Math.floor(Math.random() * 10e10));
+}
+
+exports.GetRandomId = GetRandomId;
+;
+},{"./types":"constants/types.ts","../assets/carnegie_museum_art.jpg":"assets/carnegie_museum_art.jpg","../assets/church_brew.jpg":"assets/church_brew.jpg","../assets/duquesne_incline.jpg":"assets/duquesne_incline.jpg","../assets/media-types/instagram.png":"assets/media-types/instagram.png","../assets/media-types/medium.png":"assets/media-types/medium.png","../assets/media-types/open-book.png":"assets/media-types/open-book.png","../assets/media-types/photo.png":"assets/media-types/photo.png","../assets/media-types/quora.png":"assets/media-types/quora.png","../assets/media-types/twitter.png":"assets/media-types/twitter.png","../assets/media-types/video-player.png":"assets/media-types/video-player.png","../assets/media-types/vimeo.png":"assets/media-types/vimeo.png","../assets/media-types/youtube.png":"assets/media-types/youtube.png","../assets/media-types/notes.png":"assets/media-types/notes.png","../assets/media-types/link.png":"assets/media-types/link.png"}],"components/content-item/photo-content.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -56882,7 +56851,7 @@ function (_React$Component) {
       var _this2 = this;
 
       if (this.props.data.contentData.imgUrl) {
-        var idleCallbackID = window.requestIdleCallback(function () {
+        var idleCallbackID = window.requestAnimationFrame(function () {
           _this2.imageElement = new Image();
 
           _this2.imageElement.onload = function () {
@@ -56924,13 +56893,14 @@ function (_React$Component) {
 
           _this2.imageElement.src = _this2.props.data.contentData.imgUrl;
         });
-        this.cancellable.push(idleCallbackID, constants_1.Cancellable.IdleCallback);
+        this.cancellable.push(idleCallbackID, constants_1.Cancellable.AnimationFrame);
       }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this.imageElement) {
+        this.imageElement.onload = null;
         this.imageElement.remove();
         this.imageElement = null;
       }
@@ -56940,10 +56910,10 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var bgUrl = "url(".concat(this.state.imgUrl, ")");
+      var bgUrl = "url(".concat(this.props.data.contentData.imgUrl, ")");
       return React.createElement("div", {
-        className: "photo-content"
-      }, this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
+        className: "photo-content content-marker"
+      }, this.state.imgAvailable && this.state.imgUrl && this.props.showEntity && React.createElement("div", {
         className: "photo ".concat(this.state.showImg ? 'shown' : ''),
         style: {
           backgroundImage: bgUrl
@@ -56961,7 +56931,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"helper.ts":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"helper.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57066,7 +57036,7 @@ function (_React$Component) {
       var _this2 = this;
 
       if (this.props.data.contentData.videoThumbnailUrl) {
-        var idleCallbackID = window.requestIdleCallback(function () {
+        var idleCallbackID = window.requestAnimationFrame(function () {
           _this2.imageElement = new Image();
 
           _this2.imageElement.onload = function () {
@@ -57108,13 +57078,14 @@ function (_React$Component) {
 
           _this2.imageElement.src = _this2.props.data.contentData.videoThumbnailUrl;
         });
-        this.cancellable.push(idleCallbackID, constants_1.Cancellable.IdleCallback);
+        this.cancellable.push(idleCallbackID, constants_1.Cancellable.AnimationFrame);
       }
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this.imageElement) {
+        this.imageElement.onload = null;
         this.imageElement.remove();
         this.imageElement = null;
       }
@@ -57125,12 +57096,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var duration = helper_1.GetDuration(this.props.data.contentData.videoLength);
-      var bgUrl = "url(".concat(this.state.imgUrl, ")");
+      var bgUrl = "url('".concat(this.state.imgUrl, "')");
       return React.createElement("div", {
-        className: "video-content"
-      }, React.createElement("label", {
+        className: "video-content content-marker"
+      }, this.props.showEntity && React.createElement(React.Fragment, null, React.createElement("label", {
         className: "video-duration"
-      }, duration), this.state.imgAvailable && this.state.imgUrl && React.createElement("div", {
+      }, duration), this.state.imgAvailable && this.state.imgUrl && this.props.showEntity && React.createElement("div", {
         className: "video-photo ".concat(this.state.showImg ? 'shown' : ''),
         style: {
           backgroundImage: bgUrl
@@ -57139,7 +57110,7 @@ function (_React$Component) {
         className: "video-overlay ".concat(this.state.imgAvailable && this.state.imgUrl ? 'darken-bg' : '')
       }, React.createElement("i", {
         className: "material-icons play-icon"
-      }, "play_circle_filled")));
+      }, "play_circle_filled"))));
     }
   }]);
 
@@ -57199,12 +57170,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "article-content"
-      }, React.createElement("label", {
+        className: "article-content content-marker"
+      }, this.props.showEntity && React.createElement(React.Fragment, null, React.createElement("label", {
         className: "article-title"
       }, this.props.data.contentData.articleTitle), React.createElement("label", {
         className: "article-author"
-      }, this.props.data.contentData.authorName));
+      }, this.props.data.contentData.authorName)));
     }
   }]);
 
@@ -57264,8 +57235,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
-        className: "link-content"
-      }, React.createElement("label", {
+        className: "link-content content-marker"
+      }, this.props.showEntity && React.createElement("label", {
         className: "link-title"
       }, this.props.data.contentData.ogDescription));
     }
@@ -57332,23 +57303,23 @@ function (_React$Component) {
         backgroundImage: "url(".concat(this.props.data.contentData.profileImgUrl, ")")
       };
       var instaStyles = {
-        backgroundImage: "url(".concat(this.props.data.contentData.instragramImageUrl, ")")
+        backgroundImage: "url('".concat(this.props.data.contentData.instragramImageUrl, "')")
       };
       return React.createElement("div", {
-        className: "social-media-content"
-      }, React.createElement("div", {
-        className: "social-media-handle"
+        className: "social-media-content content-marker"
+      }, this.props.showEntity && React.createElement(React.Fragment, null, this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
+        className: "tweet-text"
+      }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
+        className: "insta-photo",
+        style: instaStyles
+      }), React.createElement("div", {
+        className: "social-media-handle ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram')
       }, React.createElement("div", {
         className: "social-media-text"
       }, this.props.data.contentData.handle), React.createElement("div", {
         className: "social-media-pic ".concat(this.props.data.sourceType === types_1.MediaSourceType.Twitter ? 'twitter' : 'instagram'),
         style: styles
-      })), this.props.data.sourceType === types_1.MediaSourceType.Twitter && React.createElement("label", {
-        className: "tweet-text"
-      }, this.props.data.contentData.tweetText), this.props.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement("div", {
-        className: "insta-photo",
-        style: instaStyles
-      }));
+      }))));
     }
   }]);
 
@@ -64362,7 +64333,9 @@ var IntialState = {
   newWorkspaceCreator: false,
   newTopicCreator: false,
   workspaceList: constants_1.WorkspaceList,
-  activeWorkspace: constants_1.WorkspaceList[0]
+  activeWorkspace: constants_1.WorkspaceList[0],
+  isSelectionEnabled: false,
+  manageHeadersDialog: false
 };
 exports.default = IntialState;
 },{"../../constants/constants":"constants/constants.ts"}],"access/actions/actionTypes.ts":[function(require,module,exports) {
@@ -64382,6 +64355,8 @@ exports.HIDE_WORKSPACE_RTE = 'HIDE_WORKSPACE_RTE';
 exports.SHOW_WORKSPACE_RTE_ACTION = 'SHOW_WORKSPACE_RTE_ACTION';
 exports.HIDE_WORKSPACE_RTE_ACTION = 'HIDE_WORKSPACE_RTE_ACTION';
 exports.TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+exports.SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+exports.HIDE_SIDEBAR = 'HIDE_SIDEBAR';
 exports.TOGGLE_WORKSHOP_IN_HEADER = 'TOGGLE_WORKSHOP_IN_HEADER';
 exports.SHOW_WORKSHOP_IN_HEADER = 'SHOW_WORKSHOP_IN_HEADER';
 exports.HIDE_WORKSHOP_IN_HEADER = 'HIDE_WORKSHOP_IN_HEADER';
@@ -64401,6 +64376,13 @@ exports.HIDE_TOPIC_CREATOR = 'HIDE_TOPIC_CREATOR';
 exports.ACTIVATE_WORKSPACE_AND_TOPIC = 'ACTIVATE_WORKSPACE_AND_TOPIC';
 exports.SHOW_SEARCH_BAR = 'SHOW_SEARCH_BAR';
 exports.HIDE_SEARCH_BAR = 'HIDE_SEARCH_BAR';
+exports.TOGGLE_SEARCH_BAR = 'TOGGLE_SEARCH_BAR';
+exports.ENABLE_SELECTION_IN_DUMPING_GROUND = 'ENABLE_SELECTION_IN_DUMPING_GROUND';
+exports.DISABLE_SELECTION_IN_DUMPING_GROUND = 'DISABLE_SELECTION_IN_DUMPING_GROUND';
+exports.TOGGLE_SELECTION_IN_DUMPING_GROUND = 'TOGGLE_SELECTION_IN_DUMPING_GROUND';
+exports.SHOW_MANAGE_HEADERS = 'SHOW_MANAGE_HEADERS';
+exports.HIDE_MANAGE_HEADERS = 'HIDE_MANAGE_HEADERS';
+exports.TOGGLE_MANAGE_HEADERS = 'TOGGLE_MANAGE_HEADERS';
 },{}],"access/actions/appActions.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64422,6 +64404,11 @@ var types = __importStar(require("./actionTypes"));
 
 function SampleFetchUrl() {
   var remote = window.remote;
+
+  if (!remote) {
+    return null;
+  }
+
   var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
   return api;
 }
@@ -64499,6 +64486,20 @@ exports.showRTE = function () {
 exports.toggleSideBar = function () {
   return {
     type: types.TOGGLE_SIDEBAR,
+    payload: {}
+  };
+};
+
+exports.showSideBar = function () {
+  return {
+    type: types.SHOW_SIDEBAR,
+    payload: {}
+  };
+};
+
+exports.hideSideBar = function () {
+  return {
+    type: types.HIDE_SIDEBAR,
     payload: {}
   };
 };
@@ -64638,6 +64639,55 @@ exports.hideSearchBar = function () {
     payload: {}
   };
 };
+
+exports.toggleSearchBar = function () {
+  return {
+    type: types.TOGGLE_SEARCH_BAR,
+    payload: {}
+  };
+};
+
+exports.toggleSelectionInDumpingGround = function () {
+  return {
+    type: types.TOGGLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.enableSelectionInDumpingGround = function () {
+  return {
+    type: types.ENABLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.disableSelectionInDumpingGround = function () {
+  return {
+    type: types.DISABLE_SELECTION_IN_DUMPING_GROUND,
+    payload: {}
+  };
+};
+
+exports.showManageHeadersDialog = function () {
+  return {
+    type: types.SHOW_MANAGE_HEADERS,
+    payload: {}
+  };
+};
+
+exports.hideManageHeadersDialog = function () {
+  return {
+    type: types.HIDE_MANAGE_HEADERS,
+    payload: {}
+  };
+};
+
+exports.toggleManageHeadersDialog = function () {
+  return {
+    type: types.TOGGLE_MANAGE_HEADERS,
+    payload: {}
+  };
+};
 },{"./actionTypes":"access/actions/actionTypes.ts"}],"access/reducers/reducer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -64697,10 +64747,38 @@ exports.default = function () {
         return newState;
       }
 
+    case actionTypes_1.SHOW_SIDEBAR:
+      {
+        newState = Object.assign({}, state, {
+          sideBarShown: true,
+          searchBarShown: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_SIDEBAR:
+      {
+        newState = Object.assign({}, state, {
+          sideBarShown: false,
+          searchBarShown: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.TOGGLE_SEARCH_BAR:
+      {
+        var _current2 = state.searchBarShown;
+        newState = Object.assign({}, state, {
+          searchBarShown: !_current2
+        });
+        return newState;
+      }
+
     case actionTypes_1.SHOW_SEARCH_BAR:
       {
         newState = Object.assign({}, state, {
-          searchBarShown: true
+          searchBarShown: true,
+          workspaceDumpBarShown: false
         });
         return newState;
       }
@@ -64781,9 +64859,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSPACE_RTE:
       {
-        var _current2 = state.workspaceRTEShown;
+        var _current3 = state.workspaceRTEShown;
         newState = Object.assign({}, state, {
-          workspaceRTEShown: !_current2,
+          workspaceRTEShown: !_current3,
           searchBarShown: false
         });
         return newState;
@@ -64791,9 +64869,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSHOP_IN_HEADER:
       {
-        var _current3 = state.workspaceInHeader;
+        var _current4 = state.workspaceInHeader;
         newState = Object.assign({}, state, {
-          workspaceInHeader: !_current3,
+          workspaceInHeader: !_current4,
           sideBarShown: false
         });
         return newState;
@@ -64817,9 +64895,9 @@ exports.default = function () {
 
     case actionTypes_1.TOGGLE_WORKSHOP_ACTION_IN_HEADER:
       {
-        var _current4 = state.workspaceActionInHeader;
+        var _current5 = state.workspaceActionInHeader;
         newState = Object.assign({}, state, {
-          workspaceActionInHeader: !_current4
+          workspaceActionInHeader: !_current5
         });
         return newState;
       }
@@ -64864,6 +64942,31 @@ exports.default = function () {
           toasts: [].concat(_toasts.filter(function (t) {
             return t.id !== action.payload;
           }))
+        });
+        return newState;
+      }
+
+    case actionTypes_1.TOGGLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        var _current6 = state.isSelectionEnabled;
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: !_current6
+        });
+        return newState;
+      }
+
+    case actionTypes_1.ENABLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.DISABLE_SELECTION_IN_DUMPING_GROUND:
+      {
+        newState = Object.assign({}, state, {
+          isSelectionEnabled: false
         });
         return newState;
       }
@@ -64932,7 +65035,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_WORKSPACE_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newWorkspaceCreator: true
+          newWorkspaceCreator: true,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -64940,7 +65044,8 @@ exports.default = function () {
     case actionTypes_1.HIDE_WORKSPACE_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newWorkspaceCreator: false
+          newWorkspaceCreator: false,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -64948,7 +65053,8 @@ exports.default = function () {
     case actionTypes_1.SHOW_TOPIC_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newTopicCreator: true
+          newTopicCreator: true,
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -64956,7 +65062,33 @@ exports.default = function () {
     case actionTypes_1.HIDE_TOPIC_CREATOR:
       {
         newState = Object.assign({}, state, {
-          newTopicCreator: false
+          newTopicCreator: false,
+          manageHeadersDialog: false
+        });
+        return newState;
+      }
+
+    case actionTypes_1.TOGGLE_MANAGE_HEADERS:
+      {
+        var _current2 = state.manageHeadersDialog;
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: !_current2
+        });
+        return newState;
+      }
+
+    case actionTypes_1.SHOW_MANAGE_HEADERS:
+      {
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: true
+        });
+        return newState;
+      }
+
+    case actionTypes_1.HIDE_MANAGE_HEADERS:
+      {
+        newState = Object.assign({}, state, {
+          manageHeadersDialog: false
         });
         return newState;
       }
@@ -65093,6 +65225,9 @@ exports.ContentViewerData = new rxjs_1.Subject();
 exports.WorkspaceContentTransfer = new rxjs_1.Subject();
 exports.DumpingGroundTransfer = new rxjs_1.Subject();
 exports.RouteInvoke = new rxjs_1.Subject();
+exports.DumpingGroundSelections = new rxjs_1.BehaviorSubject(null);
+exports.OpenAllNotesAction = new rxjs_1.Subject();
+exports.CurrentEnableScrollIntoCenter = new rxjs_1.BehaviorSubject(true);
 
 function InitializeSubscriptions() {
   var dumpBarSubscription = exports.ShowDumpBarAction$.subscribe(function (data) {
@@ -65118,7 +65253,6 @@ function InitializeSubscriptions() {
       configureStore_1.default.dispatch(actions.hideWorkpsaceActionInHeader());
     }
   });
-  subscriptions.push(worskpaceInHeaderSubscription);
 }
 
 exports.InitializeSubscriptions = InitializeSubscriptions;
@@ -65130,6 +65264,32 @@ function RemoveSubscriptions() {
 }
 
 exports.RemoveSubscriptions = RemoveSubscriptions;
+
+function ToggleSelection(id) {
+  var collection = exports.DumpingGroundSelections.value || [];
+  var record = collection.find(function (item) {
+    return item === id;
+  });
+  var newCollection = [];
+
+  if (!record) {
+    newCollection = [].concat(collection, id);
+  } else {
+    newCollection = [].concat(collection.filter(function (item) {
+      return item !== id;
+    }));
+  }
+
+  exports.DumpingGroundSelections.next(newCollection);
+
+  if (newCollection.length > 0) {
+    configureStore_1.default.dispatch(actions.enableSelectionInDumpingGround());
+  } else {
+    configureStore_1.default.dispatch(actions.disableSelectionInDumpingGround());
+  }
+}
+
+exports.ToggleSelection = ToggleSelection;
 },{"rxjs":"../../node_modules/rxjs/_esm5/index.js","../store/configureStore":"access/store/configureStore.ts","../actions/appActions":"access/actions/appActions.ts"}],"../../node_modules/react-intersection-observer/node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
 "use strict";
 
@@ -65612,25 +65772,43 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var types_1 = require("../../constants/types");
+
 var StickyContentItem =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(StickyContentItem, _React$Component);
 
   function StickyContentItem(props) {
+    var _this;
+
     _classCallCheck(this, StickyContentItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(StickyContentItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(StickyContentItem).call(this, props));
+    _this.state = {
+      imgAvailable: true,
+      showImg: true,
+      imgUrl: null
+    };
+    return _this;
   }
 
   _createClass(StickyContentItem, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", {
-        className: "note-content"
+      var bgUrl = "url(".concat(this.props.data.contentData.mediaUrl, ")");
+      return React.createElement(React.Fragment, null, this.props.data.sourceType === types_1.MediaSourceType.MMS && this.props.showEntity && React.createElement("div", {
+        className: "photo-content content-marker"
+      }, this.state.imgAvailable && React.createElement("div", {
+        className: "photo ".concat(this.state.showImg ? 'shown' : ''),
+        style: {
+          backgroundImage: bgUrl
+        }
+      })), !this.props.data.sourceType && this.props.showEntity && React.createElement("div", {
+        className: "note-content content-marker"
       }, React.createElement("p", {
         className: "note-text"
-      }, this.props.data.contentData.noteText));
+      }, this.props.data.contentData.noteText)));
     }
   }]);
 
@@ -65638,7 +65816,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.StickyContentItem = StickyContentItem;
-},{"react":"../../node_modules/react/index.js"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts"}],"components/content-item/content-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65695,6 +65873,8 @@ var react_intersection_observer_1 = require("react-intersection-observer");
 
 var sticky_content_1 = require("./sticky-content");
 
+var constants_1 = require("../../constants/constants");
+
 var ContentItemWrapper =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65708,7 +65888,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemWrapper).call(this, props));
     _this.state = {
       annotationAndNotesShown: false,
-      showEntity: false
+      showEntity: false,
+      newTagBeingAdded: false,
+      newTag: '',
+      tags: _this.props.data.tags,
+      annotation: _this.props.data.annotation
     };
     return _this;
   }
@@ -65729,36 +65913,95 @@ function (_React$Component) {
   }, {
     key: "openContent",
     value: function openContent() {
-      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video) {
+      if (this.props.data.contentType === types_1.ContentType.Photo || this.props.data.contentType === types_1.ContentType.Video || this.props.data.contentType === types_1.ContentType.Sticky && this.props.data.sourceType === types_1.MediaSourceType.MMS || this.props.data.contentType === types_1.ContentType.SocialMedia && this.props.data.sourceType === types_1.MediaSourceType.Instagram) {
         observables_1.ContentViewerData.next(this.props.data);
       }
     }
   }, {
     key: "onViewChange",
     value: function onViewChange(inView, entry) {
-      var notInView = this.state.showEntity;
-
-      if (inView && !notInView) {
+      // const notInView = this.state.showEntity;
+      // if (inView && !notInView) {
+      // }
+      this.setState({
+        showEntity: inView
+      });
+    }
+  }, {
+    key: "addTag",
+    value: function addTag() {
+      this.setState({
+        newTag: '',
+        newTagBeingAdded: true
+      });
+    }
+  }, {
+    key: "onNewTagChange",
+    value: function onNewTagChange(e) {
+      this.setState({
+        newTag: e.target.value
+      });
+    }
+  }, {
+    key: "onAnnotationChange",
+    value: function onAnnotationChange(e) {
+      this.setState({
+        annotation: e.target.value
+      });
+    }
+  }, {
+    key: "onNewTagKeyUp",
+    value: function onNewTagKeyUp(e) {
+      if (e.keyCode === 13) {
+        var tags = [].concat(this.state.tags, this.state.newTag);
         this.setState({
-          showEntity: true
+          newTag: '',
+          newTagBeingAdded: false,
+          tags: tags
         });
       }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.openAllNotesActionSubscription = observables_1.OpenAllNotesAction.subscribe(function (data) {
+        _this2.setState({
+          annotationAndNotesShown: data
+        });
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.openAllNotesActionSubscription.unsubscribe();
     }
   }, {
     key: "render",
     value: function render() {
       var type = this.props.data.contentType;
       var label = '';
+      var currentContentImage = null;
+      var currentContentImageClass = 'content-type-image ';
 
       switch (type) {
         case types_1.ContentType.Article:
           {
+            currentContentImage = constants_1.MediaTypeImages.link;
+            currentContentImageClass = 'content-type-image no-shadow';
+
             if (this.props.data.sourceType === types_1.MediaSourceType.ACM) {
               label = 'ACM';
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Scholar) {
               label = 'Scholar';
+            } else if (this.props.data.sourceType === types_1.MediaSourceType.Medium) {
+              label = 'Medium';
+              currentContentImage = constants_1.MediaTypeImages.medium;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Quora) {
               label = 'Quora';
+              currentContentImage = constants_1.MediaTypeImages.link;
+              currentContentImageClass = currentContentImageClass + ' small';
             }
 
             break;
@@ -65767,24 +66010,40 @@ function (_React$Component) {
         case types_1.ContentType.Sticky:
           {
             label = 'Note';
+            currentContentImageClass = 'content-type-image no-shadow';
+            currentContentImage = constants_1.MediaTypeImages.notes;
             break;
           }
 
         case types_1.ContentType.Link:
           {
             label = 'Link';
+            currentContentImage = constants_1.MediaTypeImages.link;
+            currentContentImageClass = 'content-type-image no-shadow';
+            currentContentImageClass = currentContentImageClass + ' small';
             break;
           }
 
         case types_1.ContentType.Photo:
           {
             label = 'Photo';
+            currentContentImage = constants_1.MediaTypeImages.photo;
             break;
           }
 
         case types_1.ContentType.Video:
           {
             label = this.props.data.sourceType === types_1.MediaSourceType.Vimeo ? 'Vimeo' : 'Youtube';
+
+            if (this.props.data.sourceType === types_1.MediaSourceType.Vimeo) {
+              currentContentImage = constants_1.MediaTypeImages.vimeo;
+            } else if (this.props.data.sourceType === types_1.MediaSourceType.Youtube) {
+              currentContentImage = constants_1.MediaTypeImages.youtube;
+              currentContentImageClass = currentContentImageClass + ' youtube';
+            } else {
+              currentContentImage = constants_1.MediaTypeImages.videoPlayer;
+            }
+
             break;
           }
 
@@ -65792,8 +66051,11 @@ function (_React$Component) {
           {
             if (this.props.data.sourceType === types_1.MediaSourceType.Twitter) {
               label = 'Twitter';
+              currentContentImageClass = 'content-type-image no-shadow';
+              currentContentImage = constants_1.MediaTypeImages.twitter;
             } else if (this.props.data.sourceType === types_1.MediaSourceType.Instagram) {
               label = 'Instagram';
+              currentContentImage = constants_1.MediaTypeImages.instagram;
             }
 
             break;
@@ -65806,7 +66068,8 @@ function (_React$Component) {
         case types_1.ContentType.Photo:
           {
             currentContent = React.createElement(photo_content_1.PhotoContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65814,7 +66077,8 @@ function (_React$Component) {
         case types_1.ContentType.Video:
           {
             currentContent = React.createElement(video_content_1.VideoContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65822,7 +66086,8 @@ function (_React$Component) {
         case types_1.ContentType.Article:
           {
             currentContent = React.createElement(article_content_1.ArticleContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65830,7 +66095,8 @@ function (_React$Component) {
         case types_1.ContentType.Link:
           {
             currentContent = React.createElement(link_content_1.LinkContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65838,7 +66104,8 @@ function (_React$Component) {
         case types_1.ContentType.SocialMedia:
           {
             currentContent = React.createElement(socialmedia_item_1.SocialMediaContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65846,7 +66113,8 @@ function (_React$Component) {
         case types_1.ContentType.Sticky:
           {
             currentContent = React.createElement(sticky_content_1.StickyContentItem, {
-              data: this.props.data
+              data: this.props.data,
+              showEntity: this.state.showEntity
             });
             break;
           }
@@ -65858,6 +66126,13 @@ function (_React$Component) {
           }
       }
 
+      var contentImageStyle = {
+        backgroundImage: "url(".concat(currentContentImage, ")")
+      };
+      var _this$state = this.state,
+          newTagBeingAdded = _this$state.newTagBeingAdded,
+          tags = _this$state.tags,
+          annotation = _this$state.annotation;
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "inner-content-holder ".concat(this.props.inheritDimensions ? 'inherit-dimensions' : '')
       }, React.createElement("div", {
@@ -65868,31 +66143,40 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "inner-content-wrapper ".concat(this.state.annotationAndNotesShown ? 'notes-open' : ''),
         onClick: this.openContent.bind(this)
-      }, this.state.showEntity && currentContent, this.props.data.title && React.createElement("div", {
+      }, currentContentImage && React.createElement("div", {
+        className: currentContentImageClass
+      }, React.createElement("div", {
+        className: "image",
+        style: contentImageStyle
+      })), currentContent, this.props.data.title && React.createElement("div", {
         className: "inner-overlay-content-wrapper"
       }, React.createElement("label", {
         className: "inner-content-title"
-      }, this.props.data.title))), React.createElement("label", {
-        className: "inner-content-type-label"
-      }, label))), this.state.annotationAndNotesShown && React.createElement("div", {
+      }, this.props.data.title)))), this.state.annotationAndNotesShown && React.createElement("div", {
         className: "inner-content-meta"
       }, React.createElement("div", {
         className: "inner-content-meta-tags"
-      }, React.createElement("ul", null, this.props.data.tags.map(function (tag, i) {
+      }, React.createElement("ul", null, tags.map(function (tag, i) {
         return React.createElement("li", {
           key: i
         }, tag);
       }), React.createElement("li", {
-        className: "new-tag"
-      }, React.createElement("i", {
+        className: "new-tag",
+        onClick: this.addTag.bind(this)
+      }, !newTagBeingAdded && React.createElement(React.Fragment, null, React.createElement("i", {
         className: "material-icons"
-      }, "add"), " New"))), React.createElement("div", {
+      }, "add"), " New"), newTagBeingAdded && React.createElement(React.Fragment, null, React.createElement("input", {
+        onKeyUp: this.onNewTagKeyUp.bind(this),
+        size: 8,
+        width: "auto",
+        value: this.state.newTag,
+        onChange: this.onNewTagChange.bind(this)
+      }))))), React.createElement("div", {
         className: "inner-content-meta-notes"
-      }, this.props.data.annotations.map(function (note, i) {
-        return React.createElement("p", {
-          key: i
-        }, note.message);
-      }))), React.createElement("div", {
+      }, React.createElement("textarea", {
+        defaultValue: annotation,
+        onChange: this.onAnnotationChange.bind(this)
+      })))), React.createElement("div", {
         className: "inner-content-item-actions"
       }, this.state.annotationAndNotesShown && React.createElement("i", {
         className: "material-icons",
@@ -65911,7 +66195,119 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWrapper = ContentItemWrapper;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx"}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content":"components/content-item/photo-content.tsx","./content-item.scss":"components/content-item/content-item.scss","./video-content":"components/content-item/video-content.tsx","./article-content":"components/content-item/article-content.tsx","./link-content":"components/content-item/link-content.tsx","./socialmedia-item":"components/content-item/socialmedia-item.tsx","../../access/observables/observables":"access/observables/observables.ts","react-intersection-observer":"../../node_modules/react-intersection-observer/react-intersection-observer.esm.js","./sticky-content":"components/content-item/sticky-content.tsx","../../constants/constants":"constants/constants.ts"}],"transforms.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function GetWorkspaceListForSidebar(Workspaces) {
+  var result = Workspaces.map(function (item) {
+    var sideBarItem = {
+      id: Math.floor(Math.random() * 10e8),
+      name: item.name,
+      link: "/workspace/".concat(item.id, "/topic/123"),
+      active: false,
+      subListOpen: false,
+      gradient: item.gradient,
+      items: item.topics.map(function (topic) {
+        var subItem = {
+          id: topic.id,
+          name: topic.name,
+          active: false,
+          items: [],
+          link: BuildTopicLink(item.id, topic.id)
+        };
+        return subItem;
+      })
+    };
+    return sideBarItem;
+  });
+  return result;
+}
+
+exports.GetWorkspaceListForSidebar = GetWorkspaceListForSidebar;
+
+function BuildTopicLink(workspaceId, topicLink) {
+  return "/workspace/".concat(workspaceId, "/topic/").concat(topicLink);
+}
+
+exports.BuildTopicLink = BuildTopicLink;
+
+function isEqual(a, b) {
+  if (typeof a === 'string' && typeof b === 'string') {
+    return a.localeCompare(b) === 0;
+  }
+
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a === b;
+  }
+
+  if (a instanceof Date && b instanceof Date) {
+    return a.getTime() === b.getTime();
+  }
+
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length === b.length) {
+      for (var i = 0; i < a.length; i++) {
+        var equal = isEqual(a[i], b[i]);
+
+        if (!equal) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  }
+
+  if (a instanceof Object && b instanceof Object) {
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    if (aProps.length !== bProps.length) {
+      return false;
+    } else {
+      // tslint:disable-next-line:prefer-for-of
+      for (var _i = 0; _i < aProps.length; _i++) {
+        var prop = aProps[_i];
+
+        var _equal = isEqual(a[prop], b[prop]);
+
+        if (!_equal) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  }
+
+  return false;
+}
+
+exports.isEqual = isEqual;
+
+function GetGroupWrapperId(id) {
+  return "GROUP-".concat(id);
+}
+
+exports.GetGroupWrapperId = GetGroupWrapperId;
+;
+
+function OpenExternalUrl(url) {
+  var shell = window.shell;
+
+  if (shell) {
+    shell.openExternal(url);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+exports.OpenExternalUrl = OpenExternalUrl;
+},{}],"components/content-item/content-item-with-menu.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -65952,6 +66348,8 @@ var context_menu_1 = require("../context-menu/context-menu");
 
 var content_item_1 = require("./content-item");
 
+var transforms_1 = require("../../transforms");
+
 var ContentItemWithMenu =
 /*#__PURE__*/
 function (_React$Component) {
@@ -65986,7 +66384,9 @@ function (_React$Component) {
   }, {
     key: "actionInvoked",
     value: function actionInvoked(action) {
-      if (this.props.onActionInvoked) {
+      if (action === 'source') {
+        transforms_1.OpenExternalUrl(this.props.data.sourceUrl);
+      } else {
         this.props.onActionInvoked(action);
       }
     }
@@ -65994,24 +66394,41 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var actions = [{
+        id: 'select',
+        icon: 'select_all',
+        name: 'Select'
+      }, {
+        id: 'annotate',
         icon: 'notes',
         name: 'Annotate'
       }, {
+        id: 'tag',
         icon: 'label',
         name: 'Tag'
       }, {
+        id: 'edit',
         icon: 'edit',
         name: 'Edit'
       }, {
+        id: 'source',
         icon: 'open_in_new',
         name: 'Source'
       }, {
+        id: 'archive',
         icon: 'archive',
         name: 'Archive'
       }, {
+        id: 'delete',
         icon: 'delete',
         name: 'Delete'
       }];
+
+      if (!this.props.data.sourceUrl) {
+        actions = actions.filter(function (action) {
+          return action.id !== 'source';
+        });
+      }
+
       return React.createElement(context_menu_1.ContextMenu, {
         actions: actions,
         open: this.state.menuOpen,
@@ -66030,7 +66447,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentItemWithMenu = ContentItemWithMenu;
-},{"react":"../../node_modules/react/index.js","../context-menu/context-menu":"components/context-menu/context-menu.tsx","./content-item":"components/content-item/content-item.tsx"}],"components/dumping-ground/dumping-ground-item.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../context-menu/context-menu":"components/context-menu/context-menu.tsx","./content-item":"components/content-item/content-item.tsx","../../transforms":"transforms.ts"}],"components/dumping-ground/dumping-ground-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66073,6 +66490,27 @@ var types_1 = require("../../constants/types");
 
 var content_item_with_menu_1 = require("../content-item/content-item-with-menu");
 
+var react_redux_1 = require("react-redux");
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var observables_1 = require("../../access/observables/observables");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    isSelectionEnabled: reducers.isSelectionEnabled
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
 var itemSource = {
   beginDrag: function beginDrag(props) {
     return {
@@ -66081,9 +66519,9 @@ var itemSource = {
   }
 };
 
-function collect(connect, monitor) {
+function collect(connector, monitor) {
   return {
-    connectDragSource: connect.dragSource(),
+    connectDragSource: connector.dragSource(),
     isDragging: monitor.isDragging()
   };
 }
@@ -66093,10 +66531,10 @@ var DumpingGroundItem =
 function (_React$Component) {
   _inherits(DumpingGroundItem, _React$Component);
 
-  function DumpingGroundItem() {
+  function DumpingGroundItem(props) {
     _classCallCheck(this, DumpingGroundItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundItem).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundItem).call(this, props));
   }
 
   _createClass(DumpingGroundItem, [{
@@ -66105,17 +66543,36 @@ function (_React$Component) {
       this.props.menuInvoked($event);
     }
   }, {
+    key: "onActionInvoked",
+    value: function onActionInvoked(name) {
+      if (name === 'select') {
+        observables_1.ToggleSelection(this.props.data.id);
+      }
+    }
+  }, {
+    key: "toggleSelection",
+    value: function toggleSelection() {
+      observables_1.ToggleSelection(this.props.data.id);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           isDragging = _this$props.isDragging,
           connectDragSource = _this$props.connectDragSource,
-          src = _this$props.src;
+          src = _this$props.src,
+          isSelectionEnabled = _this$props.isSelectionEnabled;
       return connectDragSource(React.createElement("div", {
-        className: "content-item-wrapper"
-      }, React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+        className: "content-item-wrapper ".concat(isSelectionEnabled ? 'show-selection' : '', " ").concat(isDragging ? ' is-draging' : '')
+      }, React.createElement("div", {
+        className: "selection-mask ".concat(this.props.data.selected ? 'active' : ''),
+        onClick: this.toggleSelection.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "check")), React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
         data: this.props.data,
-        menuInvoked: this.menuInvoked.bind(this)
+        menuInvoked: this.menuInvoked.bind(this),
+        onActionInvoked: this.onActionInvoked.bind(this)
       })));
     }
   }]);
@@ -66123,8 +66580,8 @@ function (_React$Component) {
   return DumpingGroundItem;
 }(React.Component);
 
-exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(DumpingGroundItem);
-},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/dumping-ground/dumping-ground-list.tsx":[function(require,module,exports) {
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.DUMPING_GROUND_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DumpingGroundItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/dumping-ground/dumping-ground-list.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66206,6 +66663,298 @@ exports.DumpingGroundList = DumpingGroundList;
 },{"react":"../../node_modules/react/index.js","./dumping-ground-item":"components/dumping-ground/dumping-ground-item.tsx"}],"constants/dummy-data.ts":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("./types");
+
+function BuildStickyContentItem(data) {
+  return {
+    id: data.id,
+    title: null,
+    contentType: types_1.ContentType.Sticky,
+    contentData: {
+      noteText: data.text
+    },
+    sourcePreviewAvailable: false,
+    sourceType: types_1.MediaSourceType.Browser,
+    tags: [],
+    annotation: ''
+  };
+}
+
+exports.BuildStickyContentItem = BuildStickyContentItem;
+
+function BuildMMSContentItem(data) {
+  return {
+    id: data.sid,
+    title: null,
+    contentType: types_1.ContentType.Sticky,
+    contentData: {
+      noteText: data.text,
+      mediaUrl: data.mediaUrl
+    },
+    sourcePreviewAvailable: false,
+    sourceType: data.mediaUrl ? types_1.MediaSourceType.MMS : null,
+    tags: [],
+    annotation: data.text
+  };
+}
+
+exports.BuildMMSContentItem = BuildMMSContentItem;
+
+function GetSampleStickyItem(data) {
+  return {
+    id: data.id,
+    title: null,
+    contentType: types_1.ContentType.Sticky,
+    contentData: {
+      noteText: data.text
+    },
+    sourcePreviewAvailable: false,
+    sourceType: types_1.MediaSourceType.Browser,
+    tags: [],
+    annotation: ' '
+  };
+}
+
+exports.GetSampleStickyItem = GetSampleStickyItem;
+},{"./types":"constants/types.ts"}],"assets/dummy/adult-boy-casual-220453.jpg":[function(require,module,exports) {
+module.exports = "/adult-boy-casual-220453.213a8f54.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 2.02.18 PM.93e806c5.png";
+},{}],"assets/dummy/beautiful-brunette-cute-774909.jpg":[function(require,module,exports) {
+module.exports = "/beautiful-brunette-cute-774909.7407e60f.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.43.00 PM.39a5975d.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.38.34 PM.a35e71a5.png";
+},{}],"assets/dummy/blur-casual-close-up-462680.jpg":[function(require,module,exports) {
+module.exports = "/blur-casual-close-up-462680.aa379638.jpg";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.27.34 PM.d3b3f2ca.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.34.19 PM.7d92a926.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.44.26 PM.74eee687.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.50.41 PM.3d07c578.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.54.05 PM.584a7ed3.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 2.00.39 PM.09369c32.png";
+},{}],"constants/samples/socialmedia-items.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummifiedSocialMediaItems = [{
+  id: 'socialmedia_1',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/adult-boy-casual-220453.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BzF-fhWnWhG/',
+    handle: '@labmuffinbeautyscience'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['chemical', 'mineral', 'sunscreen', 'zinc oxide', 'DIY'],
+  annotation: 'don\'t smear diaper cream on your face as a way to "DIY sunscreen"',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_2',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BqDD9C5HlUC/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['sunscreen'],
+  annotation: '@bioreus spf50+',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_3',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bz8VHwmHFkj/',
+    handle: '@made_u_blush'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: 'Dynamic Skin Recovery SPF 50 with Kale + Green Tea Spinach Cleanser, Hyaluronic Acid Serum Booster',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_4',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/blur-casual-close-up-462680.jpg'),
+    tweetText: "Chemicals in #sunscreen can be harmful to corals and other marine life. #Hawaii has officially banned oxybenzone and octinoxate ...",
+    tweetUrl: 'https://twitter.com/4oceanbracelets/status/1014931415224471552',
+    handle: '@4oceanbracelets'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Twitter,
+  tags: ['chemical', 'sunscreen', 'environment'],
+  annotation: 'Hawaii banned oxybenzone and octinoxate in sunscreen because it\'s harmful to the ocean, particularly coral reefs',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_5',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BtyVv2vHPGs/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: '',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_6',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/BtyVv2vHPGs/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['body'],
+  annotation: 'Top body shimmer product for summer ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_7',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bpri2KCAWCk/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: [],
+  annotation: 'Ascorbyl Glucoside Solution 12% (Okay)⁣, Moisturizing Eye Bomb (Recommend) ⁣, Protini Polypeptide Cream (Not recommend)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_8',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bzct2-WgQe3/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'lip products'],
+  annotation: 'Espoir Moonlit shade',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_9',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Be_s97BDtrK/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'lip products'],
+  annotation: 'new mlbb espoir velvet lipsticks for spring 2018 ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'socialmedia_10',
+  title: '',
+  contentType: types_1.ContentType.SocialMedia,
+  contentData: {
+    profileImgUrl: require('../../assets/dummy/beautiful-brunette-cute-774909.jpg'),
+    instragramImageUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png'),
+    instagramPostUrl: 'https://www.instagram.com/p/Bz52fw_gVRw/',
+    handle: '@skincaregoalsaf'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Instagram,
+  tags: ['K-beauty', 'foundations'],
+  annotation: 'Peripera\'s Blurring Skin Tint (tried the cc and will recommend) ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts","../../assets/dummy/adult-boy-casual-220453.jpg":"assets/dummy/adult-boy-casual-220453.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 2.02.18 PM.png","../../assets/dummy/beautiful-brunette-cute-774909.jpg":"assets/dummy/beautiful-brunette-cute-774909.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.43.00 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.38.34 PM.png","../../assets/dummy/blur-casual-close-up-462680.jpg":"assets/dummy/blur-casual-close-up-462680.jpg","../../assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.27.34 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.34.19 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.44.26 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.50.41 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.54.05 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 2.00.39 PM.png"}],"assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.39.09 PM.ff22e35e.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.58.26 PM.84384a35.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.42.33 PM.133ee245.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.47.19 PM.2878d901.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.46.02 PM.2f36d156.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.49.12 PM.ae95acbf.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.51.34 PM.d3cdac1c.png";
+},{}],"assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png":[function(require,module,exports) {
+module.exports = "/Screen Shot 2019-07-15 at 1.54.55 PM.08fa106c.png";
+},{}],"constants/samples/video-items.ts":[function(require,module,exports) {
+"use strict";
+
 var __importStar = this && this.__importStar || function (mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
@@ -66220,250 +66969,648 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var types_1 = require("./types");
+var types_1 = require("../types");
 
 var _ = __importStar(require("lodash"));
 
-var ItemSize = 5;
-exports.PhotoContentList = GetSamplePhotoItems();
-exports.VideoContentList = GetSampleVideoItems();
-exports.ArticleContentList = GetSampleArticleItems();
-exports.LinkContentList = GetSampleLinkItems();
-exports.SocialMediaContentList = GetSampleSocialMediaItems();
+var constants_1 = require("../constants");
 
-function GetDummifiedCollection(items) {
-  return [{
-    title: 'Recent',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'Yesterday',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'June 12, 2019',
-    listItems: _.shuffle(items)
-  }, {
-    title: 'June 11, 2019',
-    listItems: _.shuffle(items)
-  }];
-}
-
-exports.GetDummifiedCollection = GetDummifiedCollection;
-
-function GetSampleItem(type) {
-  switch (type) {
-    case types_1.ContentType.Photo:
-      return _.sample(GetSamplePhotoItems());
-
-    case types_1.ContentType.Video:
-      return _.sample(GetSampleVideoItems());
-
-    case types_1.ContentType.Article:
-      return _.sample(GetSampleArticleItems());
-
-    case types_1.ContentType.Link:
-      return _.sample(GetSampleLinkItems());
-
-    case types_1.ContentType.SocialMedia:
-      return _.sample(GetSampleSocialMediaItems());
+exports.DummifiedVideoItems = [{
+  id: 'video_6',
+  title: 'Why DIY Sunscreen Doesn Not Work | Lab Muffin Beauty Science',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png'),
+    videoId: 'aTNcbLHZusc',
+    videoUrl: "https://www.youtube.com/watch?v=aTNcbLHZusc",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['chemical', 'mineral', 'sunscreen', 'DIY'],
+  annotation: 'DIY sunscreen uses uncoated zinc oxide which leads to poor coverage - therefore very dangerous. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
   }
-}
+}, {
+  id: 'video_7',
+  title: 'How Sunscreen Works',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png'),
+    videoId: 'cC-d9ZsnLds',
+    videoUrl: "https://www.youtube.com/watch?v=cC-d9ZsnLds",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['sunscreen', 'protection', 'UV rays'],
+  annotation: 'no sunscreen completely blocks UV rays so you need to cover your body with clothing as well as additional protection that protects against both UVA and UVB rays. ',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_8',
+  title: 'Physical vs Chemical Sunscreen - How To Choose The Best Sunscreen',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png'),
+    videoId: 'c9z-MNOFCZIg',
+    videoUrl: "https://www.youtube.com/watch?v=9z-MNOFCZIg",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['sunscreen'],
+  annotation: 'Physical vs Chemical sunscreen product comparison',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_9',
+  title: 'Mineral Sunscreen vs Chemical Sunscreen: Which is Best? | Beauty with Susan Yara',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png'),
+    videoId: '9M4Lkx03QVw',
+    videoUrl: "https://www.youtube.com/watch?v=9M4Lkx03QVw",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['chemical'],
+  annotation: 'Best product review: Mineral vs Chemical sunscreen',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_10',
+  title: 'LIP CARE 💋Moisturizing Lip Products for Dry, Chapped Lips & Angular Cheilitis',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png'),
+    videoId: 'XUSLVPzgo6c',
+    videoUrl: "https://www.youtube.com/watch?v=XUSLVPzgo6c",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['lip products'],
+  annotation: 'Lip Products, Mosturizing',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_11',
+  title: 'How To Get That Glow For Korean Glass Skin WITHOUT MAKEUP (feat. Sharmander)',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png'),
+    videoId: 'usmxR965Kko',
+    videoUrl: "https://www.youtube.com/watch?v=usmxR965Kko",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['skincare'],
+  annotation: 'Glass skin glow',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_12',
+  title: 'K Pop Idol Beauty Secrets Revealed! BTS & Red Velvet’s Tips for Glowing Skin! | Teen Beauty Bible',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png'),
+    videoId: 'gzQCoQlOyFg',
+    videoUrl: "https://www.youtube.com/watch?v=gzQCoQlOyFg",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['skincare'],
+  annotation: 'Skincare Routine',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'video_13',
+  title: 'BT21 Makeup Season 2- Did they get it right this time?',
+  contentType: types_1.ContentType.Video,
+  contentData: {
+    videoThumbnailUrl: require('../../assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png'),
+    videoId: 'EUceC1GcTH4',
+    videoUrl: "https://www.youtube.com/watch?v=EUceC1GcTH4",
+    videoEndTick: 0,
+    videoStartTick: 0,
+    videoLength: _.sample(_.range(45, 200))
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Youtube,
+  tags: ['makeup'],
+  annotation: 'celebrity makeup',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js","../constants":"constants/constants.ts","../../assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.39.09 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.58.26 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.42.33 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.47.19 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.46.02 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.49.12 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.51.34 PM.png","../../assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png":"assets/dummy/Screen Shot 2019-07-15 at 1.54.55 PM.png"}],"assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg":[function(require,module,exports) {
+module.exports = "/a0e63d5c263029849dde1918e5f99930.26e1c6a3.jpg";
+},{}],"assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg":[function(require,module,exports) {
+module.exports = "/e56d1f2cd2c3c7cf3e41240b40d9b291.d525ec06.jpg";
+},{}],"assets/dummy/8898550740df58d37ffa251b13faef2c.jpg":[function(require,module,exports) {
+module.exports = "/8898550740df58d37ffa251b13faef2c.d895ef93.jpg";
+},{}],"assets/dummy/sunscreen-white-cast-3.jpg":[function(require,module,exports) {
+module.exports = "/sunscreen-white-cast-3.22082bee.jpg";
+},{}],"assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg":[function(require,module,exports) {
+module.exports = "/Sunscreen-Ingredients-UVA-UVB-protection.6bc12a52.jpg";
+},{}],"constants/samples/photo-items.ts":[function(require,module,exports) {
+"use strict";
 
-exports.GetSampleItem = GetSampleItem;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function BuildStickyContentItem(data) {
-  return {
-    id: data.id,
-    title: null,
-    contentType: types_1.ContentType.Sticky,
-    contentData: {
-      noteText: data.text
-    },
-    sourcePreviewAvailable: false,
-    sourceType: types_1.MediaSourceType.Browser,
-    tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-      return "tag-".concat(t);
-    }),
-    annotations: [{
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-    }]
-  };
-}
+var types_1 = require("../types");
 
-exports.BuildStickyContentItem = BuildStickyContentItem;
+var constants_1 = require("../constants");
 
-function GetSamplePhotoItems() {
-  var result = [];
+exports.DummifiedPhotoItems = [{
+  id: 'photo_1',
+  title: 'Sunscreen SPF 50',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['sunscreen', 'sensitive skin'],
+  annotation: 'SPF 50 for sensitive skin',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_2',
+  title: 'Makeup Collection',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['makeup'],
+  annotation: 'All makeup collection photo',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_3',
+  title: 'All Natural Face Mask',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/8898550740df58d37ffa251b13faef2c.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['skincare', 'facemask'],
+  annotation: 'Best selling face mask. All natural ingredient',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_4',
+  title: 'Sunscreen Comparison',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/sunscreen-white-cast-3.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['mineral', 'zinc oxide', 'white cast', 'sunscreen'],
+  annotation: 'Comparing types of sunscreen and the white cast they give on face; Sunsense has least white cast and Invisible Zinc has the most (Neutrogena in the middle)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'photo_5',
+  title: 'Ingredients for UVA/UVB',
+  contentType: types_1.ContentType.Photo,
+  contentData: {
+    imgUrl: require('../../assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg')
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Browser,
+  tags: ['chemical', 'avobenzone', 'sunscreen'],
+  annotation: 'Avobenzone covers both UVB and UVA at the same level as zinc oxide, but is simply the chemical version',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts","../../assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg":"assets/dummy/a0e63d5c263029849dde1918e5f99930.jpg","../../assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg":"assets/dummy/e56d1f2cd2c3c7cf3e41240b40d9b291.jpg","../../assets/dummy/8898550740df58d37ffa251b13faef2c.jpg":"assets/dummy/8898550740df58d37ffa251b13faef2c.jpg","../../assets/dummy/sunscreen-white-cast-3.jpg":"assets/dummy/sunscreen-white-cast-3.jpg","../../assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg":"assets/dummy/Sunscreen-Ingredients-UVA-UVB-protection.jpg"}],"constants/samples/article-items.ts":[function(require,module,exports) {
+"use strict";
 
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      title: 'Sample Photo Lorem ipsum',
-      contentType: types_1.ContentType.Photo,
-      contentData: {
-        imgUrl: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: types_1.MediaSourceType.Browser,
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
-    };
-    result.push(item);
-  });
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var types_1 = require("../types");
+
+var constants_1 = require("../constants");
+
+exports.DummifiedArticleItems = [{
+  id: 'article_1',
+  title: 'https://www.piedmont.org/living-better/the-difference-between-physical-and-chemical-sunscreen',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.piedmont.org/living-better/the-difference-between-physical-and-chemical-sunscreen',
+    authorName: 'Piedmont Healthcare',
+    articleTitle: 'The difference between physical and chemical sunscreen'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemical', 'mineral', 'sunscreen'],
+  annotation: 'chemical sunscreen more water-resistant, but mineral sunscreen more moisturizing',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_2',
+  title: 'https://www.thecut.com/2019/05/sunscreens-bloodstream-fda-study.html',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.thecut.com/2019/05/sunscreens-bloodstream-fda-study.html',
+    authorName: 'Erica Smith',
+    articleTitle: 'The Chemicals in Your Sunscreen Are Being Absorbed Into Your Blood'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['mineral', 'sunscreen', 'zinc oxide', 'safety'],
+  annotation: 'Chemical sunscreens absorbed into bloodstream at low concentrations, still better than no sunscreen',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_3',
+  title: 'https://www.nytimes.com/2019/06/10/upshot/how-safe-is-sunscreen.html',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.nytimes.com/2019/06/10/upshot/how-safe-is-sunscreen.html',
+    authorName: 'Aaron E. Carroll',
+    articleTitle: 'How Safe Is Sunscreen?'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['skin cancer', 'sunscreen'],
+  annotation: 'chemical sunscreens might be bad but skin cancer is worse!!!',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_4',
+  title: 'https://academic.oup.com/toxsci/article/123/1/264/1644613',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://academic.oup.com/toxsci/article/123/1/264/1644613',
+    authorName: 'N.A. Monteiro-Riviere etc.',
+    articleTitle: 'Safety Evaluation of Sunscreen Formulations Containing Titanium Dioxide and Zinc Oxide Nanoparticles in UVB Sunburned Skin: An In Vitro and In Vivo Study'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['zinc oxide', 'mineral', 'sunscreen'],
+  annotation: 'Zinc/Titanium not absorbed through skin even if sunburned',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_5',
+  title: 'https://onlinelibrary.wiley.com/doi/full/10.1046/j.1524-4725.2000.99237.x',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://onlinelibrary.wiley.com/doi/full/10.1046/j.1524-4725.2000.99237.x',
+    authorName: 'Sheldon R. Pinnell MD',
+    articleTitle: 'Microfine Zinc Oxide is a Superior Sunscreen Ingredient to Microfine Titanium Dioxide'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['zinc oxide', 'titanium dioxide', 'mineral', 'sunscreen'],
+  annotation: 'Zinc a better mineral material than Titanium (not as white, absorbs more UVA)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_6',
+  title: 'http://www.skintherapyletter.com/sunscreen/advances-update/',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'http://www.skintherapyletter.com/sunscreen/advances-update/',
+    authorName: 'R. Bissonnette, MD, FRCPC',
+    articleTitle: 'Update on Sunscreens'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemical', 'mineral', 'sunscreen'],
+  annotation: 'General discussion of sunscreen, importance of UVA protection',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_7',
+  title: 'https://link.springer.com/article/10.2165/11537050-000000000-00000',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://link.springer.com/article/10.2165/11537050-000000000-00000',
+    authorName: 'Donathan G. Beasley',
+    articleTitle: 'Characterization of the UVA Protection Provided by Avobenzone, Zinc Oxide, and Titanium Dioxide in Broad-Spectrum Sunscreen Products'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['chemica', 'mineral', 'sunscreen'],
+  annotation: 'Comparison of Zinc/avobenzone in UVA protection (chemical vs. mineral)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_8',
+  title: 'https://onezero.medium.com/pinterest-has-a-fake-news-problem-about-sunscreen-c3f21f87c6b1',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://onezero.medium.com/pinterest-has-a-fake-news-problem-about-sunscreen-c3f21f87c6b1',
+    authorName: 'Angela Lashbrook',
+    articleTitle: 'Dangerous DIY Sunscreen Recipes Are Spreading on Pinterest'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Medium,
+  tags: ['safety', 'DIY', 'sunscreen'],
+  annotation: 'Most people think homemade sunscreens are good for you (they are not)',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_9',
+  title: 'https://www.healthline.com/health/beauty-skin-care/nose-pores',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.healthline.com/health/beauty-skin-care/nose-pores',
+    authorName: 'Healthline',
+    articleTitle: 'What Causes Large Nose Pores and What Can You Do?'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['face', 'clean', 'pores'],
+  annotation: 'How to clean englarged nose pores',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_10',
+  title: 'https://www.medicalnewstoday.com/articles/322421.php',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.medicalnewstoday.com/articles/322421.php',
+    authorName: 'Zawn Villnes',
+    articleTitle: 'Six natural ways to whiten teeth'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['natural', 'teeth', 'tooth care'],
+  annotation: 'Pay attention to tip #2 and #3',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_11',
+  title: 'https://www.businessinsider.com/dangerous-chemicals-in-beauty-products-makeup-list-2019-6',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.businessinsider.com/dangerous-chemicals-in-beauty-products-makeup-list-2019-6',
+    authorName: 'Zawn Villnes',
+    articleTitle: 'Cancer-causing toxins were just found in foundation and sparkly makeup — here are 11 chemicals that could lurk in your lipstick, lotion, and eye powder'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['clean makeup', 'chemicals', 'asbestos'],
+  annotation: 'Parabens are also common in shampoo, shaving cream, moisturizers, and other makeup - good to check for',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_12',
+  title: 'https://www.whowhatwear.com/how-to-unclog-pores',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.whowhatwear.com/how-to-unclog-pores',
+    authorName: 'Micaela English',
+    articleTitle: '5 Skincare Experts Share the Best Products and Tips for Unclogging Pores'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['cleansing'],
+  annotation: 'some tips on cleanser. Dont agree with #3',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_13',
+  title: 'https://patents.google.com/patent/US5593662A/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US5593662A/en',
+    authorName: 'George E Deckner',
+    articleTitle: 'Moisturizing lipstick compositions'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['water-free moisturizing'],
+  annotation: 'interesting lipstick innovation - look to see how used',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_14',
+  title: 'https://www.researchgate.net/publication/51714131_Topical_effectiveness_of_a_cosmetic_skincare_treatment_for_acne-prone_skin_A_clinical_study',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://www.researchgate.net/publication/51714131_Topical_effectiveness_of_a_cosmetic_skincare_treatment_for_acne-prone_skin_A_clinical_study',
+    authorName: 'Igor Bartenjev',
+    articleTitle: 'Topical effectiveness of a cosmetic skincare treatment for acne-prone skin: A clinical study'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['acne'],
+  annotation: 'Normaderm had significant impact on pore appearance',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_15',
+  title: 'https://patents.google.com/patent/US20070202060A1/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US20070202060A1/en',
+    authorName: 'Arne Ptock',
+    articleTitle: 'Retinoid-Containing Preparations'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['retinoid'],
+  annotation: '',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}, {
+  id: 'article_16',
+  title: 'https://patents.google.com/patent/US5876736A/en',
+  contentType: types_1.ContentType.Article,
+  contentData: {
+    articleLink: 'https://patents.google.com/patent/US5876736A/en',
+    authorName: 'Kenneth A Cohen',
+    articleTitle: 'Skin revitalizing makeup'
+  },
+  sourcePreviewAvailable: false,
+  sourceType: types_1.MediaSourceType.Quora,
+  tags: ['antioxidant', 'makeup'],
+  annotation: 'makeup that could actually be good for your skin',
+  props: {
+    height: constants_1.ItemHeight,
+    width: constants_1.ItemWidth
+  }
+}];
+},{"../types":"constants/types.ts","../constants":"constants/constants.ts"}],"constants/samples/dumping-ground.ts":[function(require,module,exports) {
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
   return result;
-}
+};
 
-exports.GetSamplePhotoItems = GetSamplePhotoItems;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function GetSampleVideoItems() {
+var _ = __importStar(require("lodash"));
+
+var socialmedia_items_1 = require("./socialmedia-items");
+
+var video_items_1 = require("./video-items");
+
+var photo_items_1 = require("./photo-items");
+
+var article_items_1 = require("./article-items");
+
+function FilterDumpingGroundCollection() {
+  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var searchToken = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
   var result = [];
+  exports.DumpingGroundCollection.forEach(function (item) {
+    var _ref;
 
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      title: 'Sample Photo Lorem ipsum',
-      contentType: types_1.ContentType.Video,
-      contentData: {
-        videoThumbnailUrl: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840']),
-        videoId: _.sample(['bTqVqk7FSmY', '7T2RonyJ_Ts', 'tq9mgTRQM8k', 'rKa1YLIoeN4', 'PxVgQrw0RVQ']),
-        videoEndTick: 0,
-        videoStartTick: 0,
-        videoLength: _.sample(_.range(45, 200))
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Youtube, types_1.MediaSourceType.Vimeo]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
-    };
-    item.contentData.videoUrl = "https://www.youtube.com/watch?v=".concat(item.contentData.videoId);
-    result.push(item);
-  });
+    var list = (_ref = []).concat.apply(_ref, _toConsumableArray(item.listItems));
 
-  return result;
-}
+    var tempList = type ? list.filter(function (t) {
+      return t.contentType === type;
+    }) : list;
 
-exports.GetSampleVideoItems = GetSampleVideoItems;
-
-function GetSampleArticleItems() {
-  var result = [];
-
-  _.range(ItemSize).forEach(function () {
-    var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      title: 'https://dl.acm.org/citation.cfm?id=1357127',
-      contentType: types_1.ContentType.Article,
-      contentData: {
-        articleLink: _.sample(['https://picsum.photos/id/1001/5616/3744', 'https://picsum.photos/id/1002/4312/2868', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744', 'https://picsum.photos/id/1005/5760/3840']),
-        authorName: _.sample(['Aniket K', 'Napol R', 'Nathan H', 'Niko N']),
-        articleTitle: _.sample(['Crowdsourcing user studies with Mechanical Turk', 'Towards a Universal Knowledge Accelerator', 'Market in Your Social Network: The Effects of Extrinsic Rewards on Friendsourcing and Relationships', 'Encouraging “Outside- the- box” Thinking in Crowd Innovation Through Identifying Domains of Expertise', 'A Contingency View of Transferring and Adapting Best Practices within Online Communities'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Quora, types_1.MediaSourceType.ACM, types_1.MediaSourceType.Scholar]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
-    };
-    result.push(item);
-  });
-
-  return result;
-}
-
-exports.GetSampleArticleItems = GetSampleArticleItems;
-
-function GetSampleLinkItems() {
-  var result = [];
-  var items = [{
-    ogLink: "https://www.ndcollaborative.com/sensemaking/",
-    ogTitle: "Navigating Change with Collective Sensemaking - New Directions Collaborative",
-    ogDescription: "These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.",
-    ogImage: "https://www.ndcollaborative.com/wp-content/uploads/2014/06/WCJune-300x267.jpg",
-    ogSiteName: "New Directions Collaborative"
-  }, {
-    ogLink: "https://cognitive-edge.com/blog/what-is-sense-making/",
-    ogTitle: "What is Sense-making? - Cognitive Edge",
-    ogDescription: "This apparently innocent question was asked on the ActKM forum this morning. I replied and\u2026"
-  }, {
-    ogLink: "https://www.foodlogistics.com/features/news/21013323/micro-shopping-on-the-rise",
-    ogTitle: "Micro-Shopping on the Rise",
-    ogDescription: "Micro-shopping trips are becoming more popular thanks to lockers and click-and-collect services."
-  }];
-  items.forEach(function (data) {
-    var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      title: data.ogSiteName,
-      contentType: types_1.ContentType.Link,
-      contentData: data,
-      sourcePreviewAvailable: false,
-      sourceType: null,
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
-    };
-    result.push(item);
-  });
-  return result;
-}
-
-exports.GetSampleLinkItems = GetSampleLinkItems;
-
-function GetSampleSocialMediaItems() {
-  var result = [];
-
-  _.range(ItemSize).forEach(function (data) {
-    var item = {
-      id: "".concat(Math.floor(Math.random() * 10e10)),
-      title: null,
-      contentType: types_1.ContentType.SocialMedia,
-      contentData: {
-        profileImgUrl: _.sample(['https://images.pexels.com/photos/1547971/pexels-photo-1547971.jpeg?cs=srgb&dl=adult-beautiful-blush-1547971.jpg', 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?cs=srgb&dl=adult-athlete-businessman-697509.jpg'])
-      },
-      sourcePreviewAvailable: false,
-      sourceType: _.sample([types_1.MediaSourceType.Instagram, types_1.MediaSourceType.Twitter]),
-      tags: _.range(Math.floor(Math.random() * 5)).map(function (t) {
-        return "tag-".concat(t);
-      }),
-      annotations: [{
-        id: "".concat(Math.floor(Math.random() * 10e10)),
-        message: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. '
-      }]
-    };
-
-    if (item.sourceType === types_1.MediaSourceType.Twitter) {
-      item.contentData.tweetText = _.sample(["These times call for us to practice 'sensemaking' to more clearly see what is unfolding and avoid being caught in denial or wishful thinking.", "And just like that the problem is fixed. I hope all customers get the same treatment. All of a sudden we have rapid internet at home \uD83E\uDD37\uD83C\uDFFB\u200D\u2642\uFE0F\uD83E\uDD23"]);
-      item.contentData.handle = _.sample(['@anomaly123', '@anonymous42']);
-    } else if (item.sourceType === types_1.MediaSourceType.Instagram) {
-      item.contentData.instragramImageUrl = _.sample(['https://scontent-iad3-1.cdninstagram.com/vp/02e2c9b7cd13e4d61b73dd3722b17005/5DBC4E37/t51.2885-15/e35/s1080x1080/66482941_333196790963340_5558223065797026893_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://scontent-iad3-1.cdninstagram.com/vp/7c679e2c759bd989da1e5f75042044df/5DB7824F/t51.2885-15/e35/s1080x1080/65320371_106901343830524_2782665837482159845_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com', 'https://picsum.photos/id/1003/1181/1772', 'https://picsum.photos/id/1004/5616/3744']);
-      item.contentData.handle = _.sample(['anomaly_123', 'anonymous_42']);
+    if (!_.isEmpty(searchToken)) {
+      tempList = tempList.filter(function (_i) {
+        return JSON.stringify(_i).indexOf(searchToken) !== -1;
+      });
     }
 
-    result.push(item);
+    result.push(Object.assign({}, item, {
+      listItems: tempList
+    }));
   });
-
   return result;
 }
 
-exports.GetSampleSocialMediaItems = GetSampleSocialMediaItems;
-},{"./types":"constants/types.ts","lodash":"../../node_modules/lodash/lodash.js"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
+exports.FilterDumpingGroundCollection = FilterDumpingGroundCollection;
+var _allCollections = [article_items_1.DummifiedArticleItems.reverse(), photo_items_1.DummifiedPhotoItems.reverse(), video_items_1.DummifiedVideoItems.reverse(), socialmedia_items_1.DummifiedSocialMediaItems.reverse()];
+var recentCollection = [];
+var yesterdayCollection = [];
+var lastWeekCollection = [];
+
+_allCollections.forEach(function (collection) {
+  var chunks = _.chunk(collection, 3);
+
+  if (chunks[0]) {
+    recentCollection.push.apply(recentCollection, _toConsumableArray(chunks[0]));
+  }
+
+  if (chunks[1]) {
+    yesterdayCollection.push.apply(yesterdayCollection, _toConsumableArray(chunks[1]));
+  }
+
+  if (chunks[2]) {
+    lastWeekCollection.push.apply(lastWeekCollection, _toConsumableArray(chunks[2]));
+  }
+});
+
+exports.DumpingGroundCollection = [{
+  title: 'Recent',
+  listItems: _.shuffle(recentCollection)
+}, {
+  title: 'Yesterday',
+  listItems: _.shuffle(yesterdayCollection)
+}, {
+  title: 'Last Week',
+  listItems: _.shuffle(lastWeekCollection)
+}];
+},{"lodash":"../../node_modules/lodash/lodash.js","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts","./article-items":"constants/samples/article-items.ts"}],"components/dumping-ground/dumping-ground-list-collection.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66520,6 +67667,8 @@ var observables_1 = require("../../access/observables/observables");
 
 var constants_1 = require("../../constants/constants");
 
+var dumping_ground_1 = require("../../constants/samples/dumping-ground");
+
 var DumpingGroundListCollection =
 /*#__PURE__*/
 function (_React$Component) {
@@ -66531,6 +67680,8 @@ function (_React$Component) {
     _classCallCheck(this, DumpingGroundListCollection);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DumpingGroundListCollection).call(this, props));
+    _this.mmsCollection = [];
+    _this.cancellable = new constants_1.CancellabelRequests();
     _this.state = {
       listItems: []
     };
@@ -66542,102 +67693,135 @@ function (_React$Component) {
     value: function updateCollection() {
       var _this2 = this;
 
-      var items = [];
+      var dumpingGroundCollection = [];
       var type = this.props.type;
 
       switch (type) {
         case types_1.ContentType.Photo:
-          {
-            items = dummy_data_1.PhotoContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Video:
-          {
-            items = dummy_data_1.VideoContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Article:
-          {
-            items = dummy_data_1.ArticleContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.Link:
-          {
-            items = dummy_data_1.LinkContentList;
-            break;
-          }
-          ;
-
         case types_1.ContentType.SocialMedia:
           {
-            items = dummy_data_1.SocialMediaContentList;
+            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(type, this.props.searchToken));
             break;
           }
           ;
 
         default:
           {
-            // tslint:disable-next-line:variable-name
-            var _items = _.shuffle([].concat(dummy_data_1.PhotoContentList, dummy_data_1.VideoContentList, dummy_data_1.ArticleContentList, dummy_data_1.LinkContentList, dummy_data_1.SocialMediaContentList));
-
-            if (this.props.searchBar) {
-              items = _.take(_items, _items.length / 2);
-            } else {
-              items = _.take(_items, _items.length);
-            }
-
+            dumpingGroundCollection = [].concat(dumping_ground_1.FilterDumpingGroundCollection(null, this.props.searchToken));
             break;
           }
+          ;
       }
 
-      var collection = dummy_data_1.GetDummifiedCollection(items);
       this.setState({
-        listItems: collection
+        listItems: dumpingGroundCollection
       });
-      setTimeout(function () {
-        if (typeof _this2.props.type === 'undefined') {
-          var api = "".concat(constants_1.GetAPIUrl(), "/api/stickies/unassigned");
-          fetch(api).then(function (res) {
-            return res.json();
-          }).then(function (data) {
-            if (data.data && data.data.length > 0) {
-              var mappedItems = data.data.sort(function (a, b) {
-                return new Date(b.modified).getTime() - new Date(a.modified).getTime();
-              }).map(function (item) {
-                return dummy_data_1.BuildStickyContentItem(item);
-              });
-              var mappedCollection = _this2.state.listItems;
 
-              if (mappedCollection.length > 0) {
-                var _ref;
+      if (!this.props.disableNotesFetch) {
+        setTimeout(function () {
+          _this2.getNotesItems();
+        });
+      }
+    }
+  }, {
+    key: "getNotesItems",
+    value: function getNotesItems() {
+      var _this3 = this;
 
-                mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
+      if (typeof this.props.type === 'undefined') {
+        var api = "".concat(constants_1.GetAPIUrl(), "/api/stickies/unassigned");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          if (data.data && data.data.length > 0) {
+            var mappedItems = data.data.sort(function (a, b) {
+              return new Date(b.modified).getTime() - new Date(a.modified).getTime();
+            }).map(function (item) {
+              return dummy_data_1.BuildStickyContentItem(item);
+            });
 
-                _this2.setState({
-                  listItems: mappedCollection
-                });
-              }
-            }
-          }, function (data) {
-            console.log(data);
+            _this3.insertNewItems(mappedItems);
+          }
+        }, function (data) {
+          console.log(data);
+        });
+      }
+    }
+  }, {
+    key: "insertNewItems",
+    value: function insertNewItems(mappedItems) {
+      var mappedCollection = this.state.listItems;
+
+      if (mappedCollection.length > 0) {
+        var mappedCollectionIds = mappedCollection[0].listItems.map(function (item) {
+          return item.id;
+        });
+        mappedItems = mappedItems.filter(function (item) {
+          return _.indexOf(mappedCollectionIds, item.id) === -1;
+        });
+
+        if (mappedItems.length > 0) {
+          var _ref;
+
+          mappedCollection[0].listItems = (_ref = []).concat.apply(_ref, _toConsumableArray(mappedItems).concat(_toConsumableArray(mappedCollection[0].listItems)));
+          this.setState({
+            listItems: mappedCollection
           });
         }
-      });
+      }
+    }
+  }, {
+    key: "initializeMMSListener",
+    value: function initializeMMSListener() {
+      var _this4 = this;
+
+      var interval = setInterval(function () {
+        var api = "".concat(constants_1.GetAPIUrl(), "/api/mms");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          if (data.data && data.data.length > 0) {
+            var mmsCollection = data.data;
+            var newCollection = [];
+            mmsCollection.forEach(function (item) {
+              if (!_this4.mmsCollection.find(function (t) {
+                return t.sid === item.sid;
+              })) {
+                _this4.mmsCollection.push(item);
+
+                newCollection.push(item);
+              }
+            });
+            var mappedItems = newCollection.sort(function (a, b) {
+              return new Date(a.modified).getTime() - new Date(b.modified).getTime();
+            }).map(function (item) {
+              return dummy_data_1.BuildMMSContentItem(item);
+            });
+
+            _this4.insertNewItems(mappedItems);
+          }
+        }, function (data) {
+          console.log(data);
+        });
+      }, 5000);
+      this.cancellable.push(interval, constants_1.Cancellable.Interval);
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this3 = this;
+      var _this5 = this;
 
       this.updateCollection();
+
+      if (!this.props.disableMMSFetch) {
+        this.initializeMMSListener();
+      }
+
       this.dumpingGroundTransferSubscription = observables_1.DumpingGroundTransfer.subscribe(function (data) {
-        var collection = _this3.state.listItems;
+        var collection = _this5.state.listItems;
         var newCollection = [];
         collection.forEach(function (collect) {
           newCollection.push(Object.assign({}, collect, {
@@ -66647,7 +67831,30 @@ function (_React$Component) {
           }));
         });
 
-        _this3.setState({
+        _this5.setState({
+          listItems: newCollection
+        });
+      });
+      this.dumpingGroundSelectionSubscription = observables_1.DumpingGroundSelections.subscribe(function (data) {
+        if (data === null) {
+          return;
+        }
+
+        var collection = _this5.state.listItems;
+        var newCollection = [];
+        collection.forEach(function (collect) {
+          var items = [];
+          collect.listItems.forEach(function (item) {
+            items.push(Object.assign({}, item, {
+              selected: _.indexOf(data, item.id) !== -1
+            }));
+          });
+          newCollection.push(Object.assign({}, collect, {
+            listItems: items
+          }));
+        });
+
+        _this5.setState({
           listItems: newCollection
         });
       });
@@ -66656,25 +67863,27 @@ function (_React$Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.dumpingGroundTransferSubscription.unsubscribe();
+      this.dumpingGroundSelectionSubscription.unsubscribe();
+      this.cancellable.clean();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(props) {
-      if (this.props.type !== props.type) {
+      if (this.props.type !== props.type || this.props.searchToken !== props.searchToken) {
         this.updateCollection();
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this6 = this;
 
       return React.createElement(React.Fragment, null, this.state.listItems.map(function (item, i) {
         return React.createElement(dumping_ground_list_1.DumpingGroundList, {
-          hideGroupTitle: _this4.props.hideGroupTitle,
+          hideGroupTitle: _this6.props.hideGroupTitle,
           title: item.title,
           key: i,
-          type: _this4.props.type,
+          type: _this6.props.type,
           items: item.listItems
         });
       }));
@@ -66685,7 +67894,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.DumpingGroundListCollection = DumpingGroundListCollection;
-},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","./dumping-ground-list":"components/dumping-ground/dumping-ground-list.tsx","../../constants/types":"constants/types.ts","../../constants/dummy-data":"constants/dummy-data.ts","../../access/observables/observables":"access/observables/observables.ts","../../constants/constants":"constants/constants.ts","../../constants/samples/dumping-ground":"constants/samples/dumping-ground.ts"}],"components/dumping-ground/dumping-ground.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66830,7 +68039,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/collect.png":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/collect.png":[function(require,module,exports) {
 module.exports = "/collect.37f41a34.png";
 },{}],"assets/organize.png":[function(require,module,exports) {
 module.exports = "/organize.7735f648.png";
@@ -66987,99 +68196,8 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"transforms.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function GetWorkspaceListForSidebar(Workspaces) {
-  var result = Workspaces.map(function (item) {
-    var sideBarItem = {
-      id: Math.floor(Math.random() * 10e8),
-      name: item.name,
-      link: "/workspace/".concat(item.id, "/topic/123"),
-      active: false,
-      subListOpen: false,
-      gradient: item.gradient,
-      items: item.topics.map(function (topic) {
-        var subItem = {
-          id: topic.id,
-          name: topic.name,
-          active: false,
-          items: [],
-          link: BuildTopicLink(item.id, topic.id)
-        };
-        return subItem;
-      })
-    };
-    return sideBarItem;
-  });
-  return result;
-}
-
-exports.GetWorkspaceListForSidebar = GetWorkspaceListForSidebar;
-
-function BuildTopicLink(workspaceId, topicLink) {
-  return "/workspace/".concat(workspaceId, "/topic/").concat(topicLink);
-}
-
-exports.BuildTopicLink = BuildTopicLink;
-
-function isEqual(a, b) {
-  if (typeof a === 'string' && typeof b === 'string') {
-    return a.localeCompare(b) === 0;
-  }
-
-  if (typeof a === 'number' && typeof b === 'number') {
-    return a === b;
-  }
-
-  if (a instanceof Date && b instanceof Date) {
-    return a.getTime() === b.getTime();
-  }
-
-  if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length === b.length) {
-      for (var i = 0; i < a.length; i++) {
-        var equal = isEqual(a[i], b[i]);
-
-        if (!equal) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-  }
-
-  if (a instanceof Object && b instanceof Object) {
-    var aProps = Object.getOwnPropertyNames(a);
-    var bProps = Object.getOwnPropertyNames(b);
-
-    if (aProps.length !== bProps.length) {
-      return false;
-    } else {
-      // tslint:disable-next-line:prefer-for-of
-      for (var _i = 0; _i < aProps.length; _i++) {
-        var prop = aProps[_i];
-
-        var _equal = isEqual(a[prop], b[prop]);
-
-        if (!_equal) {
-          return false;
-        }
-      }
-
-      return true;
-    }
-  }
-
-  return false;
-}
-
-exports.isEqual = isEqual;
+},{"./../../assets/icon.png":[["icon.9c86b69e.png","assets/icon.png"],"assets/icon.png"],"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"assets/blue-element-logo.png":[function(require,module,exports) {
+module.exports = "/blue-element-logo.35b96c0e.png";
 },{}],"components/sidebar/sidebar.tsx":[function(require,module,exports) {
 "use strict";
 
@@ -67129,6 +68247,8 @@ var redux_1 = require("redux");
 
 var react_redux_1 = require("react-redux");
 
+var elementLogo = require('../../assets/blue-element-logo.png');
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -67170,11 +68290,35 @@ function (_React$Component) {
       this.setState({
         sideBarItems: sideBarItems
       });
+
+      if (this.props.sideBarCollpased) {
+        this.props.actions.showSideBar();
+      }
+    }
+  }, {
+    key: "closeList",
+    value: function closeList() {
+      var sideBarItems = [].concat(this.state.sideBarItems);
+      sideBarItems.forEach(function (item, i) {
+        item.subListOpen = false;
+      });
+      this.setState({
+        sideBarItems: sideBarItems
+      });
     }
   }, {
     key: "createNewWorkspace",
     value: function createNewWorkspace() {
       this.props.actions.showWorkspaceCreator();
+    }
+  }, {
+    key: "toggleSidebar",
+    value: function toggleSidebar() {
+      if (this.props.sideBarCollpased) {
+        this.closeList();
+      }
+
+      this.props.actions.toggleSideBar();
     }
   }, {
     key: "render",
@@ -67183,22 +68327,23 @@ function (_React$Component) {
 
       var sideBarItems = this.state.sideBarItems;
       return React.createElement("div", {
-        className: "sidebar-wrapper"
+        className: "sidebar-wrapper ".concat(this.props.sideBarCollpased ? 'collapsed' : 'expanded')
       }, React.createElement("ul", {
         className: "workspace-list"
-      }, React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
-        to: "/home"
-      }, React.createElement("label", {
-        className: "first-level-label"
+      }, React.createElement("li", {
+        className: "hamburger",
+        onClick: this.toggleSidebar.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "home"), "Home"))), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
+      }, "menu")), React.createElement("li", null, React.createElement(react_router_dom_1.NavLink, {
         to: "/dump"
       }, React.createElement("label", {
         className: "first-level-label"
       }, React.createElement("i", {
         className: "material-icons"
-      }, "apps"), "Collections"))), React.createElement(React.Fragment, null, sideBarItems.length > 0 && sideBarItems.map(function (item, i) {
+      }, "apps"), React.createElement("span", {
+        className: "name"
+      }, "Collections")))), React.createElement(React.Fragment, null, sideBarItems.length > 0 && sideBarItems.map(function (item, i) {
         var styles = {
           backgroundImage: item.gradient
         };
@@ -67214,14 +68359,16 @@ function (_React$Component) {
         }, "folder_open"), !item.subListOpen && React.createElement("i", {
           className: "material-icons folder-icon ".concat(item.gradient ? 'apply-gradient' : ''),
           style: styles
-        }, "folder"), item.name), item.items.length > 0 && React.createElement("span", {
+        }, "folder"), React.createElement("span", {
+          className: "name"
+        }, item.name)), !_this2.props.sideBarCollpased && item.items.length > 0 && React.createElement("span", {
           className: "list-toggler",
           onClick: _this2.openList.bind(_this2, i)
         }, item.subListOpen && React.createElement("i", {
           className: "material-icons up"
         }, "arrow_drop_up"), !item.subListOpen && React.createElement("i", {
           className: "material-icons down"
-        }, "arrow_drop_down")), item.subListOpen && item.items.length > 0 && React.createElement("ul", {
+        }, "arrow_drop_down")), !_this2.props.sideBarCollpased && item.subListOpen && item.items.length > 0 && React.createElement("ul", {
           className: "sub-list"
         }, item.items.map(function (subItem, j) {
           return React.createElement("li", {
@@ -67230,22 +68377,28 @@ function (_React$Component) {
             to: subItem.link
           }, React.createElement("label", {
             className: "second-level"
-          }, subItem.name)));
+          }, React.createElement("span", {
+            className: "name"
+          }, subItem.name))));
         })));
       }), React.createElement("li", {
         className: "newWorkspace",
         onClick: this.createNewWorkspace.bind(this)
       }, React.createElement("label", null, React.createElement("i", {
         className: "material-icons"
-      }, "add"), "New Workspace")))), React.createElement("div", {
+      }, "add"), React.createElement("span", {
+        className: "name"
+      }, "New Workspace"))))), React.createElement("div", {
         className: "user-space"
       }, React.createElement("div", {
         className: "user-space-content"
       }, React.createElement("div", {
         className: "user-picture-wrapper"
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "face")), React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in"))), React.createElement("ul", {
+      }, React.createElement(react_router_dom_1.NavLink, {
+        to: "/home"
+      }, React.createElement("img", {
+        src: elementLogo
+      }))), !this.props.sideBarCollpased && React.createElement(React.Fragment, null, React.createElement("label", null, "Asit Parida"), React.createElement("p", null, "asitparida@live.in")))), !this.props.sideBarCollpased && React.createElement("ul", {
         className: "copyright-info"
       }, React.createElement("li", {
         className: "copyright-info"
@@ -67257,12 +68410,186 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarComponent);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/searchbar/searchbar.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./sidebar.scss":"components/sidebar/sidebar.scss","../../transforms":"transforms.ts","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../assets/blue-element-logo.png":"assets/blue-element-logo.png"}],"components/searchbar/searchbar.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/searchbar/searchbar.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/combo-dropdown/combo-dropdown.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/combo-dropdown/combo-dropdown.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var _ = __importStar(require("lodash"));
+
+var dropdown_1 = __importDefault(require("../dropdown/dropdown"));
+
+require("./combo-dropdown.scss");
+
+var ComboDropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ComboDropdown, _React$Component);
+
+  function ComboDropdown(props) {
+    var _this;
+
+    _classCallCheck(this, ComboDropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ComboDropdown).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 300);
+    _this.state = {
+      categories: [],
+      showSearchMeta: false,
+      contentTypeResults: [],
+      searchToken: ''
+    };
+    return _this;
+  }
+
+  _createClass(ComboDropdown, [{
+    key: "propagateChange",
+    value: function propagateChange() {
+      if (this.props.propagateChange) {
+        var token = this.state.searchToken;
+
+        if (token.length > 2 || _.isEmpty(token)) {
+          this.props.propagateChange(token);
+        }
+      }
+    }
+  }, {
+    key: "onFocus",
+    value: function onFocus() {
+      this.props.onInputFocus();
+      this.setState({
+        showSearchMeta: true
+      });
+    }
+  }, {
+    key: "onBlur",
+    value: function onBlur() {
+      this.props.onInputBlur();
+      this.setState({
+        showSearchMeta: false
+      });
+    }
+  }, {
+    key: "onSearchTokenChange",
+    value: function onSearchTokenChange(e) {
+      this.setState({
+        searchToken: e.target.value
+      });
+      this.debouncedPropagate();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        categories: this.props.categories,
+        contentTypeResults: this.props.contentTypeResults
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "combo-dropdown ".concat(this.state.showSearchMeta ? 'expanded' : '')
+      }, React.createElement("div", {
+        className: "search-part"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "search"), React.createElement("input", {
+        placeholder: "Search",
+        onChange: this.onSearchTokenChange.bind(this),
+        value: this.state.searchToken,
+        onFocus: this.onFocus.bind(this),
+        onBlur: this.onBlur.bind(this)
+      })), React.createElement("div", {
+        className: "dropdown-part"
+      }, React.createElement(dropdown_1.default, {
+        items: this.state.categories,
+        activeItem: this.props.activeItem
+      }))), this.state.showSearchMeta && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "search-meta-wrapper"
+      }, React.createElement("div", {
+        className: "search-meta-top"
+      }, React.createElement("div", {
+        className: "search-meta-content"
+      }, React.createElement("div", {
+        className: "search-meta-content-left"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "label"), " Tags"), React.createElement("div", {
+        className: "search-meta-content-right"
+      }, React.createElement("ul", null, React.createElement("li", null, "make-up"), React.createElement("li", null, "sunscreen"), React.createElement("li", null, "natural"))))), React.createElement("div", {
+        className: "search-meta-bottom"
+      }, React.createElement("div", {
+        className: "search-meta-content"
+      }, this.state.contentTypeResults.length > 0 && React.createElement("ul", null, this.state.contentTypeResults.map(function (type) {
+        return React.createElement("li", {
+          key: type.name
+        }, React.createElement("i", {
+          className: "material-icons"
+        }, type.icon), React.createElement("label", null, type.name, " (", type.count, ")"));
+      })))))));
+    }
+  }]);
+
+  return ComboDropdown;
+}(React.Component);
+
+exports.default = ComboDropdown;
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","../dropdown/dropdown":"components/dropdown/dropdown.tsx","./combo-dropdown.scss":"components/combo-dropdown/combo-dropdown.scss"}],"components/searchbar/searchbar.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67313,7 +68640,9 @@ var redux_1 = require("redux");
 
 var react_redux_1 = require("react-redux");
 
-var dumping_ground_1 = __importDefault(require("../dumping-ground/dumping-ground"));
+var dumping_ground_list_collection_1 = require("../dumping-ground/dumping-ground-list-collection");
+
+var combo_dropdown_1 = __importDefault(require("../combo-dropdown/combo-dropdown"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var workspaceReducers = _ref.workspaceReducers;
@@ -67334,52 +68663,112 @@ function (_React$Component) {
   _inherits(SearchBarComponent, _React$Component);
 
   function SearchBarComponent(props) {
+    var _this;
+
     _classCallCheck(this, SearchBarComponent);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBarComponent).call(this, props));
+    _this.state = {
+      showSearchMeta: false,
+      searchToken: '',
+      contentTypeResults: [{
+        icon: 'image',
+        name: 'Images',
+        count: 0
+      }, {
+        icon: 'movie',
+        name: 'Videos',
+        count: 0
+      }, {
+        icon: 'insert_drive_file',
+        name: 'Articles',
+        count: 0
+      }, {
+        icon: 'attach_file',
+        name: 'Links',
+        count: 0
+      }, {
+        icon: 'textsms',
+        name: 'Social',
+        count: 0
+      }],
+      categories: [{
+        id: 'all',
+        name: 'All'
+      }, {
+        id: 'unclassified',
+        name: 'Unclassified'
+      }, {
+        id: 'classified',
+        name: 'Classified'
+      }, {
+        id: 'workspace-1',
+        name: 'Workspace #1'
+      }, {
+        id: 'workspace-2',
+        name: 'Workspace #2'
+      }, {
+        id: 'workspace-3',
+        name: 'Workspace #3'
+      }],
+      activeCategory: {
+        id: 'all',
+        name: 'All'
+      }
+    };
+    return _this;
   }
 
   _createClass(SearchBarComponent, [{
+    key: "onFocus",
+    value: function onFocus() {
+      this.setState({
+        showSearchMeta: true
+      });
+    }
+  }, {
+    key: "onBlur",
+    value: function onBlur() {
+      this.setState({
+        showSearchMeta: false
+      });
+    }
+  }, {
+    key: "onSearchTokenChanged",
+    value: function onSearchTokenChanged(data) {
+      this.setState({
+        searchToken: data
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
         className: "searchbar-wrapper"
       }, React.createElement("div", {
         className: "search-meta"
-      }, React.createElement("div", {
-        className: "search-meta-top"
-      }, React.createElement("div", {
-        className: "search-meta-content"
-      }, React.createElement("div", {
-        className: "search-meta-content-left"
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "local_offer"), " Tags"), React.createElement("div", {
-        className: "search-meta-content-right"
-      }, React.createElement("ul", null, React.createElement("li", null, "tag 1"), React.createElement("li", null, "tag 2"), React.createElement("li", null, "tag 3"))))), React.createElement("div", {
-        className: "search-meta-bottom"
-      }, React.createElement("div", {
-        className: "search-meta-content"
-      }, React.createElement("ul", null, React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Photos (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Videos (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Articles (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Links (0)")), React.createElement("li", null, React.createElement("i", {
-        className: "material-icons"
-      }, "filter_none"), React.createElement("label", null, "Social (0)")))))), React.createElement("div", {
+      }, React.createElement(combo_dropdown_1.default, {
+        propagateChange: this.onSearchTokenChanged.bind(this),
+        onInputFocus: this.onFocus.bind(this),
+        contentTypeResults: this.state.contentTypeResults,
+        onInputBlur: this.onBlur.bind(this),
+        categories: this.state.categories,
+        activeItem: this.state.activeCategory
+      })), React.createElement("div", {
         className: "search-results"
       }, React.createElement("div", {
         className: "search-results-inner"
-      }, React.createElement(dumping_ground_1.default, {
+      }, React.createElement("div", {
+        className: "search-results-bottom"
+      }, React.createElement("div", {
+        className: "dumping-ground-list-wrapper"
+      }, React.createElement(dumping_ground_list_collection_1.DumpingGroundListCollection, {
+        searchBar: true,
         hideGroupTitle: true,
-        sticky: true,
-        workspace: true,
-        searchBar: true
-      }))));
+        searchToken: this.state.searchToken
+      }))))), this.state.showSearchMeta && React.createElement("div", {
+        className: "overlay"
+      }));
     }
   }]);
 
@@ -67387,12 +68776,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SearchBarComponent);
-},{"react":"../../node_modules/react/index.js","./searchbar.scss":"components/searchbar/searchbar.scss","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx"}],"components/workspace/workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./searchbar.scss":"components/searchbar/searchbar.scss","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../dumping-ground/dumping-ground-list-collection":"components/dumping-ground/dumping-ground-list-collection.tsx","../combo-dropdown/combo-dropdown":"components/combo-dropdown/combo-dropdown.tsx"}],"components/workspace/workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/react-rte/dist/react-rte.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/react-rte/dist/react-rte.js":[function(require,module,exports) {
 module.exports=function(t){function e(r){if(n[r])return n[r].exports;var i=n[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,e),i.l=!0,i.exports}var n={};return e.m=t,e.c=n,e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:r})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=144)}([function(t,e,n){!function(e,n){t.exports=function(){"use strict";function t(t,e){e&&(t.prototype=Object.create(e.prototype)),t.prototype.constructor=t}function e(t){return o(t)?t:T(t)}function n(t){return u(t)?t:D(t)}function r(t){return a(t)?t:O(t)}function i(t){return o(t)&&!s(t)?t:C(t)}function o(t){return!(!t||!t[cn])}function u(t){return!(!t||!t[ln])}function a(t){return!(!t||!t[fn])}function s(t){return u(t)||a(t)}function c(t){return!(!t||!t[pn])}function l(t){return t.value=!1,t}function f(t){t&&(t.value=!0)}function p(){}function h(t,e){e=e||0;for(var n=Math.max(0,t.length-e),r=new Array(n),i=0;i<n;i++)r[i]=t[i+e];return r}function d(t){return void 0===t.size&&(t.size=t.__iterate(g)),t.size}function y(t,e){if("number"!=typeof e){var n=e>>>0;if(""+n!==e||4294967295===n)return NaN;e=n}return e<0?d(t)+e:e}function g(){return!0}function v(t,e,n){return(0===t||void 0!==n&&t<=-n)&&(void 0===e||void 0!==n&&e>=n)}function _(t,e){return S(t,e,0)}function m(t,e){return S(t,e,e)}function S(t,e,n){return void 0===t?n:t<0?Math.max(0,e+t):void 0===e?t:Math.min(e,t)}function b(t){this.next=t}function w(t,e,n,r){var i=0===t?e:1===t?n:[e,n];return r?r.value=i:r={value:i,done:!1},r}function M(){return{value:void 0,done:!0}}function E(t){return!!I(t)}function x(t){return t&&"function"==typeof t.next}function k(t){var e=I(t);return e&&e.call(t)}function I(t){var e=t&&(wn&&t[wn]||t[Mn]);if("function"==typeof e)return e}function L(t){return t&&"number"==typeof t.length}function T(t){return null===t||void 0===t?R():o(t)?t.toSeq():U(t)}function D(t){return null===t||void 0===t?R().toKeyedSeq():o(t)?u(t)?t.toSeq():t.fromEntrySeq():K(t)}function O(t){return null===t||void 0===t?R():o(t)?u(t)?t.entrySeq():t.toIndexedSeq():P(t)}function C(t){return(null===t||void 0===t?R():o(t)?u(t)?t.entrySeq():t:P(t)).toSetSeq()}function N(t){this._array=t,this.size=t.length}function j(t){var e=Object.keys(t);this._object=t,this._keys=e,this.size=e.length}function A(t){this._iterable=t,this.size=t.length||t.size}function z(t){this._iterator=t,this._iteratorCache=[]}function B(t){return!(!t||!t[xn])}function R(){return kn||(kn=new N([]))}function K(t){var e=Array.isArray(t)?new N(t).fromEntrySeq():x(t)?new z(t).fromEntrySeq():E(t)?new A(t).fromEntrySeq():"object"==typeof t?new j(t):void 0;if(!e)throw new TypeError("Expected Array or iterable object of [k, v] entries, or keyed object: "+t);return e}function P(t){var e=F(t);if(!e)throw new TypeError("Expected Array or iterable object of values: "+t);return e}function U(t){var e=F(t)||"object"==typeof t&&new j(t);if(!e)throw new TypeError("Expected Array or iterable object of values, or keyed object: "+t);return e}function F(t){return L(t)?new N(t):x(t)?new z(t):E(t)?new A(t):void 0}function Y(t,e,n,r){var i=t._cache;if(i){for(var o=i.length-1,u=0;u<=o;u++){var a=i[n?o-u:u];if(!1===e(a[1],r?a[0]:u,t))return u+1}return u}return t.__iterateUncached(e,n)}function q(t,e,n,r){var i=t._cache;if(i){var o=i.length-1,u=0;return new b(function(){var t=i[n?o-u:u];return u++>o?M():w(e,r?t[0]:u-1,t[1])})}return t.__iteratorUncached(e,n)}function H(t,e){return e?W(e,t,"",{"":t}):Q(t)}function W(t,e,n,r){return Array.isArray(e)?t.call(r,n,O(e).map(function(n,r){return W(t,n,r,e)})):G(e)?t.call(r,n,D(e).map(function(n,r){return W(t,n,r,e)})):e}function Q(t){return Array.isArray(t)?O(t).map(Q).toList():G(t)?D(t).map(Q).toMap():t}function G(t){return t&&(t.constructor===Object||void 0===t.constructor)}function V(t,e){if(t===e||t!==t&&e!==e)return!0;if(!t||!e)return!1;if("function"==typeof t.valueOf&&"function"==typeof e.valueOf){if(t=t.valueOf(),e=e.valueOf(),t===e||t!==t&&e!==e)return!0;if(!t||!e)return!1}return!("function"!=typeof t.equals||"function"!=typeof e.equals||!t.equals(e))}function J(t,e){if(t===e)return!0;if(!o(e)||void 0!==t.size&&void 0!==e.size&&t.size!==e.size||void 0!==t.__hash&&void 0!==e.__hash&&t.__hash!==e.__hash||u(t)!==u(e)||a(t)!==a(e)||c(t)!==c(e))return!1;if(0===t.size&&0===e.size)return!0;var n=!s(t);if(c(t)){var r=t.entries();return e.every(function(t,e){var i=r.next().value;return i&&V(i[1],t)&&(n||V(i[0],e))})&&r.next().done}var i=!1;if(void 0===t.size)if(void 0===e.size)"function"==typeof t.cacheResult&&t.cacheResult();else{i=!0;var l=t;t=e,e=l}var f=!0,p=e.__iterate(function(e,r){if(n?!t.has(e):i?!V(e,t.get(r,gn)):!V(t.get(r,gn),e))return f=!1,!1});return f&&t.size===p}function Z(t,e){if(!(this instanceof Z))return new Z(t,e);if(this._value=t,this.size=void 0===e?1/0:Math.max(0,e),0===this.size){if(In)return In;In=this}}function X(t,e){if(!t)throw new Error(e)}function $(t,e,n){if(!(this instanceof $))return new $(t,e,n);if(X(0!==n,"Cannot step a Range by 0"),t=t||0,void 0===e&&(e=1/0),n=void 0===n?1:Math.abs(n),e<t&&(n=-n),this._start=t,this._end=e,this._step=n,this.size=Math.max(0,Math.ceil((e-t)/n-1)+1),0===this.size){if(Ln)return Ln;Ln=this}}function tt(){throw TypeError("Abstract")}function et(){}function nt(){}function rt(){}function it(t){return t>>>1&1073741824|3221225471&t}function ot(t){if(!1===t||null===t||void 0===t)return 0;if("function"==typeof t.valueOf&&(!1===(t=t.valueOf())||null===t||void 0===t))return 0;if(!0===t)return 1;var e=typeof t;if("number"===e){var n=0|t;for(n!==t&&(n^=4294967295*t);t>4294967295;)t/=4294967295,n^=t;return it(n)}if("string"===e)return t.length>zn?ut(t):at(t);if("function"==typeof t.hashCode)return t.hashCode();if("object"===e)return st(t);if("function"==typeof t.toString)return at(t.toString());throw new Error("Value type "+e+" cannot be hashed.")}function ut(t){var e=Kn[t];return void 0===e&&(e=at(t),Rn===Bn&&(Rn=0,Kn={}),Rn++,Kn[t]=e),e}function at(t){for(var e=0,n=0;n<t.length;n++)e=31*e+t.charCodeAt(n)|0;return it(e)}function st(t){var e;if(Nn&&void 0!==(e=Tn.get(t)))return e;if(void 0!==(e=t[An]))return e;if(!Cn){if(void 0!==(e=t.propertyIsEnumerable&&t.propertyIsEnumerable[An]))return e;if(void 0!==(e=ct(t)))return e}if(e=++jn,1073741824&jn&&(jn=0),Nn)Tn.set(t,e);else{if(void 0!==On&&!1===On(t))throw new Error("Non-extensible objects are not allowed as keys.");if(Cn)Object.defineProperty(t,An,{enumerable:!1,configurable:!1,writable:!1,value:e});else if(void 0!==t.propertyIsEnumerable&&t.propertyIsEnumerable===t.constructor.prototype.propertyIsEnumerable)t.propertyIsEnumerable=function(){return this.constructor.prototype.propertyIsEnumerable.apply(this,arguments)},t.propertyIsEnumerable[An]=e;else{if(void 0===t.nodeType)throw new Error("Unable to set a non-enumerable property on object.");t[An]=e}}return e}function ct(t){if(t&&t.nodeType>0)switch(t.nodeType){case 1:return t.uniqueID;case 9:return t.documentElement&&t.documentElement.uniqueID}}function lt(t){X(t!==1/0,"Cannot perform this action with an infinite size.")}function ft(t){return null===t||void 0===t?wt():pt(t)&&!c(t)?t:wt().withMutations(function(e){var r=n(t);lt(r.size),r.forEach(function(t,n){return e.set(n,t)})})}function pt(t){return!(!t||!t[Pn])}function ht(t,e){this.ownerID=t,this.entries=e}function dt(t,e,n){this.ownerID=t,this.bitmap=e,this.nodes=n}function yt(t,e,n){this.ownerID=t,this.count=e,this.nodes=n}function gt(t,e,n){this.ownerID=t,this.keyHash=e,this.entries=n}function vt(t,e,n){this.ownerID=t,this.keyHash=e,this.entry=n}function _t(t,e,n){this._type=e,this._reverse=n,this._stack=t._root&&St(t._root)}function mt(t,e){return w(t,e[0],e[1])}function St(t,e){return{node:t,index:0,__prev:e}}function bt(t,e,n,r){var i=Object.create(Un);return i.size=t,i._root=e,i.__ownerID=n,i.__hash=r,i.__altered=!1,i}function wt(){return Fn||(Fn=bt(0))}function Mt(t,e,n){var r,i;if(t._root){var o=l(vn),u=l(_n);if(r=Et(t._root,t.__ownerID,0,void 0,e,n,o,u),!u.value)return t;i=t.size+(o.value?n===gn?-1:1:0)}else{if(n===gn)return t;i=1,r=new ht(t.__ownerID,[[e,n]])}return t.__ownerID?(t.size=i,t._root=r,t.__hash=void 0,t.__altered=!0,t):r?bt(i,r):wt()}function Et(t,e,n,r,i,o,u,a){return t?t.update(e,n,r,i,o,u,a):o===gn?t:(f(a),f(u),new vt(e,r,[i,o]))}function xt(t){return t.constructor===vt||t.constructor===gt}function kt(t,e,n,r,i){if(t.keyHash===r)return new gt(e,r,[t.entry,i]);var o,u=(0===n?t.keyHash:t.keyHash>>>n)&yn,a=(0===n?r:r>>>n)&yn;return new dt(e,1<<u|1<<a,u===a?[kt(t,e,n+hn,r,i)]:(o=new vt(e,r,i),u<a?[t,o]:[o,t]))}function It(t,e,n,r){t||(t=new p);for(var i=new vt(t,ot(n),[n,r]),o=0;o<e.length;o++){var u=e[o];i=i.update(t,0,void 0,u[0],u[1])}return i}function Lt(t,e,n,r){for(var i=0,o=0,u=new Array(n),a=0,s=1,c=e.length;a<c;a++,s<<=1){var l=e[a];void 0!==l&&a!==r&&(i|=s,u[o++]=l)}return new dt(t,i,u)}function Tt(t,e,n,r,i){for(var o=0,u=new Array(dn),a=0;0!==n;a++,n>>>=1)u[a]=1&n?e[o++]:void 0;return u[r]=i,new yt(t,o+1,u)}function Dt(t,e,r){for(var i=[],u=0;u<r.length;u++){var a=r[u],s=n(a);o(a)||(s=s.map(function(t){return H(t)})),i.push(s)}return Nt(t,e,i)}function Ot(t,e,n){return t&&t.mergeDeep&&o(e)?t.mergeDeep(e):V(t,e)?t:e}function Ct(t){return function(e,n,r){if(e&&e.mergeDeepWith&&o(n))return e.mergeDeepWith(t,n);var i=t(e,n,r);return V(e,i)?e:i}}function Nt(t,e,n){return n=n.filter(function(t){return 0!==t.size}),0===n.length?t:0!==t.size||t.__ownerID||1!==n.length?t.withMutations(function(t){for(var r=e?function(n,r){t.update(r,gn,function(t){return t===gn?n:e(t,n,r)})}:function(e,n){t.set(n,e)},i=0;i<n.length;i++)n[i].forEach(r)}):t.constructor(n[0])}function jt(t,e,n,r){var i=t===gn,o=e.next();if(o.done){var u=i?n:t,a=r(u);return a===u?t:a}X(i||t&&t.set,"invalid keyPath");var s=o.value,c=i?gn:t.get(s,gn),l=jt(c,e,n,r);return l===c?t:l===gn?t.remove(s):(i?wt():t).set(s,l)}function At(t){return t-=t>>1&1431655765,t=(858993459&t)+(t>>2&858993459),t=t+(t>>4)&252645135,t+=t>>8,127&(t+=t>>16)}function zt(t,e,n,r){var i=r?t:h(t);return i[e]=n,i}function Bt(t,e,n,r){var i=t.length+1;if(r&&e+1===i)return t[e]=n,t;for(var o=new Array(i),u=0,a=0;a<i;a++)a===e?(o[a]=n,u=-1):o[a]=t[a+u];return o}function Rt(t,e,n){var r=t.length-1;if(n&&e===r)return t.pop(),t;for(var i=new Array(r),o=0,u=0;u<r;u++)u===e&&(o=1),i[u]=t[u+o];return i}function Kt(t){var e=qt();if(null===t||void 0===t)return e;if(Pt(t))return t;var n=r(t),i=n.size;return 0===i?e:(lt(i),i>0&&i<dn?Yt(0,i,hn,null,new Ut(n.toArray())):e.withMutations(function(t){t.setSize(i),n.forEach(function(e,n){return t.set(n,e)})}))}function Pt(t){return!(!t||!t[Wn])}function Ut(t,e){this.array=t,this.ownerID=e}function Ft(t,e){function n(t,e,n){return 0===e?r(t,n):i(t,e,n)}function r(t,n){var r=n===a?s&&s.array:t&&t.array,i=n>o?0:o-n,c=u-n;return c>dn&&(c=dn),function(){if(i===c)return Vn;var t=e?--c:i++;return r&&r[t]}}function i(t,r,i){var a,s=t&&t.array,c=i>o?0:o-i>>r,l=1+(u-i>>r);return l>dn&&(l=dn),function(){for(;;){if(a){var t=a();if(t!==Vn)return t;a=null}if(c===l)return Vn;var o=e?--l:c++;a=n(s&&s[o],r-hn,i+(o<<r))}}}var o=t._origin,u=t._capacity,a=Zt(u),s=t._tail;return n(t._root,t._level,0)}function Yt(t,e,n,r,i,o,u){var a=Object.create(Qn);return a.size=e-t,a._origin=t,a._capacity=e,a._level=n,a._root=r,a._tail=i,a.__ownerID=o,a.__hash=u,a.__altered=!1,a}function qt(){return Gn||(Gn=Yt(0,0,hn))}function Ht(t,e,n){if((e=y(t,e))!==e)return t;if(e>=t.size||e<0)return t.withMutations(function(t){e<0?Vt(t,e).set(0,n):Vt(t,0,e+1).set(e,n)});e+=t._origin;var r=t._tail,i=t._root,o=l(_n);return e>=Zt(t._capacity)?r=Wt(r,t.__ownerID,0,e,n,o):i=Wt(i,t.__ownerID,t._level,e,n,o),o.value?t.__ownerID?(t._root=i,t._tail=r,t.__hash=void 0,t.__altered=!0,t):Yt(t._origin,t._capacity,t._level,i,r):t}function Wt(t,e,n,r,i,o){var u=r>>>n&yn,a=t&&u<t.array.length;if(!a&&void 0===i)return t;var s;if(n>0){var c=t&&t.array[u],l=Wt(c,e,n-hn,r,i,o);return l===c?t:(s=Qt(t,e),s.array[u]=l,s)}return a&&t.array[u]===i?t:(f(o),s=Qt(t,e),void 0===i&&u===s.array.length-1?s.array.pop():s.array[u]=i,s)}function Qt(t,e){return e&&t&&e===t.ownerID?t:new Ut(t?t.array.slice():[],e)}function Gt(t,e){if(e>=Zt(t._capacity))return t._tail;if(e<1<<t._level+hn){for(var n=t._root,r=t._level;n&&r>0;)n=n.array[e>>>r&yn],r-=hn;return n}}function Vt(t,e,n){void 0!==e&&(e|=0),void 0!==n&&(n|=0);var r=t.__ownerID||new p,i=t._origin,o=t._capacity,u=i+e,a=void 0===n?o:n<0?o+n:i+n;if(u===i&&a===o)return t;if(u>=a)return t.clear();for(var s=t._level,c=t._root,l=0;u+l<0;)c=new Ut(c&&c.array.length?[void 0,c]:[],r),s+=hn,l+=1<<s;l&&(u+=l,i+=l,a+=l,o+=l);for(var f=Zt(o),h=Zt(a);h>=1<<s+hn;)c=new Ut(c&&c.array.length?[c]:[],r),s+=hn;var d=t._tail,y=h<f?Gt(t,a-1):h>f?new Ut([],r):d;if(d&&h>f&&u<o&&d.array.length){c=Qt(c,r);for(var g=c,v=s;v>hn;v-=hn){var _=f>>>v&yn;g=g.array[_]=Qt(g.array[_],r)}g.array[f>>>hn&yn]=d}if(a<o&&(y=y&&y.removeAfter(r,0,a)),u>=h)u-=h,a-=h,s=hn,c=null,y=y&&y.removeBefore(r,0,u);else if(u>i||h<f){for(l=0;c;){var m=u>>>s&yn;if(m!==h>>>s&yn)break;m&&(l+=(1<<s)*m),s-=hn,c=c.array[m]}c&&u>i&&(c=c.removeBefore(r,s,u-l)),c&&h<f&&(c=c.removeAfter(r,s,h-l)),l&&(u-=l,a-=l)}return t.__ownerID?(t.size=a-u,t._origin=u,t._capacity=a,t._level=s,t._root=c,t._tail=y,t.__hash=void 0,t.__altered=!0,t):Yt(u,a,s,c,y)}function Jt(t,e,n){for(var i=[],u=0,a=0;a<n.length;a++){var s=n[a],c=r(s);c.size>u&&(u=c.size),o(s)||(c=c.map(function(t){return H(t)})),i.push(c)}return u>t.size&&(t=t.setSize(u)),Nt(t,e,i)}function Zt(t){return t<dn?0:t-1>>>hn<<hn}function Xt(t){return null===t||void 0===t?ee():$t(t)?t:ee().withMutations(function(e){var r=n(t);lt(r.size),r.forEach(function(t,n){return e.set(n,t)})})}function $t(t){return pt(t)&&c(t)}function te(t,e,n,r){var i=Object.create(Xt.prototype);return i.size=t?t.size:0,i._map=t,i._list=e,i.__ownerID=n,i.__hash=r,i}function ee(){return Jn||(Jn=te(wt(),qt()))}function ne(t,e,n){var r,i,o=t._map,u=t._list,a=o.get(e),s=void 0!==a;if(n===gn){if(!s)return t;u.size>=dn&&u.size>=2*o.size?(i=u.filter(function(t,e){return void 0!==t&&a!==e}),r=i.toKeyedSeq().map(function(t){return t[0]}).flip().toMap(),t.__ownerID&&(r.__ownerID=i.__ownerID=t.__ownerID)):(r=o.remove(e),i=a===u.size-1?u.pop():u.set(a,void 0))}else if(s){if(n===u.get(a)[1])return t;r=o,i=u.set(a,[e,n])}else r=o.set(e,u.size),i=u.set(u.size,[e,n]);return t.__ownerID?(t.size=r.size,t._map=r,t._list=i,t.__hash=void 0,t):te(r,i)}function re(t,e){this._iter=t,this._useKeys=e,this.size=t.size}function ie(t){this._iter=t,this.size=t.size}function oe(t){this._iter=t,this.size=t.size}function ue(t){this._iter=t,this.size=t.size}function ae(t){var e=Le(t);return e._iter=t,e.size=t.size,e.flip=function(){return t},e.reverse=function(){var e=t.reverse.apply(this);return e.flip=function(){return t.reverse()},e},e.has=function(e){return t.includes(e)},e.includes=function(e){return t.has(e)},e.cacheResult=Te,e.__iterateUncached=function(e,n){var r=this;return t.__iterate(function(t,n){return!1!==e(n,t,r)},n)},e.__iteratorUncached=function(e,n){if(e===bn){var r=t.__iterator(e,n);return new b(function(){var t=r.next();if(!t.done){var e=t.value[0];t.value[0]=t.value[1],t.value[1]=e}return t})}return t.__iterator(e===Sn?mn:Sn,n)},e}function se(t,e,n){var r=Le(t);return r.size=t.size,r.has=function(e){return t.has(e)},r.get=function(r,i){var o=t.get(r,gn);return o===gn?i:e.call(n,o,r,t)},r.__iterateUncached=function(r,i){var o=this;return t.__iterate(function(t,i,u){return!1!==r(e.call(n,t,i,u),i,o)},i)},r.__iteratorUncached=function(r,i){var o=t.__iterator(bn,i);return new b(function(){var i=o.next();if(i.done)return i;var u=i.value,a=u[0];return w(r,a,e.call(n,u[1],a,t),i)})},r}function ce(t,e){var n=Le(t);return n._iter=t,n.size=t.size,n.reverse=function(){return t},t.flip&&(n.flip=function(){var e=ae(t);return e.reverse=function(){return t.flip()},e}),n.get=function(n,r){return t.get(e?n:-1-n,r)},n.has=function(n){return t.has(e?n:-1-n)},n.includes=function(e){return t.includes(e)},n.cacheResult=Te,n.__iterate=function(e,n){var r=this;return t.__iterate(function(t,n){return e(t,n,r)},!n)},n.__iterator=function(e,n){return t.__iterator(e,!n)},n}function le(t,e,n,r){var i=Le(t);return r&&(i.has=function(r){var i=t.get(r,gn);return i!==gn&&!!e.call(n,i,r,t)},i.get=function(r,i){var o=t.get(r,gn);return o!==gn&&e.call(n,o,r,t)?o:i}),i.__iterateUncached=function(i,o){var u=this,a=0;return t.__iterate(function(t,o,s){if(e.call(n,t,o,s))return a++,i(t,r?o:a-1,u)},o),a},i.__iteratorUncached=function(i,o){var u=t.__iterator(bn,o),a=0;return new b(function(){for(;;){var o=u.next();if(o.done)return o;var s=o.value,c=s[0],l=s[1];if(e.call(n,l,c,t))return w(i,r?c:a++,l,o)}})},i}function fe(t,e,n){var r=ft().asMutable();return t.__iterate(function(i,o){r.update(e.call(n,i,o,t),0,function(t){return t+1})}),r.asImmutable()}function pe(t,e,n){var r=u(t),i=(c(t)?Xt():ft()).asMutable();t.__iterate(function(o,u){i.update(e.call(n,o,u,t),function(t){return t=t||[],t.push(r?[u,o]:o),t})});var o=Ie(t);return i.map(function(e){return Ee(t,o(e))})}function he(t,e,n,r){var i=t.size;if(void 0!==e&&(e|=0),void 0!==n&&(n|=0),v(e,n,i))return t;var o=_(e,i),u=m(n,i);if(o!==o||u!==u)return he(t.toSeq().cacheResult(),e,n,r);var a,s=u-o;s===s&&(a=s<0?0:s);var c=Le(t);return c.size=0===a?a:t.size&&a||void 0,!r&&B(t)&&a>=0&&(c.get=function(e,n){return e=y(this,e),e>=0&&e<a?t.get(e+o,n):n}),c.__iterateUncached=function(e,n){var i=this;if(0===a)return 0;if(n)return this.cacheResult().__iterate(e,n);var u=0,s=!0,c=0;return t.__iterate(function(t,n){if(!s||!(s=u++<o))return c++,!1!==e(t,r?n:c-1,i)&&c!==a}),c},c.__iteratorUncached=function(e,n){if(0!==a&&n)return this.cacheResult().__iterator(e,n);var i=0!==a&&t.__iterator(e,n),u=0,s=0;return new b(function(){for(;u++<o;)i.next();if(++s>a)return M();var t=i.next();return r||e===Sn?t:e===mn?w(e,s-1,void 0,t):w(e,s-1,t.value[1],t)})},c}function de(t,e,n){var r=Le(t);return r.__iterateUncached=function(r,i){var o=this;if(i)return this.cacheResult().__iterate(r,i);var u=0;return t.__iterate(function(t,i,a){return e.call(n,t,i,a)&&++u&&r(t,i,o)}),u},r.__iteratorUncached=function(r,i){var o=this;if(i)return this.cacheResult().__iterator(r,i);var u=t.__iterator(bn,i),a=!0;return new b(function(){if(!a)return M();var t=u.next();if(t.done)return t;var i=t.value,s=i[0],c=i[1];return e.call(n,c,s,o)?r===bn?t:w(r,s,c,t):(a=!1,M())})},r}function ye(t,e,n,r){var i=Le(t);return i.__iterateUncached=function(i,o){var u=this;if(o)return this.cacheResult().__iterate(i,o);var a=!0,s=0;return t.__iterate(function(t,o,c){if(!a||!(a=e.call(n,t,o,c)))return s++,i(t,r?o:s-1,u)}),s},i.__iteratorUncached=function(i,o){var u=this;if(o)return this.cacheResult().__iterator(i,o);var a=t.__iterator(bn,o),s=!0,c=0;return new b(function(){var t,o,l;do{if(t=a.next(),t.done)return r||i===Sn?t:i===mn?w(i,c++,void 0,t):w(i,c++,t.value[1],t);var f=t.value;o=f[0],l=f[1],s&&(s=e.call(n,l,o,u))}while(s);return i===bn?t:w(i,o,l,t)})},i}function ge(t,e){var r=u(t),i=[t].concat(e).map(function(t){return o(t)?r&&(t=n(t)):t=r?K(t):P(Array.isArray(t)?t:[t]),t}).filter(function(t){return 0!==t.size});if(0===i.length)return t;if(1===i.length){var s=i[0];if(s===t||r&&u(s)||a(t)&&a(s))return s}var c=new N(i);return r?c=c.toKeyedSeq():a(t)||(c=c.toSetSeq()),c=c.flatten(!0),c.size=i.reduce(function(t,e){if(void 0!==t){var n=e.size;if(void 0!==n)return t+n}},0),c}function ve(t,e,n){var r=Le(t);return r.__iterateUncached=function(r,i){function u(t,c){var l=this;t.__iterate(function(t,i){return(!e||c<e)&&o(t)?u(t,c+1):!1===r(t,n?i:a++,l)&&(s=!0),!s},i)}var a=0,s=!1;return u(t,0),a},r.__iteratorUncached=function(r,i){var u=t.__iterator(r,i),a=[],s=0;return new b(function(){for(;u;){var t=u.next();if(!1===t.done){var c=t.value;if(r===bn&&(c=c[1]),e&&!(a.length<e)||!o(c))return n?t:w(r,s++,c,t);a.push(u),u=c.__iterator(r,i)}else u=a.pop()}return M()})},r}function _e(t,e,n){var r=Ie(t);return t.toSeq().map(function(i,o){return r(e.call(n,i,o,t))}).flatten(!0)}function me(t,e){var n=Le(t);return n.size=t.size&&2*t.size-1,n.__iterateUncached=function(n,r){var i=this,o=0;return t.__iterate(function(t,r){return(!o||!1!==n(e,o++,i))&&!1!==n(t,o++,i)},r),o},n.__iteratorUncached=function(n,r){var i,o=t.__iterator(Sn,r),u=0;return new b(function(){return(!i||u%2)&&(i=o.next(),i.done)?i:u%2?w(n,u++,e):w(n,u++,i.value,i)})},n}function Se(t,e,n){e||(e=De);var r=u(t),i=0,o=t.toSeq().map(function(e,r){return[r,e,i++,n?n(e,r,t):e]}).toArray();return o.sort(function(t,n){return e(t[3],n[3])||t[2]-n[2]}).forEach(r?function(t,e){o[e].length=2}:function(t,e){o[e]=t[1]}),r?D(o):a(t)?O(o):C(o)}function be(t,e,n){if(e||(e=De),n){var r=t.toSeq().map(function(e,r){return[e,n(e,r,t)]}).reduce(function(t,n){return we(e,t[1],n[1])?n:t});return r&&r[0]}return t.reduce(function(t,n){return we(e,t,n)?n:t})}function we(t,e,n){var r=t(n,e);return 0===r&&n!==e&&(void 0===n||null===n||n!==n)||r>0}function Me(t,n,r){var i=Le(t);return i.size=new N(r).map(function(t){return t.size}).min(),i.__iterate=function(t,e){for(var n,r=this.__iterator(Sn,e),i=0;!(n=r.next()).done&&!1!==t(n.value,i++,this););return i},i.__iteratorUncached=function(t,i){var o=r.map(function(t){return t=e(t),k(i?t.reverse():t)}),u=0,a=!1;return new b(function(){var e;return a||(e=o.map(function(t){return t.next()}),a=e.some(function(t){return t.done})),a?M():w(t,u++,n.apply(null,e.map(function(t){return t.value})))})},i}function Ee(t,e){return B(t)?e:t.constructor(e)}function xe(t){if(t!==Object(t))throw new TypeError("Expected [K, V] tuple: "+t)}function ke(t){return lt(t.size),d(t)}function Ie(t){return u(t)?n:a(t)?r:i}function Le(t){return Object.create((u(t)?D:a(t)?O:C).prototype)}function Te(){return this._iter.cacheResult?(this._iter.cacheResult(),this.size=this._iter.size,this):T.prototype.cacheResult.call(this)}function De(t,e){return t>e?1:t<e?-1:0}function Oe(t){var n=k(t);if(!n){if(!L(t))throw new TypeError("Expected iterable or array-like: "+t);n=k(e(t))}return n}function Ce(t,e){var n,r=function(o){if(o instanceof r)return o;if(!(this instanceof r))return new r(o);if(!n){n=!0;var u=Object.keys(t);Ae(i,u),i.size=u.length,i._name=e,i._keys=u,i._defaultValues=t}this._map=ft(o)},i=r.prototype=Object.create(Zn);return i.constructor=r,r}function Ne(t,e,n){var r=Object.create(Object.getPrototypeOf(t));return r._map=e,r.__ownerID=n,r}function je(t){return t._name||t.constructor.name||"Record"}function Ae(t,e){try{e.forEach(ze.bind(void 0,t))}catch(t){}}function ze(t,e){Object.defineProperty(t,e,{get:function(){return this.get(e)},set:function(t){X(this.__ownerID,"Cannot set on an immutable record."),this.set(e,t)}})}function Be(t){return null===t||void 0===t?Ue():Re(t)&&!c(t)?t:Ue().withMutations(function(e){var n=i(t);lt(n.size),n.forEach(function(t){return e.add(t)})})}function Re(t){return!(!t||!t[Xn])}function Ke(t,e){return t.__ownerID?(t.size=e.size,t._map=e,t):e===t._map?t:0===e.size?t.__empty():t.__make(e)}function Pe(t,e){var n=Object.create($n);return n.size=t?t.size:0,n._map=t,n.__ownerID=e,n}function Ue(){return tr||(tr=Pe(wt()))}function Fe(t){return null===t||void 0===t?He():Ye(t)?t:He().withMutations(function(e){var n=i(t);lt(n.size),n.forEach(function(t){return e.add(t)})})}function Ye(t){return Re(t)&&c(t)}function qe(t,e){var n=Object.create(er);return n.size=t?t.size:0,n._map=t,n.__ownerID=e,n}function He(){return nr||(nr=qe(ee()))}function We(t){return null===t||void 0===t?Ve():Qe(t)?t:Ve().unshiftAll(t)}function Qe(t){return!(!t||!t[rr])}function Ge(t,e,n,r){var i=Object.create(ir);return i.size=t,i._head=e,i.__ownerID=n,i.__hash=r,i.__altered=!1,i}function Ve(){return or||(or=Ge(0))}function Je(t,e){var n=function(n){t.prototype[n]=e[n]};return Object.keys(e).forEach(n),Object.getOwnPropertySymbols&&Object.getOwnPropertySymbols(e).forEach(n),t}function Ze(t,e){return e}function Xe(t,e){return[e,t]}function $e(t){return function(){return!t.apply(this,arguments)}}function tn(t){return function(){return-t.apply(this,arguments)}}function en(t){return"string"==typeof t?JSON.stringify(t):t}function nn(){return h(arguments)}function rn(t,e){return t<e?1:t>e?-1:0}function on(t){if(t.size===1/0)return 0;var e=c(t),n=u(t),r=e?1:0;return un(t.__iterate(n?e?function(t,e){r=31*r+an(ot(t),ot(e))|0}:function(t,e){r=r+an(ot(t),ot(e))|0}:e?function(t){r=31*r+ot(t)|0}:function(t){r=r+ot(t)|0}),r)}function un(t,e){return e=Dn(e,3432918353),e=Dn(e<<15|e>>>-15,461845907),e=Dn(e<<13|e>>>-13,5),e=(e+3864292196|0)^t,e=Dn(e^e>>>16,2246822507),e=Dn(e^e>>>13,3266489909),e=it(e^e>>>16)}function an(t,e){return t^e+2654435769+(t<<6)+(t>>2)|0}var sn=Array.prototype.slice;t(n,e),t(r,e),t(i,e),e.isIterable=o,e.isKeyed=u,e.isIndexed=a,e.isAssociative=s,e.isOrdered=c,e.Keyed=n,e.Indexed=r,e.Set=i;var cn="@@__IMMUTABLE_ITERABLE__@@",ln="@@__IMMUTABLE_KEYED__@@",fn="@@__IMMUTABLE_INDEXED__@@",pn="@@__IMMUTABLE_ORDERED__@@",hn=5,dn=1<<hn,yn=dn-1,gn={},vn={value:!1},_n={value:!1},mn=0,Sn=1,bn=2,wn="function"==typeof Symbol&&Symbol.iterator,Mn="@@iterator",En=wn||Mn;b.prototype.toString=function(){return"[Iterator]"},b.KEYS=mn,b.VALUES=Sn,b.ENTRIES=bn,b.prototype.inspect=b.prototype.toSource=function(){return this.toString()},b.prototype[En]=function(){return this},t(T,e),T.of=function(){return T(arguments)},T.prototype.toSeq=function(){return this},T.prototype.toString=function(){return this.__toString("Seq {","}")},T.prototype.cacheResult=function(){return!this._cache&&this.__iterateUncached&&(this._cache=this.entrySeq().toArray(),this.size=this._cache.length),this},T.prototype.__iterate=function(t,e){return Y(this,t,e,!0)},T.prototype.__iterator=function(t,e){return q(this,t,e,!0)},t(D,T),D.prototype.toKeyedSeq=function(){return this},t(O,T),O.of=function(){return O(arguments)},O.prototype.toIndexedSeq=function(){return this},O.prototype.toString=function(){return this.__toString("Seq [","]")},O.prototype.__iterate=function(t,e){return Y(this,t,e,!1)},O.prototype.__iterator=function(t,e){return q(this,t,e,!1)},t(C,T),C.of=function(){return C(arguments)},C.prototype.toSetSeq=function(){return this},T.isSeq=B,T.Keyed=D,T.Set=C,T.Indexed=O;var xn="@@__IMMUTABLE_SEQ__@@";T.prototype[xn]=!0,t(N,O),N.prototype.get=function(t,e){return this.has(t)?this._array[y(this,t)]:e},N.prototype.__iterate=function(t,e){for(var n=this._array,r=n.length-1,i=0;i<=r;i++)if(!1===t(n[e?r-i:i],i,this))return i+1;return i},N.prototype.__iterator=function(t,e){var n=this._array,r=n.length-1,i=0;return new b(function(){return i>r?M():w(t,i,n[e?r-i++:i++])})},t(j,D),j.prototype.get=function(t,e){return void 0===e||this.has(t)?this._object[t]:e},j.prototype.has=function(t){return this._object.hasOwnProperty(t)},j.prototype.__iterate=function(t,e){for(var n=this._object,r=this._keys,i=r.length-1,o=0;o<=i;o++){var u=r[e?i-o:o];if(!1===t(n[u],u,this))return o+1}return o},j.prototype.__iterator=function(t,e){var n=this._object,r=this._keys,i=r.length-1,o=0;return new b(function(){var u=r[e?i-o:o];return o++>i?M():w(t,u,n[u])})},j.prototype[pn]=!0,t(A,O),A.prototype.__iterateUncached=function(t,e){if(e)return this.cacheResult().__iterate(t,e);var n=this._iterable,r=k(n),i=0;if(x(r))for(var o;!(o=r.next()).done&&!1!==t(o.value,i++,this););return i},A.prototype.__iteratorUncached=function(t,e){if(e)return this.cacheResult().__iterator(t,e);var n=this._iterable,r=k(n);if(!x(r))return new b(M);var i=0;return new b(function(){var e=r.next();return e.done?e:w(t,i++,e.value)})},t(z,O),z.prototype.__iterateUncached=function(t,e){if(e)return this.cacheResult().__iterate(t,e);for(var n=this._iterator,r=this._iteratorCache,i=0;i<r.length;)if(!1===t(r[i],i++,this))return i;for(var o;!(o=n.next()).done;){var u=o.value;if(r[i]=u,!1===t(u,i++,this))break}return i},z.prototype.__iteratorUncached=function(t,e){if(e)return this.cacheResult().__iterator(t,e);var n=this._iterator,r=this._iteratorCache,i=0;return new b(function(){if(i>=r.length){var e=n.next();if(e.done)return e;r[i]=e.value}return w(t,i,r[i++])})};var kn;t(Z,O),Z.prototype.toString=function(){return 0===this.size?"Repeat []":"Repeat [ "+this._value+" "+this.size+" times ]"},Z.prototype.get=function(t,e){return this.has(t)?this._value:e},Z.prototype.includes=function(t){return V(this._value,t)},Z.prototype.slice=function(t,e){var n=this.size;return v(t,e,n)?this:new Z(this._value,m(e,n)-_(t,n))},Z.prototype.reverse=function(){return this},Z.prototype.indexOf=function(t){return V(this._value,t)?0:-1},Z.prototype.lastIndexOf=function(t){return V(this._value,t)?this.size:-1},Z.prototype.__iterate=function(t,e){for(var n=0;n<this.size;n++)if(!1===t(this._value,n,this))return n+1;return n},Z.prototype.__iterator=function(t,e){var n=this,r=0;return new b(function(){return r<n.size?w(t,r++,n._value):M()})},Z.prototype.equals=function(t){return t instanceof Z?V(this._value,t._value):J(t)};var In;t($,O),$.prototype.toString=function(){return 0===this.size?"Range []":"Range [ "+this._start+"..."+this._end+(this._step>1?" by "+this._step:"")+" ]"},$.prototype.get=function(t,e){return this.has(t)?this._start+y(this,t)*this._step:e},$.prototype.includes=function(t){var e=(t-this._start)/this._step;return e>=0&&e<this.size&&e===Math.floor(e)},$.prototype.slice=function(t,e){return v(t,e,this.size)?this:(t=_(t,this.size),e=m(e,this.size),e<=t?new $(0,0):new $(this.get(t,this._end),this.get(e,this._end),this._step))},$.prototype.indexOf=function(t){var e=t-this._start;if(e%this._step==0){var n=e/this._step;if(n>=0&&n<this.size)return n}return-1},$.prototype.lastIndexOf=function(t){return this.indexOf(t)},$.prototype.__iterate=function(t,e){for(var n=this.size-1,r=this._step,i=e?this._start+n*r:this._start,o=0;o<=n;o++){if(!1===t(i,o,this))return o+1;i+=e?-r:r}return o},$.prototype.__iterator=function(t,e){var n=this.size-1,r=this._step,i=e?this._start+n*r:this._start,o=0;return new b(function(){var u=i;return i+=e?-r:r,o>n?M():w(t,o++,u)})},$.prototype.equals=function(t){return t instanceof $?this._start===t._start&&this._end===t._end&&this._step===t._step:J(this,t)};var Ln;t(tt,e),t(et,tt),t(nt,tt),t(rt,tt),tt.Keyed=et,tt.Indexed=nt,tt.Set=rt;var Tn,Dn="function"==typeof Math.imul&&-2===Math.imul(4294967295,2)?Math.imul:function(t,e){t|=0,e|=0;var n=65535&t,r=65535&e;return n*r+((t>>>16)*r+n*(e>>>16)<<16>>>0)|0},On=Object.isExtensible,Cn=function(){try{return Object.defineProperty({},"@",{}),!0}catch(t){return!1}}(),Nn="function"==typeof WeakMap;Nn&&(Tn=new WeakMap);var jn=0,An="__immutablehash__";"function"==typeof Symbol&&(An=Symbol(An));var zn=16,Bn=255,Rn=0,Kn={};t(ft,et),ft.prototype.toString=function(){return this.__toString("Map {","}")},ft.prototype.get=function(t,e){return this._root?this._root.get(0,void 0,t,e):e},ft.prototype.set=function(t,e){return Mt(this,t,e)},ft.prototype.setIn=function(t,e){return this.updateIn(t,gn,function(){return e})},ft.prototype.remove=function(t){return Mt(this,t,gn)},ft.prototype.deleteIn=function(t){return this.updateIn(t,function(){return gn})},ft.prototype.update=function(t,e,n){return 1===arguments.length?t(this):this.updateIn([t],e,n)},ft.prototype.updateIn=function(t,e,n){n||(n=e,e=void 0);var r=jt(this,Oe(t),e,n);return r===gn?void 0:r},ft.prototype.clear=function(){return 0===this.size?this:this.__ownerID?(this.size=0,this._root=null,this.__hash=void 0,this.__altered=!0,this):wt()},ft.prototype.merge=function(){return Dt(this,void 0,arguments)},ft.prototype.mergeWith=function(t){return Dt(this,t,sn.call(arguments,1))},ft.prototype.mergeIn=function(t){var e=sn.call(arguments,1);return this.updateIn(t,wt(),function(t){return"function"==typeof t.merge?t.merge.apply(t,e):e[e.length-1]})},ft.prototype.mergeDeep=function(){return Dt(this,Ot,arguments)},ft.prototype.mergeDeepWith=function(t){var e=sn.call(arguments,1);return Dt(this,Ct(t),e)},ft.prototype.mergeDeepIn=function(t){var e=sn.call(arguments,1);return this.updateIn(t,wt(),function(t){return"function"==typeof t.mergeDeep?t.mergeDeep.apply(t,e):e[e.length-1]})},ft.prototype.sort=function(t){return Xt(Se(this,t))},ft.prototype.sortBy=function(t,e){return Xt(Se(this,e,t))},ft.prototype.withMutations=function(t){var e=this.asMutable();return t(e),e.wasAltered()?e.__ensureOwner(this.__ownerID):this},ft.prototype.asMutable=function(){return this.__ownerID?this:this.__ensureOwner(new p)},ft.prototype.asImmutable=function(){return this.__ensureOwner()},ft.prototype.wasAltered=function(){return this.__altered},ft.prototype.__iterator=function(t,e){return new _t(this,t,e)},ft.prototype.__iterate=function(t,e){var n=this,r=0;return this._root&&this._root.iterate(function(e){return r++,t(e[1],e[0],n)},e),r},ft.prototype.__ensureOwner=function(t){return t===this.__ownerID?this:t?bt(this.size,this._root,t,this.__hash):(this.__ownerID=t,this.__altered=!1,this)},ft.isMap=pt;var Pn="@@__IMMUTABLE_MAP__@@",Un=ft.prototype;Un[Pn]=!0,Un.delete=Un.remove,Un.removeIn=Un.deleteIn,ht.prototype.get=function(t,e,n,r){for(var i=this.entries,o=0,u=i.length;o<u;o++)if(V(n,i[o][0]))return i[o][1];return r},ht.prototype.update=function(t,e,n,r,i,o,u){for(var a=i===gn,s=this.entries,c=0,l=s.length;c<l&&!V(r,s[c][0]);c++);var p=c<l;if(p?s[c][1]===i:a)return this;if(f(u),(a||!p)&&f(o),!a||1!==s.length){if(!p&&!a&&s.length>=Yn)return It(t,s,r,i);var d=t&&t===this.ownerID,y=d?s:h(s);return p?a?c===l-1?y.pop():y[c]=y.pop():y[c]=[r,i]:y.push([r,i]),d?(this.entries=y,this):new ht(t,y)}},dt.prototype.get=function(t,e,n,r){void 0===e&&(e=ot(n));var i=1<<((0===t?e:e>>>t)&yn),o=this.bitmap;return 0==(o&i)?r:this.nodes[At(o&i-1)].get(t+hn,e,n,r)},dt.prototype.update=function(t,e,n,r,i,o,u){void 0===n&&(n=ot(r));var a=(0===e?n:n>>>e)&yn,s=1<<a,c=this.bitmap,l=0!=(c&s);if(!l&&i===gn)return this;var f=At(c&s-1),p=this.nodes,h=l?p[f]:void 0,d=Et(h,t,e+hn,n,r,i,o,u);if(d===h)return this;if(!l&&d&&p.length>=qn)return Tt(t,p,c,a,d);if(l&&!d&&2===p.length&&xt(p[1^f]))return p[1^f];if(l&&d&&1===p.length&&xt(d))return d;var y=t&&t===this.ownerID,g=l?d?c:c^s:c|s,v=l?d?zt(p,f,d,y):Rt(p,f,y):Bt(p,f,d,y);return y?(this.bitmap=g,this.nodes=v,this):new dt(t,g,v)},yt.prototype.get=function(t,e,n,r){void 0===e&&(e=ot(n));var i=(0===t?e:e>>>t)&yn,o=this.nodes[i];return o?o.get(t+hn,e,n,r):r},yt.prototype.update=function(t,e,n,r,i,o,u){void 0===n&&(n=ot(r));var a=(0===e?n:n>>>e)&yn,s=i===gn,c=this.nodes,l=c[a];if(s&&!l)return this;var f=Et(l,t,e+hn,n,r,i,o,u);if(f===l)return this;var p=this.count;if(l){if(!f&&--p<Hn)return Lt(t,c,p,a)}else p++;var h=t&&t===this.ownerID,d=zt(c,a,f,h);return h?(this.count=p,this.nodes=d,this):new yt(t,p,d)},gt.prototype.get=function(t,e,n,r){for(var i=this.entries,o=0,u=i.length;o<u;o++)if(V(n,i[o][0]))return i[o][1];return r},gt.prototype.update=function(t,e,n,r,i,o,u){void 0===n&&(n=ot(r));var a=i===gn;if(n!==this.keyHash)return a?this:(f(u),f(o),kt(this,t,e,n,[r,i]));for(var s=this.entries,c=0,l=s.length;c<l&&!V(r,s[c][0]);c++);var p=c<l;if(p?s[c][1]===i:a)return this;if(f(u),(a||!p)&&f(o),a&&2===l)return new vt(t,this.keyHash,s[1^c]);var d=t&&t===this.ownerID,y=d?s:h(s);return p?a?c===l-1?y.pop():y[c]=y.pop():y[c]=[r,i]:y.push([r,i]),d?(this.entries=y,this):new gt(t,this.keyHash,y)},vt.prototype.get=function(t,e,n,r){return V(n,this.entry[0])?this.entry[1]:r},vt.prototype.update=function(t,e,n,r,i,o,u){var a=i===gn,s=V(r,this.entry[0]);return(s?i===this.entry[1]:a)?this:(f(u),a?void f(o):s?t&&t===this.ownerID?(this.entry[1]=i,this):new vt(t,this.keyHash,[r,i]):(f(o),kt(this,t,e,ot(r),[r,i])))},ht.prototype.iterate=gt.prototype.iterate=function(t,e){for(var n=this.entries,r=0,i=n.length-1;r<=i;r++)if(!1===t(n[e?i-r:r]))return!1},dt.prototype.iterate=yt.prototype.iterate=function(t,e){for(var n=this.nodes,r=0,i=n.length-1;r<=i;r++){var o=n[e?i-r:r];if(o&&!1===o.iterate(t,e))return!1}},vt.prototype.iterate=function(t,e){return t(this.entry)},t(_t,b),_t.prototype.next=function(){for(var t=this._type,e=this._stack;e;){var n,r=e.node,i=e.index++;if(r.entry){if(0===i)return mt(t,r.entry)}else if(r.entries){if(n=r.entries.length-1,i<=n)return mt(t,r.entries[this._reverse?n-i:i])}else if(n=r.nodes.length-1,i<=n){var o=r.nodes[this._reverse?n-i:i];if(o){if(o.entry)return mt(t,o.entry);e=this._stack=St(o,e)}continue}e=this._stack=this._stack.__prev}return M()};var Fn,Yn=dn/4,qn=dn/2,Hn=dn/4;t(Kt,nt),Kt.of=function(){return this(arguments)},Kt.prototype.toString=function(){return this.__toString("List [","]")},Kt.prototype.get=function(t,e){if((t=y(this,t))>=0&&t<this.size){t+=this._origin;var n=Gt(this,t);return n&&n.array[t&yn]}return e},Kt.prototype.set=function(t,e){return Ht(this,t,e)},Kt.prototype.remove=function(t){return this.has(t)?0===t?this.shift():t===this.size-1?this.pop():this.splice(t,1):this},Kt.prototype.insert=function(t,e){return this.splice(t,0,e)},Kt.prototype.clear=function(){return 0===this.size?this:this.__ownerID?(this.size=this._origin=this._capacity=0,this._level=hn,this._root=this._tail=null,this.__hash=void 0,this.__altered=!0,this):qt()},Kt.prototype.push=function(){var t=arguments,e=this.size;return this.withMutations(function(n){Vt(n,0,e+t.length);for(var r=0;r<t.length;r++)n.set(e+r,t[r])})},Kt.prototype.pop=function(){return Vt(this,0,-1)},Kt.prototype.unshift=function(){var t=arguments;return this.withMutations(function(e){Vt(e,-t.length);for(var n=0;n<t.length;n++)e.set(n,t[n])})},Kt.prototype.shift=function(){return Vt(this,1)},Kt.prototype.merge=function(){return Jt(this,void 0,arguments)},Kt.prototype.mergeWith=function(t){return Jt(this,t,sn.call(arguments,1))},Kt.prototype.mergeDeep=function(){return Jt(this,Ot,arguments)},Kt.prototype.mergeDeepWith=function(t){var e=sn.call(arguments,1);return Jt(this,Ct(t),e)},Kt.prototype.setSize=function(t){return Vt(this,0,t)},Kt.prototype.slice=function(t,e){var n=this.size;return v(t,e,n)?this:Vt(this,_(t,n),m(e,n))},Kt.prototype.__iterator=function(t,e){var n=0,r=Ft(this,e);return new b(function(){var e=r();return e===Vn?M():w(t,n++,e)})},Kt.prototype.__iterate=function(t,e){for(var n,r=0,i=Ft(this,e);(n=i())!==Vn&&!1!==t(n,r++,this););return r},Kt.prototype.__ensureOwner=function(t){return t===this.__ownerID?this:t?Yt(this._origin,this._capacity,this._level,this._root,this._tail,t,this.__hash):(this.__ownerID=t,this)},Kt.isList=Pt;var Wn="@@__IMMUTABLE_LIST__@@",Qn=Kt.prototype;Qn[Wn]=!0,Qn.delete=Qn.remove,Qn.setIn=Un.setIn,Qn.deleteIn=Qn.removeIn=Un.removeIn,Qn.update=Un.update,Qn.updateIn=Un.updateIn,Qn.mergeIn=Un.mergeIn,Qn.mergeDeepIn=Un.mergeDeepIn,Qn.withMutations=Un.withMutations,Qn.asMutable=Un.asMutable,Qn.asImmutable=Un.asImmutable,Qn.wasAltered=Un.wasAltered,Ut.prototype.removeBefore=function(t,e,n){if(n===e?1<<e:0===this.array.length)return this;var r=n>>>e&yn;if(r>=this.array.length)return new Ut([],t);var i,o=0===r;if(e>0){var u=this.array[r];if((i=u&&u.removeBefore(t,e-hn,n))===u&&o)return this}if(o&&!i)return this;var a=Qt(this,t);if(!o)for(var s=0;s<r;s++)a.array[s]=void 0;return i&&(a.array[r]=i),a},Ut.prototype.removeAfter=function(t,e,n){if(n===(e?1<<e:0)||0===this.array.length)return this;var r=n-1>>>e&yn;if(r>=this.array.length)return this;var i;if(e>0){var o=this.array[r];if((i=o&&o.removeAfter(t,e-hn,n))===o&&r===this.array.length-1)return this}var u=Qt(this,t);return u.array.splice(r+1),i&&(u.array[r]=i),u};var Gn,Vn={};t(Xt,ft),Xt.of=function(){return this(arguments)},Xt.prototype.toString=function(){return this.__toString("OrderedMap {","}")},Xt.prototype.get=function(t,e){var n=this._map.get(t);return void 0!==n?this._list.get(n)[1]:e},Xt.prototype.clear=function(){return 0===this.size?this:this.__ownerID?(this.size=0,this._map.clear(),this._list.clear(),this):ee()},Xt.prototype.set=function(t,e){return ne(this,t,e)},Xt.prototype.remove=function(t){return ne(this,t,gn)},Xt.prototype.wasAltered=function(){return this._map.wasAltered()||this._list.wasAltered()},Xt.prototype.__iterate=function(t,e){var n=this;return this._list.__iterate(function(e){return e&&t(e[1],e[0],n)},e)},Xt.prototype.__iterator=function(t,e){return this._list.fromEntrySeq().__iterator(t,e)},Xt.prototype.__ensureOwner=function(t){if(t===this.__ownerID)return this;var e=this._map.__ensureOwner(t),n=this._list.__ensureOwner(t);return t?te(e,n,t,this.__hash):(this.__ownerID=t,this._map=e,this._list=n,this)},Xt.isOrderedMap=$t,Xt.prototype[pn]=!0,Xt.prototype.delete=Xt.prototype.remove;var Jn;t(re,D),re.prototype.get=function(t,e){return this._iter.get(t,e)},re.prototype.has=function(t){return this._iter.has(t)},re.prototype.valueSeq=function(){return this._iter.valueSeq()},re.prototype.reverse=function(){var t=this,e=ce(this,!0);return this._useKeys||(e.valueSeq=function(){return t._iter.toSeq().reverse()}),e},re.prototype.map=function(t,e){var n=this,r=se(this,t,e);return this._useKeys||(r.valueSeq=function(){return n._iter.toSeq().map(t,e)}),r},re.prototype.__iterate=function(t,e){var n,r=this;return this._iter.__iterate(this._useKeys?function(e,n){return t(e,n,r)}:(n=e?ke(this):0,function(i){return t(i,e?--n:n++,r)}),e)},re.prototype.__iterator=function(t,e){if(this._useKeys)return this._iter.__iterator(t,e);var n=this._iter.__iterator(Sn,e),r=e?ke(this):0;return new b(function(){var i=n.next();return i.done?i:w(t,e?--r:r++,i.value,i)})},re.prototype[pn]=!0,t(ie,O),ie.prototype.includes=function(t){return this._iter.includes(t)},ie.prototype.__iterate=function(t,e){var n=this,r=0;return this._iter.__iterate(function(e){return t(e,r++,n)},e)},ie.prototype.__iterator=function(t,e){var n=this._iter.__iterator(Sn,e),r=0;return new b(function(){var e=n.next();return e.done?e:w(t,r++,e.value,e)})},t(oe,C),oe.prototype.has=function(t){return this._iter.includes(t)},oe.prototype.__iterate=function(t,e){var n=this;return this._iter.__iterate(function(e){return t(e,e,n)},e)},oe.prototype.__iterator=function(t,e){var n=this._iter.__iterator(Sn,e);return new b(function(){var e=n.next();return e.done?e:w(t,e.value,e.value,e)})},t(ue,D),ue.prototype.entrySeq=function(){return this._iter.toSeq()},ue.prototype.__iterate=function(t,e){var n=this;return this._iter.__iterate(function(e){if(e){xe(e);var r=o(e);return t(r?e.get(1):e[1],r?e.get(0):e[0],n)}},e)},ue.prototype.__iterator=function(t,e){var n=this._iter.__iterator(Sn,e);return new b(function(){for(;;){var e=n.next();if(e.done)return e;var r=e.value;if(r){xe(r);var i=o(r);return w(t,i?r.get(0):r[0],i?r.get(1):r[1],e)}}})},ie.prototype.cacheResult=re.prototype.cacheResult=oe.prototype.cacheResult=ue.prototype.cacheResult=Te,t(Ce,et),Ce.prototype.toString=function(){return this.__toString(je(this)+" {","}")},Ce.prototype.has=function(t){return this._defaultValues.hasOwnProperty(t)},Ce.prototype.get=function(t,e){if(!this.has(t))return e;var n=this._defaultValues[t];return this._map?this._map.get(t,n):n},Ce.prototype.clear=function(){if(this.__ownerID)return this._map&&this._map.clear(),this;var t=this.constructor;return t._empty||(t._empty=Ne(this,wt()))},Ce.prototype.set=function(t,e){if(!this.has(t))throw new Error('Cannot set unknown key "'+t+'" on '+je(this));var n=this._map&&this._map.set(t,e);return this.__ownerID||n===this._map?this:Ne(this,n)},Ce.prototype.remove=function(t){if(!this.has(t))return this;var e=this._map&&this._map.remove(t);return this.__ownerID||e===this._map?this:Ne(this,e)},Ce.prototype.wasAltered=function(){return this._map.wasAltered()},Ce.prototype.__iterator=function(t,e){var r=this;return n(this._defaultValues).map(function(t,e){return r.get(e)}).__iterator(t,e)},Ce.prototype.__iterate=function(t,e){var r=this;return n(this._defaultValues).map(function(t,e){return r.get(e)}).__iterate(t,e)},Ce.prototype.__ensureOwner=function(t){if(t===this.__ownerID)return this;var e=this._map&&this._map.__ensureOwner(t);return t?Ne(this,e,t):(this.__ownerID=t,this._map=e,this)};var Zn=Ce.prototype;Zn.delete=Zn.remove,Zn.deleteIn=Zn.removeIn=Un.removeIn,Zn.merge=Un.merge,Zn.mergeWith=Un.mergeWith,Zn.mergeIn=Un.mergeIn,Zn.mergeDeep=Un.mergeDeep,Zn.mergeDeepWith=Un.mergeDeepWith,Zn.mergeDeepIn=Un.mergeDeepIn,Zn.setIn=Un.setIn,Zn.update=Un.update,Zn.updateIn=Un.updateIn,Zn.withMutations=Un.withMutations,Zn.asMutable=Un.asMutable,Zn.asImmutable=Un.asImmutable,t(Be,rt),Be.of=function(){return this(arguments)},Be.fromKeys=function(t){return this(n(t).keySeq())},Be.prototype.toString=function(){return this.__toString("Set {","}")},Be.prototype.has=function(t){return this._map.has(t)},Be.prototype.add=function(t){return Ke(this,this._map.set(t,!0))},Be.prototype.remove=function(t){return Ke(this,this._map.remove(t))},Be.prototype.clear=function(){return Ke(this,this._map.clear())},Be.prototype.union=function(){var t=sn.call(arguments,0);return t=t.filter(function(t){return 0!==t.size}),0===t.length?this:0!==this.size||this.__ownerID||1!==t.length?this.withMutations(function(e){for(var n=0;n<t.length;n++)i(t[n]).forEach(function(t){return e.add(t)})}):this.constructor(t[0])},Be.prototype.intersect=function(){var t=sn.call(arguments,0);if(0===t.length)return this;t=t.map(function(t){return i(t)});var e=this;return this.withMutations(function(n){e.forEach(function(e){t.every(function(t){return t.includes(e)})||n.remove(e)})})},Be.prototype.subtract=function(){var t=sn.call(arguments,0);if(0===t.length)return this;t=t.map(function(t){return i(t)});var e=this;return this.withMutations(function(n){e.forEach(function(e){t.some(function(t){return t.includes(e)})&&n.remove(e)})})},Be.prototype.merge=function(){return this.union.apply(this,arguments)},Be.prototype.mergeWith=function(t){var e=sn.call(arguments,1);return this.union.apply(this,e)},Be.prototype.sort=function(t){return Fe(Se(this,t))},Be.prototype.sortBy=function(t,e){return Fe(Se(this,e,t))},Be.prototype.wasAltered=function(){return this._map.wasAltered()},Be.prototype.__iterate=function(t,e){var n=this;return this._map.__iterate(function(e,r){return t(r,r,n)},e)},Be.prototype.__iterator=function(t,e){return this._map.map(function(t,e){return e}).__iterator(t,e)},Be.prototype.__ensureOwner=function(t){if(t===this.__ownerID)return this;var e=this._map.__ensureOwner(t);return t?this.__make(e,t):(this.__ownerID=t,this._map=e,this)},Be.isSet=Re;var Xn="@@__IMMUTABLE_SET__@@",$n=Be.prototype;$n[Xn]=!0,$n.delete=$n.remove,$n.mergeDeep=$n.merge,$n.mergeDeepWith=$n.mergeWith,$n.withMutations=Un.withMutations,$n.asMutable=Un.asMutable,$n.asImmutable=Un.asImmutable,$n.__empty=Ue,$n.__make=Pe;var tr;t(Fe,Be),Fe.of=function(){return this(arguments)},Fe.fromKeys=function(t){return this(n(t).keySeq())},Fe.prototype.toString=function(){return this.__toString("OrderedSet {","}")},Fe.isOrderedSet=Ye;var er=Fe.prototype;er[pn]=!0,er.__empty=He,er.__make=qe;var nr;t(We,nt),We.of=function(){return this(arguments)},We.prototype.toString=function(){return this.__toString("Stack [","]")},We.prototype.get=function(t,e){var n=this._head;for(t=y(this,t);n&&t--;)n=n.next;return n?n.value:e},We.prototype.peek=function(){return this._head&&this._head.value},We.prototype.push=function(){if(0===arguments.length)return this;for(var t=this.size+arguments.length,e=this._head,n=arguments.length-1;n>=0;n--)e={value:arguments[n],next:e};return this.__ownerID?(this.size=t,this._head=e,this.__hash=void 0,this.__altered=!0,this):Ge(t,e)},We.prototype.pushAll=function(t){if(t=r(t),0===t.size)return this;lt(t.size);var e=this.size,n=this._head;return t.reverse().forEach(function(t){e++,n={value:t,next:n}}),this.__ownerID?(this.size=e,this._head=n,this.__hash=void 0,this.__altered=!0,this):Ge(e,n)},We.prototype.pop=function(){return this.slice(1)},We.prototype.unshift=function(){return this.push.apply(this,arguments)},We.prototype.unshiftAll=function(t){return this.pushAll(t)},We.prototype.shift=function(){return this.pop.apply(this,arguments)},We.prototype.clear=function(){return 0===this.size?this:this.__ownerID?(this.size=0,this._head=void 0,this.__hash=void 0,this.__altered=!0,this):Ve()},We.prototype.slice=function(t,e){if(v(t,e,this.size))return this;var n=_(t,this.size);if(m(e,this.size)!==this.size)return nt.prototype.slice.call(this,t,e);for(var r=this.size-n,i=this._head;n--;)i=i.next;return this.__ownerID?(this.size=r,this._head=i,this.__hash=void 0,this.__altered=!0,this):Ge(r,i)},We.prototype.__ensureOwner=function(t){return t===this.__ownerID?this:t?Ge(this.size,this._head,t,this.__hash):(this.__ownerID=t,this.__altered=!1,this)},We.prototype.__iterate=function(t,e){if(e)return this.reverse().__iterate(t);for(var n=0,r=this._head;r&&!1!==t(r.value,n++,this);)r=r.next;return n},We.prototype.__iterator=function(t,e){if(e)return this.reverse().__iterator(t);var n=0,r=this._head;return new b(function(){if(r){var e=r.value;return r=r.next,w(t,n++,e)}return M()})},We.isStack=Qe;var rr="@@__IMMUTABLE_STACK__@@",ir=We.prototype;ir[rr]=!0,ir.withMutations=Un.withMutations,ir.asMutable=Un.asMutable,ir.asImmutable=Un.asImmutable,ir.wasAltered=Un.wasAltered;var or;e.Iterator=b,Je(e,{toArray:function(){lt(this.size);var t=new Array(this.size||0);return this.valueSeq().__iterate(function(e,n){t[n]=e}),t},toIndexedSeq:function(){return new ie(this)},toJS:function(){return this.toSeq().map(function(t){return t&&"function"==typeof t.toJS?t.toJS():t}).__toJS()},toJSON:function(){return this.toSeq().map(function(t){return t&&"function"==typeof t.toJSON?t.toJSON():t}).__toJS()},toKeyedSeq:function(){return new re(this,!0)},toMap:function(){return ft(this.toKeyedSeq())},toObject:function(){lt(this.size);var t={};return this.__iterate(function(e,n){t[n]=e}),t},toOrderedMap:function(){return Xt(this.toKeyedSeq())},toOrderedSet:function(){return Fe(u(this)?this.valueSeq():this)},toSet:function(){return Be(u(this)?this.valueSeq():this)},toSetSeq:function(){return new oe(this)},toSeq:function(){return a(this)?this.toIndexedSeq():u(this)?this.toKeyedSeq():this.toSetSeq()},toStack:function(){return We(u(this)?this.valueSeq():this)},toList:function(){return Kt(u(this)?this.valueSeq():this)},toString:function(){return"[Iterable]"},__toString:function(t,e){return 0===this.size?t+e:t+" "+this.toSeq().map(this.__toStringMapper).join(", ")+" "+e},concat:function(){return Ee(this,ge(this,sn.call(arguments,0)))},includes:function(t){return this.some(function(e){return V(e,t)})},entries:function(){return this.__iterator(bn)},every:function(t,e){lt(this.size);var n=!0;return this.__iterate(function(r,i,o){if(!t.call(e,r,i,o))return n=!1,!1}),n},filter:function(t,e){return Ee(this,le(this,t,e,!0))},find:function(t,e,n){var r=this.findEntry(t,e);return r?r[1]:n},findEntry:function(t,e){var n;return this.__iterate(function(r,i,o){if(t.call(e,r,i,o))return n=[i,r],!1}),n},findLastEntry:function(t,e){return this.toSeq().reverse().findEntry(t,e)},forEach:function(t,e){return lt(this.size),this.__iterate(e?t.bind(e):t)},join:function(t){lt(this.size),t=void 0!==t?""+t:",";var e="",n=!0;return this.__iterate(function(r){n?n=!1:e+=t,e+=null!==r&&void 0!==r?r.toString():""}),e},keys:function(){return this.__iterator(mn)},map:function(t,e){return Ee(this,se(this,t,e))},reduce:function(t,e,n){lt(this.size);var r,i;return arguments.length<2?i=!0:r=e,this.__iterate(function(e,o,u){i?(i=!1,r=e):r=t.call(n,r,e,o,u)}),r},reduceRight:function(t,e,n){var r=this.toKeyedSeq().reverse();return r.reduce.apply(r,arguments)},reverse:function(){return Ee(this,ce(this,!0))},slice:function(t,e){return Ee(this,he(this,t,e,!0))},some:function(t,e){return!this.every($e(t),e)},sort:function(t){return Ee(this,Se(this,t))},values:function(){return this.__iterator(Sn)},butLast:function(){return this.slice(0,-1)},isEmpty:function(){return void 0!==this.size?0===this.size:!this.some(function(){return!0})},count:function(t,e){return d(t?this.toSeq().filter(t,e):this)},countBy:function(t,e){return fe(this,t,e)},equals:function(t){return J(this,t)},entrySeq:function(){var t=this;if(t._cache)return new N(t._cache);var e=t.toSeq().map(Xe).toIndexedSeq();return e.fromEntrySeq=function(){return t.toSeq()},e},filterNot:function(t,e){return this.filter($e(t),e)},findLast:function(t,e,n){return this.toKeyedSeq().reverse().find(t,e,n)},first:function(){return this.find(g)},flatMap:function(t,e){return Ee(this,_e(this,t,e))},flatten:function(t){return Ee(this,ve(this,t,!0))},fromEntrySeq:function(){return new ue(this)},get:function(t,e){return this.find(function(e,n){return V(n,t)},void 0,e)},getIn:function(t,e){for(var n,r=this,i=Oe(t);!(n=i.next()).done;){var o=n.value;if((r=r&&r.get?r.get(o,gn):gn)===gn)return e}return r},groupBy:function(t,e){return pe(this,t,e)},has:function(t){return this.get(t,gn)!==gn},hasIn:function(t){return this.getIn(t,gn)!==gn},isSubset:function(t){return t="function"==typeof t.includes?t:e(t),this.every(function(e){return t.includes(e)})},isSuperset:function(t){return t="function"==typeof t.isSubset?t:e(t),t.isSubset(this)},keySeq:function(){return this.toSeq().map(Ze).toIndexedSeq()},last:function(){return this.toSeq().reverse().first()},max:function(t){return be(this,t)},maxBy:function(t,e){return be(this,e,t)},min:function(t){return be(this,t?tn(t):rn)},minBy:function(t,e){return be(this,e?tn(e):rn,t)},rest:function(){return this.slice(1)},skip:function(t){return this.slice(Math.max(0,t))},skipLast:function(t){return Ee(this,this.toSeq().reverse().skip(t).reverse())},skipWhile:function(t,e){return Ee(this,ye(this,t,e,!0))},skipUntil:function(t,e){return this.skipWhile($e(t),e)},sortBy:function(t,e){return Ee(this,Se(this,e,t))},take:function(t){return this.slice(0,Math.max(0,t))},takeLast:function(t){return Ee(this,this.toSeq().reverse().take(t).reverse())},takeWhile:function(t,e){return Ee(this,de(this,t,e))},takeUntil:function(t,e){return this.takeWhile($e(t),e)},valueSeq:function(){return this.toIndexedSeq()},hashCode:function(){return this.__hash||(this.__hash=on(this))}});var ur=e.prototype;ur[cn]=!0,ur[En]=ur.values,ur.__toJS=ur.toArray,ur.__toStringMapper=en,ur.inspect=ur.toSource=function(){return this.toString()},ur.chain=ur.flatMap,ur.contains=ur.includes,function(){try{Object.defineProperty(ur,"length",{get:function(){if(!e.noLengthWarning){var t;try{throw new Error}catch(e){t=e.stack}if(-1===t.indexOf("_wrapObject"))return console&&console.warn&&console.warn("iterable.length has been deprecated, use iterable.size or iterable.count(). This warning will become a silent error in a future version. "+t),this.size}}})}catch(t){}}(),Je(n,{flip:function(){return Ee(this,ae(this))},findKey:function(t,e){var n=this.findEntry(t,e);return n&&n[0]},findLastKey:function(t,e){return this.toSeq().reverse().findKey(t,e)},keyOf:function(t){return this.findKey(function(e){return V(e,t)})},lastKeyOf:function(t){return this.findLastKey(function(e){return V(e,t)})},mapEntries:function(t,e){var n=this,r=0;return Ee(this,this.toSeq().map(function(i,o){return t.call(e,[o,i],r++,n)}).fromEntrySeq())},mapKeys:function(t,e){var n=this;return Ee(this,this.toSeq().flip().map(function(r,i){return t.call(e,r,i,n)}).flip())}});var ar=n.prototype;return ar[ln]=!0,ar[En]=ur.entries,ar.__toJS=ur.toObject,ar.__toStringMapper=function(t,e){return JSON.stringify(e)+": "+en(t)},Je(r,{toKeyedSeq:function(){return new re(this,!1)},filter:function(t,e){return Ee(this,le(this,t,e,!1))},findIndex:function(t,e){var n=this.findEntry(t,e);return n?n[0]:-1},indexOf:function(t){var e=this.toKeyedSeq().keyOf(t);return void 0===e?-1:e},lastIndexOf:function(t){var e=this.toKeyedSeq().reverse().keyOf(t);return void 0===e?-1:e},reverse:function(){return Ee(this,ce(this,!1))},slice:function(t,e){return Ee(this,he(this,t,e,!1))},splice:function(t,e){var n=arguments.length;if(e=Math.max(0|e,0),0===n||2===n&&!e)return this;t=_(t,t<0?this.count():this.size);var r=this.slice(0,t);return Ee(this,1===n?r:r.concat(h(arguments,2),this.slice(t+e)))},findLastIndex:function(t,e){var n=this.toKeyedSeq().findLastKey(t,e);return void 0===n?-1:n},first:function(){return this.get(0)},flatten:function(t){return Ee(this,ve(this,t,!1))},get:function(t,e){return t=y(this,t),t<0||this.size===1/0||void 0!==this.size&&t>this.size?e:this.find(function(e,n){return n===t},void 0,e)},has:function(t){return(t=y(this,t))>=0&&(void 0!==this.size?this.size===1/0||t<this.size:-1!==this.indexOf(t))},interpose:function(t){return Ee(this,me(this,t))},interleave:function(){var t=[this].concat(h(arguments)),e=Me(this.toSeq(),O.of,t),n=e.flatten(!0);return e.size&&(n.size=e.size*t.length),Ee(this,n)},last:function(){return this.get(-1)},skipWhile:function(t,e){return Ee(this,ye(this,t,e,!1))},zip:function(){return Ee(this,Me(this,nn,[this].concat(h(arguments))))},zipWith:function(t){var e=h(arguments);return e[0]=this,Ee(this,Me(this,t,e))}}),r.prototype[fn]=!0,r.prototype[pn]=!0,Je(i,{get:function(t,e){return this.has(t)?t:e},includes:function(t){return this.has(t)},keySeq:function(){return this.valueSeq()}}),i.prototype.has=ur.includes,Je(D,n.prototype),Je(O,r.prototype),Je(C,i.prototype),Je(et,n.prototype),Je(nt,r.prototype),Je(rt,i.prototype),{Iterable:e,Seq:T,Collection:tt,Map:ft,OrderedMap:Xt,List:Kt,Stack:We,Set:Be,OrderedSet:Fe,Record:Ce,Range:$,Repeat:Z,is:V,fromJS:H}}()}()},function(t,e,n){"use strict";function r(t,e,n,r,o,u,a,s){if(i(e),!t){var c;if(void 0===e)c=new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var l=[n,r,o,u,a,s],f=0;c=new Error(e.replace(/%s/g,function(){return l[f++]})),c.name="Invariant Violation"}throw c.framesToPop=1,c}}var i=function(t){};t.exports=r},function(t,e,n){"use strict";function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e,n){return E.set(t,{selection:e,forceSelection:n,nativelyRenderedContent:null,inlineStyleOverride:null})}function o(t,e){return t.getBlockMap().map(function(n){return d.generate(t,n,e)}).toOrderedMap()}function u(t,e,n,r){var i=t.getCurrentContent().set("entityMap",n),o=i.getBlockMap();return t.getImmutable().get("treeMap").merge(e.toSeq().filter(function(t,e){return t!==o.get(e)}).map(function(t){return d.generate(i,t,r)}))}function a(t,e,n,r,i){return n.merge(e.toSeq().filter(function(e){return r.getDecorations(e,t)!==i.getDecorations(e,t)}).map(function(e){return d.generate(t,e,r)}))}function s(t,e){return e!==t.getLastChangeType()||"insert-characters"!==e&&"backspace-character"!==e&&"delete-character"!==e}function c(t,e){var n=e.getStartKey(),r=e.getStartOffset(),i=t.getBlockForKey(n);return r>0?i.getInlineStyleAt(r-1):i.getLength()?i.getInlineStyleAt(0):f(t,n)}function l(t,e){var n=e.getStartKey(),r=e.getStartOffset(),i=t.getBlockForKey(n);return r<i.getLength()?i.getInlineStyleAt(r):r>0?i.getInlineStyleAt(r-1):f(t,n)}function f(t,e){var n=t.getBlockMap().reverse().skipUntil(function(t,n){return n===e}).skip(1).skipUntil(function(t,e){return t.getLength()}).first();return n?n.getInlineStyleAt(n.getLength()-1):m()}var p=n(9),h=p||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},d=n(114),y=n(82),g=n(190),v=n(0),_=n(43),m=v.OrderedSet,S=v.Record,b=v.Stack,w={allowUndo:!0,currentContent:null,decorator:null,directionMap:null,forceSelection:!1,inCompositionMode:!1,inlineStyleOverride:null,lastChangeType:null,nativelyRenderedContent:null,redoStack:b(),selection:null,treeMap:null,undoStack:b()},M=S(w),E=function(){function t(e){r(this,t),this._immutable=e}return t.createEmpty=function(e){return t.createWithContent(y.createFromText(""),e)},t.createWithContent=function(e,n){var r=e.getBlockMap().first().getKey();return t.create({currentContent:e,undoStack:b(),redoStack:b(),decorator:n||null,selection:_.createEmpty(r)})},t.create=function(e){var n=e.currentContent,r=e.decorator,i=h({},e,{treeMap:o(n,r),directionMap:g.getDirectionMap(n)});return new t(new M(i))},t.set=function(e,n){return new t(e.getImmutable().withMutations(function(t){var r=t.get("decorator"),i=r;null===n.decorator?i=null:n.decorator&&(i=n.decorator);var s=n.currentContent||e.getCurrentContent();if(i!==r){var c,l=t.get("treeMap");return c=i&&r?a(s,s.getBlockMap(),l,i,r):o(s,i),void t.merge({decorator:i,treeMap:c,nativelyRenderedContent:null})}s!==e.getCurrentContent()&&t.set("treeMap",u(e,s.getBlockMap(),s.getEntityMap(),i)),t.merge(n)}))},t.prototype.toJS=function(){return this.getImmutable().toJS()},t.prototype.getAllowUndo=function(){return this.getImmutable().get("allowUndo")},t.prototype.getCurrentContent=function(){return this.getImmutable().get("currentContent")},t.prototype.getUndoStack=function(){return this.getImmutable().get("undoStack")},t.prototype.getRedoStack=function(){return this.getImmutable().get("redoStack")},t.prototype.getSelection=function(){return this.getImmutable().get("selection")},t.prototype.getDecorator=function(){return this.getImmutable().get("decorator")},t.prototype.isInCompositionMode=function(){return this.getImmutable().get("inCompositionMode")},t.prototype.mustForceSelection=function(){return this.getImmutable().get("forceSelection")},t.prototype.getNativelyRenderedContent=function(){return this.getImmutable().get("nativelyRenderedContent")},t.prototype.getLastChangeType=function(){return this.getImmutable().get("lastChangeType")},t.prototype.getInlineStyleOverride=function(){return this.getImmutable().get("inlineStyleOverride")},t.setInlineStyleOverride=function(e,n){return t.set(e,{inlineStyleOverride:n})},t.prototype.getCurrentInlineStyle=function(){var t=this.getInlineStyleOverride();if(null!=t)return t;var e=this.getCurrentContent(),n=this.getSelection();return n.isCollapsed()?c(e,n):l(e,n)},t.prototype.getBlockTree=function(t){return this.getImmutable().getIn(["treeMap",t])},t.prototype.isSelectionAtStartOfContent=function(){var t=this.getCurrentContent().getBlockMap().first().getKey();return this.getSelection().hasEdgeWithin(t,0,0)},t.prototype.isSelectionAtEndOfContent=function(){var t=this.getCurrentContent(),e=t.getBlockMap(),n=e.last(),r=n.getLength();return this.getSelection().hasEdgeWithin(n.getKey(),r,r)},t.prototype.getDirectionMap=function(){return this.getImmutable().get("directionMap")},t.acceptSelection=function(t,e){return i(t,e,!1)},t.forceSelection=function(t,e){return e.getHasFocus()||(e=e.set("hasFocus",!0)),i(t,e,!0)},t.moveSelectionToEnd=function(e){var n=e.getCurrentContent(),r=n.getLastBlock(),i=r.getKey(),o=r.getLength();return t.acceptSelection(e,new _({anchorKey:i,anchorOffset:o,focusKey:i,focusOffset:o,isBackward:!1}))},t.moveFocusToEnd=function(e){var n=t.moveSelectionToEnd(e);return t.forceSelection(n,n.getSelection())},t.push=function(e,n,r){if(e.getCurrentContent()===n)return e;var i="insert-characters"!==r,o=g.getDirectionMap(n,e.getDirectionMap());if(!e.getAllowUndo())return t.set(e,{currentContent:n,directionMap:o,lastChangeType:r,selection:n.getSelectionAfter(),forceSelection:i,inlineStyleOverride:null});var u=e.getSelection(),a=e.getCurrentContent(),c=e.getUndoStack(),l=n;u!==a.getSelectionAfter()||s(e,r)?(c=c.push(a),l=l.set("selectionBefore",u)):"insert-characters"!==r&&"backspace-character"!==r&&"delete-character"!==r||(l=l.set("selectionBefore",a.getSelectionBefore()));var f=e.getInlineStyleOverride();-1===["adjust-depth","change-block-type","split-block"].indexOf(r)&&(f=null);var p={currentContent:l,directionMap:o,undoStack:c,redoStack:b(),lastChangeType:r,selection:n.getSelectionAfter(),forceSelection:i,inlineStyleOverride:f};return t.set(e,p)},t.undo=function(e){if(!e.getAllowUndo())return e;var n=e.getUndoStack(),r=n.peek();if(!r)return e;var i=e.getCurrentContent(),o=g.getDirectionMap(r,e.getDirectionMap());return t.set(e,{currentContent:r,directionMap:o,undoStack:n.shift(),redoStack:e.getRedoStack().push(i),forceSelection:!0,inlineStyleOverride:null,lastChangeType:"undo",nativelyRenderedContent:null,selection:i.getSelectionBefore()})},t.redo=function(e){if(!e.getAllowUndo())return e;var n=e.getRedoStack(),r=n.peek();if(!r)return e;var i=e.getCurrentContent(),o=g.getDirectionMap(r,e.getDirectionMap());return t.set(e,{currentContent:r,directionMap:o,undoStack:e.getUndoStack().push(i),redoStack:n.shift(),forceSelection:!0,inlineStyleOverride:null,lastChangeType:"redo",nativelyRenderedContent:null,selection:r.getSelectionAfter()})},t.prototype.getImmutable=function(){return this._immutable},t}();t.exports=E},function(t,e){t.exports=require("react")},function(t,e){var n=t.exports={version:"2.5.3"};"number"==typeof __e&&(__e=n)},function(t,e,n){"use strict";var r=n(7),i=n(179),o=n(31),u=n(0),a=n(180),s=n(182),c=n(60),l=n(185),f=n(186),p=n(1),h=n(187),d=n(111),y=n(188),g=n(189),v=u.OrderedSet,_={replaceText:function(t,e,n,i,o){var u=d(t,e),a=y(u,e),s=r.create({style:i||v(),entity:o||null});return f(a,a.getSelectionAfter(),n,s)},insertText:function(t,e,n,r,i){return e.isCollapsed()||p(!1),_.replaceText(t,e,n,r,i)},moveText:function(t,e,n){var r=c(t,e),i=_.removeRange(t,e,"backward");return _.replaceWithFragment(i,n,r)},replaceWithFragment:function(t,e,n){var r=d(t,e),i=y(r,e);return l(i,i.getSelectionAfter(),n)},removeRange:function(t,e,n){var r=void 0,i=void 0,u=void 0,a=void 0;e.getIsBackward()&&(e=e.merge({anchorKey:e.getFocusKey(),anchorOffset:e.getFocusOffset(),focusKey:e.getAnchorKey(),focusOffset:e.getAnchorOffset(),isBackward:!1})),r=e.getAnchorKey(),i=e.getFocusKey(),u=t.getBlockForKey(r),a=t.getBlockForKey(i);var c=e.getStartOffset(),l=e.getEndOffset(),f=u.getEntityAt(c),p=a.getEntityAt(l-1);if(r===i&&f&&f===p){var h=s(t.getEntityMap(),u,a,e,n);return y(t,h)}var g=e;o.draft_segmented_entities_behavior&&(g=s(t.getEntityMap(),u,a,e,n));var v=d(t,g);return y(v,g)},splitBlock:function(t,e){var n=d(t,e),r=y(n,e);return g(r,r.getSelectionAfter())},applyInlineStyle:function(t,e,n){return i.add(t,e,n)},removeInlineStyle:function(t,e,n){return i.remove(t,e,n)},setBlockType:function(t,e,n){return h(t,e,function(t){return t.merge({type:n,depth:0})})},setBlockData:function(t,e,n){return h(t,e,function(t){return t.merge({data:n})})},mergeBlockData:function(t,e,n){return h(t,e,function(t){return t.merge({data:t.getData().merge(n)})})},applyEntity:function(t,e,n){var r=d(t,e);return a(r,e,n)}};t.exports=_},function(t,e,n){var r=n(72)("wks"),i=n(54),o=n(14).Symbol,u="function"==typeof o;(t.exports=function(t){return r[t]||(r[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=r},function(t,e,n){"use strict";function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function i(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}function o(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}var u=n(0),a=u.Map,s=u.OrderedSet,c=u.Record,l=s(),f={style:l,entity:null},p=c(f),h=function(t){function e(){return r(this,e),i(this,t.apply(this,arguments))}return o(e,t),e.prototype.getStyle=function(){return this.get("style")},e.prototype.getEntity=function(){return this.get("entity")},e.prototype.hasStyle=function(t){return this.getStyle().includes(t)},e.applyStyle=function(t,n){var r=t.set("style",t.getStyle().add(n));return e.create(r)},e.removeStyle=function(t,n){var r=t.set("style",t.getStyle().remove(n));return e.create(r)},e.applyEntity=function(t,n){var r=t.getEntity()===n?t:t.set("entity",n);return e.create(r)},e.create=function(t){if(!t)return d;var n={style:l,entity:null},r=a(n).merge(t),i=y.get(r);if(i)return i;var o=new e(r);return y=y.set(r,o),o},e}(p),d=new h,y=a([[a(f),d]]);h.EMPTY=d,t.exports=h},function(t,e,n){var r=n(14),i=n(4),o=n(34),u=n(29),a=function(t,e,n){var s,c,l,f=t&a.F,p=t&a.G,h=t&a.S,d=t&a.P,y=t&a.B,g=t&a.W,v=p?i:i[e]||(i[e]={}),_=v.prototype,m=p?r:h?r[e]:(r[e]||{}).prototype;p&&(n=e);for(s in n)(c=!f&&m&&void 0!==m[s])&&s in v||(l=c?m[s]:n[s],v[s]=p&&"function"!=typeof m[s]?n[s]:y&&c?o(l,r):g&&m[s]==l?function(t){var e=function(e,n,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(e);case 2:return new t(e,n)}return new t(e,n,r)}return t.apply(this,arguments)};return e.prototype=t.prototype,e}(l):d&&"function"==typeof l?o(Function.call,l):l,d&&((v.virtual||(v.virtual={}))[s]=l,t&a.R&&_&&!_[s]&&u(_,s,l)))};a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,e,n){"use strict";function r(t){if(null===t||void 0===t)throw new TypeError("Object.assign cannot be called with null or undefined");return Object(t)}/*
 object-assign
 (c) Sindre Sorhus
@@ -67409,7 +68798,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/rte-editor/rte-editor.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/rte-editor/rte-editor.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -67454,6 +68843,8 @@ var React = __importStar(require("react"));
 
 var react_rte_1 = __importDefault(require("react-rte"));
 
+var _ = __importStar(require("lodash"));
+
 require("./rte-editor.scss");
 
 var RTEEditor =
@@ -67467,30 +68858,66 @@ function (_React$Component) {
     _classCallCheck(this, RTEEditor);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(RTEEditor).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 1000);
 
     _this.onChange = function (value) {
       _this.setState({
         value: value
-      }); // if (this.props.onChange) {
-      //   this.props.onChange(
-      //     value.toString('html')
-      //   );
-      // }
+      });
 
+      _this.debouncedPropagate();
     };
 
     _this.state = {
-      value: react_rte_1.default.createEmptyValue()
+      value: _this.props.value ? react_rte_1.default.createValueFromString(_this.props.value, 'html') : react_rte_1.default.createEmptyValue()
     };
     return _this;
   }
 
   _createClass(RTEEditor, [{
+    key: "propagateChange",
+    value: function propagateChange() {
+      var value = this.state.value;
+      this.props.onChange(value.toString('html'));
+    }
+  }, {
+    key: "onClose",
+    value: function onClose() {
+      this.props.closeEditor();
+    }
+  }, {
+    key: "gatherNotes",
+    value: function gatherNotes() {
+      this.propagateChange();
+      this.props.gatherNotes();
+    }
+  }, {
+    key: "export",
+    value: function _export() {
+      this.propagateChange();
+      this.props.exportNotes();
+      console.log('export');
+    }
+  }, {
+    key: "componentWillUpdate",
+    value: function componentWillUpdate(props) {
+      if (!_.isEqual(props.value, this.props.value)) {
+        this.setState({
+          value: props.value ? react_rte_1.default.createValueFromString(props.value, 'html') : react_rte_1.default.createEmptyValue()
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
+    }
+  }, {
     key: "render",
     value: function render() {
       var toolbarConfig = {
-        // Optionally specify the groups to display (displayed in the order listed).
-        display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS', 'BLOCK_TYPE_DROPDOWN', 'HISTORY_BUTTONS'],
+        display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_DROPDOWN'],
         INLINE_STYLE_BUTTONS: [{
           label: 'Bold',
           style: 'BOLD',
@@ -67499,14 +68926,14 @@ function (_React$Component) {
           label: 'Italic',
           style: 'ITALIC'
         }, {
-          label: 'Underline',
-          style: 'UNDERLINE'
-        }, {
-          label: 'Strikethrough',
-          style: 'STRIKETHROUGH'
-        }, {
           label: 'Code',
           style: 'CODE'
+        }, {
+          label: 'UL',
+          style: 'unordered-list-item'
+        }, {
+          label: 'OL',
+          style: 'ordered-list-item'
         }],
         BLOCK_TYPE_DROPDOWN: [{
           label: 'Normal',
@@ -67520,22 +68947,31 @@ function (_React$Component) {
         }, {
           label: 'Heading Small',
           style: 'header-three'
-        }],
-        BLOCK_TYPE_BUTTONS: [{
-          label: 'UL',
-          style: 'unordered-list-item'
-        }, {
-          label: 'OL',
-          style: 'ordered-list-item'
         }]
       };
       return React.createElement("div", {
         className: "rte-wrapper"
+      }, React.createElement("div", {
+        className: "rte-header"
+      }, React.createElement("button", {
+        onClick: this.gatherNotes.bind(this)
+      }, React.createElement("span", null, "Gather"), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "exit_to_app")), React.createElement("button", {
+        onClick: this.export.bind(this)
+      }, React.createElement("span", null, "Export"), " ", React.createElement("i", {
+        className: "material-icons"
+      }, "save_alt")), React.createElement("button", {
+        onClick: this.onClose.bind(this)
+      }, React.createElement("span", null, "Close"), React.createElement("i", {
+        className: "material-icons"
+      }, "close"))), React.createElement("div", {
+        className: "rte-content"
       }, React.createElement(react_rte_1.default, {
         toolbarConfig: toolbarConfig,
         value: this.state.value,
         onChange: this.onChange.bind(this)
-      }));
+      })));
     }
   }]);
 
@@ -67543,12 +68979,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = RTEEditor;
-},{"react":"../../node_modules/react/index.js","react-rte":"../../node_modules/react-rte/dist/react-rte.js","./rte-editor.scss":"components/rte-editor/rte-editor.scss"}],"components/resizer/resizer.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-rte":"../../node_modules/react-rte/dist/react-rte.js","lodash":"../../node_modules/lodash/lodash.js","./rte-editor.scss":"components/rte-editor/rte-editor.scss"}],"components/resizer/resizer.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/hammerjs/hammer.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/hammerjs/hammer.js":[function(require,module,exports) {
 var define;
 /*! Hammer.JS - v2.0.7 - 2016-04-22
  * http://hammerjs.github.io/
@@ -70542,27 +71978,27 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group/canvas-group.scss":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group/canvas-group.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item/canvas-group-item.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -70650,6 +72086,10 @@ function (_React$Component) {
   }
 
   _createClass(CanvasGroupItem, [{
+    key: "propsChanged",
+    value: function propsChanged() {// this.props.propsChanged();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -70659,8 +72099,9 @@ function (_React$Component) {
       return connectDragSource(React.createElement("div", {
         className: "board-content"
       }, this.props.data && React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+        propsChanged: this.propsChanged.bind(this),
         data: this.props.data,
-        inheritDimensions: true
+        inheritDimensions: this.props.inheritDimensions
       })));
     }
   }]);
@@ -70715,8 +72156,6 @@ var React = __importStar(require("react"));
 require("./canvas-group-item-wrapper.scss");
 
 var canvas_group_item_1 = __importDefault(require("../canvas-group-item/canvas-group-item"));
-
-var dummy_data_1 = require("../../../../constants/dummy-data");
 
 var CanvasGroupItemWrapper =
 /*#__PURE__*/
@@ -70804,35 +72243,53 @@ function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.originalPointerProps = Object.assign({}, this.props.data.props);
-      var data = dummy_data_1.GetSampleItem(this.props.data.type);
-      data.id = this.props.data.id;
-      this.setState({
-        contentData: data
+      var _this3 = this;
+
+      setTimeout(function () {
+        var el = _this3.ref.current;
+        var props = el.getBoundingClientRect();
+        _this3.originalPointerProps = {
+          height: props.height,
+          width: props.width
+        };
+
+        _this3.props.onPropsChange({
+          width: props.width,
+          height: props.height
+        });
       });
+    }
+  }, {
+    key: "propsChanged",
+    value: function propsChanged() {
+      console.log(11123);
     }
   }, {
     key: "render",
     value: function render() {
       var props = this.props.data.props;
       var styles = {
-        width: "".concat(props.width, "px"),
-        height: "".concat(props.height, "px")
+        width: "240px"
       };
+      var inheritDimensions = false;
+
+      if (!props.height) {
+        // tslint:disable-next-line:no-string-literal
+        styles['minHeight'] = '180px';
+        inheritDimensions = false;
+      }
+
       return React.createElement("div", {
         className: "board-content-wrapper",
         style: styles,
         ref: this.ref
       }, React.createElement(canvas_group_item_1.default, {
         isBeingResized: this.state.isBeingResized,
-        data: this.state.contentData,
-        group: this.props.group
-      }), React.createElement("div", {
-        className: "board-content-resizer",
-        onPointerDown: this.onPointerDown.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "navigate_next")));
+        data: this.props.data,
+        group: this.props.group,
+        propsChanged: this.propsChanged.bind(this),
+        inheritDimensions: inheritDimensions
+      }));
     }
   }]);
 
@@ -70840,7 +72297,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.CanvasGroupItemWrapper = CanvasGroupItemWrapper;
-},{"react":"../../node_modules/react/index.js","./canvas-group-item-wrapper.scss":"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss","../canvas-group-item/canvas-group-item":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx","../../../../constants/dummy-data":"constants/dummy-data.ts"}],"components/workspace/canvas-view/canvas-group/canvas-group.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-group-item-wrapper.scss":"components/workspace/canvas-view/canvas-group-item-wrapper/canvas-group-item-wrapper.scss","../canvas-group-item/canvas-group-item":"components/workspace/canvas-view/canvas-group-item/canvas-group-item.tsx"}],"components/workspace/canvas-view/canvas-group/canvas-group.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -70952,7 +72409,7 @@ function (_React$Component) {
     key: "boardPropsChanged",
     value: function boardPropsChanged(i, data) {
       var rowItems = [].concat(this.props.data.items);
-      rowItems[i].props.width = data.width + 20;
+      rowItems[i].props.width = data.width;
       rowItems[i].props.height = data.height;
       this.setState({
         items: rowItems
@@ -70975,6 +72432,7 @@ function (_React$Component) {
           return curr + prev.props.height;
         }, 0)
       };
+      data.width = data.width < 240 ? 240 : data.width;
       this.props.onPropsChange(data);
     }
   }, {
@@ -70988,15 +72446,19 @@ function (_React$Component) {
           data = _this$props.data;
       var items = this.props.data.items;
       return connectDropTarget(React.createElement("div", {
-        className: "group-content ".concat(isOver ? 'entity-over' : '')
-      }, items.length > 0 && items.map(function (item, i) {
+        className: "group-content  ".concat(isOver ? 'entity-over' : '')
+      }, items.length > 0 && !data.isEmpty && items.map(function (item, i) {
         return React.createElement(canvas_group_item_wrapper_1.CanvasGroupItemWrapper, {
           group: data.id,
           onPropsChange: _this2.boardPropsChanged.bind(_this2, i),
           data: item,
           key: item.id
         });
-      })));
+      }), data.isEmpty && React.createElement("div", {
+        className: "new-group-marker"
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "add"), React.createElement("span", null, "Drop clips here "))));
     }
   }]);
 
@@ -71051,6 +72513,8 @@ require("./canvas-group-wrapper.scss");
 
 var canvas_group_1 = __importDefault(require("../canvas-group/canvas-group"));
 
+var transforms_1 = require("../../../../transforms");
+
 var CanvasGroupWrapper =
 /*#__PURE__*/
 function (_React$Component) {
@@ -71096,7 +72560,8 @@ function (_React$Component) {
       };
       return React.createElement("div", {
         className: "group-wrapper",
-        style: styles
+        style: styles,
+        id: transforms_1.GetGroupWrapperId(this.props.data.id)
       }, React.createElement("input", {
         className: "group-title",
         value: this.state.groupTitle,
@@ -71104,6 +72569,8 @@ function (_React$Component) {
       }), React.createElement(canvas_group_1.default, {
         data: this.props.data,
         onPropsChange: this.groupPropsChanged.bind(this)
+      }), this.props.showAnchor && React.createElement("div", {
+        className: "group-anchor"
       }));
     }
   }]);
@@ -71112,7 +72579,201 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasGroupWrapper;
-},{"react":"../../node_modules/react/index.js","./canvas-group-wrapper.scss":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss","../canvas-group/canvas-group":"components/workspace/canvas-view/canvas-group/canvas-group.tsx"}],"components/workspace/canvas-view/canvas-view.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-group-wrapper.scss":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.scss","../canvas-group/canvas-group":"components/workspace/canvas-view/canvas-group/canvas-group.tsx","../../../../transforms":"transforms.ts"}],"components/workspace/canvas-view/canvas-group-header/canvas-group-header.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/canvas-view/canvas-group-header/canvas-group-header.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+require("./canvas-group-header.scss");
+
+var transforms_1 = require("../../../../transforms");
+
+var constants_1 = require("../../../../constants/constants");
+
+var CanvasGroupHeader =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(CanvasGroupHeader, _React$Component);
+
+  function CanvasGroupHeader(props) {
+    var _this;
+
+    _classCallCheck(this, CanvasGroupHeader);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CanvasGroupHeader).call(this, props));
+    _this.cancellable = new constants_1.CancellabelRequests();
+    _this.state = {
+      left: 0,
+      top: 0,
+      width: 0
+    };
+    return _this;
+  }
+
+  _createClass(CanvasGroupHeader, [{
+    key: "buildHeader",
+    value: function buildHeader() {
+      var groupProps = [];
+      var top = Number.MAX_VALUE;
+      var left = Number.MAX_VALUE;
+      var right = Number.MIN_VALUE;
+      var groups = this.props.data.groups;
+
+      if (groups.length > 0) {
+        this.props.data.groups.forEach(function (group) {
+          var elem = document.getElementById(transforms_1.GetGroupWrapperId(group.id));
+
+          if (elem) {
+            groupProps.push({
+              top: elem.offsetTop,
+              left: elem.offsetLeft + elem.offsetWidth / 2
+            });
+            top = Math.min(top, elem.offsetTop);
+            left = Math.min(left, elem.offsetLeft);
+            right = Math.max(right, elem.offsetLeft + elem.offsetWidth);
+          }
+        });
+        groupProps = groupProps.sort(function (a, b) {
+          return a.left - b.left;
+        });
+
+        if (groupProps.length > 0) {
+          var midLine = {
+            left: groupProps[0].left,
+            right: groupProps[groupProps.length - 1].left,
+            width: groupProps[groupProps.length - 1].left - groupProps[0].left,
+            top: top
+          };
+          var width = right - left;
+          this.setState({
+            groupProps: groupProps,
+            left: left,
+            top: top,
+            width: width,
+            midLine: midLine
+          });
+        }
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var timeoutId = setTimeout(function () {
+        _this2.buildHeader();
+
+        _this2.cancellable.clean(timeoutId);
+      });
+      this.cancellable.push(timeoutId, constants_1.Cancellable.Timeout);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var _this3 = this;
+
+      var timeoutId = setTimeout(function () {
+        _this3.buildHeader();
+
+        _this3.cancellable.clean(timeoutId);
+      });
+      this.cancellable.push(timeoutId, constants_1.Cancellable.Timeout);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.cancellable.clean();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          top = _this$state.top,
+          left = _this$state.left,
+          width = _this$state.width,
+          midLine = _this$state.midLine,
+          groupProps = _this$state.groupProps;
+      var styles = {
+        left: "".concat(left, "px"),
+        top: "".concat(top - 144, "px"),
+        width: "".concat(width, "px")
+      };
+      var midLineStyles = {};
+
+      if (midLine) {
+        midLineStyles = {
+          left: "".concat(midLine.left, "px"),
+          top: "".concat(midLine.top - 48, "px"),
+          width: "".concat(midLine.width, "px")
+        };
+      }
+
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "group-header",
+        style: styles
+      }, React.createElement("div", {
+        className: "group-header-title"
+      }, this.props.data.name)), midLine && React.createElement("div", {
+        className: "mid-line",
+        style: midLineStyles
+      }), groupProps && groupProps.length > 0 && groupProps.map(function (prop, i) {
+        var dropLineStyles = {};
+        dropLineStyles = {
+          left: "".concat(prop.left, "px"),
+          top: "".concat(midLine.top - 48, "px"),
+          height: "48px"
+        };
+        return React.createElement("div", {
+          key: i,
+          className: "drop-line",
+          style: dropLineStyles
+        });
+      }));
+    }
+  }]);
+
+  return CanvasGroupHeader;
+}(React.Component);
+
+exports.default = CanvasGroupHeader;
+},{"react":"../../node_modules/react/index.js","./canvas-group-header.scss":"components/workspace/canvas-view/canvas-group-header/canvas-group-header.scss","../../../../transforms":"transforms.ts","../../../../constants/constants":"constants/constants.ts"}],"components/workspace/canvas-view/canvas-view.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71161,7 +72822,11 @@ var canvas_group_wrapper_1 = __importDefault(require("./canvas-group-wrapper/can
 
 var constants_1 = require("../../../constants/constants");
 
-var transforms_1 = require("../../../transforms");
+var _ = __importStar(require("lodash"));
+
+var canvas_group_header_1 = __importDefault(require("./canvas-group-header/canvas-group-header"));
+
+var observables_1 = require("../../../access/observables/observables");
 
 var CanvasView =
 /*#__PURE__*/
@@ -71175,10 +72840,15 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CanvasView).call(this, props));
     _this.currentZoom = 1;
+    _this.scale = 1;
+    _this.ticked = false;
     _this.state = {
       boardGroups: [],
       positionX: 0,
-      positionY: 0
+      positionY: 0,
+      headers: [],
+      showHeaders: false,
+      scale: 1
     };
     return _this;
   }
@@ -71220,15 +72890,24 @@ function (_React$Component) {
           });
         }
 
-        var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2;
-        var leftOffset = currentHolderProps.width * zoom / 2 - currentPositionerProps.width / 2;
-        window.requestAnimationFrame(function () {
-          currentPositioner.scroll({
-            top: topOffset,
-            left: leftOffset,
-            behavior: smooth ? "smooth" : 'auto'
+        var value = observables_1.CurrentEnableScrollIntoCenter.value;
+        var scroll = !!this.props.scrollToCenter;
+
+        if (value === true && this.props.scrollToCenter === false) {
+          scroll = true;
+        }
+
+        if (scroll) {
+          var topOffset = currentHolderProps.height * zoom / 2 - currentPositionerProps.height / 2 - 150;
+          var leftOffset = currentHolderProps.width * zoom / 2 - currentPositionerProps.width / 2;
+          window.requestAnimationFrame(function () {
+            currentPositioner.scroll({
+              top: topOffset,
+              left: leftOffset,
+              behavior: smooth ? "smooth" : 'auto'
+            });
           });
-        });
+        }
       }
     }
   }, {
@@ -71236,25 +72915,64 @@ function (_React$Component) {
     value: function changeZoom(dir) {
       var _this2 = this;
 
-      this.currentZoom = this.currentZoom + 0.1 * dir;
-      this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
-      this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
-      var currentHolder = document.querySelector('.board-group-holder');
-      currentHolder.style.zoom = "".concat(this.currentZoom);
-      window.requestAnimationFrame(function () {
-        _this2.adjustPosition(_this2.currentZoom);
+      if (!this.ticked) {
+        this.ticked = true;
+        window.requestAnimationFrame(function () {
+          _this2.scale += 0.01 * dir;
+          _this2.scale = _this2.scale < 0.50 ? 0.50 : _this2.scale;
+          _this2.scale = _this2.scale > 1 ? 1 : _this2.scale;
+
+          _this2.setState({
+            scale: _this2.scale
+          });
+
+          _this2.ticked = false;
+        });
+      } // this.currentZoom = this.currentZoom + (0.1 * dir);
+      // this.currentZoom = this.currentZoom < 0.30 ? 0.30 : this.currentZoom;
+      // this.currentZoom = this.currentZoom > 1 ? 1 : this.currentZoom;
+      // const currentHolder = document.querySelector('.board-group-holder');
+      // (currentHolder as HTMLElement).style.zoom = `${this.currentZoom}`;
+      // window.requestAnimationFrame(() => {
+      //     this.adjustPosition(this.currentZoom);
+      // });
+
+    }
+  }, {
+    key: "buildHeaders",
+    value: function buildHeaders() {
+      var _this3 = this;
+
+      var headersFromProps = this.props.headers;
+      var headers = [];
+      headersFromProps.forEach(function (header) {
+        var groups = [].concat(header.groups);
+        groups.forEach(function (group) {
+          var _group = _this3.props.groups.find(function (item) {
+            return item.id === group.id;
+          });
+
+          group.name = _group ? _group.title : '';
+        });
+        headers.push(Object.assign({}, header, {
+          groups: [].concat(groups)
+        }));
       });
+      return headers;
     }
   }, {
     key: "processGroupProps",
     value: function processGroupProps() {
-      var _this3 = this;
+      var _this4 = this;
 
+      var headers = this.buildHeaders();
       this.setState({
-        boardGroups: this.props.groups
+        boardGroups: this.props.groups,
+        headers: headers,
+        showHeaders: true
       });
       window.requestAnimationFrame(function () {
-        _this3.adjustPosition(1, false);
+        _this4.adjustPosition(1, false);
       });
     }
   }, {
@@ -71265,7 +72983,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(props) {
-      if (transforms_1.isEqual(this.props.groups, props.groups) === false) {
+      if (_.isEqual(this.props.groups, props.groups) === false || _.isEqual(this.props.headers, props.headers) === false) {
         this.processGroupProps();
       }
     }
@@ -71290,25 +73008,64 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "onWheel",
+    value: function onWheel(e) {
+      var _this5 = this;
+
+      e.persist();
+
+      if (e.ctrlKey) {
+        if (!this.ticked) {
+          this.ticked = true;
+          window.requestAnimationFrame(function () {
+            _this5.scale -= e.deltaY * 0.01;
+            _this5.scale = _this5.scale < 0.50 ? 0.50 : _this5.scale;
+            _this5.scale = _this5.scale > 1 ? 1 : _this5.scale;
+
+            _this5.setState({
+              scale: _this5.scale
+            });
+
+            _this5.ticked = false;
+          });
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this6 = this;
 
-      var _this$state$boardGrou = this.state.boardGroups,
-          boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou;
+      var _this$state = this.state,
+          _this$state$boardGrou = _this$state.boardGroups,
+          boardGroups = _this$state$boardGrou === void 0 ? [] : _this$state$boardGrou,
+          headers = _this$state.headers,
+          showHeaders = _this$state.showHeaders,
+          scale = _this$state.scale;
+      var styles = {
+        transform: "scale(".concat(scale, ")")
+      };
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "board-group-outer"
       }, boardGroups.length > 0 && React.createElement("div", {
-        className: "board-group-holder"
+        className: "board-group-holder",
+        onWheel: this.onWheel.bind(this),
+        style: styles
       }, React.createElement("div", {
         className: "board-group-inner"
       }, boardGroups.map(function (bg, i) {
         return React.createElement(canvas_group_wrapper_1.default, {
-          onPropsChange: _this4.onGroupPropsChange.bind(_this4, i),
-          parentX: _this4.state.positionX,
-          parentY: _this4.state.positionY,
+          showAnchor: false,
+          onPropsChange: _this6.onGroupPropsChange.bind(_this6, i),
+          parentX: _this6.state.positionX,
+          parentY: _this6.state.positionY,
           key: bg.id,
           data: bg
+        });
+      }), showHeaders && headers.map(function (header, i) {
+        return React.createElement(canvas_group_header_1.default, {
+          data: header,
+          key: header.id
         });
       })))), React.createElement("div", {
         className: "workspace-actions"
@@ -71332,12 +73089,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = CanvasView;
-},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","../../../transforms":"transforms.ts"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-view.scss":"components/workspace/canvas-view/canvas-view.scss","./canvas-group-wrapper/canvas-group-wrapper":"components/workspace/canvas-view/canvas-group-wrapper/canvas-group-wrapper.tsx","../../../constants/constants":"constants/constants.ts","lodash":"../../node_modules/lodash/lodash.js","./canvas-group-header/canvas-group-header":"components/workspace/canvas-view/canvas-group-header/canvas-group-header.tsx","../../../access/observables/observables":"access/observables/observables.ts"}],"components/workspace/list-view/list-group-item/list-group-item.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-group-item/list-group-item.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-group-item/list-group-item.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71376,8 +73133,6 @@ var React = __importStar(require("react"));
 
 require("./list-group-item.scss");
 
-var dummy_data_1 = require("../../../../constants/dummy-data");
-
 var content_item_with_menu_1 = require("../../../content-item/content-item-with-menu");
 
 var ListGroupItem =
@@ -71399,15 +73154,6 @@ function (_React$Component) {
   }
 
   _createClass(ListGroupItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var data = dummy_data_1.GetSampleItem(this.props.data.type);
-      data.id = this.props.data.id;
-      this.setState({
-        contentData: data
-      });
-    }
-  }, {
     key: "onActionInvoked",
     value: function onActionInvoked(action) {
       switch (action) {
@@ -71440,20 +73186,23 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var resizerOptions = [{
+        id: 'NORMAL_SIZE',
         icon: 'crop_7_5',
         name: 'NORMAL_SIZE'
       }, {
+        id: 'DOUBLE_SIZE',
         icon: 'crop_5_4',
         name: 'DOUBLE_SIZE'
       }, {
+        id: 'MAX_SIZE',
         icon: 'crop_din',
         name: 'MAX_SIZE'
       }];
       return React.createElement("div", {
         className: "workspace-list-group-item-holder ".concat(this.state.contentSize)
-      }, this.state.contentData && React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
+      }, React.createElement(content_item_with_menu_1.ContentItemWithMenu, {
         onActionInvoked: this.onActionInvoked.bind(this),
-        data: this.state.contentData,
+        data: this.props.data,
         inheritDimensions: false,
         resizerOptions: resizerOptions
       }));
@@ -71464,12 +73213,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = ListGroupItem;
-},{"react":"../../node_modules/react/index.js","./list-group-item.scss":"components/workspace/list-view/list-group-item/list-group-item.scss","../../../../constants/dummy-data":"constants/dummy-data.ts","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./list-group-item.scss":"components/workspace/list-view/list-group-item/list-group-item.scss","../../../content-item/content-item-with-menu":"components/content-item/content-item-with-menu.tsx"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-group-wrapper/list-group-wrapper.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71512,6 +73261,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var React = __importStar(require("react"));
 
+var _ = __importStar(require("lodash"));
+
 var list_group_item_1 = __importDefault(require("../list-group-item/list-group-item"));
 
 require("./list-group-wrapper.scss");
@@ -71521,18 +73272,71 @@ var ListGroupWrapper =
 function (_React$Component) {
   _inherits(ListGroupWrapper, _React$Component);
 
-  function ListGroupWrapper() {
+  function ListGroupWrapper(props) {
+    var _this;
+
     _classCallCheck(this, ListGroupWrapper);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ListGroupWrapper).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListGroupWrapper).call(this, props));
+    _this.debouncedPropagate = _.debounce(_this.propagateChange, 1000);
+    _this.state = {
+      title: _this.props.group.title,
+      annotation: _this.props.group.annotation
+    };
+    return _this;
   }
 
   _createClass(ListGroupWrapper, [{
+    key: "onTitleTextChange",
+    value: function onTitleTextChange(e) {
+      this.setState({
+        title: e.target.value
+      });
+      this.debouncedPropagate();
+    }
+  }, {
+    key: "onNotesTextChange",
+    value: function onNotesTextChange(e) {
+      this.setState({
+        annotation: e.target.value
+      });
+      this.debouncedPropagate();
+    }
+  }, {
+    key: "propagateChange",
+    value: function propagateChange() {
+      var _this$state = this.state,
+          title = _this$state.title,
+          annotation = _this$state.annotation;
+
+      if (this.props.onNotesAndTitleChanged) {
+        this.props.onNotesAndTitleChanged({
+          id: this.props.group.id,
+          title: title,
+          annotation: annotation
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.propagateChange();
+      this.debouncedPropagate.cancel();
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement("div", {
         className: "workspace-list-group"
-      }, React.createElement("h1", null, this.props.group.title), React.createElement("div", {
+      }, React.createElement("input", {
+        placeholder: "What would like to name this group ?",
+        value: this.state.title,
+        onChange: this.onTitleTextChange.bind(this)
+      }), React.createElement("textarea", {
+        placeholder: "What are your thoughts ?",
+        value: this.state.annotation,
+        onChange: this.onNotesTextChange.bind(this)
+      }), React.createElement("div", {
         className: "workspace-list-group-items"
       }, React.createElement("div", {
         className: "workspace-list-group-items-inner"
@@ -71549,12 +73353,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = ListGroupWrapper;
-},{"react":"../../node_modules/react/index.js","../list-group-item/list-group-item":"components/workspace/list-view/list-group-item/list-group-item.tsx","./list-group-wrapper.scss":"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"}],"components/workspace/list-view/list-view.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","../list-group-item/list-group-item":"components/workspace/list-view/list-group-item/list-group-item.tsx","./list-group-wrapper.scss":"components/workspace/list-view/list-group-wrapper/list-group-wrapper.scss"}],"components/workspace/list-view/list-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-view.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace/list-view/list-view.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71613,12 +73417,20 @@ function (_React$Component) {
   }
 
   _createClass(ListView, [{
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      this.props.onNotesAndTitleChanged(data);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       return React.createElement("div", {
         className: "workspace-list-groups"
       }, this.props.groups.map(function (group, i) {
         return React.createElement(list_group_wrapper_1.default, {
+          onNotesAndTitleChanged: _this.onNotesAndTitleChanged.bind(_this),
           key: group.id,
           group: group
         });
@@ -71689,16 +73501,24 @@ function (_React$Component) {
   }
 
   _createClass(WorkspaceViewSwitch, [{
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      this.props.onNotesAndTitleChanged(data);
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(React.Fragment, null, this.props.canvasView && React.createElement("div", {
         className: "working-area"
       }, React.createElement(canvas_view_1.default, {
+        scrollToCenter: this.props.scrollToCenter,
         id: this.props.workspaceId,
-        groups: this.props.groups
+        groups: this.props.groups,
+        headers: this.props.headers
       })), !this.props.canvasView && React.createElement(list_view_1.default, {
         id: this.props.workspaceId,
-        groups: this.props.groups
+        groups: this.props.groups,
+        onNotesAndTitleChanged: this.onNotesAndTitleChanged.bind(this)
       }));
     }
   }]);
@@ -71707,7 +73527,644 @@ function (_React$Component) {
 }(React.Component);
 
 exports.WorkspaceViewSwitch = WorkspaceViewSwitch;
-},{"react":"../../node_modules/react/index.js","./canvas-view/canvas-view":"components/workspace/canvas-view/canvas-view.tsx","./list-view/list-view":"components/workspace/list-view/list-view.tsx"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./canvas-view/canvas-view":"components/workspace/canvas-view/canvas-view.tsx","./list-view/list-view":"components/workspace/list-view/list-view.tsx"}],"components/manage-headers/headers-block.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_dnd_1 = require("react-dnd");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var redux_1 = require("redux");
+
+var react_redux_1 = require("react-redux");
+
+var types_1 = require("../../constants/types");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var itemSource = {
+  drop: function drop(props, monitor) {
+    var dropItemResult = monitor.getItem();
+
+    if (dropItemResult.dragObject) {
+      props.groupAdded(dropItemResult.dragObject);
+    }
+  }
+};
+
+function collect(connector, monitor) {
+  return {
+    connectDropTarget: connector.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
+
+var HeadersBlockItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(HeadersBlockItem, _React$Component);
+
+  function HeadersBlockItem(props) {
+    _classCallCheck(this, HeadersBlockItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HeadersBlockItem).call(this, props));
+  }
+
+  _createClass(HeadersBlockItem, [{
+    key: "removeGroup",
+    value: function removeGroup(id) {
+      this.props.removeGroup(id);
+    }
+  }, {
+    key: "onHeaderChange",
+    value: function onHeaderChange(e) {
+      this.props.updateHeaderTitle(e.target.value);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var _this$props = this.props,
+          connectDropTarget = _this$props.connectDropTarget,
+          isOver = _this$props.isOver,
+          data = _this$props.data;
+      return connectDropTarget(React.createElement("div", {
+        className: "headers-block-item-wrapper ".concat(isOver ? 'entity-over' : '')
+      }, this.props.data && React.createElement(React.Fragment, null, React.createElement("input", {
+        className: "header-title",
+        value: this.props.data.name,
+        onChange: this.onHeaderChange.bind(this)
+      }), React.createElement("div", {
+        className: "groups-block"
+      }, this.props.data.groups.length > 0 && this.props.data.groups.map(function (group, i) {
+        return React.createElement("div", {
+          key: group.id,
+          className: "groups-block-item-wrapper"
+        }, React.createElement("label", {
+          className: "group-title"
+        }, group.name), React.createElement("i", {
+          className: "material-icons",
+          onClick: _this.removeGroup.bind(_this, group.id)
+        }, "close"));
+      }))), !this.props.data && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "new-header"
+      }, React.createElement("input", {
+        className: "header-title",
+        placeholder: "Header Name"
+      })), React.createElement("div", {
+        className: "drop-area"
+      }, React.createElement("label", null, "Drag and drop groups here")))));
+    }
+  }]);
+
+  return HeadersBlockItem;
+}(React.Component);
+
+exports.default = react_dnd_1.DropTarget(types_1.DragAndDropTypes.HEADER_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(HeadersBlockItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../access/actions/appActions":"access/actions/appActions.ts","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../constants/types":"constants/types.ts"}],"components/manage-headers/groups-block.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_dnd_1 = require("react-dnd");
+
+var types_1 = require("../../constants/types");
+
+var react_redux_1 = require("react-redux");
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var observables_1 = require("../../access/observables/observables");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    isSelectionEnabled: reducers.isSelectionEnabled
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var itemSource = {
+  beginDrag: function beginDrag(props) {
+    return {
+      dragObject: props.data
+    };
+  }
+};
+
+function collect(connector, monitor) {
+  return {
+    connectDragSource: connector.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
+
+var GroupsBlockItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GroupsBlockItem, _React$Component);
+
+  function GroupsBlockItem(props) {
+    _classCallCheck(this, GroupsBlockItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(GroupsBlockItem).call(this, props));
+  }
+
+  _createClass(GroupsBlockItem, [{
+    key: "toggleSelection",
+    value: function toggleSelection() {
+      observables_1.ToggleSelection(this.props.data.id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          isDragging = _this$props.isDragging,
+          connectDragSource = _this$props.connectDragSource;
+      return connectDragSource(React.createElement("div", {
+        className: "groups-block-item-wrapper ".concat(isDragging ? 'entity-dragged' : '')
+      }, React.createElement("label", {
+        className: "group-title"
+      }, this.props.data.title)));
+    }
+  }]);
+
+  return GroupsBlockItem;
+}(React.Component);
+
+exports.default = react_dnd_1.DragSource(types_1.DragAndDropTypes.HEADER_ITEM, itemSource, collect)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(GroupsBlockItem));
+},{"react":"../../node_modules/react/index.js","react-dnd":"../../node_modules/react-dnd/lib/index.js","../../constants/types":"constants/types.ts","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts"}],"components/manage-headers/manage-headers.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/manage-headers/manage-headers.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var _ = __importStar(require("lodash"));
+
+var redux_1 = require("redux");
+
+var AppActions = __importStar(require("../../access/actions/appActions"));
+
+var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
+
+var headers_block_1 = __importDefault(require("./headers-block"));
+
+var groups_block_1 = __importDefault(require("./groups-block"));
+
+var constants_1 = require("../../constants/constants");
+
+require("./manage-headers.scss");
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var reducers = _ref.reducers;
+  return {
+    workspaceRTEActionShown: reducers.workspaceRTEActionShown
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    actions: redux_1.bindActionCreators(AppActions, dispatch)
+  };
+};
+
+var ManageHeaders =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ManageHeaders, _React$Component);
+
+  function ManageHeaders(props) {
+    var _this;
+
+    _classCallCheck(this, ManageHeaders);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ManageHeaders).call(this, props));
+    _this.state = {
+      headers: [],
+      groups: [],
+      newGroupId: constants_1.GetRandomId()
+    };
+    return _this;
+  }
+
+  _createClass(ManageHeaders, [{
+    key: "closeOverlay",
+    value: function closeOverlay() {
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var usedGroupHeaders = [];
+      this.props.headers.forEach(function (head) {
+        head.groups.forEach(function (group) {
+          if (_.indexOf(usedGroupHeaders, group.id)) {
+            usedGroupHeaders.push(group.id);
+          }
+        });
+      });
+      var groups = [].concat(this.props.groups);
+      groups.forEach(function (group) {
+        group.available = _.indexOf(usedGroupHeaders, group.id) !== -1;
+      });
+      this.setState({
+        headers: this.props.headers,
+        groups: groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "saveHeaders",
+    value: function saveHeaders() {
+      var headers = this.state.headers.filter(function (head) {
+        return head.groups.length > 0;
+      });
+      this.props.updateHeaders(headers);
+      this.props.actions.hideTopicCreator();
+    }
+  }, {
+    key: "groupAdded",
+    value: function groupAdded(headerId) {
+      var isNew = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var group = arguments.length > 2 ? arguments[2] : undefined;
+      var headers = [].concat(this.state.headers);
+      var newHeaders = [];
+      var newGroupProps = {
+        id: group.id,
+        name: group.title
+      };
+
+      if (isNew) {
+        var newHeader = {
+          groups: [newGroupProps],
+          id: headerId,
+          name: 'New Group'
+        };
+        newHeaders = headers;
+        newHeaders.push(newHeader);
+      } else {
+        headers.forEach(function (head) {
+          var _groups = [].concat(head.groups);
+
+          if (head.id === headerId) {
+            _groups = [].concat(_groups, newGroupProps);
+          }
+
+          newHeaders.push({
+            groups: _groups,
+            id: head.id,
+            name: head.name
+          });
+        });
+      }
+
+      var usedGroupHeaders = [];
+      newHeaders.forEach(function (head) {
+        head.groups.forEach(function (item) {
+          if (_.indexOf(usedGroupHeaders, item.id)) {
+            usedGroupHeaders.push(item.id);
+          }
+        });
+      });
+      var groups = [].concat(this.state.groups);
+      groups.forEach(function (item) {
+        item.available = _.indexOf(usedGroupHeaders, item.id) !== -1;
+      });
+      this.setState({
+        headers: newHeaders,
+        groups: groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "removeGroup",
+    value: function removeGroup(headerId, groupId) {
+      var headers = [].concat(this.state.headers);
+      var newHeaders = [];
+      headers.forEach(function (head) {
+        // tslint:disable-next-line:variable-name
+        var _groups = [].concat(head.groups);
+
+        if (head.id === headerId) {
+          _groups = _groups.filter(function (group) {
+            return group.id !== groupId;
+          });
+        }
+
+        newHeaders.push({
+          groups: [].concat(_groups),
+          id: head.id,
+          name: head.name
+        });
+      });
+      var usedGroupHeaders = [];
+      newHeaders.forEach(function (head) {
+        head.groups.forEach(function (item) {
+          if (_.indexOf(usedGroupHeaders, item.id)) {
+            usedGroupHeaders.push(item.id);
+          }
+        });
+      });
+      var groups = [].concat(this.state.groups);
+      groups.forEach(function (item) {
+        item.available = _.indexOf(usedGroupHeaders, item.id) !== -1;
+      });
+      this.setState({
+        headers: newHeaders,
+        // groups,
+        newGroupId: constants_1.GetRandomId()
+      });
+    }
+  }, {
+    key: "updateHeaderTitle",
+    value: function updateHeaderTitle(headerId, title) {
+      var headers = [].concat(this.state.headers);
+      var header = headers.find(function (head) {
+        return head.id === headerId;
+      });
+
+      if (header) {
+        header.name = title;
+      }
+
+      this.setState({
+        headers: headers
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          headers = _this$state.headers,
+          newGroupId = _this$state.newGroupId,
+          groups = _this$state.groups;
+      return react_dom_1.default.createPortal(React.createElement("div", {
+        className: "create-workspace w1000"
+      }, React.createElement("div", {
+        className: "create-workspace-overlay",
+        onClick: this.closeOverlay.bind(this)
+      }), React.createElement("div", {
+        className: "create-workspace-dialog"
+      }, React.createElement("label", {
+        className: "title"
+      }, "Manage Headers"), React.createElement("div", {
+        className: "headers-block"
+      }, headers.length > 0 && headers.map(function (item, i) {
+        return React.createElement(headers_block_1.default, {
+          updateHeaderTitle: _this2.updateHeaderTitle.bind(_this2, item.id),
+          key: item.id,
+          data: item,
+          groupAdded: _this2.groupAdded.bind(_this2, item.id, false),
+          removeGroup: _this2.removeGroup.bind(_this2, item.id)
+        });
+      }), React.createElement(headers_block_1.default, {
+        updateHeaderTitle: this.updateHeaderTitle.bind(this, newGroupId),
+        key: newGroupId,
+        groupAdded: this.groupAdded.bind(this, newGroupId, true),
+        removeGroup: this.removeGroup.bind(this, newGroupId)
+      })), React.createElement("label", {
+        className: "avaialble-group-label"
+      }, "Avaialble Groups"), React.createElement("div", {
+        className: "groups-block"
+      }, groups.length > 0 && groups.map(function (item, i) {
+        if (!item.available) {
+          return React.createElement(groups_block_1.default, {
+            key: item.id,
+            data: item
+          });
+        }
+      })), React.createElement("div", {
+        className: "create-workspace-actions"
+      }, React.createElement("button", {
+        className: "add-btn",
+        onClick: this.saveHeaders.bind(this)
+      }, "Save")))), document.body);
+    }
+  }]);
+
+  return ManageHeaders;
+}(React.Component);
+
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ManageHeaders);
+},{"react":"../../node_modules/react/index.js","lodash":"../../node_modules/lodash/lodash.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js","./headers-block":"components/manage-headers/headers-block.tsx","./groups-block":"components/manage-headers/groups-block.tsx","../../constants/constants":"constants/constants.ts","./manage-headers.scss":"components/manage-headers/manage-headers.scss"}],"constants/samples/groups.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var article_items_1 = require("./article-items");
+
+var socialmedia_items_1 = require("./socialmedia-items");
+
+var video_items_1 = require("./video-items");
+
+var photo_items_1 = require("./photo-items");
+
+exports.BoardGroups = [{
+  id: 'group_1',
+  title: 'Zinc Oxide',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummifiedArticleItems[1], article_items_1.DummifiedArticleItems[4], photo_items_1.DummifiedPhotoItems[3]],
+  annotation: ''
+}, {
+  id: 'group_2',
+  title: 'Why Mineral ?',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummifiedArticleItems[0], socialmedia_items_1.DummifiedSocialMediaItems[3]],
+  annotation: 'Chemical sunscreen can be really bad for the environment'
+}, {
+  id: 'group_3',
+  title: 'Mineral Sunscreens and UV',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummifiedArticleItems[3], article_items_1.DummifiedArticleItems[6]],
+  annotation: 'For mineral sunscreens, zinc oxide is much better protection than titanium dioxide'
+}, {
+  id: 'group_4',
+  title: 'Avobenzone',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummifiedArticleItems[5], socialmedia_items_1.DummifiedSocialMediaItems[2], photo_items_1.DummifiedPhotoItems[4]],
+  annotation: 'has the same coverage of UVA and UVB rays as zinc oxide but is simply the chemical alternative'
+}, {
+  id: 'group_5',
+  title: 'Why Chemical? ',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [article_items_1.DummifiedArticleItems[2], socialmedia_items_1.DummifiedSocialMediaItems[1], video_items_1.DummifiedVideoItems[1]],
+  annotation: 'Covers UVA and UVB rays'
+}, {
+  id: 'group_6',
+  title: 'DIY Sunscreen',
+  props: {
+    top: 0,
+    left: 0
+  },
+  items: [socialmedia_items_1.DummifiedSocialMediaItems[0], video_items_1.DummifiedVideoItems[0], article_items_1.DummifiedArticleItems[7]],
+  annotation: 'Even if you use the correct ingredients in DIY sunscreen, the ingredients will never be at the grade used in sunscreen to ensure proper coverage and it can be extremely dangerous'
+}];
+exports.GroupHeaders = [{
+  id: 'header_1',
+  name: 'Mineral Sunscreens',
+  groups: [{
+    id: exports.BoardGroups[0].id
+  }, {
+    id: exports.BoardGroups[1].id
+  }, {
+    id: exports.BoardGroups[2].id
+  }]
+}, {
+  id: 'header_2',
+  name: 'Chemical Sunscreens',
+  groups: [{
+    id: exports.BoardGroups[3].id
+  }, {
+    id: exports.BoardGroups[4].id
+  }]
+}];
+},{"./article-items":"constants/samples/article-items.ts","./socialmedia-items":"constants/samples/socialmedia-items.ts","./video-items":"constants/samples/video-items.ts","./photo-items":"constants/samples/photo-items.ts"}],"components/workspace/workspace.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -71780,12 +74237,17 @@ var workspace_view_switch_1 = require("./workspace-view-switch");
 
 var transforms_1 = require("../../transforms");
 
+var manage_headers_1 = __importDefault(require("../manage-headers/manage-headers"));
+
+var groups_1 = require("../../constants/samples/groups");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
   return {
     workspaceDumpBarShown: reducers.workspaceDumpBarShown,
     workspaceRTEShown: reducers.workspaceRTEShown,
+    manageHeadersDialog: workspaceReducers.manageHeadersDialog,
     workspaceViewIsCanvas: workspaceReducers.workspaceViewIsCanvas
   };
 };
@@ -71807,11 +74269,16 @@ function (_React$Component) {
     _classCallCheck(this, Workspace);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Workspace).call(this, props));
+    _this.compositionValue = null;
     _this.state = {
-      rteWidth: 500,
+      rteWidth: 350,
       dumpGroundWidth: 350,
       workspaceId: null,
-      groups: []
+      topicId: null,
+      groups: [],
+      headers: [],
+      scrollToCenter: true,
+      composition: null
     };
     return _this;
   }
@@ -71822,7 +74289,8 @@ function (_React$Component) {
       if (transforms_1.isEqual(this.props.match.params, props.match.params) === false) {
         this.processParamsChange();
       }
-    }
+    } // tslint:disable-next-line:variable-name
+
   }, {
     key: "processParamsChange",
     value: function processParamsChange() {
@@ -71830,10 +74298,21 @@ function (_React$Component) {
           workspaceId = _this$props$match$par.workspaceId,
           topicId = _this$props$match$par.topicId;
       this.props.actions.activateWorkshopAndTopic(workspaceId, topicId);
+      var groups = [];
+      var headers = [];
+
+      if (workspaceId === 'instagram' && topicId === 'sunscreen') {
+        groups = groups_1.BoardGroups;
+        headers = groups_1.GroupHeaders;
+      } else {
+        groups = [constants_1.GetEmptyGroup()];
+      }
+
       this.setState({
         workspaceId: workspaceId,
         topicId: topicId,
-        groups: constants_1.BoardGroups
+        groups: groups,
+        headers: headers
       });
     }
   }, {
@@ -71843,10 +74322,11 @@ function (_React$Component) {
 
       observables_1.ShowDumpBarAction$.next(true);
       observables_1.ShowRTEAction$.next(true);
+      this.props.actions.hideWorkpsaceInHeader();
       this.processParamsChange();
       this.props.actions.showWorkspaceActions();
       this.transferSubscription = observables_1.WorkspaceContentTransfer.subscribe(function (data) {
-        var contentData = data.data;
+        var content = data.data;
         var change = false;
         var groups = [];
         var originalGroups = _this2.state.groups;
@@ -71872,14 +74352,8 @@ function (_React$Component) {
               });
               change = true;
             } else if (data.to === groupId) {
-              group.items.push({
-                id: contentData.id,
-                type: contentData.contentType,
-                props: {
-                  height: constants_1.ItemHeight,
-                  width: constants_1.ItemWidth
-                }
-              });
+              group.items.push(content);
+              group.isEmpty = false;
               change = true;
             }
           });
@@ -71889,28 +74363,29 @@ function (_React$Component) {
           var _ref2;
 
           var group = constants_1.GetEmptyGroup();
-          group.items.push({
-            id: contentData.id,
-            type: contentData.contentType,
-            props: {
-              height: constants_1.ItemHeight,
-              width: constants_1.ItemWidth
-            }
-          });
+          group.items.push(content);
+          group.isEmpty = false;
           groups = (_ref2 = []).concat.apply(_ref2, _toConsumableArray(groups).concat([group]));
           change = true;
         }
 
         if (change) {
+          var headers = _this2.state.headers;
+
           _this2.setState({
-            groups: groups
+            groups: groups,
+            headers: headers,
+            scrollToCenter: false
           });
         }
+
+        observables_1.CurrentEnableScrollIntoCenter.next(false);
       });
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
+      this.transferSubscription.unsubscribe();
       observables_1.ShowDumpBarAction$.next(false);
       observables_1.ShowRTEAction$.next(false);
       this.props.actions.hideWorkspaceActions();
@@ -71930,6 +74405,59 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "updateHeaders",
+    value: function updateHeaders(headers) {
+      this.setState({
+        headers: headers
+      });
+    }
+  }, {
+    key: "closeEditor",
+    value: function closeEditor() {
+      this.props.actions.hideRTE();
+    }
+  }, {
+    key: "gatherNotes",
+    value: function gatherNotes() {
+      var rteData = null;
+
+      if (this.state.groups && this.state.groups.length > 0) {
+        rteData = this.state.groups.reduce(function (prev, curr) {
+          return prev + "<p><strong>".concat(curr.title, "</strong></p><p>").concat(curr.annotation, "</p>");
+        }, '');
+      }
+
+      var compositionValue = this.compositionValue + rteData;
+      this.setState({
+        composition: compositionValue
+      });
+    }
+  }, {
+    key: "rteValueChange",
+    value: function rteValueChange(value) {
+      this.compositionValue = value;
+    }
+  }, {
+    key: "exportComposition",
+    value: function exportComposition() {
+      constants_1.ExportNote(this.compositionValue);
+    }
+  }, {
+    key: "onNotesAndTitleChanged",
+    value: function onNotesAndTitleChanged(data) {
+      var groups = [];
+      var originalGroups = this.state.groups;
+      originalGroups.forEach(function (group) {
+        groups.push(Object.assign({}, group, {
+          title: group.id === data.id ? data.title : group.title,
+          annotation: group.id === data.id ? data.annotation : group.annotation
+        }));
+      });
+      this.setState({
+        groups: groups
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var rteWidth = {
@@ -71941,15 +74469,24 @@ function (_React$Component) {
       return React.createElement("div", {
         className: "workspace-wrapper"
       }, React.createElement(workspace_view_switch_1.WorkspaceViewSwitch, {
+        onNotesAndTitleChanged: this.onNotesAndTitleChanged.bind(this),
+        scrollToCenter: this.state.scrollToCenter,
         canvasView: this.props.workspaceViewIsCanvas,
         workspaceId: this.state.workspaceId,
-        groups: this.state.groups
+        groups: this.state.groups,
+        headers: this.state.headers
       }), this.props.workspaceRTEShown && React.createElement("div", {
         className: "rte-area",
         style: rteWidth
       }, React.createElement(resizer_1.Resizer, {
         onSizeChange: this.onRTESizeChange.bind(this)
-      }, React.createElement(rte_editor_1.default, null))), this.props.workspaceDumpBarShown && React.createElement("div", {
+      }, React.createElement(rte_editor_1.default, {
+        exportNotes: this.exportComposition.bind(this),
+        onChange: this.rteValueChange.bind(this),
+        gatherNotes: this.gatherNotes.bind(this),
+        closeEditor: this.closeEditor.bind(this),
+        value: this.state.composition
+      }))), this.props.workspaceDumpBarShown && React.createElement("div", {
         className: "sticky-dumping-ground",
         style: dumpGroundWidth
       }, React.createElement(resizer_1.Resizer, {
@@ -71957,7 +74494,12 @@ function (_React$Component) {
       }, React.createElement(dumping_ground_1.default, {
         sticky: true,
         workspace: true
-      }))));
+      }))), this.props.manageHeadersDialog && React.createElement(manage_headers_1.default, {
+        fixed: true,
+        groups: this.state.groups,
+        headers: this.state.headers,
+        updateHeaders: this.updateHeaders.bind(this)
+      }));
     }
   }]);
 
@@ -71965,7 +74507,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Workspace);
-},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./workspace.scss":"components/workspace/workspace.scss","../dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","../../access/observables/observables":"access/observables/observables.ts","../rte-editor/rte-editor":"components/rte-editor/rte-editor.tsx","../resizer/resizer":"components/resizer/resizer.tsx","../../constants/constants":"constants/constants.ts","./workspace-view-switch":"components/workspace/workspace-view-switch.tsx","../../transforms":"transforms.ts","../manage-headers/manage-headers":"components/manage-headers/manage-headers.tsx","../../constants/samples/groups":"constants/samples/groups.ts"}],"pages/router-root.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72042,130 +74584,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_router_dom_1.withRouter(RouterRoot);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"pages/router-wrap.tsx":[function(require,module,exports) {
-"use strict";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) {
-    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  }
-  result["default"] = mod;
-  return result;
-};
-
-var __importDefault = this && this.__importDefault || function (mod) {
-  return mod && mod.__esModule ? mod : {
-    "default": mod
-  };
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var React = __importStar(require("react"));
-
-var react_router_dom_1 = require("react-router-dom");
-
-var dumping_ground_1 = __importDefault(require("../components/dumping-ground/dumping-ground"));
-
-var home_1 = __importDefault(require("../components/home/home"));
-
-var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
-
-var searchbar_1 = __importDefault(require("../components/searchbar/searchbar"));
-
-var workspace_1 = __importDefault(require("../components/workspace/workspace"));
-
-var router_root_1 = __importDefault(require("./router-root"));
-
-var RouterWrapper =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(RouterWrapper, _React$Component);
-
-  function RouterWrapper() {
-    _classCallCheck(this, RouterWrapper);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
-  }
-
-  _createClass(RouterWrapper, [{
-    key: "onChangeHandler",
-    value: function onChangeHandler() {
-      this.props.onLocationChanged();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return React.createElement(React.Fragment, null, React.createElement("div", {
-        className: "app-content-sidebar left",
-        "data-state": this.props.sideBarCollpased
-      }, React.createElement(sidebar_1.default, null)), React.createElement("div", {
-        className: "app-content-area"
-      }, React.createElement(router_root_1.default, {
-        onLocationChanged: this.onChangeHandler.bind(this)
-      }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/",
-        component: home_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/home",
-        component: home_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/dump",
-        component: dumping_ground_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        exact: true,
-        path: "/workspace/:workspaceId/topic/:topicId",
-        component: workspace_1.default
-      }), React.createElement(react_router_dom_1.Route, {
-        component: function component() {
-          return React.createElement("h1", null, "204 No Content");
-        }
-      }), React.createElement(react_router_dom_1.Redirect, {
-        from: "",
-        exact: true,
-        to: "/home"
-      })))), this.props.searchBarShown && React.createElement("div", {
-        className: "app-content-sidebar search-bar right",
-        "data-state": 'expanded'
-      }, React.createElement(searchbar_1.default, null)));
-    }
-  }]);
-
-  return RouterWrapper;
-}(React.Component);
-
-exports.RouterWrapper = RouterWrapper;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/searchbar/searchbar":"components/searchbar/searchbar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx"}],"components/header/header.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/header/header.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace-preview/workspace-preview.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace-preview/workspace-preview.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72238,7 +74662,7 @@ var itemSource = {
     var dropItemResult = monitor.getItem();
     var toast = {
       id: "".concat(Math.floor(Math.random() * 10e8)),
-      message: "The clip has been pushed to the ".concat(props.data.name),
+      message: "The clip has been pushed to the board \"".concat(props.data.name, "\""),
       type: types_1.ToastType.Success
     };
     configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
@@ -72274,10 +74698,76 @@ function (_React$Component) {
       var styles = {
         backgroundImage: data.gradient
       };
+      var fillStyle1 = {
+        fill: data.color1
+      };
+      var fillStyle2 = {
+        fill: data.color2
+      };
       return connectDropTarget(React.createElement("div", {
-        className: "workspace ".concat(isOver ? 'entity-over' : ''),
-        style: styles
-      }, React.createElement("label", null, data.name)));
+        className: "workspace ".concat(isOver ? 'entity-over' : '')
+      }, React.createElement("svg", {
+        id: "Capa_1",
+        x: "0px",
+        y: "0px",
+        viewBox: "0 0 57 57",
+        width: "50px",
+        height: "40px",
+        className: "svg-container"
+      }, React.createElement("g", null, React.createElement("g", {
+        id: "XMLID_98_"
+      }, React.createElement("polygon", {
+        id: "XMLID_97_",
+        style: fillStyle1,
+        points: "23,13 20,5 0,5 0,13 0,52 48,52 48,13  ",
+        "data-original": "#F3D55C",
+        "data-old_color": "#F3D55C"
+      }), React.createElement("path", {
+        id: "XMLID_111_",
+        style: fillStyle2,
+        d: "M48,17h9l-8.938,34.761C48.052,51.796,48,51.79,48,51.753V17z",
+        "data-original": "#F0C41B",
+        "data-old_color": "#F0C41B"
+      }), React.createElement("rect", {
+        id: "XMLID_110_",
+        x: "6",
+        y: "33",
+        style: fillStyle1,
+        width: "22",
+        height: "13",
+        "data-original": "#F5F1E2",
+        "data-old_color": "#F5F1E2"
+      }), React.createElement("path", {
+        id: "XMLID_109_",
+        style: fillStyle1,
+        d: "M19,43h-9c-0.553,0-1-0.447-1-1c0-0.553,0.447-1,1-1h9c0.553,0,1,0.447,1,1   C20,42.553,19.553,43,19,43",
+        "data-original": "#D6D0BB",
+        "data-old_color": "#D6D0BB"
+      }), React.createElement("path", {
+        id: "XMLID_108_",
+        style: fillStyle1,
+        d: "M14,38h-4c-0.553,0-1-0.447-1-1c0-0.553,0.447-1,1-1h4c0.553,0,1,0.447,1,1   C15,37.553,14.553,38,14,38",
+        "data-original": "#D6D0BB",
+        "data-old_color": "#D6D0BB"
+      }), React.createElement("path", {
+        id: "XMLID_107_",
+        style: fillStyle1,
+        d: "M24,38h-2c-0.553,0-1-0.447-1-1c0-0.553,0.447-1,1-1h2c0.553,0,1,0.447,1,1   C25,37.553,24.553,38,24,38",
+        "data-original": "#D6D0BB",
+        "data-old_color": "#D6D0BB"
+      }), React.createElement("path", {
+        id: "XMLID_106_",
+        style: fillStyle1,
+        d: "M23,43c-0.271,0-0.521-0.11-0.71-0.3C22.109,42.52,22,42.27,22,42   c0-0.271,0.109-0.521,0.29-0.71c0.37-0.37,1.05-0.37,1.42,0C23.89,41.479,24,41.74,24,42s-0.11,0.52-0.29,0.71   C23.52,42.89,23.26,43,23,43",
+        "data-original": "#D6D0BB",
+        "data-old_color": "#D6D0BB"
+      }), React.createElement("path", {
+        id: "XMLID_105_",
+        style: fillStyle1,
+        d: "M18,38c-0.26,0-0.521-0.11-0.71-0.29C17.109,37.52,17,37.26,17,37   s0.109-0.521,0.29-0.71c0.358-0.37,1.05-0.37,1.42,0C18.89,36.479,19,36.729,19,37c0,0.26-0.11,0.52-0.29,0.71   C18.52,37.89,18.26,38,18,38",
+        "data-original": "#D6D0BB",
+        "data-old_color": "#D6D0BB"
+      })))), React.createElement("label", null, React.createElement("span", null, data.name))));
     }
   }]);
 
@@ -72290,7 +74780,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace-preview/workspace-previewer.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/workspace-preview/workspace-previewer.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -72423,6 +74913,8 @@ var workspace_previewer_1 = __importDefault(require("../workspace-preview/worksp
 
 var transforms_1 = require("../../transforms");
 
+var observables_1 = require("../../access/observables/observables");
+
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
       workspaceReducers = _ref.workspaceReducers;
@@ -72456,6 +74948,7 @@ function (_React$Component) {
     _classCallCheck(this, Header);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Header).call(this, props));
+    _this.allNotesOpened = false;
     _this.state = {
       workspaceList: _this.props.workspaceList
     };
@@ -72463,11 +74956,6 @@ function (_React$Component) {
   }
 
   _createClass(Header, [{
-    key: "toggleSidebar",
-    value: function toggleSidebar() {
-      this.props.actions.toggleSideBar();
-    }
-  }, {
     key: "toggleRTE",
     value: function toggleRTE() {
       this.props.actions.hideDumpBar();
@@ -72488,11 +74976,15 @@ function (_React$Component) {
     key: "launchAnnotator",
     value: function launchAnnotator() {
       var ipcRenderer = window.ipcRenderer;
-      ipcRenderer.send('launch-annotator');
+
+      if (ipcRenderer) {
+        ipcRenderer.send('launch-annotator');
+      }
     }
   }, {
     key: "toggleWorkspaceView",
     value: function toggleWorkspaceView() {
+      observables_1.CurrentEnableScrollIntoCenter.next(true);
       this.props.actions.toggleWorkspaceViewAsCanvas();
     }
   }, {
@@ -72506,18 +74998,29 @@ function (_React$Component) {
       this.props.actions.showSearchBar();
     }
   }, {
+    key: "launchSearch",
+    value: function launchSearch() {
+      this.props.actions.toggleSearchBar();
+    }
+  }, {
+    key: "manageHeaders",
+    value: function manageHeaders() {
+      this.props.actions.showManageHeadersDialog();
+    }
+  }, {
+    key: "openAllNotes",
+    value: function openAllNotes() {
+      this.allNotesOpened = !this.allNotesOpened;
+      observables_1.OpenAllNotesAction.next(this.allNotesOpened);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
       return React.createElement(React.Fragment, null, React.createElement("div", {
         className: "app-actions left"
-      }, React.createElement("div", {
-        className: "app-sidebar-toggle",
-        onClick: this.toggleSidebar.bind(this)
-      }, React.createElement("i", {
-        className: "material-icons"
-      }, "menu")), this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 && React.createElement("ul", {
+      }, this.props.workspaceActionsAreShown && this.props.activeWorkspace && this.props.activeWorkspace.topics.length > 0 && React.createElement("ul", {
         className: "topic-headers"
       }, this.props.activeWorkspace.topics.map(function (topic, i) {
         var styles = {};
@@ -72548,6 +75051,20 @@ function (_React$Component) {
       }), React.createElement("div", {
         className: "app-actions right"
       }, this.props.workspaceActionsAreShown && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "action",
+        onClick: this.openAllNotes.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "notes")), React.createElement("div", {
+        className: "separator"
+      }), React.createElement("div", {
+        className: "action",
+        onClick: this.manageHeaders.bind(this)
+      }, React.createElement("i", {
+        className: "material-icons"
+      }, "device_hub")), React.createElement("div", {
+        className: "separator"
+      }), React.createElement("div", {
         className: "toggler",
         onClick: this.toggleWorkspaceView.bind(this)
       }, React.createElement("label", {
@@ -72556,38 +75073,31 @@ function (_React$Component) {
       }, "Canvas"), React.createElement("label", {
         role: "button",
         className: "".concat(this.props.workspaceViewIsCanvas ? '' : 'active')
-      }, "Grid")), React.createElement("div", {
+      }, "List")), React.createElement("div", {
         className: "separator"
       }), React.createElement("div", {
         className: "action ".concat(this.props.workspaceRTEShown ? 'active' : ''),
         onClick: this.toggleRTE.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "text_fields")), React.createElement("div", {
-        className: "action ".concat(this.props.workspaceDumpBarShown ? 'active' : ''),
-        onClick: this.toggleDumpBar.bind(this)
+      }, "format_shapes"))), this.props.workspaceActionInHeader && React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "action",
+        onClick: this.openAllNotes.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "apps"))), this.props.workspaceActionInHeader && React.createElement("div", {
+      }, "notes")), React.createElement("div", {
+        className: "separator"
+      }), React.createElement("div", {
         className: "action ".concat(this.props.workspaceInHeader ? 'active' : ''),
         onClick: this.toggleWorkspaceInBar.bind(this)
       }, React.createElement("i", {
         className: "material-icons"
-      }, "view_week")), React.createElement("div", {
+      }, "view_week"))), React.createElement("div", {
         className: "separator"
       }), React.createElement("div", {
         className: "action",
-        onClick: this.launchAnnotator.bind(this)
+        onClick: this.launchSearch.bind(this)
       }, React.createElement("i", {
-        className: "material-icons"
-      }, "format_shapes")), React.createElement("div", {
-        className: "separator"
-      }), React.createElement("div", {
-        className: "search-box"
-      }, React.createElement("input", {
-        className: "search-input",
-        onFocus: this.onSearchFocused.bind(this)
-      }), " ", React.createElement("i", {
         className: "material-icons"
       }, "search"))));
     }
@@ -72597,7 +75107,138 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Header);
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","redux":"../../node_modules/redux/es/redux.js","react-redux":"../../node_modules/react-redux/es/index.js","../../access/actions/appActions":"access/actions/appActions.ts","./header.scss":"components/header/header.scss","../workspace-preview/workspace-previewer":"components/workspace-preview/workspace-previewer.tsx","../../transforms":"transforms.ts","../../access/observables/observables":"access/observables/observables.ts"}],"pages/router-wrap.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var react_router_dom_1 = require("react-router-dom");
+
+var dumping_ground_1 = __importDefault(require("../components/dumping-ground/dumping-ground"));
+
+var home_1 = __importDefault(require("../components/home/home"));
+
+var sidebar_1 = __importDefault(require("../components/sidebar/sidebar"));
+
+var searchbar_1 = __importDefault(require("../components/searchbar/searchbar"));
+
+var workspace_1 = __importDefault(require("../components/workspace/workspace"));
+
+var router_root_1 = __importDefault(require("./router-root"));
+
+var header_1 = __importDefault(require("../components/header/header"));
+
+var RouterWrapper =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RouterWrapper, _React$Component);
+
+  function RouterWrapper() {
+    _classCallCheck(this, RouterWrapper);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(RouterWrapper).apply(this, arguments));
+  }
+
+  _createClass(RouterWrapper, [{
+    key: "onChangeHandler",
+    value: function onChangeHandler() {
+      this.props.onLocationChanged();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "app-content-sidebar left",
+        "data-state": sideBarCollpased
+      }, React.createElement(sidebar_1.default, {
+        sideBarCollpased: !this.props.sideBarShown
+      })), React.createElement("div", {
+        className: "app-content-holder"
+      }, React.createElement("div", {
+        className: "app-header-holder"
+      }, React.createElement("div", {
+        className: "app-content-top ".concat(this.props.workspaceInHeader ? 'expanded' : 'collapsed')
+      }, React.createElement(header_1.default, null))), React.createElement("div", {
+        className: "app-content-container"
+      }, React.createElement("div", {
+        className: "app-content-area"
+      }, React.createElement(router_root_1.default, {
+        onLocationChanged: this.onChangeHandler.bind(this)
+      }, React.createElement(react_router_dom_1.Switch, null, React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/",
+        component: home_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/home",
+        component: home_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/dump",
+        component: dumping_ground_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        exact: true,
+        path: "/workspace/:workspaceId/topic/:topicId",
+        component: workspace_1.default
+      }), React.createElement(react_router_dom_1.Route, {
+        component: function component() {
+          return React.createElement("h1", null, "204 No Content");
+        }
+      }), React.createElement(react_router_dom_1.Redirect, {
+        from: "",
+        exact: true,
+        to: "/home"
+      })))), this.props.searchBarShown && React.createElement("div", {
+        className: "app-content-sidebar search-bar right",
+        "data-state": 'expanded'
+      }, React.createElement(searchbar_1.default, null)))));
+    }
+  }]);
+
+  return RouterWrapper;
+}(React.Component);
+
+exports.RouterWrapper = RouterWrapper;
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../components/dumping-ground/dumping-ground":"components/dumping-ground/dumping-ground.tsx","../components/home/home":"components/home/home.tsx","../components/sidebar/sidebar":"components/sidebar/sidebar.tsx","../components/searchbar/searchbar":"components/searchbar/searchbar.tsx","../components/workspace/workspace":"components/workspace/workspace.tsx","./router-root":"pages/router-root.tsx","../components/header/header":"components/header/header.tsx"}],"../../node_modules/react-dnd-html5-backend/lib/utils/js_utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -73721,7 +76362,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/toasts/toast.tsx":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/toasts/toast.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -73793,11 +76434,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Toasts).call(this, props));
     _this.state = {
-      toasts: [{
-        id: '1',
-        message: 'The clip has been pushed to the Workspace.',
-        type: types_1.ToastType.Success
-      }]
+      toasts: []
     };
     return _this;
   }
@@ -73922,7 +76559,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/plyr/dist/plyr.min.js":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../node_modules/plyr/dist/plyr.min.js":[function(require,module,exports) {
 var define;
 var global = arguments[3];
 "object" == typeof navigator && function (e, t) {
@@ -78209,7 +80846,169 @@ function (_React$Component) {
 }(React.Component);
 
 exports.VideoContentViewer = VideoContentViewer;
-},{"react":"../../node_modules/react/index.js","plyr":"../../node_modules/plyr/dist/plyr.min.js"}],"components/content-viewer/content-viewer.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","plyr":"../../node_modules/plyr/dist/plyr.min.js"}],"components/content-viewer/mms-content-viewer.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var MMSContentViewer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(MMSContentViewer, _React$Component);
+
+  function MMSContentViewer(props) {
+    _classCallCheck(this, MMSContentViewer);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MMSContentViewer).call(this, props));
+  }
+
+  _createClass(MMSContentViewer, [{
+    key: "render",
+    value: function render() {
+      var bgUrl = "url(".concat(this.props.data.contentData.mediaUrl, ")");
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "photo-content-viewer"
+      }, React.createElement("div", {
+        className: "photo-content-image",
+        style: {
+          backgroundImage: bgUrl
+        }
+      })));
+    }
+  }]);
+
+  return MMSContentViewer;
+}(React.Component);
+
+exports.MMSContentViewer = MMSContentViewer;
+},{"react":"../../node_modules/react/index.js"}],"components/content-viewer/instagram-content-viewer.tsx":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var React = __importStar(require("react"));
+
+var InstagramContentViewer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(InstagramContentViewer, _React$Component);
+
+  function InstagramContentViewer(props) {
+    var _this;
+
+    _classCallCheck(this, InstagramContentViewer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InstagramContentViewer).call(this, props));
+    _this.state = {
+      instagramHTML: null
+    };
+    return _this;
+  }
+
+  _createClass(InstagramContentViewer, [{
+    key: "fetchInstagramContent",
+    value: function fetchInstagramContent() {
+      var _this2 = this;
+
+      var url = "https://api.instagram.com/oembed?url=".concat(this.props.data.contentData.instagramPostUrl, "&OMITSCRIPT=true");
+      fetch(url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this2.setState({
+          instagramHTML: res.html
+        });
+
+        setTimeout(function () {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        }, 100);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchInstagramContent();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(React.Fragment, null, React.createElement("div", {
+        className: "instagram-wrapper",
+        dangerouslySetInnerHTML: {
+          __html: this.state.instagramHTML
+        }
+      }));
+    }
+  }]);
+
+  return InstagramContentViewer;
+}(React.Component);
+
+exports.InstagramContentViewer = InstagramContentViewer;
+},{"react":"../../node_modules/react/index.js"}],"components/content-viewer/content-viewer.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -78254,7 +81053,11 @@ require("./content-viewer.scss");
 
 var video_content_viewer_1 = require("./video-content-viewer");
 
+var mms_content_viewer_1 = require("./mms-content-viewer");
+
 var observables_1 = require("../../access/observables/observables");
+
+var instagram_content_viewer_1 = require("./instagram-content-viewer");
 
 var ContentViewer =
 /*#__PURE__*/
@@ -78269,7 +81072,9 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ContentViewer).call(this, props));
     _this.state = {
       data: null,
-      isOpen: false
+      isOpen: false,
+      isInstagram: false,
+      instagramHTML: null
     };
     return _this;
   }
@@ -78316,6 +81121,9 @@ function (_React$Component) {
       return React.createElement(React.Fragment, null, this.state.isOpen && React.createElement("div", {
         className: "content-viewer-holder"
       }, React.createElement("div", {
+        className: "overlay",
+        onClick: this.closeViewer.bind(this)
+      }), React.createElement("div", {
         className: "close-viewer",
         onClick: this.closeViewer.bind(this)
       }, React.createElement("i", {
@@ -78327,6 +81135,10 @@ function (_React$Component) {
       }, this.state.data.contentType === types_1.ContentType.Photo && React.createElement(photo_content_viewer_1.PhotoContentViewer, {
         data: this.state.data
       }), this.state.data.contentType === types_1.ContentType.Video && React.createElement(video_content_viewer_1.VideoContentViewer, {
+        data: this.state.data
+      }), this.state.data.contentType === types_1.ContentType.Sticky && React.createElement(mms_content_viewer_1.MMSContentViewer, {
+        data: this.state.data
+      }), this.state.data.contentType === types_1.ContentType.SocialMedia && this.state.data.sourceType === types_1.MediaSourceType.Instagram && React.createElement(instagram_content_viewer_1.InstagramContentViewer, {
         data: this.state.data
       }), this.state.data.title && React.createElement("label", {
         className: "content-viewer-title"
@@ -78345,12 +81157,12 @@ function (_React$Component) {
 }(React.Component);
 
 exports.ContentViewer = ContentViewer;
-},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../../constants/types":"constants/types.ts","./photo-content-viewer":"components/content-viewer/photo-content-viewer.tsx","./content-viewer.scss":"components/content-viewer/content-viewer.scss","./video-content-viewer":"components/content-viewer/video-content-viewer.tsx","./mms-content-viewer":"components/content-viewer/mms-content-viewer.tsx","../../access/observables/observables":"access/observables/observables.ts","./instagram-content-viewer":"components/content-viewer/instagram-content-viewer.tsx"}],"components/create-workspace/create-workspace.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"constants/gradients.ts":[function(require,module,exports) {
+},{"_css_loader":"../../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"constants/gradients.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -79390,6 +82202,12 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -79407,6 +82225,8 @@ var redux_1 = require("redux");
 var AppActions = __importStar(require("../../access/actions/appActions"));
 
 var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
@@ -79474,20 +82294,25 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
+      return react_dom_1.default.createPortal(React.createElement("div", {
         className: "create-workspace"
       }, React.createElement("div", {
         className: "create-workspace-overlay",
         onClick: this.closeOverlay.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-dialog"
-      }, React.createElement("label", null, "New Workspace"), React.createElement("input", {
+      }, React.createElement("label", {
+        className: "title"
+      }, "Enter Workspace Name"), React.createElement("input", {
         autoFocus: true,
         value: this.state.newWorkspaceName,
         onChange: this.onNewWorkspaceChanged.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-actions"
-      }, React.createElement("ul", {
+      }, React.createElement("button", {
+        className: "add-btn",
+        onClick: this.createWorkspace.bind(this)
+      }, "Create"), React.createElement("ul", {
         className: "colors"
       }, this.state.gradients.length > 0 && this.state.gradients.map(function (grad, i) {
         var styles = {
@@ -79499,10 +82324,7 @@ function (_React$Component) {
           key: i,
           style: styles
         });
-      })), React.createElement("button", {
-        className: "add-btn",
-        onClick: this.createWorkspace.bind(this)
-      }, "Create"))));
+      }))))), document.body);
     }
   }]);
 
@@ -79510,7 +82332,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateWorkspace);
-},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"components/create-workspace/create-topic.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","lodash":"../../node_modules/lodash/lodash.js","../../constants/gradients":"constants/gradients.ts","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js"}],"components/create-workspace/create-topic.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79541,6 +82363,12 @@ var __importStar = this && this.__importStar || function (mod) {
   return result;
 };
 
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -79554,6 +82382,8 @@ var redux_1 = require("redux");
 var AppActions = __importStar(require("../../access/actions/appActions"));
 
 var react_redux_1 = require("react-redux");
+
+var react_dom_1 = __importDefault(require("react-dom"));
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers;
@@ -79614,14 +82444,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return react_dom_1.default.createPortal(React.createElement("div", {
         className: "create-workspace"
       }, React.createElement("div", {
         className: "create-workspace-overlay",
         onClick: this.closeOverlay.bind(this)
       }), React.createElement("div", {
         className: "create-workspace-dialog"
-      }, React.createElement("label", null, "New Topic"), React.createElement("input", {
+      }, React.createElement("label", {
+        className: "title"
+      }, "New Topic"), React.createElement("input", {
         autoFocus: true,
         value: this.state.newTopicName,
         onChange: this.onNewTopicNameChanged.bind(this)
@@ -79630,7 +82462,7 @@ function (_React$Component) {
       }, React.createElement("button", {
         className: "add-btn",
         onClick: this.createTopic.bind(this)
-      }, "Create"))));
+      }, "Create")))), document.body);
     }
   }]);
 
@@ -79638,7 +82470,7 @@ function (_React$Component) {
 }(React.Component);
 
 exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(CreateTopic);
-},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js"}],"pages/main.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./create-workspace.scss":"components/create-workspace/create-workspace.scss","redux":"../../node_modules/redux/es/redux.js","../../access/actions/appActions":"access/actions/appActions.ts","react-redux":"../../node_modules/react-redux/es/index.js","react-dom":"../../node_modules/react-dom/index.js"}],"pages/main.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79697,8 +82529,6 @@ var AppActions = __importStar(require("../access/actions/appActions"));
 
 var observables_1 = require("../access/observables/observables");
 
-var header_1 = __importDefault(require("../components/header/header"));
-
 var react_dnd_1 = require("react-dnd");
 
 var react_dnd_html5_backend_1 = __importDefault(require("react-dnd-html5-backend"));
@@ -79710,6 +82540,10 @@ var content_viewer_1 = require("../components/content-viewer/content-viewer");
 var create_workspace_1 = __importDefault(require("../components/create-workspace/create-workspace"));
 
 var create_topic_1 = __importDefault(require("../components/create-workspace/create-topic"));
+
+var configureStore_1 = __importDefault(require("../access/store/configureStore"));
+
+var types_1 = require("../constants/types");
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var reducers = _ref.reducers,
@@ -79769,16 +82603,23 @@ function (_react_1$Component) {
     key: "launchAnnotator",
     value: function launchAnnotator() {
       var ipcRenderer = window.ipcRenderer;
-      ipcRenderer.send('launch-annotator');
+
+      if (ipcRenderer) {
+        ipcRenderer.send('launch-annotator');
+      }
+
       var remote = window.remote;
-      var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
-      fetch(api).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        console.log(data);
-      }, function (data) {
-        console.log(data);
-      });
+
+      if (remote) {
+        var api = "http://localhost:".concat(remote.getCurrentWindow().API_PORT, "/api/meta/");
+        fetch(api).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          console.log(data);
+        }, function (data) {
+          console.log(data);
+        });
+      }
     }
   }, {
     key: "toggleRTE",
@@ -79794,9 +82635,24 @@ function (_react_1$Component) {
       }
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var ipcRenderer = window.ipcRenderer;
+
+      if (ipcRenderer) {
+        ipcRenderer.on('composition-saved', function (e, arg) {
+          var toast = {
+            id: "".concat(Math.floor(Math.random() * 10e8)),
+            message: "Composition saved as \"".concat(arg, "\""),
+            type: types_1.ToastType.Success
+          };
+          configureStore_1.default.dispatch(AppActions.showToastNotification(toast));
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var sideBarCollpased = this.props.sideBarShown ? 'expanded' : 'collapsed';
       return React.createElement("div", {
         className: "app-content"
       }, React.createElement("div", {
@@ -79804,11 +82660,9 @@ function (_react_1$Component) {
       }), React.createElement(react_router_dom_1.HashRouter, {
         hashType: "noslash"
       }, React.createElement("div", {
-        className: "app-content-top ".concat(this.props.workspaceInHeader ? 'expanded' : 'collapsed')
-      }, React.createElement(header_1.default, null)), React.createElement("div", {
         className: "app-content-bottom"
       }, React.createElement(router_wrap_1.RouterWrapper, {
-        sideBarCollpased: sideBarCollpased,
+        sideBarShown: this.props.sideBarShown,
         searchBarShown: this.props.searchBarShown,
         onLocationChanged: this.onLocationChanged.bind(this)
       }))), React.createElement(toast_1.default, null), React.createElement(content_viewer_1.ContentViewer, null), this.props.newWorkspaceCreator && React.createElement(create_workspace_1.default, null), this.props.newTopicCreator && React.createElement(create_topic_1.default, null));
@@ -79819,7 +82673,7 @@ function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = react_dnd_1.DragDropContext(react_dnd_html5_backend_1.default)(react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Main));
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","../components/header/header":"components/header/header.tsx","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx"}],"index.tsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./router-wrap":"pages/router-wrap.tsx","../styles.scss":"styles.scss","react-redux":"../../node_modules/react-redux/es/index.js","redux":"../../node_modules/redux/es/redux.js","../access/actions/appActions":"access/actions/appActions.ts","../access/observables/observables":"access/observables/observables.ts","react-dnd":"../../node_modules/react-dnd/lib/index.js","react-dnd-html5-backend":"../../node_modules/react-dnd-html5-backend/lib/index.js","../components/toasts/toast":"components/toasts/toast.tsx","../components/content-viewer/content-viewer":"components/content-viewer/content-viewer.tsx","../components/create-workspace/create-workspace":"components/create-workspace/create-workspace.tsx","../components/create-workspace/create-topic":"components/create-workspace/create-topic.tsx","../access/store/configureStore":"access/store/configureStore.ts","../constants/types":"constants/types.ts"}],"index.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -79889,7 +82743,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61471" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54451" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

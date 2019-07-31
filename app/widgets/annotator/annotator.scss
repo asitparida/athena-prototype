@@ -21,7 +21,7 @@
     }
 }
 
-@include scrollbars(0.50em, rgba(#fff, 0.30), rgba(#000, 0.50));
+@include scrollbars(0.50em, rgba(#fff, 0.30), rgba(#fff, 0.20));
 
 body {
     margin: 0;
@@ -29,8 +29,7 @@ body {
     height: 100vh;
     position: relative;
     font-family: 'Open Sans', sans-serif;
-    color: rgba(#fff, 0.80);
-    background-color: #333;
+    color: rgba(#000, 0.80);
     #root {
         display: flex;
         justify-content: center;
@@ -74,13 +73,13 @@ body {
                     height: 100%;
                     width: 100%;
                     background: transparent;
-                    color: rgba(#ffffff, 0.75);
+                    color: rgba(#000, 0.75);
                     font-size: small;
                     padding: 20px;
                     border-radius: 4px;
                     text-align: left;
                     border: none;
-                    font-weight: 100;
+                    font-weight: 500;
                     margin: 0;
                     outline: none;
                     border: 1px solid rgba(#ffffff, 0.0);
@@ -93,30 +92,30 @@ body {
 
                     &::-webkit-input-placeholder {
                         /* Chrome/Opera/Safari */
-                        color: rgba(#ffffff, 0.50);
-                        font-weight: 300;
-                        font-size: medium;
+                        color: rgba(#000, 0.50);
+                        font-weight: 500;
+                        font-size: small;
                     }
 
                     &::-moz-placeholder {
                         /* Firefox 19+ */
-                        color: rgba(#ffffff, 0.50);
-                        font-weight: 300;
-                        font-size: medium;
+                        color: rgba(#000, 0.50);
+                        font-weight: 500;
+                        font-size: small;
                     }
 
                     &:-ms-input-placeholder {
                         /* IE 10+ */
-                        color: rgba(#ffffff, 0.50);
-                        font-weight: 300;
-                        font-size: medium;
+                        color: rgba(#000, 0.50);
+                        font-weight: 500;
+                        font-size: small;
                     }
 
                     &:-moz-placeholder {
                         /* Firefox 18- */
-                        color: rgba(#ffffff, 0.50);
-                        font-weight: 300;
-                        font-size: medium;
+                        color: rgba(#000, 0.50);
+                        font-weight: 500;
+                        font-size: small;
                     }
                 }
             }

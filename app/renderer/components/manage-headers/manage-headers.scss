@@ -1,0 +1,125 @@
+@import '../../shared';
+.headers-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 30px 0 15px 0;
+    color: #000;
+    flex-flow: row wrap;
+    .headers-block-item-wrapper {
+        margin: 5px;
+        border: 1px solid rgba($color: #000000, $alpha: 0.1);
+        padding: 10px;
+        width: 250px;
+        &.entity-over {
+            border: 1px dashed rgba($color: $primary_accent, $alpha: 0.75);
+            background: rgba($color: $primary_accent, $alpha: 0.10);
+        }
+        input.header-title {
+            color: $dark_text;
+            padding: 0 10px;
+            min-width: 100px;
+            line-height: 36px;
+            height: 36px;
+            display: block;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            font-size: small;
+            background: rgba(#000, 0.0);
+            border: none;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+            &:hover,
+            &:focus,
+            &:active {
+                background: rgba(#000, 0.05);
+            }
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: rgba(#000, 0.33);
+                font-weight: 400;
+                line-height: 24px;
+                padding-left: 20px;
+                padding-top: 4px;
+                font-size: small;
+                font-style: italic;
+            }
+        }
+        .new-header {
+            i {
+                line-height: 36px;
+                font-size: medium;
+                margin-right: 5px;
+            }
+            label {
+                font-size: small;
+            }
+        }
+        .drop-area {
+            padding: 27.5px 0;
+            margin-top: 10px;
+            label {
+                font-size: small;
+                font-style: italic;
+                padding: 0 20px;
+                opacity: 0.50;
+            }
+        }
+        
+        .groups-block {
+            padding: 20px 0;
+            width: 100%;
+            flex-flow: row wrap;
+            margin: 0px 0;
+            .groups-block-item-wrapper  {
+                background: #f9f9f9 !important;
+            }
+        }
+    }
+}
+.groups-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+.avaialble-group-label {
+    margin-top: 30px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(#000, 0.05);
+    color: rgba(#000, 0.33);
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+}
+.groups-block-item-wrapper {
+        margin: 5px;
+        background: $light-accent-color;
+        border: 1px solid rgba($color: #000000, $alpha: 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.entity-dragged {
+
+        }
+        i {
+            color: rgba($color: #000000, $alpha: 0.25);
+            font-size: small;
+            width: 24px;
+            text-align: center;
+            cursor: pointer;
+            line-height: 30px;
+            &:hover {
+                background-color: rgba(#000, 0.1);
+            }
+        }
+        label.group-title {
+            padding: 0 10px;
+            line-height: 30px;
+            color: rgba($color: #000000, $alpha: 0.5);
+            font-size: x-small;
+            text-align: center;
+            cursor: pointer;
+        }
+    }

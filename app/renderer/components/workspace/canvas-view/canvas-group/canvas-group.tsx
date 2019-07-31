@@ -57,7 +57,7 @@ class GroupContent extends React.Component<IPropType | any, any> {
     }
     boardPropsChanged(i, data) {
         const rowItems = [].concat(this.props.data.items);
-        rowItems[i].props.width = data.width + 20;
+        rowItems[i].props.width = data.width;
         rowItems[i].props.height = data.height;
         this.setState({
             items: rowItems
@@ -72,16 +72,21 @@ class GroupContent extends React.Component<IPropType | any, any> {
             width: Math.max.apply(null, items.map(item => item.props.width)),
             height: items.reduce((curr, prev) => curr + prev.props.height, 0)
         };
+        data.width = data.width < 240 ? 240 : data.width;
         this.props.onPropsChange(data);
     }
     render() {
         const { connectDropTarget, isOver, data } = this.props;
         const { items } = this.props.data;
         return connectDropTarget(
-            <div className={`group-content ${isOver ? 'entity-over' : ''}`} >
+            <div className={`group-content  ${isOver ? 'entity-over' : ''}`} >
                 {
-                    items.length > 0 &&
+                    items.length > 0 && !data.isEmpty &&
                     items.map((item, i) => <CanvasGroupItemWrapper group={data.id} onPropsChange={this.boardPropsChanged.bind(this, i)} data={item} key={item.id} />)
+                }
+                {
+                    data.isEmpty &&
+                    <div className='new-group-marker'><i className='material-icons'>add</i><span>Drop clips here </span></div>
                 }
             </div>
         );

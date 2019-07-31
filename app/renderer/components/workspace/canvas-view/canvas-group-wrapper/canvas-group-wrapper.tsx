@@ -2,9 +2,14 @@ import * as React from 'react';
 import './canvas-group-wrapper.scss';
 import CanvasGroup from '../canvas-group/canvas-group';
 import { IBoardGroupWrapper } from '../../../../constants/types';
+import { GetGroupWrapperId } from '../../../../transforms';
 
 class CanvasGroupWrapper extends React.Component<{
-    data?: IBoardGroupWrapper, parentX: number, parentY: number, onPropsChange: (data: any) => {}
+    data?: IBoardGroupWrapper,
+    parentX: number,
+    parentY: number,
+    onPropsChange: (data: any) => {},
+    showAnchor?: boolean;
 }, {
     groupTitle?: string
 }> {
@@ -29,9 +34,13 @@ class CanvasGroupWrapper extends React.Component<{
             left: `${parentX + props.left}px`,
         }
         return (
-            <div className="group-wrapper" style={styles}>
+            <div className="group-wrapper" style={styles} id={GetGroupWrapperId(this.props.data.id)}>
                 <input className='group-title' value={this.state.groupTitle} onChange={this.titleChange.bind(this)} />
                 <CanvasGroup data={this.props.data} onPropsChange={this.groupPropsChanged.bind(this)} />
+                {
+                    this.props.showAnchor &&
+                    <div className='group-anchor' />
+                }
             </div>
         );
     }

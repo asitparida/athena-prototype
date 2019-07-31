@@ -1,16 +1,85 @@
+@import '../../shared';
+
 .sidebar-wrapper {
     width: 100%;
     height: 100%;
     padding: 0;
     display: flex;
     flex-direction: column;
-    background: rgba(#fff, 0.025);
     position: relative;
     z-index: 3;
+    overflow-x: hidden;
+    &:before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 100%;
+        background-image: url('../../assets/icon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top center;
+        filter: blur(120px);
+        z-index: 1;
+    }
+    &.collapsed {
+        overflow-x: hidden;
+        ul {
+            &.workspace-list {
+                overflow-x: hidden;
+                li {
+                    width: 70px;
+                    overflow: hidden;
+                    &.hamburger {
+                        padding: 0;
+                    }
+                    label {
+                        padding: 0;
+                        i {
+                            width: 70px;
+                            text-align: center;
+                        }
+                        &.first-level-label {
+                            .name {
+                                display: none;
+                            }
+                        }
+                    }
+                    &.newWorkspace {
+                        padding: 30px 10px 0px 10px;
+                        border-radius: 0;
+                        label {
+                            padding: 0;
+                            display: flex;
+                            align-items: center;
+                            i {
+                                margin: 0;
+                            }
+                            .name {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .user-space {
+            padding: 0;
+            .user-space-content {
+                padding: 5px 0;
+                background-color: rgba(0, 0, 0, 0.0);
+                .user-picture-wrapper {
+                    background-color: transparent;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
     ul {
         padding: 0;
         list-style: none;
         margin: 0;
+        position: relative;
+        z-index: 2;
         &.workspace-list {
             margin-top: 0;
             margin-bottom: auto;
@@ -25,19 +94,41 @@
         li {
             margin-bottom: 1px;
             padding: 0;
-            border-bottom: 1px solid rgba(#fff, 0.05);
+            border-bottom: 1px solid rgba(#000, 0.05);
             cursor: pointer;
             text-align: center;
             background: transparent;
             &:last-child {
                 border-bottom: none;
             }
+            &.hamburger {
+                margin-top: 30px;
+                height: 54px;
+                display: flex;
+                padding-left: 0px;
+                i {
+                    color: $dark_text;
+                    font-size: 18px;
+                    margin-right: auto;
+                    margin-left: 10px;
+                    height: 48px;
+                    width: 48px;
+                    line-height: 48px;
+                    text-align: center;
+                    border-radius: 50%;
+                    &:hover {
+                        background-color: rgba(#000, 0.10);
+                        color: #000;
+                    }
+                }
+            }
             &.newWorkspace {
                 padding: 30px 30px 0px 30px;
                 label {
-                    background-color: rgba(#fff, 0.025);
+                    background-color: rgba(#000, 0.025);
                     width: 100%;
                     line-height: 54px;
+                    height: 54px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -51,28 +142,37 @@
                         font-size: medium;
                     }
                     &:hover {
-                        background-color: rgba(#fff, 0.50);
+                        background-color: rgba(#000, 0.10);
                         color: #000;
                     }
                 }
             }
             label {
-                color: rgba(#fff, 0.50);
+                color: $dark_text;
                 width: 100%;
                 line-height: 54px;
+                height: 54px;
                 text-align: left;
-                padding: 0 30px;
+                padding: 0 21px;
                 margin: 0;
                 cursor: pointer;
                 &.second-level {
                     padding-left: 84px;
+                    .name {
+                        font-size: 14px;
+                    }
                 }
                 &:hover {
-                    background: rgba(#fff, 0.10);
+                    background: rgba(#000, 0.05);
                 }
                 &.first-level-label {
                     display: flex;
                     align-items: center;
+                    border-left: 5px solid rgba(#000, 0);
+                    border-right: 5px solid rgba(#000, 0);
+                    .name {
+                        font-size: 14px;
+                    }
                     i {
                         width: 36px;
                         font-size: 18px;
@@ -95,13 +195,13 @@
                     border-radius: 50%;
                     text-align: center;
                     cursor: pointer;
-                    color: rgba(#fff, 0.30);
+                    color: rgba(#000, 0.30);
                     i {
                         cursor: pointer;
                         line-height: 36px;
                     }
                     &:hover {
-                        background-color: rgba(#fff, 0.10);
+                        background-color: rgba(#fff, 0.75);
                     }
                 }
                 ul.sub-list {
@@ -109,7 +209,7 @@
                     padding-left: 0;
                     li {
                         label {
-                            line-height: 48px;
+                            line-height:54px;
                         }
                     }
                 }
@@ -119,20 +219,25 @@
                 width: 100%;
                 padding: 0;
                 text-decoration: none;
-                color: #fff;
-                border-left: 5px solid rgba(#fff, 0);
+                color: #000;
+                label {
+                    border-right: 5px solid rgba(#000, 0.0);
+                    border-left: 5px solid rgba(#000, 0.0);
+                }
                 &.active {
                     label {
-                        color: rgba(#fff, 1);
+                        color: rgba(#000, 1);
+                        border-left: 5px solid rgba($primary_accent, 1);
+                        .name { font-weight: 600; }
                     }
                     opacity: 1;
-                    border-left: 5px solid rgba(#fff, 0.75);
                 }
             }
             &.copyright-info {
                 font-size: small;
                 line-height: 60px;
                 padding: 0 30px;
+                color: rgba(#000, 0.50);
             }
         }
     }
@@ -140,6 +245,8 @@
         order: 2;
         flex: initial;
         padding: 15px 30px 0 30px;
+        position: relative;
+        z-index: 2;
         .user-space-content {
             display: flex;
             justify-content: center;
@@ -147,23 +254,33 @@
             flex-flow: column;
             padding: 30px 30px;
             width: 100%;
-            background-color: rgba(#fff, 0.025);
+            background-color: rgba(#000, 0.025);
             border-radius: 4px;
-            color: rgba(#fff, 0.50);
+            color: $dark_text;
             .user-picture-wrapper {
-                background-color: rgba(#fff, 0.10);
+                background-color: rgba(#000, 0.0);
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                img {
+                    width: 60%;
+                }
             }
             label {
                 font-size: medium;
                 margin: 0;
                 padding: 0;
-                margin-top: 30px;
+                margin-top: 10px;
             }
             p {
                 font-size: small;

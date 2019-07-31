@@ -1,3 +1,6 @@
+
+@import '../../shared';
+
 .tabs-holder {
     display: flex;
     flex-flow: column;
@@ -15,9 +18,9 @@
 
         h1 {
             font-weight: 100;
-            color: rgba(#fff, 0.33);
+            color: rgba(#000, 0.33);
             margin: 0 0 20px 0;
-            padding: 0 0 0 5px;
+            padding: 0 0 0 17.5px;
         }
 
         .content-items-wrapper {
@@ -27,6 +30,41 @@
             justify-content: flex-start;
             align-items: flex-start;
             margin: 0;
+            position: relative;
+            .content-item-wrapper {
+                position: relative;
+                &.show-selection {
+                    .selection-mask {
+                        display: block;
+                    }
+                }
+                .selection-mask {
+                    cursor: pointer;
+                    display: none;
+                    top: 12px;
+                    right: 12px;
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 2px;
+                    z-index: 7;
+                    background: #fff;
+                    border: 2px solid $primary_accent;
+                    box-shadow: 0px 0px 5px rgba(#000, 0.33);
+                    &:not(.active) i{
+                        display: none;
+                    }
+                    i {
+                        color: darken($primary_accent, 20);
+                        font-size: small;
+                        position: relative;
+                        font-weight: bold;
+                        top: -1px;
+                        left: 0px;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 
@@ -37,7 +75,16 @@
             padding: 0;
             max-width: 200px;
             .inner-content {
-                height: 150px;
+                .inner-content-wrapper {
+                    height: auto;
+                    .content-marker {
+                        min-height: 120px;
+                        height: auto;
+                        &.photo-content {
+                           height: 120px;
+                        }
+                    }
+                }
             }
         }
     }

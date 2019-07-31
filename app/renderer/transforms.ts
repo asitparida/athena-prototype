@@ -69,3 +69,14 @@ export function isEqual(a, b) {
     }
     return false;
 }
+
+export function GetGroupWrapperId(id) { return `GROUP-${id}`};
+
+export function OpenExternalUrl(url) {
+    const shell = (window as any).shell;
+    if (shell) {
+       shell.openExternal(url);
+    } else {
+        window.open(url, '_blank');
+    }
+}

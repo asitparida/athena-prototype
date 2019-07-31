@@ -21,9 +21,7 @@ class Toasts extends React.Component<any, { toasts: IToastItem[] }> {
     constructor(props) {
         super(props);
         this.state = {
-            toasts: [
-                { id: '1', message: 'The clip has been pushed to the Workspace.', type: ToastType.Success }
-            ]
+            toasts: []
         };
     }
     onToastClose(id) {

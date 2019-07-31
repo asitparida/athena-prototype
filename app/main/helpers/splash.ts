@@ -6,7 +6,7 @@ let splashWindow;
 
 export function GetSplashWindow() {
     splashWindow = new BrowserWindow({
-        title: 'Project Athena',
+        title: 'Element',
         width: 300,
         height: 300,
         show: true,

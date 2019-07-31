@@ -1,3 +1,5 @@
+@import '../../shared';
+
 .tabs-wrapper {
     width: 100%;
     height: 100%;
@@ -11,7 +13,7 @@
         height: 60px;
         display: flex;
         padding: 0 30px;
-        border-bottom: 1px solid rgba(#fff, 0.05);
+        border-bottom: 1px solid rgba(#000, 0.05);
         &.compressed {
             padding: 0 15px;
         }
@@ -26,6 +28,7 @@
                 display: flex;
                 list-style: none;
                 margin: 0;
+                color: rgba(#000, 0.50);
 
                 &.compressed {
                     width: 100%;
@@ -43,20 +46,22 @@
                     line-height: 60px;
                     padding: 0 15px;
                     margin-right: 1px;
-                    background: rgba(#fff, 0.00);
+                    background: rgba(#000, 0.00);
                     min-width: 100px;
-                    opacity: 0.50;
+                    opacity: 0.75;
                     text-align: center;
                     cursor: pointer;
                     user-select: none;
+                    font-size: small;
 
                     &.active {
-                        border-bottom: 1px solid rgba(#fff, 0.50);
+                        border-bottom: 1px solid rgba(#000, 0.50);
                         opacity: 1;
+                        font-weight: bold;
                     }
 
                     &:hover {
-                        background: rgba(#fff, 0.10);
+                        background: rgba(#000, 0.025);
                     }
                 }
             }
@@ -64,7 +69,7 @@
 
         .tabs-resizer-container {
             order: 2;
-            width: 180px;
+            width: 120px;
             margin-left: auto;
 
             .tabs-resizer-wrapper {
@@ -78,14 +83,14 @@
 
                 .tabs-resizer-handler {
                     width: 100%;
-                    background: rgba(#fff, 0.10);
+                    background: rgba(#000, 0.10);
                     border-radius: 4px;
                     height: 8px;
                 }
 
                 .tabs-resizer-box {
                     position: absolute;
-                    background: rgba(#fff, 0.80);
+                    background: rgba(#000, 0.80);
                     height: 20px;
                     width: 20px;
                     border-radius: 50%;
@@ -111,20 +116,28 @@
 
         &[data-size="0.5"] {
             .content-wrapper {
-                width: 20%;
-                min-width: 20%;
-                .inner-content {
+                width: 25%;
+                min-width: 25%;
+                .inner-content .inview-wrapper {
                     height: 170px;
+                }
+                @include respond-to-large-screen-only {
+                    width: 20%;
+                    min-width: 20%;
                 }
             }
         }
 
         &[data-size="1"] {
             .content-wrapper {
-                width: 25%;
-                min-width: 25%;
-                .inner-content {
+                width: 33%;
+                min-width: 33%;
+                .inner-content .inview-wrapper {
                     height: 270px;
+                }
+                @include respond-to-large-screen-only {
+                    width: 25%;
+                    min-width: 25%;
                 }
             }
         }
@@ -133,14 +146,23 @@
             .content-wrapper {
                 width: 50%;
                 min-width: 50%;
-                .inner-content {
+                .inner-content .inview-wrapper {
                     height: 370px;
+                }
+                @include respond-to-large-screen-only {
+                    width: 33%;
+                    min-width: 33%;
                 }
             }
         }
 
         &.compressed {
             padding: 15px 30px;
+            .tabs-holder .content-list-wrapper h1 {
+                padding-left: 0;
+                font-size: large;
+                font-weight: 500;
+            }
         }
 
     }
